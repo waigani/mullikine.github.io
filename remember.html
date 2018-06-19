@@ -1,0 +1,2423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-06-19 Tue 19:34 -->
+<link rel="stylesheet" type="text/css" href="org.css"/>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>A lisp interpreter in lisp</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="shane" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">A lisp interpreter in lisp</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org40e26ee">1. emacs</a>
+<ul>
+<li><a href="#org5d7d7a0">1.1. my-misc.el</a></li>
+</ul>
+</li>
+<li><a href="#org739fd43">2. fzf</a></li>
+<li><a href="#org0ce94dd">3. emacs</a></li>
+<li><a href="#org1f5acfc">4. vim</a></li>
+<li><a href="#orgf2663ea">5. zsh</a>
+<ul>
+<li><a href="#org349e478">5.1. M-y</a></li>
+</ul>
+</li>
+<li><a href="#orge3ff1b5">6. bash</a></li>
+<li><a href="#org2bf9e14">7. emacs</a>
+<ul>
+<li><a href="#org23e9532">7.1. functions</a></li>
+<li><a href="#org0d7c309">7.2. Install multiple packages from the command line</a></li>
+<li><a href="#orgfca734a">7.3. completion using arbitrary text in buffer</a></li>
+<li><a href="#org25ed1cf">7.4. Commands</a></li>
+<li><a href="#orgfb8368c">7.5. packages</a>
+<ul>
+<li><a href="#org2bb39a1">7.5.1. bpr</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org83ba739">8. rsync</a></li>
+<li><a href="#orgf052659">9. emacs</a>
+<ul>
+<li><a href="#org402b8a1">9.1. push button</a></li>
+<li><a href="#org83cfb05">9.2. toggle hydra</a></li>
+<li><a href="#org561cc28">9.3. C-f (in the minibuffer)</a></li>
+</ul>
+</li>
+<li><a href="#org76ab241">10. unix</a>
+<ul>
+<li><a href="#org7e18237">10.1. fgrep</a></li>
+</ul>
+</li>
+<li><a href="#org3acb5d8">11. spacemacs</a>
+<ul>
+<li><a href="#org1090259">11.1. bindings</a></li>
+</ul>
+</li>
+<li><a href="#org2cba611">12. ranger</a>
+<ul>
+<li><a href="#org5d1d9ea">12.1. M-s -=&gt; "dired ."</a></li>
+</ul>
+</li>
+<li><a href="#orgfc27728">13. emacs</a>
+<ul>
+<li><a href="#org98be53e">13.1. C-c</a></li>
+<li><a href="#org4818bf7">13.2. C-x</a></li>
+</ul>
+</li>
+<li><a href="#orgf6b5e61">14. spacemacs</a>
+<ul>
+<li><a href="#org247aca5">14.1. SPC h d m</a></li>
+<li><a href="#org8d49fae">14.2. (kbd ",")</a></li>
+</ul>
+</li>
+<li><a href="#org639443e">15. fzf</a></li>
+<li><a href="#org49d40e9">16. spacemacs</a>
+<ul>
+<li><a href="#org18f8161">16.1. M-m a /</a></li>
+<li><a href="#orgf0573ba">16.2. M-m a '</a></li>
+</ul>
+</li>
+<li><a href="#org890a39c">17. emacs</a>
+<ul>
+<li><a href="#org945691c">17.1. C-c k</a></li>
+<li><a href="#orgeda3b66">17.2. other-window (M-l M-;)</a></li>
+<li><a href="#orgac7b3cb">17.3. helm</a></li>
+</ul>
+</li>
+<li><a href="#org9adbb23">18. emacs-lisp</a>
+<ul>
+<li><a href="#orge55eaf6">18.1. symbol2string</a></li>
+<li><a href="#orgf1dda55">18.2. string2symbol</a></li>
+<li><a href="#org8c99eee">18.3. octothorpe #</a></li>
+<li><a href="#org0aeb493">18.4. emacs-lisp macros</a></li>
+</ul>
+</li>
+<li><a href="#org4306353">19. org-mode</a>
+<ul>
+<li><a href="#org5bc4e8f">19.1. Speed keys</a></li>
+</ul>
+</li>
+<li><a href="#orgffdc4c5">20. Firefox / Chrome</a></li>
+<li><a href="#org53c3bc9">21. Emacs</a>
+<ul>
+<li><a href="#org74126e6">21.1. table.el</a>
+<ul>
+<li><a href="#org8022cce">21.1.1. <span class="todo TODO">TODO</span> set up ability to edit a table-mode table in another buffer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org76c5a5c">22. Emacs lisp</a>
+<ul>
+<li><a href="#org8af04dc">22.1. When searching through emacs library code, it's often helpful to be able to search within a function</a></li>
+</ul>
+</li>
+<li><a href="#orgca499af">23. Emacs help</a></li>
+<li><a href="#orgd5887d6">24. commands</a></li>
+<li><a href="#org3df33fd">25. Emacs</a>
+<ul>
+<li><a href="#org7a6e598">25.1. treemacs</a></li>
+<li><a href="#org58d6e90">25.2. Enter key now opens in vim on the side</a></li>
+</ul>
+</li>
+<li><a href="#orged67a94">26. Clojure</a></li>
+<li><a href="#orgf7bb0c4">27. Emacs lisp</a></li>
+<li><a href="#org979f6ba">28. Emacs</a>
+<ul>
+<li><a href="#org0555935">28.1. comint (<b>inferior-lisp</b>, etc.)</a>
+<ul>
+<li><a href="#org655292f">28.1.1. comint-clear-buffer (C-c M-o)</a></li>
+</ul>
+</li>
+<li><a href="#org9dc5113">28.2. lispy</a>
+<ul>
+<li><a href="#orgb5e791d">28.2.1. Switch to cider repl (C-c C-z)</a></li>
+<li><a href="#org086aba9">28.2.2. Copy sexp (M-m k y)</a></li>
+</ul>
+</li>
+<li><a href="#orgcff50ca">28.3. paredit</a></li>
+<li><a href="#org795b28f">28.4. 4clojure</a></li>
+<li><a href="#orgac94863">28.5. ecb</a></li>
+</ul>
+</li>
+<li><a href="#orgd2ab1b2">29. I think this means that depending on how you create the list, it evaluates it as a function or not.</a></li>
+<li><a href="#org996efdf">30. Cider</a></li>
+<li><a href="#orgbd9acc8">31. vim</a>
+<ul>
+<li><a href="#org7a98d20">31.1. targets.vim</a></li>
+<li><a href="#orgf4115d6">31.2. vim-flattery</a></li>
+<li><a href="#orgdd72c1b">31.3. vai</a></li>
+</ul>
+</li>
+<li><a href="#org69cba3a">32. emacs</a>
+<ul>
+<li><a href="#org8b11d8b">32.1. functions</a></li>
+</ul>
+</li>
+<li><a href="#org7cf2be1">33. Automaton</a>
+<ul>
+<li><a href="#orga23bac3">33.1. Von neumann machine</a></li>
+</ul>
+</li>
+<li><a href="#org5df3b1f">34. emacs lisp</a>
+<ul>
+<li><a href="#org50fe191">34.1. The elisp version of (tv)</a></li>
+</ul>
+</li>
+<li><a href="#org187caf2">35. emacs</a>
+<ul>
+<li><a href="#org54820aa">35.1. lisp editing</a>
+<ul>
+<li><a href="#orge48d209">35.1.1. M-j</a></li>
+<li><a href="#orgf3f04e1">35.1.2. M-1</a></li>
+<li><a href="#orgc76445f">35.1.3. M-9</a></li>
+<li><a href="#org756ce25">35.1.4. M-0</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org1a2d87f">36. </a></li>
+<li><a href="#org5e4f893">37. Workflow</a></li>
+<li><a href="#orgfd338be">38. emacs</a></li>
+<li><a href="#org54eb001">39. latex</a></li>
+<li><a href="#org9ba282b">40. undertand macro</a></li>
+<li><a href="#orgc0828f1">41. </a></li>
+<li><a href="#org686c538">42. scheme</a></li>
+<li><a href="#org5a3055e">43. emacs all lisp modes</a></li>
+<li><a href="#orgac10226">44. emacs</a>
+<ul>
+<li><a href="#org467ec4f">44.1. python</a>
+<ul>
+<li><a href="#org266d62f">44.1.1. realgud:pdb</a></li>
+</ul>
+</li>
+<li><a href="#orgdca6aaf">44.2. Interpreters (including python, scheme, ielm, etc.)</a>
+<ul>
+<li><a href="#orge858c6e">44.2.1. M-r</a></li>
+</ul>
+</li>
+<li><a href="#orga42a038">44.3. M-x commands</a></li>
+<li><a href="#org745eb5a">44.4. bindings</a>
+<ul>
+<li><a href="#org6979d63">44.4.1. M-l y</a></li>
+<li><a href="#org8affc70">44.4.2. C-M--</a></li>
+<li><a href="#org77d6c3a">44.4.3. C-M-=</a></li>
+<li><a href="#org859745e">44.4.4. C-M-o</a></li>
+<li><a href="#org5986018">44.4.5. M-,</a></li>
+</ul>
+</li>
+<li><a href="#orgb619f0d">44.5. M-l M-o M-a</a></li>
+<li><a href="#org387ba03">44.6. M-l M-s M-d</a></li>
+<li><a href="#orgcd1d5a5">44.7. sx</a></li>
+<li><a href="#org84f765b">44.8. eshell</a>
+<ul>
+<li><a href="#org61692d5">44.8.1. bindings</a></li>
+<li><a href="#orgb86a541">44.8.2. commands</a></li>
+</ul>
+</li>
+<li><a href="#orgc026d7c">44.9. </a></li>
+</ul>
+</li>
+<li><a href="#orge8a3eb5">45. emacs lisp</a>
+<ul>
+<li><a href="#org1386620">45.1. input-decode-map</a></li>
+<li><a href="#org4e92c37">45.2. defalias</a></li>
+<li><a href="#org986a1f6">45.3. macroexpand</a></li>
+</ul>
+</li>
+<li><a href="#org5920cbd">46. kotlin</a></li>
+<li><a href="#orgf56c115">47. cider</a></li>
+<li><a href="#org0417c9c">48. tmux</a>
+<ul>
+<li><a href="#org58deeb1">48.1. F1 M-!       # break other</a></li>
+</ul>
+</li>
+<li><a href="#orgb567b37">49. Org mode</a>
+<ul>
+<li><a href="#org3e98f8d">49.1. Sparse tree</a></li>
+<li><a href="#orgd125b69">49.2. Bindings</a>
+<ul>
+<li><a href="#org1525738">49.2.1. M-7 *        # Insert 7 stars</a></li>
+<li><a href="#org9c92ec5">49.2.2. C-x n s      # org-narrow-to-subtree (bound in org-mode)</a></li>
+<li><a href="#org323161c">49.2.3. C-x n d      # narrow-to-defun</a></li>
+<li><a href="#orgda913bd">49.2.4. C-x n w      # widen</a></li>
+<li><a href="#orgf169183">49.2.5. M-e          # next visible heading</a></li>
+<li><a href="#org9f45631">49.2.6. (define-key org-mode-map (kbd "C-M-a") #'output-up-heading-top)</a></li>
+<li><a href="#org273c5c7">49.2.7. (define-key org-mode-map (kbd "M-a") #'outline-up-heading)</a></li>
+<li><a href="#org0d62c24">49.2.8. (define-key org-mode-map (kbd "M-p") #'org-backward-heading-same-level)</a></li>
+<li><a href="#org9f7757e">49.2.9. (define-key org-mode-map (kbd "M-n") #'org-forward-heading-same-level)</a></li>
+<li><a href="#org3ff81d8">49.2.10. (define-key org-mode-map (kbd "M-e") #'org-next-visible-heading)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org12d975f">50. lispy</a>
+<ul>
+<li><a href="#orgde169b9">50.1. d</a></li>
+<li><a href="#orgbaaf4fd">50.2. C-M-f</a></li>
+<li><a href="#orgb038338">50.3. </a></li>
+<li><a href="#org2e48bd7">50.4. special-lispy-ace-symbol (a)</a></li>
+<li><a href="#org6053e56">50.5. flow (f)</a></li>
+<li><a href="#org0f6821d">50.6. xi	lispy-to-ifs</a></li>
+<li><a href="#orgb89e81d">50.7. xc	lispy-to-cond</a></li>
+<li><a href="#org80084bb">50.8. </a></li>
+<li><a href="#orga5edc29">50.9. lispy-split (M-j)</a></li>
+</ul>
+</li>
+<li><a href="#orgd510b37">51. evil</a></li>
+<li><a href="#orgf3d335f">52. tmux</a></li>
+<li><a href="#orga814966">53. commands</a>
+<ul>
+<li><a href="#orga061dc8">53.1. vdiff &#x2013; emacs vimdiff</a></li>
+</ul>
+</li>
+<li><a href="#org3a1586a">54. emacs-lisp</a>
+<ul>
+<li><a href="#orge2c691d">54.1. hash functions</a></li>
+<li><a href="#orgf75dbbc">54.2. Can do this now</a></li>
+<li><a href="#org7e77eb9">54.3. see what's in a variable</a></li>
+<li><a href="#orgdae26a7">54.4. Installing packages</a></li>
+</ul>
+</li>
+<li><a href="#org212e940">55. emacs</a>
+<ul>
+<li><a href="#orgdf098f0">55.1. vdiff</a></li>
+<li><a href="#org676fc40">55.2. describe-thing</a></li>
+<li><a href="#orgcd83295">55.3. M-x re-builder</a></li>
+<li><a href="#org054f2fe">55.4. pcre2el</a></li>
+<li><a href="#orgcb09428">55.5. Use these bindings together, when in org mode.</a></li>
+<li><a href="#orgf2767ad">55.6. (global-compnay-mode)</a></li>
+</ul>
+</li>
+<li><a href="#org4d276a5">56. spacemacs</a>
+<ul>
+<li><a href="#org688ce21">56.1. load magit</a></li>
+</ul>
+</li>
+<li><a href="#orge19cf8c">57. slime</a>
+<ul>
+<li><a href="#org8e8022d">57.1. Doc</a></li>
+<li><a href="#orgfa10f2a">57.2. online doc</a></li>
+</ul>
+</li>
+<li><a href="#orgae3511d">58. lispy</a>
+<ul>
+<li><a href="#org27466bb">58.1. Commands such as the following are irreplacable.</a>
+<ul>
+<li><a href="#org740b9ac">58.1.1. w</a></li>
+<li><a href="#orgae05299">58.1.2. s</a></li>
+</ul>
+</li>
+<li><a href="#org821ff99">58.2. A</a></li>
+</ul>
+</li>
+<li><a href="#org858291a">59. evil</a></li>
+<li><a href="#org6d5eb3c">60. Emacs</a></li>
+<li><a href="#org11e9c0f">61. org-brain</a>
+<ul>
+<li><a href="#org95133ef">61.1. I can access this via the org-capture template, easily.</a></li>
+<li><a href="#org617b0e5">61.2. Also, I can go directly to the visualiser like so</a></li>
+</ul>
+</li>
+<li><a href="#org0690400">62. emacs bindings</a>
+<ul>
+<li><a href="#org6fbf008">62.1. f</a></li>
+<li><a href="#orgf2cf664">62.2. K on a region will kill the rectangle</a></li>
+</ul>
+</li>
+<li><a href="#orged06b39">63. agenda</a>
+<ul>
+<li><a href="#orgc716c1c">63.1. bindings</a></li>
+</ul>
+</li>
+<li><a href="#org46dd940">64. misc</a></li>
+<li><a href="#orgb094db6">65. spacemacs</a>
+<ul>
+<li><a href="#orge252b7c">65.1. Can use iedit mode with helm-ag as in here https://youtu.be/VBYsa3Kpkz8?t=442 to modify things across projects.</a></li>
+<li><a href="#org9b64ef6">65.2. M-m s a p &#x2013; project-wide search &#x2013; i need to fix this though so it's working as nicely as this (https://youtu.be/VBYsa3Kpkz8?t=393)</a></li>
+<li><a href="#org094244a">65.3. M-m w d &#x2013; delete window</a></li>
+<li><a href="#org7fcb8fe">65.4. M-m w [hjkl] &#x2013; navigate windows</a></li>
+<li><a href="#org53d4ce3">65.5. fd  &#x2013; escape / close minibuffers / exit various windows. Very useful. keep this. But if I want I can remove it:</a></li>
+<li><a href="#orgb0295a3">65.6. escape key</a></li>
+</ul>
+</li>
+<li><a href="#org171fc28">66. emacs</a>
+<ul>
+<li><a href="#org25095a0">66.1. what face is under the cursor</a></li>
+<li><a href="#orge8735c2">66.2. tile windows</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org40e26ee" class="outline-2">
+<h2 id="org40e26ee"><span class="section-number-2">1</span> emacs</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org5d7d7a0" class="outline-3">
+<h3 id="org5d7d7a0"><span class="section-number-3">1.1</span> <a href="file:///home/shane/var/smulliga/source/git/config/emacs/config/my-misc.el">my-misc.el</a></h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+This is where I put requires for packages that I don't want to create individual my-&lt;package&gt;.el files for.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org739fd43" class="outline-2">
+<h2 id="org739fd43"><span class="section-number-2">2</span> fzf</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+<pre class="src src-conf"><span style="color: #ff8700;">bindings+</span>=<span style="color: #ff4ea3;">"alt-e:execute-silent(pl {+} | tm -S -tout spv -xargs sp),"</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0ce94dd" class="outline-2">
+<h2 id="org0ce94dd"><span class="section-number-2">3</span> emacs</h2>
+<div class="outline-text-2" id="text-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">map</th>
+<th scope="col" class="org-left">function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-c h P</td>
+<td class="org-left">help for package</td>
+</tr>
+
+<tr>
+<td class="org-left">M-l M-k M-j</td>
+<td class="org-left">compile-run</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org1f5acfc" class="outline-2">
+<h2 id="org1f5acfc"><span class="section-number-2">4</span> vim</h2>
+<div class="outline-text-2" id="text-4">
+<div class="org-src-container">
+<pre class="src src-viml">" insert what you want
+exe expand("normal! i\&lt;C-R&gt;=system('xc | cat')\&lt;CR&gt;")
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf2663ea" class="outline-2">
+<h2 id="orgf2663ea"><span class="section-number-2">5</span> zsh</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org349e478" class="outline-3">
+<h3 id="org349e478"><span class="section-number-3">5.1</span> M-y</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+tmux-capture
+</p>
+
+<p>
+This is an old binding. Updating it now.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge3ff1b5" class="outline-2">
+<h2 id="orge3ff1b5"><span class="section-number-2">6</span> bash</h2>
+<div class="outline-text-2" id="text-6">
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">repeat command</span>
+<span style="color: #c0afa7;">rpt</span> <span style="color: #bb99b4;">-d</span> <span style="color: #9999bb;">1</span> <span style="color: #c0a7bd;">cvlc</span> <span style="color: #ff4ea3;">"$DUMP$HOME/notes2018/ws/music/Transformers - The Score - Arrival To Earth-4H0JDomv8ac.webm"</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2bf9e14" class="outline-2">
+<h2 id="org2bf9e14"><span class="section-number-2">7</span> emacs</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-org23e9532" class="outline-3">
+<h3 id="org23e9532"><span class="section-number-3">7.1</span> functions</h3>
+<div class="outline-text-3" id="text-7-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">M-x htmlize-buffer</td>
+<td class="org-left">This will make html from the buffer, as it appears</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org0d7c309" class="outline-3">
+<h3 id="org0d7c309"><span class="section-number-3">7.2</span> Install multiple packages from the command line</h3>
+<div class="outline-text-3" id="text-7-2">
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #bba699;">og</span> <span style="color: #a7c0b9;">-fi</span> <span style="color: #a7c0b9;">angular-mode</span> <span style="color: #c0afa7;">angular-snippets</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfca734a" class="outline-3">
+<h3 id="orgfca734a"><span class="section-number-3">7.3</span> completion using arbitrary text in buffer</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+That is company-dabbrev, named after the dabbrev command bound to M-/.
+</p>
+
+<p>
+But I am using hippie-expand.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org25ed1cf" class="outline-3">
+<h3 id="org25ed1cf"><span class="section-number-3">7.4</span> Commands</h3>
+<div class="outline-text-3" id="text-7-4">
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #e0a0bc;">woman</span> <span style="color: #a3e0a0;">bash</span>
+<span style="color: #c0a7bd;">eman</span> <span style="color: #a3e0a0;">bash</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfb8368c" class="outline-3">
+<h3 id="orgfb8368c"><span class="section-number-3">7.5</span> packages</h3>
+<div class="outline-text-3" id="text-7-5">
+</div>
+<div id="outline-container-org2bb39a1" class="outline-4">
+<h4 id="org2bb39a1"><span class="section-number-4">7.5.1</span> bpr</h4>
+<div class="outline-text-4" id="text-7-5-1">
+<p>
+This package provides functionality for running processes in background.
+For detailed instructions see <a href="https://github.com/ilya-babanov/emacs-bpr">https://github.com/ilya-babanov/emacs-bpr</a>.
+</p>
+
+<p>
+You can run and manage multiple processes, as they are running.
+It's very useful.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #e0a0bc;">load</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #c0a7bd;">concat</span> <span style="color: #a3e0a0;">emacsdir</span> <span style="color: #ff4ea3;">"/config/my-bpr.el"</span><span style="color: #5fafd7; font-weight: bold;">)</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org83ba739" class="outline-2">
+<h2 id="org83ba739"><span class="section-number-2">8</span> rsync</h2>
+<div class="outline-text-2" id="text-8">
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">Use -s ( protect args ) and enclose your path in quotes :</span>
+<span style="color: #bba699;">rsync</span> <span style="color: #a7c0b9;">-savz</span> <span style="color: #b3c0a7;">user</span>@<span style="color: #c0a7bd;">server:</span><span style="color: #ff4ea3;">"/my path with spaces/another dir/"</span> <span style="color: #ff4ea3;">"/my destination/"</span>
+
+<span style="color: #bba699;">rsync</span> <span style="color: #a7c0b9;">-savz</span> <span style="color: #bba699;">home:</span><span style="color: #ff4ea3;">"$HOME/torrents/The.Expanse.S03E06.720p.HDTV.x264-KILLERS[ettv]"</span> <span style="color: #c0a7bd;">./</span>
+
+<span style="color: #bba699;">rs</span> <span style="color: #bba699;">home:</span><span style="color: #ff4ea3;">"$HOME/torrents/The.Expanse.S03E06.720p.HDTV.x264-KILLERS[ettv]"</span> <span style="color: #c0a7bd;">./</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf052659" class="outline-2">
+<h2 id="orgf052659"><span class="section-number-2">9</span> emacs</h2>
+<div class="outline-text-2" id="text-9">
+</div>
+<div id="outline-container-org402b8a1" class="outline-3">
+<h3 id="org402b8a1"><span class="section-number-3">9.1</span> push button</h3>
+<div class="outline-text-3" id="text-9-1">
+<p>
+<a href="file:///home/shane/local/emacs26/share/emacs/26.0.91/lisp/button.el.gz">button.el.gz</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org83cfb05" class="outline-3">
+<h3 id="org83cfb05"><span class="section-number-3">9.2</span> toggle hydra</h3>
+<div class="outline-text-3" id="text-9-2">
+<p>
+C-x t
+</p>
+</div>
+</div>
+
+<div id="outline-container-org561cc28" class="outline-3">
+<h3 id="org561cc28"><span class="section-number-3">9.3</span> C-f (in the minibuffer)</h3>
+<div class="outline-text-3" id="text-9-3">
+<p>
+miniedit
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org76ab241" class="outline-2">
+<h2 id="org76ab241"><span class="section-number-2">10</span> unix</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+<div id="outline-container-org7e18237" class="outline-3">
+<h3 id="org7e18237"><span class="section-number-3">10.1</span> fgrep</h3>
+<div class="outline-text-3" id="text-10-1">
+<p>
+fixed strings
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3acb5d8" class="outline-2">
+<h2 id="org3acb5d8"><span class="section-number-2">11</span> spacemacs</h2>
+<div class="outline-text-2" id="text-11">
+</div>
+<div id="outline-container-org1090259" class="outline-3">
+<h3 id="org1090259"><span class="section-number-3">11.1</span> bindings</h3>
+<div class="outline-text-3" id="text-11-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">prefix</th>
+<th scope="col" class="org-left">category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">e</td>
+<td class="org-left">errors</td>
+</tr>
+
+<tr>
+<td class="org-left">a</td>
+<td class="org-left">applicaations</td>
+</tr>
+
+<tr>
+<td class="org-left">h</td>
+<td class="org-left">help</td>
+</tr>
+
+<tr>
+<td class="org-left">p</td>
+<td class="org-left">projects</td>
+</tr>
+
+<tr>
+<td class="org-left">x</td>
+<td class="org-left">text</td>
+</tr>
+
+<tr>
+<td class="org-left">x g</td>
+<td class="org-left">google translate</td>
+</tr>
+
+<tr>
+<td class="org-left">g</td>
+<td class="org-left">git</td>
+</tr>
+
+<tr>
+<td class="org-left">g s</td>
+<td class="org-left">magit status / create repository if non exists for file</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2cba611" class="outline-2">
+<h2 id="org2cba611"><span class="section-number-2">12</span> ranger</h2>
+<div class="outline-text-2" id="text-12">
+</div>
+<div id="outline-container-org5d1d9ea" class="outline-3">
+<h3 id="org5d1d9ea"><span class="section-number-3">12.1</span> M-s -=&gt; "dired ."</h3>
+<div class="outline-text-3" id="text-12-1">
+<div class="org-src-container">
+<pre class="src src-conf"><span style="color: #e0a0bc;">map</span> <span style="color: #b3c0a7;">&lt;Alt&gt;s</span> <span style="color: #e0a0bc;">shell</span> <span style="color: #bba699;">-f</span> <span style="color: #e0d0a0;">tm</span> <span style="color: #bba699;">-f</span> <span style="color: #b6a0e0;">-t</span> <span style="color: #99bbb4;">sph</span> <span style="color: #a7aac0;">-c</span> <span style="color: #ff4ea3;">"%d"</span> <span style="color: #ff4ea3;">"dired ."</span>
+<span style="color: #e0a0bc;">map</span> <span style="color: #e0d0a0;">&lt;Alt&gt;S</span> <span style="color: #e0a0bc;">shell</span> <span style="color: #bba699;">-f</span> <span style="color: #e0d0a0;">tm</span> <span style="color: #bba699;">-f</span> <span style="color: #b6a0e0;">-t</span> <span style="color: #e0d0a0;">spv</span> <span style="color: #a7aac0;">-c</span> <span style="color: #ff4ea3;">"%d"</span> <span style="color: #ff4ea3;">"dired ."</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfc27728" class="outline-2">
+<h2 id="orgfc27728"><span class="section-number-2">13</span> emacs</h2>
+<div class="outline-text-2" id="text-13">
+</div>
+<div id="outline-container-org98be53e" class="outline-3">
+<h3 id="org98be53e"><span class="section-number-3">13.1</span> C-c</h3>
+<div class="outline-text-3" id="text-13-1">
+<p>
+This key has the major mode bindings.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4818bf7" class="outline-3">
+<h3 id="org4818bf7"><span class="section-number-3">13.2</span> C-x</h3>
+<div class="outline-text-3" id="text-13-2">
+<p>
+This key has general purpose bindings.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf6b5e61" class="outline-2">
+<h2 id="orgf6b5e61"><span class="section-number-2">14</span> spacemacs</h2>
+<div class="outline-text-2" id="text-14">
+</div>
+<div id="outline-container-org247aca5" class="outline-3">
+<h3 id="org247aca5"><span class="section-number-3">14.1</span> SPC h d m</h3>
+</div>
+
+<div id="outline-container-org8d49fae" class="outline-3">
+<h3 id="org8d49fae"><span class="section-number-3">14.2</span> (kbd ",")</h3>
+<div class="outline-text-3" id="text-14-2">
+<p>
+This is a spacemacs-only prefix-key.
+</p>
+
+<p>
+It has major mode bindings.
+</p>
+
+<p>
+It only works in NORMAL mode. 
+</p>
+
+<p>
+It's not as comprehensive as C-c.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org639443e" class="outline-2">
+<h2 id="org639443e"><span class="section-number-2">15</span> fzf</h2>
+<div class="outline-text-2" id="text-15">
+<div class="org-src-container">
+<pre class="src src-conf"><span style="color: #ff8700;">bindings+</span>=<span style="color: #ff4ea3;">"ctrl-alt-f:toggle,"</span>
+<span style="color: #ff8700;">bindings+</span>=<span style="color: #ff4ea3;">"ctrl-alt-x:up+toggle,"</span>
+<span style="color: #ff8700;">bindings+</span>=<span style="color: #ff4ea3;">"ctrl-alt-c:down+toggle,"</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org49d40e9" class="outline-2">
+<h2 id="org49d40e9"><span class="section-number-2">16</span> spacemacs</h2>
+<div class="outline-text-2" id="text-16">
+</div>
+<div id="outline-container-org18f8161" class="outline-3">
+<h3 id="org18f8161"><span class="section-number-3">16.1</span> M-m a /</h3>
+<div class="outline-text-3" id="text-16-1">
+<p>
+Search engines
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf0573ba" class="outline-3">
+<h3 id="orgf0573ba"><span class="section-number-3">16.2</span> M-m a '</h3>
+<div class="outline-text-3" id="text-16-2">
+<p>
+Show available repls
+</p>
+<ul class="org-ul">
+<li>ansi-term</li>
+<li>term</li>
+<li>sql</li>
+<li>shell</li>
+<li>python</li>
+<li>multi-term</li>
+<li>ielm</li>
+<li>eshell</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org890a39c" class="outline-2">
+<h2 id="org890a39c"><span class="section-number-2">17</span> emacs</h2>
+<div class="outline-text-2" id="text-17">
+</div>
+<div id="outline-container-org945691c" class="outline-3">
+<h3 id="org945691c"><span class="section-number-3">17.1</span> C-c k</h3>
+<div class="outline-text-3" id="text-17-1">
+<p>
+Kill ring
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgeda3b66" class="outline-3">
+<h3 id="orgeda3b66"><span class="section-number-3">17.2</span> other-window (M-l M-;)</h3>
+</div>
+
+<div id="outline-container-orgac7b3cb" class="outline-3">
+<h3 id="orgac7b3cb"><span class="section-number-3">17.3</span> helm</h3>
+<div class="outline-text-3" id="text-17-3">
+<p>
+C-t
+split window vertically
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9adbb23" class="outline-2">
+<h2 id="org9adbb23"><span class="section-number-2">18</span> emacs-lisp</h2>
+<div class="outline-text-2" id="text-18">
+</div>
+<div id="outline-container-orge55eaf6" class="outline-3">
+<h3 id="orge55eaf6"><span class="section-number-3">18.1</span> symbol2string</h3>
+<div class="outline-text-3" id="text-18-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c0a7bd;">symbol-name</span> '<span style="color: #a0d6e0;">some-symbol</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf1dda55" class="outline-3">
+<h3 id="orgf1dda55"><span class="section-number-3">18.2</span> string2symbol</h3>
+<div class="outline-text-3" id="text-18-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #bba699;">intern</span> <span style="color: #ff4ea3;">"some-string"</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8c99eee" class="outline-3">
+<h3 id="org8c99eee"><span class="section-number-3">18.3</span> octothorpe #</h3>
+<div class="outline-text-3" id="text-18-3">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">There is no difference:</span>
+
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #a6bb99;">eq</span> '<span style="color: #9999bb;">my-add</span> #'<span style="color: #9999bb;">my-add</span><span style="color: #dd0000; font-weight: bold;">)</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">yields t</span>
+
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">The # can be used in front of a lambda expression indicating to the</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">byte-compiler that the following expression can be byte compiled, see</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">the docs for Anonymous Functions. But there's nothing to compile in</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">the case of a symbol.</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0aeb493" class="outline-3">
+<h3 id="org0aeb493"><span class="section-number-3">18.4</span> emacs-lisp macros</h3>
+<div class="outline-text-3" id="text-18-4">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">This works perfectly</span>
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #a1db00;">defmacro</span> <span style="color: #ffd700;">my/with</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #e0d0a0;">package</span> <span style="color: #00d7af;">&amp;rest</span> <span style="color: #a6bb99;">body</span><span style="color: #5fafd7; font-weight: bold;">)</span>
+  <span style="color: #ff4b4b;">"This attempts to run code dependent on a package and otherwise doesn't run the code."</span>
+  `<span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #a1db00;">when</span> <span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #a1db00;">require</span> ,<span style="color: #e0d0a0;">package</span> <span style="color: #bb99b4;">nil</span> '<span style="color: #c0a7bd;">noerror</span><span style="color: #a1db00; font-weight: bold;">)</span>
+     ,<span style="color: #e0a0bc;">@body</span><span style="color: #5fafd7; font-weight: bold;">)</span><span style="color: #dd0000; font-weight: bold;">)</span>
+
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">` , &amp;rest @ syntax</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">The ` means that everything in this lisp comes out the other end unchanged.</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">The , breaks out of ` for a given term. So it is evaluated.</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">&amp;rest puts all the remaining arguments into a sexp</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">An @ unpacks a sexp</span>
+
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">Finally, only the last expression is returned from the macro. This</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">means if I want to define multiple funtions inside of a macro I will</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">need to put it all inside of a (progn)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4306353" class="outline-2">
+<h2 id="org4306353"><span class="section-number-2">19</span> org-mode</h2>
+<div class="outline-text-2" id="text-19">
+</div>
+<div id="outline-container-org5bc4e8f" class="outline-3">
+<h3 id="org5bc4e8f"><span class="section-number-3">19.1</span> Speed keys</h3>
+<div class="outline-text-3" id="text-19-1">
+<p>
+When on a heading&#x2026;
+</p>
+
+<p>
+You can see a list of available speed commands by pressing ?.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgffdc4c5" class="outline-2">
+<h2 id="orgffdc4c5"><span class="section-number-2">20</span> Firefox / Chrome</h2>
+<div class="outline-text-2" id="text-20">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">binding</th>
+<th scope="col" class="org-left">function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-,</td>
+<td class="org-left">show browser helm</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org53c3bc9" class="outline-2">
+<h2 id="org53c3bc9"><span class="section-number-2">21</span> Emacs</h2>
+<div class="outline-text-2" id="text-21">
+<pre class="example">
+helm-show-kill-ring (C-c k)
+</pre>
+</div>
+
+<div id="outline-container-org74126e6" class="outline-3">
+<h3 id="org74126e6"><span class="section-number-3">21.1</span> table.el</h3>
+<div class="outline-text-3" id="text-21-1">
+<p>
+<a href="https://www.emacswiki.org/emacs/TableMode">https://www.emacswiki.org/emacs/TableMode</a>
+</p>
+
+<p>
+It's built in.
+</p>
+
+<p>
+M-x insert-table
+</p>
+
+<p>
+Org-mode understands these tables but they must be edited using table mode.
+</p>
+
+<p>
+I can export table-mode tables from org-mode.
+</p>
+</div>
+
+<div id="outline-container-org8022cce" class="outline-4">
+<h4 id="org8022cce"><span class="section-number-4">21.1.1</span> <span class="todo TODO">TODO</span> set up ability to edit a table-mode table in another buffer</h4>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org76c5a5c" class="outline-2">
+<h2 id="org76c5a5c"><span class="section-number-2">22</span> Emacs lisp</h2>
+<div class="outline-text-2" id="text-22">
+</div>
+<div id="outline-container-org8af04dc" class="outline-3">
+<h3 id="org8af04dc"><span class="section-number-3">22.1</span> When searching through emacs library code, it's often helpful to be able to search within a function</h3>
+<div class="outline-text-3" id="text-22-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">y runs the command special-lispy-occur (found in lispy-mode-map), which is an interactive</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">Lisp function in &#8216;</span><span style="color: #5fafd7; font-style: italic;">../packages26/lispy-20180317.722/lispy.el</span><span style="color: #6c6c6c; font-style: italic;">&#8217;.</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">It is bound to y.</span>
+
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c0a7bd;">special-lispy-occur</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgca499af" class="outline-2">
+<h2 id="orgca499af"><span class="section-number-2">23</span> Emacs help</h2>
+<div class="outline-text-2" id="text-23">
+<p>
+I can look up help for common unix utilities easily with "C-h i d m".
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd5887d6" class="outline-2">
+<h2 id="orgd5887d6"><span class="section-number-2">24</span> commands</h2>
+<div class="outline-text-2" id="text-24">
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">Follow symlinks -- useful when searching rosetta code</span>
+<span style="color: #bba699;">eack</span> <span style="color: #bba699;">-f</span> <span style="color: #bb99b4;">reduce</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3df33fd" class="outline-2">
+<h2 id="org3df33fd"><span class="section-number-2">25</span> Emacs</h2>
+<div class="outline-text-2" id="text-25">
+</div>
+<div id="outline-container-org7a6e598" class="outline-3">
+<h3 id="org7a6e598"><span class="section-number-3">25.1</span> treemacs</h3>
+<div class="outline-text-3" id="text-25-1">
+<p>
+pretty nice
+</p>
+</div>
+</div>
+
+<div id="outline-container-org58d6e90" class="outline-3">
+<h3 id="org58d6e90"><span class="section-number-3">25.2</span> Enter key now opens in vim on the side</h3>
+<div class="outline-text-3" id="text-25-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #a1db00;">defun</span> <span style="color: #ffd700;">my/enter-edit</span> <span style="color: #5fafd7; font-weight: bold;">()</span>
+  <span style="color: #ff4b4b;">"Runs 'tv' if a region is selected"</span>
+  <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #a1db00;">interactive</span><span style="color: #5fafd7; font-weight: bold;">)</span>
+  <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #a1db00;">if</span> <span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #a7aac0;">region-active-p</span><span style="color: #a1db00; font-weight: bold;">)</span>
+      <span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #bba699;">tv</span><span style="color: #a1db00; font-weight: bold;">)</span>
+    <span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #a1db00;">let</span> <span style="color: #ff4ea3; font-weight: bold;">(</span><span style="color: #00d7af; font-weight: bold;">(</span><span style="color: #99bbb4;">my-mode</span> <span style="color: #bb99b4;">nil</span><span style="color: #00d7af; font-weight: bold;">)</span><span style="color: #ff4ea3; font-weight: bold;">)</span>
+      <span style="color: #ff4ea3; font-weight: bold;">(</span><span style="color: #b3c0a7;">execute-kbd-macro</span> <span style="color: #00d7af; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"C-m"</span><span style="color: #00d7af; font-weight: bold;">)</span><span style="color: #ff4ea3; font-weight: bold;">)</span><span style="color: #a1db00; font-weight: bold;">)</span><span style="color: #5fafd7; font-weight: bold;">)</span><span style="color: #dd0000; font-weight: bold;">)</span>
+
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c0afa7;">define-key</span> <span style="color: #b3c0a7;">my-mode-map</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"C-m"</span><span style="color: #5fafd7; font-weight: bold;">)</span> #'<span style="color: #b6a0e0;">my/enter-edit</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orged67a94" class="outline-2">
+<h2 id="orged67a94"><span class="section-number-2">26</span> Clojure</h2>
+<div class="outline-text-2" id="text-26">
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">get seems to only work on a vector, not a list</span>
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c0a7bd;">get</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #bba699;">vec</span> '<span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #ff4ea3; font-weight: bold;">[</span><span style="color: #9999bb;">1</span> <span style="color: #a6bb99;">2</span><span style="color: #ff4ea3; font-weight: bold;">]</span> <span style="color: #ff4ea3; font-weight: bold;">[</span><span style="color: #e0a0bc;">3</span> <span style="color: #a0d6e0;">4</span><span style="color: #ff4ea3; font-weight: bold;">]</span> <span style="color: #ff4ea3; font-weight: bold;">[</span><span style="color: #a3e0a0;">5</span> <span style="color: #a3e0a0;">6</span><span style="color: #ff4ea3; font-weight: bold;">]</span><span style="color: #a1db00; font-weight: bold;">)</span><span style="color: #5fafd7; font-weight: bold;">)</span> <span style="color: #a6bb99;">2</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf7bb0c4" class="outline-2">
+<h2 id="orgf7bb0c4"><span class="section-number-2">27</span> Emacs lisp</h2>
+<div class="outline-text-2" id="text-27">
+<p>
+To make a wrapper function, I create a macro.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org979f6ba" class="outline-2">
+<h2 id="org979f6ba"><span class="section-number-2">28</span> Emacs</h2>
+<div class="outline-text-2" id="text-28">
+</div>
+<div id="outline-container-org0555935" class="outline-3">
+<h3 id="org0555935"><span class="section-number-3">28.1</span> comint (<b>inferior-lisp</b>, etc.)</h3>
+<div class="outline-text-3" id="text-28-1">
+</div>
+<div id="outline-container-org655292f" class="outline-4">
+<h4 id="org655292f"><span class="section-number-4">28.1.1</span> comint-clear-buffer (C-c M-o)</h4>
+</div>
+</div>
+
+<div id="outline-container-org9dc5113" class="outline-3">
+<h3 id="org9dc5113"><span class="section-number-3">28.2</span> lispy</h3>
+<div class="outline-text-3" id="text-28-2">
+</div>
+<div id="outline-container-orgb5e791d" class="outline-4">
+<h4 id="orgb5e791d"><span class="section-number-4">28.2.1</span> Switch to cider repl (C-c C-z)</h4>
+</div>
+<div id="outline-container-org086aba9" class="outline-4">
+<h4 id="org086aba9"><span class="section-number-4">28.2.2</span> Copy sexp (M-m k y)</h4>
+</div>
+</div>
+
+<div id="outline-container-orgcff50ca" class="outline-3">
+<h3 id="orgcff50ca"><span class="section-number-3">28.3</span> paredit</h3>
+<div class="outline-text-3" id="text-28-3">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">Use this instead of M-n, M-p</span>
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c0afa7;">define-key</span> <span style="color: #c0a7bd;">lispy-mode-map-lispy</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"M-("</span><span style="color: #5fafd7; font-weight: bold;">)</span> #'<span style="color: #bb99b4;">evil-lisp-state-insert-sexp-before</span><span style="color: #dd0000; font-weight: bold;">)</span>
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c0afa7;">define-key</span> <span style="color: #c0a7bd;">lispy-mode-map-lispy</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"M-)"</span><span style="color: #5fafd7; font-weight: bold;">)</span> #'<span style="color: #a0d6e0;">evil-lisp-state-insert-sexp-after</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c0afa7;">define-key</span> <span style="color: #99bbb4;">paredit-mode-map</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"M-("</span><span style="color: #5fafd7; font-weight: bold;">)</span> <span style="color: #bb99b4;">nil</span><span style="color: #dd0000; font-weight: bold;">)</span>
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c0afa7;">define-key</span> <span style="color: #99bbb4;">paredit-mode-map</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"M-)"</span><span style="color: #5fafd7; font-weight: bold;">)</span> <span style="color: #bb99b4;">nil</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org795b28f" class="outline-3">
+<h3 id="org795b28f"><span class="section-number-3">28.4</span> 4clojure</h3>
+<div class="outline-text-3" id="text-28-4">
+<pre class="example">
+$HOME/notes2018/ws/clojure/learn/remember.org
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgac94863" class="outline-3">
+<h3 id="orgac94863"><span class="section-number-3">28.5</span> ecb</h3>
+<div class="outline-text-3" id="text-28-5">
+<p>
+This plugin turns emacs into a c/c++ ide.
+It's quite old now though.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd2ab1b2" class="outline-2">
+<h2 id="orgd2ab1b2"><span class="section-number-2">29</span> I think this means that depending on how you create the list, it evaluates it as a function or not.</h2>
+<div class="outline-text-2" id="text-29">
+<pre class="example">
+user&gt; [1 2 3 4]
+[1 2 3 4]
+user&gt; (1 2 3 4)
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #6c6c6c; font-style: italic;">; </span><span style="color: #6c6c6c; font-style: italic;">Hois this true?</span>
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #e0d0a0;">=</span> <span style="color: #5fafd7; font-weight: bold;">[</span><span style="color: #5fafd7;">:a</span> <span style="color: #5fafd7;">:b</span> <span style="color: #5fafd7;">:c</span><span style="color: #5fafd7; font-weight: bold;">]</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #b3c0a7;">list</span> <span style="color: #5fafd7;">:a</span> <span style="color: #5fafd7;">:b</span> <span style="color: #5fafd7;">:c</span><span style="color: #5fafd7; font-weight: bold;">)</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #bba699;">vec</span> '<span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #5fafd7;">:a</span> <span style="color: #5fafd7;">:b</span> <span style="color: #5fafd7;">:c</span><span style="color: #a1db00; font-weight: bold;">)</span><span style="color: #5fafd7; font-weight: bold;">)</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #a3e0a0;">vector</span> <span style="color: #5fafd7;">:a</span> <span style="color: #5fafd7;">:b</span> <span style="color: #5fafd7;">:c</span><span style="color: #5fafd7; font-weight: bold;">)</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org996efdf" class="outline-2">
+<h2 id="org996efdf"><span class="section-number-2">30</span> Cider</h2>
+<div class="outline-text-2" id="text-30">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #a1db00;">defvar</span> <span style="color: #ff8700;">cider-hydra-map</span>
+  <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #a1db00;">let</span> <span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #ff4ea3; font-weight: bold;">(</span><span style="color: #e0a0bc;">map</span> <span style="color: #00d7af; font-weight: bold;">(</span><span style="color: #c0afa7;">make-sparse-keymap</span><span style="color: #00d7af; font-weight: bold;">)</span><span style="color: #ff4ea3; font-weight: bold;">)</span><span style="color: #a1db00; font-weight: bold;">)</span>
+    <span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #a7c0b9;">set-keymap-parent</span> <span style="color: #e0a0bc;">map</span> <span style="color: #a3e0a0;">cider-mode-map</span><span style="color: #a1db00; font-weight: bold;">)</span>
+    <span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #c0afa7;">define-key</span> <span style="color: #e0a0bc;">map</span> <span style="color: #ff4ea3; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"C-c C-d"</span><span style="color: #ff4ea3; font-weight: bold;">)</span> #'<span style="color: #99bbb4;">cider-hydra-doc/body</span><span style="color: #a1db00; font-weight: bold;">)</span>
+    <span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #c0afa7;">define-key</span> <span style="color: #e0a0bc;">map</span> <span style="color: #ff4ea3; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"C-c C-t"</span><span style="color: #ff4ea3; font-weight: bold;">)</span> #'<span style="color: #a6bb99;">cider-hydra-test/body</span><span style="color: #a1db00; font-weight: bold;">)</span>
+    <span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #c0afa7;">define-key</span> <span style="color: #e0a0bc;">map</span> <span style="color: #ff4ea3; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"C-c M-t"</span><span style="color: #ff4ea3; font-weight: bold;">)</span> #'<span style="color: #a6bb99;">cider-hydra-test/body</span><span style="color: #a1db00; font-weight: bold;">)</span>
+    <span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #c0afa7;">define-key</span> <span style="color: #e0a0bc;">map</span> <span style="color: #ff4ea3; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"C-c M-r"</span><span style="color: #ff4ea3; font-weight: bold;">)</span> #'<span style="color: #b6a0e0;">cider-hydra-repl/body</span><span style="color: #a1db00; font-weight: bold;">)</span>
+    <span style="color: #e0a0bc;">map</span><span style="color: #5fafd7; font-weight: bold;">)</span>
+  <span style="color: #ff4b4b;">"Keymap for CIDER hydras."</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbd9acc8" class="outline-2">
+<h2 id="orgbd9acc8"><span class="section-number-2">31</span> vim</h2>
+<div class="outline-text-2" id="text-31">
+</div>
+<div id="outline-container-org7a98d20" class="outline-3">
+<h3 id="org7a98d20"><span class="section-number-3">31.1</span> targets.vim</h3>
+<div class="outline-text-3" id="text-31-1">
+<p>
+<a href="https://github.com/wellle/targets.vim">https://github.com/wellle/targets.vim</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf4115d6" class="outline-3">
+<h3 id="orgf4115d6"><span class="section-number-3">31.2</span> vim-flattery</h3>
+<div class="outline-text-3" id="text-31-2">
+<p>
+I decided to disable this. It looked ok. But it's too schizophrenic for me.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdd72c1b" class="outline-3">
+<h3 id="orgdd72c1b"><span class="section-number-3">31.3</span> vai</h3>
+<div class="outline-text-3" id="text-31-3">
+<p>
+select surrounding text of same indent (inclusive of empty lines and greater indent)
+</p>
+
+<p>
+If I open this org-file in vim, for example, i can select the code between the src blocks with 'vai'
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #a1db00;">define</span> <span style="color: #ffd700;">eval-expr</span>
+  <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #a1db00;">lambda</span> <span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #c0a7bd;">expr</span> <span style="color: #b6a0e0;">env</span><span style="color: #a1db00; font-weight: bold;">)</span>
+    <span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #e0d0a0;">pmatch</span> <span style="color: #c0a7bd;">expr</span>
+      <span style="color: #ff4ea3; font-weight: bold;">[</span>,<span style="color: #c0afa7;">x</span> <span style="color: #00d7af; font-weight: bold;">(</span><span style="color: #a1db00;">guard</span> <span style="color: #ff8700; font-weight: bold;">(</span><span style="color: #c0a7bd;">symbol?</span> <span style="color: #c0afa7;">x</span><span style="color: #ff8700; font-weight: bold;">)</span><span style="color: #00d7af; font-weight: bold;">)</span>
+          <span style="color: #00d7af; font-weight: bold;">(</span><span style="color: #b6a0e0;">env</span> <span style="color: #c0afa7;">x</span><span style="color: #00d7af; font-weight: bold;">)</span><span style="color: #ff4ea3; font-weight: bold;">]</span>
+      <span style="color: #ff4ea3; font-weight: bold;">[</span><span style="color: #00d7af; font-weight: bold;">(</span><span style="color: #a1db00;">lambda</span> <span style="color: #ff8700; font-weight: bold;">(</span>,<span style="color: #c0afa7;">x</span><span style="color: #ff8700; font-weight: bold;">)</span> ,<span style="color: #a6bb99;">body</span><span style="color: #00d7af; font-weight: bold;">)</span>
+       <span style="color: #00d7af; font-weight: bold;">(</span><span style="color: #a0d6e0;">lambia</span> <span style="color: #ff8700; font-weight: bold;">(</span><span style="color: #b6a0e0;">arg</span><span style="color: #ff8700; font-weight: bold;">)</span>
+               <span style="color: #ff8700; font-weight: bold;">(</span><span style="color: #bba699;">eval-exp</span> <span style="color: #c0a7bd;">by</span> <span style="color: #af5fff; font-weight: bold;">(</span><span style="color: #a1db00;">lambda</span> <span style="color: #c6c6c6; font-weight: bold;">(</span><span style="color: #bba699;">y</span><span style="color: #c6c6c6; font-weight: bold;">)</span>
+                              <span style="color: #c6c6c6; font-weight: bold;">(</span><span style="color: #a1db00;">if</span> <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #a6bb99;">eq?</span> <span style="color: #c0afa7;">x</span> <span style="color: #bba699;">y</span><span style="color: #ffd700; font-weight: bold;">)</span>
+                                  <span style="color: #b6a0e0;">arg</span>
+                                  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #b6a0e0;">env</span> <span style="color: #bba699;">y</span><span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #c6c6c6; font-weight: bold;">)</span><span style="color: #af5fff; font-weight: bold;">)</span><span style="color: #ff8700; font-weight: bold;">)</span><span style="color: #00d7af; font-weight: bold;">)</span><span style="color: #ff4ea3; font-weight: bold;">]</span>
+      <span style="color: #ff4ea3; font-weight: bold;">[</span><span style="color: #00d7af; font-weight: bold;">(</span>,<span style="color: #c0a7bd;">rator</span> ,<span style="color: #e0d0a0;">rand</span><span style="color: #00d7af; font-weight: bold;">)</span>
+       <span style="color: #00d7af; font-weight: bold;">(</span><span style="color: #ff8700; font-weight: bold;">(</span><span style="color: #9999bb;">eval-expr</span> <span style="color: #c0a7bd;">rator</span> <span style="color: #b6a0e0;">env</span><span style="color: #ff8700; font-weight: bold;">)</span>
+        <span style="color: #ff8700; font-weight: bold;">(</span><span style="color: #9999bb;">eval-expr</span> <span style="color: #e0d0a0;">rand</span> <span style="color: #b6a0e0;">env</span><span style="color: #ff8700; font-weight: bold;">)</span><span style="color: #00d7af; font-weight: bold;">)</span><span style="color: #ff4ea3; font-weight: bold;">]</span><span style="color: #a1db00; font-weight: bold;">)</span><span style="color: #5fafd7; font-weight: bold;">)</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org69cba3a" class="outline-2">
+<h2 id="org69cba3a"><span class="section-number-2">32</span> emacs</h2>
+<div class="outline-text-2" id="text-32">
+</div>
+<div id="outline-container-org8b11d8b" class="outline-3">
+<h3 id="org8b11d8b"><span class="section-number-3">32.1</span> functions</h3>
+<div class="outline-text-3" id="text-32-1">
+<p>
+helm-google-suggest (C-x c C-c g)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7cf2be1" class="outline-2">
+<h2 id="org7cf2be1"><span class="section-number-2">33</span> Automaton</h2>
+<div class="outline-text-2" id="text-33">
+<p>
+Don't use automaton as an insult.
+</p>
+</div>
+
+<div id="outline-container-orga23bac3" class="outline-3">
+<h3 id="orga23bac3"><span class="section-number-3">33.1</span> Von neumann machine</h3>
+<div class="outline-text-3" id="text-33-1">
+<p>
+Universal assembler
+</p>
+
+<p>
+Use this instead.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5df3b1f" class="outline-2">
+<h2 id="org5df3b1f"><span class="section-number-2">34</span> emacs lisp</h2>
+<div class="outline-text-2" id="text-34">
+</div>
+<div id="outline-container-org50fe191" class="outline-3">
+<h3 id="org50fe191"><span class="section-number-3">34.1</span> The elisp version of (tv)</h3>
+<div class="outline-text-3" id="text-34-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #bb99b4;">te</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #c0a7bd;">macroexpand</span> '<span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #99bbb4;">my/with</span> '<span style="color: #9999bb;">my/utils</span> <span style="color: #ff4ea3; font-weight: bold;">(</span><span style="color: #99bbb4;">message</span> <span style="color: #ff4ea3;">"5"</span><span style="color: #ff4ea3; font-weight: bold;">)</span><span style="color: #a1db00; font-weight: bold;">)</span><span style="color: #5fafd7; font-weight: bold;">)</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org187caf2" class="outline-2">
+<h2 id="org187caf2"><span class="section-number-2">35</span> emacs</h2>
+<div class="outline-text-2" id="text-35">
+</div>
+<div id="outline-container-org54820aa" class="outline-3">
+<h3 id="org54820aa"><span class="section-number-3">35.1</span> lisp editing</h3>
+<div class="outline-text-3" id="text-35-1">
+</div>
+<div id="outline-container-orge48d209" class="outline-4">
+<h4 id="orge48d209"><span class="section-number-4">35.1.1</span> M-j</h4>
+<div class="outline-text-4" id="text-35-1-1">
+<p>
+Select symbol (and descend). This is great for descending into a lisp, and I should follow it with M-9.
+</p>
+</div>
+</div>
+<div id="outline-container-orgf3f04e1" class="outline-4">
+<h4 id="orgf3f04e1"><span class="section-number-4">35.1.2</span> M-1</h4>
+<div class="outline-text-4" id="text-35-1-2">
+<p>
+Select first symbol
+</p>
+</div>
+</div>
+<div id="outline-container-orgc76445f" class="outline-4">
+<h4 id="orgc76445f"><span class="section-number-4">35.1.3</span> M-9</h4>
+<div class="outline-text-4" id="text-35-1-3">
+<p>
+Select last symbol
+</p>
+</div>
+</div>
+<div id="outline-container-org756ce25" class="outline-4">
+<h4 id="org756ce25"><span class="section-number-4">35.1.4</span> M-0</h4>
+<div class="outline-text-4" id="text-35-1-4">
+<p>
+Select parent
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1a2d87f" class="outline-2">
+<h2 id="org1a2d87f"><span class="section-number-2">36</span> </h2>
+<div class="outline-text-2" id="text-36">
+<p>
+quality time cost
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5e4f893" class="outline-2">
+<h2 id="org5e4f893"><span class="section-number-2">37</span> Workflow</h2>
+<div class="outline-text-2" id="text-37">
+<pre class="example">
+helm-mini
+
+projectile-switch-project
+counsel-git
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgfd338be" class="outline-2">
+<h2 id="orgfd338be"><span class="section-number-2">38</span> emacs</h2>
+<div class="outline-text-2" id="text-38">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">I am using M-l M-m (hydra.el)</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">Use this to start counting (C-u)</span>
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c0afa7;">define-key</span> <span style="color: #a0d6e0;">global-map</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"M-~"</span><span style="color: #5fafd7; font-weight: bold;">)</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"C-u"</span><span style="color: #5fafd7; font-weight: bold;">)</span><span style="color: #dd0000; font-weight: bold;">)</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">(my/with 'evil</span>
+<span style="color: #6c6c6c; font-style: italic;">;;          </span><span style="color: #6c6c6c; font-style: italic;">(define-key global-map (kbd "M-~") #'evil-switch-to-windows-last-buffer))</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org54eb001" class="outline-2">
+<h2 id="org54eb001"><span class="section-number-2">39</span> latex</h2>
+<div class="outline-text-2" id="text-39">
+<p>
+It's said Lah-Tech.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9ba282b" class="outline-2">
+<h2 id="org9ba282b"><span class="section-number-2">40</span> undertand macro</h2>
+<div class="outline-text-2" id="text-40">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c0a7bd;">macroexpand</span> '<span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #bba699;">with-temp-buffer</span> <span style="color: #a0d6e0;">t</span><span style="color: #5fafd7; font-weight: bold;">)</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc0828f1" class="outline-2">
+<h2 id="orgc0828f1"><span class="section-number-2">41</span> </h2>
+<div class="outline-text-2" id="text-41">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #99bbb4;">r</span><span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #b3c0a7;">ls</span><span style="color: #5fafd7; font-weight: bold;">()</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org686c538" class="outline-2">
+<h2 id="org686c538"><span class="section-number-2">42</span> scheme</h2>
+<div class="outline-text-2" id="text-42">
+<p>
+<a href="https://youtu.be/OyfBQmvr2Hc?t=3548">William Byrd on "The Most Beautiful Program Ever Written" - YouTube</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #a1db00;">define</span> <span style="color: #ffd700;">eval-expr</span>
+  <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #a1db00;">lambda</span> <span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #c0a7bd;">expr</span> <span style="color: #b6a0e0;">env</span><span style="color: #a1db00; font-weight: bold;">)</span>
+    <span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #e0d0a0;">pmatch</span> <span style="color: #c0a7bd;">expr</span>
+      <span style="color: #ff4ea3; font-weight: bold;">[</span>,<span style="color: #c0afa7;">x</span> <span style="color: #00d7af; font-weight: bold;">(</span><span style="color: #a1db00;">guard</span> <span style="color: #ff8700; font-weight: bold;">(</span><span style="color: #c0a7bd;">symbol?</span> <span style="color: #c0afa7;">x</span><span style="color: #ff8700; font-weight: bold;">)</span><span style="color: #00d7af; font-weight: bold;">)</span>
+          <span style="color: #00d7af; font-weight: bold;">(</span><span style="color: #b6a0e0;">env</span> <span style="color: #c0afa7;">x</span><span style="color: #00d7af; font-weight: bold;">)</span><span style="color: #ff4ea3; font-weight: bold;">]</span>
+      <span style="color: #ff4ea3; font-weight: bold;">[</span><span style="color: #00d7af; font-weight: bold;">(</span><span style="color: #a1db00;">lambda</span> <span style="color: #ff8700; font-weight: bold;">(</span>,<span style="color: #c0afa7;">x</span><span style="color: #ff8700; font-weight: bold;">)</span> ,<span style="color: #a6bb99;">body</span><span style="color: #00d7af; font-weight: bold;">)</span>
+       <span style="color: #00d7af; font-weight: bold;">(</span><span style="color: #a0d6e0;">lambia</span> <span style="color: #ff8700; font-weight: bold;">(</span><span style="color: #b6a0e0;">arg</span><span style="color: #ff8700; font-weight: bold;">)</span>
+               <span style="color: #ff8700; font-weight: bold;">(</span><span style="color: #bba699;">eval-exp</span> <span style="color: #c0a7bd;">by</span> <span style="color: #af5fff; font-weight: bold;">(</span><span style="color: #a1db00;">lambda</span> <span style="color: #c6c6c6; font-weight: bold;">(</span><span style="color: #bba699;">y</span><span style="color: #c6c6c6; font-weight: bold;">)</span>
+                              <span style="color: #c6c6c6; font-weight: bold;">(</span><span style="color: #a1db00;">if</span> <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #a6bb99;">eq?</span> <span style="color: #c0afa7;">x</span> <span style="color: #bba699;">y</span><span style="color: #ffd700; font-weight: bold;">)</span>
+                                  <span style="color: #b6a0e0;">arg</span>
+                                  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #b6a0e0;">env</span> <span style="color: #bba699;">y</span><span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #c6c6c6; font-weight: bold;">)</span><span style="color: #af5fff; font-weight: bold;">)</span><span style="color: #ff8700; font-weight: bold;">)</span><span style="color: #00d7af; font-weight: bold;">)</span><span style="color: #ff4ea3; font-weight: bold;">]</span>
+      <span style="color: #ff4ea3; font-weight: bold;">[</span><span style="color: #00d7af; font-weight: bold;">(</span>,<span style="color: #c0a7bd;">rator</span> ,<span style="color: #e0d0a0;">rand</span><span style="color: #00d7af; font-weight: bold;">)</span>
+       <span style="color: #00d7af; font-weight: bold;">(</span><span style="color: #ff8700; font-weight: bold;">(</span><span style="color: #9999bb;">eval-expr</span> <span style="color: #c0a7bd;">rator</span> <span style="color: #b6a0e0;">env</span><span style="color: #ff8700; font-weight: bold;">)</span>
+        <span style="color: #ff8700; font-weight: bold;">(</span><span style="color: #9999bb;">eval-expr</span> <span style="color: #e0d0a0;">rand</span> <span style="color: #b6a0e0;">env</span><span style="color: #ff8700; font-weight: bold;">)</span><span style="color: #00d7af; font-weight: bold;">)</span><span style="color: #ff4ea3; font-weight: bold;">]</span><span style="color: #a1db00; font-weight: bold;">)</span><span style="color: #5fafd7; font-weight: bold;">)</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5a3055e" class="outline-2">
+<h2 id="org5a3055e"><span class="section-number-2">43</span> emacs all lisp modes</h2>
+<div class="outline-text-2" id="text-43">
+<p>
+y - 
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgac10226" class="outline-2">
+<h2 id="orgac10226"><span class="section-number-2">44</span> emacs</h2>
+<div class="outline-text-2" id="text-44">
+</div>
+<div id="outline-container-org467ec4f" class="outline-3">
+<h3 id="org467ec4f"><span class="section-number-3">44.1</span> python</h3>
+<div class="outline-text-3" id="text-44-1">
+</div>
+<div id="outline-container-org266d62f" class="outline-4">
+<h4 id="org266d62f"><span class="section-number-4">44.1.1</span> realgud:pdb</h4>
+<div class="outline-text-4" id="text-44-1-1">
+<p>
+A good debugger in emacs.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdca6aaf" class="outline-3">
+<h3 id="orgdca6aaf"><span class="section-number-3">44.2</span> Interpreters (including python, scheme, ielm, etc.)</h3>
+<div class="outline-text-3" id="text-44-2">
+</div>
+<div id="outline-container-orge858c6e" class="outline-4">
+<h4 id="orge858c6e"><span class="section-number-4">44.2.1</span> M-r</h4>
+<div class="outline-text-4" id="text-44-2-1">
+<p>
+I can now search python history of commands between sessions.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga42a038" class="outline-3">
+<h3 id="orga42a038"><span class="section-number-3">44.3</span> M-x commands</h3>
+<div class="outline-text-3" id="text-44-3">
+<p>
+scriptnames
+</p>
+
+<p>
+helm-helm-commands
+</p>
+</div>
+</div>
+
+<div id="outline-container-org745eb5a" class="outline-3">
+<h3 id="org745eb5a"><span class="section-number-3">44.4</span> bindings</h3>
+<div class="outline-text-3" id="text-44-4">
+</div>
+<div id="outline-container-org6979d63" class="outline-4">
+<h4 id="org6979d63"><span class="section-number-4">44.4.1</span> M-l y</h4>
+<div class="outline-text-4" id="text-44-4-1">
+<p>
+link-hint-copy-link
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8affc70" class="outline-4">
+<h4 id="org8affc70"><span class="section-number-4">44.4.2</span> C-M--</h4>
+<div class="outline-text-4" id="text-44-4-2">
+<p>
+Decrease font size
+</p>
+</div>
+</div>
+
+<div id="outline-container-org77d6c3a" class="outline-4">
+<h4 id="org77d6c3a"><span class="section-number-4">44.4.3</span> C-M-=</h4>
+<div class="outline-text-4" id="text-44-4-3">
+<p>
+Increase font size
+</p>
+</div>
+</div>
+
+<div id="outline-container-org859745e" class="outline-4">
+<h4 id="org859745e"><span class="section-number-4">44.4.4</span> C-M-o</h4>
+<div class="outline-text-4" id="text-44-4-4">
+<p>
+This is no longer help in emacs. From now on I must use C-c h.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5986018" class="outline-4">
+<h4 id="org5986018"><span class="section-number-4">44.4.5</span> M-,</h4>
+<div class="outline-text-4" id="text-44-4-5">
+<p>
+undo (hydra)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb619f0d" class="outline-3">
+<h3 id="orgb619f0d"><span class="section-number-3">44.5</span> M-l M-o M-a</h3>
+<div class="outline-text-3" id="text-44-5">
+<p>
+all-occur
+</p>
+</div>
+</div>
+
+<div id="outline-container-org387ba03" class="outline-3">
+<h3 id="org387ba03"><span class="section-number-3">44.6</span> M-l M-s M-d</h3>
+<div class="outline-text-3" id="text-44-6">
+<p>
+Show snippets, helm. This used to work only in spacemacs.
+I changed the function call, now it should work in all emacs. Doesn't use helm anymore.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcd1d5a5" class="outline-3">
+<h3 id="orgcd1d5a5"><span class="section-number-3">44.7</span> sx</h3>
+<div class="outline-text-3" id="text-44-7">
+<p>
+StackExchange client.
+This is truly amazing. It's the coolest thing I've seen in emacs in a while.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org84f765b" class="outline-3">
+<h3 id="org84f765b"><span class="section-number-3">44.8</span> eshell</h3>
+<div class="outline-text-3" id="text-44-8">
+</div>
+<div id="outline-container-org61692d5" class="outline-4">
+<h4 id="org61692d5"><span class="section-number-4">44.8.1</span> bindings</h4>
+<div class="outline-text-4" id="text-44-8-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">C-c C-u</td>
+<td class="org-left">clear line</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-d</td>
+<td class="org-left">clear</td>
+</tr>
+
+<tr>
+<td class="org-left">exit</td>
+<td class="org-left">exit</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgb86a541" class="outline-4">
+<h4 id="orgb86a541"><span class="section-number-4">44.8.2</span> commands</h4>
+<div class="outline-text-4" id="text-44-8-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #6c6c6c; font-style: italic;">; </span><span style="color: #6c6c6c; font-style: italic;">This is how to list files</span>
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #99bbb4;">directory-files</span> <span style="color: #ff4ea3;">"."</span><span style="color: #dd0000; font-weight: bold;">)</span>
+<span style="color: #6c6c6c; font-style: italic;">; </span><span style="color: #6c6c6c; font-style: italic;">This is how to edit a file</span>
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #a7aac0;">find-file</span> <span style="color: #ff4ea3;">"schedule.org"</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc026d7c" class="outline-3">
+<h3 id="orgc026d7c"><span class="section-number-3">44.9</span> </h3>
+<div class="outline-text-3" id="text-44-9">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">M-l</span>
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #ff4ea3;">"M-m"</span> #'<span style="color: #a7aac0;">switch-to-previous-buffer</span> <span style="color: #ff4ea3;">"alternate buffer"</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge8a3eb5" class="outline-2">
+<h2 id="orge8a3eb5"><span class="section-number-2">45</span> emacs lisp</h2>
+<div class="outline-text-2" id="text-45">
+</div>
+<div id="outline-container-org1386620" class="outline-3">
+<h3 id="org1386620"><span class="section-number-3">45.1</span> input-decode-map</h3>
+<div class="outline-text-3" id="text-45-1">
+<p>
+It would be nice if I understood this.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">I recommend the following:</span>
+
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">What is H-?</span>
+
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c0afa7;">define-key</span> <span style="color: #b6a0e0;">input-decode-map</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"C-i"</span><span style="color: #5fafd7; font-weight: bold;">)</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"H-i"</span><span style="color: #5fafd7; font-weight: bold;">)</span><span style="color: #dd0000; font-weight: bold;">)</span>
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #b3c0a7;">global-set-key</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"H-i"</span><span style="color: #5fafd7; font-weight: bold;">)</span> '<span style="color: #b3c0a7;">whatever-you-want</span><span style="color: #dd0000; font-weight: bold;">)</span>
+
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">It should work from at least Emacs 23.</span>
+</pre>
+</div>
+
+<p>
+This is similar to the keyboard-translate technique in Caio's answer,
+but operates at a slightly higher level.
+</p>
+
+<p>
+The disadvantage of keyboard-translate is that it will take effect even
+when Emacs isn't running read-key-sequence, and in particular C-q C-i
+will no longer work as a way to insert a literal tab character.
+</p>
+
+<p>
+Modifying local-function-key-map doesn't work well, because typically
+you want the &lt;tab&gt; key to continue doing whatever the current mode has
+defined for TAB.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4e92c37" class="outline-3">
+<h3 id="org4e92c37"><span class="section-number-3">45.2</span> defalias</h3>
+<div class="outline-text-3" id="text-45-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #a1db00;">defalias</span> '<span style="color: #ffd700;">describe-thing-at-point</span> '<span style="color: #99bbb4;">describe-foo-at-point</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org986a1f6" class="outline-3">
+<h3 id="org986a1f6"><span class="section-number-3">45.3</span> macroexpand</h3>
+<div class="outline-text-3" id="text-45-3">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">(tv (pp (macroexpand '(my/with 'clojure-mode (define-key clojure-mode-map (kbd "M-n") #'evil-lisp-state-insert-sexp-after)))))</span>
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #a1db00;">my/with</span>
+ '<span style="color: #c0afa7;">clojure-mode</span>
+ <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #c0afa7;">define-key</span> <span style="color: #b6a0e0;">clojure-mode-map</span> <span style="color: #a1db00; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"M-n"</span><span style="color: #a1db00; font-weight: bold;">)</span> #'<span style="color: #a0d6e0;">evil-lisp-state-insert-sexp-after</span><span style="color: #5fafd7; font-weight: bold;">)</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5920cbd" class="outline-2">
+<h2 id="org5920cbd"><span class="section-number-2">46</span> kotlin</h2>
+<div class="outline-text-2" id="text-46">
+<p>
+$HOME/notes2018/ws/kotlin/examples/ls-script
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf56c115" class="outline-2">
+<h2 id="orgf56c115"><span class="section-number-2">47</span> cider</h2>
+<div class="outline-text-2" id="text-47">
+<p>
+C-c C-d C-d   show documentation for thing under point
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0417c9c" class="outline-2">
+<h2 id="org0417c9c"><span class="section-number-2">48</span> tmux</h2>
+<div class="outline-text-2" id="text-48">
+</div>
+<div id="outline-container-org58deeb1" class="outline-3">
+<h3 id="org58deeb1"><span class="section-number-3">48.1</span> F1 M-!       # break other</h3>
+</div>
+</div>
+
+<div id="outline-container-orgb567b37" class="outline-2">
+<h2 id="orgb567b37"><span class="section-number-2">49</span> Org mode</h2>
+<div class="outline-text-2" id="text-49">
+</div>
+<div id="outline-container-org3e98f8d" class="outline-3">
+<h3 id="org3e98f8d"><span class="section-number-3">49.1</span> Sparse tree</h3>
+<div class="outline-text-3" id="text-49-1">
+<p>
+Current file only
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd125b69" class="outline-3">
+<h3 id="orgd125b69"><span class="section-number-3">49.2</span> Bindings</h3>
+<div class="outline-text-3" id="text-49-2">
+</div>
+<div id="outline-container-org1525738" class="outline-4">
+<h4 id="org1525738"><span class="section-number-4">49.2.1</span> M-7 *        # Insert 7 stars</h4>
+</div>
+<div id="outline-container-org9c92ec5" class="outline-4">
+<h4 id="org9c92ec5"><span class="section-number-4">49.2.2</span> C-x n s      # org-narrow-to-subtree (bound in org-mode)</h4>
+</div>
+<div id="outline-container-org323161c" class="outline-4">
+<h4 id="org323161c"><span class="section-number-4">49.2.3</span> C-x n d      # narrow-to-defun</h4>
+</div>
+<div id="outline-container-orgda913bd" class="outline-4">
+<h4 id="orgda913bd"><span class="section-number-4">49.2.4</span> C-x n w      # widen</h4>
+</div>
+<div id="outline-container-orgf169183" class="outline-4">
+<h4 id="orgf169183"><span class="section-number-4">49.2.5</span> M-e          # next visible heading</h4>
+</div>
+<div id="outline-container-org9f45631" class="outline-4">
+<h4 id="org9f45631"><span class="section-number-4">49.2.6</span> (define-key org-mode-map (kbd "C-M-a") #'output-up-heading-top)</h4>
+</div>
+<div id="outline-container-org273c5c7" class="outline-4">
+<h4 id="org273c5c7"><span class="section-number-4">49.2.7</span> (define-key org-mode-map (kbd "M-a") #'outline-up-heading)</h4>
+</div>
+<div id="outline-container-org0d62c24" class="outline-4">
+<h4 id="org0d62c24"><span class="section-number-4">49.2.8</span> (define-key org-mode-map (kbd "M-p") #'org-backward-heading-same-level)</h4>
+</div>
+<div id="outline-container-org9f7757e" class="outline-4">
+<h4 id="org9f7757e"><span class="section-number-4">49.2.9</span> (define-key org-mode-map (kbd "M-n") #'org-forward-heading-same-level)</h4>
+</div>
+<div id="outline-container-org3ff81d8" class="outline-4">
+<h4 id="org3ff81d8"><span class="section-number-4">49.2.10</span> (define-key org-mode-map (kbd "M-e") #'org-next-visible-heading)</h4>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org12d975f" class="outline-2">
+<h2 id="org12d975f"><span class="section-number-2">50</span> lispy</h2>
+<div class="outline-text-2" id="text-50">
+</div>
+<div id="outline-container-orgde169b9" class="outline-3">
+<h3 id="orgde169b9"><span class="section-number-3">50.1</span> d</h3>
+<div class="outline-text-3" id="text-50-1">
+<p>
+Fuzzy search for any lisp function and file.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbaaf4fd" class="outline-3">
+<h3 id="orgbaaf4fd"><span class="section-number-3">50.2</span> C-M-f</h3>
+<div class="outline-text-3" id="text-50-2">
+<p>
+From anywhere, go to the start of a lisp function (so can start navigating).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb038338" class="outline-3">
+<h3 id="orgb038338"><span class="section-number-3">50.3</span> </h3>
+</div>
+
+<div id="outline-container-org2e48bd7" class="outline-3">
+<h3 id="org2e48bd7"><span class="section-number-3">50.4</span> special-lispy-ace-symbol (a)</h3>
+<div class="outline-text-3" id="text-50-4">
+<p>
+Really nice. Highlights the symbol / string that I selected using ace-mode.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6053e56" class="outline-3">
+<h3 id="org6053e56"><span class="section-number-3">50.5</span> flow (f)</h3>
+<div class="outline-text-3" id="text-50-5">
+<p>
+This just goes to the next paren.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0f6821d" class="outline-3">
+<h3 id="org0f6821d"><span class="section-number-3">50.6</span> xi	lispy-to-ifs</h3>
+</div>
+<div id="outline-container-orgb89e81d" class="outline-3">
+<h3 id="orgb89e81d"><span class="section-number-3">50.7</span> xc	lispy-to-cond</h3>
+</div>
+
+<div id="outline-container-org80084bb" class="outline-3">
+<h3 id="org80084bb"><span class="section-number-3">50.8</span> </h3>
+<div class="outline-text-3" id="text-50-8">
+<dl class="org-dl">
+<dt>aa</dt><dd>select the first element. This does not select the first element of the current sexp. It actually goes to the parent. I need a way to select the first of the current sexp.</dd>
+<dt>j,k</dt><dd>after selecting the first element, navigate forwards and backwards. this is a great workflow</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-orga5edc29" class="outline-3">
+<h3 id="orga5edc29"><span class="section-number-3">50.9</span> lispy-split (M-j)</h3>
+</div>
+</div>
+
+<div id="outline-container-orgd510b37" class="outline-2">
+<h2 id="orgd510b37"><span class="section-number-2">51</span> evil</h2>
+<div class="outline-text-2" id="text-51">
+<p>
+:5,10normal 2dw
+</p>
+
+<p>
+t=972
+<a href="https://youtu.be/_y4OuHfxgmI?t=972">Mark Dawson - emacs for vim users - YouTube</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf3d335f" class="outline-2">
+<h2 id="orgf3d335f"><span class="section-number-2">52</span> tmux</h2>
+<div class="outline-text-2" id="text-52">
+<pre class="example">
+bind "M-'" run -b "tm -f -d sph -tpwd"
+bind "'" run -b "tm open-files"
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orga814966" class="outline-2">
+<h2 id="orga814966"><span class="section-number-2">53</span> commands</h2>
+<div class="outline-text-2" id="text-53">
+</div>
+<div id="outline-container-orga061dc8" class="outline-3">
+<h3 id="orga061dc8"><span class="section-number-3">53.1</span> vdiff &#x2013; emacs vimdiff</h3>
+<div class="outline-text-3" id="text-53-1">
+<p>
+I don't think this command works so well
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">I don't think this command works so well</span>
+<span style="color: #a6bb99;">vdiff</span> <span style="color: #b6a0e0;">directories.*</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #b6a0e0;">helmtop</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3a1586a" class="outline-2">
+<h2 id="org3a1586a"><span class="section-number-2">54</span> emacs-lisp</h2>
+<div class="outline-text-2" id="text-54">
+</div>
+<div id="outline-container-orge2c691d" class="outline-3">
+<h3 id="orge2c691d"><span class="section-number-3">54.1</span> hash functions</h3>
+<div class="outline-text-3" id="text-54-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #a7aac0;">crc32</span> <span style="color: #ff4ea3;">"shane"</span><span style="color: #dd0000; font-weight: bold;">)</span>
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c0a7bd;">sha1</span> <span style="color: #ff4ea3;">"shane"</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf75dbbc" class="outline-3">
+<h3 id="orgf75dbbc"><span class="section-number-3">54.2</span> Can do this now</h3>
+<div class="outline-text-3" id="text-54-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">fast</span>
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #bba699;">sh-notty</span> <span style="color: #ff4ea3;">"cat"</span> <span style="color: #ff4ea3;">"hi"</span><span style="color: #dd0000; font-weight: bold;">)</span>
+
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">Can do this now</span>
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #99bbb4;">message</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #a3e0a0;">bash</span> <span style="color: #ff4ea3;">"tv | q | tv"</span> <span style="color: #ff4ea3;">"e -D spacemacs c"</span> <span style="color: #a0d6e0;">t</span><span style="color: #5fafd7; font-weight: bold;">)</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7e77eb9" class="outline-3">
+<h3 id="org7e77eb9"><span class="section-number-3">54.3</span> see what's in a variable</h3>
+<div class="outline-text-3" id="text-54-3">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #bba699;">tv</span> <span style="color: #a7aac0;">org-agenda-files</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdae26a7" class="outline-3">
+<h3 id="orgdae26a7"><span class="section-number-3">54.4</span> Installing packages</h3>
+<div class="outline-text-3" id="text-54-4">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #a6bb99;">package-install</span> '<span style="color: #99bbb4;">go-autocomplete</span><span style="color: #dd0000; font-weight: bold;">)</span>
+
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">This will enable me to see what hooks have been run. I want to find that damn hook that runs checking</span>
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #b3c0a7;">my/call-logging-hooks</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #a6bb99;">package-install</span> '<span style="color: #9999bb;">tern-auto-complete</span><span style="color: #5fafd7; font-weight: bold;">)</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org212e940" class="outline-2">
+<h2 id="org212e940"><span class="section-number-2">55</span> emacs</h2>
+<div class="outline-text-2" id="text-55">
+</div>
+<div id="outline-container-orgdf098f0" class="outline-3">
+<h3 id="orgdf098f0"><span class="section-number-3">55.1</span> vdiff</h3>
+<div class="outline-text-3" id="text-55-1">
+<p>
+A tool similar to vimdiff. Learn to use this.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org676fc40" class="outline-3">
+<h3 id="org676fc40"><span class="section-number-3">55.2</span> describe-thing</h3>
+<div class="outline-text-3" id="text-55-2">
+<p>
+M-l d
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcd83295" class="outline-3">
+<h3 id="orgcd83295"><span class="section-number-3">55.3</span> M-x re-builder</h3>
+<div class="outline-text-3" id="text-55-3">
+<p>
+<a href="https://www.masteringemacs.org/article/re-builder-interactive-regexp-builder">https://www.masteringemacs.org/article/re-builder-interactive-regexp-builder</a>
+</p>
+
+<p>
+This is so awesome. pcre version?
+</p>
+</div>
+</div>
+
+<div id="outline-container-org054f2fe" class="outline-3">
+<h3 id="org054f2fe"><span class="section-number-3">55.4</span> pcre2el</h3>
+<div class="outline-text-3" id="text-55-4">
+<p>
+<a href="https://github.com/joddie/pcre2el">https://github.com/joddie/pcre2el</a>
+</p>
+
+<p>
+Lots of commands. I can memorise them.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcb09428" class="outline-3">
+<h3 id="orgcb09428"><span class="section-number-3">55.5</span> Use these bindings together, when in org mode.</h3>
+<div class="outline-text-3" id="text-55-5">
+<p>
+M-h - expand selection to include the next thing below (of same level).
+M-r - expand selection to include the parent.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf2767ad" class="outline-3">
+<h3 id="orgf2767ad"><span class="section-number-3">55.6</span> (global-compnay-mode)</h3>
+<div class="outline-text-3" id="text-55-6">
+<p>
+This has been enabled. Hopefully, now I can use yasnippet everywhere.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4d276a5" class="outline-2">
+<h2 id="org4d276a5"><span class="section-number-2">56</span> spacemacs</h2>
+<div class="outline-text-2" id="text-56">
+</div>
+<div id="outline-container-org688ce21" class="outline-3">
+<h3 id="org688ce21"><span class="section-number-3">56.1</span> load magit</h3>
+<div class="outline-text-3" id="text-56-1">
+<p>
+M-m g s
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orge19cf8c" class="outline-2">
+<h2 id="orge19cf8c"><span class="section-number-2">57</span> slime</h2>
+<div class="outline-text-2" id="text-57">
+<p>
+C-M-a runs the command slime-beginning-of-defun (found in slime-mode-indirect-map)
+</p>
+</div>
+
+<div id="outline-container-org8e8022d" class="outline-3">
+<h3 id="org8e8022d"><span class="section-number-3">57.1</span> Doc</h3>
+<div class="outline-text-3" id="text-57-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c0afa7;">define-key</span> <span style="color: #bba699;">slime-mode-map</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"M-9"</span><span style="color: #5fafd7; font-weight: bold;">)</span> #'<span style="color: #a7aac0;">slime-documentation</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfa10f2a" class="outline-3">
+<h3 id="orgfa10f2a"><span class="section-number-3">57.2</span> online doc</h3>
+<div class="outline-text-3" id="text-57-2">
+<p>
+;; This is important
+C-c C-d h
+  online documentation
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgae3511d" class="outline-2">
+<h2 id="orgae3511d"><span class="section-number-2">58</span> lispy</h2>
+<div class="outline-text-2" id="text-58">
+</div>
+<div id="outline-container-org27466bb" class="outline-3">
+<h3 id="org27466bb"><span class="section-number-3">58.1</span> Commands such as the following are irreplacable.</h3>
+<div class="outline-text-3" id="text-58-1">
+<p>
+Lispy is much better than pure vim when dealing with lisp code. Yes, open vim on occasion, but 
+</p>
+</div>
+<div id="outline-container-org740b9ac" class="outline-4">
+<h4 id="org740b9ac"><span class="section-number-4">58.1.1</span> w</h4>
+</div>
+<div id="outline-container-orgae05299" class="outline-4">
+<h4 id="orgae05299"><span class="section-number-4">58.1.2</span> s</h4>
+</div>
+</div>
+
+<div id="outline-container-org821ff99" class="outline-3">
+<h3 id="org821ff99"><span class="section-number-3">58.2</span> A</h3>
+<div class="outline-text-3" id="text-58-2">
+<p>
+I mapped it to C-M-a
+beginning of defun. use the slime version instead.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org858291a" class="outline-2">
+<h2 id="org858291a"><span class="section-number-2">59</span> evil</h2>
+<div class="outline-text-2" id="text-59">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">This is the solution</span>
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c0afa7;">define-key</span> <span style="color: #a3e0a0;">evil-ex-completion-map</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"M-;"</span><span style="color: #5fafd7; font-weight: bold;">)</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"C-u w C-m"</span><span style="color: #5fafd7; font-weight: bold;">)</span><span style="color: #dd0000; font-weight: bold;">)</span>
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c0afa7;">define-key</span> <span style="color: #a3e0a0;">evil-ex-completion-map</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"M-w"</span><span style="color: #5fafd7; font-weight: bold;">)</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"C-u w C-m"</span><span style="color: #5fafd7; font-weight: bold;">)</span><span style="color: #dd0000; font-weight: bold;">)</span>
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c0afa7;">define-key</span> <span style="color: #a3e0a0;">evil-ex-completion-map</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"M-e"</span><span style="color: #5fafd7; font-weight: bold;">)</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"C-u e! C-m"</span><span style="color: #5fafd7; font-weight: bold;">)</span><span style="color: #dd0000; font-weight: bold;">)</span>
+<span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #c0afa7;">define-key</span> <span style="color: #a3e0a0;">evil-ex-completion-map</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"M-q"</span><span style="color: #5fafd7; font-weight: bold;">)</span> <span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #99bbb4;">kbd</span> <span style="color: #ff4ea3;">"C-u q! C-m"</span><span style="color: #5fafd7; font-weight: bold;">)</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6d5eb3c" class="outline-2">
+<h2 id="org6d5eb3c"><span class="section-number-2">60</span> Emacs</h2>
+<div class="outline-text-2" id="text-60">
+<dl class="org-dl">
+<dt>Install package</dt><dd>M-l M-k M-i</dd>
+<dt>close emacsclient</dt><dd>M-q M-q</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-org11e9c0f" class="outline-2">
+<h2 id="org11e9c0f"><span class="section-number-2">61</span> org-brain</h2>
+<div class="outline-text-2" id="text-61">
+</div>
+<div id="outline-container-org95133ef" class="outline-3">
+<h3 id="org95133ef"><span class="section-number-3">61.1</span> I can access this via the org-capture template, easily.</h3>
+<div class="outline-text-3" id="text-61-1">
+<p>
+M-l M-k M-c b
+</p>
+</div>
+</div>
+<div id="outline-container-org617b0e5" class="outline-3">
+<h3 id="org617b0e5"><span class="section-number-3">61.2</span> Also, I can go directly to the visualiser like so</h3>
+<div class="outline-text-3" id="text-61-2">
+<p>
+M-l M-k M-b
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0690400" class="outline-2">
+<h2 id="org0690400"><span class="section-number-2">62</span> emacs bindings</h2>
+<div class="outline-text-2" id="text-62">
+</div>
+<div id="outline-container-org6fbf008" class="outline-3">
+<h3 id="org6fbf008"><span class="section-number-3">62.1</span> f</h3>
+<div class="outline-text-3" id="text-62-1">
+<p>
+If I start on a comment, I can use 'f' to move to the first sexp
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf2cf664" class="outline-3">
+<h3 id="orgf2cf664"><span class="section-number-3">62.2</span> K on a region will kill the rectangle</h3>
+<div class="outline-text-3" id="text-62-2">
+<p>
+kill-rectangle (C-x r k)
+copy-rectangle-as-kill (C-x r M-w)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orged06b39" class="outline-2">
+<h2 id="orged06b39"><span class="section-number-2">63</span> agenda</h2>
+<div class="outline-text-2" id="text-63">
+</div>
+<div id="outline-container-orgc716c1c" class="outline-3">
+<h3 id="orgc716c1c"><span class="section-number-3">63.1</span> bindings</h3>
+<div class="outline-text-3" id="text-63-1">
+<p>
+t -&gt; mark as done
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org46dd940" class="outline-2">
+<h2 id="org46dd940"><span class="section-number-2">64</span> misc</h2>
+<div class="outline-text-2" id="text-64">
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #b3c0a7;">open</span> <span style="color: #a7aac0;">-a</span> <span style="color: #bb99b4;">iTerm</span>
+</pre>
+</div>
+
+<p>
+Can use this in dired
+</p>
+
+<p>
+<a href="https://www.youtube.com/watch?v=VBYsa3Kpkz8">Spacemacs For Noobs - YouTube</a>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgb094db6" class="outline-2">
+<h2 id="orgb094db6"><span class="section-number-2">65</span> spacemacs</h2>
+<div class="outline-text-2" id="text-65">
+</div>
+<div id="outline-container-orge252b7c" class="outline-3">
+<h3 id="orge252b7c"><span class="section-number-3">65.1</span> Can use iedit mode with helm-ag as in here <a href="https://youtu.be/VBYsa3Kpkz8?t=442">https://youtu.be/VBYsa3Kpkz8?t=442</a> to modify things across projects.</h3>
+</div>
+
+<div id="outline-container-org9b64ef6" class="outline-3">
+<h3 id="org9b64ef6"><span class="section-number-3">65.2</span> M-m s a p &#x2013; project-wide search &#x2013; i need to fix this though so it's working as nicely as this (<a href="https://youtu.be/VBYsa3Kpkz8?t=393">https://youtu.be/VBYsa3Kpkz8?t=393</a>)</h3>
+</div>
+<div id="outline-container-org094244a" class="outline-3">
+<h3 id="org094244a"><span class="section-number-3">65.3</span> M-m w d &#x2013; delete window</h3>
+</div>
+<div id="outline-container-org7fcb8fe" class="outline-3">
+<h3 id="org7fcb8fe"><span class="section-number-3">65.4</span> M-m w [hjkl] &#x2013; navigate windows</h3>
+</div>
+
+<div id="outline-container-org53d4ce3" class="outline-3">
+<h3 id="org53d4ce3"><span class="section-number-3">65.5</span> fd  &#x2013; escape / close minibuffers / exit various windows. Very useful. keep this. But if I want I can remove it:</h3>
+</div>
+
+<div id="outline-container-orgb0295a3" class="outline-3">
+<h3 id="orgb0295a3"><span class="section-number-3">65.6</span> escape key</h3>
+<div class="outline-text-3" id="text-65-6">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #dd0000; font-weight: bold;">(</span><span style="color: #a1db00;">defun</span> <span style="color: #ffd700;">dotspacemacs/user-config</span> <span style="color: #5fafd7; font-weight: bold;">()</span>
+<span style="color: #5fafd7; font-weight: bold;">(</span><span style="color: #a1db00;">setq-default</span> <span style="color: #e0d0a0;">evil-escape-key-sequence</span> <span style="color: #ff4ea3;">"jj"</span><span style="color: #5fafd7; font-weight: bold;">)</span><span style="color: #dd0000; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org171fc28" class="outline-2">
+<h2 id="org171fc28"><span class="section-number-2">66</span> emacs</h2>
+<div class="outline-text-2" id="text-66">
+</div>
+<div id="outline-container-org25095a0" class="outline-3">
+<h3 id="org25095a0"><span class="section-number-3">66.1</span> what face is under the cursor</h3>
+<div class="outline-text-3" id="text-66-1">
+<p>
+C-u C-x =
+</p>
+</div>
+</div>
+<div id="outline-container-orge8735c2" class="outline-3">
+<h3 id="orge8735c2"><span class="section-number-3">66.2</span> tile windows</h3>
+<div class="outline-text-3" id="text-66-2">
+<p>
+M-l M-a M-t</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: shane</p>
+<p class="date">Created: 2018-06-19 Tue 19:34</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
