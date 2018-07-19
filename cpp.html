@@ -1,0 +1,901 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.51 in css mode. -->
+<html>
+  <head>
+    <title>file_tempfile_My1ekj_rand-171_pid-23117.org</title>
+    <style type="text/css">
+    <!--
+      body {
+        color: #c6c6c6;
+        background-color: #303030;
+      }
+      .custom {
+        /* (:background "#150") */
+        background-color: #150;
+      }
+      .custom-1 {
+        /* (:foreground "white") */
+        color: #ffffff;
+      }
+      .custom-2 {
+        /* (:background "#def") */
+        background-color: #def;
+      }
+      .custom-3 {
+        /* (:foreground "black") */
+        color: #000000;
+      }
+      .custom-4 {
+        /* (:foreground "#303030") */
+        color: #303030;
+      }
+      .highlight-numbers-number {
+        /* highlight-numbers-number */
+        color: #d75fd7;
+      }
+      .keyword {
+        /* font-lock-keyword-face */
+        color: #268bd2;
+        font-weight: bold;
+      }
+      .my-lang-gamma-word {
+        /* my-lang-gamma-word */
+        color: #ffff00;
+        background-color: #cccc00;
+      }
+      .org-block {
+        /* org-block */
+        color: #b2b2b2;
+        background-color: #262626;
+      }
+      .org-block-begin-line {
+        /* org-block-begin-line */
+        color: #af5faf;
+        background-color: #333333;
+      }
+      .org-block-end-line {
+        /* org-block-end-line */
+        color: #af5faf;
+        background-color: #333333;
+      }
+      .org-level-1 {
+        /* org-level-1 */
+        color: #268bd2;
+        font-size: 130%;
+        font-weight: bold;
+      }
+      .org-level-2 {
+        /* org-level-2 */
+        color: #2aa198;
+        font-size: 120%;
+        font-weight: bold;
+      }
+      .org-level-3 {
+        /* org-level-3 */
+        color: #67b11d;
+        font-size: 110%;
+      }
+      .org-link {
+        /* org-link */
+        color: #008787;
+        text-decoration: underline;
+      }
+      .org-list-dt {
+        /* org-list-dt */
+        font-weight: bold;
+      }
+      .rainbow-delimiters-depth-1 {
+        /* rainbow-delimiters-depth-1-face */
+        color: #268bd2;
+      }
+      .rainbow-delimiters-depth-2 {
+        /* rainbow-delimiters-depth-2-face */
+        color: #d75fd7;
+      }
+      .rainbow-delimiters-depth-3 {
+        /* rainbow-delimiters-depth-3-face */
+        color: #2aa198;
+      }
+      .rainbow-delimiters-depth-4 {
+        /* rainbow-delimiters-depth-4-face */
+        color: #67b11d;
+      }
+      .rainbow-delimiters-depth-5 {
+        /* rainbow-delimiters-depth-5-face */
+        color: #875f00;
+      }
+      .rainbow-delimiters-depth-6 {
+        /* rainbow-delimiters-depth-6-face */
+        color: #268bd2;
+      }
+      .rainbow-delimiters-depth-7 {
+        /* rainbow-delimiters-depth-7-face */
+        color: #d75fd7;
+      }
+      .rainbow-delimiters-depth-8 {
+        /* rainbow-delimiters-depth-8-face */
+        color: #2aa198;
+      }
+      .rainbow-delimiters-depth-9 {
+        /* rainbow-delimiters-depth-9-face */
+        color: #9cb6ad;
+      }
+      .rainbow-delimiters-mismatched {
+        /* rainbow-delimiters-mismatched-face */
+        color: #e0211d;
+        text-decoration: overline;
+      }
+      .rainbow-delimiters-unmatched {
+        /* rainbow-delimiters-unmatched-face */
+        color: #e0211d;
+        text-decoration: overline;
+      }
+      .string {
+        /* font-lock-string-face */
+        color: #2aa198;
+      }
+
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="org-level-1">* Github Search</span>
+<span class="custom-4">*</span><span class="org-level-2">* Query</span>
+<span class="custom-4">**</span><span class="org-level-3">* path</span>
+\.cpp$
+<span class="custom-4">**</span><span class="org-level-3">* limit</span>
+100 results
+<span class="custom-4">**</span><span class="org-level-3">* terms</span>
+\bfuck
+<span class="custom-4">**</span><span class="org-level-3">* date</span>
+Thu Jul 19 15:57:19 NZST 2018
+<span class="custom-4">**</span><span class="org-level-3">* sql</span>
+<span class="org-block-begin-line">#+BEGIN_SRC sql
+</span><span class="org-block">#standardSQL
+    </span><span class="org-block"><span class="keyword">SELECT</span></span><span class="org-block"> 
+      sample_repo_name,
+      sample_path,
+      </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-1">(</span></span></span><span class="org-block"><span class="keyword">SELECT</span></span><span class="org-block"> STRING_AGG</span><span class="org-block"><span class="rainbow-delimiters-depth-2"><span class="rainbow-delimiters-depth-2">(</span></span></span><span class="org-block">snip</span><span class="org-block"><span class="rainbow-delimiters-depth-2"><span class="rainbow-delimiters-depth-2">)</span></span></span><span class="org-block"> </span><span class="org-block"><span class="keyword">FROM</span></span><span class="org-block"> snippets.snip</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-1">)</span></span></span><span class="org-block"> </span><span class="org-block"><span class="keyword">AS</span></span><span class="org-block"> snippets
+    </span><span class="org-block"><span class="keyword">FROM</span></span><span class="org-block"> </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-1">(</span></span></span><span class="org-block">
+      </span><span class="org-block"><span class="keyword">SELECT</span></span><span class="org-block"> 
+        sample_repo_name, sample_path, REGEXP_EXTRACT_ALL</span><span class="org-block"><span class="rainbow-delimiters-depth-2"><span class="rainbow-delimiters-depth-2">(</span></span></span><span class="org-block">content, r</span><span class="org-block"><span class="string">'.*\bfuck.*'</span></span><span class="org-block"><span class="rainbow-delimiters-depth-2"><span class="rainbow-delimiters-depth-2">)</span></span></span><span class="org-block"> </span><span class="org-block"><span class="keyword">AS</span></span><span class="org-block"> snip
+      </span><span class="org-block"><span class="keyword">FROM</span></span><span class="org-block"> </span><span class="org-block"><span class="rainbow-delimiters-depth-2"><span class="rainbow-delimiters-depth-2">(</span></span></span><span class="org-block">
+        </span><span class="org-block"><span class="keyword">SELECT</span></span><span class="org-block"> sample_repo_name, content, sample_path </span><span class="org-block"><span class="keyword">FROM</span></span><span class="org-block"> `bigquery-</span><span class="org-block"><span class="keyword">public</span></span><span class="org-block">-</span><span class="org-block"><span class="keyword">data</span></span><span class="org-block">.github_repos.sample_contents` </span><span class="org-block"><span class="keyword">WHERE</span></span><span class="org-block"> REGEXP_CONTAINS</span><span class="org-block"><span class="rainbow-delimiters-depth-3"><span class="rainbow-delimiters-depth-3">(</span></span></span><span class="org-block">content, r</span><span class="org-block"><span class="string">'\bfuck'</span></span><span class="org-block"><span class="rainbow-delimiters-depth-3"><span class="rainbow-delimiters-depth-3">)</span></span></span><span class="org-block"> </span><span class="org-block"><span class="keyword">AND</span></span><span class="org-block"> REGEXP_CONTAINS</span><span class="org-block"><span class="rainbow-delimiters-depth-3"><span class="rainbow-delimiters-depth-3">(</span></span></span><span class="org-block">sample_path, r</span><span class="org-block"><span class="string">'\.cpp$'</span></span><span class="org-block"><span class="rainbow-delimiters-depth-3"><span class="rainbow-delimiters-depth-3">)</span></span></span><span class="org-block">
+      </span><span class="org-block"><span class="rainbow-delimiters-depth-2"><span class="rainbow-delimiters-depth-2">)</span></span></span><span class="org-block">
+    </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-1">)</span></span></span><span class="org-block"> snippets </span><span class="org-block"><span class="keyword">LIMIT</span></span><span class="org-block"> </span><span class="org-block"><span class="highlight-numbers-number">100</span></span><span class="org-block">
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">*</span><span class="org-level-2">* Results</span>
+<span class="custom-4">**</span><span class="org-level-3">* 0: privacore/open-source-search-engine</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/privacore/open-source-search-engine/blob/master/Msg5.cpp">github.com/privacore/open-source-search-engine/blob/master/Msg5.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/privacore/open-source-search-engine/master/Msg5.cpp">Msg5.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    // . if it too is invalid, we are fucked
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 1: privacore/open-source-search-engine</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/privacore/open-source-search-engine/blob/master/RdbTree.cpp">github.com/privacore/open-source-search-engine/blob/master/RdbTree.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/privacore/open-source-search-engine/master/RdbTree.cpp">RdbTree.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">  // now fucking rename it
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 2: BlastHackNet/mod_s0beit_sa</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/BlastHackNet/mod_s0beit_sa/blob/master/src/ini.cpp">github.com/BlastHackNet/mod_s0beit_sa/blob/master/src/ini.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/BlastHackNet/mod_s0beit_sa/master/src/ini.cpp">ini.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">      /* don't reload patches </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-1">(</span></span></span><span class="org-block">cause this would fuck things up...</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-1">)</span></span></span><span class="org-block"> */
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 3: syscoin/syscoin</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/syscoin/syscoin/blob/master/src/cert.cpp">github.com/syscoin/syscoin/blob/master/src/cert.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/syscoin/syscoin/master/src/cert.cpp">cert.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">//todo fucking suspect
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 4: gigablast/open-source-search-engine</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/gigablast/open-source-search-engine/blob/master/UdpServer.cpp">github.com/gigablast/open-source-search-engine/blob/master/UdpServer.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/gigablast/open-source-search-engine/master/UdpServer.cpp">UdpServer.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">  // . before we had dead lock, I guess *s_tokenTime was fucked up
+  // if we are out of mem basically, do not waste time fucking around
+      // don't count if timer fucked up
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 5: excessive/lua-bgfx</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/excessive/lua-bgfx/blob/master/wrap_bgfx.cpp">github.com/excessive/lua-bgfx/blob/master/wrap_bgfx.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/excessive/lua-bgfx/master/wrap_bgfx.cpp">wrap_bgfx.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">struct fuck_off_cpp </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-1">{</span></span></span><span class="org-block">,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; buffer_lookup = </span><span class="org-block"><span class="rainbow-delimiters-depth-2"><span class="rainbow-delimiters-depth-2">{</span></span></span><span class="org-block">,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; caps_lookup = </span><span class="org-block"><span class="rainbow-delimiters-depth-3"><span class="rainbow-delimiters-depth-3">{</span></span></span><span class="org-block">,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; clear_lookup = </span><span class="org-block"><span class="rainbow-delimiters-depth-4"><span class="rainbow-delimiters-depth-4">{</span></span></span><span class="org-block">,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; cube_map_lookup = </span><span class="org-block"><span class="rainbow-delimiters-depth-5"><span class="rainbow-delimiters-depth-5">{</span></span></span><span class="org-block">,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; debug_lookup = </span><span class="org-block"><span class="rainbow-delimiters-depth-6"><span class="rainbow-delimiters-depth-6">{</span></span></span><span class="org-block">,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; hmd_lookup = </span><span class="org-block"><span class="rainbow-delimiters-depth-7"><span class="rainbow-delimiters-depth-7">{</span></span></span><span class="org-block">,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; reset_lookup = </span><span class="org-block"><span class="rainbow-delimiters-depth-8"><span class="rainbow-delimiters-depth-8">{</span></span></span><span class="org-block">,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; state_lookup = </span><span class="org-block"><span class="rainbow-delimiters-depth-9"><span class="rainbow-delimiters-depth-9">{</span></span></span><span class="org-block">,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; stencil_lookup = </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-1">{</span></span></span><span class="org-block">,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; submit_eye_lookup = </span><span class="org-block"><span class="rainbow-delimiters-depth-2"><span class="rainbow-delimiters-depth-2">{</span></span></span><span class="org-block">,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; texture_lookup = </span><span class="org-block"><span class="rainbow-delimiters-depth-3"><span class="rainbow-delimiters-depth-3">{</span></span></span><span class="org-block">,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; view_lookup = </span><span class="org-block"><span class="rainbow-delimiters-depth-4"><span class="rainbow-delimiters-depth-4">{</span></span></span><span class="org-block">
+    static std::map&lt;const char*, bgfx_attrib_t, fuck_off_cpp&gt; format_lookup = </span><span class="org-block"><span class="rainbow-delimiters-depth-5"><span class="rainbow-delimiters-depth-5">{</span></span></span><span class="org-block">
+    static std::map&lt;const char*, bgfx_attrib_type_t, fuck_off_cpp&gt; type_lookup = </span><span class="org-block"><span class="rainbow-delimiters-depth-6"><span class="rainbow-delimiters-depth-6">{</span></span></span><span class="org-block">
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 6: KeckCAVES/Vrui</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/KeckCAVES/Vrui/blob/master/USB/Device.cpp">github.com/KeckCAVES/Vrui/blob/master/USB/Device.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/KeckCAVES/Vrui/master/USB/Device.cpp">Device.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">      /* This can theoretically not fail; if it does, we're fucked: */
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 7: mupen64plus/mupen64plus-video-rice</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/mupen64plus/mupen64plus-video-rice/blob/master/src/Render.cpp">github.com/mupen64plus/mupen64plus-video-rice/blob/master/src/Render.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/mupen64plus/mupen64plus-video-rice/master/src/Render.cpp">Render.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    // don't get rendered. I hope this doesn't fuck anything else up.
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 8: Ancurio/mkxp</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/Ancurio/mkxp/blob/master/src/sprite.cpp">github.com/Ancurio/mkxp/blob/master/src/sprite.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/Ancurio/mkxp/master/src/sprite.cpp">sprite.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    /* RMVX does this, and I have no fucking clue why */
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 9: sphinxsearch/sphinx</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/sphinxsearch/sphinx/blob/master/src/searchd.cpp">github.com/sphinxsearch/sphinx/blob/master/src/searchd.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/sphinxsearch/sphinx/master/src/searchd.cpp">searchd.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">// fix MSVC 2005 fuckup
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 10: ArmageddonGames/ZeldaClassic</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/ArmageddonGames/ZeldaClassic/blob/master/src/zq_custom.cpp">github.com/ArmageddonGames/ZeldaClassic/blob/master/src/zq_custom.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/ArmageddonGames/ZeldaClassic/master/src/zq_custom.cpp">zq_custom.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">        //I can't get the fucking dialog to handle a simple copy paste so I stuck it here else I'm going to rage kill something.
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 11: Razish/japp</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/Razish/japp/blob/master/game/g_vehicles.cpp">github.com/Razish/japp/blob/master/game/g_vehicles.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/Razish/japp/master/game/g_vehicles.cpp">g_vehicles.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    if </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-7">(</span></span></span><span class="org-block"> pVeh-&gt;m_pVehicleInfo-&gt;type == VH_WALKER </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-7">)</span></span></span><span class="org-block"> </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-7">{</span></span></span><span class="org-block">//just get the fuck out
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 12: HydraIRC/hydrairc</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/HydraIRC/hydrairc/blob/master/HydraIRC/MainFrm.cpp">github.com/HydraIRC/hydrairc/blob/master/HydraIRC/MainFrm.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/HydraIRC/hydrairc/master/HydraIRC/MainFrm.cpp">MainFrm.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">  //m_stateMgr.Store</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-8">()</span></span></span><span class="org-block">; // why the fuck is this here ?
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 13: KeckCAVES/Vrui</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/KeckCAVES/Vrui/blob/master/Vrui/ToolManager.cpp">github.com/KeckCAVES/Vrui/blob/master/Vrui/ToolManager.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/KeckCAVES/Vrui/master/Vrui/ToolManager.cpp">ToolManager.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    /* Unravel tool creation if shit got fucked up: */
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 14: openmoh/openmohaa</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/openmoh/openmohaa/blob/master/code/game/player.cpp">github.com/openmoh/openmohaa/blob/master/code/game/player.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/openmoh/openmohaa/master/code/game/player.cpp">player.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    // fucking compiler bug
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 15: JACoders/OpenJK</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/JACoders/OpenJK/blob/master/code/ui/ui_saber.cpp">github.com/JACoders/OpenJK/blob/master/code/ui/ui_saber.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/JACoders/OpenJK/master/code/ui/ui_saber.cpp">ui_saber.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-8">{</span></span></span><span class="org-block">//FIXME: these get fucked by vid_restarts
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 16: ioquake/jedi-academy</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/ioquake/jedi-academy/blob/master/code/ui/ui_saber.cpp">github.com/ioquake/jedi-academy/blob/master/code/ui/ui_saber.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/ioquake/jedi-academy/master/code/ui/ui_saber.cpp">ui_saber.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-9">{</span></span></span><span class="org-block">//FIXME: these get fucked by vid_restarts
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 17: boysetsfrog/vimpc</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/boysetsfrog/vimpc/blob/master/src/mode/command.cpp">github.com/boysetsfrog/vimpc/blob/master/src/mode/command.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/boysetsfrog/vimpc/master/src/mode/command.cpp">command.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">      // by calling this fucking again
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 18: mvdevs/jk2mv</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/mvdevs/jk2mv/blob/master/src/qcommon/stri.cpp">github.com/mvdevs/jk2mv/blob/master/src/qcommon/stri.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/mvdevs/jk2mv/master/src/qcommon/stri.cpp">stri.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">// fix problems caused by fucking morons entering clever "rich" chars in to new text files *after* the auto-stripper
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 19: videoP/jaPRO</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/videoP/jaPRO/blob/master/code/game/AI_Jedi.cpp">github.com/videoP/jaPRO/blob/master/code/game/AI_Jedi.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/videoP/jaPRO/master/code/game/AI_Jedi.cpp">AI_Jedi.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">                </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-1">{</span></span></span><span class="org-block">//fuck, jump instead
+                  </span><span class="org-block"><span class="rainbow-delimiters-depth-2"><span class="rainbow-delimiters-depth-2">{</span></span></span><span class="org-block">//fuck it, just force it
+                </span><span class="org-block"><span class="rainbow-delimiters-depth-3"><span class="rainbow-delimiters-depth-3">{</span></span></span><span class="org-block">//fuck, jump instead
+                  </span><span class="org-block"><span class="rainbow-delimiters-depth-4"><span class="rainbow-delimiters-depth-4">{</span></span></span><span class="org-block">//fuck it, just force it
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 20: videoP/jaPRO</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/videoP/jaPRO/blob/master/code/ui/ui_shared.cpp">github.com/videoP/jaPRO/blob/master/code/ui/ui_shared.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/videoP/jaPRO/master/code/ui/ui_shared.cpp">ui_shared.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">  // vm fuckage
+          // vm fuckage
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 21: ioquake/jedi-academy</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/ioquake/jedi-academy/blob/master/code/ui/ui_shared.cpp">github.com/ioquake/jedi-academy/blob/master/code/ui/ui_shared.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/ioquake/jedi-academy/master/code/ui/ui_shared.cpp">ui_shared.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">  // vm fuckage
+          // vm fuckage
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 22: Blackvoxel/Blackvoxel</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/Blackvoxel/Blackvoxel/blob/master/src/ZWorldConvert.cpp">github.com/Blackvoxel/Blackvoxel/blob/master/src/ZWorldConvert.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/Blackvoxel/Blackvoxel/master/src/ZWorldConvert.cpp">ZWorldConvert.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">// Not yet implemented on windows. These fucking "standards headers" don't have same function subsets accross platforms...
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 23: dpiers/Jedi-Academy</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/dpiers/Jedi-Academy/blob/master/code/game/g_client.cpp">github.com/dpiers/Jedi-Academy/blob/master/code/game/g_client.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/dpiers/Jedi-Academy/master/code/game/g_client.cpp">g_client.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">      //SIGH... fucks him up BAD
+      //SIGH... spine wiggles fuck all this shit
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 24: JACoders/OpenJK</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/JACoders/OpenJK/blob/master/code/qcommon/strip.cpp">github.com/JACoders/OpenJK/blob/master/code/qcommon/strip.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/JACoders/OpenJK/master/code/qcommon/strip.cpp">strip.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">// fix problems caused by fucking morons entering clever "rich" chars in to new text files *after* the auto-stripper
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 25: mosra/magnum</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/mosra/magnum/blob/master/src/Magnum/Sampler.cpp">github.com/mosra/magnum/blob/master/src/Magnum/Sampler.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/mosra/magnum/master/src/Magnum/Sampler.cpp">Sampler.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">/* Check correctness of binary OR in setMinificationFilter</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-5">()</span></span></span><span class="org-block">. If nobody fucks
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 26: MTG/gaia</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/MTG/gaia/blob/master/src/algorithms/rca.cpp">github.com/MTG/gaia/blob/master/src/algorithms/rca.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/MTG/gaia/master/src/algorithms/rca.cpp">rca.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block"> * @todo figure out what the fuck is going on here. Works exactly like the
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 27: Sphereserver/Source</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/Sphereserver/Source/blob/master/src/common/CString.cpp">github.com/Sphereserver/Source/blob/master/src/common/CString.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/Sphereserver/Source/master/src/common/CString.cpp">CString.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    //  we should lower here as well. fucking shit!
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 28: blackberry/DosBox</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/blackberry/DosBox/blob/master/src/dos/drive_local.cpp">github.com/blackberry/DosBox/blob/master/src/dos/drive_local.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/blackberry/DosBox/master/src/dos/drive_local.cpp">drive_local.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">//TODO Maybe use fflush, but that seemed to fuck up in visual c
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 29: jenslody/codeblocks</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/jenslody/codeblocks/blob/master/src/sdk/filemanager.cpp">github.com/jenslody/codeblocks/blob/master/src/sdk/filemanager.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/jenslody/codeblocks/master/src/sdk/filemanager.cpp">filemanager.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">  // wxRename is simply a fuckshit wrapper around a CRT function which does not work the way
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 30: dantarion/SF5DInput</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/dantarion/SF5DInput/blob/master/xinput1_3/xinput1_3.cpp">github.com/dantarion/SF5DInput/blob/master/xinput1_3/xinput1_3.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/dantarion/SF5DInput/master/xinput1_3/xinput1_3.cpp">xinput1_3.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    printf</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-5">(</span></span></span><span class="org-block">"SetDataFormat is fucked %x\n", hr</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-5">)</span></span></span><span class="org-block">;
+    printf</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-5">(</span></span></span><span class="org-block">"Acquire is fucked %x\n", hr</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-5">)</span></span></span><span class="org-block">;
+    printf</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-5">(</span></span></span><span class="org-block">"Coop is fucked %x\n", hr</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-5">)</span></span></span><span class="org-block">;
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 31: hrydgard/ppsspp</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/hrydgard/ppsspp/blob/master/Core/HLE/sceNetAdhoc.cpp">github.com/hrydgard/ppsspp/blob/master/Core/HLE/sceNetAdhoc.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/hrydgard/ppsspp/master/Core/HLE/sceNetAdhoc.cpp">sceNetAdhoc.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">      // Allocate Memory </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-5">(</span></span></span><span class="org-block">If this fails... we are fucked.</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-5">)</span></span></span><span class="org-block">
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 32: libretro/libretro-ppsspp</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/libretro/libretro-ppsspp/blob/master/Core/HLE/sceNetAdhoc.cpp">github.com/libretro/libretro-ppsspp/blob/master/Core/HLE/sceNetAdhoc.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/libretro/libretro-ppsspp/master/Core/HLE/sceNetAdhoc.cpp">sceNetAdhoc.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">      // Allocate Memory </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-5">(</span></span></span><span class="org-block">If this fails... we are fucked.</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-5">)</span></span></span><span class="org-block">
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 33: jedis/jediacademy</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/jedis/jediacademy/blob/master/code/win32/win_glimp.cpp">github.com/jedis/jediacademy/blob/master/code/win32/win_glimp.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/jedis/jediacademy/master/code/win32/win_glimp.cpp">win_glimp.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">      //  </span><span class="org-block"><span class="my-lang-gamma-word">error</span></span><span class="org-block"> box that'll only appear if something's seriously fucked then I'm going to fallback to
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 34: gewang/ofxChucK</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/gewang/ofxChucK/blob/master/libs/chuck/util_opsc.cpp">github.com/gewang/ofxChucK/blob/master/libs/chuck/util_opsc.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/gewang/ofxChucK/master/libs/chuck/util_opsc.cpp">util_opsc.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">        // next write _may_ fuck with _in_read 
+         // fuck...back to the todo...
+            // fprintf</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-5">(</span></span></span><span class="org-block">stderr, "fuck!  fucking buffer reallocation </span><span class="org-block"><span class="my-lang-gamma-word">error</span></span><span class="org-block">!\n"</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-5">)</span></span></span><span class="org-block">;
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 35: FreeFalcon/freefalcon-central</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/FreeFalcon/freefalcon-central/blob/master/src/sim/rwr/tracklst.cpp">github.com/FreeFalcon/freefalcon-central/blob/master/src/sim/rwr/tracklst.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/FreeFalcon/freefalcon-central/master/src/sim/rwr/tracklst.cpp">tracklst.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">            detectionList</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-5">[</span></span></span><span class="org-block">j</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-5">]</span></span></span><span class="org-block"> = detectionList</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-5">[</span></span></span><span class="org-block">j - 1</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-5">]</span></span></span><span class="org-block">; //ME123 this loop was fucked up. fixed.
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 36: proteal/DOOM-Vis</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/proteal/DOOM-Vis/blob/master/Doom/DoomSrc/dstrings.cpp">github.com/proteal/DOOM-Vis/blob/master/Doom/DoomSrc/dstrings.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/proteal/DOOM-Vis/master/Doom/DoomSrc/dstrings.cpp">dstrings.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">  "fuck you, pussy!\nget the fuck out!",
+  "hey, ron! can we say\n'fuck' in the game?",
+  "suck it down, asshole!\nyou're a fucking wimp!",
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 37: JACoders/OpenJK</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/JACoders/OpenJK/blob/master/code/cgame/cg_players.cpp">github.com/JACoders/OpenJK/blob/master/code/cgame/cg_players.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/JACoders/OpenJK/master/code/cgame/cg_players.cpp">cg_players.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    &amp;&amp; !G_ClassHasBadBones</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-5">(</span></span></span><span class="org-block"> cent-&gt;gent-&gt;client-&gt;NPC_class </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-5">)</span></span></span><span class="org-block"> </span><span class="org-block"><span class="rainbow-delimiters-unmatched"><span class="rainbow-delimiters-mismatched">)</span></span></span><span class="org-block">//these guys' bones are so fucked up we shouldn't even bother with this motion bone comp...
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 38: jedis/jediacademy</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/jedis/jediacademy/blob/master/code/cgame/cg_players.cpp">github.com/jedis/jediacademy/blob/master/code/cgame/cg_players.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/jedis/jediacademy/master/code/cgame/cg_players.cpp">cg_players.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    &amp;&amp; !G_ClassHasBadBones</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block"> cent-&gt;gent-&gt;client-&gt;NPC_class </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block"> </span><span class="org-block"><span class="rainbow-delimiters-unmatched"><span class="rainbow-delimiters-mismatched">)</span></span></span><span class="org-block">//these guys' bones are so fucked up we shouldn't even bother with this motion bone comp...
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 39: marynate/godot</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/marynate/godot/blob/master/scene/3d/physics_body.cpp">github.com/marynate/godot/blob/master/scene/3d/physics_body.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/marynate/godot/master/scene/3d/physics_body.cpp">physics_body.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">  //eh.. fuck
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 40: falltergeist/falltergeist</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/falltergeist/falltergeist/blob/master/src/Graphics/Renderer.cpp">github.com/falltergeist/falltergeist/blob/master/src/Graphics/Renderer.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/falltergeist/falltergeist/master/src/Graphics/Renderer.cpp">Renderer.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    // specifically request 3.2, because fucking Mesa ignores core flag with version &lt; 3
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 41: Kamal-Sadek/Liberal-Crime-Squad</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/Kamal-Sadek/Liberal-Crime-Squad/blob/master/src/creature/creature.cpp">github.com/Kamal-Sadek/Liberal-Crime-Squad/blob/master/src/creature/creature.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/Kamal-Sadek/Liberal-Crime-Squad/master/src/creature/creature.cpp">creature.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">   // Charisma wants to know: How fucked up does your face look?
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 42: Sphereserver/Source</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/Sphereserver/Source/blob/master/src/graysvr/CResource.cpp">github.com/Sphereserver/Source/blob/master/src/graysvr/CResource.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/Sphereserver/Source/master/src/graysvr/CResource.cpp">CResource.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">  // </span><span class="org-block"><span class="my-lang-gamma-word">NOTE:</span></span><span class="org-block"> allow partial match syntax *fuck* or ass </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-3">(</span></span></span><span class="org-block">alone</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-3">)</span></span></span><span class="org-block">
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 43: AscEmu/AscEmu_TBC</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/AscEmu/AscEmu_TBC/blob/master/src/world/SpellTarget.cpp">github.com/AscEmu/AscEmu_TBC/blob/master/src/world/SpellTarget.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/AscEmu/AscEmu_TBC/master/src/world/SpellTarget.cpp">SpellTarget.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    // O fuck we are contagious...
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 44: EasyWoW/easywow</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/EasyWoW/easywow/blob/master/src/worldserver/Spell.cpp">github.com/EasyWoW/easywow/blob/master/src/worldserver/Spell.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/EasyWoW/easywow/master/src/worldserver/Spell.cpp">Spell.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">            // if we're over 500 get fucked anyway.. your gonna lag! and this stops cheaters too
+    // fuck bytebuffers
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 45: EasyWoW/easywow</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/EasyWoW/easywow/blob/master/src/worldserver/World.cpp">github.com/EasyWoW/easywow/blob/master/src/worldserver/World.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/EasyWoW/easywow/master/src/worldserver/World.cpp">World.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">            // Grab the first fucker from the queue, but guard of course, since
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 46: bdejong/smartelectronix</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/bdejong/smartelectronix/blob/master/Cyanide2/CyanideEffect.cpp">github.com/bdejong/smartelectronix/blob/master/Cyanide2/CyanideEffect.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/bdejong/smartelectronix/master/Cyanide2/CyanideEffect.cpp">CyanideEffect.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">  //the borg seemed to have fucked up the way of callin' this in wavelab!
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 47: bdejong/smartelectronix</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/bdejong/smartelectronix/blob/master/SupaTrigga/SupaTrigger.cpp">github.com/bdejong/smartelectronix/blob/master/SupaTrigga/SupaTrigger.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/bdejong/smartelectronix/master/SupaTrigga/SupaTrigger.cpp">SupaTrigger.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    "man im fucked!"
+    ok, lets look at the current time sig </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-3">(</span></span></span><span class="org-block">current as in i hope for fuck sake it didnt change
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 48: SickheadGames/Torsion</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/SickheadGames/Torsion/blob/master/code/Torsion/MainFrame.cpp">github.com/SickheadGames/Torsion/blob/master/code/Torsion/MainFrame.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/SickheadGames/Torsion/master/code/Torsion/MainFrame.cpp">MainFrame.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">   // This keeps the accellerators from fucking up
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 49: dpiers/Jedi-Academy</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/dpiers/Jedi-Academy/blob/master/codemp/win32/win_glimp.cpp">github.com/dpiers/Jedi-Academy/blob/master/codemp/win32/win_glimp.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/dpiers/Jedi-Academy/master/codemp/win32/win_glimp.cpp">win_glimp.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">      //  </span><span class="org-block"><span class="my-lang-gamma-word">error</span></span><span class="org-block"> box that'll only appear if something's seriously fucked then I'm going to fallback to
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 50: xycaleth/OpenJK</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/xycaleth/OpenJK/blob/master/codemp/win32/win_input.cpp">github.com/xycaleth/OpenJK/blob/master/codemp/win32/win_input.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/xycaleth/OpenJK/master/codemp/win32/win_input.cpp">win_input.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">  /* hi microsoft, go fuck yourself for flipping left stick's Y axis for no reason... */
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 51: AscEmu/AscEmu</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/AscEmu/AscEmu/blob/master/src/world/GuildHandler.cpp">github.com/AscEmu/AscEmu/blob/master/src/world/GuildHandler.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/AscEmu/AscEmu/master/src/world/GuildHandler.cpp">GuildHandler.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">                // dis is fucked up mate
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 52: Treeki/NewerSMBW</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/Treeki/NewerSMBW/blob/master/Kamek/src/bossSamurshai.cpp">github.com/Treeki/NewerSMBW/blob/master/Kamek/src/bossSamurshai.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/Treeki/NewerSMBW/master/Kamek/src/bossSamurshai.cpp">bossSamurshai.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    // These fucking rects do something for the tile rect
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 53: ioquake/jedi-academy</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/ioquake/jedi-academy/blob/master/code/game/NPC_reactions.cpp">github.com/ioquake/jedi-academy/blob/master/code/game/NPC_reactions.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/ioquake/jedi-academy/master/code/game/NPC_reactions.cpp">NPC_reactions.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">      //ask them what the fuck they're doing
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 54: arcemu/arcemu</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/arcemu/arcemu/blob/master/src/arcemu-world/MapMgr.cpp">github.com/arcemu/arcemu/blob/master/src/arcemu-world/MapMgr.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/arcemu/arcemu/master/src/arcemu-world/MapMgr.cpp">MapMgr.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">  // stupid fucked up code in places.. i hate doing this but i've got to :&lt;
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 55: arcemu/arcemu</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/arcemu/arcemu/blob/master/src/arcemu-world/Player.cpp">github.com/arcemu/arcemu/blob/master/src/arcemu-world/Player.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/arcemu/arcemu/master/src/arcemu-world/Player.cpp">Player.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">  // fuck bytebuffers :D
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 56: FreeFalcon/freefalcon-central</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/FreeFalcon/freefalcon-central/blob/master/src/sim/simlib/geometry.cpp">github.com/FreeFalcon/freefalcon-central/blob/master/src/sim/simlib/geometry.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/FreeFalcon/freefalcon-central/master/src/sim/simlib/geometry.cpp">geometry.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    int fucked_count;
+    fucked_count = 0; // HACK HACK HACK HACK HACK HACK HACK hackerydoodar HACK
+    // KCK: I changed this to use the math lib's mlTrig function. Hope I didn't fuck it up.
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 57: aracnoz/xbmc</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/aracnoz/xbmc/blob/master/xbmc/filesystem/ZipFile.cpp">github.com/aracnoz/xbmc/blob/master/xbmc/filesystem/ZipFile.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/aracnoz/xbmc/master/xbmc/filesystem/ZipFile.cpp">ZipFile.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">        else if </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">m_szStartOfStringBuffer</span><span class="org-block"><span class="rainbow-delimiters-depth-2"><span class="rainbow-delimiters-depth-5">[</span></span></span><span class="org-block">i</span><span class="org-block"><span class="rainbow-delimiters-depth-2"><span class="rainbow-delimiters-depth-5">]</span></span></span><span class="org-block"> == '\n'</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block"> // unix or fucked up win32 endings
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 58: dude719/Reclass-2015</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/dude719/Reclass-2015/blob/master/ReClass 2015/ReClass2015.cpp">github.com/dude719/Reclass-2015/blob/master/ReClass 2015/ReClass2015.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/dude719/Reclass-2015/master/ReClass 2015/ReClass2015.cpp">ReClass2015.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">  //Fix Links... very ghetto this whole thing is just fucked
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 59: gokudomatic/godot</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/gokudomatic/godot/blob/master/scene/2d/physics_body_2d.cpp">github.com/gokudomatic/godot/blob/master/scene/2d/physics_body_2d.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/gokudomatic/godot/master/scene/2d/physics_body_2d.cpp">physics_body_2d.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">  //eh.. fuck
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 60: Stoiss/Rend2</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/Stoiss/Rend2/blob/master/tools/ModView/modviewdoc.cpp">github.com/Stoiss/Rend2/blob/master/tools/ModView/modviewdoc.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/Stoiss/Rend2/master/tools/ModView/modviewdoc.cpp">modviewdoc.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    // </span><span class="org-block"><span class="my-lang-gamma-word">make</span></span><span class="org-block"> absolutely fucking sure this bastard does as it's told...
+    //  and since the CWinApp class can't even ask what it's own fucking document pointer is without doing a hundred
+    //  lines of shit deep within MFC then I'm going to fuck the whole lot off by storing a pointer which I can then
+    // All this fucking bollocks was because MS insist on doing their own switch-comparing so I can't pass in 'real'
+    //  switches, I have to use this '#' crap. Stupid fucking incompetent MS dickheads. Like how hard would it be to
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 61: entdark/jaMME</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/entdark/jaMME/blob/master/codemp/rd-vanilla/tr_shader.cpp">github.com/entdark/jaMME/blob/master/codemp/rd-vanilla/tr_shader.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/entdark/jaMME/master/codemp/rd-vanilla/tr_shader.cpp">tr_shader.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    // Do a simple check on the shader structure in that file to </span><span class="org-block"><span class="my-lang-gamma-word">make</span></span><span class="org-block"> sure one bad shader file cannot fuck up all other shaders.
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 62: thirddegree/HatchitGraphics</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/thirddegree/HatchitGraphics/blob/master/source/vulkan/ht_vkpipeline.cpp">github.com/thirddegree/HatchitGraphics/blob/master/source/vulkan/ht_vkpipeline.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/thirddegree/HatchitGraphics/master/source/vulkan/ht_vkpipeline.cpp">ht_vkpipeline.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">                VkDescriptorSetLayout layout = m_rootLayout-&gt;VKGetDescriptorSetLayouts</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">()[</span></span></span><span class="org-block">1</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">]</span></span></span><span class="org-block">; //Hack as fuck
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 63: Planimeter/hl2sb-src</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/Planimeter/hl2sb-src/blob/master/src/game/shared/beam_shared.cpp">github.com/Planimeter/hl2sb-src/blob/master/src/game/shared/beam_shared.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/Planimeter/hl2sb-src/master/src/game/shared/beam_shared.cpp">beam_shared.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    // Delete right away since it's fucked up
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 64: EasyWoW/easywow</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/EasyWoW/easywow/blob/master/src/worldserver/Spell_Rogue.cpp">github.com/EasyWoW/easywow/blob/master/src/worldserver/Spell_Rogue.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/EasyWoW/easywow/master/src/worldserver/Spell_Rogue.cpp">Spell_Rogue.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">            // Better to add custom cooldown procedure then fucking with entry, or not!!
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 65: FreeFalcon/freefalcon-central</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/FreeFalcon/freefalcon-central/blob/master/src/ui/src/dogfight/dogmenus.cpp">github.com/FreeFalcon/freefalcon-central/blob/master/src/ui/src/dogfight/dogmenus.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/FreeFalcon/freefalcon-central/master/src/ui/src/dogfight/dogmenus.cpp">dogmenus.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">// Kevin, don't fuck with these anymore
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 66: grayj/Jedi-Outcast</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/grayj/Jedi-Outcast/blob/master/utils/Radiant/findtexturedlg.cpp">github.com/grayj/Jedi-Outcast/blob/master/utils/Radiant/findtexturedlg.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/grayj/Jedi-Outcast/master/utils/Radiant/findtexturedlg.cpp">findtexturedlg.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">#pragma warning</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">disable : 4786</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block">     // shut the fuck up about debug symbol name length
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 67: xLAva/JediOutcastLinux</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/xLAva/JediOutcastLinux/blob/master/utils/Assimilate/AssimilateDoc.cpp">github.com/xLAva/JediOutcastLinux/blob/master/utils/Assimilate/AssimilateDoc.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/xLAva/JediOutcastLinux/master/utils/Assimilate/AssimilateDoc.cpp">AssimilateDoc.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">        strThisFile.Insert</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">0,"I fucked up, the following line didn't seem to have a CR:  </span><span class="org-block"><span class="rainbow-delimiters-depth-2">(</span></span><span class="org-block">tell me! -Ste</span><span class="org-block"><span class="rainbow-delimiters-depth-2">)</span></span><span class="org-block">\n\n"</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block">;
+                    m_strPathName = strThisFile;  // fucking stupid MFC doesn't set this!!!!!!!!!!!!!
+              strThisFile.Insert</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">0,"I fucked up, the following line didn't seem to have a CR:  </span><span class="org-block"><span class="rainbow-delimiters-depth-2">(</span></span><span class="org-block">tell me! -Ste</span><span class="org-block"><span class="rainbow-delimiters-depth-2">)</span></span><span class="org-block">\n\n"</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block">;
+              m_strPathName = strThisFile;  // fucking stupid MFC doesn't set this!!!!!!!!!!!!!
+          strThisFile.Insert</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">0,"I fucked up, the following line didn't seem to have a CR:  </span><span class="org-block"><span class="rainbow-delimiters-depth-2">(</span></span><span class="org-block">tell me! -Ste</span><span class="org-block"><span class="rainbow-delimiters-depth-2">)</span></span><span class="org-block">\n\n"</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block">;
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 68: videoP/jaPRO</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/videoP/jaPRO/blob/master/code/rd-vanilla/tr_WorldEffects.cpp">github.com/videoP/jaPRO/blob/master/code/rd-vanilla/tr_WorldEffects.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/videoP/jaPRO/master/code/rd-vanilla/tr_WorldEffects.cpp">tr_WorldEffects.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="custom-2"><span class="custom-3">#def</span></span><span class="org-block">ine COUTSIDE_STRUCT_VERSION 1 // you MUST increase this any time you change any binary </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">fields</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block"> inside this class, or cahced files will fuck up
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 69: multitheftauto/mtasa-blue</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/multitheftauto/mtasa-blue/blob/master/MTA10/mods/deathmatch/logic/CFoo.cpp">github.com/multitheftauto/mtasa-blue/blob/master/MTA10/mods/deathmatch/logic/CFoo.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/multitheftauto/mtasa-blue/master/MTA10/mods/deathmatch/logic/CFoo.cpp">CFoo.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    else if </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block"> strnicmp </span><span class="org-block"><span class="rainbow-delimiters-depth-2"><span class="rainbow-delimiters-depth-5">(</span></span></span><span class="org-block"> szString, "fuckveh", 7 </span><span class="org-block"><span class="rainbow-delimiters-depth-2"><span class="rainbow-delimiters-depth-5">)</span></span></span><span class="org-block"> == 0 </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block">
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 70: Doc-Ok/OpticalTracking</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/Doc-Ok/OpticalTracking/blob/master/VRDeviceDaemon/VRDevices/Wiimote.cpp">github.com/Doc-Ok/OpticalTracking/blob/master/VRDeviceDaemon/VRDevices/Wiimote.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/Doc-Ok/OpticalTracking/master/VRDeviceDaemon/VRDevices/Wiimote.cpp">Wiimote.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">  /* Decode the extension data </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">thank you fucking much, DMCA!</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block">: */
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 71: null--/graviton</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/null--/graviton/blob/master/bin/demo/backdoor/blackhole/main.cpp">github.com/null--/graviton/blob/master/bin/demo/backdoor/blackhole/main.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/null--/graviton/master/bin/demo/backdoor/blackhole/main.cpp">main.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    sayshit</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">"Empty office? Let's fuck then!"</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block">;
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 72: marynate/godot</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/marynate/godot/blob/master/drivers/chibi/cp_player_data_utils.cpp">github.com/marynate/godot/blob/master/drivers/chibi/cp_player_data_utils.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/marynate/godot/master/drivers/chibi/cp_player_data_utils.cpp">cp_player_data_utils.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">  if </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">min_priority&gt;8000*7</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block"> return -1; /* what the fuck is this? */
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 73: cSploit/android.MSF</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/cSploit/android.MSF/blob/master/external/source/byakugan/heapModeler.cpp">github.com/cSploit/android.MSF/blob/master/external/source/byakugan/heapModeler.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/cSploit/android.MSF/master/external/source/byakugan/heapModeler.cpp">heapModeler.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">      dprintf</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">"</span><span class="org-block"><span class="rainbow-delimiters-depth-2">[</span></span><span class="org-block">XXX</span><span class="org-block"><span class="rainbow-delimiters-depth-2">]</span></span><span class="org-block"> Totally fucked up - chunk info doesnt jive with heap\n\n"</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block">;
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 74: sanikoyes/godot</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/sanikoyes/godot/blob/master/tools/editor/editor_resource_preview.cpp">github.com/sanikoyes/godot/blob/master/tools/editor/editor_resource_preview.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/sanikoyes/godot/master/tools/editor/editor_resource_preview.cpp">editor_resource_preview.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">              //well fuck
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 75: Aleph-One-Marathon/alephone</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/Aleph-One-Marathon/alephone/blob/master/Source_Files/Network/RingGameProtocol.cpp">github.com/Aleph-One-Marathon/alephone/blob/master/Source_Files/Network/RingGameProtocol.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/Aleph-One-Marathon/alephone/master/Source_Files/Network/RingGameProtocol.cpp">RingGameProtocol.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">       csprintf</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">temporary, "the server asked for %d flags.  bastard.  fucking ram doubler.", packet-&gt;required_action_flags</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block"><span class="rainbow-delimiters-unmatched"><span class="rainbow-delimiters-depth-3">)</span></span></span><span class="org-block">;
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 76: mupen64plus-ae/mupen64plus-ae</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/mupen64plus-ae/mupen64plus-ae/blob/master/jni/mupen64plus-video-rice/src/Render.cpp">github.com/mupen64plus-ae/mupen64plus-ae/blob/master/jni/mupen64plus-video-rice/src/Render.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/mupen64plus-ae/mupen64plus-ae/master/jni/mupen64plus-video-rice/src/Render.cpp">Render.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    // don't get rendered. I hope this doesn't fuck anything else up.
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 77: desura/Desurium</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/desura/Desurium/blob/master/src/shared/mcfcore/code/mcf/MCF_Patch.cpp">github.com/desura/Desurium/blob/master/src/shared/mcfcore/code/mcf/MCF_Patch.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/desura/Desurium/master/src/shared/mcfcore/code/mcf/MCF_Patch.cpp">MCF_Patch.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">  //reset the file offsets so it doesnt fuck the mcf up
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 78: beniz/seeks</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/beniz/seeks/blob/master/src/plugins/websearch/se_parser_blekko.cpp">github.com/beniz/seeks/blob/master/src/plugins/websearch/se_parser_blekko.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/beniz/seeks/master/src/plugins/websearch/se_parser_blekko.cpp">se_parser_blekko.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    // The XML parser gets it right, but fucks it up everywhere else.
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 79: tomahawk-player/tomahawk</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/tomahawk-player/tomahawk/blob/master/src/libtomahawk/network/StreamConnection.cpp">github.com/tomahawk-player/tomahawk/blob/master/src/libtomahawk/network/StreamConnection.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/tomahawk-player/tomahawk/master/src/libtomahawk/network/StreamConnection.cpp">StreamConnection.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    // don't fuck with our messages at all. No compression, no parsing, nothing:
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 80: xmoeproject/X-moe</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/xmoeproject/X-moe/blob/master/Unpacker/crass/cui-1.0.4/NScripter/NScripter.cpp">github.com/xmoeproject/X-moe/blob/master/Unpacker/crass/cui-1.0.4/NScripter/NScripter.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/xmoeproject/X-moe/master/Unpacker/crass/cui-1.0.4/NScripter/NScripter.cpp">NScripter.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">static const BYTE fuck_decrypt_table</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-3">[</span></span></span><span class="org-block">256</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-3">]</span></span></span><span class="org-block"> = </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-3">{</span></span></span><span class="org-block">
+      dec</span><span class="org-block"><span class="rainbow-delimiters-depth-2"><span class="rainbow-delimiters-depth-4">[</span></span></span><span class="org-block">i</span><span class="org-block"><span class="rainbow-delimiters-depth-2"><span class="rainbow-delimiters-depth-4">]</span></span></span><span class="org-block"> = </span><span class="org-block"><span class="rainbow-delimiters-depth-2"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">BYTE</span><span class="org-block"><span class="rainbow-delimiters-depth-2"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block">i ^ fuck_decrypt_table</span><span class="org-block"><span class="rainbow-delimiters-depth-2"><span class="rainbow-delimiters-depth-4">[</span></span></span><span class="org-block">dec</span><span class="org-block"><span class="rainbow-delimiters-depth-3"><span class="rainbow-delimiters-depth-5">[</span></span></span><span class="org-block">i</span><span class="org-block"><span class="rainbow-delimiters-depth-3"><span class="rainbow-delimiters-depth-5">]</span></span></span><span class="org-block"><span class="rainbow-delimiters-depth-2"><span class="rainbow-delimiters-depth-4">]</span></span></span><span class="org-block">;
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 81: M0ra/Core</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/M0ra/Core/blob/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp">github.com/M0ra/Core/blob/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/M0ra/Core/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp">BattlegroundSA.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">  You may ask what the fuck does it do?
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 82: DraenorCore/DraenorCore</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/DraenorCore/DraenorCore/blob/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp">github.com/DraenorCore/DraenorCore/blob/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/DraenorCore/DraenorCore/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp">BattlegroundSA.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">  You may ask what the fuck does it do?
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 83: TrinityCoreLegacy/TrinityCore</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/TrinityCoreLegacy/TrinityCore/blob/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp">github.com/TrinityCoreLegacy/TrinityCore/blob/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/TrinityCoreLegacy/TrinityCore/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp">BattlegroundSA.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">  You may ask what the fuck does it do?
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 84: SkyFireArchives/SkyFireEMU_406a</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/SkyFireArchives/SkyFireEMU_406a/blob/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp">github.com/SkyFireArchives/SkyFireEMU_406a/blob/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/SkyFireArchives/SkyFireEMU_406a/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp">BattlegroundSA.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">  You may ask what the fuck does it do?
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 85: iocellnetworks/ndas4windows</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/iocellnetworks/ndas4windows/blob/master/fremont/tags/3.20.1528/src/tools/frhed/FRHED/hexwnd.cpp">github.com/iocellnetworks/ndas4windows/blob/master/fremont/tags/3.20.1528/src/tools/frhed/FRHED/hexwnd.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/iocellnetworks/ndas4windows/master/fremont/tags/3.20.1528/src/tools/frhed/FRHED/hexwnd.cpp">hexwnd.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">//is a little buggy - when paint is called with iUpdateLine != -1 the display fucks up a bit
+  //This BitBlt prevents the display from fucking up but is incredibly slow
+        //Repeat for the benefit of Word - fuck M$ sux
+        //Colour of the lines - fuck M$ sux
+      //Repeat for the benefit of Word - fuck M$ sux
+      //Colour of the lines - fuck M$ sux
+      //Repeat for the benefit of Word - fuck M$ sux
+      //Colour of the lines - fuck M$ sux
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 86: Ultraschall/REAPER</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/Ultraschall/REAPER/blob/master/Plugin/reaper_extension_sdk/jmde/csurf/csurf_faderport.cpp">github.com/Ultraschall/REAPER/blob/master/Plugin/reaper_extension_sdk/jmde/csurf/csurf_faderport.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/Ultraschall/REAPER/master/Plugin/reaper_extension_sdk/jmde/csurf/csurf_faderport.cpp">csurf_faderport.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">      //m_midiout-&gt;Send</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">0xa0,0xf,m_flipmode?1:0</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block">;// fucko
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 87: Gallio/mbunit-v3</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/Gallio/mbunit-v3/blob/master/tools/Thrift/src/lib/cpp/src/server/TNonblockingServer.cpp">github.com/Gallio/mbunit-v3/blob/master/tools/Thrift/src/lib/cpp/src/server/TNonblockingServer.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/Gallio/mbunit-v3/master/tools/Thrift/src/lib/cpp/src/server/TNonblockingServer.cpp">TNonblockingServer.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">  // Make sure that libevent didn't fuck up the socket handles
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 88: OLR-xray/OLR-3.0</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/OLR-xray/OLR-3.0/blob/master/src/xray/xr_3da/xrRender_R2/r2_rendertarget_phase_combine.cpp">github.com/OLR-xray/OLR-3.0/blob/master/src/xray/xr_3da/xrRender_R2/r2_rendertarget_phase_combine.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/OLR-xray/OLR-3.0/master/src/xray/xr_3da/xrRender_R2/r2_rendertarget_phase_combine.cpp">r2_rendertarget_phase_combine.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">      light*    fuckingsun    = </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">light*</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block">RImplementation.Lights.sun_adapted._get</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">()</span></span></span><span class="org-block"> ;
+      L_clr.set         </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">fuckingsun-&gt;color.r,fuckingsun-&gt;color.g,fuckingsun-&gt;color.b</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block">;
+      Device.mView.transform_dir  </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">L_dir,fuckingsun-&gt;direction</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block">;
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 89: Arkania/ArkCORE-NG</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/Arkania/ArkCORE-NG/blob/master/src/server/scripts/Kalimdor/Firelands/boss_ragnaros_firelands.cpp">github.com/Arkania/ArkCORE-NG/blob/master/src/server/scripts/Kalimdor/Firelands/boss_ragnaros_firelands.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/Arkania/ArkCORE-NG/master/src/server/scripts/Kalimdor/Firelands/boss_ragnaros_firelands.cpp">boss_ragnaros_firelands.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block"> * If you have found this script on the internet feel free to use it as I can do fuck to stop you., * But do leave an email to thank me, telling me where you found so I can fist fuck the anal wart that put it there.
+                if </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">Unit* that = me-&gt;FindNearestPlayer</span><span class="org-block"><span class="rainbow-delimiters-depth-2"><span class="rainbow-delimiters-depth-5">(</span></span></span><span class="org-block">60.0f</span><span class="org-block"><span class="rainbow-delimiters-depth-2"><span class="rainbow-delimiters-depth-5">)</span></span></span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block">//why like this? Because fuck knows how blizz did it, and it's already a 1700 word script. If you correct this shit and go "Fuck this guy for not doing it properly." suck the shit out of my ass cause you are already full of it.
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 90: amamiya/SYEngine</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/amamiya/SYEngine/blob/master/CoreDemuxers/CoreDemuxers.Shared/MKV/Parser/Internal/MatroskaEbml.cpp">github.com/amamiya/SYEngine/blob/master/CoreDemuxers/CoreDemuxers.Shared/MKV/Parser/Internal/MatroskaEbml.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/amamiya/SYEngine/master/CoreDemuxers/CoreDemuxers.Shared/MKV/Parser/Internal/MatroskaEbml.cpp">MatroskaEbml.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    unsigned char fuck</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">[</span></span></span><span class="org-block">3</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">]</span></span></span><span class="org-block"> = </span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">{</span></span></span><span class="org-block">0,0,0</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">}</span></span></span><span class="org-block">;
+    head.Read</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">fuck,3</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block">;
+    p</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">[</span></span></span><span class="org-block">1</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">]</span></span></span><span class="org-block"> = fuck</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">[</span></span></span><span class="org-block">2</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">]</span></span></span><span class="org-block">;
+    p</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">[</span></span></span><span class="org-block">2</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">]</span></span></span><span class="org-block"> = fuck</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">[</span></span></span><span class="org-block">1</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">]</span></span></span><span class="org-block">;
+    p</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">[</span></span></span><span class="org-block">3</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">]</span></span></span><span class="org-block"> = fuck</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">[</span></span></span><span class="org-block">0</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">]</span></span></span><span class="org-block">;
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 91: pac-dev/protoplug</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/pac-dev/protoplug/blob/master/Frameworks/JuceModules/juce_audio_processors/format_types/juce_VSTPluginFormat.cpp">github.com/pac-dev/protoplug/blob/master/Frameworks/JuceModules/juce_audio_processors/format_types/juce_VSTPluginFormat.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/pac-dev/protoplug/master/Frameworks/JuceModules/juce_audio_processors/format_types/juce_VSTPluginFormat.cpp">juce_VSTPluginFormat.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">                _fpreset</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">()</span></span></span><span class="org-block">; // some dodgy plugs fuck around with this
+            _fpreset</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">()</span></span></span><span class="org-block">; // some dodgy plugs fuck around with this
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 92: 2DaT/Obxd</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/2DaT/Obxd/blob/master/JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VSTPluginFormat.cpp">github.com/2DaT/Obxd/blob/master/JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VSTPluginFormat.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/2DaT/Obxd/master/JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VSTPluginFormat.cpp">juce_VSTPluginFormat.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">                _fpreset</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">()</span></span></span><span class="org-block">; // some dodgy plugs fuck around with this
+            _fpreset</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">()</span></span></span><span class="org-block">; // some dodgy plugs fuck around with this
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 93: moranzcw/LeetCode</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/moranzcw/LeetCode/blob/master/Algorithm/#150#Evaluate_Reverse_Polish_Notation/Evaluate_Reverse_Polish_Notation.cpp">github.com/moranzcw/LeetCode/blob/master/Algorithm/</a></span><span class="custom"><span class="custom-1"><a href="https://github.com/moranzcw/LeetCode/blob/master/Algorithm/#150#Evaluate_Reverse_Polish_Notation/Evaluate_Reverse_Polish_Notation.cpp">#150</a></span></span><span class="org-link"><a href="https://github.com/moranzcw/LeetCode/blob/master/Algorithm/#150#Evaluate_Reverse_Polish_Notation/Evaluate_Reverse_Polish_Notation.cpp">#Evaluate_Reverse_Polish_Notation/Evaluate_Reverse_Polish_Notation.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/moranzcw/LeetCode/master/Algorithm/#150#Evaluate_Reverse_Polish_Notation/Evaluate_Reverse_Polish_Notation.cpp">Evaluate_Reverse_Polish_Notation.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">        stack&lt;int&gt; fuckYou;
+                fuckYou.push</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">temp</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block">;
+                int b = fuckYou.empty</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">()</span></span></span><span class="org-block">? 0:fuckYou.top</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">()</span></span></span><span class="org-block">;
+                fuckYou.pop</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">()</span></span></span><span class="org-block">;
+                int a = fuckYou.empty</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">()</span></span></span><span class="org-block">? 0:fuckYou.top</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">()</span></span></span><span class="org-block">;
+                fuckYou.pop</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">()</span></span></span><span class="org-block">;
+                    fuckYou.push</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">a+b</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block">;
+                    fuckYou.push</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">a-b</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block">;
+                    fuckYou.push</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">a*b</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block">;
+                    fuckYou.push</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">a/b</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block">;
+        return fuckYou.top</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">()</span></span></span><span class="org-block">;
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+<span class="custom-4">**</span><span class="org-level-3">* 94: sam-b/HackSysDriverExploits</span>
++ <span class="org-list-dt">link ::</span> <span class="org-link"><a href="https://github.com/sam-b/HackSysDriverExploits/blob/master/HackSysArbitaryOverwriteExploit/HackSysArbitaryOverwriteExploit/HackSysArbitaryOverwriteExploit.cpp">github.com/sam-b/HackSysDriverExploits/blob/master/HackSysArbitaryOverwriteExploit/HackSysArbitaryOverwriteExploit/HackSysArbitaryOverwriteExploit.cpp</a></span>
++ <span class="org-list-dt">raw ::</span> <span class="org-link"><a href="https://raw.githubusercontent.com/sam-b/HackSysDriverExploits/master/HackSysArbitaryOverwriteExploit/HackSysArbitaryOverwriteExploit/HackSysArbitaryOverwriteExploit.cpp">HackSysArbitaryOverwriteExploit.cpp</a></span>
+<span class="org-block-begin-line">#+BEGIN_SRC text
+</span><span class="org-block">    printf</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">(</span></span></span><span class="org-block">"fuck\n"</span><span class="org-block"><span class="rainbow-delimiters-depth-1"><span class="rainbow-delimiters-depth-4">)</span></span></span><span class="org-block">;
+</span><span class="org-block-end-line">#+END_SRC
+</span>
+</pre>
+  </body>
+</html>

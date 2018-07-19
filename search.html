@@ -1,0 +1,1832 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-07-19 Thu 16:00 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="shane" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgdb46d12">1. Github Search</a>
+<ul>
+<li><a href="#org6ffe297">1.1. Query</a>
+<ul>
+<li><a href="#org790b7de">1.1.1. path</a></li>
+<li><a href="#orgef6b6c9">1.1.2. limit</a></li>
+<li><a href="#orgc870871">1.1.3. terms</a></li>
+<li><a href="#org65c47ce">1.1.4. date</a></li>
+<li><a href="#org1172f54">1.1.5. sql</a></li>
+</ul>
+</li>
+<li><a href="#org63f71ec">1.2. Results</a>
+<ul>
+<li><a href="#org62b7f9d">1.2.1. 0: privacore/open-source-search-engine</a></li>
+<li><a href="#org27132f2">1.2.2. 1: privacore/open-source-search-engine</a></li>
+<li><a href="#org1137c5d">1.2.3. 2: BlastHackNet/mod<sub>s0beit</sub><sub>sa</sub></a></li>
+<li><a href="#orgc468cf2">1.2.4. 3: syscoin/syscoin</a></li>
+<li><a href="#org79e8fb8">1.2.5. 4: gigablast/open-source-search-engine</a></li>
+<li><a href="#org4c27a6b">1.2.6. 5: excessive/lua-bgfx</a></li>
+<li><a href="#orgcbbf3c6">1.2.7. 6: KeckCAVES/Vrui</a></li>
+<li><a href="#org6cbbd4e">1.2.8. 7: mupen64plus/mupen64plus-video-rice</a></li>
+<li><a href="#orgcd5dc89">1.2.9. 8: Ancurio/mkxp</a></li>
+<li><a href="#org221f8b5">1.2.10. 9: sphinxsearch/sphinx</a></li>
+<li><a href="#org1f8c622">1.2.11. 10: ArmageddonGames/ZeldaClassic</a></li>
+<li><a href="#org04e4eea">1.2.12. 11: Razish/japp</a></li>
+<li><a href="#org348b56b">1.2.13. 12: HydraIRC/hydrairc</a></li>
+<li><a href="#org1b12202">1.2.14. 13: KeckCAVES/Vrui</a></li>
+<li><a href="#orgb51a6be">1.2.15. 14: openmoh/openmohaa</a></li>
+<li><a href="#org5502c6b">1.2.16. 15: JACoders/OpenJK</a></li>
+<li><a href="#orga34b177">1.2.17. 16: ioquake/jedi-academy</a></li>
+<li><a href="#orgce8e384">1.2.18. 17: boysetsfrog/vimpc</a></li>
+<li><a href="#orge70384c">1.2.19. 18: mvdevs/jk2mv</a></li>
+<li><a href="#org2f427f9">1.2.20. 19: videoP/jaPRO</a></li>
+<li><a href="#orgcff09d0">1.2.21. 20: videoP/jaPRO</a></li>
+<li><a href="#org7a6755b">1.2.22. 21: ioquake/jedi-academy</a></li>
+<li><a href="#org31d5b21">1.2.23. 22: Blackvoxel/Blackvoxel</a></li>
+<li><a href="#org9836c96">1.2.24. 23: dpiers/Jedi-Academy</a></li>
+<li><a href="#org504d3d4">1.2.25. 24: JACoders/OpenJK</a></li>
+<li><a href="#org2d7dc04">1.2.26. 25: mosra/magnum</a></li>
+<li><a href="#org80ece9b">1.2.27. 26: MTG/gaia</a></li>
+<li><a href="#org36312d1">1.2.28. 27: Sphereserver/Source</a></li>
+<li><a href="#orgaf12318">1.2.29. 28: blackberry/DosBox</a></li>
+<li><a href="#org94bfde2">1.2.30. 29: jenslody/codeblocks</a></li>
+<li><a href="#org95b0f33">1.2.31. 30: dantarion/SF5DInput</a></li>
+<li><a href="#org5da0e0e">1.2.32. 31: hrydgard/ppsspp</a></li>
+<li><a href="#orge6643bc">1.2.33. 32: libretro/libretro-ppsspp</a></li>
+<li><a href="#org117877f">1.2.34. 33: jedis/jediacademy</a></li>
+<li><a href="#org85aad17">1.2.35. 34: gewang/ofxChucK</a></li>
+<li><a href="#orgee22c45">1.2.36. 35: FreeFalcon/freefalcon-central</a></li>
+<li><a href="#org6f320b6">1.2.37. 36: proteal/DOOM-Vis</a></li>
+<li><a href="#orgdcf843c">1.2.38. 37: JACoders/OpenJK</a></li>
+<li><a href="#org03fb947">1.2.39. 38: jedis/jediacademy</a></li>
+<li><a href="#org03ab905">1.2.40. 39: marynate/godot</a></li>
+<li><a href="#orgf6ee30d">1.2.41. 40: falltergeist/falltergeist</a></li>
+<li><a href="#orgd524124">1.2.42. 41: Kamal-Sadek/Liberal-Crime-Squad</a></li>
+<li><a href="#org6457ab6">1.2.43. 42: Sphereserver/Source</a></li>
+<li><a href="#org22118e2">1.2.44. 43: AscEmu/AscEmu<sub>TBC</sub></a></li>
+<li><a href="#org91e2e9c">1.2.45. 44: EasyWoW/easywow</a></li>
+<li><a href="#org31d9e4d">1.2.46. 45: EasyWoW/easywow</a></li>
+<li><a href="#org5599833">1.2.47. 46: bdejong/smartelectronix</a></li>
+<li><a href="#orgc7ae30c">1.2.48. 47: bdejong/smartelectronix</a></li>
+<li><a href="#orge992117">1.2.49. 48: SickheadGames/Torsion</a></li>
+<li><a href="#orgc7028dc">1.2.50. 49: dpiers/Jedi-Academy</a></li>
+<li><a href="#org861b04d">1.2.51. 50: xycaleth/OpenJK</a></li>
+<li><a href="#org749ca5b">1.2.52. 51: AscEmu/AscEmu</a></li>
+<li><a href="#org1b7ba8c">1.2.53. 52: Treeki/NewerSMBW</a></li>
+<li><a href="#org2d20850">1.2.54. 53: ioquake/jedi-academy</a></li>
+<li><a href="#org17dffa5">1.2.55. 54: arcemu/arcemu</a></li>
+<li><a href="#org535bc6e">1.2.56. 55: arcemu/arcemu</a></li>
+<li><a href="#orgc701e92">1.2.57. 56: FreeFalcon/freefalcon-central</a></li>
+<li><a href="#org90de8f7">1.2.58. 57: aracnoz/xbmc</a></li>
+<li><a href="#org8099e51">1.2.59. 58: dude719/Reclass-2015</a></li>
+<li><a href="#org843aa25">1.2.60. 59: gokudomatic/godot</a></li>
+<li><a href="#org183b585">1.2.61. 60: Stoiss/Rend2</a></li>
+<li><a href="#orge97f4fa">1.2.62. 61: entdark/jaMME</a></li>
+<li><a href="#org994730b">1.2.63. 62: thirddegree/HatchitGraphics</a></li>
+<li><a href="#org3a56397">1.2.64. 63: Planimeter/hl2sb-src</a></li>
+<li><a href="#org76c3ed2">1.2.65. 64: EasyWoW/easywow</a></li>
+<li><a href="#org241c9dc">1.2.66. 65: FreeFalcon/freefalcon-central</a></li>
+<li><a href="#org49a87bb">1.2.67. 66: grayj/Jedi-Outcast</a></li>
+<li><a href="#org0146598">1.2.68. 67: xLAva/JediOutcastLinux</a></li>
+<li><a href="#org8290eb7">1.2.69. 68: videoP/jaPRO</a></li>
+<li><a href="#org113cd68">1.2.70. 69: multitheftauto/mtasa-blue</a></li>
+<li><a href="#orgbbf1af4">1.2.71. 70: Doc-Ok/OpticalTracking</a></li>
+<li><a href="#org6ecd15b">1.2.72. 71: null&#x2013;/graviton</a></li>
+<li><a href="#orgfcd4e57">1.2.73. 72: marynate/godot</a></li>
+<li><a href="#org9e70b60">1.2.74. 73: cSploit/android.MSF</a></li>
+<li><a href="#org1e4b4c3">1.2.75. 74: sanikoyes/godot</a></li>
+<li><a href="#org0d70d9f">1.2.76. 75: Aleph-One-Marathon/alephone</a></li>
+<li><a href="#org8f54371">1.2.77. 76: mupen64plus-ae/mupen64plus-ae</a></li>
+<li><a href="#org187d2eb">1.2.78. 77: desura/Desurium</a></li>
+<li><a href="#orgde028b6">1.2.79. 78: beniz/seeks</a></li>
+<li><a href="#org5294e31">1.2.80. 79: tomahawk-player/tomahawk</a></li>
+<li><a href="#orgb030d32">1.2.81. 80: xmoeproject/X-moe</a></li>
+<li><a href="#org7bff04c">1.2.82. 81: M0ra/Core</a></li>
+<li><a href="#orgdcdfa32">1.2.83. 82: DraenorCore/DraenorCore</a></li>
+<li><a href="#orgd3dff88">1.2.84. 83: TrinityCoreLegacy/TrinityCore</a></li>
+<li><a href="#org93a1abb">1.2.85. 84: SkyFireArchives/SkyFireEMU<sub>406a</sub></a></li>
+<li><a href="#org8b99088">1.2.86. 85: iocellnetworks/ndas4windows</a></li>
+<li><a href="#org528604b">1.2.87. 86: Ultraschall/REAPER</a></li>
+<li><a href="#org239d059">1.2.88. 87: Gallio/mbunit-v3</a></li>
+<li><a href="#org222496f">1.2.89. 88: OLR-xray/OLR-3.0</a></li>
+<li><a href="#orgc07acd1">1.2.90. 89: Arkania/ArkCORE-NG</a></li>
+<li><a href="#orgef577d7">1.2.91. 90: amamiya/SYEngine</a></li>
+<li><a href="#org7ecd0da">1.2.92. 91: pac-dev/protoplug</a></li>
+<li><a href="#org2cc87c6">1.2.93. 92: 2DaT/Obxd</a></li>
+<li><a href="#orgb5499ab">1.2.94. 93: moranzcw/LeetCode</a></li>
+<li><a href="#org6f5966d">1.2.95. 94: sam-b/HackSysDriverExploits</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdb46d12" class="outline-2">
+<h2 id="orgdb46d12"><span class="section-number-2">1</span> Github Search</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org6ffe297" class="outline-3">
+<h3 id="org6ffe297"><span class="section-number-3">1.1</span> Query</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-org790b7de" class="outline-4">
+<h4 id="org790b7de"><span class="section-number-4">1.1.1</span> path</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+\.cpp$
+</p>
+</div>
+</div>
+<div id="outline-container-orgef6b6c9" class="outline-4">
+<h4 id="orgef6b6c9"><span class="section-number-4">1.1.2</span> limit</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<p>
+100 results
+</p>
+</div>
+</div>
+<div id="outline-container-orgc870871" class="outline-4">
+<h4 id="orgc870871"><span class="section-number-4">1.1.3</span> terms</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<p>
+\bfuck
+</p>
+</div>
+</div>
+<div id="outline-container-org65c47ce" class="outline-4">
+<h4 id="org65c47ce"><span class="section-number-4">1.1.4</span> date</h4>
+<div class="outline-text-4" id="text-1-1-4">
+<p>
+Thu Jul 19 15:57:19 NZST 2018
+</p>
+</div>
+</div>
+<div id="outline-container-org1172f54" class="outline-4">
+<h4 id="org1172f54"><span class="section-number-4">1.1.5</span> sql</h4>
+<div class="outline-text-4" id="text-1-1-5">
+<div class="org-src-container">
+<pre class="src src-sql">#standardSQL
+    <span style="color: #268bd2; font-weight: bold;">SELECT</span> 
+      sample_repo_name,
+      sample_path,
+      <span style="color: #268bd2;">(</span><span style="color: #268bd2; font-weight: bold;">SELECT</span> STRING_AGG<span style="color: #d75fd7;">(</span>snip<span style="color: #d75fd7;">)</span> <span style="color: #268bd2; font-weight: bold;">FROM</span> snippets.snip<span style="color: #268bd2;">)</span> <span style="color: #268bd2; font-weight: bold;">AS</span> snippets
+    <span style="color: #268bd2; font-weight: bold;">FROM</span> <span style="color: #268bd2;">(</span>
+      <span style="color: #268bd2; font-weight: bold;">SELECT</span> 
+        sample_repo_name, sample_path, REGEXP_EXTRACT_ALL<span style="color: #d75fd7;">(</span>content, r<span style="color: #2aa198;">'.*\bfuck.*'</span><span style="color: #d75fd7;">)</span> <span style="color: #268bd2; font-weight: bold;">AS</span> snip
+      <span style="color: #268bd2; font-weight: bold;">FROM</span> <span style="color: #d75fd7;">(</span>
+        <span style="color: #268bd2; font-weight: bold;">SELECT</span> sample_repo_name, content, sample_path <span style="color: #268bd2; font-weight: bold;">FROM</span> `bigquery-<span style="color: #268bd2; font-weight: bold;">public</span>-<span style="color: #268bd2; font-weight: bold;">data</span>.github_repos.sample_contents` <span style="color: #268bd2; font-weight: bold;">WHERE</span> REGEXP_CONTAINS<span style="color: #2aa198;">(</span>content, r<span style="color: #2aa198;">'\bfuck'</span><span style="color: #2aa198;">)</span> <span style="color: #268bd2; font-weight: bold;">AND</span> REGEXP_CONTAINS<span style="color: #2aa198;">(</span>sample_path, r<span style="color: #2aa198;">'\.cpp$'</span><span style="color: #2aa198;">)</span>
+      <span style="color: #d75fd7;">)</span>
+    <span style="color: #268bd2;">)</span> snippets <span style="color: #268bd2; font-weight: bold;">LIMIT</span> <span style="color: #d75fd7;">100</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org63f71ec" class="outline-3">
+<h3 id="org63f71ec"><span class="section-number-3">1.2</span> Results</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-org62b7f9d" class="outline-4">
+<h4 id="org62b7f9d"><span class="section-number-4">1.2.1</span> 0: privacore/open-source-search-engine</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/privacore/open-source-search-engine/blob/master/Msg5.cpp">github.com/privacore/open-source-search-engine/blob/master/Msg5.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/privacore/open-source-search-engine/master/Msg5.cpp">Msg5.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// . if it too is invalid, we are fucked
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org27132f2" class="outline-4">
+<h4 id="org27132f2"><span class="section-number-4">1.2.2</span> 1: privacore/open-source-search-engine</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/privacore/open-source-search-engine/blob/master/RdbTree.cpp">github.com/privacore/open-source-search-engine/blob/master/RdbTree.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/privacore/open-source-search-engine/master/RdbTree.cpp">RdbTree.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// now fucking rename it
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1137c5d" class="outline-4">
+<h4 id="org1137c5d"><span class="section-number-4">1.2.3</span> 2: BlastHackNet/mod<sub>s0beit</sub><sub>sa</sub></h4>
+<div class="outline-text-4" id="text-1-2-3">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/BlastHackNet/mod_s0beit_sa/blob/master/src/ini.cpp">github.com/BlastHackNet/mod<sub>s0beit</sub><sub>sa</sub>/blob/master/src/ini.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/BlastHackNet/mod_s0beit_sa/master/src/ini.cpp">ini.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">/* don't reload patches <span style="color: #268bd2;">(</span>cause this would fuck things up...<span style="color: #268bd2;">)</span> */
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc468cf2" class="outline-4">
+<h4 id="orgc468cf2"><span class="section-number-4">1.2.4</span> 3: syscoin/syscoin</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/syscoin/syscoin/blob/master/src/cert.cpp">github.com/syscoin/syscoin/blob/master/src/cert.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/syscoin/syscoin/master/src/cert.cpp">cert.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">//todo fucking suspect
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org79e8fb8" class="outline-4">
+<h4 id="org79e8fb8"><span class="section-number-4">1.2.5</span> 4: gigablast/open-source-search-engine</h4>
+<div class="outline-text-4" id="text-1-2-5">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/gigablast/open-source-search-engine/blob/master/UdpServer.cpp">github.com/gigablast/open-source-search-engine/blob/master/UdpServer.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/gigablast/open-source-search-engine/master/UdpServer.cpp">UdpServer.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// . before we had dead lock, I guess *s_tokenTime was fucked up
+// if we are out of mem basically, do not waste time fucking around
+    // don't count if timer fucked up
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4c27a6b" class="outline-4">
+<h4 id="org4c27a6b"><span class="section-number-4">1.2.6</span> 5: excessive/lua-bgfx</h4>
+<div class="outline-text-4" id="text-1-2-6">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/excessive/lua-bgfx/blob/master/wrap_bgfx.cpp">github.com/excessive/lua-bgfx/blob/master/wrap<sub>bgfx.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/excessive/lua-bgfx/master/wrap_bgfx.cpp">wrap<sub>bgfx.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">struct fuck_off_cpp <span style="color: #268bd2;">{</span>,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; buffer_lookup = <span style="color: #d75fd7;">{</span>,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; caps_lookup = <span style="color: #2aa198;">{</span>,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; clear_lookup = <span style="color: #67b11d;">{</span>,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; cube_map_lookup = <span style="color: #875f00;">{</span>,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; debug_lookup = <span style="color: #268bd2;">{</span>,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; hmd_lookup = <span style="color: #d75fd7;">{</span>,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; reset_lookup = <span style="color: #2aa198;">{</span>,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; state_lookup = <span style="color: #9cb6ad;">{</span>,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; stencil_lookup = <span style="color: #268bd2;">{</span>,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; submit_eye_lookup = <span style="color: #d75fd7;">{</span>,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; texture_lookup = <span style="color: #2aa198;">{</span>,static std::map&lt;const char*, uint32_t, fuck_off_cpp&gt; view_lookup = <span style="color: #67b11d;">{</span>
+    static std::map&lt;const char*, bgfx_attrib_t, fuck_off_cpp&gt; format_lookup = <span style="color: #875f00;">{</span>
+    static std::map&lt;const char*, bgfx_attrib_type_t, fuck_off_cpp&gt; type_lookup = <span style="color: #268bd2;">{</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcbbf3c6" class="outline-4">
+<h4 id="orgcbbf3c6"><span class="section-number-4">1.2.7</span> 6: KeckCAVES/Vrui</h4>
+<div class="outline-text-4" id="text-1-2-7">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/KeckCAVES/Vrui/blob/master/USB/Device.cpp">github.com/KeckCAVES/Vrui/blob/master/USB/Device.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/KeckCAVES/Vrui/master/USB/Device.cpp">Device.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">/* This can theoretically not fail; if it does, we're fucked: */
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6cbbd4e" class="outline-4">
+<h4 id="org6cbbd4e"><span class="section-number-4">1.2.8</span> 7: mupen64plus/mupen64plus-video-rice</h4>
+<div class="outline-text-4" id="text-1-2-8">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/mupen64plus/mupen64plus-video-rice/blob/master/src/Render.cpp">github.com/mupen64plus/mupen64plus-video-rice/blob/master/src/Render.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/mupen64plus/mupen64plus-video-rice/master/src/Render.cpp">Render.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// don't get rendered. I hope this doesn't fuck anything else up.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcd5dc89" class="outline-4">
+<h4 id="orgcd5dc89"><span class="section-number-4">1.2.9</span> 8: Ancurio/mkxp</h4>
+<div class="outline-text-4" id="text-1-2-9">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/Ancurio/mkxp/blob/master/src/sprite.cpp">github.com/Ancurio/mkxp/blob/master/src/sprite.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/Ancurio/mkxp/master/src/sprite.cpp">sprite.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">/* RMVX does this, and I have no fucking clue why */
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org221f8b5" class="outline-4">
+<h4 id="org221f8b5"><span class="section-number-4">1.2.10</span> 9: sphinxsearch/sphinx</h4>
+<div class="outline-text-4" id="text-1-2-10">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/sphinxsearch/sphinx/blob/master/src/searchd.cpp">github.com/sphinxsearch/sphinx/blob/master/src/searchd.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/sphinxsearch/sphinx/master/src/searchd.cpp">searchd.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// fix MSVC 2005 fuckup
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1f8c622" class="outline-4">
+<h4 id="org1f8c622"><span class="section-number-4">1.2.11</span> 10: ArmageddonGames/ZeldaClassic</h4>
+<div class="outline-text-4" id="text-1-2-11">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/ArmageddonGames/ZeldaClassic/blob/master/src/zq_custom.cpp">github.com/ArmageddonGames/ZeldaClassic/blob/master/src/zq<sub>custom.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/ArmageddonGames/ZeldaClassic/master/src/zq_custom.cpp">zq<sub>custom.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">//I can't get the fucking dialog to handle a simple copy paste so I stuck it here else I'm going to rage kill something.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org04e4eea" class="outline-4">
+<h4 id="org04e4eea"><span class="section-number-4">1.2.12</span> 11: Razish/japp</h4>
+<div class="outline-text-4" id="text-1-2-12">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/Razish/japp/blob/master/game/g_vehicles.cpp">github.com/Razish/japp/blob/master/game/g<sub>vehicles.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/Razish/japp/master/game/g_vehicles.cpp">g<sub>vehicles.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">if <span style="color: #268bd2;">(</span> pVeh-&gt;m_pVehicleInfo-&gt;type == VH_WALKER <span style="color: #268bd2;">)</span> <span style="color: #268bd2;">{</span>//just get the fuck out
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org348b56b" class="outline-4">
+<h4 id="org348b56b"><span class="section-number-4">1.2.13</span> 12: HydraIRC/hydrairc</h4>
+<div class="outline-text-4" id="text-1-2-13">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/HydraIRC/hydrairc/blob/master/HydraIRC/MainFrm.cpp">github.com/HydraIRC/hydrairc/blob/master/HydraIRC/MainFrm.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/HydraIRC/hydrairc/master/HydraIRC/MainFrm.cpp">MainFrm.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">//m_stateMgr.Store<span style="color: #268bd2;">()</span>; // why the fuck is this here ?
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1b12202" class="outline-4">
+<h4 id="org1b12202"><span class="section-number-4">1.2.14</span> 13: KeckCAVES/Vrui</h4>
+<div class="outline-text-4" id="text-1-2-14">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/KeckCAVES/Vrui/blob/master/Vrui/ToolManager.cpp">github.com/KeckCAVES/Vrui/blob/master/Vrui/ToolManager.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/KeckCAVES/Vrui/master/Vrui/ToolManager.cpp">ToolManager.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">/* Unravel tool creation if shit got fucked up: */
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb51a6be" class="outline-4">
+<h4 id="orgb51a6be"><span class="section-number-4">1.2.15</span> 14: openmoh/openmohaa</h4>
+<div class="outline-text-4" id="text-1-2-15">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/openmoh/openmohaa/blob/master/code/game/player.cpp">github.com/openmoh/openmohaa/blob/master/code/game/player.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/openmoh/openmohaa/master/code/game/player.cpp">player.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// fucking compiler bug
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5502c6b" class="outline-4">
+<h4 id="org5502c6b"><span class="section-number-4">1.2.16</span> 15: JACoders/OpenJK</h4>
+<div class="outline-text-4" id="text-1-2-16">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/JACoders/OpenJK/blob/master/code/ui/ui_saber.cpp">github.com/JACoders/OpenJK/blob/master/code/ui/ui<sub>saber.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/JACoders/OpenJK/master/code/ui/ui_saber.cpp">ui<sub>saber.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text"><span style="color: #268bd2;">{</span>//FIXME: these get fucked by vid_restarts
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga34b177" class="outline-4">
+<h4 id="orga34b177"><span class="section-number-4">1.2.17</span> 16: ioquake/jedi-academy</h4>
+<div class="outline-text-4" id="text-1-2-17">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/ioquake/jedi-academy/blob/master/code/ui/ui_saber.cpp">github.com/ioquake/jedi-academy/blob/master/code/ui/ui<sub>saber.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/ioquake/jedi-academy/master/code/ui/ui_saber.cpp">ui<sub>saber.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text"><span style="color: #268bd2;">{</span>//FIXME: these get fucked by vid_restarts
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgce8e384" class="outline-4">
+<h4 id="orgce8e384"><span class="section-number-4">1.2.18</span> 17: boysetsfrog/vimpc</h4>
+<div class="outline-text-4" id="text-1-2-18">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/boysetsfrog/vimpc/blob/master/src/mode/command.cpp">github.com/boysetsfrog/vimpc/blob/master/src/mode/command.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/boysetsfrog/vimpc/master/src/mode/command.cpp">command.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// by calling this fucking again
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge70384c" class="outline-4">
+<h4 id="orge70384c"><span class="section-number-4">1.2.19</span> 18: mvdevs/jk2mv</h4>
+<div class="outline-text-4" id="text-1-2-19">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/mvdevs/jk2mv/blob/master/src/qcommon/stri.cpp">github.com/mvdevs/jk2mv/blob/master/src/qcommon/stri.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/mvdevs/jk2mv/master/src/qcommon/stri.cpp">stri.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// fix problems caused by fucking morons entering clever "rich" chars in to new text files *after* the auto-stripper
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2f427f9" class="outline-4">
+<h4 id="org2f427f9"><span class="section-number-4">1.2.20</span> 19: videoP/jaPRO</h4>
+<div class="outline-text-4" id="text-1-2-20">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/videoP/jaPRO/blob/master/code/game/AI_Jedi.cpp">github.com/videoP/jaPRO/blob/master/code/game/AI<sub>Jedi.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/videoP/jaPRO/master/code/game/AI_Jedi.cpp">AI<sub>Jedi.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text"><span style="color: #268bd2;">{</span>//fuck, jump instead
+  <span style="color: #d75fd7;">{</span>//fuck it, just force it
+<span style="color: #2aa198;">{</span>//fuck, jump instead
+  <span style="color: #67b11d;">{</span>//fuck it, just force it
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcff09d0" class="outline-4">
+<h4 id="orgcff09d0"><span class="section-number-4">1.2.21</span> 20: videoP/jaPRO</h4>
+<div class="outline-text-4" id="text-1-2-21">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/videoP/jaPRO/blob/master/code/ui/ui_shared.cpp">github.com/videoP/jaPRO/blob/master/code/ui/ui<sub>shared.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/videoP/jaPRO/master/code/ui/ui_shared.cpp">ui<sub>shared.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// vm fuckage
+        // vm fuckage
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7a6755b" class="outline-4">
+<h4 id="org7a6755b"><span class="section-number-4">1.2.22</span> 21: ioquake/jedi-academy</h4>
+<div class="outline-text-4" id="text-1-2-22">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/ioquake/jedi-academy/blob/master/code/ui/ui_shared.cpp">github.com/ioquake/jedi-academy/blob/master/code/ui/ui<sub>shared.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/ioquake/jedi-academy/master/code/ui/ui_shared.cpp">ui<sub>shared.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// vm fuckage
+        // vm fuckage
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org31d5b21" class="outline-4">
+<h4 id="org31d5b21"><span class="section-number-4">1.2.23</span> 22: Blackvoxel/Blackvoxel</h4>
+<div class="outline-text-4" id="text-1-2-23">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/Blackvoxel/Blackvoxel/blob/master/src/ZWorldConvert.cpp">github.com/Blackvoxel/Blackvoxel/blob/master/src/ZWorldConvert.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/Blackvoxel/Blackvoxel/master/src/ZWorldConvert.cpp">ZWorldConvert.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// Not yet implemented on windows. These fucking "standards headers" don't have same function subsets accross platforms...
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9836c96" class="outline-4">
+<h4 id="org9836c96"><span class="section-number-4">1.2.24</span> 23: dpiers/Jedi-Academy</h4>
+<div class="outline-text-4" id="text-1-2-24">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/dpiers/Jedi-Academy/blob/master/code/game/g_client.cpp">github.com/dpiers/Jedi-Academy/blob/master/code/game/g<sub>client.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/dpiers/Jedi-Academy/master/code/game/g_client.cpp">g<sub>client.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">//SIGH... fucks him up BAD
+//SIGH... spine wiggles fuck all this shit
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org504d3d4" class="outline-4">
+<h4 id="org504d3d4"><span class="section-number-4">1.2.25</span> 24: JACoders/OpenJK</h4>
+<div class="outline-text-4" id="text-1-2-25">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/JACoders/OpenJK/blob/master/code/qcommon/strip.cpp">github.com/JACoders/OpenJK/blob/master/code/qcommon/strip.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/JACoders/OpenJK/master/code/qcommon/strip.cpp">strip.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// fix problems caused by fucking morons entering clever "rich" chars in to new text files *after* the auto-stripper
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2d7dc04" class="outline-4">
+<h4 id="org2d7dc04"><span class="section-number-4">1.2.26</span> 25: mosra/magnum</h4>
+<div class="outline-text-4" id="text-1-2-26">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/mosra/magnum/blob/master/src/Magnum/Sampler.cpp">github.com/mosra/magnum/blob/master/src/Magnum/Sampler.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/mosra/magnum/master/src/Magnum/Sampler.cpp">Sampler.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">/* Check correctness of binary OR in setMinificationFilter<span style="color: #268bd2;">()</span>. If nobody fucks
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org80ece9b" class="outline-4">
+<h4 id="org80ece9b"><span class="section-number-4">1.2.27</span> 26: MTG/gaia</h4>
+<div class="outline-text-4" id="text-1-2-27">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/MTG/gaia/blob/master/src/algorithms/rca.cpp">github.com/MTG/gaia/blob/master/src/algorithms/rca.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/MTG/gaia/master/src/algorithms/rca.cpp">rca.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">* @todo figure out what the fuck is going on here. Works exactly like the
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org36312d1" class="outline-4">
+<h4 id="org36312d1"><span class="section-number-4">1.2.28</span> 27: Sphereserver/Source</h4>
+<div class="outline-text-4" id="text-1-2-28">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/Sphereserver/Source/blob/master/src/common/CString.cpp">github.com/Sphereserver/Source/blob/master/src/common/CString.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/Sphereserver/Source/master/src/common/CString.cpp">CString.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">//  we should lower here as well. fucking shit!
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgaf12318" class="outline-4">
+<h4 id="orgaf12318"><span class="section-number-4">1.2.29</span> 28: blackberry/DosBox</h4>
+<div class="outline-text-4" id="text-1-2-29">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/blackberry/DosBox/blob/master/src/dos/drive_local.cpp">github.com/blackberry/DosBox/blob/master/src/dos/drive<sub>local.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/blackberry/DosBox/master/src/dos/drive_local.cpp">drive<sub>local.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">//TODO Maybe use fflush, but that seemed to fuck up in visual c
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org94bfde2" class="outline-4">
+<h4 id="org94bfde2"><span class="section-number-4">1.2.30</span> 29: jenslody/codeblocks</h4>
+<div class="outline-text-4" id="text-1-2-30">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/jenslody/codeblocks/blob/master/src/sdk/filemanager.cpp">github.com/jenslody/codeblocks/blob/master/src/sdk/filemanager.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/jenslody/codeblocks/master/src/sdk/filemanager.cpp">filemanager.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// wxRename is simply a fuckshit wrapper around a CRT function which does not work the way
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org95b0f33" class="outline-4">
+<h4 id="org95b0f33"><span class="section-number-4">1.2.31</span> 30: dantarion/SF5DInput</h4>
+<div class="outline-text-4" id="text-1-2-31">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/dantarion/SF5DInput/blob/master/xinput1_3/xinput1_3.cpp">github.com/dantarion/SF5DInput/blob/master/xinput1<sub>3</sub>/xinput1<sub>3.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/dantarion/SF5DInput/master/xinput1_3/xinput1_3.cpp">xinput1<sub>3.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">printf<span style="color: #268bd2;">(</span>"SetDataFormat is fucked %x\n", hr<span style="color: #268bd2;">)</span>;
+printf<span style="color: #268bd2;">(</span>"Acquire is fucked %x\n", hr<span style="color: #268bd2;">)</span>;
+printf<span style="color: #268bd2;">(</span>"Coop is fucked %x\n", hr<span style="color: #268bd2;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5da0e0e" class="outline-4">
+<h4 id="org5da0e0e"><span class="section-number-4">1.2.32</span> 31: hrydgard/ppsspp</h4>
+<div class="outline-text-4" id="text-1-2-32">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/hrydgard/ppsspp/blob/master/Core/HLE/sceNetAdhoc.cpp">github.com/hrydgard/ppsspp/blob/master/Core/HLE/sceNetAdhoc.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/hrydgard/ppsspp/master/Core/HLE/sceNetAdhoc.cpp">sceNetAdhoc.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// Allocate Memory <span style="color: #268bd2;">(</span>If this fails... we are fucked.<span style="color: #268bd2;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge6643bc" class="outline-4">
+<h4 id="orge6643bc"><span class="section-number-4">1.2.33</span> 32: libretro/libretro-ppsspp</h4>
+<div class="outline-text-4" id="text-1-2-33">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/libretro/libretro-ppsspp/blob/master/Core/HLE/sceNetAdhoc.cpp">github.com/libretro/libretro-ppsspp/blob/master/Core/HLE/sceNetAdhoc.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/libretro/libretro-ppsspp/master/Core/HLE/sceNetAdhoc.cpp">sceNetAdhoc.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// Allocate Memory <span style="color: #268bd2;">(</span>If this fails... we are fucked.<span style="color: #268bd2;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org117877f" class="outline-4">
+<h4 id="org117877f"><span class="section-number-4">1.2.34</span> 33: jedis/jediacademy</h4>
+<div class="outline-text-4" id="text-1-2-34">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/jedis/jediacademy/blob/master/code/win32/win_glimp.cpp">github.com/jedis/jediacademy/blob/master/code/win32/win<sub>glimp.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/jedis/jediacademy/master/code/win32/win_glimp.cpp">win<sub>glimp.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">//  <span style="color: #ffff00; background-color: #cccc00;">error</span> box that'll only appear if something's seriously fucked then I'm going to fallback to
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org85aad17" class="outline-4">
+<h4 id="org85aad17"><span class="section-number-4">1.2.35</span> 34: gewang/ofxChucK</h4>
+<div class="outline-text-4" id="text-1-2-35">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/gewang/ofxChucK/blob/master/libs/chuck/util_opsc.cpp">github.com/gewang/ofxChucK/blob/master/libs/chuck/util<sub>opsc.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/gewang/ofxChucK/master/libs/chuck/util_opsc.cpp">util<sub>opsc.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// next write _may_ fuck with _in_read 
+ // fuck...back to the todo...
+    // fprintf<span style="color: #268bd2;">(</span>stderr, "fuck!  fucking buffer reallocation <span style="color: #ffff00; background-color: #cccc00;">error</span>!\n"<span style="color: #268bd2;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgee22c45" class="outline-4">
+<h4 id="orgee22c45"><span class="section-number-4">1.2.36</span> 35: FreeFalcon/freefalcon-central</h4>
+<div class="outline-text-4" id="text-1-2-36">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/FreeFalcon/freefalcon-central/blob/master/src/sim/rwr/tracklst.cpp">github.com/FreeFalcon/freefalcon-central/blob/master/src/sim/rwr/tracklst.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/FreeFalcon/freefalcon-central/master/src/sim/rwr/tracklst.cpp">tracklst.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">detectionList<span style="color: #268bd2;">[</span>j<span style="color: #268bd2;">]</span> = detectionList<span style="color: #268bd2;">[</span>j - 1<span style="color: #268bd2;">]</span>; //ME123 this loop was fucked up. fixed.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6f320b6" class="outline-4">
+<h4 id="org6f320b6"><span class="section-number-4">1.2.37</span> 36: proteal/DOOM-Vis</h4>
+<div class="outline-text-4" id="text-1-2-37">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/proteal/DOOM-Vis/blob/master/Doom/DoomSrc/dstrings.cpp">github.com/proteal/DOOM-Vis/blob/master/Doom/DoomSrc/dstrings.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/proteal/DOOM-Vis/master/Doom/DoomSrc/dstrings.cpp">dstrings.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">"fuck you, pussy!\nget the fuck out!",
+"hey, ron! can we say\n'fuck' in the game?",
+"suck it down, asshole!\nyou're a fucking wimp!",
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdcf843c" class="outline-4">
+<h4 id="orgdcf843c"><span class="section-number-4">1.2.38</span> 37: JACoders/OpenJK</h4>
+<div class="outline-text-4" id="text-1-2-38">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/JACoders/OpenJK/blob/master/code/cgame/cg_players.cpp">github.com/JACoders/OpenJK/blob/master/code/cgame/cg<sub>players.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/JACoders/OpenJK/master/code/cgame/cg_players.cpp">cg<sub>players.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">&amp;&amp; !G_ClassHasBadBones<span style="color: #268bd2;">(</span> cent-&gt;gent-&gt;client-&gt;NPC_class <span style="color: #268bd2;">)</span> <span style="color: #e0211d; text-decoration: overline;">)</span>//these guys' bones are so fucked up we shouldn't even bother with this motion bone comp...
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org03fb947" class="outline-4">
+<h4 id="org03fb947"><span class="section-number-4">1.2.39</span> 38: jedis/jediacademy</h4>
+<div class="outline-text-4" id="text-1-2-39">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/jedis/jediacademy/blob/master/code/cgame/cg_players.cpp">github.com/jedis/jediacademy/blob/master/code/cgame/cg<sub>players.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/jedis/jediacademy/master/code/cgame/cg_players.cpp">cg<sub>players.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">&amp;&amp; !G_ClassHasBadBones<span style="color: #268bd2;">(</span> cent-&gt;gent-&gt;client-&gt;NPC_class <span style="color: #268bd2;">)</span> <span style="color: #e0211d; text-decoration: overline;">)</span>//these guys' bones are so fucked up we shouldn't even bother with this motion bone comp...
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org03ab905" class="outline-4">
+<h4 id="org03ab905"><span class="section-number-4">1.2.40</span> 39: marynate/godot</h4>
+<div class="outline-text-4" id="text-1-2-40">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/marynate/godot/blob/master/scene/3d/physics_body.cpp">github.com/marynate/godot/blob/master/scene/3d/physics<sub>body.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/marynate/godot/master/scene/3d/physics_body.cpp">physics<sub>body.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">//eh.. fuck
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf6ee30d" class="outline-4">
+<h4 id="orgf6ee30d"><span class="section-number-4">1.2.41</span> 40: falltergeist/falltergeist</h4>
+<div class="outline-text-4" id="text-1-2-41">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/falltergeist/falltergeist/blob/master/src/Graphics/Renderer.cpp">github.com/falltergeist/falltergeist/blob/master/src/Graphics/Renderer.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/falltergeist/falltergeist/master/src/Graphics/Renderer.cpp">Renderer.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// specifically request 3.2, because fucking Mesa ignores core flag with version &lt; 3
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd524124" class="outline-4">
+<h4 id="orgd524124"><span class="section-number-4">1.2.42</span> 41: Kamal-Sadek/Liberal-Crime-Squad</h4>
+<div class="outline-text-4" id="text-1-2-42">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/Kamal-Sadek/Liberal-Crime-Squad/blob/master/src/creature/creature.cpp">github.com/Kamal-Sadek/Liberal-Crime-Squad/blob/master/src/creature/creature.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/Kamal-Sadek/Liberal-Crime-Squad/master/src/creature/creature.cpp">creature.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// Charisma wants to know: How fucked up does your face look?
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6457ab6" class="outline-4">
+<h4 id="org6457ab6"><span class="section-number-4">1.2.43</span> 42: Sphereserver/Source</h4>
+<div class="outline-text-4" id="text-1-2-43">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/Sphereserver/Source/blob/master/src/graysvr/CResource.cpp">github.com/Sphereserver/Source/blob/master/src/graysvr/CResource.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/Sphereserver/Source/master/src/graysvr/CResource.cpp">CResource.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// <span style="color: #ffff00; background-color: #cccc00;">NOTE:</span> allow partial match syntax *fuck* or ass <span style="color: #268bd2;">(</span>alone<span style="color: #268bd2;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org22118e2" class="outline-4">
+<h4 id="org22118e2"><span class="section-number-4">1.2.44</span> 43: AscEmu/AscEmu<sub>TBC</sub></h4>
+<div class="outline-text-4" id="text-1-2-44">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/AscEmu/AscEmu_TBC/blob/master/src/world/SpellTarget.cpp">github.com/AscEmu/AscEmu<sub>TBC</sub>/blob/master/src/world/SpellTarget.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/AscEmu/AscEmu_TBC/master/src/world/SpellTarget.cpp">SpellTarget.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// O fuck we are contagious...
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org91e2e9c" class="outline-4">
+<h4 id="org91e2e9c"><span class="section-number-4">1.2.45</span> 44: EasyWoW/easywow</h4>
+<div class="outline-text-4" id="text-1-2-45">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/EasyWoW/easywow/blob/master/src/worldserver/Spell.cpp">github.com/EasyWoW/easywow/blob/master/src/worldserver/Spell.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/EasyWoW/easywow/master/src/worldserver/Spell.cpp">Spell.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">        // if we're over 500 get fucked anyway.. your gonna lag! and this stops cheaters too
+// fuck bytebuffers
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org31d9e4d" class="outline-4">
+<h4 id="org31d9e4d"><span class="section-number-4">1.2.46</span> 45: EasyWoW/easywow</h4>
+<div class="outline-text-4" id="text-1-2-46">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/EasyWoW/easywow/blob/master/src/worldserver/World.cpp">github.com/EasyWoW/easywow/blob/master/src/worldserver/World.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/EasyWoW/easywow/master/src/worldserver/World.cpp">World.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// Grab the first fucker from the queue, but guard of course, since
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5599833" class="outline-4">
+<h4 id="org5599833"><span class="section-number-4">1.2.47</span> 46: bdejong/smartelectronix</h4>
+<div class="outline-text-4" id="text-1-2-47">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/bdejong/smartelectronix/blob/master/Cyanide2/CyanideEffect.cpp">github.com/bdejong/smartelectronix/blob/master/Cyanide2/CyanideEffect.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/bdejong/smartelectronix/master/Cyanide2/CyanideEffect.cpp">CyanideEffect.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">//the borg seemed to have fucked up the way of callin' this in wavelab!
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc7ae30c" class="outline-4">
+<h4 id="orgc7ae30c"><span class="section-number-4">1.2.48</span> 47: bdejong/smartelectronix</h4>
+<div class="outline-text-4" id="text-1-2-48">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/bdejong/smartelectronix/blob/master/SupaTrigga/SupaTrigger.cpp">github.com/bdejong/smartelectronix/blob/master/SupaTrigga/SupaTrigger.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/bdejong/smartelectronix/master/SupaTrigga/SupaTrigger.cpp">SupaTrigger.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">"man im fucked!"
+ok, lets look at the current time sig <span style="color: #268bd2;">(</span>current as in i hope for fuck sake it didnt change
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge992117" class="outline-4">
+<h4 id="orge992117"><span class="section-number-4">1.2.49</span> 48: SickheadGames/Torsion</h4>
+<div class="outline-text-4" id="text-1-2-49">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/SickheadGames/Torsion/blob/master/code/Torsion/MainFrame.cpp">github.com/SickheadGames/Torsion/blob/master/code/Torsion/MainFrame.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/SickheadGames/Torsion/master/code/Torsion/MainFrame.cpp">MainFrame.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// This keeps the accellerators from fucking up
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc7028dc" class="outline-4">
+<h4 id="orgc7028dc"><span class="section-number-4">1.2.50</span> 49: dpiers/Jedi-Academy</h4>
+<div class="outline-text-4" id="text-1-2-50">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/dpiers/Jedi-Academy/blob/master/codemp/win32/win_glimp.cpp">github.com/dpiers/Jedi-Academy/blob/master/codemp/win32/win<sub>glimp.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/dpiers/Jedi-Academy/master/codemp/win32/win_glimp.cpp">win<sub>glimp.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">//  <span style="color: #ffff00; background-color: #cccc00;">error</span> box that'll only appear if something's seriously fucked then I'm going to fallback to
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org861b04d" class="outline-4">
+<h4 id="org861b04d"><span class="section-number-4">1.2.51</span> 50: xycaleth/OpenJK</h4>
+<div class="outline-text-4" id="text-1-2-51">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/xycaleth/OpenJK/blob/master/codemp/win32/win_input.cpp">github.com/xycaleth/OpenJK/blob/master/codemp/win32/win<sub>input.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/xycaleth/OpenJK/master/codemp/win32/win_input.cpp">win<sub>input.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">/* hi microsoft, go fuck yourself for flipping left stick's Y axis for no reason... */
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org749ca5b" class="outline-4">
+<h4 id="org749ca5b"><span class="section-number-4">1.2.52</span> 51: AscEmu/AscEmu</h4>
+<div class="outline-text-4" id="text-1-2-52">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/AscEmu/AscEmu/blob/master/src/world/GuildHandler.cpp">github.com/AscEmu/AscEmu/blob/master/src/world/GuildHandler.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/AscEmu/AscEmu/master/src/world/GuildHandler.cpp">GuildHandler.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// dis is fucked up mate
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1b7ba8c" class="outline-4">
+<h4 id="org1b7ba8c"><span class="section-number-4">1.2.53</span> 52: Treeki/NewerSMBW</h4>
+<div class="outline-text-4" id="text-1-2-53">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/Treeki/NewerSMBW/blob/master/Kamek/src/bossSamurshai.cpp">github.com/Treeki/NewerSMBW/blob/master/Kamek/src/bossSamurshai.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/Treeki/NewerSMBW/master/Kamek/src/bossSamurshai.cpp">bossSamurshai.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// These fucking rects do something for the tile rect
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2d20850" class="outline-4">
+<h4 id="org2d20850"><span class="section-number-4">1.2.54</span> 53: ioquake/jedi-academy</h4>
+<div class="outline-text-4" id="text-1-2-54">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/ioquake/jedi-academy/blob/master/code/game/NPC_reactions.cpp">github.com/ioquake/jedi-academy/blob/master/code/game/NPC<sub>reactions.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/ioquake/jedi-academy/master/code/game/NPC_reactions.cpp">NPC<sub>reactions.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">//ask them what the fuck they're doing
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org17dffa5" class="outline-4">
+<h4 id="org17dffa5"><span class="section-number-4">1.2.55</span> 54: arcemu/arcemu</h4>
+<div class="outline-text-4" id="text-1-2-55">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/arcemu/arcemu/blob/master/src/arcemu-world/MapMgr.cpp">github.com/arcemu/arcemu/blob/master/src/arcemu-world/MapMgr.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/arcemu/arcemu/master/src/arcemu-world/MapMgr.cpp">MapMgr.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// stupid fucked up code in places.. i hate doing this but i've got to :&lt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org535bc6e" class="outline-4">
+<h4 id="org535bc6e"><span class="section-number-4">1.2.56</span> 55: arcemu/arcemu</h4>
+<div class="outline-text-4" id="text-1-2-56">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/arcemu/arcemu/blob/master/src/arcemu-world/Player.cpp">github.com/arcemu/arcemu/blob/master/src/arcemu-world/Player.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/arcemu/arcemu/master/src/arcemu-world/Player.cpp">Player.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// fuck bytebuffers :D
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc701e92" class="outline-4">
+<h4 id="orgc701e92"><span class="section-number-4">1.2.57</span> 56: FreeFalcon/freefalcon-central</h4>
+<div class="outline-text-4" id="text-1-2-57">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/FreeFalcon/freefalcon-central/blob/master/src/sim/simlib/geometry.cpp">github.com/FreeFalcon/freefalcon-central/blob/master/src/sim/simlib/geometry.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/FreeFalcon/freefalcon-central/master/src/sim/simlib/geometry.cpp">geometry.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">int fucked_count;
+fucked_count = 0; // HACK HACK HACK HACK HACK HACK HACK hackerydoodar HACK
+// KCK: I changed this to use the math lib's mlTrig function. Hope I didn't fuck it up.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org90de8f7" class="outline-4">
+<h4 id="org90de8f7"><span class="section-number-4">1.2.58</span> 57: aracnoz/xbmc</h4>
+<div class="outline-text-4" id="text-1-2-58">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/aracnoz/xbmc/blob/master/xbmc/filesystem/ZipFile.cpp">github.com/aracnoz/xbmc/blob/master/xbmc/filesystem/ZipFile.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/aracnoz/xbmc/master/xbmc/filesystem/ZipFile.cpp">ZipFile.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">else if <span style="color: #268bd2;">(</span>m_szStartOfStringBuffer<span style="color: #d75fd7;">[</span>i<span style="color: #d75fd7;">]</span> == '\n'<span style="color: #268bd2;">)</span> // unix or fucked up win32 endings
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8099e51" class="outline-4">
+<h4 id="org8099e51"><span class="section-number-4">1.2.59</span> 58: dude719/Reclass-2015</h4>
+<div class="outline-text-4" id="text-1-2-59">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/dude719/Reclass-2015/blob/master/ReClass%202015/ReClass2015.cpp">github.com/dude719/Reclass-2015/blob/master/ReClass 2015/ReClass2015.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/dude719/Reclass-2015/master/ReClass%202015/ReClass2015.cpp">ReClass2015.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">//Fix Links... very ghetto this whole thing is just fucked
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org843aa25" class="outline-4">
+<h4 id="org843aa25"><span class="section-number-4">1.2.60</span> 59: gokudomatic/godot</h4>
+<div class="outline-text-4" id="text-1-2-60">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/gokudomatic/godot/blob/master/scene/2d/physics_body_2d.cpp">github.com/gokudomatic/godot/blob/master/scene/2d/physics<sub>body</sub><sub>2d.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/gokudomatic/godot/master/scene/2d/physics_body_2d.cpp">physics<sub>body</sub><sub>2d.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">//eh.. fuck
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org183b585" class="outline-4">
+<h4 id="org183b585"><span class="section-number-4">1.2.61</span> 60: Stoiss/Rend2</h4>
+<div class="outline-text-4" id="text-1-2-61">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/Stoiss/Rend2/blob/master/tools/ModView/modviewdoc.cpp">github.com/Stoiss/Rend2/blob/master/tools/ModView/modviewdoc.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/Stoiss/Rend2/master/tools/ModView/modviewdoc.cpp">modviewdoc.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// <span style="color: #ffff00; background-color: #cccc00;">make</span> absolutely fucking sure this bastard does as it's told...
+//  and since the CWinApp class can't even ask what it's own fucking document pointer is without doing a hundred
+//  lines of shit deep within MFC then I'm going to fuck the whole lot off by storing a pointer which I can then
+// All this fucking bollocks was because MS insist on doing their own switch-comparing so I can't pass in 'real'
+//  switches, I have to use this '#' crap. Stupid fucking incompetent MS dickheads. Like how hard would it be to
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge97f4fa" class="outline-4">
+<h4 id="orge97f4fa"><span class="section-number-4">1.2.62</span> 61: entdark/jaMME</h4>
+<div class="outline-text-4" id="text-1-2-62">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/entdark/jaMME/blob/master/codemp/rd-vanilla/tr_shader.cpp">github.com/entdark/jaMME/blob/master/codemp/rd-vanilla/tr<sub>shader.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/entdark/jaMME/master/codemp/rd-vanilla/tr_shader.cpp">tr<sub>shader.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// Do a simple check on the shader structure in that file to <span style="color: #ffff00; background-color: #cccc00;">make</span> sure one bad shader file cannot fuck up all other shaders.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org994730b" class="outline-4">
+<h4 id="org994730b"><span class="section-number-4">1.2.63</span> 62: thirddegree/HatchitGraphics</h4>
+<div class="outline-text-4" id="text-1-2-63">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/thirddegree/HatchitGraphics/blob/master/source/vulkan/ht_vkpipeline.cpp">github.com/thirddegree/HatchitGraphics/blob/master/source/vulkan/ht<sub>vkpipeline.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/thirddegree/HatchitGraphics/master/source/vulkan/ht_vkpipeline.cpp">ht<sub>vkpipeline.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">VkDescriptorSetLayout layout = m_rootLayout-&gt;VKGetDescriptorSetLayouts<span style="color: #268bd2;">()[</span>1<span style="color: #268bd2;">]</span>; //Hack as fuck
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3a56397" class="outline-4">
+<h4 id="org3a56397"><span class="section-number-4">1.2.64</span> 63: Planimeter/hl2sb-src</h4>
+<div class="outline-text-4" id="text-1-2-64">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/Planimeter/hl2sb-src/blob/master/src/game/shared/beam_shared.cpp">github.com/Planimeter/hl2sb-src/blob/master/src/game/shared/beam<sub>shared.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/Planimeter/hl2sb-src/master/src/game/shared/beam_shared.cpp">beam<sub>shared.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// Delete right away since it's fucked up
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org76c3ed2" class="outline-4">
+<h4 id="org76c3ed2"><span class="section-number-4">1.2.65</span> 64: EasyWoW/easywow</h4>
+<div class="outline-text-4" id="text-1-2-65">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/EasyWoW/easywow/blob/master/src/worldserver/Spell_Rogue.cpp">github.com/EasyWoW/easywow/blob/master/src/worldserver/Spell<sub>Rogue.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/EasyWoW/easywow/master/src/worldserver/Spell_Rogue.cpp">Spell<sub>Rogue.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// Better to add custom cooldown procedure then fucking with entry, or not!!
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org241c9dc" class="outline-4">
+<h4 id="org241c9dc"><span class="section-number-4">1.2.66</span> 65: FreeFalcon/freefalcon-central</h4>
+<div class="outline-text-4" id="text-1-2-66">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/FreeFalcon/freefalcon-central/blob/master/src/ui/src/dogfight/dogmenus.cpp">github.com/FreeFalcon/freefalcon-central/blob/master/src/ui/src/dogfight/dogmenus.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/FreeFalcon/freefalcon-central/master/src/ui/src/dogfight/dogmenus.cpp">dogmenus.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// Kevin, don't fuck with these anymore
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org49a87bb" class="outline-4">
+<h4 id="org49a87bb"><span class="section-number-4">1.2.67</span> 66: grayj/Jedi-Outcast</h4>
+<div class="outline-text-4" id="text-1-2-67">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/grayj/Jedi-Outcast/blob/master/utils/Radiant/findtexturedlg.cpp">github.com/grayj/Jedi-Outcast/blob/master/utils/Radiant/findtexturedlg.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/grayj/Jedi-Outcast/master/utils/Radiant/findtexturedlg.cpp">findtexturedlg.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">#pragma warning<span style="color: #268bd2;">(</span>disable : 4786<span style="color: #268bd2;">)</span>     // shut the fuck up about debug symbol name length
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0146598" class="outline-4">
+<h4 id="org0146598"><span class="section-number-4">1.2.68</span> 67: xLAva/JediOutcastLinux</h4>
+<div class="outline-text-4" id="text-1-2-68">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/xLAva/JediOutcastLinux/blob/master/utils/Assimilate/AssimilateDoc.cpp">github.com/xLAva/JediOutcastLinux/blob/master/utils/Assimilate/AssimilateDoc.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/xLAva/JediOutcastLinux/master/utils/Assimilate/AssimilateDoc.cpp">AssimilateDoc.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">strThisFile.Insert<span style="color: #268bd2;">(</span>0,"I fucked up, the following line didn't seem to have a CR:  <span style="color: #d75fd7;">(</span>tell me! -Ste<span style="color: #d75fd7;">)</span>\n\n"<span style="color: #268bd2;">)</span>;
+            m_strPathName = strThisFile;  // fucking stupid MFC doesn't set this!!!!!!!!!!!!!
+      strThisFile.Insert<span style="color: #268bd2;">(</span>0,"I fucked up, the following line didn't seem to have a CR:  <span style="color: #d75fd7;">(</span>tell me! -Ste<span style="color: #d75fd7;">)</span>\n\n"<span style="color: #268bd2;">)</span>;
+      m_strPathName = strThisFile;  // fucking stupid MFC doesn't set this!!!!!!!!!!!!!
+  strThisFile.Insert<span style="color: #268bd2;">(</span>0,"I fucked up, the following line didn't seem to have a CR:  <span style="color: #d75fd7;">(</span>tell me! -Ste<span style="color: #d75fd7;">)</span>\n\n"<span style="color: #268bd2;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8290eb7" class="outline-4">
+<h4 id="org8290eb7"><span class="section-number-4">1.2.69</span> 68: videoP/jaPRO</h4>
+<div class="outline-text-4" id="text-1-2-69">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/videoP/jaPRO/blob/master/code/rd-vanilla/tr_WorldEffects.cpp">github.com/videoP/jaPRO/blob/master/code/rd-vanilla/tr<sub>WorldEffects.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/videoP/jaPRO/master/code/rd-vanilla/tr_WorldEffects.cpp">tr<sub>WorldEffects.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text"><span style="color: #000000; background-color: #def;">#def</span>ine COUTSIDE_STRUCT_VERSION 1 // you MUST increase this any time you change any binary <span style="color: #268bd2;">(</span>fields<span style="color: #268bd2;">)</span> inside this class, or cahced files will fuck up
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org113cd68" class="outline-4">
+<h4 id="org113cd68"><span class="section-number-4">1.2.70</span> 69: multitheftauto/mtasa-blue</h4>
+<div class="outline-text-4" id="text-1-2-70">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/multitheftauto/mtasa-blue/blob/master/MTA10/mods/deathmatch/logic/CFoo.cpp">github.com/multitheftauto/mtasa-blue/blob/master/MTA10/mods/deathmatch/logic/CFoo.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/multitheftauto/mtasa-blue/master/MTA10/mods/deathmatch/logic/CFoo.cpp">CFoo.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">else if <span style="color: #268bd2;">(</span> strnicmp <span style="color: #d75fd7;">(</span> szString, "fuckveh", 7 <span style="color: #d75fd7;">)</span> == 0 <span style="color: #268bd2;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbbf1af4" class="outline-4">
+<h4 id="orgbbf1af4"><span class="section-number-4">1.2.71</span> 70: Doc-Ok/OpticalTracking</h4>
+<div class="outline-text-4" id="text-1-2-71">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/Doc-Ok/OpticalTracking/blob/master/VRDeviceDaemon/VRDevices/Wiimote.cpp">github.com/Doc-Ok/OpticalTracking/blob/master/VRDeviceDaemon/VRDevices/Wiimote.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/Doc-Ok/OpticalTracking/master/VRDeviceDaemon/VRDevices/Wiimote.cpp">Wiimote.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">/* Decode the extension data <span style="color: #268bd2;">(</span>thank you fucking much, DMCA!<span style="color: #268bd2;">)</span>: */
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6ecd15b" class="outline-4">
+<h4 id="org6ecd15b"><span class="section-number-4">1.2.72</span> 71: null&#x2013;/graviton</h4>
+<div class="outline-text-4" id="text-1-2-72">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/null--/graviton/blob/master/bin/demo/backdoor/blackhole/main.cpp">github.com/null&#x2013;/graviton/blob/master/bin/demo/backdoor/blackhole/main.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/null--/graviton/master/bin/demo/backdoor/blackhole/main.cpp">main.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">sayshit<span style="color: #268bd2;">(</span>"Empty office? Let's fuck then!"<span style="color: #268bd2;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfcd4e57" class="outline-4">
+<h4 id="orgfcd4e57"><span class="section-number-4">1.2.73</span> 72: marynate/godot</h4>
+<div class="outline-text-4" id="text-1-2-73">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/marynate/godot/blob/master/drivers/chibi/cp_player_data_utils.cpp">github.com/marynate/godot/blob/master/drivers/chibi/cp<sub>player</sub><sub>data</sub><sub>utils.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/marynate/godot/master/drivers/chibi/cp_player_data_utils.cpp">cp<sub>player</sub><sub>data</sub><sub>utils.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">if <span style="color: #268bd2;">(</span>min_priority&gt;8000*7<span style="color: #268bd2;">)</span> return -1; /* what the fuck is this? */
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9e70b60" class="outline-4">
+<h4 id="org9e70b60"><span class="section-number-4">1.2.74</span> 73: cSploit/android.MSF</h4>
+<div class="outline-text-4" id="text-1-2-74">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/cSploit/android.MSF/blob/master/external/source/byakugan/heapModeler.cpp">github.com/cSploit/android.MSF/blob/master/external/source/byakugan/heapModeler.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/cSploit/android.MSF/master/external/source/byakugan/heapModeler.cpp">heapModeler.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">dprintf<span style="color: #268bd2;">(</span>"<span style="color: #d75fd7;">[</span>XXX<span style="color: #d75fd7;">]</span> Totally fucked up - chunk info doesnt jive with heap\n\n"<span style="color: #268bd2;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1e4b4c3" class="outline-4">
+<h4 id="org1e4b4c3"><span class="section-number-4">1.2.75</span> 74: sanikoyes/godot</h4>
+<div class="outline-text-4" id="text-1-2-75">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/sanikoyes/godot/blob/master/tools/editor/editor_resource_preview.cpp">github.com/sanikoyes/godot/blob/master/tools/editor/editor<sub>resource</sub><sub>preview.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/sanikoyes/godot/master/tools/editor/editor_resource_preview.cpp">editor<sub>resource</sub><sub>preview.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">//well fuck
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0d70d9f" class="outline-4">
+<h4 id="org0d70d9f"><span class="section-number-4">1.2.76</span> 75: Aleph-One-Marathon/alephone</h4>
+<div class="outline-text-4" id="text-1-2-76">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/Aleph-One-Marathon/alephone/blob/master/Source_Files/Network/RingGameProtocol.cpp">github.com/Aleph-One-Marathon/alephone/blob/master/Source<sub>Files</sub>/Network/RingGameProtocol.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/Aleph-One-Marathon/alephone/master/Source_Files/Network/RingGameProtocol.cpp">RingGameProtocol.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">csprintf<span style="color: #268bd2;">(</span>temporary, "the server asked for %d flags.  bastard.  fucking ram doubler.", packet-&gt;required_action_flags<span style="color: #268bd2;">)</span><span style="color: #e0211d; text-decoration: overline;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8f54371" class="outline-4">
+<h4 id="org8f54371"><span class="section-number-4">1.2.77</span> 76: mupen64plus-ae/mupen64plus-ae</h4>
+<div class="outline-text-4" id="text-1-2-77">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/mupen64plus-ae/mupen64plus-ae/blob/master/jni/mupen64plus-video-rice/src/Render.cpp">github.com/mupen64plus-ae/mupen64plus-ae/blob/master/jni/mupen64plus-video-rice/src/Render.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/mupen64plus-ae/mupen64plus-ae/master/jni/mupen64plus-video-rice/src/Render.cpp">Render.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// don't get rendered. I hope this doesn't fuck anything else up.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org187d2eb" class="outline-4">
+<h4 id="org187d2eb"><span class="section-number-4">1.2.78</span> 77: desura/Desurium</h4>
+<div class="outline-text-4" id="text-1-2-78">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/desura/Desurium/blob/master/src/shared/mcfcore/code/mcf/MCF_Patch.cpp">github.com/desura/Desurium/blob/master/src/shared/mcfcore/code/mcf/MCF<sub>Patch.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/desura/Desurium/master/src/shared/mcfcore/code/mcf/MCF_Patch.cpp">MCF<sub>Patch.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">//reset the file offsets so it doesnt fuck the mcf up
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgde028b6" class="outline-4">
+<h4 id="orgde028b6"><span class="section-number-4">1.2.79</span> 78: beniz/seeks</h4>
+<div class="outline-text-4" id="text-1-2-79">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/beniz/seeks/blob/master/src/plugins/websearch/se_parser_blekko.cpp">github.com/beniz/seeks/blob/master/src/plugins/websearch/se<sub>parser</sub><sub>blekko.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/beniz/seeks/master/src/plugins/websearch/se_parser_blekko.cpp">se<sub>parser</sub><sub>blekko.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// The XML parser gets it right, but fucks it up everywhere else.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5294e31" class="outline-4">
+<h4 id="org5294e31"><span class="section-number-4">1.2.80</span> 79: tomahawk-player/tomahawk</h4>
+<div class="outline-text-4" id="text-1-2-80">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/tomahawk-player/tomahawk/blob/master/src/libtomahawk/network/StreamConnection.cpp">github.com/tomahawk-player/tomahawk/blob/master/src/libtomahawk/network/StreamConnection.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/tomahawk-player/tomahawk/master/src/libtomahawk/network/StreamConnection.cpp">StreamConnection.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// don't fuck with our messages at all. No compression, no parsing, nothing:
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb030d32" class="outline-4">
+<h4 id="orgb030d32"><span class="section-number-4">1.2.81</span> 80: xmoeproject/X-moe</h4>
+<div class="outline-text-4" id="text-1-2-81">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/xmoeproject/X-moe/blob/master/Unpacker/crass/cui-1.0.4/NScripter/NScripter.cpp">github.com/xmoeproject/X-moe/blob/master/Unpacker/crass/cui-1.0.4/NScripter/NScripter.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/xmoeproject/X-moe/master/Unpacker/crass/cui-1.0.4/NScripter/NScripter.cpp">NScripter.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">static const BYTE fuck_decrypt_table<span style="color: #268bd2;">[</span>256<span style="color: #268bd2;">]</span> = <span style="color: #268bd2;">{</span>
+      dec<span style="color: #d75fd7;">[</span>i<span style="color: #d75fd7;">]</span> = <span style="color: #d75fd7;">(</span>BYTE<span style="color: #d75fd7;">)</span>i ^ fuck_decrypt_table<span style="color: #d75fd7;">[</span>dec<span style="color: #2aa198;">[</span>i<span style="color: #2aa198;">]</span><span style="color: #d75fd7;">]</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7bff04c" class="outline-4">
+<h4 id="org7bff04c"><span class="section-number-4">1.2.82</span> 81: M0ra/Core</h4>
+<div class="outline-text-4" id="text-1-2-82">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/M0ra/Core/blob/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp">github.com/M0ra/Core/blob/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/M0ra/Core/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp">BattlegroundSA.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">You may ask what the fuck does it do?
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdcdfa32" class="outline-4">
+<h4 id="orgdcdfa32"><span class="section-number-4">1.2.83</span> 82: DraenorCore/DraenorCore</h4>
+<div class="outline-text-4" id="text-1-2-83">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/DraenorCore/DraenorCore/blob/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp">github.com/DraenorCore/DraenorCore/blob/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/DraenorCore/DraenorCore/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp">BattlegroundSA.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">You may ask what the fuck does it do?
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd3dff88" class="outline-4">
+<h4 id="orgd3dff88"><span class="section-number-4">1.2.84</span> 83: TrinityCoreLegacy/TrinityCore</h4>
+<div class="outline-text-4" id="text-1-2-84">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/TrinityCoreLegacy/TrinityCore/blob/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp">github.com/TrinityCoreLegacy/TrinityCore/blob/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/TrinityCoreLegacy/TrinityCore/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp">BattlegroundSA.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">You may ask what the fuck does it do?
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org93a1abb" class="outline-4">
+<h4 id="org93a1abb"><span class="section-number-4">1.2.85</span> 84: SkyFireArchives/SkyFireEMU<sub>406a</sub></h4>
+<div class="outline-text-4" id="text-1-2-85">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/SkyFireArchives/SkyFireEMU_406a/blob/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp">github.com/SkyFireArchives/SkyFireEMU<sub>406a</sub>/blob/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/SkyFireArchives/SkyFireEMU_406a/master/src/server/game/Battlegrounds/Zones/BattlegroundSA.cpp">BattlegroundSA.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">You may ask what the fuck does it do?
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8b99088" class="outline-4">
+<h4 id="org8b99088"><span class="section-number-4">1.2.86</span> 85: iocellnetworks/ndas4windows</h4>
+<div class="outline-text-4" id="text-1-2-86">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/iocellnetworks/ndas4windows/blob/master/fremont/tags/3.20.1528/src/tools/frhed/FRHED/hexwnd.cpp">github.com/iocellnetworks/ndas4windows/blob/master/fremont/tags/3.20.1528/src/tools/frhed/FRHED/hexwnd.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/iocellnetworks/ndas4windows/master/fremont/tags/3.20.1528/src/tools/frhed/FRHED/hexwnd.cpp">hexwnd.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">//is a little buggy - when paint is called with iUpdateLine != -1 the display fucks up a bit
+  //This BitBlt prevents the display from fucking up but is incredibly slow
+        //Repeat for the benefit of Word - fuck M$ sux
+        //Colour of the lines - fuck M$ sux
+      //Repeat for the benefit of Word - fuck M$ sux
+      //Colour of the lines - fuck M$ sux
+      //Repeat for the benefit of Word - fuck M$ sux
+      //Colour of the lines - fuck M$ sux
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org528604b" class="outline-4">
+<h4 id="org528604b"><span class="section-number-4">1.2.87</span> 86: Ultraschall/REAPER</h4>
+<div class="outline-text-4" id="text-1-2-87">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/Ultraschall/REAPER/blob/master/Plugin/reaper_extension_sdk/jmde/csurf/csurf_faderport.cpp">github.com/Ultraschall/REAPER/blob/master/Plugin/reaper<sub>extension</sub><sub>sdk</sub>/jmde/csurf/csurf<sub>faderport.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/Ultraschall/REAPER/master/Plugin/reaper_extension_sdk/jmde/csurf/csurf_faderport.cpp">csurf<sub>faderport.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">//m_midiout-&gt;Send<span style="color: #268bd2;">(</span>0xa0,0xf,m_flipmode?1:0<span style="color: #268bd2;">)</span>;// fucko
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org239d059" class="outline-4">
+<h4 id="org239d059"><span class="section-number-4">1.2.88</span> 87: Gallio/mbunit-v3</h4>
+<div class="outline-text-4" id="text-1-2-88">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/Gallio/mbunit-v3/blob/master/tools/Thrift/src/lib/cpp/src/server/TNonblockingServer.cpp">github.com/Gallio/mbunit-v3/blob/master/tools/Thrift/src/lib/cpp/src/server/TNonblockingServer.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/Gallio/mbunit-v3/master/tools/Thrift/src/lib/cpp/src/server/TNonblockingServer.cpp">TNonblockingServer.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">// Make sure that libevent didn't fuck up the socket handles
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org222496f" class="outline-4">
+<h4 id="org222496f"><span class="section-number-4">1.2.89</span> 88: OLR-xray/OLR-3.0</h4>
+<div class="outline-text-4" id="text-1-2-89">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/OLR-xray/OLR-3.0/blob/master/src/xray/xr_3da/xrRender_R2/r2_rendertarget_phase_combine.cpp">github.com/OLR-xray/OLR-3.0/blob/master/src/xray/xr<sub>3da</sub>/xrRender<sub>R2</sub>/r2<sub>rendertarget</sub><sub>phase</sub><sub>combine.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/OLR-xray/OLR-3.0/master/src/xray/xr_3da/xrRender_R2/r2_rendertarget_phase_combine.cpp">r2<sub>rendertarget</sub><sub>phase</sub><sub>combine.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">light*    fuckingsun    = <span style="color: #268bd2;">(</span>light*<span style="color: #268bd2;">)</span>RImplementation.Lights.sun_adapted._get<span style="color: #268bd2;">()</span> ;
+L_clr.set         <span style="color: #268bd2;">(</span>fuckingsun-&gt;color.r,fuckingsun-&gt;color.g,fuckingsun-&gt;color.b<span style="color: #268bd2;">)</span>;
+Device.mView.transform_dir  <span style="color: #268bd2;">(</span>L_dir,fuckingsun-&gt;direction<span style="color: #268bd2;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc07acd1" class="outline-4">
+<h4 id="orgc07acd1"><span class="section-number-4">1.2.90</span> 89: Arkania/ArkCORE-NG</h4>
+<div class="outline-text-4" id="text-1-2-90">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/Arkania/ArkCORE-NG/blob/master/src/server/scripts/Kalimdor/Firelands/boss_ragnaros_firelands.cpp">github.com/Arkania/ArkCORE-NG/blob/master/src/server/scripts/Kalimdor/Firelands/boss<sub>ragnaros</sub><sub>firelands.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/Arkania/ArkCORE-NG/master/src/server/scripts/Kalimdor/Firelands/boss_ragnaros_firelands.cpp">boss<sub>ragnaros</sub><sub>firelands.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">* If you have found this script on the internet feel free to use it as I can do fuck to stop you., * But do leave an email to thank me, telling me where you found so I can fist fuck the anal wart that put it there.
+               if <span style="color: #268bd2;">(</span>Unit* that = me-&gt;FindNearestPlayer<span style="color: #d75fd7;">(</span>60.0f<span style="color: #d75fd7;">)</span><span style="color: #268bd2;">)</span>//why like this? Because fuck knows how blizz did it, and it's already a 1700 word script. If you correct this shit and go "Fuck this guy for not doing it properly." suck the shit out of my ass cause you are already full of it.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgef577d7" class="outline-4">
+<h4 id="orgef577d7"><span class="section-number-4">1.2.91</span> 90: amamiya/SYEngine</h4>
+<div class="outline-text-4" id="text-1-2-91">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/amamiya/SYEngine/blob/master/CoreDemuxers/CoreDemuxers.Shared/MKV/Parser/Internal/MatroskaEbml.cpp">github.com/amamiya/SYEngine/blob/master/CoreDemuxers/CoreDemuxers.Shared/MKV/Parser/Internal/MatroskaEbml.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/amamiya/SYEngine/master/CoreDemuxers/CoreDemuxers.Shared/MKV/Parser/Internal/MatroskaEbml.cpp">MatroskaEbml.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">unsigned char fuck<span style="color: #268bd2;">[</span>3<span style="color: #268bd2;">]</span> = <span style="color: #268bd2;">{</span>0,0,0<span style="color: #268bd2;">}</span>;
+head.Read<span style="color: #268bd2;">(</span>fuck,3<span style="color: #268bd2;">)</span>;
+p<span style="color: #268bd2;">[</span>1<span style="color: #268bd2;">]</span> = fuck<span style="color: #268bd2;">[</span>2<span style="color: #268bd2;">]</span>;
+p<span style="color: #268bd2;">[</span>2<span style="color: #268bd2;">]</span> = fuck<span style="color: #268bd2;">[</span>1<span style="color: #268bd2;">]</span>;
+p<span style="color: #268bd2;">[</span>3<span style="color: #268bd2;">]</span> = fuck<span style="color: #268bd2;">[</span>0<span style="color: #268bd2;">]</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7ecd0da" class="outline-4">
+<h4 id="org7ecd0da"><span class="section-number-4">1.2.92</span> 91: pac-dev/protoplug</h4>
+<div class="outline-text-4" id="text-1-2-92">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/pac-dev/protoplug/blob/master/Frameworks/JuceModules/juce_audio_processors/format_types/juce_VSTPluginFormat.cpp">github.com/pac-dev/protoplug/blob/master/Frameworks/JuceModules/juce<sub>audio</sub><sub>processors</sub>/format<sub>types</sub>/juce<sub>VSTPluginFormat.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/pac-dev/protoplug/master/Frameworks/JuceModules/juce_audio_processors/format_types/juce_VSTPluginFormat.cpp">juce<sub>VSTPluginFormat.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">    _fpreset<span style="color: #268bd2;">()</span>; // some dodgy plugs fuck around with this
+_fpreset<span style="color: #268bd2;">()</span>; // some dodgy plugs fuck around with this
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2cc87c6" class="outline-4">
+<h4 id="org2cc87c6"><span class="section-number-4">1.2.93</span> 92: 2DaT/Obxd</h4>
+<div class="outline-text-4" id="text-1-2-93">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/2DaT/Obxd/blob/master/JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VSTPluginFormat.cpp">github.com/2DaT/Obxd/blob/master/JuceLibraryCode/modules/juce<sub>audio</sub><sub>processors</sub>/format<sub>types</sub>/juce<sub>VSTPluginFormat.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/2DaT/Obxd/master/JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VSTPluginFormat.cpp">juce<sub>VSTPluginFormat.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">    _fpreset<span style="color: #268bd2;">()</span>; // some dodgy plugs fuck around with this
+_fpreset<span style="color: #268bd2;">()</span>; // some dodgy plugs fuck around with this
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb5499ab" class="outline-4">
+<h4 id="orgb5499ab"><span class="section-number-4">1.2.94</span> 93: moranzcw/LeetCode</h4>
+<div class="outline-text-4" id="text-1-2-94">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/moranzcw/LeetCode/blob/master/Algorithm/#150%23Evaluate_Reverse_Polish_Notation/Evaluate_Reverse_Polish_Notation.cpp">github.com/moranzcw/LeetCode/blob/master/Algorithm/#150#Evaluate<sub>Reverse</sub><sub>Polish</sub><sub>Notation</sub>/Evaluate<sub>Reverse</sub><sub>Polish</sub><sub>Notation.cpp</sub></a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/moranzcw/LeetCode/master/Algorithm/#150%23Evaluate_Reverse_Polish_Notation/Evaluate_Reverse_Polish_Notation.cpp">Evaluate<sub>Reverse</sub><sub>Polish</sub><sub>Notation.cpp</sub></a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">stack&lt;int&gt; fuckYou;
+        fuckYou.push<span style="color: #268bd2;">(</span>temp<span style="color: #268bd2;">)</span>;
+        int b = fuckYou.empty<span style="color: #268bd2;">()</span>? 0:fuckYou.top<span style="color: #268bd2;">()</span>;
+        fuckYou.pop<span style="color: #268bd2;">()</span>;
+        int a = fuckYou.empty<span style="color: #268bd2;">()</span>? 0:fuckYou.top<span style="color: #268bd2;">()</span>;
+        fuckYou.pop<span style="color: #268bd2;">()</span>;
+            fuckYou.push<span style="color: #268bd2;">(</span>a+b<span style="color: #268bd2;">)</span>;
+            fuckYou.push<span style="color: #268bd2;">(</span>a-b<span style="color: #268bd2;">)</span>;
+            fuckYou.push<span style="color: #268bd2;">(</span>a*b<span style="color: #268bd2;">)</span>;
+            fuckYou.push<span style="color: #268bd2;">(</span>a/b<span style="color: #268bd2;">)</span>;
+return fuckYou.top<span style="color: #268bd2;">()</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6f5966d" class="outline-4">
+<h4 id="org6f5966d"><span class="section-number-4">1.2.95</span> 94: sam-b/HackSysDriverExploits</h4>
+<div class="outline-text-4" id="text-1-2-95">
+<dl class="org-dl">
+<dt>link</dt><dd><a href="https://github.com/sam-b/HackSysDriverExploits/blob/master/HackSysArbitaryOverwriteExploit/HackSysArbitaryOverwriteExploit/HackSysArbitaryOverwriteExploit.cpp">github.com/sam-b/HackSysDriverExploits/blob/master/HackSysArbitaryOverwriteExploit/HackSysArbitaryOverwriteExploit/HackSysArbitaryOverwriteExploit.cpp</a></dd>
+<dt>raw</dt><dd><a href="https://raw.githubusercontent.com/sam-b/HackSysDriverExploits/master/HackSysArbitaryOverwriteExploit/HackSysArbitaryOverwriteExploit/HackSysArbitaryOverwriteExploit.cpp">HackSysArbitaryOverwriteExploit.cpp</a></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-text">printf<span style="color: #268bd2;">(</span>"fuck\n"<span style="color: #268bd2;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: shane</p>
+<p class="date">Created: 2018-07-19 Thu 16:00</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
