@@ -1,0 +1,700 @@
+Peking's about Spring Cypress, but of course, I didn't finish last week's topic. So we're going to start by talking about
+ Discrete probability first and that leads into the one-time pad which is the sort of motivational example that belief Asante stream ciphers and pseudo-random generators, and then we'll talk about how we actually think about the security experience likely to be Associated to the random generator. Okay, so, let me just remind you that.
+ A characteristic that would be nice to have if we expect Security in the cripta system in the contact. Where are including algorithms by decoding Alec with them so I know where everything is public except for the key and that is that
+ Preston Pointe
+ The information that she sees in the in the channel being transferred from else to go biking to actual encryption of the message using the key this somehow or other.
+ Should look rent. Okay, the ciphertext only attacks that we we saw with respect to, you know, all those classical from a broken ciphers all rely at their based on the fact that there is regularity in the messages because the messages are typically English language text or financial transactions, or they have some structure that some regularity and that the the message will reason to apply for them Wars enough to sort of kill that regularity.
+ All Right Moves the regularity somewhere else changed patterns somehow but by statistical analysis you could figure out what was going on. All right, so we want to
+ kill that possibility you want to kill the possibility of attacking using ciphertext only attacks based on statistical regularities in in the ciphertext. And in order to do that. We need to somehow come up with cryptosystem introduced messages or produce encryptions of messages that look random. But in order to do that, we have to understand for that me
+ I understand that we need to understand little bit about discrete probability. So this is a quick run through discrete probability.
+ Let's just get going. Okay, so I'm going to
+ give both the abstract definitions and and highlight them with examples as we go so in discrete probability.
+ We got some Universe open up capsules. This is
+ a universe of things which will call events or individual events.
+ That's our individual.
+ careful
+ We're thinking about selling coins.
+ Picking the two possible outcomes of the coin toss. Okay, if we're thinking about rolling a standard die.
+ I think that you landed on couple times but not really think the fact that their numbers as well significant there that those numbers there are just taking the fires for the 64 policy or just the signifiers for the two different Ball by the tops of acquaintances.
+ Okay, especially with you we have a function.
+ P which we call probability which is a function from you this fine accent into the real numbers subject to conditions.
+ So probably in capital you if you do the probability of you occurring should be no negative. It doesn't make sense to say that the check or something occurring is making a third.
+ So since there's a chance of something occurring the zero, for example, we might think of Courthouse examples being HTE for ebin Edge land on the rights and stay there probably be currently have to Define them probability.
+ or something for tiny and
+ when we add up
+ over a little blue cap of you the probability of individual events to get one.
+ so
+ PS ending for the chance that something is going to happen.
+ And we are anticipating an event. We're anticipating that the coins going to be at all participating supplies or rolls something we will happen.
+ Okay, so that's what the second condition set the says that something will happen one of the events will occur.
+ And this just says each event occurs.
+ Simple probability. Hey, maybe something's of incident occur. They're properly defined the puppy zero then but be nonsensical do something to make deposits. Okay, and then in the standard model so for a fair calling
+ redefine
+ second chance to pay the people to happen to be on bottle all the Pier One. So the month from the for the phone number was the model of a fair coin is a universal to Boston on each of which is equally likely to which is probably a half and four four.
+ Hello, Siri, cheap. We like please one so they can probability one six.
+ All right. So these two models are both less called the uniform probability space.
+ Where each of the individual events little you has the same probability which is unnecessarily 1/2 size of the universe for that cigar bars around the University of the number of alum.
+ and
+ if all you ever think about is the uniform probability space at least for doing most crypto stuff. That's that's pretty much at least in terms of analyzing cryptosystems. That's pretty reasonable. Of course.
+ if we think about
+ other models that might be interested in that that we might we might well think about the fact that uniform isn't always the thing. So for example, but wanted to do the bench, but suppose we
+ A character uniformly it rained. So we we we take the large block of english-language tax say a hundred thousand individual letters and we pick a letter uniformly at random from that mean that affected would be a hundred thousand multiple different individual outcomes because we could pick any one of the characters.
+ But actually really interested in what letter.
+ Not interesting enough interest in the fact that it's character numbers 6357. We're interested in whether it's an ABC of the upset.
+ In that case, that's what we think of as our individual events. And that's that's the perspective. We're free to take our
+ Uniform probability is not the way that's going to be here. I'm going to see much more frequently than we see other letters. So we want a different waiting on our Universal.
+ but a better way
+ that situation
+ is
+ In terms of what's the corner called debates or and also in terms of random variables? Okay. So let's just say what our individual minutes
+ In general in advance. It's just a subset of the universe.
+ whenever we have an event we
+ Can be close probability the events?
+ It's just the probability the individual events the paint it up.
+ Yeah, he must and there aren't that many interesting events because the two of us that doesn't have that many interesting subject, but already in the dye example.
+ one that could be
+ I'm English but the roll.
+ 123, Oregon
+ and the probability that event is
+ Yeah, and probably in that we're supposed to be.
+ 103
+ because it's
+ element Universal
+ half Gaskins Road
+ in the uniform in the unit for model
+ the probability an event of an event just Liza made by thought.
+ Because we should be individual events at the same, adding episodes name any of them. And so we should get the plastic 5 p.m.
+ Okay now.
+ closely related but slightly different
+ from the
+ notion of an event it's the notion of a random very
+ Okay.
+ so in sloppy language
+ A random variable it's something.
+ that depends
+ on a random event
+ so
+ let's use the type one gas.
+ And let's imagine that when I roll the dice you guys rule.
+ I score some point.
+ Tank is the rule but says how many score how many points has scored hangover.
+ So and could be it could be any rule as I'm making it up on this line. If I'm rolling one. That's for one if I roll it to I-45 if I roll up three as four.
+ rules for
+ If I Ruled 34085 roll of four or two if I qualify by Seventeen and in front of rolling 6 S10
+ She's completely. Completely arbitrary. Text me. Okay, so
+ The score of my rule is a random Berry.
+ Is it raining?
+ And then associated with the school are the best. So for example, I could ask what's the probability?
+ Or is greater than or equal to 3.
+ Like I said horrible and random events are very closely connected because when I asked a simple question like this, what's the public the scores burning for three? I really just using the score to identify the net.
+ Two cases where the scores for the 3 so probably will score is greater than or equal to 3 and exactly the same as the probability that the rule is 2 or 5.
+ Okay, that's in the deck.
+ And so that's also that's one.
+ Sometimes it's easier to talk about.
+ Sometimes you talk about random variable bit for our purposes. They're they're kind of two different points of thinking about the same thing. But I'd also like to point out if you think about it, we can do a bit more with thing with random variables. For example, I can ask
+ what's my average score?
+ That's not something that.
+ So and and that will depend on what the response depend on with the rule is but it's fairly easy to compute. It's really just well one month program that are all alone was 5 times probably did a rule of Two And so so you could do a little bit more dependent variables in general and just
+ so we got some kind of random stuff happening and we're not going to be trying discuss philosophical. But random this means we will just think about rolling dice flipping coins. Okay, and
+ we we didn't have
+ even and identify properties of a fixed or probabilities
+ of course bunch of random.
+ Okay, so
+ One last major concept I want to talk about that you need to pandan.
+ The roughly speaking. This is what it sounds like we're going to say that two things are independent if knowledge about one of them doesn't give us extra knowledge about the
+ so if I want to be a bit more careful about this.
+ That Independence is supposedly have some for Thursday.
+ copper wire variables
+ you
+ this was my temperature supposed to be calligraphic you.
+ We see the Texan Wire.
+ Hawaii
+ I'm on The Cadillacs are friends are able I wonder if random variable 6 on the valley little axe.
+ and
+ how do I fix on Google now? I know why.
+ hey, so this is
+ Complex takes on some billing. It takes presumably occasionally takes on the value of the Lacs.
+ Otherwise, I'm not really interested. But but okay. So for instance the universe the value of the random variable X is little and that's another way to think about what random variables are doing.
+ This is my universe.
+ I can think of a random variable Cadillacs is chopping up the universe into Chuck's where?
+ value of capital X on the differentials
+ different
+ probability that takes on a particular value is just the total probability of the event that is that particular chunk.
+ All right.
+ So this is an advanced. Can I give this in a bit? Which is that?
+ Okay.
+ Capital Access people who are Capital One if you don't know why so this is the chunk of the universe that I've shaken there.
+ And I want you to take me well, write it down and then justify it.
+ I think these events are independent if this probability.
+ Alexis Alexis and Castle black. It's just the product of the individual pump.
+ Now why is that make sense?
+ Take me to think about the big picture. All right.
+ You serious we're complexes little Lex and couple wife is a little box the Catholics a little Lakes Region the whole region takes up a certain part of the universe.
+ Guiry's it takes up some other proportion may be the same but some other perturbed.
+ The kind of wife who was trucks off a third of the universe.
+ To say the cap electric blue Lex doesn't tell us anything. That is some things are independent means that even within this.
+ Little part of the universe for complex little x capital Lights blue wine shop away a third of it.
+ Which means that this is a third of 1/5, which is a 50.
+ So this is just to capture the idea that
+ even if you know, we're in the regional or complex Little Axe. It doesn't think of a more or less likely to believe the catalog we can do want someone asked us to place a bit on Castle black is little while and tells us oh, by the way, it's known the capital actually was little axe just doesn't allow us to sort of change what kind of decks we'd be willing to accept or no.
+ Let's do quick examples done rules again.
+ So
+ so we're going to roll a single. But we're going to have two random variables one of the answer to a question which is going to be yes or no the other the color which is going to be printer 3.
+ and the rules are going to be as follows 6
+ for the answer if you roll a one two or three, yeah, if we go for five or six months, no answer might be more like the answer yes or no, so
+ for four rules guilty distrust
+ But we're completely different about color.
+ so the first three
+ Okay, can I contact do you think that color and answer are independent brand of birth?
+ One definite shape of a hint to does it take for them.
+ They seem to be a serious case of the head. Why do you mind introducing bill for nothing that the arithmetic but just intuitively wanted me funding dependent?
+ Well, what if you call around comes in with me, just black so certainly the probability of getting green and no.
+ Which is 0 is Mother probability getting Greenwich is and probably going to know which is the third.
+ So probability that answer.
+ No and color.
+ Green elephant table. I mean I've been looking for a r l which set and G.
+ There's no Road Angie.
+ about zero
+ not equal to the probability.
+ The answer is no X probably public screen because that
+ probably be on Tuesday the 3rd.
+ So these two events are independent once I know the answer, it tells me something about the color and of course, it's not just that particular case that Independent films because we could look at the complete.
+ table
+ table with cancer color. Yes. No.
+ I do green ribs.
+ Hey.
+ If I just let me put down the cats of cases here. Well, I should just sit down the block the photos. So yes and green. That's 3 + 6/5.
+ Yes and red is 106.
+ No and registering six, no start no end up going green a 06.
+ And no one right? It's 206. Yes probability is a total of 2/3. No probability of 1/3 the green probability this one but have the red carpet Elizabeth.
+ Let me just call.
+ Call himself and and independent just saying every entry in the table was the product of the entry at the end of this role in the end of the call.
+ and actually tails
+ How can we adopt one or both of our rent, Missouri?
+ So we still I still want to have two or three chances be answering. Yes. So what I want these things to be fixed.
+ But I want the up comes to be independent.
+ So which one of the greens out of the walking to the noble, right?
+ so
+ I believe the original they're here.
+ three reasons for France
+ And the way to think about independence, is that no matter what my answer is I should have a fifty-fifty chance internet, you know, I scream for me with my answers guess I should have two losers get ingredients and possibilities.
+ Masters know I should have
+ lentil smoothie green with us
+ medical standpoint
+ use the red values for the colors that stand that gives us independent.
+ Yeah, so not fifty-fifty anymore, but it's two and three but that's an important point if I know the color is green what she my answer be. Well, my answers should be two times and three should be yes.
+ right and
+ what time?
+ Okay, just a quick remark.
+ in Sunset
+ The red truck is here from affecting. It doesn't feel independent because there's a rule that says you got to cost to fix the
+ pencil 53
+ So they're not dependent mean they're both forced by that single random trust. We'd be more we be happier to say.
+ A driver will give the answer for you sister to notify any place, but it was the color.
+ except for rain event giving this appointment give us a color now clear that they're independent because we have to
+ unlink random processes that give us the since we depressed.
+ So just be aware. The technical definition of Independence is a little bit weaker than what your mental model might be.
+ All right.
+ All right. So a lot of our what's our basic text form.
+ Our Tech our message spaces our key spaces, whatever they might be.
+ DJ you really think of amass computer files for electronic messages and so at the end of the day, there's streams effects.
+ Launch which is kind of nice because we can think of is a bit of a bit being generated by just went limp and if we want to think about a fight instead, but what's a fight fights just ate fits in a row if you want to generate each and every fight with the same probability. The mobility should be 1 / 256. There are two hundred fifty six different bites 28th of 256 and one way to generate that is by 8 Independence Quizlet.
+ So if we flip a Fair coin or eight different FairPoint FairPoint needs times or eight different 3.1 feet. Should we record the up Compass zeros and ones then we get
+ each possible bike disability whatever 256
+ all right.
+ let me introduce an operation which you probably have seen before but suffers has called exclusive or
+ it's usually did notice how often did notice Computing World 5 plus sign with circle around it. Is it operation done fits initially and it's already described.
+ It says one or the other of the best.
+ is one but
+ So normal, or we can get zero as false. Someone is true, which is the normal Simon would have one one one zero.
+ exclusive or
+ be
+ 1 + 1
+ the other way to think about this business from the addition of it.
+ Would have to any carrier.
+ Supposed to but two is actually in binary one zero and that one's the Cure.
+ So this is addition without Carrie and in that sense we spend it so this about bit.
+ and on the streams
+ well the space.
+ The moment by hold fast to which is a zero one string is tuned in.
+ which is
+ all strings of
+ it's
+ and she take the exclusive for up to
+ Strings, I just take the exclusive or of their individual characters one by one I had them without.
+ simplest form of magician
+ 61 Barberry
+ But don't do any photos.
+ symbolizing my phone
+ write down each column.
+ 0-1. Why don't want 0 1 1 0 1 1 0 0 0 0 1 a month.
+ an extraordinarily simple operation
+ and
+ Basically, if you want to think ahead as to why why we might be interested in Susa for from a computer perspective one, which is very very wifely whatever whatever.
+ fundamental strings and fits your Hardware can
+ for you whether that be
+ 4 minutes of the time or 8:15. That's fine if it's at 5:28.
+ Chances are the Civil War.
+ experience of acting as a simple machine
+ All right. Bye to be reclusive or
+ I want I want to Mark some properties exclusive or four I can tell you what week are properties here is an obvious one.
+ What happens if you take the exclusive more of an extremist?
+ you get to
+ Because never call me rather see me 00 or what?
+ So never called.
+ Exclusive or with One exclusive or what day?
+ That's true of those two things.
+ Again, hold my cup all that matters is the truth a bit level. That's true the pit level because the table is symmetric around resume night.
+ Name something that perhaps what?
+ that would be
+ but exclusive or has a property which
+ here's my head.
+ And the first thing is everything happens called my columns. So we really only care about this happening and individual color.
+ What's the rule that tells you?
+ Allows you to predict.
+ Okay, let's look at where one digit. This is a long. This is so far. This is a one this is the one this is about Nebraska's zip code.
+ What's another way without sort of going through 0 + 1 is 1% as one that's another way to describe where we've got once and we got here with here.
+ apparently
+ odd number ones in the colony going to 1
+ you can even number one to call them and get a deal.
+ Just go back +215-210-017-0511. I got to
+ oh, it's transmitted through even cancelled it.
+ and that's
+ right on the table for three of these are Simply Computing the positions in which there are odd number one. That's wise.
+ Okay now.
+ Do things together have an interesting?
+ consulates
+ If any of us PC.
+ man
+ Triple C's
+ well people see
+ FIFA
+ Which Community your feet for me?
+ Switch my Social Security.
+ Something for that when she's beautiful day with five rule. I didn't say that.
+ Miss
+ okay, and and all the way around if you as soon as you have two two things adding up to a server any two of those free to be
+ in whatever order you want because
+ So those those packs or whatever?
+ now here's
+ Why is real?
+ for us
+ our universe movie space is universities in District. Hey, I'm not specify what any it could be. It could be anything.
+ sir
+ maybe Annie
+ random variable on you
+ Whose values?
+ So what what might that be well.
+ Princeton football have agree
+ so so you now think of a message space Alice and Bob have agreed on the secret key by random Choice send them to eat that might be the random variable which is
+ he's observation of
+ or or or it might be the random vertical which is Alice's choice of a give a message.
+ Yeah the next beer anvil on you.
+ Was it going to call the line? You turned out beautiful and Independence?
+ Okay, now now Cinemax is just being generated by a coin toss.
+ And only meant all we care about this done without any military.
+ Okay.
+ That might contain a lot of information.
+ This might be the random variable is always zero.
+ It's only the oldest trick or it might be the random variable That's the older. Oh spring 50% the time and you know, what's trinkets?
+ Any random variable if I have lots and lots and lots of structure.
+ Let's look at the random variable, which is the exclusive over a bit. So in other words take the value that it take the money Max and just for me exclusive or
+ so we've got
+ I completely uniform random variable the exclusive Award with surrendering. Let me know nothing about except that it's independent.
+ So
+ What does the up quite? Well, we need to work out. What's the probability the cattle wcpool to some particular Vin strings or lowercase? W let's let's go back.
+ So what's the probability that this expensive or is equal to some particular cats dream?
+ lowercase s
+ but we can work that out.
+ starfish
+ Hey.
+ So we were Kevin's going to be full or class.
+ Captain Ben has to be something so
+ This is the same overall possible that.
+ that is equal to Captain sat and
+ actually glue
+ So if we want X Plus venti 4S?
+ benezette
+ What's your next?
+ We really want that people if we fix our values that and the telephone.
+ normally venesian, you would say, oh it should be accessed but
+ magical flowers
+ 4th edition fractions same thing
+ okay, this is
+ Independence
+ This is Nance obesity independent random variables the next 10. So probably the better than a deck successful says the products of property that it said on the public events.
+ uniform
+ so that's what Goonies went over to the edge because that's just arresting particular Valley.
+ But now that whatever to the end is a common factor of all of these trucks.
+ But sometimes to the front.
+ But now this stuff is says that takes on Sun Valley.
+ Probably that is 0300 by one spring plus probably.
+ A muscle strain, so that's what the probability is. I just described the whole universe in Tulsa.
+ That's whatever 2 p.m.
+ Show me is that if we take exclusive War.
+ On a big screen that could be getting ready by any means whatsoever. Like exactly how it happens. I thought there anything about it happens. It might be highly structured effect behind a random.
+ I just
+ a random strangers one uniformly ready to generate by Quizlet
+ and independently from the way our first spring was generated.
+ No matter how the first string was generated at the outcome of the sump is uniformly distributed. We have watched what?
+ All the information that there might have been in.
+ And you remember back? That's that's kind of what we want our encryption systems to do.
+ so the next question is how can we use this as a means to reduce a
+ All right.
+ Falling further and further behind that seems like a very opportune moment to stop. We will resume at 12 noon officially, which is 9 minutes now, so it's about 12.
+ 3
+ fine
+ Can you use that observation? We just met to create perfectly secret purchases.
+ Hey, so here it is.
+ Messages which are bit strings. It's like then decide to text. They're going to be the same. And in fact the keys are also going to be pit strings of like that.
+ How how big is Amber however big the messages? I'm sending you can think of it as perhaps being about the to 2:30 or something like that. Meaning that we're trying to send a message, which is about a gig.
+ But it could could be smaller. How do they encode?
+ we just take the exclusive or
+ aqui que with the message
+ and beauties of exclusive or is it the decoding algorithm is exactly the thing they also take the exclusive or okay with their exclusive or the same thing twice you get back what you started with.
+ Hey, so that's it. That's about the system now.
+ How do we get the key? Well, we choose the key uniformly at random from the keys. But remember that elephant bulb have to agree about the key for this has to be done at some point in advance when else involved or communicate securely and privately the Florida. Okay. So Alison Bob generator gigabit a random information stored on the Sun Drive and then they separate all right.
+ And then I'll see you guys for some drive to exclusive or against the file. She's trying to send to Bob and that's the phone. She says to Bob and he puts in his thumb drive exclusive the wars against the file. He received from Alice and he gets back to you, now. Let's start
+ very very much time doing this. I mean this process is going to be hugely and put a pound in the way. I've just described it the bulk the vast majority of the time that you could spend including our decoding was going to the time it takes to reach file off the phone, Everything else is
+ Play test.
+ But the problem is we're having to exchange your key whose size is the same as the size of message Detroit.
+ And if we're in position to securely exchange gigabit some information then let me know.
+ So the more we kind of have you buy just a small amount of information that we can share something with one another and then we look like in Florida.
+ The key exchange the problem here.
+ you can imagine some context in which this isn't perfectly useful system and indeed you know for
+ Even pre electronic day one point past which is what this is called. We're actually used, you know behind the lines if it were bye-bye Spa, thanks. So the Spy would have a coat of club which was basically the one-time pad and he or she would encode any particular message using a page and number two pages.
+ Next time message is the next page and then the next page so you can use parts, of course to do with the bull ability. Both picked the spies captured the the enemy has Pad, but if it's a truly is a one-time pad that goes by if you only ones right after too bad.
+ That doesn't compromise any of your other messages. Okay, it means you can now start sending messages which might purports to be from the Spy. So there's a message Integrity problem there.
+ But you know, you can build in some safeguards in stock as well. According to rules saying that have to be followed by message formats or whatever.
+ Okay.
+ Call Shannon is the father of the area of mathematics and statistics and this information Theory worked at the last letter stuff on error correction. Put also related to to see if the security photography and
+ He formalized this automation we had the last time about.
+ Looking random like instance the phone and wife.
+ So the way to think about it is that
+ Alice is going to send to Bob one or two messages.
+ They're mzor and one.
+ And so so we're getting Eve every possible piece of information we can get with us. Give us the whole game of mine. So the messages go more stale or whatever, right? He knows what the message is.
+ So she's going to Kobe's with the shaky right and it's going to produce a particular flavor text and we're assuming you only about side protect on the attacks. So the ciphertext see
+ Went from a standpoint to bother the encoding and then zero with some quique morning. Okay, I mean putting them on to some PK is interested.
+ So he sees the ciphertext and she begins to wonder do I think the messages at zero or do I think the message is that long?
+ So what way she can take them about that as you can say, well, I was just told me that the key that she involved McCready was true chosen uniformly at random from some keys base pay.
+ Let me figure out how many different keys in the key space but in Cipher and 0 in to see
+ Some magic Genie that sensor there are precisely ten keys in the keys face.
+ Which is safer and zero. Skip
+ all right, so she has to Gene. Well how many keys other than Cipher and one to get the TV says well, there are a hundred Keys looks like for a month.
+ Navigate said he was chosen uniformly at random and in secret. I don't know how it was chosen, but I do have the message is ten times as likely to be in one supposed to be.
+ You want me to place and I'm certainly back on that one.
+ We don't want you to be able to make that back. So what we want to be sure of is well would like ideally to say the number of keys that work to give a particular ciphertext. It's the same.
+ No matter what the message.
+ and in fact true
+ then from the ciphertext the attacker has no.
+ Noley Bertram it's like protecting out because from from from her standpoint. The only thing that went into producing this particular tax was the first key.
+ And they're exactly as many keys that produced type of tax with respectable. Nothing's has the world's respect.
+ So she's got no reason to believe whatsoever.
+ I should be embarrassed.
+ And in that case we say that the the Cyprus perfect.
+ Something no reason for a rational Easter offer to draw any inferences from the secretary.
+ All right.
+ The one-time pad has perfect secrecy.
+ The one-time pad is the convict the piper.
+ If I keep up the message and the key is the purpose of them.
+ So for every ciphertext and every message, there's exactly one key.
+ so
+ transformation applied it's been secrecy in the sense that when he sees the secretary provided she believes or actually doesn't matter which people lease provided. The Dallas is Bob really did Andre the Quinta Fort Lee random from 2.
+ And when he sees the type of techno reasons to bank a message over again.
+ Okay, that's great. That's ideal of this property.
+ right
+ a couple issues
+ Okay.
+ The first I don't want to give you into issue of message integrity.
+ today
+ the problem is
+ Eve is really sitting in the middle.
+ here
+ she received see which is Kate.
+ All right.
+ She could transmit anything else onto Ball but she likes now if she just does something weird random then.
+ That's not going to be of any use fucking to decode it. There's nothing what's going on, but
+ If you guys have information about them, she could trans she can modified ciphertext and transmit on.
+ Okay. P where peas something she chooses.
+ Which Bumble and decode?
+ and then Buffy
+ now watch that be useful. Well suppose the messages a very restricted format.
+ The message in the back transfer instruction that says please transfer Eva thousand dollars.
+ And he said what?
+ Walker Fitz represents $1,000
+ particular wall
+ that walking 64-bit is football, including a thousand.
+ Something changes into Law Enforcement Academy in the pattern, which is the exclusive or of $1,000 with the Villi.
+ From Boston to receive the message all that says. Oh Alison even Billy belts.
+ So message Integrity is an issue with respect to the one-time pad particularly as the messages are highly structured but more serious issue.
+ Which respect for being General is that the order to achieve perfect secrecy. The key face has to be at least as big as the message.
+ Because look.
+ If my ciphertext including phone message.
+ with Taxi
+ And it has a code every message with a PC.
+ So far east side or text.
+ That can occur there must be a key that matches every message to producer Piper.
+ But I'll have to be different because Bob at the other end has to be able to decode it's any to those keys for the things you get two different messages with the same. Try protector mats in bulk NC code. So that means have to be at least as many keys and star message.
+ which then means that your key space pick your message saying as soon as your keys are going to try and transfer to give me the Dada you need to get the
+ right. So how would you like to solve the problem? Okay.
+ Completely, so it'll probably come tomorrow.
+ So we'd like to use the idea of the one-time tag, but with much much smaller key.
+ So what was the what was that virtual Keys number Cheeseman uniformly at random from our keys?
+ well
+ The idea is we're still going to encode and decode flexible Ram with a fixed rate of the same rights as men.
+ But now I'm going to generate I've been string buy some other protests.
+ Allison Barber going to agree on a key but much much shorter key than the message song.
+ So I've been 24.
+ With us than that. Oh, we're still trying to encode and decode it with the.
+ So I think I've asked as being about 2 to the 10:24 and then as being about 2 to the 3rd.
+ So much much more living in thousand thousand compared to them.
+ Well, we're going to try and do is we're going to try and
+ from are truly random Shorkey produce a long string.
+ Which we can pretend is RAM.
+ So formally all we're looking for is something generator. Is Too Short Springs and produces long string.
+ That means provided we agree about the short string then we also agree and revoke know what GS. We also agree about the long string and then we can use it as if it were one side pain.
+ So the idea would take short strings presumably randomly chosen.
+ Stretch them somehow or another by this thing called The Suitor and the generator producing very warm springs and then we'll exclusive or those long Springs against our messages.
+ okay, at the other end can do get to decipher text and we have
+ but then of course the question is in once it cannot be a secure cactus.
+ well
+ the thing that thinking about is whether or not
+ Steve can recover useful information about
+ the message
+ from you can cover
+ useful information about JFK
+ without having useful information about
+ Right, you can say well gee you can just try.
+ of course the tax you can look at every possible TK and then
+ Karaoke, you know to use presumably publicly available. I'll run down so she can actually try all the possible decryption and find the one thing for me set.
+ All right, we're talking about chapter 24 of keys. I thought beautiful not anywhere close to these two thousand thousand 24 different.
+ Nest ball Pokemon
+ test
+ so it has to be what we consider not guaranteed perfect secrecy. We can try and guarantee something which is almost a good which is that there's no useful information. Please can recover.
+ So rather than focus on the Christmas system here, we start by focusing on the generator.
+ So we think about it. Once in this generator. The serenity active involvement is a GK should look random.
+ The system were using should behave as if we were using a truly random key and that requires Jeep behave kind of like it were a truly random thing. So, how can we try? And what do we mean by mutations Apprentice? Let's take a very
+ we can just
+ so what is what is the looking random email or something?
+ So let's take a very weak condition for predictability.
+ It's something which is all certainly not useful.
+ So we could be generally not useful, right?
+ But if that if the definition of predictability is very weak what would want. The unpredictability is very strong. That means we can produce things which are unpredictable. They'll behave really isn't they were rent.
+ So what's one very weak notion of predictability Theory?
+ will give you
+ everything with the last bit of June pay
+ So this is the name of the train?
+ Tell you the first.
+ and -1 bit
+ Can you tell me?
+ We're not even can you tell me what the last bit is, but can you make an informed back?
+ know if only the K comes from
+ So, I'm sure it's keyspace chosen uniform.
+ What does significantly pretty to make space in probability significantly dating from a happy whatever you want it to me.
+ Okay, but just give me something to think about.
+ I claim if I claim.
+ I can predict.
+ The bunnery are comfy the toss of a coin.
+ with probability
+ 1/2 plus something
+ Going to make that claim.
+ You have Police Department. No, I don't think that's quite fair. I think it's bad somehow and I stop by so that only comes up heads and it's something to do with the seasons does arise and so on and so far. I think that as you flip it I can predict if you give me
+ 230 + -1 cups
+ I introduced the next one with probability a little bit of
+ Leave it.
+ Okay, so you're going to have to prove that you can do this will happen you prove it. Well, all you all we can do is conduct the experiment. You tell me a certain number beside me again. I'm on the right or wrong.
+ If I'm wrong, you say no look you couldn't predict it. Come on. I only said I can predict the probability 51% right?
+ You can't hook me up here.
+ Oh, okay, so we'll have to do a few times.
+ So do it 100 times.
+ And a hundred times, I'm wrong 52 times in Frank 48 months. And then I said you said you were going to be write 51 time. I can't seem to be right exactly 51 times. I said, I had a 5100 chance of being right, you know, does that repair put in a hundred runs? I might only be right for the eight times. Come on. All right.
+ So we have to agree how long should this experiment take how long how many times should be repeated in order that my if I'm telling you the truth?
+ I should get significantly more than a half, correct.
+ All right, and the answer is it doesn't it doesn't really much flipped matter.
+ to verify this to both our satisfaction
+ will require
+ some cost by a software truck
+ Where were you close? I mean
+ it certainly about 300 you can give us three three, but it's equal to 1.
+ So if I'm 51% likely to be correct, I think that's the one is 100 so I can Square D $10,000 in order to be confident in order for me to be confident that I'm going to get a winning run in this game. We're probably going to have to do it several tens of thousands of time.
+ I'm always more likely to be right than wrong if I'm correct, but just to be sure that I don't have running bad luck. What's time?
+ All right. So, what's what's the point? What what is this mean about usefulness here?
+ Suppose he can predict the last V with probability one over to the 10th better than random.
+ Does she needs let's just take Librax on square and she needs a million runs in order to get.
+ And you can make that leap.
+ So if you go ahead.
+ Something like this, which is predictable to that extent. You probably wouldn't be happy.
+ But as soon as that's one over to the trivia.
+ As soon as he's only has the one in the building.
+ advantage
+ She had to intercept an awful lot of traffic before she gets any useful information of it.
+ So significantly different provide clean a tolerance official people.
+ Basically means to all intensive purposes, you know can't eat might have slight Advantage, but we're not we're not one. We're going to worry about.
+ Okay, so a couple things here that I just want to run over quickly. I've already mentioned the last one about the detailing in the videos. You'll notice that some systems that used something like one-time pads. But with some systematic key modifications that's an issue that was going to shoot for early encryption algorithms for wireless. The other interesting one. Is that onto Time Pad.
+ all right, and
+ are spies in a panic and forget to
+ change pages of key book
+ So she transferred to Chief plus someone on the key full-time to both of which are accepted by Eve.
+ What is
+ You can add those two things together.
+ Cancel against exclusive or have one with them, too.
+ And just a bunch of examples here if we take to the English language text with the same way. It was one of those together.
+ And with virtual Hunter censored as well to text one.
+ Just by physical test again by the fact that we're talking about happy and coding some characters are exclusive or or two English letters or everyone's been around Wednesday whenever and other things can't ride in that play life is just huge amounts of information getting in the exclusive or to structure deck.
+ Using the same key twice. It's just a complete disaster.
+ All right, get back to the business of testing souterrain generators.
+ Remember what we're taking this function G?
+ So just not accustomed to the N. Okay. It's nothing Jon Snow.
+ Here's to yes.
+ so finally.
+ Ryan
+ the function so the images
+ are scattered around perhaps but there's no more of them than there were a little tiny dog to begin with.
+ So the image of a g in the space of all pop left foot in time.
+ For thinking about thinking about us and about a few minutes at 2 to 10, and and that's about to 30th, right?
+ only one in a million possible Springs are the F of
+ are super Wings generator and that's by no means some sort of situation.
+ that would normally be thinking about
+ We can be thinking about much much larger.
+ Sorry.
+ after the turkey, which is a little
+ Which Brian Cole used to Big 5?
+ No, no.
+ Still basically a whole we have a we have a time. We have a tiny area message. Okay, so
+ really want to have questioned whether or not the adversary has an effect about Rhythm would correctly identify foot has been gone rain.
+ All right. So now we need to get a little bit technical again for a moment of time. Okay.
+ So do you do something? So the thing is we're going to Handy a stream from 2 to the end. And her objective is to figure out once this energy. I will introduce from sooner engine for was a gymnast jingle uniform different.
+ Generator is pretty simple. She got to be able to tell the difference with some reasonable chance of success if it's a pretty unpredictable than than she should be able to so what she's applying. She's taking a key or if you're taking a string and she sell them actually. I think this is Randall or I think this was generated.
+ Let's all that at the physical test now.
+ That's the motivating idea but fundamentally, it's any map which takes our big space and shops atoms tickets. Okay one bit could be very large ones. It could be very small. It could be the same sign, whatever.
+ This is antifa.
+ We want to talk about the advantage of this test over a cigarette generator.
+ So here's the thing if we take
+ a key
+ uniformly at random from the key space, okay.
+ That gives us our sooner end of the string GK and we can pass it to the test a and asked whether a 5-string to be random on.
+ So that long day I guess sooner Maybe.
+ And this is the plug it gets truly record stuff.
+ so
+ this is the portion of stuff of pseudo random stuff. The a says Is Random.
+ This is the first truly random stuff that they sent his ring.
+ Generators good don't should be probably say.
+ Again, in in the in kind of oil in effect. This perhaps be close to 1, but then this should all be close to what you know, maybe maybe a here's an example if you take a annual Springfest to just be
+ Fairview Lumber
+ Okay, just take the curly 150s. Let me half half half the strings producer and have to do someone.
+ And a half half the rent Casa Ramos terms to lease one. Okay, so Pulsar generator
+ suppose G and the property because we got all this have a check 15.
+ 8800
+ are sooner rather strange always had an even number of 100. This was obviously be back then. All right, but to think about the last day of the check for something no hard trying to check this out. Okay. So this is really a test for and it still has a big advantage over the general.
+ Because this probability is zero.
+ And this probably that.
+ So this is an advance. This tax is an advantage of a half over the generator.
+ So what is this really matter how different does a monkey from True relatives and Science and everything? It's a bit Fallout.
+ If you think what was going on here.
+ We're really talking about.
+ Which is talking about the distinction that a Nexus between the truly random stuff and the suitors.
+ LEDs on packages
+ 2 minutes
+ So we can find security for a pseudorandom generator to say if there's no efficient statistical tests. And what is efficient mean here.
+ basically polynomial time algorithm
+ okay with a non-negligible Advantage meaning an advantage again. That's that has a technical technical definition if you'd like, but but could be thought of as having.
+ practical impact in terms phone number to the 30th
+ so we can find your your business at 10.
+ so
+ let's think about Brute Force.
+ I think about the argument.
+ 0 excessive pay for something
+ This is the brute force test.
+ Give me the string cheese confused every possible Guk.
+ And if she sees the same game for she said set the rent.
+ And she been estranged since I knew.
+ Well, let's be manager this test for the emissions test is huge. Okay?
+ this produces one
+ The ability to choose came from Canon mg of takes one and zero because it never answers one on something for me.
+ What about this one? If you take something ran and what's the problem in a Marcus one? Oh, that's the same as the probability that are lies in the image of G.
+ So the probably the norm I didn't even have G.
+ so from the player named education
+ It's one month to the S over to the tires go away.
+ Remember s is about 2/10 minutes about 2 2:30. This is not one of my student attempts over to 30th, which is already 4 months of minutes is 1 - 2 to the 10th over to the truth, which is so far as the one that you don't ever know that they're so this has been an enormous investment. So the brute force test has
+ Is this actually?
+ It's not something that you can carry out because you can't look at to the to the 10th.
+ Different Strokes
+ That's why I appreciate you.
+ however, interesting point here, which is
+ This is the lovely definition.
+ Are we ever going to be able to construct the sooner incinerator that we believe?
+ Is provably secure Craigslist definition.
+ to be useful
+ to be useful as a pseudorandom generator our street generator be that'd be phone number.
+ Alice in the field needs to take for secret key tag in January two Jeeps with the chicken head sword against your message. So she needs to be able to use it now triple G's and generate 236 Plus.
+ Thanks or against your message. So at the very least G in front of me involvement often faster than that. Okay, but then that's true.
+ Brute Force The Brute Force attack
+ is non-deterministic polynomial time. What do I mean by that?
+ well
+ What's the Brute Force attack for the taxes take every possible key and check?
+ weather generated answering machine
+ All right.
+ Non determinism says I'm allowed if there is a key that works. I'm allowed to get them.
+ So Ethan, I'm pretty sure and I'm Alexis sure, but there is a key that works this particular one. Let me check.
+ Since G is polio mealtime so you can do that check and pulling on wheels on.
+ And to check that they agreed and she's definitely verified.
+ Cute cakes and they don't even reach you since no I have a very very good guesser. I'm sure that if that wasn't the right key the written directly.
+ That's what's on the Terminus Auto Terminus of allowing. One one really Claire, okay.
+ Okay. So what does that mean? The fruit for search isn't is in this place called Fe?
+ We don't know whether every hour the man p as in P or not.
+ So it's conceivable.
+ If it should happen, it's famous largest from question in.
+ Computing Theory
+ pz depending on the service bulletin fine problem deterministic following up and offer them then there can never be a provably secure here.
+ Now nobody serious as far as I know actually believe the peak was in pain.
+ But if you build a provably secure prg, you would have proven the t is not equal to.
+ And nobody believes the proving p is not even. You need to come people been trying for the last four years of success.
+ So
+ that's
+ that's why we probably can't build appropriate. Okay?
+ switch with you
+ I I sent beginning one to notion about predictability and then I switched into this.
+ social advantage
+ and it wouldn't make me switch because I haven't Justified it, but it turns out that security disability or example
+ One Direction is relatively easy if it's a if a generator is predictable than it's easily shown to be insecure because the predictability gives you a statistical test.
+ All right, the other directions a little harder you need to take an arbitrary statistical test show some how it can be used to give you a predictive. That's not that's not so easy show but but they are they are actually the same song.
+ Okay, let me just I'm going to have to run through the last bit rather quickly the notes. I emailed out that they have this in more detail so that security that prg now we're not really interested in security prg. We're interested in security of the related fiber system, which says take the stream produced by the to Duran Duran.
+ It's not clear because Shannon's observation doesn't have any any power in the case where we're not.
+ Where we can't encode everything at least once it's not clear what relationship of two. So in the context of the Cyprus is still here is again a week notion of attack and you can avoid this attack that can be reasonably possible.
+ the temperature today, so
+ if you can think about the adversary not to be put at someone who's testing.
+ the phone you're cooperating with but they're also trying trying to show you that you're
+ So the wait is the game you play with something. So they'll give you two messages of the same light switch. They can choose.
+ You get to choose a random key and one of the two messages.
+ There's normally all correctly and you would code that message.
+ And you return the encoded version?
+ So you got a rent whiskey and then you've included either and zero or a one and you give the sniper text back to the others.
+ And he's the only job is to try and guess which one of the two messages the closer to income.
+ All right.
+ so, you know, I mean
+ If you can't do that reliably then.
+ How can you possibly attack the system in general?
+ Even even think about this is the name of the contacts where he knows. The message is one of two possibilities. He still would have no good leave, Oregon the testing the system.
+ So again, we have the advantage here.
+ advantages
+ the difference between his probability testing one when you chose Iran's probably the getting one when you just want.
+ So if you get one if you get this one when you choose one 70% of the time and get this one when you should zero 20% of the time that's a 50% advance.
+ The other way around it 2-4 keeps sending package, but I'm under so if you can send it back just as just as good as a 50% Advantage because just changes that just flips the bit on what he makes his predictions. So you're interested.
+ All right.
+ and
+ Again, I just don't have time to go to details, but it's in the notes. It turns out that you can argue that if you had a cure prg, the corresponding dreams hyper is Matt, please secure and the reason is this deterministic game which it was tripping on your blonde. And would you play by the rules by choosing your Shorkey K and using a pseudo-random generator on returning it can be injured list with a game where you cheat? Okay and choosing a random. See you actually choose.
+ Completely use the one-time pad and sticks.
+ And once you can show is that the advantage that we have here.
+ the most twice the advantage
+ the test
+ of course blood and tests against the students in Riverdale
+ little little tweaking there, but but basically
+ If you use a truly random key, you know, he's going to have no advantage over that because that's Shannon speakers the observation. So the gas he's producing is it most of the gap between
+ the the thing he shows and the truly random thing which is the test against the generator.
+ Plus the gap between the truly random thing and the other thing he chose which is also test against the generator. So suppose Twice The Gap against the timer.
+ Okay, so
+ we had a good secure prg. Then the corresponding stream Cipher would be genuinely semantically secure which is obviously I could text you.
+ All right, so I'm going to have a week off now Dave's going to tell you about block ciphers, which are
+ Very widely used to measure Key System next week and then I'll come back to talk about public key encryption and it just highlighting. That's that's weak spot.
+ Thank you.
