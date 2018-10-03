@@ -1,0 +1,1610 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-10-03 Wed 17:47 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="shane" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org79bea03">1. Legend</a>
+<ul>
+<li><a href="#org4e53831">1.1. This means <b>definition</b></a></li>
+<li><a href="#org51dca7d">1.2. Has been added to this script</a></li>
+</ul>
+</li>
+<li><a href="#org99fe668">2. Documenting what works and what does not with go/unused-private-const-var-same-package</a>
+<ul>
+<li><a href="#org09ac3e9">2.1. plan</a></li>
+<li><a href="#org1cde355">2.2. problems</a></li>
+<li><a href="#org331152f">2.3. Iterations</a>
+<ul>
+<li><a href="#orgab042be">2.3.1. 1. This works</a></li>
+<li><a href="#orgb4a950a">2.3.2. 2. This works</a></li>
+<li><a href="#org49bb665">2.3.3. 3. This does not work</a></li>
+<li><a href="#org8d0f6d3">2.3.4. 4. This is inconsequential</a></li>
+<li><a href="#org322fe5c">2.3.5. 5. This does not work</a></li>
+</ul>
+</li>
+<li><a href="#org235ab84">2.4. Testing hypothesis 1 (H1)</a>
+<ul>
+<li><a href="#orgdd10ac7">2.4.1. Hypothesis 1 (H1)</a></li>
+<li><a href="#org590083a">2.4.2. Experiment 1</a></li>
+<li><a href="#org4e2a597">2.4.3. Experiment 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org6fc31d6">3. Collect data, look for new hypothesis</a>
+<ul>
+<li><a href="#org1c797f9">3.1. Experiment 1</a>
+<ul>
+<li><a href="#org4795037">3.1.1. Plan</a></li>
+<li><a href="#org12d2235">3.1.2. Modifications</a></li>
+<li><a href="#org4b05860">3.1.3. Code</a></li>
+<li><a href="#org99684c2">3.1.4. Possible hypothesis</a></li>
+<li><a href="#orgf598608">3.1.5. Results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orged022f7">4. What is the boolean logic I have to express to get what I want?</a>
+<ul>
+<li><a href="#orgb8da4a2">4.1. CLQL needs more clear boolean logic.</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org79bea03" class="outline-2">
+<h2 id="org79bea03"><span class="section-number-2">1</span> Legend</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org4e53831" class="outline-3">
+<h3 id="org4e53831"><span class="section-number-3">1.1</span> This means <b>definition</b></h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #ff8700;">go.value_spec</span>:
+  <span style="color: #ff8700;">go.names</span>:
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org51dca7d" class="outline-3">
+<h3 id="org51dca7d"><span class="section-number-3">1.2</span> Has been added to this script</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+<a href="file:///home/shane/notes2018/ws/codelingo/scripts/clql-annotate">scripts/clql-annotate</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org99fe668" class="outline-2">
+<h2 id="org99fe668"><span class="section-number-2">2</span> Documenting what works and what does not with <a href="file:///home/shane/var/smulliga/source/git/mullikine/codelingo/tenets/codelingo/go/unused-private-const-var-same-package/">go/unused-private-const-var-same-package</a></h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org09ac3e9" class="outline-3">
+<h3 id="org09ac3e9"><span class="section-number-3">2.1</span> plan</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+First, get to something that works.
+Then, try to add include and exclude. At each step, when it breaks, record it.
+</p>
+</div>
+</div>
+<div id="outline-container-org1cde355" class="outline-3">
+<h3 id="org1cde355"><span class="section-number-3">2.2</span> problems</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+The turnover rate is <b>very</b> slow running a review on a single tenet.
+</p>
+</div>
+</div>
+<div id="outline-container-org331152f" class="outline-3">
+<h3 id="org331152f"><span class="section-number-3">2.3</span> Iterations</h3>
+<div class="outline-text-3" id="text-2-3">
+</div>
+<div id="outline-container-orgab042be" class="outline-4">
+<h4 id="orgab042be"><span class="section-number-4">2.3.1</span> 1. This works</h4>
+<div class="outline-text-4" id="text-2-3-1">
+</div>
+<ol class="org-ol">
+<li><a id="orgc4bb3d5"></a>Modifications made (to get it to start working)<br />
+<ol class="org-ol">
+<li><a id="org5154abe"></a><span class="done DONE">DONE</span> <code>go.gen_decl(depth = 1):</code><br />
+<div class="outline-text-6" id="text-2-3-1-1-1">
+<p>
+Making depth = 1 here fixed something.
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">vim +/<span style="color: #ff4ea3;">"var b unexportedStructA"</span> <span style="color: #ff4ea3;">"/tmp/td_wdnSsHzB/temp_repo/example/foo.go"</span>
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="orgdf88743"></a><span class="todo TODO">TODO</span> Temporarily removed <code>go.dir:</code><br />
+<div class="outline-text-6" id="text-2-3-1-1-2">
+<p>
+I can probably put this back in without problems.
+</p>
+</div>
+</li>
+<li><a id="orgc4b8d1b"></a><span class="done DONE">DONE</span> Removed <code>include:</code><br />
+<div class="outline-text-6" id="text-2-3-1-1-3">
+<p>
+Things started working when this was removed.
+</p>
+</div>
+</li>
+</ol>
+</li>
+
+<li><a id="org906f125"></a>Code<br />
+<div class="outline-text-5" id="text-2-3-1-2">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">go.dir:</span>
+<span style="color: #ff8700;">go.file(depth = any)</span>:
+  <span style="color: #ff8700;">go.gen_decl(depth = 1)</span>:
+    <span style="color: #ff8700;">go.value_spec</span>:
+      <span style="color: #ff8700;">go.names</span>:
+        @ review.comment
+        <span style="color: #ff8700;">go.ident</span>:
+          @ review.vars.globalname
+          name as privateVarName
+          private == <span style="color: #ff4ea3;">"true"</span>
+
+<span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">exclude:</span>
+<span style="color: #ff8700;">go.file(depth = any)</span>:
+  <span style="color: #ff8700;">exclude</span>:
+    <span style="color: #6c6c6c; font-style: italic;">#</span><span style="color: #6c6c6c; font-style: italic;">go.value_spec(depth = any):</span>
+    <span style="color: #ff8700;">go.value_spec</span>:
+      <span style="color: #ff8700;">go.names</span>:
+        <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">include:</span>
+        <span style="color: #ff8700;">go.ident(depth = any)</span>:
+          name == privateVarName
+          private == <span style="color: #ff4ea3;">"true"</span>
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-orgb4a950a" class="outline-4">
+<h4 id="orgb4a950a"><span class="section-number-4">2.3.2</span> 2. This works</h4>
+<div class="outline-text-4" id="text-2-3-2">
+</div>
+<ol class="org-ol">
+<li><a id="orge085c05"></a>Modifications<br />
+<ol class="org-ol">
+<li><a id="org61580d5"></a>Commented out <code>exclude:</code> &#x2026; <code>include:</code>.<br /></li>
+</ol>
+</li>
+<li><a id="org8916309"></a>Code<br />
+<div class="outline-text-5" id="text-2-3-2-2">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.dir</span>:
+  <span style="color: #ff8700;">go.file(depth = any)</span>:
+    <span style="color: #ff8700;">go.gen_decl(depth = 1)</span>:
+      <span style="color: #ff8700;">go.value_spec</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          @ review.comment
+          <span style="color: #ff8700;">go.ident</span>:
+            @ review.vars.globalname
+            name as privateVarName
+            private == <span style="color: #ff4ea3;">"true"</span>
+  <span style="color: #ff8700;">exclude</span>:
+    <span style="color: #ff8700;">go.file(depth = any)</span>:
+      <span style="color: #6c6c6c; font-style: italic;">## </span><span style="color: #6c6c6c; font-style: italic;">exclude:</span>
+      <span style="color: #6c6c6c; font-style: italic;">#</span><span style="color: #6c6c6c; font-style: italic;">go.value_spec(depth = any):</span>
+      <span style="color: #6c6c6c; font-style: italic;">#  </span><span style="color: #6c6c6c; font-style: italic;"># go.value_spec:</span>
+      <span style="color: #6c6c6c; font-style: italic;">#  </span><span style="color: #6c6c6c; font-style: italic;">go.names:</span>
+      <span style="color: #6c6c6c; font-style: italic;">#    </span><span style="color: #6c6c6c; font-style: italic;">include:</span>
+      <span style="color: #ff8700;">go.ident(depth = any)</span>:
+        name == privateVarName
+        private == <span style="color: #ff4ea3;">"true"</span>
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org49bb665" class="outline-4">
+<h4 id="org49bb665"><span class="section-number-4">2.3.3</span> 3. This does not work</h4>
+<div class="outline-text-4" id="text-2-3-3">
+</div>
+<ol class="org-ol">
+<li><a id="org947d003"></a>Modifications<br />
+<ol class="org-ol">
+<li><a id="orgc764a09"></a>Reinstated <code>include:</code>.<br /></li>
+</ol>
+</li>
+<li><a id="orga024e6e"></a>Code<br />
+<div class="outline-text-5" id="text-2-3-3-2">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.dir</span>:
+  <span style="color: #ff8700;">go.file(depth = any)</span>:
+    <span style="color: #ff8700;">go.gen_decl(depth = 1)</span>:
+      <span style="color: #ff8700;">go.value_spec</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          @ review.comment
+          <span style="color: #ff8700;">go.ident</span>:
+            @ review.vars.globalname
+            name as privateVarName
+            private == <span style="color: #ff4ea3;">"true"</span>
+  <span style="color: #ff8700;">exclude</span>:
+    <span style="color: #ff8700;">go.file(depth = any)</span>:
+      <span style="color: #6c6c6c; font-style: italic;">## </span><span style="color: #6c6c6c; font-style: italic;">exclude:</span>
+      <span style="color: #ff8700;">go.value_spec(depth = any)</span>:
+        <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">go.value_spec:</span>
+        <span style="color: #ff8700;">go.names</span>:
+          <span style="color: #ff8700;">include</span>:
+            <span style="color: #ff8700;">go.ident(depth = any)</span>:
+              name == privateVarName
+              private == <span style="color: #ff4ea3;">"true"</span>
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org3229917"></a>Client Error<br />
+<div class="outline-text-5" id="text-2-3-3-3">
+<div class="org-src-container">
+<pre class="src src-text">Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org6dcba1a"></a>Server (platform) Error<br />
+<div class="outline-text-5" id="text-2-3-3-4">
+<div class="org-src-container">
+<pre class="src src-text">mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;">error</span>: result missing excluded parents
+/home/dev/projects/src/github.com/codelingo/platform/controller/graphdb/query/processor/validator/excluded_variable.go:247: result missing excluded parents
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org8d0f6d3" class="outline-4">
+<h4 id="org8d0f6d3"><span class="section-number-4">2.3.4</span> 4. This is inconsequential</h4>
+<div class="outline-text-4" id="text-2-3-4">
+</div>
+<ol class="org-ol">
+<li><a id="orgdc57477"></a>Modifications<br />
+<ol class="org-ol">
+<li><a id="orga0abd6a"></a>Removed depth = any<br />
+<div class="outline-text-6" id="text-2-3-4-1-1">
+<div class="org-src-container">
+<pre class="src src-diff"><span style="color: #afd7ff; background-color: #4e4e4e; font-weight: bold;">29c29</span>
+<span style="color: #eeeeee; background-color: #a40000; font-weight: bold;">&lt;</span><span style="color: #ff4b4b; background-color: #3a3a3a; font-weight: bold;">                   go.ident(depth = any):</span>
+<span style="color: #afd7ff; background-color: #4e4e4e; font-weight: bold;">---</span>
+&gt;                   go.ident:
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</li>
+
+<li><a id="org0d375c0"></a>Code<br />
+<div class="outline-text-5" id="text-2-3-4-2">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.dir</span>:
+  <span style="color: #ff8700;">go.file(depth = any)</span>:
+    <span style="color: #ff8700;">go.gen_decl(depth = 1)</span>:
+      <span style="color: #ff8700;">go.value_spec</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          @ review.comment
+          <span style="color: #ff8700;">go.ident</span>:
+            @ review.vars.globalname
+            name as privateVarName
+            private == <span style="color: #ff4ea3;">"true"</span>
+  <span style="color: #ff8700;">exclude</span>:
+    <span style="color: #ff8700;">go.file(depth = any)</span>:
+      <span style="color: #6c6c6c; font-style: italic;">## </span><span style="color: #6c6c6c; font-style: italic;">exclude:</span>
+      <span style="color: #ff8700;">go.value_spec(depth = any)</span>:
+        <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">go.value_spec:</span>
+        <span style="color: #ff8700;">go.names</span>:
+          <span style="color: #ff8700;">include</span>:
+            <span style="color: #ff8700;">go.ident</span>:
+              name == privateVarName
+              private == <span style="color: #ff4ea3;">"true"</span>
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org322fe5c" class="outline-4">
+<h4 id="org322fe5c"><span class="section-number-4">2.3.5</span> 5. This does not work</h4>
+<div class="outline-text-4" id="text-2-3-5">
+<p>
+Same platform error as before: <code>result missing excluded parents</code>.
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="org0a105be"></a>Modifications<br />
+<ol class="org-ol">
+<li><a id="orga4d930c"></a>Swapped order of <code>exclude:</code> and sibling <code>go.file:</code><br /></li>
+</ol>
+</li>
+
+<li><a id="orgdb9dcd8"></a>Code<br />
+<div class="outline-text-5" id="text-2-3-5-2">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.dir</span>:
+  <span style="color: #ff8700;">exclude</span>:
+    <span style="color: #ff8700;">go.file(depth = any)</span>:
+      <span style="color: #ff8700;">go.value_spec(depth = any)</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          <span style="color: #ff8700;">include</span>:
+          @review.comment
+            <span style="color: #ff8700;">go.ident(depth = any)</span>:
+              name == privateVarName <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">But can I used a variable that was named later? A question for another time.</span>
+              private == <span style="color: #ff4ea3;">"true"</span>
+  <span style="color: #ff8700;">go.file(depth = any)</span>:
+    <span style="color: #ff8700;">go.gen_decl(depth = 1)</span>:
+      <span style="color: #ff8700;">go.value_spec</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          @ review.comment
+          <span style="color: #ff8700;">go.ident</span>:
+            @ review.vars.globalname
+            name as privateVarName
+            private == <span style="color: #ff4ea3;">"true"</span>
+</pre>
+</div>
+</div>
+</li>
+<li><a id="orgd142e39"></a>Client Error<br />
+<div class="outline-text-5" id="text-2-3-5-3">
+<div class="org-src-container">
+<pre class="src src-text">Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+</pre>
+</div>
+</div>
+</li>
+<li><a id="orgeae92a8"></a>Server (platform) Error<br />
+<div class="outline-text-5" id="text-2-3-5-4">
+<div class="org-src-container">
+<pre class="src src-text">mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;">error</span>: result missing excluded parents
+/home/dev/projects/src/github.com/codelingo/platform/controller/graphdb/query/processor/validator/excluded_variable.go:247: result missing excluded parents
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org6ff935e"></a>Hypothesis 1<br />
+<div class="outline-text-5" id="text-2-3-5-5">
+<p>
+An <code>exclude:</code> that has descendent <code>include:</code> can only belong as a child of its own parent by itself; ie. the <code>exclude:</code> must not have any siblings.
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="orgb82468a"></a>Are there any other examples of tenets with <code>exclude:</code> that has siblings?<br />
+<ol class="org-ol">
+<li><a id="org2c1093d"></a>In php, yes.<br />
+<div class="outline-text-7" id="text-2-3-5-5-1-1">
+<p>
+<a href="file:///home/shane/var/smulliga/source/git/mullikine/codelingo/tenets/codelingo/php/offsite-redirection/codelingo.yaml">offsite-redirection/codelingo.yaml</a>
+</p>
+</div>
+</li>
+
+<li><a id="orgcd4a0d0"></a>In go, yes, so long as it doesn't have a parent <code>go.dir:</code>.<br />
+<div class="outline-text-7" id="text-2-3-5-5-1-2">
+<p>
+<a href="file:///home/shane/var/smulliga/source/git/mullikine/codelingo/tenets/codelingo/go/tested/codelingo.yaml">tested/codelingo.yaml</a>
+</p>
+</div>
+</li>
+
+<li><a id="org02f5968"></a>Perhaps the problem is that an <code>exclude:</code> with an <code>include:</code> must not have any siblings.<br />
+<div class="outline-text-7" id="text-2-3-5-5-1-3">
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #ff8700;">go.for_stmt</span>:
+  <span style="color: #ff8700;">exclude</span>:
+    <span style="color: #ff8700;">go.assign_stmt</span>: <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">TODO: repeated index-of-array macrofact</span>
+      <span style="color: #ff8700;">go.rhs</span>:
+        <span style="color: #ff8700;">go.unary_expr</span>:
+          <span style="color: #ff8700;">go.index_expr</span>:
+            <span style="color: #ff8700;">go.selector_expr</span>:
+              <span style="color: #ff8700;">go.ident</span>: <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">refers to lhs</span>
+                name == structName
+              <span style="color: #ff8700;">go.ident</span>:
+                name == fieldName
+  @review.comment
+  <span style="color: #ff8700;">go.call_expr(depth = any)</span>:
+    <span style="color: #ff8700;">go.selector_expr</span>:
+      <span style="color: #ff8700;">go.ident</span>:
+        name == structName
+      <span style="color: #ff8700;">go.ident</span>:
+        name == updatingFunction
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org588c6f3"></a>This is confusing, but it appears that <code>exclude:</code> can have siblings and can have nested <code>exclude:</code>.<br />
+<div class="outline-text-7" id="text-2-3-5-5-1-4">
+<p>
+The 2nd exclude here is acting as a complement of the set. Maybe it should be called 'complement'.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">include functions with any "return nil"</span>
+<span style="color: #ff8700;">go.return_stmt(depth = any)</span>:
+  <span style="color: #ff8700;">go.results</span>:
+    <span style="color: #ff8700;">go.ident</span>:
+      name == <span style="color: #ff4ea3;">"nil"</span>
+
+<span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">exclude functions with anything but "return nil"</span>
+<span style="color: #ff8700;">exclude</span>:
+  <span style="color: #ff8700;">go.return_stmt(depth = any)</span>:
+    <span style="color: #ff8700;">go.results</span>:
+      <span style="color: #ff8700;">exclude</span>:
+        <span style="color: #ff8700;">go.ident</span>:
+          name == <span style="color: #ff4ea3;">"nil"</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #d18aff;">cd</span> <span style="color: #ff4ea3;">"$HOME$MYGIT/mullikine/codelingo/tenets/cacophony/default/defer-in-loop"</span>; ead <span style="color: #ff4ea3;">"include[:(]"</span>
+</pre>
+</div>
+
+<p>
+Here is one example of how an include is to be used. But here, the <code>exclude:</code> does not have any siblings.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #ff8700;">go.for_stmt(depth = any)</span>:
+  <span style="color: #ff8700;">exclude</span>:
+    <span style="color: #ff8700;">go.func_lit(depth = any)</span>:
+      <span style="color: #ff8700;">include(depth = any)</span>:
+        @ review.comment
+        go.defer_stmt(depth = any)
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org235ab84" class="outline-3">
+<h3 id="org235ab84"><span class="section-number-3">2.4</span> Testing hypothesis 1 (H1)</h3>
+<div class="outline-text-3" id="text-2-4">
+</div>
+<div id="outline-container-orgdd10ac7" class="outline-4">
+<h4 id="orgdd10ac7"><span class="section-number-4">2.4.1</span> Hypothesis 1 (H1)</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<p>
+An <code>exclude:</code> that has descendent <code>include:</code> can only belong as a child of its own parent by itself; ie. the <code>exclude:</code> must not have any siblings.
+</p>
+</div>
+</div>
+<div id="outline-container-org590083a" class="outline-4">
+<h4 id="org590083a"><span class="section-number-4">2.4.2</span> Experiment 1</h4>
+<div class="outline-text-4" id="text-2-4-2">
+</div>
+<ol class="org-ol">
+<li><a id="orgdad866f"></a>Modifications<br />
+<ol class="org-ol">
+<li><a id="orgb476cd6"></a>Simplified<br /></li>
+</ol>
+</li>
+
+<li><a id="org1512c47"></a>Code<br />
+<div class="outline-text-5" id="text-2-4-2-2">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.dir</span>:
+  <span style="color: #ff8700;">exclude</span>:
+    <span style="color: #ff8700;">go.file(depth = any)</span>:
+      <span style="color: #ff8700;">go.value_spec(depth = any)</span>:
+        go.names
+        <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">include:</span>
+        <span style="color: #6c6c6c; font-style: italic;">#   </span><span style="color: #6c6c6c; font-style: italic;">go.ident(depth = any)</span>
+  <span style="color: #ff8700;">go.file(depth = any)</span>:
+    <span style="color: #ff8700;">go.ident(depth = any)</span>:
+      @ review.vars.globalname
+      private == <span style="color: #ff4ea3;">"true"</span>
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="orgd787e36"></a>Results<br />
+<div class="outline-text-5" id="text-2-4-2-3">
+<p>
+No issues found.
+</p>
+
+<p>
+I didn't have a <code>@review.comment</code> but it didn't have any matches so it didn't complain.
+</p>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org4e2a597" class="outline-4">
+<h4 id="org4e2a597"><span class="section-number-4">2.4.3</span> Experiment 2</h4>
+<div class="outline-text-4" id="text-2-4-3">
+</div>
+<ol class="org-ol">
+<li><a id="org1e0ca24"></a>Modifications<br />
+<ol class="org-ol">
+<li><a id="orgbca9d24"></a>Reinstated <code>include:</code><br /></li>
+</ol>
+</li>
+
+<li><a id="org4ca9952"></a>Code<br />
+<div class="outline-text-5" id="text-2-4-3-2">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.dir</span>:
+  <span style="color: #ff8700;">exclude</span>:
+    <span style="color: #ff8700;">go.file(depth = any)</span>:
+      <span style="color: #ff8700;">go.value_spec(depth = any)</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          <span style="color: #ff8700;">include</span>:
+            @review.comment
+            go.ident(depth = any)
+  <span style="color: #ff8700;">go.file(depth = any)</span>:
+    <span style="color: #ff8700;">go.ident(depth = any)</span>:
+      @ review.vars.globalname
+      private == <span style="color: #ff4ea3;">"true"</span>
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="orgf25c30c"></a>Results<br />
+<div class="outline-text-5" id="text-2-4-3-3">
+<p>
+This ran successfully.
+It matched every single identifier though.
+To get the error back I need to add more specificity to the <code>go.file...go.ident</code> which is not in an <code>exclude:</code>.
+H1 is a bust.
+</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6fc31d6" class="outline-2">
+<h2 id="org6fc31d6"><span class="section-number-2">3</span> Collect data, look for new hypothesis</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org1c797f9" class="outline-3">
+<h3 id="org1c797f9"><span class="section-number-3">3.1</span> Experiment 1</h3>
+<div class="outline-text-3" id="text-3-1">
+</div>
+<div id="outline-container-org4795037" class="outline-4">
+<h4 id="org4795037"><span class="section-number-4">3.1.1</span> Plan</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+Add specificity. Remove specificity gradually. This may elicit H2.
+</p>
+</div>
+</div>
+<div id="outline-container-org12d2235" class="outline-4">
+<h4 id="org12d2235"><span class="section-number-4">3.1.2</span> Modifications</h4>
+<div class="outline-text-4" id="text-3-1-2">
+</div>
+<ol class="org-ol">
+<li><a id="org8794407"></a>Add specificity.<br /></li>
+</ol>
+</div>
+<div id="outline-container-org4b05860" class="outline-4">
+<h4 id="org4b05860"><span class="section-number-4">3.1.3</span> Code</h4>
+<div class="outline-text-4" id="text-3-1-3">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+ <span style="color: #ff8700;">go.dir</span>:
+   <span style="color: #ff8700;">exclude</span>:
+     <span style="color: #ff8700;">go.file(depth = any)</span>:
+       <span style="color: #ff8700;">go.value_spec(depth = any)</span>:
+         <span style="color: #ff8700;">go.names</span>:
+           <span style="color: #ff8700;">include</span>:
+             go.ident(depth = any)
+   <span style="color: #ff8700;">go.file(depth = any)</span>:
+     <span style="color: #ff8700;">go.gen_decl(depth = 1)</span>:
+       <span style="color: #ff8700;">go.value_spec</span>:
+         <span style="color: #ff8700;">go.names</span>:
+           @ review.comment
+           <span style="color: #ff8700;">go.ident</span>:
+             @ review.vars.globalname
+             private == <span style="color: #ff4ea3;">"true"</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org99684c2" class="outline-4">
+<h4 id="org99684c2"><span class="section-number-4">3.1.4</span> Possible hypothesis</h4>
+<div class="outline-text-4" id="text-3-1-4">
+<p>
+An <code>exclude:</code> with an <code>include:</code> will fail unless there is a guaranteed match already from a sibling to <code>exclude:</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf598608" class="outline-4">
+<h4 id="orgf598608"><span class="section-number-4">3.1.5</span> Results</h4>
+<div class="outline-text-4" id="text-3-1-5">
+<p>
+This worked. So what is different to the thing that failed?
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="orgd8ce2fe"></a>Comparison<br />
+<ol class="org-ol">
+<li><a id="org2c7b7c3"></a>Failed (exhibit 1)<br />
+<div class="outline-text-6" id="text-3-1-5-1-1">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.dir</span>:
+  <span style="color: #ff8700;">go.file(depth = any)</span>:
+    <span style="color: #ff8700;">go.gen_decl(depth = 1)</span>:
+      <span style="color: #ff8700;">go.value_spec</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          @ review.comment
+          <span style="color: #ff8700;">go.ident</span>:
+            @ review.vars.globalname
+            name as privateVarName
+            private == <span style="color: #ff4ea3;">"true"</span>
+  <span style="color: #ff8700;">exclude</span>:
+    <span style="color: #ff8700;">go.file(depth = any)</span>:
+      <span style="color: #6c6c6c; font-style: italic;">## </span><span style="color: #6c6c6c; font-style: italic;">exclude:</span>
+      <span style="color: #ff8700;">go.value_spec(depth = any)</span>:
+        <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">go.value_spec:</span>
+        <span style="color: #ff8700;">go.names</span>:
+          <span style="color: #ff8700;">include</span>:
+            <span style="color: #ff8700;">go.ident(depth = any)</span>:
+              name == privateVarName
+              private == <span style="color: #ff4ea3;">"true"</span>
+</pre>
+</div>
+</div>
+<ol class="org-ol">
+<li><a id="orgf0866c7"></a>Client Error<br />
+<div class="outline-text-7" id="text-3-1-5-1-1-1">
+<div class="org-src-container">
+<pre class="src src-text">Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org590076b"></a>Server (platform) Error<br />
+<div class="outline-text-7" id="text-3-1-5-1-1-2">
+<div class="org-src-container">
+<pre class="src src-text">mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;">error</span>: result missing excluded parents
+/home/dev/projects/src/github.com/codelingo/platform/controller/graphdb/query/processor/validator/excluded_variable.go:247: result missing excluded parents
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</li>
+
+<li><a id="org5122b32"></a>Worked (exhibit 2)<br />
+<div class="outline-text-6" id="text-3-1-5-1-2">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.dir</span>:
+  <span style="color: #ff8700;">exclude</span>:
+    <span style="color: #ff8700;">go.file(depth = any)</span>:
+      <span style="color: #ff8700;">go.value_spec(depth = any)</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          <span style="color: #ff8700;">include</span>:
+            go.ident(depth = any)
+  <span style="color: #ff8700;">go.file(depth = any)</span>:
+    <span style="color: #ff8700;">go.gen_decl(depth = 1)</span>:
+      <span style="color: #ff8700;">go.value_spec</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          @ review.comment
+          <span style="color: #ff8700;">go.ident</span>:
+            @ review.vars.globalname
+            private == <span style="color: #ff4ea3;">"true"</span>
+</pre>
+</div>
+
+<p>
+This matched only a few things. I think it matched correctly. Verify.
+This would be evidence for <code>exclude:</code> <code>include:</code> needing to come before an <code>exclude:</code> sibling.
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="org1caeea2"></a>Does it do what the tenet needs it to do?<br />
+<div class="outline-text-7" id="text-3-1-5-1-2-1">
+<p>
+<code>{{globalname}}</code> is not matched.
+</p>
+</div>
+</li>
+</ol>
+</li>
+
+<li><a id="org3c2c9f9"></a>Possibly working, test (exhibit 3)<br />
+<div class="outline-text-6" id="text-3-1-5-1-3">
+<p>
+I haven't changed anything here, just reordered <code>exclude:</code> and sibling <code>go.file:</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.dir</span>:
+  <span style="color: #ff8700;">go.file(depth = any)</span>:
+    <span style="color: #ff8700;">go.gen_decl(depth = 1)</span>:
+      <span style="color: #ff8700;">go.value_spec</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          @ review.comment
+          <span style="color: #ff8700;">go.ident</span>:
+            @ review.vars.globalname
+            private == <span style="color: #ff4ea3;">"true"</span>
+  <span style="color: #ff8700;">exclude</span>:
+    <span style="color: #ff8700;">go.file(depth = any)</span>:
+      <span style="color: #ff8700;">go.value_spec(depth = any)</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          <span style="color: #ff8700;">include</span>:
+            go.ident(depth = any)
+</pre>
+</div>
+</div>
+<ol class="org-ol">
+<li><a id="org1b6e32e"></a>Conclusion<br />
+<div class="outline-text-7" id="text-3-1-5-1-3-1">
+<p>
+It failed.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">flow config: <span style="color: #ffff00; background-color: #cccc00;">failed</span> to build issue, 'review.comment' not found in result
+</pre>
+</div>
+
+<p>
+So it appears that here, <code>exclude: include:</code> matched something yet does not have a <code>@ review.comment</code>.
+This makes sense.
+However, its behavior is different from last time, which does not make sense. I have only reordered.
+</p>
+</div>
+</li>
+
+<li><a id="org2464cae"></a>Conclusion 1<br />
+<div class="outline-text-7" id="text-3-1-5-1-3-2">
+<p>
+Order of exclude: matters. Not sure what the difference is behind the scenes.
+Should a particular ordering be enforced on the CLQL server-side?
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="orgd979d1b"></a>As a side effect, it affects the <code>@review.comment</code> decorator<br /></li>
+</ol>
+</li>
+</ol>
+</li>
+
+<li><a id="orge44c01e"></a>Possibly working, test (exhibit 4)<br />
+<div class="outline-text-6" id="text-3-1-5-1-4">
+<p>
+Move the <code>@ review.comment</code> to see if I can get it to run without failing, changing as little code as possible.
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="orgf4eed13"></a>code which is matching everything &#x2013; everything or all variables? verify &#x2013; yes, absolutely everything<br />
+<div class="outline-text-7" id="text-3-1-5-1-4-1">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.dir</span>:
+  <span style="color: #ff8700;">go.file(depth = any)</span>:
+    <span style="color: #ff8700;">go.gen_decl(depth = 1)</span>:
+      <span style="color: #ff8700;">go.value_spec</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          <span style="color: #ff8700;">go.ident</span>:
+            @ review.vars.globalname
+            private == <span style="color: #ff4ea3;">"true"</span>
+  <span style="color: #ff8700;">exclude</span>:
+    <span style="color: #ff8700;">go.file(depth = any)</span>:
+      <span style="color: #ff8700;">go.value_spec(depth = any)</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          <span style="color: #ff8700;">include</span>:
+            @ review.comment
+            go.ident(depth = any)
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org4a37b00"></a>It matched everything.<br />
+<div class="outline-text-7" id="text-3-1-5-1-4-2">
+<p>
+So have a think about what is going on.
+Firstly, this might actually be the correct form (i.e. having exclude be the 2nd sibling).
+Secondly, it's excluding nothing at all because the thing being included (ie. <code>value_spec</code>) is always there.
+I have to make my non- <code>exclude:</code> <code>go.file</code> capture more things than the <code>exclude:</code> go.file.
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="org97d08bd"></a>What is unique, to go inside the <code>include:</code>?<br />
+<div class="outline-text-8" id="text-3-1-5-1-4-2-1">
+<p>
+<code>go.value_spec:</code> is.
+</p>
+
+<p>
+Therefore, I must exclude those which do not have <code>go.value_spec</code>.
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="org5d472a1"></a>verbose identifier declaration at the top level of a file<br />
+<div class="outline-text-9" id="text-3-1-5-1-4-2-1-1">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.file(depth = any)</span>:
+  <span style="color: #ff8700;">go.decls</span>:
+    <span style="color: #ff8700;">go.gen_decl</span>:
+      <span style="color: #ff8700;">go.value_spec</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          @playground.highlight
+          <span style="color: #ff8700;">go.ident</span>:
+            child_count == 0
+            name == <span style="color: #ff4ea3;">"privateVarA"</span>
+            private == <span style="color: #ff4ea3;">"true"</span>
+            public == <span style="color: #ff4ea3;">"false"</span>
+            type == <span style="color: #ff4ea3;">"string"</span>
+            value == <span style="color: #ff4ea3;">"\"baz\""</span>
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="orgd3d2f22"></a>verbose identifier usage within a function call, printf<br />
+<div class="outline-text-9" id="text-3-1-5-1-4-2-1-2">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.file(depth = any)</span>:
+  <span style="color: #ff8700;">go.decls</span>:
+    <span style="color: #ff8700;">go.func_decl</span>:
+      <span style="color: #ff8700;">go.block_stmt</span>:
+        <span style="color: #ff8700;">go.list</span>:
+          <span style="color: #ff8700;">go.expr_stmt</span>:
+            <span style="color: #ff8700;">go.call_expr</span>:
+              <span style="color: #ff8700;">go.args</span>:
+                @playground.highlight
+                <span style="color: #ff8700;">go.ident</span>:
+                  child_count == 0
+                  name == <span style="color: #ff4ea3;">"privateVarA"</span>
+                  private == <span style="color: #ff4ea3;">"true"</span>
+                  public == <span style="color: #ff4ea3;">"false"</span>
+                  type == <span style="color: #ff4ea3;">"string"</span>
+                  value == <span style="color: #ff4ea3;">"\"baz\""</span>
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+
+<li><a id="orgfae33d7"></a>More specified code<br />
+<ol class="org-ol">
+<li><a id="orgf88e259"></a>WARNING: on this test, I broke the CLQL by indenting the <code>exclude:</code><br />
+<div class="outline-text-8" id="text-3-1-5-1-4-3-1">
+<p>
+Ignore the conclusions made.
+</p>
+</div>
+</li>
+<li><a id="orgb920f21"></a>code<br />
+<div class="outline-text-8" id="text-3-1-5-1-4-3-2">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.dir</span>:
+  <span style="color: #ff8700;">go.file(depth = any)</span>:
+    <span style="color: #ff8700;">go.gen_decl(depth = 1)</span>:
+      <span style="color: #ff8700;">go.value_spec</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          @ review.comment
+          <span style="color: #ff8700;">go.ident</span>:
+            @ review.vars.globalname
+            private == <span style="color: #ff4ea3;">"true"</span>
+    <span style="color: #ff8700;">exclude</span>:
+      <span style="color: #ff8700;">go.file(depth = any)</span>:
+        <span style="color: #ff8700;">go.value_spec(depth = any)</span>:
+          <span style="color: #ff8700;">go.names</span>:
+            <span style="color: #ff8700;">include</span>:
+              go.ident(depth = any)
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</li>
+
+
+<li><a id="orgdf1ad5c"></a>Conclusion 2<br />
+<div class="outline-text-7" id="text-3-1-5-1-4-4">
+<p>
+I need a better explanation of what the facts do. It's too confusing not having tooltips.
+Things like go.value<sub>spec</sub>.
+It's not sufficient to merely copy from the playground.
+</p>
+</div>
+</li>
+
+<li><a id="orge3c2df1"></a>another test &#x2013; matches everything<br />
+<div class="outline-text-7" id="text-3-1-5-1-4-5">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.dir</span>:
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">this will match everything, even package. i only want to match variable definition</span>
+  <span style="color: #ff8700;">exclude</span>:
+    <span style="color: #ff8700;">go.file(depth = any)</span>:
+      <span style="color: #ff8700;">go.value_spec(depth = any)</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          <span style="color: #ff8700;">include</span>:
+            @ review.comment
+            go.ident(depth = any)
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org2cb4b24"></a>another test &#x2013; still matches everything<br />
+<ol class="org-ol">
+<li><a id="org25277d3"></a>WARNING: This is using the indented <code>exclude:</code>, as before.<br />
+<div class="outline-text-8" id="text-3-1-5-1-4-6-1">
+<p>
+I have been doing <code>file exclude file</code>&#x2026;
+</p>
+</div>
+</li>
+
+<li><a id="orge96c4d2"></a>Code<br />
+<div class="outline-text-8" id="text-3-1-5-1-4-6-2">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.dir</span>:
+  <span style="color: #ff8700;">go.file(depth = any)</span>:
+    <span style="color: #ff8700;">go.gen_decl(depth = 1)</span>:
+      <span style="color: #ff8700;">go.value_spec</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          <span style="color: #ff8700;">go.ident</span>: <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">I may need to move ~@review.comment~ here</span>
+            @ review.vars.globalname
+            private == <span style="color: #ff4ea3;">"true"</span>
+    <span style="color: #ff8700;">exclude</span>:
+      <span style="color: #ff8700;">go.file(depth = any)</span>:
+        <span style="color: #ff8700;">go.value_spec(depth = any)</span>:
+          <span style="color: #ff8700;">go.names</span>:
+            <span style="color: #ff8700;">include</span>:
+              @ review.comment
+              go.ident(depth = any)
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</li>
+
+<li><a id="org3fcdc78"></a>remove <code>file exclude file</code>. rewrite how I think it should be<br />
+<ol class="org-ol">
+<li><a id="org009c49c"></a>code<br />
+<div class="outline-text-8" id="text-3-1-5-1-4-7-1">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.dir</span>:
+  <span style="color: #ff8700;">go.file(depth = any)</span>:
+    <span style="color: #ff8700;">go.gen_decl(depth = 1)</span>:
+      <span style="color: #ff8700;">go.value_spec</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          <span style="color: #ff8700;">go.ident</span>: <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">I may need to move ~@review.comment~ here</span>
+            @ review.vars.globalname
+            private == <span style="color: #ff4ea3;">"true"</span>
+  <span style="color: #ff8700;">exclude</span>:
+    <span style="color: #ff8700;">go.file(depth = any)</span>:
+      <span style="color: #ff8700;">go.value_spec(depth = any)</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          <span style="color: #ff8700;">include</span>:
+            @ review.comment
+            go.ident(depth = any)
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org90169ff"></a>So what does this do?<br />
+<div class="outline-text-8" id="text-3-1-5-1-4-7-2">
+<p>
+Matches every single thing.
+Remember that <code>value_spec</code> only appears on the definition of a <code>var/const</code>. &#x2013; This needs to be annotated.
+</p>
+</div>
+</li>
+</ol>
+</li>
+
+<li><a id="org39868e8"></a>try, try again. get this to do the thing the tenet wants<br />
+<ol class="org-ol">
+<li><a id="org2ea73f7"></a>code<br />
+<div class="outline-text-8" id="text-3-1-5-1-4-8-1">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.dir</span>:
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">Match all top level definitions [which do is the 2nd part]. This part is definitely correct.</span>
+  <span style="color: #ff8700;">go.file(depth = any)</span>:
+    <span style="color: #ff8700;">go.gen_decl(depth = 1)</span>:
+      <span style="color: #ff8700;">go.value_spec</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          @ review.comment
+          <span style="color: #ff8700;">go.ident</span>: <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">I may need to move ~@review.comment~ here</span>
+            private == <span style="color: #ff4ea3;">"true"</span>
+            @ review.vars.globalname
+            name as privateVarName
+
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">Exclude all usages</span>
+  <span style="color: #ff8700;">exclude</span>:
+    <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">Match all usages</span>
+    <span style="color: #ff8700;">exclude</span>:
+      <span style="color: #ff8700;">go.file(depth = any)</span>:
+        <span style="color: #ff8700;">go.value_spec(depth = any)</span>:
+          <span style="color: #ff8700;">go.names</span>:
+            <span style="color: #ff8700;">include</span>:
+              <span style="color: #ff8700;">go.ident(depth = any)</span>:
+                name == privateVarName
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="orgd4e3d9f"></a>So what does this do?<br />
+<div class="outline-text-8" id="text-3-1-5-1-4-8-2">
+<p>
+Gives me that nasty error.
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="org37ae7f9"></a>Client Error<br />
+<div class="outline-text-9" id="text-3-1-5-1-4-8-2-1">
+<div class="org-src-container">
+<pre class="src src-text">Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org085200e"></a>Server (platform) Error<br />
+<div class="outline-text-9" id="text-3-1-5-1-4-8-2-2">
+<div class="org-src-container">
+<pre class="src src-text">mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;">error</span>: result missing excluded parents
+/home/dev/projects/src/github.com/codelingo/platform/controller/graphdb/query/processor/validator/excluded_variable.go:247: result missing excluded parents
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+
+<li><a id="org179f48f"></a>try again. This time match the opposite of what the tenet wants<br />
+<div class="outline-text-7" id="text-3-1-5-1-4-9">
+<p>
+Only one <code>exclude:</code>
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="orge648f18"></a>code<br />
+<div class="outline-text-8" id="text-3-1-5-1-4-9-1">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.dir</span>:
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">Match all top level definitions [which do is the 2nd part]. This part is definitely correct.</span>
+  <span style="color: #ff8700;">go.file(depth = any)</span>:
+    <span style="color: #ff8700;">go.gen_decl(depth = 1)</span>:
+      <span style="color: #ff8700;">go.value_spec</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          @ review.comment
+          <span style="color: #ff8700;">go.ident</span>: <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">I may need to move ~@review.comment~ here</span>
+            private == <span style="color: #ff4ea3;">"true"</span>
+            @ review.vars.globalname
+            name as privateVarName
+
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">Match all usages</span>
+  <span style="color: #ff8700;">exclude</span>:
+    <span style="color: #ff8700;">go.file(depth = any)</span>:
+      <span style="color: #ff8700;">go.value_spec(depth = any)</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          <span style="color: #ff8700;">include</span>:
+            <span style="color: #ff8700;">go.ident(depth = any)</span>:
+              name == privateVarName
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org33b04a7"></a>So what does this do?<br />
+<div class="outline-text-8" id="text-3-1-5-1-4-9-2">
+<p>
+Still gives me that nasty error.
+</p>
+</div>
+</li>
+</ol>
+</li>
+
+<li><a id="orge4b4e4c"></a>try again. again try to match the opposite of what the tenet wants<br />
+<div class="outline-text-7" id="text-3-1-5-1-4-10">
+<p>
+Only one <code>exclude:</code>
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="org3343e4c"></a>modifications<br />
+<ol class="org-ol">
+<li><a id="orgebe3c69"></a>swapped ordering of <code>exclude:</code> and <code>go:file</code><br /></li>
+</ol>
+</li>
+<li><a id="org7e9887e"></a>code<br />
+<div class="outline-text-8" id="text-3-1-5-1-4-10-2">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.dir</span>:
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">Match all usages</span>
+  <span style="color: #ff8700;">exclude</span>:
+    <span style="color: #ff8700;">go.file(depth = any)</span>:
+      <span style="color: #ff8700;">go.value_spec(depth = any)</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          <span style="color: #ff8700;">include</span>:
+            <span style="color: #ff8700;">go.ident(depth = any)</span>:
+              name == privateVarName
+
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">Match all top level definitions [which do is the 2nd part]. This part is definitely correct.</span>
+  <span style="color: #ff8700;">go.file(depth = any)</span>:
+    <span style="color: #ff8700;">go.gen_decl(depth = 1)</span>:
+      <span style="color: #ff8700;">go.value_spec</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          @ review.comment
+          <span style="color: #ff8700;">go.ident</span>: <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">I may need to move ~@review.comment~ here</span>
+            private == <span style="color: #ff4ea3;">"true"</span>
+            @ review.vars.globalname
+            name <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">as privateVarName</span>
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org1caa084"></a>I'm expecting different things to happen<br />
+<ol class="org-ol">
+<li><a id="orgacc4b3a"></a>The nasty error should not occur.<br /></li>
+</ol>
+</li>
+<li><a id="orgbdb1ce4"></a>So what does this do?<br />
+<ol class="org-ol">
+<li><a id="org3d59cfe"></a>Gives me the nasty error.<br /></li>
+</ol>
+</li>
+</ol>
+</li>
+
+<li><a id="orgca8c35b"></a>try again. again try to match the opposite of what the tenet wants<br />
+<div class="outline-text-7" id="text-3-1-5-1-4-11">
+<ul class="org-ul">
+<li>Only one <code>exclude:</code></li>
+<li>Except this time, unquote the <code>exclude:</code>.</li>
+</ul>
+</div>
+
+<ol class="org-ol">
+<li><a id="org3cd3015"></a>modifications<br />
+<ol class="org-ol">
+<li><a id="org240bb1c"></a>swapped ordering of <code>exclude:</code> and <code>go:file</code><br /></li>
+</ol>
+</li>
+<li><a id="orge58e721"></a>code<br />
+<div class="outline-text-8" id="text-3-1-5-1-4-11-2">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.dir</span>:
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;"># Match all usages</span>
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">exclude:</span>
+  <span style="color: #6c6c6c; font-style: italic;">#   </span><span style="color: #6c6c6c; font-style: italic;">go.file(depth = any):</span>
+  <span style="color: #6c6c6c; font-style: italic;">#     </span><span style="color: #6c6c6c; font-style: italic;">go.value_spec(depth = any):</span>
+  <span style="color: #6c6c6c; font-style: italic;">#       </span><span style="color: #6c6c6c; font-style: italic;">go.names:</span>
+  <span style="color: #6c6c6c; font-style: italic;">#         </span><span style="color: #6c6c6c; font-style: italic;">include:</span>
+  <span style="color: #6c6c6c; font-style: italic;">#           </span><span style="color: #6c6c6c; font-style: italic;">go.ident(depth = any):</span>
+  <span style="color: #6c6c6c; font-style: italic;">#             </span><span style="color: #6c6c6c; font-style: italic;">name == privateVarName</span>
+
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">Match all top level definitions [which do is the 2nd part]. This part is definitely correct.</span>
+  <span style="color: #ff8700;">go.file(depth = any)</span>:
+    <span style="color: #ff8700;">go.gen_decl(depth = 1)</span>:
+      <span style="color: #ff8700;">go.value_spec</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          @ review.comment
+          <span style="color: #ff8700;">go.ident</span>: <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">I may need to move ~@review.comment~ here</span>
+            private == <span style="color: #ff4ea3;">"true"</span>
+            @ review.vars.globalname
+            name <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">as privateVarName</span>
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org6082160"></a>So what does this do?<br />
+<ol class="org-ol">
+<li><a id="org668e50b"></a>This DOES match the top level definitions. It's correct.<br />
+<div class="outline-text-9" id="text-3-1-5-1-4-11-3-1">
+<p>
+So why does the exclude break things.
+Now try the <code>exclude:</code> on its own.
+</p>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+
+<li><a id="org14ac571"></a>try again. again try to match the opposite of what the tenet wants<br />
+<div class="outline-text-7" id="text-3-1-5-1-4-12">
+<ul class="org-ul">
+<li>Only one <code>exclude:</code></li>
+<li>Except this time, unquote the <code>exclude:</code>.</li>
+</ul>
+</div>
+
+<ol class="org-ol">
+<li><a id="orgaf3f285"></a>modifications<br />
+<ol class="org-ol">
+<li><a id="orgd087a72"></a>swapped ordering of <code>exclude:</code> and <code>go:file</code><br /></li>
+</ol>
+</li>
+<li><a id="org7ae7090"></a>code<br />
+<div class="outline-text-8" id="text-3-1-5-1-4-12-2">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.dir</span>:
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">Match all *usages*. This must match usages *only*.</span>
+  <span style="color: #ff8700;">exclude</span>:
+    <span style="color: #ff8700;">go.file(depth = any)</span>:
+      <span style="color: #ff8700;">go.value_spec(depth = any)</span>:
+        <span style="color: #ff8700;">go.names</span>:
+          <span style="color: #ff8700;">include</span>:
+            @ review.comment
+            <span style="color: #ff8700;">go.ident(depth = any)</span>:
+              name <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">== privateVarName</span>
+
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;"># Match all top level definitions [which do is the 2nd part]. This part is definitely correct.</span>
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">go.file(depth = any):</span>
+  <span style="color: #6c6c6c; font-style: italic;">#   </span><span style="color: #6c6c6c; font-style: italic;">go.gen_decl(depth = 1):</span>
+  <span style="color: #6c6c6c; font-style: italic;">#     </span><span style="color: #6c6c6c; font-style: italic;">go.value_spec:</span>
+  <span style="color: #6c6c6c; font-style: italic;">#       </span><span style="color: #6c6c6c; font-style: italic;">go.names:</span>
+  <span style="color: #6c6c6c; font-style: italic;">#         </span><span style="color: #6c6c6c; font-style: italic;">@ review.comment</span>
+  <span style="color: #6c6c6c; font-style: italic;">#         </span><span style="color: #6c6c6c; font-style: italic;">go.ident: # I may need to move ~@review.comment~ here</span>
+  <span style="color: #6c6c6c; font-style: italic;">#           </span><span style="color: #6c6c6c; font-style: italic;">private == "true"</span>
+  <span style="color: #6c6c6c; font-style: italic;">#           </span><span style="color: #6c6c6c; font-style: italic;">@ review.vars.globalname</span>
+  <span style="color: #6c6c6c; font-style: italic;">#           </span><span style="color: #6c6c6c; font-style: italic;">name # as privateVarName</span>
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org6380b43"></a>So what does this do?<br />
+<ol class="org-ol">
+<li><a id="orgdf025e2"></a>This DOES match the top level definitions. It's correct.<br />
+<div class="outline-text-9" id="text-3-1-5-1-4-12-3-1">
+<p>
+So why does the exclude break things.
+Now try the <code>exclude:</code> on its own.
+</p>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orged022f7" class="outline-2">
+<h2 id="orged022f7"><span class="section-number-2">4</span> What is the boolean logic I have to express to get what I want?</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+It's difficult to express this in terms of <code>exclude:</code> and <code>include:</code>.
+We need boolean macros.
+Also <code>exclude:</code> should be order agnostic.
+</p>
+</div>
+
+<div id="outline-container-orgb8da4a2" class="outline-3">
+<h3 id="orgb8da4a2"><span class="section-number-3">4.1</span> CLQL needs more clear boolean logic.</h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: shane</p>
+<p class="date">Created: 2018-10-03 Wed 17:47</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
