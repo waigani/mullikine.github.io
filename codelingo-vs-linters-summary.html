@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-08 Mon 12:47 -->
+<!-- 2018-10-08 Mon 14:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CodeLingo vs Linters</title>
@@ -235,19 +235,29 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9672ef5">1. Statistical Summary</a>
+<li><a href="#org1e364fb">1. CodeLingo vs Linters</a>
 <ul>
-<li><a href="#orga222441">1.1. Comparison of size in code</a>
+<li><a href="#org8b0cb24">1.1. From the project docs</a></li>
+<li><a href="#orga5a0356">1.2. The general process of writing one tenet</a>
 <ul>
-<li><a href="#orgf336d65">1.1.1. parser</a></li>
-<li><a href="#orgaadf92f">1.1.2. unit tests</a></li>
-<li><a href="#org842a62f">1.1.3. Links to source code</a></li>
+<li><a href="#org5dd077e">1.2.1. Writing the CLQL</a></li>
 </ul>
 </li>
-<li><a href="#orgecf7973">1.2. Work to write tenet</a></li>
-<li><a href="#org70cc862">1.3. Work to write unit tests for tenet</a>
+</ul>
+</li>
+<li><a href="#org8e86e3f">2. Statistical Summary</a>
 <ul>
-<li><a href="#orgbba7b32">1.3.1. Caveats</a></li>
+<li><a href="#org411f27b">2.1. Comparison of size in code</a>
+<ul>
+<li><a href="#orgc43c54d">2.1.1. parser</a></li>
+<li><a href="#org5fcdd59">2.1.2. unit tests</a></li>
+<li><a href="#orgb5037fe">2.1.3. Links to source code</a></li>
+</ul>
+</li>
+<li><a href="#orgaec4bf8">2.2. Work to write tenet</a></li>
+<li><a href="#org590af06">2.3. Work to write unit tests for tenet</a>
+<ul>
+<li><a href="#orgc9862fe">2.3.1. Caveats</a></li>
 </ul>
 </li>
 </ul>
@@ -256,17 +266,59 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org9672ef5" class="outline-2">
-<h2 id="org9672ef5"><span class="section-number-2">1</span> Statistical Summary</h2>
+<div id="outline-container-org1e364fb" class="outline-2">
+<h2 id="org1e364fb"><span class="section-number-2">1</span> CodeLingo vs Linters</h2>
 <div class="outline-text-2" id="text-1">
+<p>
+I started learning Go and CodeLingo / CLQL at the same time, so while I have found it generally easy and straightforward to create these tenets, I feel like I could've knocked them out even faster if I didn't need to look up answers to questions such as '<i>what is an interface in golang?</i>', for example. The process has been intuitive; I think in part to having a good naming convention. I've had to learn what CodeLingo is, what a '<b>tenet</b>' and a '<b>flow</b>' is. Long story short, they are exactly what they sound like they are.
+</p>
 </div>
-<div id="outline-container-orga222441" class="outline-3">
-<h3 id="orga222441"><span class="section-number-3">1.1</span> Comparison of size in code</h3>
+
+<div id="outline-container-org8b0cb24" class="outline-3">
+<h3 id="org8b0cb24"><span class="section-number-3">1.1</span> From the project docs</h3>
 <div class="outline-text-3" id="text-1-1">
+<dl class="org-dl">
+<dt>tenet</dt><dd>A Tenet is an encoded project specific best practice used to guide development.</dd>
+<dt>flow</dt><dd>A Flow is an automated development workflow that leverages Tenets to do some task, for example automating code reviews.</dd>
+</dl>
 </div>
-<div id="outline-container-orgf336d65" class="outline-4">
-<h4 id="orgf336d65"><span class="section-number-4">1.1.1</span> parser</h4>
-<div class="outline-text-4" id="text-1-1-1">
+</div>
+
+<div id="outline-container-orga5a0356" class="outline-3">
+<h3 id="orga5a0356"><span class="section-number-3">1.2</span> The general process of writing one tenet</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-org5dd077e" class="outline-4">
+<h4 id="org5dd077e"><span class="section-number-4">1.2.1</span> Writing the CLQL</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+The process of crafting CLQL is mainly subtractive, especially for simple tenets.
+What is simple to implement in CodeLingo may be difficult for 3rd party linters, however, as this write-up should demonstrate.
+Writing a tenet to describe an antipattern might be trivial in CLQL, but the corresponding linter may be <i><b>orders</b></i> of magnitude more complex.
+</p>
+
+<p>
+The first step is usually to generate a verbose CLQL query from the CodeLingo playground.
+To do this you select the part of the code you would like to match and then click the <span class="underline">generate</span> button.
+The next step is refine that query into something that captures the logic of what you want a tenet to match.
+Typically, the generated query comprises the bulk of the code you end up with.  You can therefore choose what to leave in, or add new logic, depending on the needs of the tenet.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8e86e3f" class="outline-2">
+<h2 id="org8e86e3f"><span class="section-number-2">2</span> Statistical Summary</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org411f27b" class="outline-3">
+<h3 id="org411f27b"><span class="section-number-3">2.1</span> Comparison of size in code</h3>
+<div class="outline-text-3" id="text-2-1">
+</div>
+<div id="outline-container-orgc43c54d" class="outline-4">
+<h4 id="orgc43c54d"><span class="section-number-4">2.1.1</span> parser</h4>
+<div class="outline-text-4" id="text-2-1-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -365,6 +417,13 @@ for the JavaScript code in this tag.
 </tbody>
 </table>
 
+
+<div class="figure">
+<p><img src="clvsl.png" alt="clvsl.png" class="graph" />
+</p>
+</div>
+
+
 <dl class="org-dl">
 <dt>CL</dt><dd>CodeLingo</dd>
 <dt>L</dt><dd>Linter</dd>
@@ -372,9 +431,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgaadf92f" class="outline-4">
-<h4 id="orgaadf92f"><span class="section-number-4">1.1.2</span> unit tests</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-org5fcdd59" class="outline-4">
+<h4 id="org5fcdd59"><span class="section-number-4">2.1.2</span> unit tests</h4>
+<div class="outline-text-4" id="text-2-1-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -479,9 +538,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org842a62f" class="outline-4">
-<h4 id="org842a62f"><span class="section-number-4">1.1.3</span> Links to source code</h4>
-<div class="outline-text-4" id="text-1-1-3">
+<div id="outline-container-orgb5037fe" class="outline-4">
+<h4 id="orgb5037fe"><span class="section-number-4">2.1.3</span> Links to source code</h4>
+<div class="outline-text-4" id="text-2-1-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -559,9 +618,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgecf7973" class="outline-3">
-<h3 id="orgecf7973"><span class="section-number-3">1.2</span> Work to write tenet</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-orgaec4bf8" class="outline-3">
+<h3 id="orgaec4bf8"><span class="section-number-3">2.2</span> Work to write tenet</h3>
+<div class="outline-text-3" id="text-2-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -643,9 +702,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org70cc862" class="outline-3">
-<h3 id="org70cc862"><span class="section-number-3">1.3</span> Work to write unit tests for tenet</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-org590af06" class="outline-3">
+<h3 id="org590af06"><span class="section-number-3">2.3</span> Work to write unit tests for tenet</h3>
+<div class="outline-text-3" id="text-2-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -729,13 +788,13 @@ for the JavaScript code in this tag.
 </table>
 </div>
 
-<div id="outline-container-orgbba7b32" class="outline-4">
-<h4 id="orgbba7b32"><span class="section-number-4">1.3.1</span> Caveats</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-orgc9862fe" class="outline-4">
+<h4 id="orgc9862fe"><span class="section-number-4">2.3.1</span> Caveats</h4>
+<div class="outline-text-4" id="text-2-3-1">
 </div>
 <ol class="org-ol">
-<li><a id="orgd00e5b7"></a>unconvert<br />
-<div class="outline-text-5" id="text-1-3-1-1">
+<li><a id="org43bd9fa"></a>unconvert<br />
+<div class="outline-text-5" id="text-2-3-1-1">
 <ul class="org-ul">
 <li>Did not have any unit tests in the original linter.
 I ran the original linter on a repository to find an example of what to put into a unit test.</li>
@@ -769,7 +828,7 @@ This is what the button looks like.
 <div id="postamble" class="status">
 <p class="date">Date: 2018-10-05 Fri 00:00</p>
 <p class="author">Author: Shane Mulligan</p>
-<p class="date">Created: 2018-10-08 Mon 12:47</p>
+<p class="date">Created: 2018-10-08 Mon 14:10</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
