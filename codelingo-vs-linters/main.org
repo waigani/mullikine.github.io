@@ -332,6 +332,8 @@ The only difference between our queries was the position of the ~@ review.commen
   <           @ review.comment
 #+END_SRC
 
+They are functionally equivalent, though.
+
 * Results
 ** Size comparison
 Here I compare the amount of code written to make the tenets vs the linters I modelled them from.
@@ -399,7 +401,7 @@ Here I compare the amount of code written to make the tenets vs the linters I mo
 
 
 ** The work it took to write their unit tests
- | tenet name | time to write[fn:approx] | _generate_[fn:gen] clicks[fn:approx] | additional time | reason for additional time         | tests[fn:tests] | reason for additional tests                          |
+ | tenet name | time to write[fn:approx] | _generate_[fn:gen] clicks[fn:approx] | additional time | reason for additional time         | test runs[fn:tests] | reason for additional testing of unit tests     |
  |------------+--------------------------+--------------------------------------+-----------------+------------------------------------+-------+------------------------------------------------------|
  | init       | 10 mins                  |                                    1 |                 |                                    |     2 |                                                      |
  | unconvert  | 10 mins                  |                                    2 | 10 mins         | to find example code for unit test |     2 |                                                      |
@@ -430,7 +432,7 @@ Even though the ~bool-param~ tenet was already made by blake, it took no longer 
 What's even more astonishing is our queries are functionally equivalent and that /CLQL/ is clever enough to do what we both mean with regards to the position of the comment, even though we had specified the location of the ~@ review.comment~ in different places.
 
 
-[fn:tests] The number of times I had to *test* the tenet.
+[fn:tests] The number of times I had to run the tests, to make sure the unit tests were satisfactory.
 
 
 [fn:approx] These are approximations.

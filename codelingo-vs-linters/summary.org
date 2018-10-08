@@ -7,7 +7,7 @@
 #+DATE:      <2018-10-05 Fri>
 #+LANGUAGE:  en
 
-* CodeLingo vs Linters
+* Making tenets with CLQL that do the job of existing linters
 I started learning Go and CodeLingo / CLQL at the same time, so while I have found it generally easy and straightforward to create these tenets, I feel like I could've knocked them out even faster if I didn't need to look up answers to questions such as '/what is an interface in golang?/', for example. The process has been intuitive; I think in part to having a good naming convention. I've had to learn what CodeLingo is, what a '*tenet*' and a '*flow*' is. Long story short, they are just as what they sound like they are.
 
 ** Defintions taken from the project docs
@@ -132,7 +132,7 @@ See the full article [[http://mullikine.github.io/codelingo-vs-linters/main.html
 + actual clicks :: The approximate number of times I ended up to pressing _generate query_, for exploratory purposes.
 
 ** The work it took to write their unit tests
- | tenet name | time to write[fn:approx] | _generate_[fn:gen] clicks[fn:approx] | additional time | reason for additional time         | tests[fn:tests] | reason for additional tests                          |
+ | tenet name | time to write[fn:approx] | _generate_[fn:gen] clicks[fn:approx] | additional time | reason for additional time         | test runs[fn:tests] | reason for additional testing of unit tests     |
  |------------+--------------------------+--------------------------------------+-----------------+------------------------------------+-------+------------------------------------------------------|
  | init       | 10 mins                  |                                    1 |                 |                                    |     2 |                                                      |
  | unconvert  | 10 mins                  |                                    2 | 10 mins         | to find example code for unit test |     2 |                                                      |
