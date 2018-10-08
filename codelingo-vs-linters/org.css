@@ -1755,3 +1755,13 @@ p.verse
     float: right;
   }
 }
+
+.org-src-container {
+    display: inline-block;
+    width:40%;
+}
+
+pre {
+    border: none;
+box-shadow:none;
+}

@@ -1,3 +1,4 @@
+#+OPTIONS: \n:t 
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
 #+TITLE:     CodeLingo vs Linters
 #+SUBTITLE:  Making parsers for automatic code review
@@ -20,7 +21,6 @@ I started learning Go and CodeLingo / CLQL at the same time, so while I have fou
 
 ** The general process of writing one tenet
 *** Writing the CLQL
-The process of crafting CLQL is mainly subtractive, especially for simple tenets.
 What is simple to implement in CodeLingo may be difficult for 3rd party linters, however, as this write-up should demonstrate.
 Writing a tenet to describe an antipattern might be trivial in CLQL, but the corresponding linter may be /*orders*/ of magnitude more complex.
 
@@ -28,6 +28,45 @@ The first step is usually to generate a verbose CLQL query from the CodeLingo pl
 To do this you select the part of the code you would like to match and then click the _generate_[fn:gen] button.
 The next step is refine that query into something that captures the logic of what you want a tenet to match.
 Typically, the generated query comprises the bulk of the code you end up with.  You can therefore choose what to leave in, or add new logic, depending on the needs of the tenet.
+
+
+**** *Before and after:* Refining the CLQL
+#+BEGIN_SRC yaml
+  import codelingo/ast/go
+
+  go.file(depth = any):
+    go.decls:
+      @playground.highlight
+      go.func_decl:
+        go.ident:
+          child_count == 0
+          name == "init"
+          private == "true"
+          public == "false"
+        go.func_type:
+          go.field_list:
+            child_count == 0
+#+END_SRC
+
+#+BEGIN_SRC yaml
+  import codelingo/ast/go
+
+  go.file(depth = any):
+    go.decls:
+      go.func_decl:
+        @ review.comment
+        go.ident:
+          name == "init"
+        go.func_type:
+          go.field_list:
+            child_count == 0
+#+END_SRC
+
+The process of crafting CLQL is mainly subtractive, especially for simple tenets.
+
+*Left:* Generated CLQL
+
+*Right:* Refined CLQL
 
 * Statistical Summary
 ** Comparison of size in code
@@ -115,5 +154,3 @@ Typically, the generated query comprises the bulk of the code you end up with.  
 
 [fn:gen] This is what the button looks like.
 [[file:generate.png]]
-
-
