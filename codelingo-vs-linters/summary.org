@@ -65,9 +65,12 @@ Typically, the generated query comprises the bulk of the code you end up with.  
 
 The process of crafting CLQL is mainly subtractive, especially for simple tenets.
 
-*Left:* Generated CLQL
 
-*Right:* Refined CLQL
+  *Left:* Generated CLQL
+
+  *Right:* Refined CLQL
+
+See the full article [[http://mullikine.github.io/codelingo-vs-linters/main.html][here]] for further explanation.
 
 * Statistical Summary
 ** Comparison of size in code
