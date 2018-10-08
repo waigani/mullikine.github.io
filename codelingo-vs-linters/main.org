@@ -30,14 +30,14 @@ The next step is to trefine that query into something that captures the logic of
 Typically, the generated query comprises the bulk of the code you end up with.  You can therefore choose what to leave in, or add new logic, depending on the needs of the tenet.
 
 *** Writing the unit test
-**** Obtaining test code
+**** Obtaining test code for the ~example.go~ file
 I found *'Go by example'*[fn:gobyexample] a good place to both learn Go and to obtain test code for tenets.
 CodeLingo test code just looks like regular code, except it should contain the thing that the tenet is looking for, and that is usually an anti-pattern. Therefore, this is where you put deliberately bad code.
 
 [fn:gobyexample]  [[https://gobyexample.com/interfaces][Go by Example: Interfaces]]
 
 
-**** Expected results
+**** Generating JSON for the "Expected results" file, ~expected.json~
 After a review on the CLI, a JSON file is presented. You can just copy and paste this JSON code into a file called ~expected.json~.
 
 ** Tenets made
@@ -341,10 +341,98 @@ The only difference between our queries was the position of the ~@ review.commen
   <           @ review.comment
 #+END_SRC
 
-** Conclusions
-Even though this tenet was already made by blake, it took no longer than 10 minutes for myself, a total newbie, to make.
+** Results
+*** Comparison of size in code between tenets created and the linters I modelled them from
+**** Parser
+ | Lines (CL) | Lines (L) | Words (CL) | Words (L) | Bytes (CL) | Bytes (L) | Byte % (CL/L) | Tenet name (CL) | linter name (L) |
+ |------------+-----------+------------+-----------+------------+-----------+---------------+-----------------+-----------------|
+ |         18 |       681 |         49 |      2084 |        524 |     15616 |         3.36% | unconvert       | unconvert       |
+ |         19 |       110 |         64 |       275 |        580 |      2198 |        26.39% | init            | gochecknoinits  |
+ |         18 |       136 |         67 |       353 |        623 |      2307 |        27.00% | bool-param      | nofuncflags     |
+ |         18 |       137 |         63 |       310 |        512 |      2168 |        23.62% | todo            | godox           |
+ |         42 |       753 |        115 |      2387 |       1154 |     20307 |         5.68% | tested          | blanket         |
 
-What's even more astonishing is our queries are functionally equivalent and that CLQL is clever enough to do what we both mean with regards to the position of the comment.
+ #+ATTR_HTML: :class graph
+ [[file:clvsl.png]]
+
+
+ + CL :: CodeLingo
+ + L :: Linter
+
+**** Unit tests
+
+  | Lines (CL) |      Lines (L) | Words (CL) |      Words (L) | Bytes (CL) |      Bytes (L) |  Byte % (CL/L) | Tenet name (CL) | linter name (L) |
+  |------------+----------------+------------+----------------+------------+----------------+----------------+-----------------+-----------------|
+  |         13 | _N/A_[fn:none] |         25 | _N/A_[fn:none] |        246 | _N/A_[fn:none] | _N/A_[fn:none] | unconvert       | unconvert       |
+  |         32 |            201 |         64 |            407 |        333 |           3167 |         10.51% | init            | gochecknoinits  |
+  |         16 |             24 |         27 |             36 |        166 |            261 |         63.60% | bool-param      | nofuncflags     |
+  |         29 |            130 |         80 |            407 |        440 |           3000 |         14.67% | todo            | godox           |
+  |         14 |            124 |         25 |            185 |        156 |           1229 |         12.69% | tested          | blanket         |
+
+  #+BEGIN_COMMENT
+  This calculates the percentages. I wanted a % sign after but couldnt figure it out
+  #+TBLFM: @3$7=100*@3$5/@3$6;%.2f::@4$7=100*@4$5/@4$6;%.2f::@5$7=100*@5$5/@5$6;%.2f::@6$7=100*@6$5/@6$6;%.2f
+  #+END_COMMENT
+
+[fn:none] The original linter did not contain unit tests.
+
+
+ + N/A :: The original linter did not contain unit tests.
+
+**** Links to source code
+ | tenet name | linter name    | tenet code     | forge  | linter code                      | description                                              |
+ |------------+----------------+----------------+--------+----------------------------------+----------------------------------------------------------|
+ | init       | gochecknoinits | [[https://github.com/codelingo/codelingo/blob/master/tenets/codelingo/go/init/codelingo.yaml][codelingo.yaml]] | GitHub | [[https://github.com/leighmcculloch/gochecknoinits][leighmcculloch/gochecknoinits]]    | Check that no init functions are present in Go code.     |
+ | unconvert  | unconvert      | [[https://github.com/codelingo/codelingo/blob/master/tenets/codelingo/go/unconvert/codelingo.yaml][codelingo.yaml]] | GitHub | [[https://github.com/mdempsky/unconvert/][mdempsky/unconvert]]               | Remove unnecessary type conversions from Go source       |
+ | bool-param | nofuncflags    | [[https://github.com/mullikine/codelingo/blob/master/tenets/codelingo/go/bool-param/codelingo.yaml][codelingo.yaml]] | GitHub | [[https://github.com/fsamin/nofuncflags][fsamin/nofuncflags]]               | because flag arguments are ugly                          |
+ | todo       | godox          | [[https://github.com/mullikine/codelingo/blob/master/tenets/codelingo/go/todo/codelingo.yaml][codelingo.yaml]] | GitHub | [[https://github.com/766b/godox/][766b/godox]]                       | extract speficic comments from Go code based on keywords |
+ | tested     | blanket        | [[https://github.com/codelingo/codelingo/blob/master/tenets/codelingo/go/tested/codelingo.yaml][codelingo.yaml]] | GitLab | [[https://gitlab.com/verygoodsoftwarenotvirus/blanket][verygoodsoftwarenotvirus/blanket]] | a coverage helper tool                                   |
+
+*** The work it took to write these tenets
+ | tenet name | time to write | min clicks | actual clicks[fn:approx] | reason for *generate query*[fn:gen] click/s              | reason for time spent greater or less than 10 mins               |
+ |------------+---------------+------------+--------------------------+----------------------------------------------------------+------------------------------------------------------------------|
+ | init       | 10 mins       |          1 |                        1 | to find an initial fact for a top-level init function    |                                                                  |
+ | unconvert  | 20 mins       |          1 |                        2 | to generalise unit test to any type conversion           | to create string variable to match function name with ident type |
+ | bool-param | 5 mins        |          1 |                        1 | to generate initial query                                | the generated query was ~= the finished tenet                    |
+ | todo       | 10 mins       |          1 |                        1 | to find the CLQL fact for comment                        |                                                                  |
+ | tested     | 20 mins       |          1 |                        2 | to find the initial query for a filename with identifier | learning to use CLQL functions                                   |
+
+ + min clicks :: The number of times I needed to press _generate query_[fn:gen] to discover the CLQL syntax I needed.
+ + actual clicks :: The approximate number of times I ended up to pressing _generate query_, for exploratory purposes.
+
+*** The work it took to write their unit tests
+  | tenet name | time to write[fn:approx] | _generate_[fn:gen] clicks[fn:approx] | additional time | reason for additional time         | tests[fn:tests] | reason for additional tests                          |
+  |------------+--------------------------+--------------------------------------+-----------------+------------------------------------+-------+------------------------------------------------------|
+  | init       | 10 mins                  |                                    1 |                 |                                    |     2 |                                                      |
+  | unconvert  | 10 mins                  |                                    2 | 10 mins         | to find example code for unit test |     2 |                                                      |
+  | bool-param | 5 mins                   |                                    1 |                 |                                    |     2 |                                                      |
+  | todo       | 10 mins                  |                                    1 |                 |                                    |     2 |                                                      |
+  | tested     | 20 mins                  |                                    1 |                 |                                    |     4 | ensure multi-file unit tests are working as expected |
+
+**** Caveats
+***** unconvert
+ - This linter did not have any unit tests that I could use in the creation of the tenet.
+
+   I ran the original linter on a repository to find an example of what to put into a unit test.
+
+
+*** Read the full article [[http://mullikine.github.io/codelingo-vs-linters/main.html][here]].
+
+
+[fn:tests] The number of times I had to *test* the tenet.
+
+
+[fn:approx] These are approximations.
+
+
+[fn:gen] This is what the button looks like.
+[[file:generate.png]]
+
+
+*** Conclusions
+ Even though this tenet was already made by blake, it took no longer than 10 minutes for myself, a total newbie, to make.
+
+ What's even more astonishing is our queries are functionally equivalent and that CLQL is clever enough to do what we both mean with regards to the position of the comment.
 
 
 [fn:tests] The number of times I had to *test* the tenet.
