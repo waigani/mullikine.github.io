@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-08 Mon 14:54 -->
+<!-- 2018-10-08 Mon 16:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CodeLingo vs Linters</title>
@@ -180,7 +180,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="org.css"/>
+<link rel="stylesheet" type="text/css" href="org-main.css"/>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -238,55 +238,55 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf23cac2">1. CodeLingo vs Linters</a>
+<li><a href="#orge94f888">1. CodeLingo vs Linters</a>
 <ul>
-<li><a href="#org6fbdc0f">1.1. Defintions taken from the project docs</a></li>
-<li><a href="#orgacae26c">1.2. The general process of writing one tenet</a>
+<li><a href="#org9ef7fb8">1.1. Defintions taken from the project docs</a></li>
+<li><a href="#org0621ee8">1.2. The general process of writing one tenet</a>
 <ul>
-<li><a href="#org0d43392">1.2.1. Writing the CLQL</a></li>
-<li><a href="#org1108b43">1.2.2. Writing the unit test</a></li>
+<li><a href="#orgd539b06">1.2.1. Writing the CLQL</a></li>
+<li><a href="#org7eceee5">1.2.2. Writing the unit test</a></li>
 </ul>
 </li>
-<li><a href="#orgc97583d">1.3. Tenets made</a></li>
-<li><a href="#orgbecba08">1.4. init</a>
+<li><a href="#orge3de065">1.3. Tenets made</a></li>
+<li><a href="#orgf9bd5e6">1.4. init</a>
 <ul>
-<li><a href="#org91ba8da">1.4.1. I started by visiting the <span class="underline">CodeLingo Playground</span></a></li>
-<li><a href="#org9bd6065">1.4.2. The tenet</a></li>
-<li><a href="#org83c9c68">1.4.3. The test code, <code>example.go</code></a></li>
+<li><a href="#orgb51896f">1.4.1. I started by visiting the <span class="underline">CodeLingo Playground</span></a></li>
+<li><a href="#org77ce1ad">1.4.2. The tenet</a></li>
+<li><a href="#org40484f7">1.4.3. The test code, <code>example.go</code></a></li>
 </ul>
 </li>
-<li><a href="#orga95c0f8">1.5. unconvert</a>
+<li><a href="#org23c4a4e">1.5. unconvert</a>
 <ul>
-<li><a href="#org137b9ad">1.5.1. Visit the CodeLingo Playground</a></li>
-<li><a href="#org76e7edf">1.5.2. The tenet</a></li>
-<li><a href="#orgdd1c76b">1.5.3. The test code</a></li>
+<li><a href="#org6f8a89c">1.5.1. Visit the CodeLingo Playground</a></li>
+<li><a href="#org3bc4595">1.5.2. The tenet</a></li>
+<li><a href="#org744438f">1.5.3. The test code</a></li>
 </ul>
 </li>
-<li><a href="#org2ad6ee8">1.6. tenet vs nofuncflags</a>
+<li><a href="#orgb571ba6">1.6. tenet vs nofuncflags</a>
 <ul>
-<li><a href="#org30dcc28">1.6.1. original CLQL query</a></li>
-<li><a href="#org7dfebb3">1.6.2. refined CLQL query</a></li>
-<li><a href="#orgf672b0a">1.6.3. CLQL query written by Blake</a></li>
-<li><a href="#org153e172">1.6.4. Difference between Blake's query and my own</a></li>
+<li><a href="#org5677cc3">1.6.1. original CLQL query</a></li>
+<li><a href="#orgfc2a919">1.6.2. refined CLQL query</a></li>
+<li><a href="#org342510b">1.6.3. CLQL query written by Blake</a></li>
+<li><a href="#orgbe05ad1">1.6.4. Difference between Blake's query and my own</a></li>
 </ul>
 </li>
-<li><a href="#orga438868">1.7. Conclusions</a></li>
+<li><a href="#orge8a0e1a">1.7. Conclusions</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgf23cac2" class="outline-2">
-<h2 id="orgf23cac2"><span class="section-number-2">1</span> CodeLingo vs Linters</h2>
+<div id="outline-container-orge94f888" class="outline-2">
+<h2 id="orge94f888"><span class="section-number-2">1</span> CodeLingo vs Linters</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 I started learning Go and CodeLingo / CLQL at the same time, so while I have found it generally easy and straightforward to create these tenets, I feel like I could've knocked them out even faster if I didn't need to look up answers to questions such as '<i>what is an interface in golang?</i>', for example. The process has been intuitive; I think in part to having a good naming convention. I've had to learn what CodeLingo is, what a '<b>tenet</b>' and a '<b>flow</b>' is. Long story short, they are just as what they sound like they are.
 </p>
 </div>
 
-<div id="outline-container-org6fbdc0f" class="outline-3">
-<h3 id="org6fbdc0f"><span class="section-number-3">1.1</span> Defintions taken from the project docs</h3>
+<div id="outline-container-org9ef7fb8" class="outline-3">
+<h3 id="org9ef7fb8"><span class="section-number-3">1.1</span> Defintions taken from the project docs</h3>
 <div class="outline-text-3" id="text-1-1">
 <dl class="org-dl">
 <dt>tenet</dt><dd><p>
@@ -308,12 +308,12 @@ A Flow is an <i>automated</i> development <span class="underline">workflow</span
 </div>
 </div>
 
-<div id="outline-container-orgacae26c" class="outline-3">
-<h3 id="orgacae26c"><span class="section-number-3">1.2</span> The general process of writing one tenet</h3>
+<div id="outline-container-org0621ee8" class="outline-3">
+<h3 id="org0621ee8"><span class="section-number-3">1.2</span> The general process of writing one tenet</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-org0d43392" class="outline-4">
-<h4 id="org0d43392"><span class="section-number-4">1.2.1</span> Writing the CLQL</h4>
+<div id="outline-container-orgd539b06" class="outline-4">
+<h4 id="orgd539b06"><span class="section-number-4">1.2.1</span> Writing the CLQL</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 The process of crafting CLQL is mainly subtractive, especially for simple tenets.
@@ -324,18 +324,18 @@ Writing a tenet to describe an antipattern might be trivial in CLQL, but the cor
 <p>
 The first step is usually to generate a verbose CLQL query from the CodeLingo playground.
 To do this you select the part of the code you would like to match and then click the <span class="underline">generate</span><sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> button.
-The next step is refine that query into something that captures the logic of what you want a tenet to match.
+The next step is to trefine that query into something that captures the logic of what you want a tenet to match.
 Typically, the generated query comprises the bulk of the code you end up with.  You can therefore choose what to leave in, or add new logic, depending on the needs of the tenet.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org1108b43" class="outline-4">
-<h4 id="org1108b43"><span class="section-number-4">1.2.2</span> Writing the unit test</h4>
+<div id="outline-container-org7eceee5" class="outline-4">
+<h4 id="org7eceee5"><span class="section-number-4">1.2.2</span> Writing the unit test</h4>
 <div class="outline-text-4" id="text-1-2-2">
 </div>
 <ol class="org-ol">
-<li><a id="orgbebf5c8"></a>Obtaining test code<br />
+<li><a id="orgc89c8c6"></a>Obtaining test code<br />
 <div class="outline-text-5" id="text-1-2-2-1">
 <p>
 I found <b>'Go by example'</b><sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> a good place to both learn Go and to obtain test code for tenets.
@@ -345,7 +345,7 @@ CodeLingo test code just looks like regular code, except it should contain the t
 </li>
 
 
-<li><a id="orgcb42f63"></a>Expected results<br />
+<li><a id="orgf827abc"></a>Expected results<br />
 <div class="outline-text-5" id="text-1-2-2-2">
 <p>
 After a review on the CLI, a JSON file is presented. You can just copy and paste this JSON code into a file called <code>expected.json</code>.
@@ -356,8 +356,8 @@ After a review on the CLI, a JSON file is presented. You can just copy and paste
 </div>
 </div>
 
-<div id="outline-container-orgc97583d" class="outline-3">
-<h3 id="orgc97583d"><span class="section-number-3">1.3</span> Tenets made</h3>
+<div id="outline-container-orge3de065" class="outline-3">
+<h3 id="orge3de065"><span class="section-number-3">1.3</span> Tenets made</h3>
 <div class="outline-text-3" id="text-1-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -410,12 +410,12 @@ After a review on the CLI, a JSON file is presented. You can just copy and paste
 </div>
 
 
-<div id="outline-container-orgbecba08" class="outline-3">
-<h3 id="orgbecba08"><span class="section-number-3">1.4</span> init</h3>
+<div id="outline-container-orgf9bd5e6" class="outline-3">
+<h3 id="orgf9bd5e6"><span class="section-number-3">1.4</span> init</h3>
 <div class="outline-text-3" id="text-1-4">
 </div>
-<div id="outline-container-org91ba8da" class="outline-4">
-<h4 id="org91ba8da"><span class="section-number-4">1.4.1</span> I started by visiting the <span class="underline"><a href="https://www.codelingo.io/playground/?lang=go">CodeLingo Playground</a></span></h4>
+<div id="outline-container-orgb51896f" class="outline-4">
+<h4 id="orgb51896f"><span class="section-number-4">1.4.1</span> I started by visiting the <span class="underline"><a href="https://www.codelingo.io/playground/?lang=go">CodeLingo Playground</a></span></h4>
 <div class="outline-text-4" id="text-1-4-1">
 <p>
 A good way to start is by generating some CLQL for the thing you would like to match.
@@ -423,9 +423,9 @@ A good way to start is by generating some CLQL for the thing you would like to m
 </div>
 
 <ol class="org-ol">
-<li><a id="orgbbef106"></a>Step 1: Generate some CLQL<br />
+<li><a id="org450d564"></a>Step 1: Generate some CLQL<br />
 <ol class="org-ol">
-<li><a id="orgf1a0691"></a>Write an init function into the <span class="underline">Source Code: Go"</span> section<br />
+<li><a id="orge8007ea"></a>Write an init function into the <span class="underline">Source Code: Go"</span> section<br />
 <div class="outline-text-6" id="text-1-4-1-1-1">
 <div class="org-src-container">
 <pre class="src src-go"><span style="font-weight: bold;">func</span> <span style="font-weight: bold;">init</span>() {
@@ -435,9 +435,9 @@ A good way to start is by generating some CLQL for the thing you would like to m
 </div>
 </li>
 
-<li><a id="org02391d6"></a>Click on <span class="underline">Generate Query</span> and copy the resulting CLQL code<br />
+<li><a id="org30a53fc"></a>Click on <span class="underline">Generate Query</span> and copy the resulting CLQL code<br />
 <ol class="org-ol">
-<li><a id="org88c9008"></a>This is what the button looks like.<br />
+<li><a id="org57f9109"></a>This is what the button looks like.<br />
 <div class="outline-text-7" id="text-1-4-1-1-2-1">
 
 <div class="figure">
@@ -447,7 +447,7 @@ A good way to start is by generating some CLQL for the thing you would like to m
 </div>
 </li>
 
-<li><a id="org06fc73e"></a>This is what the generated CLQL looks like.<br />
+<li><a id="org1270772"></a>This is what the generated CLQL looks like.<br />
 <div class="outline-text-7" id="text-1-4-1-1-2-2">
 <div class="org-src-container">
 <pre class="src src-yaml">import codelingo/ast/go
@@ -495,7 +495,7 @@ A good way to start is by generating some CLQL for the thing you would like to m
 </ol>
 </li>
 
-<li><a id="org797e50a"></a>Step 2: Refine the CLQL<br />
+<li><a id="org87a082d"></a>Step 2: Refine the CLQL<br />
 <div class="outline-text-5" id="text-1-4-1-2">
 <div class="org-src-container">
 <pre class="src src-yaml">import codelingo/ast/go
@@ -514,7 +514,7 @@ A good way to start is by generating some CLQL for the thing you would like to m
 </div>
 
 <ol class="org-ol">
-<li><a id="org46cafe0"></a>Actions<br />
+<li><a id="org2f8c763"></a>Actions<br />
 <div class="outline-text-6" id="text-1-4-1-2-1">
 <ul class="org-ul">
 <li>Remove <code>@playground.highlight</code></li>
@@ -545,7 +545,7 @@ public == <span style="font-style: italic;">"false"</span>
 </div>
 </li>
 
-<li><a id="orgfb71368"></a>This is the diff of the refinement we made to the CLQL<br />
+<li><a id="orgfa01eeb"></a>This is the diff of the refinement we made to the CLQL<br />
 <div class="outline-text-6" id="text-1-4-1-2-2">
 <div class="org-src-container">
 <pre class="src src-diff"><span style="font-weight: bold;">5d4</span>
@@ -566,8 +566,8 @@ public == <span style="font-style: italic;">"false"</span>
 </ol>
 </div>
 
-<div id="outline-container-org9bd6065" class="outline-4">
-<h4 id="org9bd6065"><span class="section-number-4">1.4.2</span> The tenet</h4>
+<div id="outline-container-org77ce1ad" class="outline-4">
+<h4 id="org77ce1ad"><span class="section-number-4">1.4.2</span> The tenet</h4>
 <div class="outline-text-4" id="text-1-4-2">
 <p>
 After indenting with 6 spaces (3 indents), I copied the CLQL into the <code>query:</code> section of a new <code>codelingo.yaml</code> file.
@@ -603,7 +603,7 @@ There are 3 more files that typically go into making a full-featured tenet.
 </div>
 
 <ol class="org-ol">
-<li><a id="orgd4eec47"></a><span class="done DONE">DONE</span> <br />
+<li><a id="org26b491a"></a><span class="done DONE">DONE</span> <br />
 <div class="outline-text-5" id="text-1-4-2-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -629,7 +629,7 @@ There are 3 more files that typically go into making a full-featured tenet.
 </div>
 </li>
 
-<li><a id="orgecbd65e"></a><span class="todo TODO">TODO</span> <br />
+<li><a id="orgd9ece4f"></a><span class="todo TODO">TODO</span> <br />
 <div class="outline-text-5" id="text-1-4-2-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -667,8 +667,8 @@ There are 3 more files that typically go into making a full-featured tenet.
 </ol>
 </div>
 
-<div id="outline-container-org83c9c68" class="outline-4">
-<h4 id="org83c9c68"><span class="section-number-4">1.4.3</span> The test code, <code>example.go</code></h4>
+<div id="outline-container-org40484f7" class="outline-4">
+<h4 id="org40484f7"><span class="section-number-4">1.4.3</span> The test code, <code>example.go</code></h4>
 <div class="outline-text-4" id="text-1-4-3">
 <div class="org-src-container">
 <pre class="src src-go"><span style="font-weight: bold;">package</span> code
@@ -710,18 +710,18 @@ There are 3 more files that typically go into making a full-featured tenet.
 </div>
 </div>
 
-<div id="outline-container-orga95c0f8" class="outline-3">
-<h3 id="orga95c0f8"><span class="section-number-3">1.5</span> unconvert</h3>
+<div id="outline-container-org23c4a4e" class="outline-3">
+<h3 id="org23c4a4e"><span class="section-number-3">1.5</span> unconvert</h3>
 <div class="outline-text-3" id="text-1-5">
 </div>
-<div id="outline-container-org137b9ad" class="outline-4">
-<h4 id="org137b9ad"><span class="section-number-4">1.5.1</span> Visit the CodeLingo Playground</h4>
+<div id="outline-container-org6f8a89c" class="outline-4">
+<h4 id="org6f8a89c"><span class="section-number-4">1.5.1</span> Visit the CodeLingo Playground</h4>
 <div class="outline-text-4" id="text-1-5-1">
 </div>
 <ol class="org-ol">
-<li><a id="org8f7be62"></a>Generate some CLQL<br />
+<li><a id="orgf691b88"></a>Generate some CLQL<br />
 <ol class="org-ol">
-<li><a id="org9131d2a"></a>Write the antipattern into the <span class="underline">Source Code: Go"</span> section<br />
+<li><a id="orgbdd5bd2"></a>Write the antipattern into the <span class="underline">Source Code: Go"</span> section<br />
 <div class="outline-text-6" id="text-1-5-1-1-1">
 <p>
 We dont want to use the <code>float64()</code> type-conversion function on a variable we already know is a float.
@@ -738,9 +738,9 @@ Honestly, this wasn't hard to write.
 </div>
 </li>
 
-<li><a id="org20a4894"></a>Click on <span class="underline">Generate Query</span> and copy the resulting CLQL code<br />
+<li><a id="orga4cbb75"></a>Click on <span class="underline">Generate Query</span> and copy the resulting CLQL code<br />
 <ol class="org-ol">
-<li><a id="orgb32b53f"></a>This is what the generated CLQL looks like.<br /></li>
+<li><a id="orgd5ded9a"></a>This is what the generated CLQL looks like.<br /></li>
 </ol>
 </li>
 </ol>
@@ -748,8 +748,8 @@ Honestly, this wasn't hard to write.
 </ol>
 </div>
 
-<div id="outline-container-org76e7edf" class="outline-4">
-<h4 id="org76e7edf"><span class="section-number-4">1.5.2</span> The tenet</h4>
+<div id="outline-container-org3bc4595" class="outline-4">
+<h4 id="org3bc4595"><span class="section-number-4">1.5.2</span> The tenet</h4>
 <div class="outline-text-4" id="text-1-5-2">
 <div class="org-src-container">
 <pre class="src src-yaml"><span style="font-weight: bold; font-style: italic;">tenets</span>:
@@ -774,8 +774,8 @@ Honestly, this wasn't hard to write.
 </div>
 </div>
 </div>
-<div id="outline-container-orgdd1c76b" class="outline-4">
-<h4 id="orgdd1c76b"><span class="section-number-4">1.5.3</span> The test code</h4>
+<div id="outline-container-org744438f" class="outline-4">
+<h4 id="org744438f"><span class="section-number-4">1.5.3</span> The test code</h4>
 <div class="outline-text-4" id="text-1-5-3">
 <div class="org-src-container">
 <pre class="src src-go"><span style="font-weight: bold;">package</span> main
@@ -797,12 +797,12 @@ Honestly, this wasn't hard to write.
 </div>
 </div>
 
-<div id="outline-container-org2ad6ee8" class="outline-3">
-<h3 id="org2ad6ee8"><span class="section-number-3">1.6</span> tenet vs nofuncflags</h3>
+<div id="outline-container-orgb571ba6" class="outline-3">
+<h3 id="orgb571ba6"><span class="section-number-3">1.6</span> tenet vs nofuncflags</h3>
 <div class="outline-text-3" id="text-1-6">
 </div>
-<div id="outline-container-org30dcc28" class="outline-4">
-<h4 id="org30dcc28"><span class="section-number-4">1.6.1</span> original CLQL query</h4>
+<div id="outline-container-org5677cc3" class="outline-4">
+<h4 id="org5677cc3"><span class="section-number-4">1.6.1</span> original CLQL query</h4>
 <div class="outline-text-4" id="text-1-6-1">
 <div class="org-src-container">
 <pre class="src src-yaml">import codelingo/ast/go
@@ -831,8 +831,8 @@ Honestly, this wasn't hard to write.
 </div>
 </div>
 
-<div id="outline-container-org7dfebb3" class="outline-4">
-<h4 id="org7dfebb3"><span class="section-number-4">1.6.2</span> refined CLQL query</h4>
+<div id="outline-container-orgfc2a919" class="outline-4">
+<h4 id="orgfc2a919"><span class="section-number-4">1.6.2</span> refined CLQL query</h4>
 <div class="outline-text-4" id="text-1-6-2">
 <div class="org-src-container">
 <pre class="src src-yaml">import codelingo/ast/go
@@ -850,8 +850,8 @@ Honestly, this wasn't hard to write.
 </div>
 </div>
 
-<div id="outline-container-orgf672b0a" class="outline-4">
-<h4 id="orgf672b0a"><span class="section-number-4">1.6.3</span> CLQL query written by Blake</h4>
+<div id="outline-container-org342510b" class="outline-4">
+<h4 id="org342510b"><span class="section-number-4">1.6.3</span> CLQL query written by Blake</h4>
 <div class="outline-text-4" id="text-1-6-3">
 <div class="org-src-container">
 <pre class="src src-yaml">import codelingo/ast/go
@@ -869,8 +869,8 @@ Honestly, this wasn't hard to write.
 </div>
 </div>
 
-<div id="outline-container-org153e172" class="outline-4">
-<h4 id="org153e172"><span class="section-number-4">1.6.4</span> Difference between Blake's query and my own</h4>
+<div id="outline-container-orgbe05ad1" class="outline-4">
+<h4 id="orgbe05ad1"><span class="section-number-4">1.6.4</span> Difference between Blake's query and my own</h4>
 <div class="outline-text-4" id="text-1-6-4">
 <p>
 The only difference between our queries was the position of the <code>@ review.comment</code>.
@@ -887,8 +887,8 @@ The only difference between our queries was the position of the <code>@ review.c
 </div>
 </div>
 
-<div id="outline-container-orga438868" class="outline-3">
-<h3 id="orga438868"><span class="section-number-3">1.7</span> Conclusions</h3>
+<div id="outline-container-orge8a0e1a" class="outline-3">
+<h3 id="orge8a0e1a"><span class="section-number-3">1.7</span> Conclusions</h3>
 <div class="outline-text-3" id="text-1-7">
 <p>
 Even though this tenet was already made by blake, it took no longer than 10 minutes for myself, a total newbie, to make.
@@ -927,7 +927,7 @@ This tenet was made, originally by Blake. <a href="https://github.com/codelingo/
 <div id="postamble" class="status">
 <p class="date">Date: 2018-10-05 Fri 00:00</p>
 <p class="author">Author: Shane Mulligan</p>
-<p class="date">Created: 2018-10-08 Mon 14:54</p>
+<p class="date">Created: 2018-10-08 Mon 16:55</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
