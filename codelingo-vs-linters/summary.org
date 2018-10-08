@@ -25,7 +25,7 @@ What is simple to implement in CodeLingo may be difficult for 3rd party linters,
 Writing a tenet to describe an antipattern might be trivial in CLQL, but the corresponding linter may be /*orders*/ of magnitude more complex.
 
 The first step is usually to generate a verbose CLQL query from the CodeLingo playground.
-To do this you select the part of the code you would like to match and then click the _generate_ button.
+To do this you select the part of the code you would like to match and then click the _generate_[fn:gen] button.
 The next step is refine that query into something that captures the logic of what you want a tenet to match.
 Typically, the generated query comprises the bulk of the code you end up with.  You can therefore choose what to leave in, or add new logic, depending on the needs of the tenet.
 

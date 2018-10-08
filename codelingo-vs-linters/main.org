@@ -1,16 +1,22 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
 #+TITLE:     CodeLingo vs Linters
+#+SUBTITLE:  Making parsers for automatic code review
 #+AUTHOR:    Shane Mulligan
 #+EMAIL:     mullikine@gmail.com
 #+DATE:      <2018-10-05 Fri>
 #+LANGUAGE:  en
 
 * CodeLingo vs Linters
-I started learning Go and CodeLingo / CLQL at the same time, so while I have found it generally easy and straightforward to create these tenets, I feel like I could've knocked them out even faster if I didn't need to look up answers to questions such as '/what is an interface in golang?/', for example. The process has been intuitive; I think in part to having a good naming convention. I've had to learn what CodeLingo is, what a '*tenet*' and a '*flow*' is. Long story short, they are exactly what they sound like they are.
+I started learning Go and CodeLingo / CLQL at the same time, so while I have found it generally easy and straightforward to create these tenets, I feel like I could've knocked them out even faster if I didn't need to look up answers to questions such as '/what is an interface in golang?/', for example. The process has been intuitive; I think in part to having a good naming convention. I've had to learn what CodeLingo is, what a '*tenet*' and a '*flow*' is. Long story short, they are just as what they sound like they are.
 
 ** Defintions taken from the project docs
-+ tenet :: A Tenet is an encoded project specific best practice used to guide development.
-+ flow :: A Flow is an automated development workflow that leverages Tenets to do some task, for example automating code reviews.
++ tenet :: A Tenet is an /encoded/ project-specific _best practice_ used to guide development.
+
+           (an */encoded/ _best practice_*)
+
++ flow :: A Flow is an /automated/ development _workflow_ that leverages Tenets to do some task, for example automating code reviews.
+
+          (an */automated/ _workflow_*)
 
 ** The general process of writing one tenet
 *** Writing the CLQL
@@ -19,7 +25,7 @@ What is simple to implement in CodeLingo may be difficult for 3rd party linters,
 Writing a tenet to describe an antipattern might be trivial in CLQL, but the corresponding linter may be /*orders*/ of magnitude more complex.
 
 The first step is usually to generate a verbose CLQL query from the CodeLingo playground.
-To do this you select the part of the code you would like to match and then click the _generate_ button.
+To do this you select the part of the code you would like to match and then click the _generate_[fn:gen] button.
 The next step is refine that query into something that captures the logic of what you want a tenet to match.
 Typically, the generated query comprises the bulk of the code you end up with.  You can therefore choose what to leave in, or add new logic, depending on the needs of the tenet.
 
@@ -339,3 +345,15 @@ The only difference between our queries was the position of the ~@ review.commen
 Even though this tenet was already made by blake, it took no longer than 10 minutes for myself, a total newbie, to make.
 
 What's even more astonishing is our queries are functionally equivalent and that CLQL is clever enough to do what we both mean with regards to the position of the comment.
+
+
+[fn:tests] The number of times I had to *test* the tenet.
+
+
+[fn:approx] These are approximations.
+
+
+[fn:gen] This is what the button looks like.
+[[file:generate.png]]
+
+
