@@ -29,6 +29,7 @@ To do this you select the part of the code you would like to match and then clic
 The next step is refine that query into something that captures the logic of what you want a tenet to match.
 Typically, the generated query comprises the bulk of the code you end up with.  You can therefore choose what to leave in, or add new logic, depending on the needs of the tenet.
 
+-----
 
 **** *Before and after:* Refining the CLQL
 #+BEGIN_SRC yaml
