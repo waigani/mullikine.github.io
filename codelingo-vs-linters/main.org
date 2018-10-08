@@ -1,0 +1,341 @@
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
+#+TITLE:     CodeLingo vs Linters
+#+AUTHOR:    Shane Mulligan
+#+EMAIL:     mullikine@gmail.com
+#+DATE:      <2018-10-05 Fri>
+#+LANGUAGE:  en
+
+* CodeLingo vs Linters
+I started learning Go and CodeLingo / CLQL at the same time, so while I have found it generally easy and straightforward to create these tenets, I feel like I could've knocked them out even faster if I didn't need to look up answers to questions such as '/what is an interface in golang?/', for example. The process has been intuitive; I think in part to having a good naming convention. I've had to learn what CodeLingo is, what a '*tenet*' and a '*flow*' is. Long story short, they are exactly what they sound like they are.
+
+** Defintions taken from the project docs
++ tenet :: A Tenet is an encoded project specific best practice used to guide development.
++ flow :: A Flow is an automated development workflow that leverages Tenets to do some task, for example automating code reviews.
+
+** The general process of writing one tenet
+*** Writing the CLQL
+The process of crafting CLQL is mainly subtractive, especially for simple tenets.
+What is simple to implement in CodeLingo may be difficult for 3rd party linters, however, as this write-up should demonstrate.
+Writing a tenet to describe an antipattern might be trivial in CLQL, but the corresponding linter may be /*orders*/ of magnitude more complex.
+
+The first step is usually to generate a verbose CLQL query from the CodeLingo playground.
+To do this you select the part of the code you would like to match and then click the _generate_ button.
+The next step is refine that query into something that captures the logic of what you want a tenet to match.
+Typically, the generated query comprises the bulk of the code you end up with.  You can therefore choose what to leave in, or add new logic, depending on the needs of the tenet.
+
+*** Writing the unit test
+**** Obtaining test code
+I found *'Go by example'*[fn:gobyexample] a good place to both learn Go and to obtain test code for tenets.
+CodeLingo test code just looks like regular code, except it should contain the thing that the tenet is looking for, and that is usually an anti-pattern. Therefore, this is where you put deliberately bad code.
+
+[fn:gobyexample]  [[https://gobyexample.com/interfaces][Go by Example: Interfaces]]
+
+
+**** Expected results
+After a review on the CLI, a JSON file is presented. You can just copy and paste this JSON code into a file called ~expected.json~.
+
+** Tenets made
+| tenet name           | linter name                                                                                  | time to write | total clicks |
+|----------------------+----------------------------------------------------------------------------------------------+---------------+--------------|
+| init                 | [[https://github.com/leighmcculloch/gochecknoinits][GitHub - leighmcculloch/gochecknoinits: Check that no init functions are present in Go code.]] | 10 mins       |            1 |
+| unconvert            | [[https://github.com/mdempsky/unconvert/blob/master/unconvert.go][unconvert/unconvert.go at master  mdempsky/unconvert  GitHub]]                                 |               |              |
+| nofuncflags[fn:bool] | [[https://github.com/fsamin/nofuncflags][GitHub - fsamin/nofuncflags: a Go(lang) linter, because flag arguments are ugly]]              | 10 mins       |            1 |
+
++ total clicks :: The number of times we needed to press _generate query_.
+
+[fn:bool] This tenet was a double-up of an existing tenet [fn:double].
+
+
+[fn:double] This tenet was made, originally by Blake. [[https://github.com/codelingo/codelingo/blob/master/tenets/codelingo/go/bool-param/codelingo.yaml][codelingo/codelingo.yaml at master  codelingo/codelingo  GitHub]].
+
+
+** init
+*** I started by visiting the _[[https://www.codelingo.io/playground/?lang=go][CodeLingo Playground]]_
+
+A good way to start is by generating some CLQL for the thing you would like to match.
+
+**** Step 1: Generate some CLQL
+
+***** Write an init function into the _Source Code: Go"_ section
+
+#+BEGIN_SRC go
+  func init() {
+  }
+#+END_SRC
+
+***** Click on _Generate Query_ and copy the resulting CLQL code
+****** This is what the button looks like.
+[[file:generate.png]]
+
+****** This is what the generated CLQL looks like.
+
+ #+BEGIN_SRC yaml
+   import codelingo/ast/go
+
+   go.file(depth = any):
+     go.decls:
+       @playground.highlight
+       go.func_decl:
+         go.ident:
+           child_count == 0
+           name == "init"
+           private == "true"
+           public == "false"
+         go.func_type:
+           go.field_list:
+             child_count == 0
+ #+END_SRC
+
+ + total clicks :: The number of times needed to press _generate query_
+
+ | total clicks |
+ |--------------|
+ |            1 |
+
+**** Step 2: Refine the CLQL
+
+#+BEGIN_SRC yaml
+  import codelingo/ast/go
+
+  go.file(depth = any):
+    go.decls:
+      go.func_decl:
+        @ review.comment
+        go.ident:
+          name == "init"
+        go.func_type:
+          go.field_list:
+            child_count == 0
+#+END_SRC
+
+***** Actions
+- Remove ~@playground.highlight~
+- Add ~@ review.comment~
+- Remove things that are not relevant to our query.
+
+  - The first ~child_count~ was taken out because we can see that a function definition (~go.func_decl~) with identifier name equal to "init" (~go.ident:~ ~name == "init"~) is enough to describe a function with name "init".
+
+  - The second ~child_count~ was left in because we'd like to match "init" functions that do not take any parameters.
+    #+BEGIN_SRC yaml
+      child_count == 0
+    #+END_SRC
+
+  - The visibility assertions in this case are not neccessary. Usually we want the tenet to be able to generalise.
+    #+BEGIN_SRC yaml
+      private == "true"
+      public == "false"
+    #+END_SRC
+
+***** This is the diff of the refinement we made to the CLQL
+#+BEGIN_SRC diff
+  5d4
+  <     @playground.highlight
+  6a6
+  >       @ review.comment
+  8d7
+  <         child_count == 0
+  10,11d8
+  <         private == "true"
+  <         public == "false"
+#+END_SRC
+
+*** The tenet
+After indenting with 6 spaces (3 indents), I copied the CLQL into the ~query:~ section of a new ~codelingo.yaml~ file.
+The ~codelingo.yaml~ file is the file you might simply call the '*tenet*'.
+
+#+BEGIN_SRC yaml
+  tenets:
+    - name: init
+      doc: |
+        Check that no inits functions are present in Go code.
+      flows:
+        codelingo/review:
+          comment: Init functions cause an import to have a side effects, and side effects are hard to test, reduce readability and increase the complexity of code.
+      query: |
+        import codelingo/ast/go
+
+        go.file(depth = any):
+          go.decls:
+            go.func_decl:
+              @ review.comment
+              go.ident:
+                name == "init"
+              go.func_type:
+                go.field_list:
+                  child_count == 0
+#+END_SRC
+
+There are 3 more files that typically go into making a full-featured tenet.
+
+**** DONE
+| filename         | purpose           |
+|------------------+-------------------|
+| ~codelingo.yaml~ | The effectual bit. A _description_ of what the tenet does *+* the _code_ to make it happen. |
+
+**** TODO
+| filename         | purpose                                                                                                          |
+|------------------+------------------------------------------------------------------------------------------------------------------|
+| ~example.go~     | Example of broken code, which is found by the tenet. this and ~expected.json~ comprise a unit test for the tenet. |
+| ~expected.json~  | Expected output of the CodeLingo reviewer.                                                                        |
+| ~README.md~      | An explanation of what bundle this tenet belongs to.                                                              |
+
+*** The test code, ~example.go~
+#+BEGIN_SRC go
+  package code
+
+  var myVar = 0
+
+  type S struct{}
+
+  func (s S) init(arg string) bool {
+          yourVar := true
+          return yourVar
+  }
+
+  var theVar = true
+
+  type S struct{}
+
+  const constant = 0
+
+  func function(arg string) bool {
+          yourVar := true
+          return yourVar
+  }
+
+  func init() {
+  }
+
+  type S struct{}
+
+  func function() {
+          init := func() {}
+          init()
+  }
+
+  var _ = 0
+#+END_SRC
+
+** unconvert
+*** Visit the CodeLingo Playground
+**** Generate some CLQL
+***** Write the antipattern into the _Source Code: Go"_ section
+We dont want to use the ~float64()~ type-conversion function on a variable we already know is a float.
+Honestly, this wasn't hard to write.
+
+ #+BEGIN_SRC go
+   func main() {
+           var f float64
+           fmt.Printf("%t\n", !math.IsNaN(float64(f)))
+   }
+ #+END_SRC
+
+***** Click on _Generate Query_ and copy the resulting CLQL code
+****** This is what the generated CLQL looks like.
+
+*** The tenet
+#+BEGIN_SRC yaml
+  tenets:
+    - name: unconvert
+      doc: |
+        Identify unnecessary type conversions
+      flows:
+        codelingo/review:
+          comment: Unnecessary type conversion {{name}}; i.e., expression {{name}}(x) where x already has type {{name}}.
+      query: |
+        import codelingo/ast/go
+        go.file(depth = any):
+          go.call_expr(depth = any):
+            go.ident:
+              @ review.vars.name
+              name as typeName
+            go.args:
+              @ review.comment
+              go.ident:
+                type == typeName
+#+END_SRC
+*** The test code
+#+BEGIN_SRC go
+  package main
+
+  import "fmt"
+  import "math"
+
+  func main() {
+          var f float64
+          var f32 float32
+          var f64 float64
+          fmt.Printf("%t\n", !math.IsNaN(float64(f)))
+          fmt.Printf("%t\n", !math.IsNaN(float64(f32)))
+          fmt.Printf("%t\n", !math.IsNaN(float64(f64)))
+  }
+#+END_SRC
+
+** tenet vs nofuncflags
+*** original CLQL query
+#+BEGIN_SRC yaml
+  import codelingo/ast/go
+
+  go.file(depth = any):
+    go.decls:
+      go.func_decl:
+        go.func_type:
+          go.field_list:
+            @playground.highlight
+            go.field:
+              go.names:
+                go.ident:
+                  child_count == 0
+                  name == "aFlag"
+                  private == "true"
+                  public == "false"
+                  type == "bool"
+              go.ident:
+                child_count == 0
+                name == "bool"
+                private == "true"
+                public == "false"
+#+END_SRC
+
+*** refined CLQL query
+#+BEGIN_SRC yaml
+  import codelingo/ast/go
+
+  go.func_decl(depth = any):
+    go.func_type:
+      go.field_list:
+        go.field:
+          go.names:
+            @ review.comment
+            go.ident:
+              type == "bool"
+#+END_SRC
+
+*** CLQL query written by Blake
+#+BEGIN_SRC yaml
+  import codelingo/ast/go
+
+  @ review.comment
+  go.func_decl(depth = any):
+    go.func_type:
+      go.field_list:
+        go.field:
+          go.names:
+            go.ident:
+              type == "bool"
+#+END_SRC
+
+*** Difference between Blake's query and my own
+The only difference between our queries was the position of the ~@ review.comment~.
+
+#+BEGIN_SRC diff
+  2a3
+  > @ review.comment
+  8d8
+  <           @ review.comment
+#+END_SRC
+
+** Conclusions
+Even though this tenet was already made by blake, it took no longer than 10 minutes for myself, a total newbie, to make.
+
+What's even more astonishing is our queries are functionally equivalent and that CLQL is clever enough to do what we both mean with regards to the position of the comment.
