@@ -103,7 +103,7 @@ Typically, the generated query comprises the bulk of the code you end up with.  
 
   I ran the original linter on a repository to find an example of what to put into a unit test.
 
-l
+
 ** Read the full article [[http://mullikine.github.io/codelingo-vs-linters/main.html][here]].
 
 
