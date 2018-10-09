@@ -147,9 +147,14 @@ See the full article [[http://mullikine.github.io/codelingo-vs-linters/main.html
   I ran the original linter on a repository to find an example of what to put into a unit test.
 
 **** blanket
-The tenet 'tested' doesn't look at the function call. Only the name of the testing function and compares it to the name of the function in the other file, which is definitely not the same as blanket.
-It can, however, find if a method with the _name_ 'TestMethod' was called (with an arbitrarily deep recusive nesting) in the '_test.go' file, where seeing if a test method for 'Method' exists.
+Blanket has a limitation. It can handle single-level selector expressions with great ease, but it doesn't recursively dive into those selectors for a number of reasons.
+
+The tenet 'tested' doesn't look at the function call to make sure it is the same object that is calling. It only checks that the method being called has the same name and that it is being called within a test function and file of appropriate name.
+
+It can, however, find if said method was called with arbitrary nesting.
+
 So it doesn't have the same recursive limitation as blanket, but may give false positives in some circumstances.
+
 
 ** Read the full article [[http://mullikine.github.io/codelingo-vs-linters/main.html][here]].
 
