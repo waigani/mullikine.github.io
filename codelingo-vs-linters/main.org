@@ -416,13 +416,15 @@ Here I compare the amount of code written to make the tenets vs the linters I mo
   I ran the original linter on a repository to find an example of what to put into a unit test.
 
 **** blanket
-Blanket has a limitation. It can handle single-level selector expressions with great ease, but it doesn't recursively dive into those selectors for a number of reasons.
+- Blanket has a limitation.
 
-The tenet 'tested' doesn't look at the function call to make sure it is the same object that is calling. It only checks that the method being called has the same name and that it is being called within a test function and file of appropriate name.
+  It can handle single-level selector expressions with great ease, but it doesn't recursively dive into those selectors for a number of reasons.
 
-It can, however, find if said method was called with arbitrary nesting.
+  The tenet 'tested' doesn't look at the function call to make sure it is the same object that is calling. It only checks that the method being called has the same name and that it is being called within a test function and file of appropriate name.
 
-So it doesn't have the same recursive limitation as blanket, but may give rise to false positives in some circumstances.
+  It can, however, find if said method was called with arbitrary nesting.
+
+  So it doesn't have the same recursive limitation as blanket, but may give rise to false positives in some circumstances.
 
 
 [fn:tests] The number of times I had to *test* the tenet.
