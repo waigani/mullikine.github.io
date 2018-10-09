@@ -1,0 +1,2684 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>~/notes2018/glossary.txt.html</title>
+<meta name="Generator" content="Vim/8.0">
+<meta name="plugin-version" content="vim7.4_v2">
+<meta name="syntax" content="none">
+<meta name="settings" content="use_css,no_foldcolumn,prevent_copy=">
+<meta name="colorscheme" content="none">
+<style type="text/css">
+<!--
+pre { font-family: monospace; color: #5f5f87; background-color: #000000; }
+body { font-family: monospace; color: #5f5f87; background-color: #000000; }
+* { font-size: 1em; }
+.priority { color: #5fff87; background-color: #875f00; padding-bottom: 1px; }
+.failing { color: #c00000; background-color: #5f0000; padding-bottom: 1px; }
+.comment { color: #87afd7; background-color: #585858; padding-bottom: 1px; }
+.glue { color: #5fff87; background-color: #262626; padding-bottom: 1px; }
+.sshError { color: #ffff00; background-color: #ff005f; padding-bottom: 1px; }
+.highpriority { color: #ffff00; background-color: #afaf00; padding-bottom: 1px; }
+.tilde { color: #0087ff; background-color: #0000af; padding-bottom: 1px; }
+.new { color: #ff8787; background-color: #005faf; padding-bottom: 1px; }
+.closesyntax { color: #5f875f; background-color: #000000; padding-bottom: 1px; }
+.criticalpriority { color: #ff0000; background-color: #ffff00; padding-bottom: 1px; }
+.api { color: #87d700; background-color: #444444; padding-bottom: 1px; }
+.textdone { color: #5fffaf; background-color: #005f00; padding-bottom: 1px; }
+.serviceAdd { color: #5fd75f; background-color: #008700; padding-bottom: 1px; }
+.serviceRemove { color: #ff0000; background-color: #870000; padding-bottom: 1px; }
+.stopped { color: #d7005f; background-color: #1c1c1c; padding-bottom: 1px; }
+.quote { color: #00afff; background-color: #1c1c1c; padding-bottom: 1px; }
+.doublequote { color: #808080; background-color: #1c1c1c; padding-bottom: 1px; }
+.gitRtcPackage { color: #005fff; background-color: #00005f; padding-bottom: 1px; }
+.variable { color: #00d75f; background-color: #303030; padding-bottom: 1px; }
+.gitRtcError { color: #d7005f; background-color: #5f0000; padding-bottom: 1px; }
+.googleyellow { color: #d7af00; background-color: #eeeeee; padding-bottom: 1px; }
+.googlegreen { color: #008700; background-color: #eeeeee; padding-bottom: 1px; }
+.tests { color: #9e9e9e; background-color: #1c1c1c; padding-bottom: 1px; }
+.logic { color: #ff8787; background-color: #303030; padding-bottom: 1px; }
+.codekeywords { color: #5f87d7; background-color: #303030; padding-bottom: 1px; }
+.awesome { color: #5f5fff; background-color: #5f005f; padding-bottom: 1px; }
+.automatic { color: #dadada; background-color: #af0000; padding-bottom: 1px; }
+.diffRemove { color: #ff0000; background-color: #870000; padding-bottom: 1px; }
+.Special { color: #c000c0; }
+.ircroom { color: #005f5f; }
+.nine { color: #00ffaf; background-color: #303030; padding-bottom: 1px; }
+.toby { color: #eeeeee; background-color: #5f5f5f; padding-bottom: 1px; }
+.kashyap { color: #00d75f; background-color: #005f00; padding-bottom: 1px; }
+.shanemulligan { color: #ff5f87; background-color: #005fff; padding-bottom: 1px; }
+.morediscrete { color: #303030; }
+.ircname { color: #875fff; background-color: #1c1c1c; padding-bottom: 1px; }
+.one { color: #0087ff; background-color: #303030; padding-bottom: 1px; }
+.two { color: #afd75f; background-color: #303030; padding-bottom: 1px; }
+.three { color: #ff5fd7; background-color: #303030; padding-bottom: 1px; }
+.four { color: #ffff5f; background-color: #303030; padding-bottom: 1px; }
+.five { color: #d7005f; background-color: #303030; padding-bottom: 1px; }
+.six { color: #ffaf00; background-color: #303030; padding-bottom: 1px; }
+.seven { color: #5fafff; background-color: #303030; padding-bottom: 1px; }
+.texturl { color: #5f87ff; background-color: #1c1c1c; padding-bottom: 1px; }
+.emacstmuxkey { color: #875fff; background-color: #1c1c1c; padding-bottom: 1px; }
+.textnot { color: #c00000; background-color: #5f0000; padding-bottom: 1px; }
+.textdiscard { color: #000000; background-color: #875f5f; padding-bottom: 1px; }
+.seleniumError { color: #af005f; background-color: #5f0000; padding-bottom: 1px; }
+.gitbranch { color: #ff005f; background-color: #5f0000; padding-bottom: 1px; }
+.safe { color: #00d7ff; background-color: #303030; padding-bottom: 1px; }
+.null { color: #3a3a3a; background-color: #080808; padding-bottom: 1px; }
+.generalError { color: #ff005f; background-color: #5f0000; padding-bottom: 1px; }
+.success { color: #5fff5f; background-color: #303030; padding-bottom: 1px; }
+.buildfiles { color: #ffff5f; background-color: #5f5f00; padding-bottom: 1px; }
+.machinelearning { color: #00af00; background-color: #1c1c1c; padding-bottom: 1px; }
+.math { color: #d78700; background-color: #ffff87; padding-bottom: 1px; }
+.whiteonblack { color: #eeeeee; background-color: #8a8a8a; padding-bottom: 1px; }
+.logcode { color: #005f5f; background-color: #d75f00; padding-bottom: 1px; }
+.discrete { color: #444444; }
+.unicode { color: #ff005f; background-color: #1c1c1c; padding-bottom: 1px; }
+.brightoperator { color: #ff0000; }
+.asteriskoperator { color: #ff0000; background-color: #5f0000; padding-bottom: 1px; }
+.brightoperator2 { color: #5fff5f; background-color: #262626; padding-bottom: 1px; }
+.brightoperator3 { color: #ff5f00; background-color: #5f5f87; padding-bottom: 1px; }
+.interesting { color: #afd75f; background-color: #00875f; padding-bottom: 1px; }
+.textpath { color: #87d75f; background-color: #1c1c1c; padding-bottom: 1px; }
+.eight { color: #ff5f87; background-color: #303030; padding-bottom: 1px; }
+.subdued { color: #3a3a3a; }
+.zero { color: #af00af; background-color: #303030; padding-bottom: 1px; }
+.onlyhex { color: #afd75f; background-color: #303030; padding-bottom: 1px; }
+.domainbright { color: #bcbcbc; background-color: #303030; padding-bottom: 1px; }
+.domain { color: #767676; background-color: #303030; padding-bottom: 1px; }
+.numberpunctuation { background-color: #303030; padding-bottom: 1px; }
+.bullets { color: #9e9e9e; background-color: #303030; padding-bottom: 1px; }
+.allcaps { color: #8a8a8a; }
+.googleblue { color: #5f87ff; background-color: #eeeeee; padding-bottom: 1px; }
+.googlered { color: #ff005f; background-color: #eeeeee; padding-bottom: 1px; }
+.tensorflow { color: #ff5f00; background-color: #eeeeee; padding-bottom: 1px; }
+-->
+</style>
+
+<script type='text/javascript'>
+<!--
+
+-->
+</script>
+</head>
+<body>
+<pre id='vimCodeElement'>
+<span class="comment">#</span> Keep in mind I should simply write down
+<span class="comment">#</span> terms that I can later <span class="googleblue">G</span><span class="googlered">o</span><span class="googleyellow">o</span><span class="googleblue">g</span><span class="googlegreen">l</span><span class="googlered">e</span> <span class="codekeywords">for</span>.
+
+An <span class="math">algebra</span>
+    A set of values <span class="brightoperator">+</span> a set of operators that
+    those values are <span class="sshError">closed</span> under <span class="logic">and</span> some
+    laws it <span class="highpriority">must</span> obey.
+
+unit-variance
+    A <span class="machinelearning">Gaussian</span> distribution <span class="codekeywords">with</span> unit-variance
+    is also referred to as the standard normal
+    distribution.
+
+Zero-mean
+    <span class="doublequote">&quot;</span>Zero-meaned<span class="doublequote">&quot;</span> means the <span class="codekeywords">vector</span> has been
+    transformed <span class="googlered">so</span> that its mean is <span class="zero">0</span>.
+
+Standard Normal Distribution
+    <span class="two">Two</span> alternative ways to describe it<span class="subdued">:</span>
+    <span class="one">a)</span>  has unit variance
+    <span class="two">b)</span>  has <span class="zero">zero</span>-mean
+
+    Because <span class="safe">any normal</span> distribution can be
+    specified by the <span class="two">two</span> parameters<span class="subdued">:</span> mean (<span class="unicode">μ</span>)
+    <span class="logic">and</span> standard deviation (<span class="unicode">σ</span>).
+
+    <span class="logic">If</span> a normal distribution has <span class="zero">zero</span> mean
+    <span class="logic">then</span> it <span class="highpriority">must</span> have unit variance.
+
+Shannon entropy <span class="subdued">::</span>
+    Provides a way to estimate the average
+    minimum number of bits needed to encode a
+    string of symbols<span class="brightoperator">,</span>
+
+    <span class="glue">...</span> based on the frequency of the symbols.
+
+    In the Shannon entropy equation<span class="brightoperator">,</span> <span class="math">pi</span> is the
+    <span class="interesting">probability</span> of a given symbol.
+
+Joint <span class="interesting">Probability</span> Distribution
+Bivariate Distribution<span class="brightoperator">,</span> <span class="seleniumError">n</span><span class="brightoperator">=</span><span class="two">2</span>.
+    Gives the <span class="interesting">probability</span> that each of <span class="one">X</span><span class="brightoperator">,</span> <span class="two">Y</span>
+    falls in <span class="safe">any particular</span> ranger <span class="logic">or</span> discrete
+    set of values specified.
+
+    In the <span class="logic">case</span> of <span class="two">2</span> variablese this is called
+    a bivariate distribution.
+
+Markov Property
+    Needing <span class="seleniumError">not information</span> of past states.
+
+    The memoryless property of a stochastic
+    process.
+
+    See Markov Assumption.
+
+Markov Process
+    A process that <span class="highpriority">needs</span> <span class="seleniumError">not information</span> of
+    past states.
+
+    A process <span class="codekeywords">with</span> the Markov Property is
+    called a Markov Process.
+
+Markov Assumption
+    Used to describe a model <span class="codekeywords">where</span> the Markov
+    Property is assumed to hold.
+
+Ising Model
+    I think this was talked about in both
+    <span class="allcaps">COSC</span> <span class="one">431</span> <span class="logic">and</span> <span class="allcaps">COSC</span> <span class="zero">420</span>. <span class="logic">Therefore</span><span class="brightoperator">,</span> it <span class="highpriority">must</span>
+    be <span class="highpriority">important</span>.
+
+    <span class="morediscrete">[[</span><span class="texturl"><a href="https://">https://</a></span><span class="domainbright">en</span>.<span class="domainbright">wikipedia</span><span class="textpath">.org</span><span class="discrete">/</span>wiki<span class="discrete">/</span>Ising_model<span class="morediscrete">][</span>Ising model<span class="brightoperator"> - </span>Wikipedia<span class="morediscrete">]]</span>
+
+Markov Random Field
+    Extends this property to <span class="two">two</span> <span class="logic">or</span> more
+    dimensions <span class="logic">or</span> to random variables defined
+    <span class="codekeywords">for</span> an interconnected network of items.
+
+    Example<span class="brightoperator">,</span>
+        Ising Model
+
+Markov Chain
+    A discrete-time stochastic process
+    satisfying the Markov Property.
+
+Document Length normalisation
+
+Temporal Decay
+
+Predicate (<span class="logcode">logic</span>)
+    Takes an argument as input <span class="logic">and</span> outputs
+    <span class="safe">true</span> <span class="logic">or</span> <span class="seleniumError">false</span>.
+
+    Example<span class="brightoperator">,</span> -type in the find command.
+        <span class="doublequote">&quot;</span><span class="Special">-type</span> f<span class="doublequote">&quot;</span> <span class="failing">is not</span> a predicate.
+
+        The predicate is <span class="quote">'</span>is the type<span class="quote">'</span><span class="brightoperator">,</span> <span class="seleniumError">not</span>
+        <span class="quote">'</span>the type is f<span class="quote">'</span>.
+
+        Predicates can take several variables.
+
+        <span class="doublequote">&quot;</span>Socrates is the teacher of Plato<span class="doublequote">&quot;</span><span class="brightoperator">,</span>
+        the predicate <span class="doublequote">&quot;</span>is the teacher of<span class="doublequote">&quot;</span>
+        takes <span class="two">two</span> variables.
+
+        <span class="logic">Therefore</span> the predicate <span class="doublequote">&quot;</span><span class="Special">-type</span><span class="doublequote">&quot;</span>
+        actually takes <span class="two">2</span> variables<span class="brightoperator">,</span> the
+        current node being checked <span class="logic">and</span> the
+        type of the node.
+
+Radix tree
+Radix trie
+Compact prefix tree
+    A data structure that represents a
+    space-optimized trie in which each node
+    that is the only child is merged <span class="codekeywords">with</span> its
+    parent.
+
+<span class="interesting">Semantic</span> segmentation
+
+Computer <span class="math">Algebra</span>
+    <span class="morediscrete">[[</span><span class="texturl"><a href="https://">https://</a></span><span class="domainbright">en</span>.<span class="domainbright">wikipedia</span><span class="textpath">.org</span><span class="discrete">/</span>wiki<span class="discrete">/</span>Computer_algebra<span class="morediscrete">][</span>Computer <span class="math">algebra</span><span class="brightoperator"> - </span>Wikipedia<span class="morediscrete">]]</span>
+
+Order <span class="one">1</span>
+Constant time
+<span class="allcaps">O</span>(<span class="one">1</span>)
+
+Bi-directional <span class="interesting">learning</span>
+    The training of a <span class="interesting">neural network</span> to be a
+    <span class="interesting">classifier</span> in <span class="one">one</span> direction <span class="logic">and</span> a
+    generator in the opposite direction.
+
+    This procedure increases the robustness of
+    <span class="interesting">neural</span> nets to adversarial <span class="awesome">examples</span> <span class="logic">and</span>
+    white noise static in image <span class="interesting">classification</span>
+    task.
+
+    <span class="morediscrete">[[</span><span class="texturl"><a href="https://">https://</a></span><span class="domainbright">arxiv</span><span class="textpath">.org</span><span class="discrete">/</span>abs<span class="discrete">/</span><span class="five">1805</span><span class="numberpunctuation">.</span><span class="six">08006</span><span class="morediscrete">][</span>arxiv<span class="textpath">.org</span><span class="discrete">/</span>abs<span class="discrete">/</span><span class="five">1805</span><span class="numberpunctuation">.</span><span class="six">08006</span><span class="morediscrete">]]</span>
+
+Higher order <span class="gitRtcPackage">function</span>
+    <span class="logic">and</span><span class="discrete">/</span><span class="logic">or</span>
+    <span class="diffRemove">-</span>   take a <span class="gitRtcPackage">function</span> as a parameter
+    <span class="diffRemove">-</span>   <span class="safe">return</span> a <span class="new">new function</span>
+
+    <span class="failing">In constrast </span>to<span class="subdued">:</span>
+        First-order <span class="gitRtcPackage">function</span>.
+
+First order <span class="gitRtcPackage">function</span>
+    <span class="seleniumError">Doesn't take</span> a <span class="gitRtcPackage">function</span> as an argument <span class="logic">or</span>
+    <span class="safe">return</span> a <span class="gitRtcPackage">function</span> as output.
+
+    <span class="failing">In constrast </span>to<span class="subdued">:</span>
+        Higher order <span class="gitRtcPackage">function</span>.
+
+<span class="safe">p</span>-value
+    When you perform a hypothesis <span class="tests">test</span> in
+    statistics<span class="brightoperator">,</span> a <span class="safe">p</span>-value helps you determine
+    the significance of your results.
+
+    A number between <span class="zero">0</span> <span class="logic">and</span> <span class="one">1</span>.
+
+    A small <span class="safe">p</span>-value (<span class="kashyap">typically</span> <span class="unicode">≤</span> <span class="zero">0</span><span class="numberpunctuation">.</span><span class="five">05</span>)
+    indicates strong evidence against the <span class="null">null</span>
+    hypothesis<span class="brightoperator">,</span> <span class="googlered">so</span> you reject the <span class="null">null</span>
+    hypothesis.
+
+<span class="null">Null</span> hypothesis
+    The hypothesis that there is <span class="seleniumError">no</span>
+    significant difference between specified
+    populations<span class="brightoperator">,</span> <span class="safe">any observed</span> difference being
+    due to sampling <span class="logic">or</span> experimental <span class="seleniumError">error</span>.
+
+Dropout
+    A regularization technique <span class="codekeywords">for</span> <span class="allcaps">NNs</span> <span class="logic">and</span> <span class="allcaps">DL</span>
+    models.
+
+    Simple <span class="logic">and</span> powerful.
+
+Maximum Liklihood <span class="morediscrete">[</span>Estimation<span class="morediscrete">]</span>
+<span class="allcaps">MLE</span>
+    The goal of maximum likelihood is to find
+    the optimal way to fit a distribution to
+    the data.
+
+    Could be trying to fit the Normal
+    distribution<span class="brightoperator">,</span> <span class="codekeywords">for</span> <span class="awesome">example</span>.
+
+Lambda Calculus
+    It<span class="quote">'</span>s a simple notation <span class="codekeywords">with</span> <span class="three">3</span> parts.
+
+    <span class="one">1</span>. variables
+    <span class="two">2</span>. way of building functions
+    <span class="three">3</span>. way of applying functions
+
+    <span class="unicode">λ</span>x.<span class="one">x</span><span class="brightoperator">+</span><span class="one">1</span>
+
+        Put a lambda<span class="brightoperator">,</span> <span class="logic">then</span> an <span class="one">x</span> <span class="logic">then</span> a dot<span class="brightoperator">,</span>
+        <span class="logic">then</span> the output in terms of <span class="one">x</span>.
+
+    <span class="unicode">λ</span>x.<span class="unicode">λ</span>y.<span class="one">x</span><span class="brightoperator">+</span><span class="two">y</span>
+
+        Addition. Takes <span class="two">2</span> inputs<span class="brightoperator">,</span> <span class="one">x</span> <span class="logic">and</span> <span class="two">y</span>.
+
+    (<span class="unicode">λ</span>x.<span class="one">x</span><span class="brightoperator">+</span><span class="one">1</span>)<span class="five">5</span>
+
+        This is how to apply a <span class="gitRtcPackage">function</span>.
+
+    <span class="safe">Any turing-complete</span> program can be
+    rewritten in lambda calculas.
+
+    They are <span class="two">2</span> ways of describing programs
+    that are equivalent.
+
+    Lambda calculas is as simple as that. <span class="logic">If</span>
+    you want to do things like have booleans
+    <span class="logic">and</span> recursion <span class="logic">then</span> you <span class="highpriority">need</span> to encode
+    them.
+
+    Use the idea of making a choice to encode
+    <span class="safe">true</span> <span class="logic">and</span> <span class="seleniumError">false</span>.
+
+    <span class="safe">TRUE</span><span class="brightoperator"> = </span><span class="unicode">λ</span>x.<span class="unicode">λ</span>y<span class="textpath">.x</span>
+        <span class="safe">return</span> the first thing
+
+    <span class="seleniumError">FALSE</span><span class="brightoperator"> = </span><span class="unicode">λ</span>x.<span class="unicode">λ</span>y<span class="textpath">.y</span>
+        <span class="safe">return</span> the second thing
+
+    <span class="textnot">NOT</span><span class="brightoperator"> = </span><span class="unicode">λ</span>b<span class="textpath">.b</span> <span class="seleniumError">FALSE</span> <span class="safe">TRUE</span>
+        Proof<span class="subdued">:</span>
+        (<span class="unicode">λ</span>b<span class="textpath">.b</span> <span class="seleniumError">FALSE</span> <span class="safe">TRUE</span>) <span class="safe">TRUE</span><span class="brightoperator">,</span>
+            <span class="safe">TRUE</span> is the input
+
+        <span class="safe">TRUE</span> <span class="seleniumError">FALSE</span> <span class="safe">TRUE</span><span class="brightoperator">,</span>
+            substitute b <span class="codekeywords">for</span> <span class="safe">TRUE</span>
+
+        (<span class="unicode">λ</span>x.<span class="unicode">λ</span>y.<span class="one">x</span>) <span class="seleniumError">FALSE</span> <span class="safe">TRUE</span><span class="brightoperator">,</span>
+            expand <span class="safe">TRUE</span> to <span class="safe">TRUE</span><span class="quote">'</span>s definition
+            apply it as a <span class="gitRtcPackage">function</span>
+
+        <span class="seleniumError">FALSE</span>
+
+    <span class="logic">AND</span><span class="subdued">:</span> (<span class="unicode">λ</span>x<span class="brightoperator">,</span> <span class="unicode">λ</span>y). <span class="one">x</span> <span class="two">y</span> <span class="seleniumError">FALSE</span>
+    <span class="logic">OR</span><span class="subdued">:</span> (<span class="unicode">λ</span>x<span class="brightoperator">,</span> <span class="unicode">λ</span>y). <span class="one">x</span> <span class="safe">TRUE</span> <span class="two">y</span>
+
+    <span class="two">Y</span><span class="brightoperator"> = </span><span class="unicode">λ</span>f.(<span class="unicode">λ</span>x.f(<span class="kashyap">x</span> <span class="one">x</span>)) (<span class="unicode">λ</span>x.f(<span class="kashyap">x</span> <span class="one">x</span>))
+        This is the key to doing recursion in
+        lambda calculus.
+
+        You have <span class="two">two</span> copies of the same thing.
+        This is the key to doing recursion<span class="brightoperator">,</span>
+        which is something quite related to
+        self-replication.
+
+<span class="two">Y</span>-Combinator
+<span class="two">Y</span>-Operator
+    A way of doing recursion in a language<span class="subdued">:</span>
+    <span class="asteriskoperator">*</span> that <span class="seleniumError">doesn't have</span> <span class="safe">any recursion</span><span class="brightoperator">,</span> <span class="logic">and</span>
+    <span class="asteriskoperator">*</span> that <span class="seleniumError">doesn't have</span> <span class="safe">any looping</span> mechanism
+      <span class="diffRemove">-</span> at all.
+
+    Invented by Haskell B. Curry. <span class="zero">1900</span><span class="brightoperator"> - </span><span class="two">1982</span>
+
+Distributed Data Pipeline
+    Examples<span class="subdued">:</span>
+        Spark
+        Flume
+        Kafka
+
+t-<span class="allcaps">SNE</span>
+    <span class="morediscrete">[[</span><span class="texturl"><a href="https://">https://</a></span><span class="domainbright">distill</span><span class="textpath">.pub</span><span class="discrete">/</span><span class="six">2016</span><span class="discrete">/</span>misread-tsne/<span class="morediscrete">][</span>How to Use t-<span class="allcaps">SNE</span> Effectively<span class="morediscrete">]]</span>
+
+Random walk
+    A mathematical object<span class="brightoperator">,</span> known as a
+    stochastic <span class="logic">or</span> random process<span class="brightoperator">,</span> that
+    describes a path that consists of a
+    <span class="success">succession</span> of random steps on some
+    mathematical space such as the integers.
+
+    <span class="morediscrete">[[</span><span class="texturl"><a href="https://">https://</a></span><span class="domainbright">upload</span>.<span class="domainbright">wikimedia</span><span class="textpath">.org</span><span class="discrete">/</span>wikipedia<span class="discrete">/</span>commons<span class="discrete">/</span>thumb<span class="discrete">/</span>b<span class="discrete">/</span>bd<span class="discrete">/</span>Walk<span class="three">3d</span>_<span class="zero">0</span><span class="textpath">.png</span><span class="discrete">/</span><span class="zero">280px</span>-Walk<span class="three">3d</span>_<span class="zero">0</span>.png<span class="morediscrete">][</span>upload.wikimedia<span class="textpath">.org</span><span class="discrete">/</span>wikipedia<span class="discrete">/</span>commons<span class="discrete">/</span>thumb<span class="discrete">/</span>b<span class="discrete">/</span>bd<span class="discrete">/</span>Walk<span class="three">3d</span>_<span class="zero">0</span><span class="textpath">.png</span><span class="discrete">/</span><span class="zero">280px</span>-Walk<span class="three">3d</span>_<span class="zero">0</span>.png<span class="morediscrete">]]</span>
+
+Graph reduction
+    Implements an efficient version of
+    non-strict evaluation<span class="brightoperator">,</span> an evaluation
+    strategy <span class="codekeywords">where</span> the arguments to a <span class="gitRtcPackage">function</span>
+    are <span class="seleniumError">not immediately</span> evaluated. Wikipedia
+
+Lexical context
+    In languages <span class="codekeywords">with</span> lexical scope (<span class="kashyap">also</span>
+    called static scope)<span class="brightoperator">,</span> name resolution
+    depends on the location in the source code
+    <span class="logic">and</span> the lexical context<span class="brightoperator">,</span> which is defined
+    by <span class="codekeywords">where</span> the named <span class="variable">variable</span> <span class="logic">or</span> <span class="gitRtcPackage">function</span> is
+    defined.
+
+Closure
+Lexical closure
+<span class="gitRtcPackage">Function</span> closure
+    (<span class="kashyap">this</span> <span class="failing">is not</span> a difficult concept)
+
+    A technique <span class="codekeywords">for</span> implementing lexically
+    scoped name binding in a language <span class="codekeywords">with</span>
+    first-<span class="codekeywords">class</span> functions.
+
+    Operationally<span class="brightoperator">,</span> a closure is a record
+    storing a <span class="gitRtcPackage">function</span> together <span class="codekeywords">with</span> an
+    environment.
+
+Static typing
+    Static typed languages are those in which
+    type checking <span class="textdone">is done</span> at compile-time<span class="brightoperator">,</span>
+    whereas dynamic typed languages are those
+    in which type checking <span class="textdone">is done</span> at
+    run-time.
+
+Catenation
+    This is what the word concatenation
+    derives from<span class="brightoperator">,</span> <span class="logic">and</span> the unix command <span class="quote">'</span>cat<span class="quote">'</span>.
+
+    The bonding of atoms of the same element
+    into a series<span class="brightoperator">,</span> called a chain.
+
+    <span class="morediscrete">[[</span><span class="texturl"><a href="https://">https://</a></span><span class="domainbright">en</span>.<span class="domainbright">wikipedia</span><span class="textpath">.org</span><span class="discrete">/</span>wiki<span class="discrete">/</span>Catenation<span class="morediscrete">][</span>Catenation<span class="brightoperator"> - </span>Wikipedia<span class="morediscrete">]]</span>
+
+polysemy
+    The ability of words to have multiple
+    meanings.
+
+Distributional Hypothesis
+    Words that appear in the same contexts
+    share <span class="interesting">semantic</span> meaning.
+
+<span class="allcaps">VSM</span>
+Vector space model
+    Represent (embed) words in a continuous
+    <span class="codekeywords">vector</span> space <span class="codekeywords">where</span> <span class="interesting">semantic</span>ally similar
+    words are mapped to nearby points (<span class="quote">'</span>are
+    embedded nearby each other<span class="quote">'</span>).
+
+    <span class="allcaps">VSMs</span> have a long<span class="brightoperator">,</span> rich history in <span class="allcaps">NLP</span><span class="brightoperator">,</span> <span class="logic">but</span>
+    all methods depend in some way <span class="logic">or</span> another
+    on the Distributional Hypothesis.
+
+    The different approaches that leverage
+    this principle can be divided into <span class="two">two</span>
+    categories<span class="subdued">:</span>
+    <span class="one">1</span>. count-based methods
+       e.g. Latent <span class="interesting">Semantic</span> Analysis
+    <span class="two">2</span>. <span class="interesting">predictive</span> methods
+       e.g. <span class="interesting">neural</span> <span class="interesting">probabilistic</span> language
+       models
+
+Euclidean distance
+Cosine similarity
+    (<span class="kashyap">between</span> <span class="two">two</span> word vectors)
+
+    Provides an effective method <span class="codekeywords">for</span> measuring
+    the linguistic <span class="logic">or</span> <span class="interesting">semantic</span> similarity of
+    the corresponding words.
+
+    Sometimes<span class="brightoperator">,</span> the nearest neighbors according
+    to this metric reveal rare <span class="logic">but</span> relevant
+    words that lie outside an average human<span class="quote">'</span>s
+    vocabulary.
+
+Riffle
+    The fancy shuffle thing.
+
+    <span class="morediscrete">[[</span><span class="texturl"><a href="http://">http://</a></span><span class="domainbright">fredhohman</span><span class="textpath">.com</span><span class="discrete">/</span>card-shuffling/<span class="morediscrete">][</span>The Math of Card Shuffling<span class="morediscrete">]]</span>
+
+    You <span class="highpriority">need</span> <span class="seven">7</span> of them to fully shuffle the deck.
+
+Actor model
+    The actor model in computer science is a
+    mathematical model of concurrent
+    computation that treats <span class="doublequote">&quot;</span>actors<span class="doublequote">&quot;</span> as the
+    universal primitives of concurrent
+    computation.
+
+    It defines some general rules <span class="codekeywords">for</span> how the
+    system<span class="quote">'</span>s components should behave <span class="logic">and</span>
+    interact <span class="codekeywords">with</span> each other. The most famous
+    language that uses this model is <span class="interesting">probably</span>
+    Erlang.
+
+<span class="allcaps">LISP</span> <span class="two">2</span>
+    Proposed in the <span class="zero">1960s</span> as the <span class="success">successor</span> to
+    Lisp.
+
+    Nowadays<span class="brightoperator">,</span> <span class="logic">if</span> you call a language a lisp <span class="two">2</span><span class="brightoperator">,</span>
+    it means<span class="subdued">:</span>
+        Functions <span class="logic">and</span> variables have separate
+        namespaces.
+
+Homoinconicity
+    The program structure is similar to its
+    syntax<span class="brightoperator">,</span> <span class="logic">and</span> <span class="logic">therefore</span> the program<span class="quote">'</span>s
+    internal representation can be inferred by
+    reading the text<span class="quote">'</span>s layout.
+
+    Some inferences from the above<span class="subdued">:</span>
+    <span class="diffRemove">-</span> A language that looks like the <span class="allcaps">AST</span> it
+      compiles to.
+    <span class="diffRemove">-</span> data<span class="brightoperator"> = </span>code
+
+OAuth<span class="two">2</span>
+    This is basically a way <span class="codekeywords">for</span> people to
+    design encrypted interfaces to their
+    software.
+
+    <span class="morediscrete">[[</span>/home<span class="discrete">/</span><span class="shanemulligan">shane</span><span class="discrete">/</span>go<span class="discrete">/</span>src<span class="discrete">/</span>golang<span class="textpath">.org</span><span class="discrete">/</span><span class="one">x</span><span class="discrete">/</span>oauth<span class="two">2</span><span class="discrete">/</span>jira/<span class="morediscrete">][</span>oauth<span class="two">2</span><span class="discrete">/</span>jira<span class="morediscrete">]]</span>
+
+    <span class="morediscrete">[[</span><span class="texturl"><a href="https://">https://</a></span><span class="domainbright">dev</span>.<span class="domainbright">bitly</span><span class="textpath">.com</span><span class="discrete">/</span>authentication.html<span class="morediscrete">][</span>Bitly <span class="api">API</span> Documentation<span class="morediscrete">]]</span>
+
+Synchronicity
+    Coincidence <span class="logic">but</span> <span class="seleniumError">not coincidence</span>.
+
+    <span class="logic">But</span> it<span class="quote">'</span>s <span class="seleniumError">not a</span> word which means nothing.
+    <span class="logic">If</span> <span class="success">it exists</span> because of the human
+    condition <span class="logic">then</span> it should be recognised as
+    a thing.
+
+Axiom
+Postulate
+    A statement that is taken to be <span class="safe">true</span><span class="brightoperator">,</span> to
+    serve as a premise <span class="logic">or</span> starting point <span class="codekeywords">for</span>
+    further reasoning <span class="logic">and</span> arguments. The word
+    comes from the Greek ax<span class="unicode">íō</span>ma (<span class="unicode">ἀξίωμα</span>) <span class="quote">'</span>that
+    which is thought worthy <span class="logic">or</span> fit<span class="quote">'</span> <span class="logic">or</span> <span class="quote">'</span>that
+    which commends itself as evident.<span class="quote">'</span>
+
+Euclid<span class="quote">'</span>s <span class="five">5th</span> postulate
+    <span class="two">Two</span> lines converge within the area to the
+    side of a <span class="three">3rd</span> intersecting line <span class="codekeywords">where</span> the
+    sum of their interior angles is less than
+    <span class="zero">180</span> degrees.
+
+    <span class="logic">or</span>.
+
+    <span class="logic">If</span> a straight line falling on <span class="two">two</span> straight
+    lines makes the interior angles on the
+    same side of it taken together less than
+    <span class="two">two</span> right angles<span class="brightoperator">,</span> <span class="logic">then</span> the <span class="two">two</span> straight
+    lines<span class="brightoperator">,</span> <span class="logic">if</span> produced indefinitely<span class="brightoperator">,</span> meet <span class="serviceAdd">on</span>
+    that side on which the sum of angles is
+    less than <span class="two">two</span> right angles.
+
+    <span class="morediscrete">[[</span>/home<span class="discrete">/</span><span class="shanemulligan">shane</span><span class="discrete">/</span>dump<span class="discrete">/</span>home<span class="discrete">/</span><span class="shanemulligan">shane</span><span class="discrete">/</span>notes<span class="eight">2018</span><span class="discrete">/</span>ws<span class="discrete">/</span>math<span class="discrete">/</span>euclids-<span class="five">5th</span>-postulate.jpg<span class="morediscrete">][</span>math<span class="discrete">/</span>euclids-<span class="five">5th</span>-postulate.jpg<span class="morediscrete">]]</span>
+
+Lisp Machine
+
+Nuance
+    Adding another dimension allows <span class="codekeywords">for</span> more nuance.
+
+Dimensions <span class="morediscrete">[</span>in a data set<span class="morediscrete">]</span>
+Features
+<span class="interesting">Predictors</span>
+Variables
+    Synonyms.
+
+Decision Tree
+    A reasonably accessible (<span class="kashyap">though</span>
+    rudimentary) <span class="interesting">machine learning</span> method.
+
+    Look at <span class="one">one</span> <span class="variable">variable</span> at a time.
+
+Negabinary
+    <span class="morediscrete">[[</span><span class="texturl"><a href="https://">https://</a></span><span class="domainbright">en</span>.<span class="domainbright">wikipedia</span><span class="textpath">.org</span><span class="discrete">/</span>wiki<span class="discrete">/</span>Negative_base<span class="morediscrete">][</span>Negative base<span class="brightoperator"> - </span>Wikipedia<span class="morediscrete">]]</span>
+
+<span class="allcaps">IPC</span>
+Instructions per cycle
+    At descriptive attribute of a <span class="allcaps">CPU</span>.
+
+Smoke <span class="tests">test</span>
+    Preliminary <span class="tests">testing</span> to reveal simple
+    <span class="failing">failures</span> severe enough to<span class="brightoperator">,</span> <span class="codekeywords">for</span> <span class="awesome">example</span><span class="brightoperator">,</span>
+    reject a prospective software release
+
+Emission spectrum
+
+Pseudogene
+    Other non-human mammals can produce
+    Vitamin C. They don<span class="unicode">’</span>t <span class="highpriority">need</span> it from their
+    diet. Humans<span class="brightoperator">,</span> on the other hand<span class="brightoperator">,</span> have had
+    ancestors that have been eating fruit <span class="codekeywords">for</span>
+    <span class="googlered">so</span> long (<span class="kashyap">which</span> is high in vitamin <span class="three">C)</span> that
+    our vitamin C genes long ago mutated. We
+    do<span class="brightoperator">,</span> however<span class="brightoperator">,</span> still possess its remnant in
+    pseudogene form.
+
+Hamiltonian
+    Total energy of a particle.
+
+Wave <span class="gitRtcPackage">function</span>
+    <span class="morediscrete">[</span> <span class="codekeywords">for</span> an electron in an atom <span class="morediscrete">]</span>
+
+    <span class="unicode">Ψ</span> <span class="Special">--</span> psi
+
+    Wave of <span class="interesting">probability</span>.
+
+    The wave <span class="gitRtcPackage">function</span> <span class="codekeywords">for</span> an electron in an
+    atom does <span class="seleniumError">not describe</span> a smeared out
+    electron <span class="codekeywords">with</span> a smooth charge density.
+    <span class="glue">...</span>
+    The electron is either here<span class="brightoperator">,</span> <span class="logic">or</span> there<span class="brightoperator">,</span> <span class="logic">or</span>
+    somewhere <span class="logic">else</span><span class="brightoperator">,</span> <span class="logic">but</span> wherever it is<span class="brightoperator">,</span> it is
+    a point charge.
+        Richard Feynman
+
+    Even though a particle <span class="failing">is not</span> a wave<span class="brightoperator">,</span> its
+    properties are.
+        Where it is<span class="brightoperator">,</span> what it<span class="quote">'</span>s doing<span class="brightoperator">,</span> how much
+        energy it has <span class="Special">--</span> these are wave
+        shaped<span class="brightoperator">,</span> <span class="logic">but</span> they<span class="quote">'</span>re only waves of
+        <span class="interesting">probability</span>.
+
+    The act of measuring it does <span class="seleniumError">not</span>
+    completely collapse the wave <span class="gitRtcPackage">function</span>.
+    There<span class="quote">'</span>s still a little wiggle room.
+        That<span class="quote">'</span>s what the uncertainty principle
+        is all about.
+
+        The wave is collapsed to a simpler shape.
+
+    Some of the properties can be measured
+    together.
+        Energy<span class="brightoperator">,</span> magnitude of Angular Momentum
+        <span class="logic">and</span> orientation of Angular Momentum<span class="brightoperator">,</span>
+        <span class="codekeywords">for</span> <span class="awesome">example</span>.
+
+        These can all be measured at the same
+        time <span class="logic">but</span> there is still a little
+        spread<span class="brightoperator"> / </span>wiggle room<span class="brightoperator">,</span> which is what
+        gives emission lines their thickness.
+
+Viscosity
+    Resistance to flow.
+
+    The thickness of a liquid.
+
+    Oil is <span class="zero">100x</span> more viscous than water.
+    Honey is <span class="zero">100x</span> more viscous than oil.
+
+    Part (<span class="toby">not</span> more than) of what makes
+    something sticky is it<span class="quote">'</span>s viscousity.
+
+Glass
+    A liquid <span class="logic">or</span> solid depending on the
+    temporature <span class="Special">--</span> a very viscous (<span class="kashyap">but</span> <span class="seleniumError">not</span>
+    sticky) <span class="one">one</span>. That<span class="quote">'</span>s <span class="seleniumError">not a</span> myth<span class="brightoperator">,</span> <span class="logic">but</span> the
+    stained glass windows analogy is.
+
+    An amorphous solid.
+
+    At room temperature<span class="brightoperator">,</span> glass molecules <span class="seleniumError">can't</span>
+    slide past each other<span class="brightoperator">,</span> <span class="googlered">so</span> it<span class="quote">'</span>s a solid.
+
+    There is structural change that causes
+    glass to turn into a liquid at higher
+    temperatures.
+
+Motif
+
+Unladen
+    <span class="seleniumError">Not carrying</span> a load.
+
+<span class="interesting">Predictive</span> analytics
+    In <span class="interesting">predictive</span> analytics <span class="logic">and</span> machine
+    <span class="interesting">learning</span><span class="brightoperator">,</span> the concept drift means that the
+    statistical prcperties cf the target
+    <span class="variable">variable</span><span class="brightoperator">,</span> which the model is trying to
+    predict<span class="brightoperator">,</span> change over time in unforeseen
+    ways. This causes problems because the
+    <span class="interesting">predictions</span> become less accurate as time
+    <span class="success">passes</span>.
+
+Aragoscope
+    A type of space telescope that uses
+    diffraction to advantage<span class="brightoperator">,</span> rather than a
+    impediment.
+
+Aragospot
+    <span class="morediscrete">[[</span><span class="texturl"><a href="https://">https://</a></span><span class="domainbright">youtu</span><span class="textpath">.be</span><span class="discrete">/</span><span class="five">5RacK</span><span class="two">2VwqEk</span><span class="brightoperator2">?</span>t<span class="brightoperator">=</span><span class="four">134</span><span class="morediscrete">][</span>Making an Aragoscope<span class="brightoperator"> - </span>YouTube<span class="morediscrete">]]</span>
+
+    Proof that photons do <span class="seleniumError">not travel</span> like
+    particles<span class="brightoperator">,</span> they travel sort of like waves<span class="brightoperator">,</span>
+    <span class="logic">and</span> waves can curve around an object.
+
+    It<span class="quote">'</span>s actually the lense of the light
+    source. You can add a cross in front of
+    the light source <span class="logic">and</span> you will see this in
+    the aragospot.
+
+    Use a larger disk (<span class="kashyap">than</span> a coin to blot out
+    the light) <span class="logic">and</span> you get more resolution.
+    Cody uses a jar lid. You <span class="seleniumError">don't have</span> to
+    move the disk further away<span class="brightoperator">,</span> only increase
+    the diameter of the disk<span class="brightoperator">,</span> <span class="logic">but</span> you have to
+    move further back until you get an
+    eclipse-like halo.
+
+    Cody could use a metal lid as a lense to
+    read <span class="doublequote">&quot;</span>Cody<span class="quote">'</span>s Lab<span class="doublequote">&quot;</span> written on a torch very
+    far away.
+
+Orbiting rainbow
+    <span class="morediscrete">[[</span><span class="texturl"><a href="https://">https://</a></span><span class="domain">www.</span><span class="googlered">youtube</span><span class="textpath">.com</span><span class="discrete">/</span>watch<span class="brightoperator2">?</span>v<span class="brightoperator">=</span><span class="allcaps">BIASPc</span><span class="nine">89Sgk</span><span class="morediscrete">][</span>The Future of Space Telescopes <span class="brightoperator3">|</span> Space Time<span class="brightoperator"> - </span>YouTube<span class="morediscrete">]]</span>
+
+diffraction limit
+    The finest detail a light telescope can
+    give us is <span class="codekeywords">with</span> a diffraction limit<span class="brightoperator">,</span> which
+    increases <span class="codekeywords">with</span> wavelength.
+
+    So infrared has a disadvantage over
+    visible <span class="logic">or</span> ultaviolet light.
+
+    However<span class="brightoperator">,</span> the diffraction limit gets
+    smaller <span class="codekeywords">with</span> increasing aperture size.
+
+    What the James Webb Telescope loses due to
+    concentrating on the infrared<span class="brightoperator">,</span> it makes up
+    <span class="codekeywords">for</span> through sheer size.
+
+electron gun
+    Found in a cathode ray monitor<span class="brightoperator"> / </span>tv.
+
+<span class="codekeywords">private</span> revelation
+    Richard Dawkins thinks this is childish.
+
+Support Vector Machine
+    This is used to identify things like
+    letters in handwriting.
+
+    <span class="gitbranch">$</span><span class="discrete">HOME/</span>notes<span class="eight">2018</span><span class="discrete">/</span>ws<span class="discrete">/</span>codecraft<span class="discrete">/</span><span class="three">03</span><span class="numberpunctuation">.</span><span class="seven">07</span><span class="numberpunctuation">.</span><span class="eight">18</span><span class="textpath">.org</span>
+
+partial derivative
+    <span class="buildfiles">δ</span>z<span class="discrete">/</span><span class="buildfiles">δ</span>y
+    partial derivative of <span class="three">z</span> <span class="codekeywords">with</span> respect to <span class="two">y</span>.
+    going up-hill<span class="brightoperator">,</span> <span class="buildfiles">δ</span>z is positive.
+
+symmetries
+    All symmetries in physics are approximate.
+
+    <span class="morediscrete">[[</span><span class="texturl"><a href="https://">https://</a></span><span class="domainbright">youtu</span><span class="textpath">.be</span><span class="discrete">/</span>X<span class="nine">9mEhcPbGsM</span><span class="brightoperator2">?</span>t<span class="brightoperator">=</span><span class="four">404</span><span class="morediscrete">][</span>Leonard Susskind Why do we <span class="awesome">Search</span> <span class="codekeywords">for</span> Symmetry<span class="brightoperator2">?</span> (Closer to Truth)<span class="brightoperator"> - </span>YouTube<span class="morediscrete">]]</span>
+
+proton
+    A swarm of partons (<span class="kashyap">little</span> particles)
+        <span class="morediscrete">[[</span><span class="texturl"><a href="https://">https://</a></span><span class="domainbright">youtu</span><span class="textpath">.be</span><span class="discrete">/</span><span class="six">6Waurx</span><span class="eight">8e</span>-<span class="one">1o</span><span class="brightoperator2">?</span>t<span class="brightoperator">=</span><span class="eight">768</span><span class="morediscrete">][</span>Leonard Susskind<span class="subdued">:</span> My friend Richard Feynman<span class="brightoperator"> - </span>YouTube<span class="morediscrete">]]</span>
+
+        Because they are moving really fast<span class="brightoperator">,</span>
+        the internal motions are very slow<span class="brightoperator">!</span>
+            <span class="highpriority">Amazing</span> intuition<span class="brightoperator">!</span>
+
+        When the electron hits the proton<span class="brightoperator">,</span> you
+        see a frozen bunch of partons (<span class="kashyap">a</span>
+        snapshot of the proton).
+
+        This means you get to think of the
+        system as frozen partons.
+
+Standard Model of Elementary Particles
+    <span class="morediscrete">[[</span>/home<span class="discrete">/</span><span class="shanemulligan">shane</span><span class="discrete">/</span>dump<span class="discrete">/</span>home<span class="discrete">/</span><span class="shanemulligan">shane</span><span class="discrete">/</span>notes<span class="eight">2018</span><span class="discrete">/</span>ws<span class="discrete">/</span>physics<span class="discrete">/</span>pictures<span class="discrete">/</span>standard-model-of-elementary-particles.png<span class="morediscrete">][</span>pictures<span class="discrete">/</span>standard-model-of-elementary-particles.png<span class="morediscrete">]]</span>
+
+    bosons
+        carry the fundamental forces.
+
+    fermions
+        comprise matter
+
+        quarks
+            comprise protons <span class="logic">and</span> neutrons
+
+            cant exist in isolation
+
+            up
+
+            down
+                heavier than up quark
+
+        leptons
+
+neutrino (<span class="kashyap">little</span> neutral <span class="one">one</span>)
+
+helicity
+    <span class="morediscrete">[[</span>/home<span class="discrete">/</span><span class="shanemulligan">shane</span><span class="discrete">/</span>dump<span class="discrete">/</span>home<span class="discrete">/</span><span class="shanemulligan">shane</span><span class="discrete">/</span>notes<span class="eight">2018</span><span class="discrete">/</span>ws<span class="discrete">/</span>physics<span class="discrete">/</span>pictures<span class="discrete">/</span>helicity.png<span class="morediscrete">][</span>pictures<span class="discrete">/</span>helicity.png<span class="morediscrete">]]</span>
+
+    Direction of spin relative to direction of
+    motion.
+
+reactive programming
+    In computing<span class="brightoperator">,</span> reactive programming is a
+    declarative programming paradigm concerned
+    <span class="codekeywords">with</span> data streams <span class="logic">and</span> the propagation of
+    change.
+
+    Closely related to event-driven
+    programming<span class="brightoperator">,</span> almost synonyms<span class="brightoperator">,</span> maybe.
+
+Annus Mirabilis
+    In <span class="five">1905</span> Albert Einstein published <span class="four">four</span>
+    <span class="highpriority">important</span> papers<span class="brightoperator">,</span> plus his dissertation<span class="brightoperator">,</span>
+    <span class="logic">and</span> set the stage <span class="codekeywords">for</span> all of modern
+    physics.
+
+<span class="interesting">classification</span>
+<span class="failing">regression</span>
+    typically<span class="brightoperator">,</span> the output <span class="two">y</span> takes continuous
+    values.
+<span class="machinelearning">cluster</span>ing
+outlier detection
+concept drift detection
+recommender systems
+
+cross entropy
+    Takes in as input the softmax <span class="codekeywords">vector</span> <span class="logic">and</span> a
+    <span class="quote">'</span>target<span class="quote">'</span> <span class="interesting">probability</span> distribution.
+
+cross entropy loss
+    (<span class="kashyap">between</span> <span class="two">two</span> <span class="interesting">probability</span> distributions)
+    (<span class="toby">and</span> over the same underlying set of events)
+
+    Measures the performance of a
+    <span class="interesting">classification</span> model whose output is a
+    <span class="interesting">probability</span> value between <span class="zero">0</span> <span class="logic">and</span> <span class="one">1</span>.
+
+    Measures the average number of bits needed
+    to identify an event from the set.
+
+edward
+    modelling
+        Directed graphical models
+        <span class="interesting">Neural</span> networks (<span class="kashyap">via</span> libraries such as <span class="tensorflow">tf</span>.layers <span class="logic">and</span> <span class="tensorflow">Keras</span>)
+        Implicit generative models
+        Bayesian nonparametrics <span class="logic">and</span> <span class="interesting">probabilistic</span> programs
+    inference
+        Variational inference
+            Black box variational inference
+            Stochastic variational inference
+            Generative adversarial networks
+            Maximum a <span class="interesting">posteriori</span> estimation
+        Monte Carlo
+            Gibbs sampling
+            Hamiltonian Monte Carlo
+            Stochastic gradient Langevin dynamics
+        Compositions of inference
+            Expectation-Maximization
+            Pseudo-marginal <span class="logic">and</span> <span class="allcaps">ABC</span> methods
+            Message <span class="success">passing</span> algorithms
+    criticism <span class="morediscrete">[</span>of the model <span class="logic">and</span> inference<span class="morediscrete">]</span>
+        Point-based evaluations
+        Posterior <span class="interesting">predictive</span> checks
+
+variational bayesian methods
+    Used <span class="codekeywords">for</span> approximating intractable
+    integrals <span class="morediscrete">[</span>that arise in Bayesian
+    inference <span class="logic">and</span> <span class="interesting">machine learning</span><span class="morediscrete">]</span>.
+
+fragment identifier
+    In computer hypertext<span class="brightoperator">,</span> a fragment
+    identifier is a short string of characters
+    that refers to a resource that is
+    subordinate to another<span class="brightoperator">,</span> primary resource.
+
+    <span class="ircroom">#Regular-expressions</span>
+    <span class="morediscrete">[[</span><span class="texturl"><a href="https://">https://</a></span><span class="domain">www.</span><span class="domainbright">gnu</span><span class="textpath">.org</span><span class="discrete">/</span>software<span class="discrete">/</span>ed<span class="discrete">/</span>manual<span class="discrete">/</span>ed_manual.html<span class="ircroom">#Regular-expressions</span><span class="morediscrete">][</span><span class="allcaps">GNU</span> <span class="quote">'</span>ed<span class="quote">'</span> Manual<span class="morediscrete">]]</span>
+
+gram matrix
+Gramian
+Gramian matrix
+    (<span class="kashyap">of</span> a set of vectors in an inner product
+    space)
+
+    The Hermitian matrix of inner products.
+
+    Used to compute linear independence.
+
+        A set of vectors are linearly
+        independent <span class="logic">if</span> <span class="logic">and</span> only <span class="logic">if</span> the Gram
+        determinant (<span class="kashyap">the</span> determinant of the
+        Gram matrix) is non-<span class="zero">zero</span>.
+
+dropout
+    It<span class="quote">'</span>s a way of freezing all the weights <span class="logic">and</span>
+    biases of a set of neurons <span class="codekeywords">for</span> <span class="one">one</span>
+    iteration.
+
+    Dropout shoots neurons (<span class="kashyap">makes</span> them <span class="zero">0</span>) <span class="codekeywords">for</span>
+    <span class="one">one</span> iteration.
+
+    They<span class="quote">'</span>re <span class="interesting">probably</span> reactivated on the next
+    iteration.
+
+    <span class="seleniumError">Don't use</span> dropout on convolutional layers
+    because you have far less degrees of
+    freedom in convolutional layers that
+    fully-<span class="success">connected</span> layers.
+
+    Use dropout on fully-<span class="success">connected</span> layers
+    because they have <span class="quote">'</span>too many<span class="quote">'</span> degrees of
+    freedom.
+        <span class="codekeywords">To</span> bring the <span class="tests">test</span> loss under control.
+        <span class="logic">And</span> increase the accuracy.
+
+    How does dropout help<span class="brightoperator2">?</span>
+
+sensationalism
+    The use of exciting <span class="logic">or</span> shocking stories <span class="logic">or</span>
+    language at the expense of accuracy<span class="brightoperator">,</span> in
+    order to provoke <span class="codekeywords">public</span> interest <span class="logic">or</span>
+    excitement.
+
+groupthink
+    Thinking <span class="logic">or</span> making decisions as a group in
+    a way that discourages creativity <span class="logic">or</span>
+    individual responsibility.
+
+decaying <span class="interesting">learning</span> rate
+    Helps to <span class="success">clean</span> up noise.
+
+    Example<span class="subdued">:</span>
+        Decays from <span class="zero">0</span><span class="numberpunctuation">.</span><span class="three">003</span> to <span class="zero">0</span><span class="numberpunctuation">.</span><span class="one">0001</span>.
+
+degrees of freedom
+    The number of degrees of freedom <span class="highpriority">needs</span> to
+    be contrained to force the <span class="interesting">neural network</span>
+    to create categories.
+
+overfitting
+    Happens when there are too many degrees of
+    freedom.
+
+convolutional networks
+    They exist to take into account locational
+    information.
+
+    <span class="logic">If</span> you believe that there is <span class="highpriority">important</span>
+    information in the locality of pixels<span class="brightoperator">,</span>
+    shape <span class="logic">and</span> colour of pixel data<span class="brightoperator">,</span> you use
+    convolutions to capture that information.
+
+fully <span class="success">connected</span> layer
+    Each neuron takes the weights of all the
+    neurons in the previous layer.
+
+<span class="tests">test</span> loss
+    It is <span class="seleniumError">bad</span> when the <span class="tests">test</span> loss increases
+    over epocs.
+
+    Adding dropout can <span class="stopped">stop</span> the <span class="tests">test</span> loss from
+    increasing over time.
+
+Accuracy vs Cross Entropy Loss
+    <span class="texturl"><a href="https://">https://</a></span><span class="domainbright">jamesmccaffrey</span>.<span class="domainbright">wordpress</span><span class="textpath">.com</span><span class="discrete">/</span><span class="three">2013</span><span class="discrete">/</span><span class="one">11</span><span class="discrete">/</span><span class="five">05</span><span class="discrete">/</span>why-you-should-use-cross-entropy-<span class="seleniumError">error</span>-<span class="highpriority">instead</span>-of-<span class="interesting">classification</span>-<span class="seleniumError">error</span>-<span class="logic">or</span>-mean-squared-<span class="seleniumError">error</span>-<span class="codekeywords">for</span>-<span class="interesting">neural-network</span>-<span class="interesting">classifier</span>-training<span class="discrete">/</span>
+
+accuracy
+    A value from <span class="zero">0</span><span class="numberpunctuation">.</span><span class="zero">0</span> to <span class="one">1</span><span class="numberpunctuation">.</span><span class="zero">0</span>.
+
+    Higher accuracy is <span class="safe">good</span>.
+
+Cross Entropy Loss
+    Higher loss is <span class="seleniumError">bad</span>.
+
+batch normalisation
+    A better regularisation technique than
+    dropout.
+
+data whitening
+    Rescale <span class="logic">and</span> decorrelate your data before
+    using it in your <span class="interesting">neural</span> net.
+
+    problems<span class="subdued">:</span>
+        large values
+        different scales
+        skewed
+        correlated
+
+    <span class="allcaps">PCA</span> is a method of doing this.
+
+    rescale
+    reshift
+
+    This is needed when the data comes in <span class="serviceAdd">on</span>
+    completely different scales.
+
+    <span class="one">One</span> axis could be <span class="one">1</span><span class="numberpunctuation">-</span><span class="zero">20</span>.
+    <span class="one">One</span> axis could be <span class="zero">200</span><span class="numberpunctuation">-</span><span class="zero">20000</span>.
+    This is going to be problematic.
+    <span class="one">One</span> will give you much larger activations.
+
+    Data whitening is happening less these days.
+
+    You can add another layer <span class="logic">and</span> let it <span class="priority">learn</span>
+    the parameters. We <span class="seleniumError">don't need</span> to <span class="priority">learn</span> the
+    correlation layers by ourselves.
+
+    Because <span class="allcaps">PCA</span> uses <span class="two">2</span> matrices<span class="brightoperator">,</span> <span class="one">one</span> <span class="codekeywords">for</span>
+    weights <span class="logic">and</span> <span class="one">one</span> <span class="codekeywords">for</span> biases.
+
+<span class="allcaps">PCA</span>
+    A matrix multiply <span class="codekeywords">with</span> a matrix add.
+
+    Use it to whiten your input before use in
+    a <span class="interesting">neural network</span>.
+
+    Finds the correllation axes.
+
+<span class="logcode">logit</span>
+    Raw weighted sums plus bias before the
+    activation <span class="gitRtcPackage">function</span>.
+
+arrow of time
+<span class="two">2nd</span> law of thermodynamics
+    disorder increases <span class="codekeywords">with</span> time
+
+convolutional layers
+    Have weight matrix <span class="codekeywords">with</span> specific shape.
+
+verbal irony
+    sarcasm
+        <span class="comment">&quot;</span>Great idea<span class="brightoperator">!</span><span class="doublequote">&quot;</span><span class="brightoperator">,</span> <span class="doublequote">&quot;</span>I hear they do fine
+        work.<span class="doublequote">&quot;</span>
+
+    hyperbole
+        <span class="comment">&quot;</span>That<span class="quote">'</span>s the best idea I have heard in
+        years<span class="brightoperator">!</span><span class="doublequote">&quot;</span>
+
+    understatement
+        <span class="comment">&quot;</span>Sure<span class="brightoperator">,</span> what the hell<span class="brightoperator">,</span> it<span class="quote">'</span>s only
+        cancer<span class="glue">...</span><span class="doublequote">&quot;</span>
+
+    rhetorical questions
+        <span class="doublequote">&quot;</span>What<span class="brightoperator">,</span> does your spirit have cancer<span class="brightoperator2">?</span><span class="doublequote">&quot;</span>
+
+    double entendre
+        <span class="comment">&quot;</span>I<span class="quote">'</span>ll bet <span class="logic">if</span> you do that<span class="brightoperator">,</span> you<span class="quote">'</span>ll be
+        communing <span class="codekeywords">with</span> spirits in <span class="seleniumError">no time</span><span class="glue">...</span><span class="doublequote">&quot;</span>
+
+    jocularity
+        <span class="comment">&quot;</span>Get them to <span class="failing">fix</span> your <span class="seleniumError">bad</span> back <span class="logic">while</span>
+        you<span class="quote">'</span>re at it.<span class="doublequote">&quot;</span>
+
+extraneous
+    Irrelevant <span class="logic">or</span> unrelated to the subject
+    being dealt <span class="codekeywords">with</span>.
+
+convolution vs correlation
+    convolution
+        Linear operations on the signal <span class="logic">or</span>
+        signal modifiers.
+
+    correlation
+        A measure of similarity between <span class="two">two</span>
+        signals.
+
+    _difference
+        the convolution process rotates the
+        matrix by <span class="zero">180</span> degrees
+
+<span class="automatic">automatic</span> differentiation
+<span class="allcaps">AD</span>
+    Simultaneously manipulate values <span class="logic">and</span>
+    derivatives.
+
+symbolic differentiation
+    Uses a collection of rules.
+
+numeric approximation
+    Uses a small value of h. <span class="logic">While</span> very
+    simple<span class="brightoperator">,</span> this method is often inaccurate<span class="brightoperator">,</span>
+    due to choosing either too large <span class="logic">or</span> too
+    small a value <span class="codekeywords">for</span> h.
+
+<span class="allcaps">CAP</span> theorm
+    <span class="safe">Any distributed</span> system can have<span class="subdued">:</span>
+
+    At <span class="allcaps">MOST</span>
+
+    <span class="two">2</span> of the following <span class="three">three</span> properties<span class="subdued">:</span>
+
+    <span class="diffRemove">-</span> Consistency
+    <span class="diffRemove">-</span> Availability
+    <span class="diffRemove">-</span> Partition tolerance
+
+    Proof
+        <span class="morediscrete">[[</span><span class="texturl"><a href="https://">https://</a></span><span class="domainbright">mwhittaker</span>.<span class="toby">github</span><span class="textpath">.io</span><span class="discrete">/</span>blog<span class="discrete">/</span>an_illustrated_proof_of_the_cap_theorem/<span class="morediscrete">][</span>An Illustrated Proof of the <span class="allcaps">CAP</span> Theorem<span class="morediscrete">]]</span>
+
+Extended Kalman filter
+<span class="allcaps">EKF</span>
+    The nonlinear version of the Kalman filter
+    which linearizes about an estimate of the
+    current mean <span class="logic">and</span> covariance.
+
+brevity
+
+university baccalaureate
+    A person <span class="codekeywords">with</span> a bachelors.
+
+precocious
+    (<span class="kashyap">of</span> a child) having developed certain
+    abilities <span class="logic">or</span> proclivities at an earlier
+    age than usual.
+
+proclivities
+    A tendency to choose <span class="logic">or</span> do something
+    regularly<span class="discrete">;</span> an inclination <span class="logic">or</span>
+    predisposition toward a particular thing.
+
+inclination
+    A person<span class="quote">'</span>s natural tendency <span class="logic">or</span> urge to act
+    <span class="logic">or</span> feel in a particular way<span class="discrete">;</span> a disposition
+    <span class="logic">or</span> propensity.
+
+XGBoost
+    A variant of decision tree.
+
+    Requires clever feature engineering.
+
+<span class="interesting">Classification</span> tree
+    Decision trees <span class="codekeywords">with</span> categorical targets.
+
+Gold <span class="subdued">master</span>
+    A final version of software ready <span class="codekeywords">for</span>
+    release to manufacturing.
+
+Generative graphical model
+Generative deep <span class="interesting">neural network</span>
+
+Hidden unit
+Latent <span class="variable">variable</span>
+
+Deep Belief Network
+<span class="allcaps">DBN</span>
+    A generative <span class="allcaps">DNN</span>.
+
+    Composition
+        Multiple layers of hidden units.
+        <span class="diffRemove">-</span> Connections between the layers.
+        <span class="diffRemove">-</span> <span class="seleniumError">No Connections between</span> units within
+          each layer.
+
+    Unsupervised.
+        Trained on <span class="awesome">examples</span> without
+        supervision.
+
+    Learns to reconstruct its inputs.
+        <span class="interesting">Probabilistically</span>.
+
+    It<span class="quote">'</span>s layers are feature detectors.
+
+    Can be further trained <span class="codekeywords">with</span> supervision to
+    perform <span class="interesting">classification</span>.
+        After being trained to detect
+        features.
+
+Release candidate <span class="one">1</span>
+r<span class="one">c1</span>
+    It is a pre-release candidate.
+
+    <span class="logic">If</span> I check out emacs-<span class="six">26</span><span class="numberpunctuation">.</span><span class="one">1</span>-r<span class="one">c1</span><span class="brightoperator">,</span> that would
+    be older than emacs-<span class="six">26</span><span class="numberpunctuation">.</span><span class="one">1</span>.
+        <span class="morediscrete">[[</span>/<span class="variable">var</span><span class="discrete">/</span><span class="shanemulligan">smulliga</span><span class="discrete">/</span>source<span class="discrete">/</span>git<span class="discrete">/</span>emacs-mirror<span class="discrete">/</span>emacs<span class="six">26</span><span class="morediscrete">][</span>emacs-mirror<span class="discrete">/</span>emacs<span class="six">26</span><span class="morediscrete">]]</span>
+
+Extreme <span class="interesting">learning</span> machine
+    Feedforward <span class="interesting">neural network</span>.
+
+    Used <span class="codekeywords">for</span>
+        <span class="interesting">classification</span>
+        <span class="failing">regression</span>
+        <span class="machinelearning">cluster</span>ing
+        sparse approximation
+        compression
+        feature <span class="interesting">learning</span>
+
+    Composition
+        <span class="one">1</span> <span class="logic">or</span> more layers of hidden nodes.
+
+        The parameters of hidden nodes <span class="highpriority">need</span>
+        <span class="seleniumError">not be</span> tuned.
+            (<span class="toby">not</span> just the weights connecting
+            inputs to hidden nodes)
+
+        hidden nodes
+            parameters <span class="highpriority">need</span> <span class="seleniumError">not be</span> tuned.
+
+    can be randomly assigned <span class="logic">and</span> never updated (i.e. they are random
+    projection <span class="logic">but</span> <span class="codekeywords">with</span> nonlinear transforms)<span class="brightoperator">,</span> <span class="logic">or</span> can be inherited from their
+    ancestors without being changed. In most cases<span class="brightoperator">,</span> the output weights of
+    hidden nodes are usually learned in a single step<span class="brightoperator">,</span> which <span class="criticalpriority">essential</span>ly
+    amounts to <span class="interesting">learning</span> a linear model. The name <span class="doublequote">&quot;</span>extreme <span class="interesting">learning</span> machine<span class="doublequote">&quot;</span>
+    (<span class="allcaps">ELM</span>) was given to such models by its main inventor Guang-Bin Huang.
+
+Kohonen Network
+Self-Organising Map
+<span class="allcaps">SOM</span>
+
+Differentiable <span class="interesting">Neural</span> Computer
+    An outgrowth of <span class="interesting">neural</span> Turing machines.
+
+<span class="allcaps">LSTM</span>
+Long Short-term Memory
+
+<span class="interesting">Neural</span> Turing Machine
+<span class="allcaps">NTM</span>
+    Combines the fuzzy pattern matching
+    capabilities of <span class="interesting">neural</span> networks <span class="codekeywords">with</span> the
+    algorithmic power of programmable
+    computers.
+
+    Architecture
+        A <span class="interesting">neural network</span> controller coupled to
+        external memory resources<span class="brightoperator">,</span> which it
+        interacts <span class="codekeywords">with</span> through attentional
+        mechanisms.
+
+        The memory interactions are
+        differentiable end-to-end<span class="brightoperator">,</span> making it
+        possible to optimize them using
+        gradient descent.
+
+    An <span class="allcaps">NTM</span> <span class="codekeywords">with</span> a long short-term memory
+    (<span class="allcaps">LSTM</span>) network controller can infer simple
+    algorithms such as copying<span class="brightoperator">,</span> sorting<span class="brightoperator">,</span> <span class="logic">and</span>
+    associative recall from input <span class="logic">and</span> output
+    <span class="awesome">examples</span>.
+
+    Inference
+        They can infer algorithms from input
+        <span class="logic">and</span> output <span class="awesome">examples</span> alone.
+
+        Specifically<span class="brightoperator">,</span>
+            An <span class="allcaps">NTM</span> <span class="codekeywords">with</span> an <span class="allcaps">LSTM</span> network
+            controller can infer simple
+            algorithms such as copying<span class="brightoperator">,</span>
+            sorting<span class="brightoperator">,</span> <span class="logic">and</span> associative recall
+            from input <span class="logic">and</span> output <span class="awesome">examples</span>.
+
+Differentiable <span class="interesting">Neural</span> Computer
+<span class="allcaps">DNC</span>
+    Derived from an <span class="allcaps">NTM</span><span class="brightoperator">,</span> <span class="logic">but</span> <span class="codekeywords">with</span> attention
+    mechanisms that control <span class="codekeywords">where</span> the memory
+    is <span class="serviceAdd">active</span><span class="brightoperator">,</span> <span class="logic">and</span> improved performance.
+
+Homomorphic encryption
+    A form of encryption that allows
+    computation on ciphertexts<span class="brightoperator">,</span> generating an
+    encrypted result which<span class="brightoperator">,</span> when decrypted<span class="brightoperator">,</span>
+    matches the result of the operations as <span class="logic">if</span>
+    they had been performed on the plaintext.
+
+<span class="interesting">Probabilistic</span> Polynomial-Time Algorithm
+<span class="allcaps">PPTA</span>
+
+<span class="interesting">Semantic</span> Security
+    A <span class="interesting">semantic</span>ally secure cryptosystem is <span class="one">one</span>
+    <span class="codekeywords">where</span> only negligible information about
+    the plaintext can be feasibly extracted
+    from the ciphertext.
+
+    In contrast to <span class="doublequote">&quot;</span>Perfect Secracy<span class="doublequote">&quot;</span>.
+
+<span class="seleniumError">Cannot</span> determine <span class="safe">any partial</span> information on the message <span class="codekeywords">with</span> <span class="interesting">probability</span>
+   non-negligibly higher than all other <span class="allcaps">PPTA</span><span class="quote">'</span>s that only have access to the
+   message length (<span class="toby">and</span> <span class="seleniumError">not the</span> ciphertext). This concept is the
+   computational complexity analogue to Shannon<span class="quote">'</span>s concept of perfect secrecy.
+
+Perfect Secracy
+    The ciphertext reveals <span class="seleniumError">no information at</span>
+    all about the plaintext.
+
+    In contrast to <span class="doublequote">&quot;</span><span class="interesting">Semantic</span> Secracy<span class="doublequote">&quot;</span>.
+
+Homomorphic encryption
+    A form of encryption that allows
+    computation on ciphertexts<span class="brightoperator">,</span> generating an
+    encrypted result which<span class="brightoperator">,</span> when decrypted<span class="brightoperator">,</span>
+    matches the result of the operations as <span class="logic">if</span>
+    they had been performed on the plaintext.
+    The purpose of homomorphic encryption is
+    to <span class="safe">allow</span> computation on encrypted data.
+
+<span class="interesting">Sentiment</span> Analysis
+    The goal is to identify the polarity of
+    text content.
+
+Bra<span class="unicode">–</span>ket notation
+    A standard notation <span class="codekeywords">for</span> describing quantum
+    states.
+
+Continuation-<span class="success">Passing</span> Style
+<span class="allcaps">CPS</span>
+    Originated as a style of programming in
+    the <span class="zero">1970s</span><span class="brightoperator">,</span> <span class="logic">and</span> it rose to prominence as an
+    intermediate representation <span class="codekeywords">for</span> compilers
+    of advanced programming languages in the
+    <span class="zero">1980s</span> <span class="logic">and</span> <span class="zero">1990s</span>.
+
+    It<span class="quote">'</span>s now being rediscovered as a style of
+    programming <span class="codekeywords">for</span> non-blocking (<span class="kashyap">usually</span>
+    distributed) systems.
+
+    There<span class="quote">'</span>s a warm spot in my heart <span class="codekeywords">for</span> <span class="allcaps">CPS</span><span class="brightoperator">,</span>
+    because it was the secret weapon in my
+    Ph.D. It <span class="interesting">probably</span> shaved <span class="serviceRemove">off</span> a couple
+    years <span class="logic">and</span> immeasurable agony.
+
+    This article introduces <span class="allcaps">CPS</span> in both of its
+    roles--as a style <span class="codekeywords">for</span> non-blocking
+    programming in JavaScript<span class="brightoperator">,</span> <span class="logic">and</span> (briefly)
+    as an intermediate form <span class="codekeywords">for</span> a functional
+    language.
+
+Quantum Mechanics
+    The study of things that are<span class="subdued">:</span>
+        really relly small<span class="brightoperator">,</span>
+        really relly cold<span class="brightoperator">,</span> <span class="logic">or</span>
+        really relly isolated.
+
+
+    Quantum properties
+        Superposition <span class="morediscrete">[</span>of spins<span class="morediscrete">]</span>
+        Entanglement
+        Interferance
+            Noise-<span class="textdiscard">cancelling</span> headphones create
+            interferance.
+
+            <span class="two">Two</span> types<span class="subdued">:</span>
+                Constructive
+                Destructive
+
+        We can exploit superposition in a quantum
+        computer<span class="brightoperator">,</span> <span class="logic">but</span> we can also use other
+        properties<span class="brightoperator">,</span> such as entanglement<span class="brightoperator">,</span> <span class="logic">or</span>
+        even interferance.
+
+Compute
+    As a noun<span class="brightoperator">,</span> this is used like <span class="googlered">so</span><span class="subdued">:</span>
+        <span class="codekeywords">With</span> libraries like JavaCPP<span class="brightoperator">,</span> it<span class="quote">'</span>s easy
+        to push compute to native when you
+        <span class="highpriority">need</span> to.
+
+Permutation
+    A rearrangement.
+
+Sterling<span class="quote">'</span>s approximation
+    How big is a factorial.
+
+    <span class="six">26</span><span class="brightoperator">!</span> <span class="tilde">~</span><span class="brightoperator">=</span> (<span class="six">26</span><span class="discrete">/</span><span class="three">3</span>)<span class="gitbranch">^</span><span class="six">26</span>
+
+<span class="allcaps">XOR</span>
+<span class="unicode">⊕</span>
+    Appears to <span class="seleniumError">not be</span> a digraph <span class="codekeywords">for</span> this in
+    vim.
+
+Information entropy
+    The average rate at which information is
+    produced by a stochastic source of data.
+
+Stochastic
+Random
+    Originally came from Greek <span class="unicode">στόχος</span>
+    (stokhos)<span class="brightoperator">,</span> meaning <span class="quote">'</span>aim<span class="brightoperator">,</span> guess<span class="quote">'</span>.
+
+Sentence Segmentation
+
+Ancillary
+
+Tangential
+
+Pilot wave theory
+Bohmian mechanics
+The causal interpretation
+    A  interpretation of quantum mechanics.
+
+    In addition to a wavefunction on the space
+    of all possible configurationss it also
+    postulates an actual configuration that
+   <span class="success"> exists</span> even when unobserved.
+
+    <span class="texturl"><a href="https://">https://</a></span><span class="domainbright">youtu</span><span class="textpath">.be</span><span class="discrete">/</span>RlXdsyct<span class="zero">D50</span><span class="brightoperator2">?</span>t<span class="brightoperator">=</span><span class="zero">80</span>
+
+    Real waves that push around real
+    particles.
+
+    <span class="seleniumError">Doesn't have</span> a relativity analog like
+    quantum mechanics has <span class="codekeywords">with</span> quantum field
+    theory.
+
+Quantum field theory
+    The theory that allows relativity to
+    coexist <span class="codekeywords">with</span> quantum mechanics.
+
+    All possible particle trajectories should
+    be considered equally real.
+
+    This does <span class="seleniumError">not help</span> pilot wave theory
+    because pilot-wave theory suggests that a
+    particle takes a single actual trajectory<span class="brightoperator">,</span>
+    the bohm trajectory.
+
+quark
+    Said <span class="one">one</span> of <span class="two">two</span> ways<span class="subdued">:</span>
+        Like arks
+        Like orcs.
+
+First generation of matter
+    Up quark
+    Down quark
+    <span class="morediscrete">[</span>electron<span class="morediscrete">]</span> neutrino
+        These are hard to detect.
+    electron
+
+Second generation of matter
+    <span class="codekeywords">For</span> some reason we <span class="seleniumError">don't understand</span><span class="brightoperator">,</span>
+    nature provided us <span class="codekeywords">with</span> another copy of
+    the first generation of matter.
+
+    In the second generation<span class="brightoperator">,</span> all the
+    particles are exactly the same <span class="codekeywords">except</span> they
+    are more massive <span class="logic">and</span> they<span class="quote">'</span>re unstable.
+
+    Properties<span class="subdued">:</span>
+        More massive
+        Unstable
+
+
+    charm quark
+        heavier than up quark
+    strange quark
+        heavier than down quark
+    muon neutrino
+        heavier thatn electron neutrino
+    muon
+        <span class="zero">200x</span> more massive than electron
+
+        <span class="logic">If</span> you make a muon<span class="brightoperator">,</span> it will quickly
+        decay into an electron <span class="logic">and</span> some
+        neutrinos.
+
+Third generation of matter
+    Even heavier than second generation.
+
+    Top quark
+    Bottom quark
+    Tau neutrino
+    Tau
+
+Matter particles
+    <span class="two">12</span> particles.
+
+    First generation of matter
+    Second generation of matter
+    Third generation of matter
+
+<span class="interesting">Neural</span> machine translation
+    An approach to machine translation that
+    uses a large artificial <span class="interesting">neural network</span> to
+    predict the likelihood of a sequence of
+    words<span class="brightoperator">,</span> typically modeling entire sentences
+    in a single integrated model.
+
+Connectome
+    A comprehensive map <span class="whiteonblack">of</span> <span class="interesting">neural</span> connections
+    in the brain<span class="brightoperator">,</span> <span class="logic">and</span> <span class="five">may</span> be thought of as its
+    <span class="doublequote">&quot;</span>wiring diagram<span class="doublequote">&quot;</span>. More broadly<span class="brightoperator">,</span> a
+    connectome would <span class="codekeywords">include</span> the mapping of
+    all <span class="interesting">neural</span> connections within an
+    organism<span class="quote">'</span>s nervous system.
+
+Cohort
+    A group of people <span class="codekeywords">with</span> a shared
+    characteristic.
+
+Statistical Machine Translation
+<span class="allcaps">SMT</span>
+    The use of statistical models that <span class="priority">learn</span>
+    to translate text from a source language
+    to a target language given a large corpus
+    of <span class="awesome">examples</span>.
+
+<span class="interesting">Neural</span> machine translation
+<span class="allcaps">NMT</span>
+    The use of <span class="interesting">neural network</span> models to <span class="priority">learn</span>
+    a statistical model <span class="codekeywords">for</span> machine
+    translation.
+
+    The key benefit to the approach is that a
+    single system can be trained directly <span class="serviceAdd">on</span>
+    source <span class="logic">and</span> target text<span class="brightoperator">,</span> <span class="seleniumError">no longer</span>
+    requiring the pipeline of specialized
+    systems used in statistical machine
+    <span class="interesting">learning</span>.
+
+    Unlike the traditional phrase-based
+    translation system which consists of many
+    small sub-components that are tuned
+    separately<span class="brightoperator">,</span> <span class="interesting">neural</span> machine translation
+    attempts to build <span class="logic">and</span> train a single<span class="brightoperator">,</span>
+    large <span class="interesting">neural network</span> that reads a sentence
+    <span class="logic">and</span> outputs a correct translation.
+
+Collaborative Filtering
+Neighborhood-based <span class="allcaps">CF</span>
+    The key trick is finding the neighborhood
+    of (<span class="kashyap">the</span> set of users most similar to) the
+    user.
+
+Jaccard Similarity
+    sim(A<span class="brightoperator">,</span><span class="two">B)</span><span class="brightoperator"> = </span><span class="brightoperator3">|</span> r_A <span class="unicode">∩</span> r_B<span class="brightoperator"> / </span>r_A <span class="unicode">∪</span> r_B <span class="brightoperator3">|</span>
+
+    Used as the <span class="quote">'</span>kernel<span class="quote">'</span> is collaborative
+    filtering.
+
+    Ignores rating values.
+        It only notices that A <span class="logic">and</span> B have
+        watche some movies in common.
+
+    Cosine similarity is better.
+
+Cosine similarity
+    The best way to compute similarity in
+    collaborative filtering.
+
+    It takes into account ratings.
+
+    Treat <span class="sshError">unknown</span> values (<span class="kashyap">movies</span> <span class="seleniumError">not watched</span>)
+    as <span class="zero">0</span>.
+
+    The <span class="gitRtcError">problem</span> <span class="codekeywords">with</span> cosine similarity is it
+    treats the missing ratings as negative
+    ratings.
+
+Centered cosine similarity
+    Normalise the ratings of each user <span class="googlered">so</span> that
+    the sum of the ratings is <span class="zero">0</span>.
+
+    <span class="codekeywords">To</span> do this<span class="brightoperator">,</span> subtract the row mean from each value.
+
+Thermodynamic Entropy
+    Related to thermodynamic equilibrium.
+
+    Related to the amount of hidden
+    information based on thermodynamic
+    knowledge only.
+
+    So a rigid lattice is actually <span class="sshError">close</span> to
+    thermal equalibrium.
+    It<span class="quote">'</span>s <span class="seleniumError">not low</span> <span class="asteriskoperator">*</span>thermodynamic entropy<span class="asteriskoperator">*</span>.
+    It might be low <span class="asteriskoperator">*</span>entropy<span class="asteriskoperator">*</span> of a different
+    sort (<span class="kashyap">there</span> is only <span class="one">one</span> arrangement like
+    this). There is a difference between
+    thermal <span class="logic">and</span> non-theormal entropy.
+
+Rashly
+    Without <span class="highpriority">careful</span> consideration of the
+    possible consequences<span class="discrete">;</span> impetuously.
+
+Boltzmann machine
+    Has a remarkable ability similar to
+    dreaming. They were first introduced by
+    Geoff Hinton <span class="logic">and</span> Terry Sejnowski as a
+    model of the brain in <span class="three">1983</span>. They can
+    discover patterns when they are <span class="interesting">learning</span>
+    from data. <span class="logic">And</span> when run in a <span class="sshError">closed</span> loop
+    they can generate <span class="logic">or</span> dream <span class="new">new examples</span>
+    based on what is has learned.
+
+Semiring
+    A set<span class="brightoperator">,</span> R.
+
+    <span class="two">Two</span> binary operations
+        Addition (<span class="brightoperator">+</span>)
+        Multiplication (<span class="unicode">⋅</span>)
+
+    (R<span class="brightoperator">,</span> <span class="brightoperator">+</span>) is a commutative monoid <span class="codekeywords">with</span>
+    identity element <span class="zero">0</span>
+        (<span class="kashyap">a</span> <span class="brightoperator">+</span> <span class="two">b)</span> <span class="brightoperator">+</span> c<span class="brightoperator"> = </span>a <span class="brightoperator">+</span> (<span class="kashyap">b</span> <span class="brightoperator">+</span> <span class="three">c)</span>
+        <span class="zero">0</span> <span class="brightoperator">+</span> a<span class="brightoperator"> = </span>a <span class="brightoperator">+</span> <span class="zero">0</span><span class="brightoperator"> = </span>a
+        a <span class="brightoperator">+</span> b<span class="brightoperator"> = </span>b <span class="brightoperator">+</span> a
+
+    (R<span class="brightoperator">,</span> <span class="unicode">⋅</span>) is a monoid <span class="codekeywords">with</span> identity element <span class="one">1</span>
+        (a<span class="unicode">⋅</span><span class="two">b)</span><span class="unicode">⋅</span>c<span class="brightoperator"> = </span>a<span class="unicode">⋅</span>(b<span class="unicode">⋅</span><span class="three">c)</span>
+        <span class="one">1</span><span class="unicode">⋅</span>a<span class="brightoperator"> = </span>a<span class="unicode">⋅</span><span class="one">1</span><span class="brightoperator"> = </span>a
+
+    Multiplication left <span class="logic">and</span> right distributes
+    over addition
+        a<span class="unicode">⋅</span>(<span class="kashyap">b</span> <span class="brightoperator">+</span> <span class="three">c)</span><span class="brightoperator"> = </span>(a<span class="unicode">⋅</span><span class="two">b)</span> <span class="brightoperator">+</span> (a<span class="unicode">⋅</span><span class="three">c)</span>
+        (<span class="kashyap">a</span> <span class="brightoperator">+</span> <span class="two">b)</span><span class="unicode">⋅</span>c<span class="brightoperator"> = </span>(a<span class="unicode">⋅</span><span class="three">c)</span> <span class="brightoperator">+</span> (b<span class="unicode">⋅</span><span class="three">c)</span>
+
+    Multiplication by <span class="zero">0</span> annihilates R
+        <span class="zero">0</span><span class="unicode">⋅</span>a<span class="brightoperator"> = </span>a<span class="unicode">⋅</span><span class="zero">0</span><span class="brightoperator"> = </span><span class="zero">0</span>
+
+Scrutiny
+    <span class="criticalpriority">Critical</span> observation <span class="logic">or</span> examination.
+
+Fixation
+
+Centralization
+    Different from attention.
+    Different from focus.
+
+    A goal to be desired <span class="logic">and</span> difficult to
+    attain.
+
+Absorption
+
+Contemplation
+    The action of looking thoughtfully at
+    something <span class="codekeywords">for</span> a long time.
+
+    Deep reflective thought.
+
+Rumination
+    The focused attention on the symptoms of
+    <span class="one">one</span><span class="quote">'</span>s distress<span class="brightoperator">,</span> <span class="logic">and</span> on its possible causes
+    <span class="logic">and</span> consequences<span class="brightoperator">,</span> as opposed to its
+    solutions.
+
+    <span class="texturl"><a href="https://">https://</a></span><span class="domainbright">en</span>.<span class="domainbright">wikipedia</span><span class="textpath">.org</span><span class="discrete">/</span>wiki<span class="discrete">/</span>Rumination_(psychology)
+
+gamma <span class="gitRtcPackage">function</span>
+    <span class="unicode">Γ</span>(<span class="one">x</span>)<span class="brightoperator"> = </span>(<span class="one">x</span>-<span class="one">1</span>)<span class="brightoperator">!</span>
+
+    The gamma <span class="gitRtcPackage">function</span> is kind-of equal to the
+    factorial <span class="gitRtcPackage">function</span>.
+
+    <span class="unicode">Γ</span> (<span class="three">z</span>)<span class="brightoperator"> = </span><span class="unicode">∫</span>_<span class="zero">0</span>-<span class="unicode">∞</span> t<span class="gitbranch">^</span>(<span class="three">z</span><span class="unicode">−</span><span class="one">1</span>) e<span class="gitbranch">^</span>(<span class="unicode">−</span>t) dt
+
+    <span class="gitbranch">$</span><span class="discrete">DUMP</span><span class="gitbranch">$</span><span class="discrete">HOME/</span>notes<span class="eight">2018</span><span class="discrete">/</span>ws<span class="discrete">/</span><span class="interesting">machine-learning</span><span class="discrete">/</span>reading<span class="discrete">/</span><span class="interesting">machine-learning</span>-cheat-sheet<span class="textpath">.pdf</span>
+
+Sample space
+    A model of <span class="quote">'</span>all possible ways the world
+    can be<span class="quote">'</span>.
+
+    Formally<span class="brightoperator">,</span> it<span class="quote">'</span>s the space of all possible
+    values of the input <span class="logic">and</span> outputs to the
+    <span class="gitRtcPackage">function</span>.
+
+    Each of these defines <span class="one">one</span> dimension of the
+    samples space.
+
+    Each possible combination is called a
+    sample point.
+
+Hierarchical feature detection
+    Visual object <span class="interesting">classification</span> is a type of
+    application <span class="codekeywords">where</span> this is very effective.
+
+<span class="interesting">Neural Network</span>
+    Typically<span class="brightoperator">,</span> the training <span class="seleniumError">cannot</span> determine
+    the architecture.
+
+convNet
+    <span class="criticalpriority">Insight:</span>
+        In a convNet there are many more
+        things to set<span class="brightoperator">,</span> because layers are <span class="seleniumError">not</span>
+        fully <span class="success">connected</span>.
+
+    <span class="codekeywords">For</span> each convolutional layer<span class="brightoperator">,</span> the user
+    <span class="highpriority">must</span> specify<span class="subdued">:</span>
+        <span class="diffRemove">-</span>   Number of filters
+
+        <span class="diffRemove">-</span>   Size of the filters
+
+        <span class="diffRemove">-</span>   The step size
+            How a given filter is shifted over
+            the image map.
+
+        <span class="diffRemove">-</span>   The padding
+            Whether filters extend beyond the
+            edge of the image.
+
+    <span class="codekeywords">For</span> each pooling layer<span class="brightoperator">,</span> the user <span class="highpriority">must</span>
+    specify<span class="subdued">:</span>
+        <span class="diffRemove">-</span>   The size of the pooling window
+            The subsampling ratio.
+
+        <span class="diffRemove">-</span>   The type of pooling
+            Max <span class="logic">or</span> average.
+
+    Problems
+        Throws away location information.
+            The order of features might be
+            ignored.
+
+            This makes them easy to fool.
+
+        Perform well only when <span class="tests">test</span> data is
+        similar to training data<span class="brightoperator">,</span> resulting in
+        huge training set requirement.
+
+Chaos
+    <span class="interesting">Predictability</span> in complex systems.
+
+    The quality of being <span class="interesting">predictable</span>
+
+    Events that never repeat <span class="logic">and</span> vastly impact
+    the outcome un unpredictable.
+
+Tenacious
+    retentive<span class="brightoperator">,</span> recollective<span class="brightoperator">,</span> long<span class="brightoperator">,</span> tenacious.
+
+    dogged<span class="brightoperator">,</span> dour<span class="brightoperator">,</span> persistent<span class="brightoperator">,</span> pertinacious<span class="brightoperator">,</span>
+    tenacious<span class="brightoperator">,</span> unyielding.
+
+Lambda calculus
+    A minimal<span class="brightoperator">,</span> turing <span class="textdone">complete</span> programming
+    language.
+
+    In lambda calculus<span class="brightoperator">,</span> everything is an
+    anonymous (i.e. nameless wink) <span class="gitRtcPackage">function</span>.
+
+    The lambda-calculus is a minimal
+    programming language.
+
+<span class="emacstmuxkey">meta-algorithm</span>
+metaheuristic
+    A higher-level procedure <span class="logic">or</span> heuristic
+    designed to find<span class="brightoperator">,</span> generate<span class="brightoperator">,</span> <span class="logic">or</span> select a
+    heuristic that <span class="five">may</span> provide a sufficiently
+    <span class="safe">good</span> <span class="textdone">solution</span> to an optimization <span class="gitRtcError">problem</span><span class="brightoperator">,</span>
+    especially <span class="codekeywords">with</span> incomplete <span class="logic">or</span> imperfect
+    information.
+
+Ensemble <span class="interesting">learning</span>
+Ensemble methods
+    Use multiple <span class="interesting">learning</span> algorithms to obtain
+    better <span class="interesting">predictive</span> performance than could
+    be obtained from <span class="safe">any of</span> the constituent
+    <span class="interesting">learning</span> algorithms alone.
+
+Weak learner
+    A <span class="interesting">classifier</span>.
+
+    Only slightly correlated <span class="codekeywords">with</span> the <span class="safe">true</span>
+    <span class="interesting">classification</span>.
+
+    It can label <span class="awesome">examples</span> better than random
+    guessing.
+
+Strong learner
+    A <span class="interesting">classifier</span>.
+
+    Arbitrarily well-correlated <span class="codekeywords">with</span> the <span class="safe">true</span>
+    <span class="interesting">classification</span>.
+
+Boosting
+    An ensemble <span class="emacstmuxkey">meta-algorithm</span>.
+
+    Use a set of weak learners create a single
+    strong learner.
+
+    See <span class="doublequote">&quot;</span><span class="emacstmuxkey">meta-algorithm</span><span class="doublequote">&quot;</span>.
+    See <span class="doublequote">&quot;</span>Ensemble <span class="interesting">learning</span><span class="doublequote">&quot;</span>.
+
+Hedge fund
+    An investment fund that pools capital from
+    accredited individuals <span class="logic">or</span> institutional
+    investors <span class="logic">and</span> invests in a variety of
+    assets<span class="brightoperator">,</span> often <span class="codekeywords">with</span> complex
+    portfolio-construction <span class="logic">and</span> risk-management
+    techniques.
+
+Static analysis
+Static code analysis
+    A method of computer program debugging
+    that <span class="textdone">is done</span> by examining the code without
+    executing the program. The process
+    provides an understanding of the code
+    structure<span class="brightoperator">,</span> <span class="logic">and</span> can help to ensure that the
+    code adheres to industry standards.
+
+poll
+<span class="doublequote">&quot;</span>wait <span class="codekeywords">for</span><span class="doublequote">&quot;</span>
+    He process <span class="codekeywords">where</span> the computer <span class="logic">or</span>
+    controlling device waits <span class="codekeywords">for</span> an external
+    device to check <span class="codekeywords">for</span> its readiness <span class="logic">or</span>
+    state<span class="brightoperator">,</span> often <span class="codekeywords">with</span> low-level hardware.
+
+    <span class="quote">'</span>poll<span class="quote">'</span> the operation <span class="morediscrete">[</span>until it completes<span class="morediscrete">]</span>.
+
+pretentious
+    Attempting to impress by affecting greater
+    <span class="highpriority">importance</span> <span class="logic">or</span> merit than is actually
+    possessed.
+
+amenable
+    <span class="safe">Open</span> <span class="logic">and</span> responsive to suggestion<span class="discrete">;</span> easily
+    persuaded <span class="logic">or</span> controlled.
+
+rope
+    An efficient data structure <span class="codekeywords">for</span> storing
+    <span class="logic">and</span> manipulating very large mutable
+    strings.
+
+    It reduces memory reallocation <span class="logic">and</span> data
+    copy overhead <span class="codekeywords">for</span> applications that are
+    constantly operating on very large strings
+    by splitting them into multiple smaller
+    strings transparently.
+
+    Efficient random access is achieved via a
+    binary tree.
+
+Network Information Service
+<span class="allcaps">NIS</span>
+
+Lexical scope
+Static scope
+    A lexically scoped language means that
+    whenever an identifier is used as an
+    expression<span class="brightoperator">,</span> something in the textual
+    environment of the expression determines
+    the identifier<span class="unicode">’</span>s binding.
+
+    A convention used <span class="codekeywords">with</span> many programming
+    languages that sets the scope (<span class="kashyap">range</span> of
+    functionality) of a <span class="variable">variable</span> <span class="googlered">so</span> that it
+    <span class="five">may</span> only be called (referenced) from
+    within the block of code in which it is
+    defined. The scope is determined when the
+    code is compiled.
+
+System programming
+Systems programming
+    The primary distinguishing characteristic
+    of systems programming when compared to
+    application programming is that
+    application programming aims to produce
+    software which provides services to the
+    user directly (e.g. word processor)<span class="brightoperator">,</span>
+    whereas systems programming aims to
+    produce software <span class="logic">and</span> software platforms
+    which provide services to other software<span class="brightoperator">,</span>
+    are performance constrained<span class="brightoperator">,</span> <span class="logic">or</span> both (e.g.
+    operating systems<span class="brightoperator">,</span> computational science
+    applications<span class="brightoperator">,</span> game engines <span class="logic">and</span> <span class="onlyhex">AAA</span> video
+    games<span class="brightoperator">,</span> industrial <span class="automatic">automation</span><span class="brightoperator">,</span> <span class="logic">and</span> software
+    as a service applications).
+
+<span class="allcaps">DSL</span>
+domain-specific language
+    It <span class="interesting">probably</span> seems weird now<span class="brightoperator">,</span> <span class="logic">but</span> it<span class="quote">'</span>s also
+    fair to think of <span class="safe">any function</span> as a
+    domainspecific language <span class="codekeywords">with</span> a very tiny
+    domain.
+
+<span class="allcaps">SIG</span>
+Special Interest Group
+
+<span class="gitbranch">SIGPLAN</span>
+    The Association <span class="codekeywords">for</span> Computing Machinery<span class="quote">'</span>s
+    Special Interest Group on programming
+    languages.
+
+    <span class="allcaps">SIG</span> (<span class="kashyap">special</span> interest group)
+    <span class="allcaps">PLAN</span> (<span class="kashyap">programming</span> languages)
+
+arc
+    <span class="texturl"><a href="https://">https://</a></span><span class="domainbright">youtu</span><span class="textpath">.be</span><span class="discrete">/</span>n<span class="six">A6lwzh</span><span class="one">1Tbc</span><span class="brightoperator2">?</span>t<span class="brightoperator">=</span><span class="seven">87</span>
+
+    Over-arching plot.
+
+corroborate
+    Confirm <span class="logic">or</span> give support to (<span class="kashyap">a</span> statement<span class="brightoperator">,</span>
+    theory<span class="brightoperator">,</span> <span class="logic">or</span> finding).
+
+interferametry
+    Take signals from multiple telescropes <span class="logic">and</span>
+    interfere their signals <span class="codekeywords">with</span> eachother.
+
+    The technique is used to combine multiple
+    radio telescropes into a larger <span class="one">one</span>.
+
+<span class="morediscrete">[</span>quantum<span class="morediscrete">]</span> spin (<span class="kashyap">of</span> an electron)
+    Is as intrinsic as mass <span class="logic">and</span> charge.
+
+    Quatnum spin produces a dipole magnetic
+    field.
+        Like a magnet <span class="codekeywords">with</span> <span class="two">2</span> <span class="closesyntax">ends</span>. It has
+        magnetic field lines.
+
+        Are the smallest lines at plank length
+        though<span class="brightoperator2">?</span> <span class="Special">--</span> maybe.
+
+        (Despite <span class="seleniumError">not being</span> the same as
+        classical rotation).
+
+    <span class="texturl"><a href="https://">https://</a></span><span class="domainbright">youtu</span><span class="textpath">.be</span><span class="discrete">/</span><span class="seven">7UwigY</span><span class="four">4SjKY</span><span class="brightoperator2">?</span>t<span class="brightoperator">=</span><span class="two">212</span>
+        Rewatch this part <span class="Special">--</span> it<span class="quote">'</span>s <span class="highpriority">amazing</span>.
+
+Electrons
+    Have <span class="seleniumError">no size</span>.
+
+    See quantum spin.
+
+swansong
+    The final performance <span class="logic">or</span> activity of a
+    person<span class="quote">'</span>s career.
+
+contiguous
+    Sharing a common border<span class="discrete">;</span> touching.
+
+    Like consecutive<span class="brightoperator">,</span> <span class="logic">but</span> physically.
+
+disdain
+    The feeling that someone <span class="logic">or</span> something is
+    unworthy of <span class="one">one</span><span class="quote">'</span>s consideration <span class="logic">or</span>
+    respect.
+
+Natural languages
+    The languages people speak<span class="brightoperator">,</span> such as
+    English<span class="brightoperator">,</span> Spanish<span class="brightoperator">,</span> <span class="logic">and</span> French. They were
+    <span class="seleniumError">not designed</span> by people (<span class="kashyap">although</span> people
+    <span class="codekeywords">try</span> to impose some order on them)<span class="discrete">;</span> they
+    evolved naturally.
+
+Formal languages
+    Languages that are designed by people <span class="codekeywords">for</span>
+    specific applications. <span class="codekeywords">For</span> <span class="awesome">example</span><span class="brightoperator">,</span> the
+    notation that mathematicians use is a
+    formal language that is particularly <span class="safe">good</span>
+    at denoting relationships among numbers
+    <span class="logic">and</span> symbols. Chemists use a formal
+    language to represent the chemical
+    structure of molecules.
+
+    <span class="diffRemove">-</span> strict syntax <span class="morediscrete">[</span>rules<span class="morediscrete">]</span>
+
+Programming languages
+    Formal languages that have been designed
+    to express computations.
+
+Turing tarpit
+    A language that aims <span class="codekeywords">for</span>
+    Turing-completeness in an arbitrarily
+    small number of linguistic elements -
+    ideally<span class="brightoperator">,</span> as few as possible.
+
+vetting
+    Investigate (someone) thoroughly<span class="brightoperator">,</span>
+    especially in order to ensure that they
+    are suitable <span class="codekeywords">for</span> a <span class="shanemulligan">job</span> requiring secrecy<span class="brightoperator">,</span>
+    loyalty<span class="brightoperator">,</span> <span class="logic">or</span> trustworthiness.
+
+euphemism
+    Awkwardly swears using chicken euphemisms
+    sometimes.
+
+Currying
+    Making a <span class="new">new function</span> from <span class="emacstmuxkey">‘f’</span> by filling
+    in some of <span class="emacstmuxkey">‘f’</span>s arguments <span class="logic">and</span> allowing the
+    <span class="api">rest</span> to be provided later.
+
+    An <span class="awesome">example</span> of a higher order <span class="gitRtcPackage">function</span>.
+
+trampolining
+    <span class="texturl"><a href="https://">https://</a></span><span class="domainbright">en</span>.<span class="domainbright">wikipedia</span><span class="textpath">.org</span><span class="discrete">/</span>wiki<span class="discrete">/</span>Trampoline_(computing)
+
+misgiving
+    A feeling of doubt <span class="logic">or</span> apprehension about
+    the outcome <span class="logic">or</span> consequences of something.
+
+lexer
+    A sequence of rules<span class="discrete">;</span> each rule is a
+    trigger <span class="logic">and</span> an action.
+
+    (<span class="kashyap">lexer</span> <span class="morediscrete">[</span>trigger action<span class="morediscrete">]</span> <span class="glue">...</span>)
+
+    <span class="highpriority">Remember</span><span class="brightoperator">,</span> <span class="glue">...</span> in racket is a kleene plus.
+
+    Lexers in Racket are unusually powerful
+    because the regular expressions used to
+    describe classes of tokens <span class="five">may</span> use
+    non-standard regular operators like
+    difference<span class="brightoperator">,</span> complement <span class="logic">and</span> intersection.
+
+regular operator
+    An operator that a regular expression
+    uses.
+
+curiosity driven
+
+policy
+goal
+objective
+
+Linear Congruential <span class="morediscrete">[</span>Pseudorandom Number<span class="morediscrete">]</span> Generator
+Linear Congruential Generator
+<span class="allcaps">LCG</span>
+    Pseudorandom number generator algorithm.
+
+    An algorithm that yields a sequence of
+    pseudo-randomized numbers calculated <span class="codekeywords">with</span>
+    a discontinuous piecewise linear equation.
+    The method represents <span class="one">one</span> of the oldest
+    <span class="logic">and</span> best-known pseudorandom number
+    generator algorithms.
+
+<span class="allcaps">NP</span>-<span class="textdone">complete</span>
+    <span class="logic">While</span> it is easy to confirm whether a
+    proposed <span class="textdone">solution</span> is valid<span class="brightoperator">,</span> it <span class="five">may</span>
+    inherently be prohibitively difficult to
+    determine in the first place whether <span class="safe">any</span>
+    <span class="textdone">solution</span><span class="success"> exists</span>.
+
+Subset sum <span class="gitRtcError">problem</span>
+    An <span class="highpriority">important</span> <span class="gitRtcError">problem</span> in complexity theory
+    <span class="logic">and</span> cryptography.
+
+    Given a set (<span class="toby">or</span> multiset) of integers<span class="brightoperator">,</span> is
+    there a non-empty subset whose sum is
+    <span class="zero">zero</span><span class="brightoperator2">?</span>
+
+    Example<span class="brightoperator">,</span>
+        Given the set {<span class="unicode">−</span><span class="seven">7</span><span class="brightoperator">,</span> <span class="unicode">−</span><span class="three">3</span><span class="brightoperator">,</span> <span class="unicode">−</span><span class="two">2</span><span class="brightoperator">,</span> <span class="five">5</span><span class="brightoperator">,</span> <span class="eight">8</span>}<span class="brightoperator">,</span> the
+        answer is <span class="safe">yes</span> because the subset {<span class="unicode">−</span><span class="three">3</span><span class="brightoperator">,</span>
+        <span class="unicode">−</span><span class="two">2</span><span class="brightoperator">,</span> <span class="five">5</span>} sums to <span class="zero">zero</span>.
+
+        The <span class="gitRtcError">problem</span> is <span class="allcaps">NP</span>-<span class="textdone">complete</span>.
+
+    An equivalent <span class="gitRtcError">problem</span> is this<span class="subdued">:</span>
+        Given a set of integers <span class="logic">and</span> an integer
+        s<span class="brightoperator">,</span> does <span class="safe">any non-empty</span> subset sum to s<span class="brightoperator2">?</span>
+
+    Subset sum can also be thought of as<span class="subdued">:</span>
+        A special <span class="logic">case</span> of the knapsack
+        <span class="gitRtcError">problem</span>.
+
+        <span class="one">One</span> <span class="highpriority">interesting</span> special <span class="logic">case</span> of subset
+        sum is the partition <span class="gitRtcError">problem</span><span class="brightoperator">,</span> in which
+        s is half of the sum of all elements
+        in the set.
+
+monotonic <span class="gitRtcPackage">function</span>
+    A <span class="gitRtcPackage">function</span> between ordered sets that
+    preserves <span class="logic">or</span> reverses the given order.
+
+superincreasing sequence
+    A sequence of positive real numbers is
+    called superincreasing <span class="logic">if</span> every element of
+    the sequence is greater than the sum of
+    all previous elements in the sequence.
+
+monotonically increasing <span class="gitRtcPackage">function</span> vs superincreasing sequence
+    In superincreasing the elements are
+    greater than the <span class="allcaps">SUM</span> of previous elements.
+
+    <span class="failing">In a monotonically increasing </span><span class="gitRtcPackage">function</span><span class="brightoperator">,</span>
+    the elements are greater than only the
+    previous element.
+
+<span class="allcaps">PKCS</span> <span class="gitbranch">#</span><span class="one">1</span>
+    The first of a family of standards called
+    <span class="codekeywords">Public</span>-Key Cryptography Standards (<span class="allcaps">PKCS</span>)<span class="brightoperator">,</span>
+    published by <span class="allcaps">RSA</span> Laboratories
+
+Chinese remainder theorm
+    A theorem of number theory.
+
+    <span class="logic">If</span> <span class="one">one</span> knows the remainders of the
+    Euclidean division of an integer <span class="seleniumError">n</span> by
+    several integers<span class="brightoperator">,</span> <span class="logic">then</span> <span class="one">one</span> can determine
+    uniquely the remainder of the division of
+    <span class="seleniumError">n</span> by the product of these integers<span class="brightoperator">,</span> under
+    the condition that the divisors are
+    pairwise coprime.
+
+    Discovered <span class="three">3rd</span> century <span class="allcaps">AD</span> by the Chinese
+    mathematician Sunzi in Sunzi Suanjing.
+
+    Widely used <span class="codekeywords">for</span> computing <span class="codekeywords">with</span> large
+    integers.
+
+    Allows replacing a computation <span class="codekeywords">for</span> which
+    <span class="one">one</span> knows a bound on the size of the
+    result by several similar computations <span class="serviceAdd">on</span>
+    small integers.
+
+    The Chinese remainder theorem (<span class="kashyap">expressed</span>
+    in terms of congruences) is <span class="safe">true</span> over
+    every principal ideal domain.
+
+    It has been generalized to <span class="safe">any commutative</span>
+    ring<span class="brightoperator">,</span> <span class="codekeywords">with</span> a formulation involving ideals.
+
+Birthday Paradox
+Birthday <span class="gitRtcError">problem</span>
+    In a set of <span class="seleniumError">n</span> randomly chosen people<span class="brightoperator">,</span> some
+    pair of them will have the same birthday.
+
+    By the pigeonhole principle<span class="brightoperator">,</span> the
+    <span class="interesting">probability</span> reaches <span class="zero">100</span><span class="subdued">%</span> when the number
+    of people reaches <span class="seven">367</span> (<span class="kashyap">since</span> there are
+    only <span class="six">366</span> possible birthdays<span class="brightoperator">,</span> including
+    February <span class="nine">29</span>).
+
+    However<span class="brightoperator">,</span> <span class="nine">99</span><span class="numberpunctuation">.</span><span class="nine">9</span><span class="subdued">%</span> <span class="interesting">probability</span> is reached <span class="codekeywords">with</span>
+    just <span class="zero">70</span> people<span class="brightoperator">,</span> <span class="logic">and</span> <span class="zero">50</span><span class="subdued">%</span> <span class="interesting">probability</span> <span class="codekeywords">with</span>
+    <span class="three">23</span> people.
+
+    These conclusions are based on the
+    assumption that each day of the year
+    (<span class="kashyap">excluding</span> February <span class="nine">29</span>) is equally
+    <span class="interesting">probable</span> <span class="codekeywords">for</span> a birthday.
+
+    Real-world applications <span class="codekeywords">for</span> the birthday
+    paradox <span class="codekeywords">include</span> a cryptographic attack
+    called the birthday attack.
+
+Birthday attack
+    Uses the <span class="interesting">probabilistic</span> model of the
+    birthday <span class="gitRtcError">problem</span> to reduce the complexity
+    of finding a collision <span class="codekeywords">for</span> a hash
+    <span class="gitRtcPackage">function</span>.
+
+Expressive language
+    <span class="doublequote">&quot;</span>Hello world<span class="doublequote">&quot;</span>
+
+    vs. less expressive
+        <span class="codekeywords">public</span> <span class="codekeywords">class</span> HelloWorld {
+            <span class="codekeywords">public</span> static <span class="codekeywords">void</span> main(String<span class="morediscrete">[]</span> args) {
+                System.out.println(<span class="doublequote">&quot;</span>Hello world<span class="doublequote">&quot;</span>)<span class="discrete">;</span>
+            }
+        }
+
+echo server
+    A tcp server that just repeats back at you
+    whatever you say to it.
+
+non sequitur
+    Formal fallacy<span class="brightoperator">,</span> an <span class="generalError">invalid argument</span> whose
+    conclusion <span class="failing">is not</span> supported by its
+    premises.
+
+    Non sequitur (<span class="kashyap">literary</span> device)<span class="brightoperator">,</span> an
+    irrelevant<span class="brightoperator">,</span> often humorous comment to a
+    preceding topic <span class="logic">or</span> statement.
+
+thread-<span class="safe">safe</span>
+    Concerns safety <span class="codekeywords">with</span> respect to shared
+    data.
+
+<span class="codekeywords">pass</span>-by-name
+    <span class="texturl"><a href="https://">https://</a></span><span class="domainbright">stackoverflow</span><span class="textpath">.com</span><span class="discrete">/</span>questions<span class="discrete">/</span><span class="nine">838079</span><span class="discrete">/</span>what-is-<span class="codekeywords">pass</span>-by-name-<span class="logic">and</span>-how-does-it-work-exactly
+
+closure
+    My loose definition<span class="subdued">:</span>
+
+    <span class="six">16</span><span class="numberpunctuation">:</span><span class="eight">58</span> <span class="ircname">&lt;libertyprime&gt;</span> you can invoke a subshell ()
+    <span class="six">16</span><span class="numberpunctuation">:</span><span class="eight">58</span> <span class="ircname">&lt;libertyprime&gt;</span> the subshell has a copy of all the variables in its environment
+    <span class="six">16</span><span class="numberpunctuation">:</span><span class="eight">58</span> <span class="ircname">&lt;gargantua&gt;</span> yeah
+    <span class="six">16</span><span class="numberpunctuation">:</span><span class="eight">58</span> <span class="ircname">&lt;libertyprime&gt;</span> thats a closure apparently
+
+    A <span class="gitRtcPackage">function</span> <span class="codekeywords">with</span> a copy of the variables <span class="discrete">/</span>
+    references to variables what were in its
+    environment.
+
+linter
+lint (plural)
+    Tools that analyze source code to <span class="textdiscard">flag</span>
+    programming <span class="seleniumError">errors</span><span class="brightoperator">,</span> bugs<span class="brightoperator">,</span> stylistic
+    <span class="seleniumError">errors</span><span class="brightoperator">,</span> <span class="logic">and</span> suspicious constructs.
+
+neutrino
+    Only interacts <span class="codekeywords">with</span> the weak force.
+
+    It would take a lightyear<span class="quote">'</span>s worth of lead
+    to <span class="stopped">stop</span> <span class="one">one</span>.
+
+Operational <span class="interesting">semantic</span>s
+    A category of formal programming language
+    <span class="interesting">semantic</span>s in which certain desired
+    properties of a program<span class="brightoperator">,</span> such as
+    correctness<span class="brightoperator">,</span> safety <span class="logic">or</span> security<span class="brightoperator">,</span> are
+    verified by constructing proofs from
+    <span class="logcode">logical</span> statements about its execution <span class="logic">and</span>
+    procedures<span class="brightoperator">,</span> rather than by attaching
+    mathematical meanings to its terms
+    (<span class="kashyap">denotational</span> <span class="interesting">semantic</span>s).
+
+Reduction <span class="interesting">semantic</span>s
+    An alternative presentation of operational
+    <span class="interesting">semantic</span>s using <span class="googlered">so</span>-called reduction
+    contexts.
+
+    A technique <span class="codekeywords">for</span> formalizing an equational
+    theory <span class="codekeywords">for</span> control <span class="logic">and</span> state.
+
+Syntactic form
+    The core syntax forms that appear in a
+    fully expanded expression.
+
+PyonR
+Pioneer
+    An implementation of the Python
+    programming language <span class="codekeywords">for</span> the Racket
+    platform.
+
+Cryptanalysis
+    The study of analyzing information systems
+    in order to study the hidden aspects of
+    the systems.
+
+functional programming
+    Avoids changing-state <span class="logic">and</span> mutable data.
+
+Functional parser
+Parser combinator
+
+Spelunking
+
+Price gouging
+    A pejorative term referring to when a
+    seller spikes the prices of goods<span class="brightoperator">,</span>
+    services <span class="logic">or</span> commodities to a level much
+    higher than is considered reasonable <span class="logic">or</span>
+    fair<span class="brightoperator">,</span> <span class="logic">and</span> is considered exploitative<span class="brightoperator">,</span>
+    potentially to an unethical extent.
+
+Language Independent <span class="allcaps">RPC</span>
+
+parser combinator
+    A higher-order <span class="gitRtcPackage">function</span> that accepts
+    several parsers as input <span class="logic">and</span> returns a <span class="new">new</span>
+    parser as its output.
+
+Formal system
+    Defined by a finite set of symbols <span class="logic">and</span> a
+    some rules of inference.  A group of
+    symbols arranged in an order of some sort
+    is called a string. There are some strings
+    in the formal system which are known as
+    axioms. The rules of inference show us a
+    way of creating <span class="logic">or</span> generating theorems
+    from these base axioms.
+
+Theorem
+    <span class="safe">Any string</span> which can be can be derived
+    from the axiom(<span class="bullets">s</span>) by applying <span class="zero">zero</span> <span class="logic">or</span> more
+    of the rules of inference in <span class="success">succession</span> to
+    the axiom(<span class="bullets">s</span>).
+
+Consistency
+    Consistency in a formal system means that
+    every theorem <span class="morediscrete">[</span>of the formal system<span class="morediscrete">]</span><span class="brightoperator">,</span> upon
+    interpretation<span class="brightoperator">,</span> comes out <span class="safe">true</span> (<span class="kashyap">in</span> some
+    imaginable world).
+
+<span class="textdone">Complete</span>
+    A formal system is <span class="textdone">complete</span> <span class="logic">if</span> <span class="codekeywords">for</span> every
+    statement of the formal system<span class="brightoperator">,</span> either the
+    statement <span class="logic">or</span> its negation can be derived
+    (i.e.<span class="brightoperator">,</span> proved) in the system. Hence a
+    formal system is consistent <span class="logic">if</span> there is <span class="seleniumError">no</span>
+    statement such that the statement itself
+    <span class="logic">and</span> its negation are both derivable in the
+    system.
+
+Godel<span class="quote">'</span>s Incompleteness theorem
+    All consistent axiomatic formulations of
+    number theory <span class="codekeywords">include</span> undecidable
+    propositions.
+
+    In simpler mathematical terms<span class="brightoperator">,</span> <span class="safe">any</span>
+    consistent formal system which can do even
+    simple arithmetic is incomplete meaning
+    there are <span class="safe">true</span> statements in the realm of
+    number theory which can <span class="seleniumError">not be</span> derived
+    from the axioms of the formal system. This
+    means that some statements even <span class="logic">if</span> they
+    are <span class="safe">true</span> are <span class="seleniumError">not theorems</span> of the formal
+    system.
+
+parabiosis
+    Young blood transfusion refers to
+    transfusing blood specifically from a
+    young person into an older <span class="one">one</span> <span class="codekeywords">with</span> the
+    intention of creating a medicinal benefit.
+
+cross entropy
+    <span class="morediscrete">[[</span><span class="texturl"><a href="https://">https://</a></span><span class="domain">www.</span><span class="googlered">youtube</span><span class="textpath">.com</span><span class="discrete">/</span>watch<span class="brightoperator2">?</span>v<span class="brightoperator">=</span>tRsSi_sqXjI<span class="morediscrete">][</span>Cross Entropy<span class="brightoperator"> - </span>YouTube<span class="morediscrete">]]</span>
+    <span class="morediscrete">[[</span><span class="texturl"><a href="https://">https://</a></span><span class="domain">www.</span><span class="googlered">youtube</span><span class="textpath">.com</span><span class="discrete">/</span>watch<span class="brightoperator2">?</span>v<span class="brightoperator">=</span>ErfnhcEV<span class="one">1O</span><span class="eight">8</span><span class="morediscrete">][</span>A Short Introduction to Entropy<span class="brightoperator">,</span> Cross-Entropy <span class="logic">and</span> <span class="allcaps">KL</span>-Divergence<span class="brightoperator"> - </span>YouTube<span class="morediscrete">]]</span>
+
+subsidy
+government incentive
+    A form of financial aid <span class="logic">or</span> support
+    extended to an economic sector generally
+    <span class="codekeywords">with</span> the aim of promoting economic <span class="logic">and</span>
+    social policy.
+
+adulation
+    Excessive admiration <span class="logic">or</span> praise.
+
+Flattery
+    The act of giving excessive compliments<span class="brightoperator">,</span>
+    generally <span class="codekeywords">for</span> the purpose of ingratiating
+    oneself <span class="codekeywords">with</span> the subject.
+
+prerogative
+    A right <span class="logic">or</span> privilege exclusive to a
+    particular individual <span class="logic">or</span> <span class="codekeywords">class</span>.
+
+pertinent
+    Relevant <span class="logic">or</span> applicable to a particular
+    matter<span class="discrete">;</span> apposite.
+
+first-<span class="codekeywords">class</span> citizen
+    You can toss them around just like
+    variables.
+
+mutual recursion
+    A form of recursion <span class="codekeywords">where</span> <span class="two">two</span> mathematical
+    <span class="logic">or</span> computational objects<span class="brightoperator">,</span> such as
+    functions <span class="logic">or</span> data types<span class="brightoperator">,</span> are defined in
+    terms of each other.
+
+resilient
+    Able to withstand <span class="logic">or</span> recover quickly from
+    difficult conditions.
+
+    Able to recoil <span class="logic">or</span> spring back into shape
+    after bending<span class="brightoperator">,</span> stretching<span class="brightoperator">,</span> <span class="logic">or</span> being
+    compressed.
+
+abstract machine
+    In academia<span class="brightoperator">,</span> both Turing Machines <span class="logic">and</span>
+    Lambda Calculus are <span class="awesome">examples</span> of abstract
+    machines.
+
+algebraic data type
+    A kind of composite type<span class="brightoperator">,</span> i.e.<span class="brightoperator">,</span> a type
+    formed by combining other types.
+
+clause
+    a disjunction of literals.
+
+Horn clause
+    A clause <span class="codekeywords">with</span> at most <span class="one">one</span> positive
+    literal. A Horn clause <span class="codekeywords">with</span> exactly <span class="one">one</span>
+    positive literal is a definite clause
+
+goal clause
+    A Horn clause <span class="codekeywords">with</span> <span class="seleniumError">no positive literals</span>.
+
+nuanced
+    Characterized by subtle shades of meaning
+    <span class="logic">or</span> expression.
+
+convex compact set
+    Describes a convex set that is <span class="sshError">closed</span> <span class="logic">and</span>
+    bounded.
+
+    <span class="texturl"><a href="https://">https://</a></span><span class="domainbright">youtu</span><span class="textpath">.be</span><span class="discrete">/</span><span class="four">c4pgWd</span><span class="eight">8V8HU</span><span class="brightoperator2">?</span>t<span class="brightoperator">=</span><span class="seven">117</span>
+
+formal-languages
+    <span class="gitbranch">$</span><span class="discrete">HOME/</span>notes<span class="eight">2018</span><span class="discrete">/</span>ws<span class="discrete">/</span>formal-languages<span class="discrete">/</span>glossary<span class="textpath">.txt</span>
+
+<span class="one">one</span>-hot encoding
+    Each word from the vocabulary is
+    represented as a unique binary <span class="codekeywords">vector</span> <span class="codekeywords">with</span>
+    only <span class="one">one</span> non<span class="zero">zero</span> entry.
+
+    <span class="seleniumError">Not so</span> great at representing words.
+
+    Terrible <span class="codekeywords">for</span> <span class="seleniumError">n</span>-grams.
+
+    Each <span class="codekeywords">vector</span> has a size of the vocabulary
+    (<span class="toby">or</span> even bigger in <span class="logic">case</span> of <span class="seleniumError">n</span>-grams) which
+    makes modeling difficult.
+
+Continuous Bag of Words
+<span class="allcaps">CBOW</span>
+    Model predict inner word from context.
+
+skip-gram
+    Model predict context from inner word.
+
+Quantum fluctuation
+Vacuum state fluctuation
+Vacuum fluctuation
+    The temporary change in the amount of
+    energy in a point in space<span class="brightoperator">,</span> as explained
+    in Werner Heisenberg<span class="quote">'</span>s uncertainty
+    principle.
+
+    This is what annealing quantum computers
+    use.
+
+garnered
+    Gather <span class="logic">or</span> collect (something<span class="brightoperator">,</span> especially
+    information <span class="logic">or</span> approval).
+
+    <span class="doublequote">&quot;</span>garnered some respect<span class="doublequote">&quot;</span>.
+
+supplicant
+    A fervently religious person who prays to
+    God <span class="codekeywords">for</span> help <span class="codekeywords">with</span> a <span class="gitRtcError">problem</span>
+
+    Someone who begs earnestly <span class="codekeywords">for</span> something
+    he <span class="logic">or</span> she wants.
+
+    A younger brother entreating his sister to
+    be <span class="safe">allowed</span> in her tree house could be
+    described as a supplicant.
+
+    An entity at <span class="one">one</span> end of a point-to-point
+    <span class="allcaps">LAN</span> segment that seeks to be authenticated
+    by an authenticator attached to the other
+    end of that link. The <span class="allcaps">IEEE</span> <span class="two">802</span><span class="numberpunctuation">.</span><span class="one">1X</span> standard
+    uses the term <span class="doublequote">&quot;</span>supplicant<span class="doublequote">&quot;</span> to refer either
+    to hardware <span class="logic">or</span> to software.
+
+binary <span class="safe">safe</span>
+    A binary-<span class="safe">safe</span> <span class="gitRtcPackage">function</span> is <span class="one">one</span> that treats
+    its input as a raw stream of bytes <span class="logic">and</span>
+    ignores every textual aspect it <span class="five">may</span> have.
+
+    exec <span class="discrete">&lt;</span> <span class="discrete">&lt;</span>(<span class="kashyap">p</span> <span class="doublequote">&quot;</span><span class="gitbranch">$</span>input<span class="doublequote">&quot;</span>) <span class="comment">#</span> binary <span class="safe">safe</span>
+    exec <span class="discrete">&lt;</span> <span class="discrete">&lt;</span>(<span class="kashyap">cat</span> <span class="discrete">&lt;&lt;&lt;</span> <span class="doublequote">&quot;</span><span class="gitbranch">$</span>input<span class="doublequote">&quot;</span>) <span class="comment">#</span> xxd <span class="Special">-p</span> <span class="discrete">&lt;&lt;&lt;</span> <span class="doublequote">&quot;</span>foo<span class="doublequote">&quot;</span> <span class="comment">#</span> <span class="seleniumError">not binary</span> <span class="safe">safe</span> (<span class="kashyap">appends</span> newline)
+    cat t<span class="textpath">.txt</span> <span class="brightoperator3">|</span> xxd <span class="Special">-p</span> <span class="comment">#</span> <span class="zero">0a0a0a0a0a</span>
+    xxd <span class="Special">-p</span> <span class="discrete">&lt;&lt;&lt;</span> <span class="doublequote">&quot;</span><span class="gitbranch">$</span>(<span class="kashyap">cat</span> t.txt)<span class="doublequote">&quot;</span> <span class="comment">#</span> <span class="zero">0a</span> <span class="comment">#</span> It appears <span class="discrete">&lt;&lt;&lt;</span> strips all remaining whitespace from the <span class="variable">variable</span> <span class="logic">and</span> enforces a single newline
+
+magnum opus
+<span class="subdued">master</span>piece
+    The <span class="tests">greatest</span> work of a writer<span class="brightoperator">,</span> artist<span class="brightoperator">,</span> <span class="logic">or</span>
+    composer.
+
+intolerable
+
+ethereal
+    Extremely delicate <span class="logic">and</span> light in a way that
+    seems <span class="seleniumError">not to</span> be of this world.
+
+diagnostic
+    Concerned <span class="codekeywords">with</span> the diagnosis of illness <span class="logic">or</span>
+    other problems.
+
+    <span class="doublequote">&quot;</span>a diagnostic tool<span class="doublequote">&quot;</span>.
+
+compose key
+    The key that allows you to enter alternate
+    characters.
+
+    On a mac this is the option key.
+
+generative model
+
+statistical <span class="interesting">classification</span>
+    Includes <span class="interesting">machine learning</span>.
+
+    <span class="two">Two</span> main approaches
+        generative approach
+        discriminative approach
+
+    These compute <span class="interesting">classifiers</span> by different
+    approaches<span class="brightoperator">,</span> differing in the degree of
+    statistical modelling.
+
+<span class="allcaps">VAE</span>
+    Estimates the <span class="interesting">Probability</span> Density <span class="gitRtcPackage">Function</span>
+    (<span class="allcaps">PDF</span>) of the training data.
+
+    <span class="logic">If</span> such a model is trained on natural
+    looking images<span class="brightoperator">,</span> it should assign a high
+    <span class="interesting">probability</span> value to an image of a lion.
+
+<span class="allcaps">VAE</span>
+    A generative model.
+
+    An image of random gibberish on the other
+    hand should be assigned a low <span class="interesting">probability</span>
+    value.
+
+The <span class="allcaps">VAE</span> model can also sample <span class="awesome">examples</span> from the learned <span class="allcaps">PDF</span><span class="brightoperator">,</span> which is the coolest part<span class="brightoperator">,</span> since it<span class="unicode">’</span>ll be able to generate <span class="new">new examples</span> that look similar to the original dataset<span class="brightoperator">!</span>
+
+reverse proxy
+
+<span class="allcaps">CRUD</span>
+Create<span class="brightoperator">,</span> read<span class="brightoperator">,</span> update <span class="logic">and</span> delete
+Create<span class="brightoperator">,</span> retrieve<span class="brightoperator">,</span> update <span class="logic">and</span> destroy
+    The <span class="four">four</span> basic functions of persistent
+    storage.
+
+Kanban
+    Lean method to manage <span class="logic">and</span> improve work
+    across human systems.
+
+    This approach aims to manage work by
+    balancing the demands <span class="codekeywords">with</span> <span class="success">available</span>
+    capacity<span class="brightoperator">,</span> <span class="logic">and</span> improving the handling of
+    system level bottlenecks.
+
+The powers the be
+    A phrase used to refer to those
+    individuals <span class="logic">or</span> groups who collectively
+    hold authority over a particular domain.
+
+factor graphs
+    A model used by DeepDive to perform
+    <span class="interesting">probabilistic</span> inference.
+
+Bernoulli random <span class="variable">variable</span>
+Boolean random <span class="variable">variable</span>
+    <span class="five">May</span> describe the event that __ has cancer.
+
+<span class="interesting">Probabilistic</span> inference
+    The task of deriving the <span class="interesting">probability</span> of
+    <span class="one">one</span> <span class="logic">or</span> more random variables taking a
+    specific value <span class="logic">or</span> set of values.
+
+    <span class="codekeywords">For</span> <span class="awesome">example</span><span class="brightoperator">,</span> a Bernoulli (Boolean) random
+    <span class="variable">variable</span> <span class="five">may</span> describe the event that John
+    has cancer.
+        Such a <span class="variable">variable</span> could take a value of
+        <span class="one">1</span> (John has cancer) <span class="logic">or</span> <span class="zero">0</span> (John does
+        <span class="seleniumError">not have</span> cancer).
+
+    DeepDive uses <span class="interesting">probabilistic</span> inference to
+    estimate the <span class="interesting">probability</span> that the random
+    <span class="variable">variable</span> takes value <span class="one">1</span><span class="subdued">:</span>
+        a <span class="interesting">probability</span> of <span class="zero">0</span><span class="numberpunctuation">.</span><span class="eight">78</span> would mean that
+        John is <span class="eight">78</span><span class="subdued">%</span> likely to have cancer.
+
+ideation
+    The formation of ideas <span class="logic">or</span> concepts.
+
+frisson
+piloerection
+    It coincides <span class="codekeywords">with</span> the release of
+    <span class="closesyntax">endorphines</span>.
+
+Meowlingual
+    The name of the <span class="new">new company</span>.
+
+wavelet
+    A mathematical <span class="gitRtcPackage">function</span> useful in digital
+    signal processing <span class="logic">and</span> image compression.
+
+    The use of wavelets <span class="codekeywords">for</span> these purposes is
+    a recent development<span class="brightoperator">,</span> although the theory
+    <span class="failing">is not</span> <span class="new">new</span>.
+
+    The principles are similar to those of
+    Fourier analysis<span class="brightoperator">,</span> which was first
+    developed in the early part of the <span class="nine">19th</span>
+    century.
+
+<span class="allcaps">EMG</span>
+electromyography
+    <span class="texturl"><a href="https://">https://</a></span><span class="domain">www.</span><span class="googlered">youtube</span><span class="textpath">.com</span><span class="discrete">/</span>watch<span class="brightoperator2">?</span>v<span class="brightoperator">=</span><span class="two">2WtM</span><span class="one">1yz</span><span class="four">34co</span>
+
+Language interoperability
+Language interop
+    The capability of <span class="two">two</span> different
+    programming languages to natively interact
+    as part of the same system.
+
+geosynchronous orbit
+    A band around the earth <span class="codekeywords">where</span> satellites
+    remain euoetill in relation to the earth.
+
+textual
+
+<span class="tests">test</span> fixture
+    <span class="textdone">A fixed</span> state of a set of objects used as
+    a baseline <span class="codekeywords">for</span> <span class="success">running</span> <span class="tests">tests</span>. The purpose
+    of a <span class="tests">test</span> fixture is to ensure that there
+    is a well known <span class="logic">and</span> <span class="textdone">fixed</span> environment in
+    which <span class="tests">tests</span> are run <span class="googlered">so</span> that results are
+    repeatable.
+
+higher-order languages
+    <span class="texturl"><a href="https://">https://</a></span><span class="domainbright">link</span>.<span class="domainbright">springer</span><span class="textpath">.com</span><span class="discrete">/</span>article<span class="discrete">/</span><span class="zero">10</span><span class="numberpunctuation">.</span><span class="seven">1007</span><span class="discrete">/</span>s<span class="nine">11229</span><span class="numberpunctuation">-</span><span class="seven">017</span><span class="numberpunctuation">-</span><span class="two">1502</span><span class="numberpunctuation">-</span><span class="zero">0</span>
+
+adheres
+
+corresponds
+
+anaphoric
+    The use of an expression whose
+    interpretation depends upon another
+    expression in context.
+
+syntax optimisation
+    I coined this.
+
+    Once certain facts about a formal language
+    are known<span class="brightoperator">,</span> a <span class="allcaps">DSL</span> can be made around it<span class="brightoperator">,</span>
+    usually to <span class="automatic">automate</span><span class="brightoperator"> / </span>streamline the
+    language.
+
+Turnover rate
+    The percentage of employees leaving a
+    company within a certain period of time.
+
+<span class="tests">Test</span> iteration time
+
+Iterative <span class="tests">testing</span>
+    The product is <span class="tests">tested</span> <span class="logic">and</span> changed
+    repeatedly at different stages of
+    design<span class="discrete">/</span>development to eliminate usability
+    issues before the product is launched.
+
+In agile software development<span class="brightoperator">,</span>
+    iteration
+        single development cycle
+
+complement
+    The thing that complements a set.
+
+compliment
+    A nice thing to say.
+
+inosculation
+    A natural <span class="logic">or</span> surgical joining of parts <span class="logic">or</span>
+    branches of tubular structures <span class="googlered">so</span> as to
+    make <span class="logic">or</span> become continuousa.
+
+affect
+    impact
+
+software forges
+    <span class="toby">GitHub</span>
+    Bitbucket
+
+Double rainbow
+    <span class="texturl"><a href="https://">https://</a></span><span class="domainbright">youtu</span><span class="textpath">.be</span><span class="discrete">/</span>OX<span class="seven">Dbc7QfTXU</span><span class="brightoperator2">?</span>t<span class="brightoperator">=</span><span class="zero">320</span>
+
+    Alexander<span class="quote">'</span>s band
+
+Alexander<span class="quote">'</span>s band
+    Between the red from inner rainbow to the
+    red from outer rainbow.
+
+<span class="allcaps">NMT</span>
+<span class="interesting">Neural</span> Machine Translation
+    <span class="priority">Learn</span> from the previous code changes <span class="logic">and</span>
+    suggest the future edits.
+
+    Widely used to translate natural langugae
+    text.
+
+    <span class="codekeywords">For</span> modeling code changes<span class="brightoperator">,</span> <span class="allcaps">NMT</span> seem to be
+    a natural fit as they can <span class="priority">learn</span> the
+    translation (i.e. edits) from an original
+    to the changed version of the code.
+
+    <span class="criticalpriority">Essential</span>ly<span class="brightoperator">,</span> these models <span class="priority">learn</span> the
+    <span class="interesting">probability</span> distribution of changes <span class="logic">and</span>
+    assign higher <span class="interesting">probabilities</span> to plausible
+    code edits <span class="logic">and</span> lower <span class="interesting">probabilities</span> to less
+    plausible ones.
+
+    In fact<span class="brightoperator">,</span> Tufano et al. <span class="morediscrete">[</span><span class="three">23</span><span class="morediscrete">]</span> shows the
+    initial promise of using a
+    sequence-to-sequence translation model
+    (seq<span class="two">2seq</span>) <span class="codekeywords">for</span> fixing bugs in their <span class="new">new</span>
+    idea paper.
+
+    In this work<span class="brightoperator">,</span> we design an
+    encoder-decoder-based machin
+
+engender
+    cause <span class="logic">or</span> give rise to (<span class="kashyap">a</span> feeling<span class="brightoperator">,</span>
+    situation<span class="brightoperator">,</span> <span class="logic">or</span> condition).
+
+    <span class="doublequote">&quot;</span>The trust you engender.<span class="doublequote">&quot;</span>
+
+entanglement
+    There are degrees of entaglement.
+
+    <span class="texturl"><a href="https://">https://</a></span><span class="domainbright">youtu</span><span class="textpath">.be</span><span class="discrete">/</span>aJM<span class="five">5Bkdzspk</span><span class="brightoperator2">?</span>t<span class="brightoperator">=</span><span class="five">285</span>
+
+grok
+    comprehend<span class="discrete">;</span> get the bigger picture of
+    something.
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->
