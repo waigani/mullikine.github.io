@@ -117,7 +117,7 @@ See the full article [[http://mullikine.github.io/codelingo-vs-linters/main.html
 | unconvert  | unconvert      | [[https://github.com/codelingo/codelingo/blob/master/tenets/codelingo/go/unconvert/codelingo.yaml][codelingo.yaml]] | GitHub | [[https://github.com/mdempsky/unconvert/][mdempsky/unconvert]]               | Remove unnecessary type conversions from Go source       |
 | bool-param | nofuncflags    | [[https://github.com/mullikine/codelingo/blob/master/tenets/codelingo/go/bool-param/codelingo.yaml][codelingo.yaml]] | GitHub | [[https://github.com/fsamin/nofuncflags][fsamin/nofuncflags]]               | because flag arguments are ugly                          |
 | todo       | godox          | [[https://github.com/mullikine/codelingo/blob/master/tenets/codelingo/go/todo/codelingo.yaml][codelingo.yaml]] | GitHub | [[https://github.com/766b/godox/][766b/godox]]                       | extract speficic comments from Go code based on keywords |
-| tested     | blanket        | [[https://github.com/codelingo/codelingo/blob/master/tenets/codelingo/go/tested/codelingo.yaml][codelingo.yaml]] | GitLab | [[https://gitlab.com/verygoodsoftwarenotvirus/blanket][verygoodsoftwarenotvirus/blanket]] | a coverage helper tool                                   |
+| tested[fn:blanket]     | blanket[fn:blanket] | [[https://github.com/codelingo/codelingo/blob/master/tenets/codelingo/go/tested/codelingo.yaml][codelingo.yaml]] | GitLab | [[https://gitlab.com/verygoodsoftwarenotvirus/blanket][verygoodsoftwarenotvirus/blanket]] | a coverage helper tool                                   |
 
 ** The work it took to write these tenets
 | tenet name | time to write | min clicks | actual clicks[fn:approx] | reason for *generate query*[fn:gen] click/s              | reason for time spent greater or less than 10 mins               |
@@ -126,7 +126,7 @@ See the full article [[http://mullikine.github.io/codelingo-vs-linters/main.html
 | unconvert  | 20 mins       |          1 |                        2 | to generalise unit test to any type conversion           | to create string variable to match function name with ident type |
 | bool-param | 5 mins        |          1 |                        1 | to generate initial query                                | the generated query was ~= the finished tenet                    |
 | todo       | 10 mins       |          1 |                        1 | to find the CLQL fact for comment                        |                                                                  |
-| tested     | 20 mins       |          1 |                        2 | to find the initial query for a filename with identifier | learning to use CLQL functions                                   |
+| tested[fn:blanket]     | 20 mins       |          1 |                        2 | to find the initial query for a filename with identifier | learning to use CLQL functions                                   |
 
 + min clicks :: The number of times I needed to press _generate query_[fn:gen] to discover the CLQL syntax I needed.
 + actual clicks :: The approximate number of times I ended up to pressing _generate query_, for exploratory purposes.
@@ -138,7 +138,7 @@ See the full article [[http://mullikine.github.io/codelingo-vs-linters/main.html
  | unconvert  | 10 mins                  |                                    2 | 10 mins         | to find example code for unit test |     2 |                                                      |
  | bool-param | 5 mins                   |                                    1 |                 |                                    |     2 |                                                      |
  | todo       | 10 mins                  |                                    1 |                 |                                    |     2 |                                                      |
- | tested     | 20 mins                  |                                    1 |                 |                                    |     4 | ensure multi-file unit tests are working as expected |
+ | tested[fn:blanket]     | 20 mins                  |                                    1 |                 |                                    |     4 | ensure multi-file unit tests are working as expected |
 
 *** Caveats
 **** unconvert
@@ -146,8 +146,15 @@ See the full article [[http://mullikine.github.io/codelingo-vs-linters/main.html
 
   I ran the original linter on a repository to find an example of what to put into a unit test.
 
+**** blanket
+The tenet 'tested' doesn't look at the function call. Only the name of the testing function and compares it to the name of the function in the other file, which is definitely not the same as blanket.
+It can, however, find if a method with the _name_ 'TestMethod' was called (with an arbitrarily deep recusive nesting) in the '_test.go' file, where seeing if a test method for 'Method' exists.
+So it doesn't have the same recursive limitation as blanket, but may give false positives in some circumstances.
 
 ** Read the full article [[http://mullikine.github.io/codelingo-vs-linters/main.html][here]].
+
+
+[fn:blanket] See caveats.
 
 
 [fn:tests] The number of times I had to *test* the tenet.
@@ -158,3 +165,4 @@ See the full article [[http://mullikine.github.io/codelingo-vs-linters/main.html
 
 [fn:gen] This is what the button looks like.
 [[file:generate.png]]
+

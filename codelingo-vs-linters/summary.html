@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-08 Mon 17:30 -->
+<!-- 2018-10-09 Tue 14:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CodeLingo vs Linters</title>
@@ -238,48 +238,48 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org70ed5b6">1. Making tenets with CLQL that do the job of existing linters</a>
+<li><a href="#org76d434b">1. Making tenets with CLQL that do the job of existing linters</a>
 <ul>
-<li><a href="#org306c011">1.1. Defintions taken from the project docs</a></li>
-<li><a href="#org81d78b0">1.2. The general process of writing one tenet</a>
+<li><a href="#org8eddf3a">1.1. Defintions taken from the project docs</a></li>
+<li><a href="#orgb3cf87b">1.2. The general process of writing one tenet</a>
 <ul>
-<li><a href="#org7a016b3">1.2.1. Writing the CLQL</a></li>
+<li><a href="#org6a4af06">1.2.1. Writing the CLQL</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgc8dde71">2. Statistical Summary</a>
+<li><a href="#org1ffa130">2. Statistical Summary</a>
 <ul>
-<li><a href="#org4c29e6f">2.1. Comparison of size in code</a>
+<li><a href="#org6287e84">2.1. Comparison of size in code</a>
 <ul>
-<li><a href="#orgab10b22">2.1.1. Parser</a></li>
-<li><a href="#org5188add">2.1.2. Unit tests</a></li>
-<li><a href="#orgf2bd328">2.1.3. Links to source code</a></li>
+<li><a href="#orgcd01b52">2.1.1. Parser</a></li>
+<li><a href="#orgc144f65">2.1.2. Unit tests</a></li>
+<li><a href="#org601bf54">2.1.3. Links to source code</a></li>
 </ul>
 </li>
-<li><a href="#orgcd97e43">2.2. The work it took to write these tenets</a></li>
-<li><a href="#org246e424">2.3. The work it took to write their unit tests</a>
+<li><a href="#org69ed0e2">2.2. The work it took to write these tenets</a></li>
+<li><a href="#org513cc01">2.3. The work it took to write their unit tests</a>
 <ul>
-<li><a href="#orgc05aa11">2.3.1. Caveats</a></li>
+<li><a href="#org5d9d85f">2.3.1. Caveats</a></li>
 </ul>
 </li>
-<li><a href="#orgb44505e">2.4. Read the full article here.</a></li>
+<li><a href="#org417993f">2.4. Read the full article here.</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org70ed5b6" class="outline-2">
-<h2 id="org70ed5b6"><span class="section-number-2">1</span> Making tenets with CLQL that do the job of existing linters</h2>
+<div id="outline-container-org76d434b" class="outline-2">
+<h2 id="org76d434b"><span class="section-number-2">1</span> Making tenets with CLQL that do the job of existing linters</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 I started learning Go and CodeLingo / CLQL at the same time, so while I have found it generally easy and straightforward to create these tenets, I feel like I could've knocked them out even faster if I didn't need to look up answers to questions such as '<i>what is an interface in golang?</i>', for example. The process has been intuitive; I think in part to having a good naming convention. I've had to learn what CodeLingo is, what a '<b>tenet</b>' and a '<b>flow</b>' is. Long story short, they are just as what they sound like they are.<br />
 </p>
 </div>
 
-<div id="outline-container-org306c011" class="outline-3">
-<h3 id="org306c011"><span class="section-number-3">1.1</span> Defintions taken from the project docs</h3>
+<div id="outline-container-org8eddf3a" class="outline-3">
+<h3 id="org8eddf3a"><span class="section-number-3">1.1</span> Defintions taken from the project docs</h3>
 <div class="outline-text-3" id="text-1-1">
 <dl class="org-dl">
 <dt>tenet</dt><dd><p>
@@ -301,12 +301,12 @@ A Flow is an <i>automated</i> development <span class="underline">workflow</span
 </div>
 </div>
 
-<div id="outline-container-org81d78b0" class="outline-3">
-<h3 id="org81d78b0"><span class="section-number-3">1.2</span> The general process of writing one tenet</h3>
+<div id="outline-container-orgb3cf87b" class="outline-3">
+<h3 id="orgb3cf87b"><span class="section-number-3">1.2</span> The general process of writing one tenet</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-org7a016b3" class="outline-4">
-<h4 id="org7a016b3"><span class="section-number-4">1.2.1</span> Writing the CLQL</h4>
+<div id="outline-container-org6a4af06" class="outline-4">
+<h4 id="org6a4af06"><span class="section-number-4">1.2.1</span> Writing the CLQL</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 What is simple to implement in CodeLingo may be difficult for 3rd party linters, however, as this write-up should demonstrate.<br />
@@ -324,7 +324,7 @@ Typically, the generated query comprises the bulk of the code you end up with.  
 </div>
 
 <ol class="org-ol">
-<li><a id="orgdcb2f91"></a><b>Before and after:</b> Refining the CLQL<br />
+<li><a id="orgf404519"></a><b>Before and after:</b> Refining the CLQL<br />
 <div class="outline-text-5" id="text-1-2-1-1">
 <div class="org-src-container">
 <pre class="src src-yaml">import codelingo/ast/go
@@ -382,16 +382,16 @@ See the full article <a href="http://mullikine.github.io/codelingo-vs-linters/ma
 </div>
 </div>
 
-<div id="outline-container-orgc8dde71" class="outline-2">
-<h2 id="orgc8dde71"><span class="section-number-2">2</span> Statistical Summary</h2>
+<div id="outline-container-org1ffa130" class="outline-2">
+<h2 id="org1ffa130"><span class="section-number-2">2</span> Statistical Summary</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org4c29e6f" class="outline-3">
-<h3 id="org4c29e6f"><span class="section-number-3">2.1</span> Comparison of size in code</h3>
+<div id="outline-container-org6287e84" class="outline-3">
+<h3 id="org6287e84"><span class="section-number-3">2.1</span> Comparison of size in code</h3>
 <div class="outline-text-3" id="text-2-1">
 </div>
-<div id="outline-container-orgab10b22" class="outline-4">
-<h4 id="orgab10b22"><span class="section-number-4">2.1.1</span> Parser</h4>
+<div id="outline-container-orgcd01b52" class="outline-4">
+<h4 id="orgcd01b52"><span class="section-number-4">2.1.1</span> Parser</h4>
 <div class="outline-text-4" id="text-2-1-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -505,8 +505,8 @@ See the full article <a href="http://mullikine.github.io/codelingo-vs-linters/ma
 </div>
 </div>
 
-<div id="outline-container-org5188add" class="outline-4">
-<h4 id="org5188add"><span class="section-number-4">2.1.2</span> Unit tests</h4>
+<div id="outline-container-orgc144f65" class="outline-4">
+<h4 id="orgc144f65"><span class="section-number-4">2.1.2</span> Unit tests</h4>
 <div class="outline-text-4" id="text-2-1-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -612,8 +612,8 @@ See the full article <a href="http://mullikine.github.io/codelingo-vs-linters/ma
 </div>
 </div>
 
-<div id="outline-container-orgf2bd328" class="outline-4">
-<h4 id="orgf2bd328"><span class="section-number-4">2.1.3</span> Links to source code</h4>
+<div id="outline-container-org601bf54" class="outline-4">
+<h4 id="org601bf54"><span class="section-number-4">2.1.3</span> Links to source code</h4>
 <div class="outline-text-4" id="text-2-1-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -679,8 +679,8 @@ See the full article <a href="http://mullikine.github.io/codelingo-vs-linters/ma
 </tr>
 
 <tr>
-<td class="org-left">tested</td>
-<td class="org-left">blanket</td>
+<td class="org-left">tested<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup></td>
+<td class="org-left">blanket<sup><a id="fnr.3.100" class="footref" href="#fn.3">3</a></sup></td>
 <td class="org-left"><a href="https://github.com/codelingo/codelingo/blob/master/tenets/codelingo/go/tested/codelingo.yaml">codelingo.yaml</a></td>
 <td class="org-left">GitLab</td>
 <td class="org-left"><a href="https://gitlab.com/verygoodsoftwarenotvirus/blanket">verygoodsoftwarenotvirus/blanket</a></td>
@@ -692,8 +692,8 @@ See the full article <a href="http://mullikine.github.io/codelingo-vs-linters/ma
 </div>
 </div>
 
-<div id="outline-container-orgcd97e43" class="outline-3">
-<h3 id="orgcd97e43"><span class="section-number-3">2.2</span> The work it took to write these tenets</h3>
+<div id="outline-container-org69ed0e2" class="outline-3">
+<h3 id="org69ed0e2"><span class="section-number-3">2.2</span> The work it took to write these tenets</h3>
 <div class="outline-text-3" id="text-2-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -716,7 +716,7 @@ See the full article <a href="http://mullikine.github.io/codelingo-vs-linters/ma
 <th scope="col" class="org-left">tenet name</th>
 <th scope="col" class="org-left">time to write</th>
 <th scope="col" class="org-right">min clicks</th>
-<th scope="col" class="org-right">actual clicks<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup></th>
+<th scope="col" class="org-right">actual clicks<sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup></th>
 <th scope="col" class="org-left">reason for <b>generate query</b><sup><a id="fnr.1.100" class="footref" href="#fn.1">1</a></sup> click/s</th>
 <th scope="col" class="org-left">reason for time spent greater or less than 10 mins</th>
 </tr>
@@ -759,7 +759,7 @@ See the full article <a href="http://mullikine.github.io/codelingo-vs-linters/ma
 </tr>
 
 <tr>
-<td class="org-left">tested</td>
+<td class="org-left">tested<sup><a id="fnr.3.100" class="footref" href="#fn.3">3</a></sup></td>
 <td class="org-left">20 mins</td>
 <td class="org-right">1</td>
 <td class="org-right">2</td>
@@ -776,8 +776,8 @@ See the full article <a href="http://mullikine.github.io/codelingo-vs-linters/ma
 </div>
 </div>
 
-<div id="outline-container-org246e424" class="outline-3">
-<h3 id="org246e424"><span class="section-number-3">2.3</span> The work it took to write their unit tests</h3>
+<div id="outline-container-org513cc01" class="outline-3">
+<h3 id="org513cc01"><span class="section-number-3">2.3</span> The work it took to write their unit tests</h3>
 <div class="outline-text-3" id="text-2-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -800,11 +800,11 @@ See the full article <a href="http://mullikine.github.io/codelingo-vs-linters/ma
 <thead>
 <tr>
 <th scope="col" class="org-left">tenet name</th>
-<th scope="col" class="org-left">time to write<sup><a id="fnr.3.100" class="footref" href="#fn.3">3</a></sup></th>
-<th scope="col" class="org-right"><span class="underline">generate</span><sup><a id="fnr.1.100" class="footref" href="#fn.1">1</a></sup> clicks<sup><a id="fnr.3.100" class="footref" href="#fn.3">3</a></sup></th>
+<th scope="col" class="org-left">time to write<sup><a id="fnr.4.100" class="footref" href="#fn.4">4</a></sup></th>
+<th scope="col" class="org-right"><span class="underline">generate</span><sup><a id="fnr.1.100" class="footref" href="#fn.1">1</a></sup> clicks<sup><a id="fnr.4.100" class="footref" href="#fn.4">4</a></sup></th>
 <th scope="col" class="org-left">additional time</th>
 <th scope="col" class="org-left">reason for additional time</th>
-<th scope="col" class="org-right">test runs<sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup></th>
+<th scope="col" class="org-right">test runs<sup><a id="fnr.5" class="footref" href="#fn.5">5</a></sup></th>
 <th scope="col" class="org-left">reason for additional testing of unit tests</th>
 </tr>
 </thead>
@@ -850,7 +850,7 @@ See the full article <a href="http://mullikine.github.io/codelingo-vs-linters/ma
 </tr>
 
 <tr>
-<td class="org-left">tested</td>
+<td class="org-left">tested<sup><a id="fnr.3.100" class="footref" href="#fn.3">3</a></sup></td>
 <td class="org-left">20 mins</td>
 <td class="org-right">1</td>
 <td class="org-left">&#xa0;</td>
@@ -862,12 +862,12 @@ See the full article <a href="http://mullikine.github.io/codelingo-vs-linters/ma
 </table>
 </div>
 
-<div id="outline-container-orgc05aa11" class="outline-4">
-<h4 id="orgc05aa11"><span class="section-number-4">2.3.1</span> Caveats</h4>
+<div id="outline-container-org5d9d85f" class="outline-4">
+<h4 id="org5d9d85f"><span class="section-number-4">2.3.1</span> Caveats</h4>
 <div class="outline-text-4" id="text-2-3-1">
 </div>
 <ol class="org-ol">
-<li><a id="org7720797"></a>unconvert<br />
+<li><a id="org8bafd5b"></a>unconvert<br />
 <div class="outline-text-5" id="text-2-3-1-1">
 <ul class="org-ul">
 <li><p>
@@ -880,13 +880,22 @@ I ran the original linter on a repository to find an example of what to put into
 </ul>
 </div>
 </li>
+
+<li><a id="orgde6a8a8"></a>blanket<br />
+<div class="outline-text-5" id="text-2-3-1-2">
+<p>
+The tenet 'tested' doesn't look at the function call. Only the name of the testing function and compares it to the name of the function in the other file, which is definitely not the same as blanket.<br />
+It can, however, find if a method with the <span class="underline">name</span> 'TestMethod' was called (with an arbitrarily deep recusive nesting) in the '<sub>test.go</sub>' file, where seeing if a test method for 'Method' exists.<br />
+So it doesn't have the same recursive limitation as blanket, but may give false positives in some circumstances.<br />
+</p>
+</div>
+</li>
 </ol>
 </div>
 </div>
 
-
-<div id="outline-container-orgb44505e" class="outline-3">
-<h3 id="orgb44505e"><span class="section-number-3">2.4</span> Read the full article <a href="http://mullikine.github.io/codelingo-vs-linters/main.html">here</a>.</h3>
+<div id="outline-container-org417993f" class="outline-3">
+<h3 id="org417993f"><span class="section-number-3">2.4</span> Read the full article <a href="http://mullikine.github.io/codelingo-vs-linters/main.html">here</a>.</h3>
 <div class="outline-text-3" id="text-2-4">
 </div>
 </div>
@@ -905,10 +914,14 @@ The original linter did not contain unit tests.<br />
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
-These are approximations.<br />
+See caveats.<br />
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4">4</a></sup> <div class="footpara"><p class="footpara">
+These are approximations.<br />
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5">5</a></sup> <div class="footpara"><p class="footpara">
 The number of times I had to <b>test</b> the tenet.<br />
 </p></div></div>
 
@@ -918,7 +931,7 @@ The number of times I had to <b>test</b> the tenet.<br />
 <div id="postamble" class="status">
 <p class="date">Date: 2018-10-05 Fri 00:00</p>
 <p class="author">Author: Shane Mulligan</p>
-<p class="date">Created: 2018-10-08 Mon 17:30</p>
+<p class="date">Created: 2018-10-09 Tue 14:42</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
