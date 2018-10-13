@@ -1,0 +1,871 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-10-13 Sat 21:58 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Practical macros in Racket and how to work with them</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Kevin R. Stravers" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="org-main.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Practical macros in Racket and how to work with them
+<br />
+<span class="subtitle">Making parsers for automatic code review</span>
+</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orge58c52b">1. What's all this racket?</a></li>
+<li><a href="#orga4596c2">2. <code>syntax-case</code>, don't use it!</a></li>
+<li><a href="#orgc13e0fd">3. <code>with-syntax</code></a></li>
+<li><a href="#orgb09bedb">4. The <code>syntax-parse</code> family</a></li>
+<li><a href="#org553c122">5. make-rename-transformer</a></li>
+<li><a href="#orgb6e6af0">6. make-set!-transformer</a></li>
+<li><a href="#org5e71833">7. Syntax taints, what are they?</a></li>
+<li><a href="#org020e2c0">8. Literals</a></li>
+<li><a href="#org02cb4f4">9. Experimenting with the lowest level</a></li>
+<li><a href="#org6ebf95f">10. Syntax parameters, what are they for?</a></li>
+<li><a href="#org5853f06">11. I don't get it, how does syntax-parse work?</a></li>
+</ul>
+</div>
+</div>
+<p>
+A macro is central in any Lisp and must be mastered in order to master
+the language. However, Racket is in a state of macro chaos - at least in
+the official documentation. There's <code>define-syntax-rule</code>, <code>syntax-parse</code>,
+<code>syntax-case</code>, and so many more. How do we make sense of it? In this
+tutorial we'll investigate syntax transformers in Racket so we can get a
+complete picture.
+</p>
+
+<div id="outline-container-orge58c52b" class="outline-2">
+<h2 id="orge58c52b"><span class="section-number-2">1</span> What's all this racket?</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+I've looked through the racket documentation and connected most of the
+syntax transformers there. Here are the biggest ones and some utility
+functions.
+</p>
+
+<p>
+Arrows denote that one can be defined in terms of the other, e.g.:
+<code>define-simple-macro</code> can be defined in terms of <code>define-syntax-parser</code>.
+</p>
+
+<p>
+Dashed boxes are unimportant tools that ought to be deprecated.
+</p>
+
+<p>
+Red boxes indicate what I believe to be important tools, and the circles
+denote important syntax primitives.
+</p>
+
+<p>
+Bold boxes are important but not essential.
+</p>
+
+<p>
+Normal boxes are not that important, but good to know.
+</p>
+
+<p>
+For the new macro programmer this is quite a lot to take in, and there's
+a myriad of other tools that supplement these, but I can safely say that
+you can ignore everything except <code>define-syntax-parser</code> if you're new.
+Why? Because it's a typechecking syntax transformer and allows you to
+manipulate syntax in a complex manner. It also prevents you from having
+to use <code>define-syntax</code> together with <code>syntax-parse</code>. In essence it's a way
+to define macros in a clean manner.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga4596c2" class="outline-2">
+<h2 id="orga4596c2"><span class="section-number-2">2</span> <code>syntax-case</code>, don't use it!</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Why not use <code>syntax-case</code>? It appears to be an important primitive. Well
+to put it clearly: <code>syntax-case</code> is the typeless version of
+<code>syntax-parse</code>.There are some other differences in how arguments are
+applied and errors are reported, but what's in bold is the most
+important aspect. With <code>syntax-parse</code> we can assert that a term is an
+identifier or a keyword in a declarative manner whereas with <code>syntax-case</code>
+we'd have to write code that checks types during <code>macro-time</code>.
+<code>syntax-parse</code> is widely superior to <code>syntax-case</code>.
+</p>
+
+<p>
+We should ideally deprecate <code>syntax-case</code> for <code>end-user</code> usage.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc13e0fd" class="outline-2">
+<h2 id="orgc13e0fd"><span class="section-number-2">3</span> <code>with-syntax</code></h2>
+<div class="outline-text-2" id="text-3">
+<p>
+<code>with-syntax</code> is incredibly useful in <code>syntax-case</code> but inside <code>syntax-parse</code>
+we should use <code>#:with</code> instead:
+</p>
+
+<p>
+Examples:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-racket">(<span style="color: #a1db00;">require</span>&#160;syntax/parse/define)
+
+(define-syntax-parser&#160;with-example
+  [(\<span style="color: #a1db00;">_</span>&#160;a)
+   <span style="color: #cd5c5c;">#:with</span>&#160;(b:id&#160;<span style="color: #a1db00;">...</span>)&#160;#'(one&#160;two&#160;three)
+   #'(<span style="color: #d18aff;">list</span>&#160;a&#160;<span style="color: #2e8b57;">'b</span>&#160;<span style="color: #a1db00;">...</span>)])
+
+(with-example&#160;<span style="color: #2e8b57;">'zero</span>)
+<span style="color: #6c6c6c; font-style: italic;">; </span><span style="color: #6c6c6c; font-style: italic;">'(zero one two three)</span>
+</pre>
+</div>
+
+<p>
+The advantage of <code>#:with</code> over <code>with-syntax</code> is the use of types and better
+error reporting for <code>syntax-parse</code>.
+</p>
+
+<p>
+For reference, here's <code>with-syntax</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-racket">(<span style="color: #a1db00;">require</span>&#160;syntax/parse/define)
+
+(define-syntax-parser&#160;with-example
+  [(\<span style="color: #a1db00;">_</span>&#160;a)
+   (<span style="color: #a1db00;">with-syntax</span>&#160;([(b&#160;<span style="color: #a1db00;">...</span>)&#160;#'(one&#160;two&#160;three)])
+     #'(<span style="color: #d18aff;">list</span>&#160;a&#160;<span style="color: #2e8b57;">'b</span>&#160;<span style="color: #a1db00;">...</span>))])
+
+(with-example&#160;<span style="color: #2e8b57;">'zero</span>)
+<span style="color: #6c6c6c; font-style: italic;">; </span><span style="color: #6c6c6c; font-style: italic;">'(zero one two three)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb09bedb" class="outline-2">
+<h2 id="orgb09bedb"><span class="section-number-2">4</span> The <code>syntax-parse</code> family</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+<code>syntax-parse</code> is the primitive of the most advanced syntax transformer in
+racket (as far as I know). Here are some examples.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-racket">(<span style="color: #a1db00;">require</span>&#160;syntax/parse&#160;syntax/parse/define)
+
+(define-syntax-parser&#160;name
+  [(\<span style="color: #a1db00;">_</span>&#160;a&#160;b&#160;...+)
+   #'(<span style="color: #d18aff;">+</span>&#160;a&#160;(<span style="color: #d18aff;">-</span>&#160;b&#160;<span style="color: #a1db00;">...</span>))])
+
+(name&#160;<span style="color: #2e8b57;">1</span>&#160;<span style="color: #2e8b57;">2</span>&#160;<span style="color: #2e8b57;">3</span>&#160;<span style="color: #2e8b57;">4</span>)
+<span style="color: #6c6c6c; font-style: italic;">; </span><span style="color: #6c6c6c; font-style: italic;">-4</span>
+</pre>
+</div>
+
+<p>
+(define-syntax name
+(syntax-parser
+[(\_ a b &#x2026;+)
+#'(+ a (- b &#x2026;))]))
+(name 1 2 3 4)
+-4
+</p>
+
+<p>
+(define-syntax (name stx)
+(syntax-parse stx
+[(\_ a b &#x2026;+)
+#'(+ a (- b &#x2026;))]))
+(name 1 2 3 4)
+-4
+</p>
+
+<p>
+These forms are all acceptable depending on your situation. Most of the
+time we want to use define-syntax-parser because it saves us the effort
+of typing so much.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org553c122" class="outline-2">
+<h2 id="org553c122"><span class="section-number-2">5</span> make-rename-transformer</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+This special transformer is basically an alias that preserves identifier
+equality.
+</p>
+
+<p>
+(define-syntax l (make-rename-transformer #'let))
+(let ([a 1] [b 2]) (+ a b))
+3
+(l ([a 1] [b 2]) (+ a b))
+3
+(free-identifier=? #'let #'l)
+#t
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb6e6af0" class="outline-2">
+<h2 id="orgb6e6af0"><span class="section-number-2">6</span> make-set!-transformer</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Another special transformer is the set!-transformer, it allows you to
+transform a mutation of an identifier.
+</p>
+
+<p>
+(define a 0)
+(define b 1)
+(let-syntax ([a (make-set!-transformer
+(syntax-parser #:literals (set!)
+[(set! \_ v) #'(set! b v)]
+[i:id #'a]))])
+(set! a 2)
+(list a b))
+'(0 2)
+</p>
+
+<p>
+I haven't had much use for this in my code so far, but I guess it's fine
+to keep in mind in case you need it.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5e71833" class="outline-2">
+<h2 id="org5e71833"><span class="section-number-2">7</span> Syntax taints, what are they?</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+The documentation on syntax taints is confusing to me. Here's my
+synopsis: It prevents the arbitrary use of identifiers: if you extract
+any part of another macro's armed result, then that extracted part is
+tainted and can't be used further. Allow me to exemplify:
+</p>
+
+<p>
+Examples:
+</p>
+
+<p>
+(require syntax/parse/define)
+(define-syntax-parser a
+[(\_) (syntax-protect #'(c))])
+; (c) is armed here
+(define-syntax-parser b
+[(\_)
+; c is extracted from (c), which taints the result c
+#:with d (car (syntax-e (local-expand #'(a) 'expression #f)))
+; the macro expander inserts d which results in #'(+ TAINTED:c), so the expander rejects this
+#'(+ d)])
+(b)
+eval:22:0: #%top: cannot use identifier tainted by macro
+transformation
+in: #%top
+</p>
+
+<p>
+This rejects the expression (+ c) because the identifier c is tainted.
+Why is it tainted? Because syntax-e tainted it. Why did it taint it?
+Because the syntax-object was armed.
+</p>
+
+<p>
+(require syntax/parse/define)
+(define c 10)
+(define-syntax-parser a
+[(\_) (syntax-protect #'c)])
+(define-syntax-parser b
+[(\_)
+#:with d #'(a)
+#'(displayln d)])
+(b)
+10
+</p>
+
+<p>
+This shows that the expander accepts: armed and clean syntax objects,
+but rejects tainted syntax objects.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org020e2c0" class="outline-2">
+<h2 id="org020e2c0"><span class="section-number-2">8</span> Literals</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+syntax-parse allows the use of literals:
+</p>
+
+<p>
+(require syntax/parse/define)
+(define-syntax-parser my-parser
+#:datum-literals (a-word)
+[(\_ a-word b-word)
+#'(begin
+(displayln 'a-word)
+(displayln 'b-word))])
+(my-parser a-word 10)
+a-word
+10
+</p>
+
+<p>
+#:literals is also possible. Then there's a need for an identifier to
+exist in the enclosing phase:
+</p>
+
+<p>
+(define-syntax-parser my-parser
+#:literals (is-this-bound?)
+[(\_ is-this-bound? b-word)
+#'(begin
+(displayln 'a-word)
+(displayln 'b-word))])
+(my-parser is-this-bound? 10)
+eval:33:0: syntax-parser: literal is unbound in phase 0
+(phase 0 relative to the enclosing module)
+at: is-this-bound?
+in: (syntax-parser #:literals (is-this-bound?) ((\_
+is-this-bound? b-word) (syntax (begin (displayln (quote
+a-word)) (displayln (quote b-word))))))
+</p>
+
+<p>
+We can use literals to discriminate between real and fake identifiers:
+</p>
+
+<p>
+(define-syntax-parser is-it-let?
+[(\_ (~literal let)) #'#t]
+[(\_ (~datum let)) #'#f]
+[\_ #'#f])
+(is-it-let? let)
+#t
+(let ([let 0])
+(is-it-let? let))
+#f
+</p>
+
+<p>
+Note that (~literal x) as a pattern is the same as specifying #:literals
+(x) as keyword argument and using x as a pattern. Similarly for
+#:datum-literals (x).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org02cb4f4" class="outline-2">
+<h2 id="org02cb4f4"><span class="section-number-2">9</span> Experimenting with the lowest level</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+Using define-syntax we can define simple functions that are essentially
+macros that don't pattern match. This style allows you to get to know
+the low-level API, and I believe it to be very important to experiment
+with to understand what syntax-parse is actually doing.
+</p>
+
+<p>
+Vision is the most important thing, let's look at what's going on!
+</p>
+
+<p>
+; Note: a macro only takes on argument, which contains the entire syntax object
+(define-syntax (name stx)
+(displayln stx))
+(name hello world)
+#&lt;syntax:39:0 (name hello world)&gt;
+name: received value from syntax expander was not syntax
+received: #&lt;void&gt;
+</p>
+
+<p>
+We need to add a result that is a syntax object:
+</p>
+
+<p>
+(define-syntax (name stx)
+(displayln stx)
+#'(void))
+(name hello world)
+#&lt;syntax:41:0 (name hello world)&gt;
+</p>
+
+<p>
+Now to extract some values. There are primitives used to extract
+information from syntax objects.
+</p>
+
+<p>
+(define-syntax (name stx)
+(displayln `("stx" ,stx))
+(displayln `("syntax-e" ,(syntax-e stx)))
+(displayln `("syntax-&gt;list" ,(syntax-&gt;list stx)))
+(displayln `("syntax-source" ,(syntax-source stx)))
+(displayln `("syntax-line" ,(syntax-line stx)))
+(displayln `("syntax-column" ,(syntax-column stx)))
+(displayln `("syntax-position" ,(syntax-position stx)))
+(displayln `("syntax?" ,(syntax? stx)))
+(displayln `("syntax-span" ,(syntax-span stx)))
+(displayln `("syntax-original?" ,(syntax-original? stx)))
+(displayln `("syntax-source-module" ,(syntax-source-module stx)))
+(displayln `("syntax-&gt;datum" ,(syntax-&gt;datum stx)))
+#'(void))
+(name hello world)
+(stx #&lt;syntax:43:0 (name hello world)&gt;)
+(syntax-e (#&lt;syntax:43:0 name&gt; #&lt;syntax:43:0 hello&gt; #&lt;syntax:43:0 world&gt;))
+(syntax-&gt;list (#&lt;syntax:43:0 name&gt; #&lt;syntax:43:0 hello&gt; #&lt;syntax:43:0 world&gt;))
+(syntax-source eval)
+(syntax-line 43)
+(syntax-column 0)
+(syntax-position 43)
+(syntax? #t)
+(syntax-span 1)
+(syntax-original? #f)
+(syntax-source-module #f)
+(syntax-&gt;datum (name hello world))
+</p>
+
+<p>
+These are some of the functions that we can use on syntax objects.
+There's another one that allows us to turn datums into syntax called
+datum-&gt;syntax. Let's see if we can construct a simple macro based on
+this and syntax-e:
+</p>
+
+<p>
+We're gonna make (infix 1 + 2) return (+ 1 2).
+</p>
+
+<p>
+(define-syntax (infix stx)
+(let ([elems (syntax-e stx)])
+(when (not (= (length elems) 4))
+(raise-syntax-error "there should be 3 elements"))
+(datum-&gt;syntax stx `(,(caddr elems) ,(cadr elems) ,(cadddr elems)))))
+(infix 1 + 2)
+3
+</p>
+
+<p>
+Notice how there are 4 elements in the list, because infix is inside it
+too. We also need to provide a context for datum-&gt;syntax. The
+identifiers used in the result will be referenced from that context. In
+this case we used stx as the context. If you use #f, then + won't be
+found and we have an error. The macro is essentially equivalent to:
+</p>
+
+<p>
+(define-syntax-parser infix
+[(\_ a op b)
+#'(op a b)])
+(infix 1 + 2)
+3
+</p>
+
+<p>
+With syntax-parse the context is dependent on the input. This way we can
+safely refer to variables from the caller's scope. This safety is what
+we call "macro hygiene", and allows us to compose macros without
+breaking them.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6ebf95f" class="outline-2">
+<h2 id="org6ebf95f"><span class="section-number-2">10</span> Syntax parameters, what are they for?</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+An anaphoric macro is a macro that can define macro-local variables.
+This isn't composable because replacing code with anaphoric macros may
+break it, I present you exhibit A, the unhygienic macro:
+</p>
+
+<p>
+(define-syntax (aif stx)
+(let ([elems (syntax-e stx)])
+(datum-&gt;syntax stx
+`(let ([it ,(cadr elems)])
+(if it ,(caddr elems) ,(cadddr elems))))))
+(define it 10)
+(aif (member 2 '(1 2 3))
+(displayln it)
+(void))
+(2 3)
+</p>
+
+<p>
+The programmer wanted to print 10 but instead something else got
+printed. This is a trivial example but quickly balloons with bigger
+programs and bigger macros.
+</p>
+
+<p>
+Let's instead use syntax-parameters. These can be used hygienically:
+</p>
+
+<p>
+(require racket/stxparam)
+</p>
+
+<p>
+(define-syntax-parameter it (syntax-parser))
+(define-syntax-parser aif
+[(\_ condition then otherwise)
+#'(let ([t condition])
+(syntax-parameterize ([it (syntax-parser [\_ #'t])])
+(if t then otherwise)))])
+(aif (member 2 '(1 2 3))
+(displayln it)
+(void))
+(2 3)
+</p>
+
+<p>
+If we now have a declaration of it, that will override the syntax
+parameter.
+</p>
+
+<p>
+(let ([it 10])
+(aif (member 2 '(1 2 3))
+(displayln it)
+(void)))
+10
+</p>
+
+<p>
+During normal racket evaluation (from a file) you'll get a
+duplicate-identifier error, in this context there's another error, but
+the point is that there is an error instead of letting the programmer
+scratch his head.
+</p>
+
+<p>
+(define it 10)
+(aif (member 2 '(1 2 3))
+(displayln it)
+(void))
+eval:53:0: syntax-parameterize: not bound as a syntax
+parameter
+at: it
+in: (syntax-parameterize ((it (syntax-parser (&ensp;(syntax
+t))))) (if t (displayln it) (void)))
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5853f06" class="outline-2">
+<h2 id="org5853f06"><span class="section-number-2">11</span> I don't get it, how does syntax-parse work?</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+syntax-parse works by replacing all syntax objects after the pattern
+match with the results from the pattern match:
+</p>
+
+<p>
+(syntax-parse #'(this is some syntax)
+[(here is the pattern) #'(pattern is put here)])
+#&lt;syntax:58:0 (syntax is put this)&gt;
+</p>
+
+<p>
+So stuff like put is not in the pattern, so it's just pasted as-is.
+Another cool thing is that you can run arbitrary code in the body:
+</p>
+
+<p>
+(syntax-parse #'(this is some syntax)
+[(here is the pattern)
+(displayln "This is arbitrary code, we could download webpages for use in this macro, whatever you wish")
+#'(pattern is put here)])
+This is arbitrary code, we could download webpages for use in this macro, whatever you wish
+#&lt;syntax:59:0 (syntax is put this)&gt;
+</p>
+
+<p>
+There are also some special pattern forms:
+</p>
+
+<p>
+(syntax-parse #'(this is some syntax)
+[(here &#x2026;) #'(here &#x2026; put stuff)])
+#&lt;syntax:60:0 (this is some syntax put stuff)&gt;
+</p>
+
+<p>
+&#x2026; is a postfix operator that makes syntax-parse consider whatever is
+before as a list of that pattern. It will expand this list in the
+expander when it is encountered. This allows us to create pretty complex
+macros:
+</p>
+
+<p>
+&#x2026;+ means one or more.
+</p>
+
+<p>
+(syntax-parse #'((this is) (some syntax))
+[((here there) &#x2026;+) #'(here &#x2026; there &#x2026; put stuff)])
+#&lt;syntax:61:0 (this some is syntax put stuff)&gt;
+</p>
+
+<p>
+They can even be nested
+</p>
+
+<p>
+(syntax-parse #'((this is) (some more stuff syntax))
+[((here &#x2026; there) &#x2026;+) #'(here &#x2026; &#x2026; there &#x2026; put stuff)])
+#&lt;syntax:62:0 (this some more stuff is synt&#x2026;&gt;
+</p>
+
+<p>
+Note that the &#x2026; operator in the syntax has left-associativity, so here
+&#x2026; &#x2026; reduces to (in this case) ((this) (some more stuff)) &#x2026; &#x2026;,
+which reduces to (this) &#x2026; (some more stuff) &#x2026; which reduces to this
+some more stuff.</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2017-11-17 Fri 00:00</p>
+<p class="author">Author: Kevin R. Stravers</p>
+<p class="date">Created: 2018-10-13 Sat 21:58</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
