@@ -140,7 +140,11 @@ These examples are awkwardly under the ~syntax-case~ section.
 * TODO [#A] Learn to use the ~syntax-parse~ family
 
 ~syntax-parse~ is the primitive of the most advanced syntax transformer in
-racket (as far as I know). Here are some examples of how to use ~syntax-parse~.
+racket (as far as I know).
+
+Above, we used ~define-syntax-parser~. Expanded out, this uses the ~syntax-parse~ primitive.
+
+Here are some examples of how to use ~syntax-parse~.
 
 #+BEGIN_SRC racket
   ;; Remember to require this
