@@ -168,7 +168,7 @@ Most of the time we want to use ~define-syntax-parser~ because it saves us the e
 
 This defines some syntax which itself is defined by a parser, just like below.
 
-** Perfectly fine example B: (expanded). Uses ~define-syntax~
+** Perfectly fine example B: (expanded). Uses ~define-syntax~ ∘ ~syntax-parse~
 This is an expanded version of the above.
 
 #+BEGIN_SRC racket
@@ -181,7 +181,7 @@ This is an expanded version of the above.
   ; -4
 #+END_SRC
 
-** Perfectly fine example C: (shorthand). Uses ~define-syntax~
+** Perfectly fine example C: (shorthand). Uses ~define-syntax~ ∘ ~syntax-parser~ -- parseR
 - ~stx~ is inferred here
 #+BEGIN_SRC racket
   (define-syntax name
