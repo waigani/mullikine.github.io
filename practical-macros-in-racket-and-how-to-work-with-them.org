@@ -69,8 +69,8 @@ The *result* of the ~with-syntax~ form is the result of the _last body_, which i
 
 -----
 
-But don't use ~with-syntax~ anywhere else!
-- ~with-syntax~ is incredibly useful in ~syntax-case~, but
+But don't use ~with-syntax~ with ~syntax-parse~!
+- ~with-syntax~ is incredibly useful in and alongside ~syntax-case~, but
 - inside ~syntax-parse~ we should use ~#:with~ instead.
 
 *** Examples: ~#:with~ vs ~with-syntax~ for use with ~define-syntax-parser~
