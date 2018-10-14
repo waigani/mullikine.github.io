@@ -527,7 +527,7 @@ match_ with the results from the pattern match:
 
 ~put~ is _*not* in the pattern_, so it's just pasted /as-is/.
 
-** Another cool thing is that you can run arbitrary code in the body:
+** Another cool thing: you can run arbitrary code in the body:
 
 #+BEGIN_SRC racket
   (syntax-parse #'(this is some syntax)
