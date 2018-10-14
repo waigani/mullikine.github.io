@@ -122,7 +122,7 @@ racket (as far as I know). Here are some examples of how to use ~syntax-parse~.
   ;; Remember to require this
   (require syntax/parse syntax/parse/define)
 
-  ;; Or do you do this? -- either/or
+  ;; Or do you do this? -- either/or I guess
   (require syntax/parse/define (for-syntax racket))
 #+END_SRC
 
