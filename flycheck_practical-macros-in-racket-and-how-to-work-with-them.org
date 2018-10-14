@@ -48,7 +48,7 @@ to use ~define-syntax~ together with ~syntax-parse~. In essence it's a way
 to define macros in a clean manner.
 
 ** Table of forms
-This is required knowledge for continuing.
+Keep this in mind as you continue reading.
 
 | syntax | description                                                                                                                                                                                                         |
 |----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
