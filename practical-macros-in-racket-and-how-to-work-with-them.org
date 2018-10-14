@@ -74,8 +74,10 @@ But don't use ~with-syntax~ with ~syntax-parse~!
 - inside ~syntax-parse~ we should use ~#:with~ instead.
 
 *** Examples: ~#:with~ vs ~with-syntax~ for use with ~define-syntax-parser~
-The advantage of ~#:with~ over ~with-syntax~ is the use of types and better
-error reporting for ~syntax-parse~.
+The advantage of ~#:with~ over ~with-syntax~ is the _use of types and better
+error reporting_ for ~syntax-parse~.
+
+-----
 
 This is awkwardly under the ~syntax-case~ section. ~with-syntax~ is the only thing here from the ~syntax-case~ family.
 
