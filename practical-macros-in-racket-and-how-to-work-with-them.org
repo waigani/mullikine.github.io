@@ -239,7 +239,8 @@ Examples:
     [(\_)
      ; c is extracted from (c), which taints the result c
      #:with d (car (syntax-e (local-expand #'(a) 'expression #f)))
-     ; the macro expander inserts d which results in #'(+ TAINTED:c), so the expander rejects this
+     ; the macro expander inserts d which results in #'(+ TAINTED:c),
+     ; so the expander rejects this
      #'(+ d)])
 
   (b)
