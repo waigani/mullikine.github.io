@@ -47,7 +47,7 @@ manipulate syntax in a complex manner. It also prevents you from having
 to use ~define-syntax~ together with ~syntax-parse~. In essence it's a way
 to define macros in a clean manner.
 
-* DISCARD ~syntax-case~, the *typeless* version of ~syntax-parse~. Don't use it!
+* DISCARD ~syntax-case~ (the *typeless* version of ~syntax-parse~). Don't use it!
 
 + ~syntax-case~ :: _Sucks_ because you must write additional code to check the type during /macro/-time.
 + ~syntax-parse~ :: _Rules_ because you can assert that a term is an /identifier/ *or* a /keyword/ in a declarative manner.
@@ -58,25 +58,23 @@ to define macros in a clean manner.
 
 - ~syntax-parse~ is widely superior to ~syntax-case~.
 
-** If you're thinking of using ~syntax-case~ then you can use ~with-syntax~
+** If you do use ~syntax-case~ then you can (and should) use ~with-syntax~ too
 
-*** ~with-syntax~
+*** ~with-syntax~ -- similar-to but should be used alongside ~syntax-case~
 
-Similar to ~syntax-case~, in that it matches a pattern to a syntax object.
+| *Similar* to ~syntax-case~ | it matches a pattern to a syntax object                                    |
+| *Unlike* ~syntax-case~     | all patterns are matched, each to the result of a corresponding ~stx-expr~ |
 
-Unlike syntax-case, all patterns are matched, each to the result of a corresponding ~stx-expr~, and the pattern variables from all matches (which must be distinct) are bound with a single body sequence.
+The *result* of the ~with-syntax~ form is the result of the _last body_, which is in tail position with respect to the ~with-syntax~ form.
 
-The result of the with-syntax form is the result of the last body, which is in tail position with respect to the with-syntax form.
-
-~with-syntax~
+-----
 
 + But don't use ~with-syntax~ anywhere else!
- -----
 
  - ~with-syntax~ is incredibly useful in ~syntax-case~, but
  - inside ~syntax-parse~ we should use ~#:with~ instead.
 
-*** Examples:
+*** Examples: ~#:with~ vs ~with-syntax~ for use with ~define-syntax-parser~
 The advantage of ~#:with~ over ~with-syntax~ is the use of types and better
 error reporting for ~syntax-parse~.
 
