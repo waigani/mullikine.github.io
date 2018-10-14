@@ -1,12 +1,15 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org-main.css"/>
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="magit.css"/>
-#+TITLE:     Practical macros in Racket and how to work with them
+#+TITLE:     Practical macros in Racket 
+#+SUBTITLE:  and how to work with them
 #+AUTHOR:    Kevin R. Stravers
 #+EMAIL:     mullikine@gmail.com
 #+DATE:      <2017-11-17>
 #+LANGUAGE:  en
 
-* Read the original article [[https://kevin.stravers.net/2017/11/practical-macros-in-racket-and-how-to-work-with-them.html][here]].
+* Read the original article [[https://kevin.stravers.net/2017/11/practical-macros-in-racket-and-how-to-work-with-them.html][_here_]].
+
+| Written by: | *Kevin R. Stravers* | <2017-11-17>   |
 
 * Practical macros in Racket and how to work with them
 
@@ -92,7 +95,7 @@ error reporting for ~syntax-parse~.
   ; '(zero one two three)
 #+END_SRC
 
-**** diff: ~#:with~ vs ~with-syntax~
+**** ~#:with~ vs ~with-syntax~
 - ~with-syntax~ uses more parentheses.
 
 #+BEGIN_EXPORT html
