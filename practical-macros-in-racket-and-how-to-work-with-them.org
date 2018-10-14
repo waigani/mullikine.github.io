@@ -29,15 +29,15 @@ functions.
 #+NAME:relationships of the various syntax transformers
 [[file:macro-graph.png]]
 
-| symbol        | meaning                                              | example                                                                                  |
-|---------------+------------------------------------------------------+------------------------------------------------------------------------------------------|
-| _*Arrows*_    | Denote that one can be defined in terms of the other | ~define-simple-macro~ ~->~ can be defined in terms of ~define-syntax-parser~.            |
-| _*Red boxes*_ | Indicate what I believe to be important _tools_      | ~define-syntax-parser~, ~define/syntax-parse~, ~syntax-protect~, ~make-set!-transformer~ |
-| _*circles*_   | Denote important _syntax primitives_.                | ~define-syntax~, ~syntax-parse~, ~syntax-case~                                           |
-| Bold boxes    | Important but not essential.                         | ~define-syntaxes~, ~begin-for-syntax~, ~define-simple-macro~, ~syntax-parser~            |
-| Normal boxes  | Not that important, but good to know.                | ~define~, ~syntax-arm~, ~local-expand~, ~free-identifier=?~                        |
-|---------------+------------------------------------------------------+------------------------------------------------------------------------------------------|
-| Dashed boxes  | Unimportant tools that ought to be deprecated.       | ~define-syntax-rule~, ~syntax-rules~, ~with-syntax~, ~with-syntax*~, ~define-with-syntax~, ~syntax-id-rules~ |
+| symbol        | meaning                                                     | example                                                                                                      |
+|---------------+-------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------|
+| _*Arrows*_    | Denote that ~one~ /(~->~ can be defined in terms of)/ ~the other~ | ~define-simple-macro~ /(~->~ can be defined in terms of)/ ~define-syntax-parser~.                            |
+| _*Red boxes*_ | Indicate what I believe to be important _tools_             | ~define-syntax-parser~, ~define/syntax-parse~, ~syntax-protect~, ~make-set!-transformer~                     |
+| _*circles*_   | Denote important _syntax primitives_.                       | ~define-syntax~, ~syntax-parse~, ~syntax-case~                                                               |
+| Bold boxes    | Important but not essential.                                | ~define-syntaxes~, ~begin-for-syntax~, ~define-simple-macro~, ~syntax-parser~                                |
+| Normal boxes  | Not that important, but good to know.                       | ~define~, ~syntax-arm~, ~local-expand~, ~free-identifier=?~                                                  |
+|---------------+-------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------|
+| Dashed boxes  | Unimportant tools that ought to be deprecated.              | ~define-syntax-rule~, ~syntax-rules~, ~with-syntax~, ~with-syntax*~, ~define-with-syntax~, ~syntax-id-rules~ |
 
 For the new macro programmer this is quite a lot to take in, and there's
 a myriad of other tools that supplement these, but I can safely say that
