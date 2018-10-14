@@ -118,7 +118,7 @@ error reporting for ~syntax-parse~.
 ~syntax-parse~ is the primitive of the most advanced syntax transformer in
 racket (as far as I know). Here are some examples.
 
-** Example A: (The most concise way). Uses ~define-syntax-parser~
+** Example A: (most concise). Uses ~define-syntax-parser~
 Most of the time we want to use ~define-syntax-parser~ because it saves us the effort of typing ~syntax-parse~ and ~stx~.
 
 #+BEGIN_SRC racket
@@ -132,7 +132,7 @@ Most of the time we want to use ~define-syntax-parser~ because it saves us the e
   ; -4
 #+END_SRC
 
-** Perfectly fine example B: (The most expanded way)
+** Perfectly fine example B: (expanded). Uses ~define-syntax~
 #+BEGIN_SRC racket
   (define-syntax (name stx)
     (syntax-parse stx
@@ -143,7 +143,7 @@ Most of the time we want to use ~define-syntax-parser~ because it saves us the e
   ; -4
 #+END_SRC
 
-** Perfectly fine example C: (shorthand, expanded)
+** Perfectly fine example C: (shorthand). Uses ~define-syntax~
 - ~stx~ is inferred here
 #+BEGIN_SRC racket
   (define-syntax name
@@ -154,6 +154,22 @@ Most of the time we want to use ~define-syntax-parser~ because it saves us the e
   (name 1 2 3 4)
   ; -4
 #+END_SRC
+
+** ~define-syntax-parser~ vs shorthand ~define-syntax~
+#+BEGIN_EXPORT html
+<div class="org-src-container">
+    <pre>
+<span class="magit-diff-removed">-(define-syntax-parser </span><span class="magit-diff-removed"><span class="diff-refine-removed">name</span></span><span class="magit-diff-removed">
+-  [(\_ a b ...+)
+-   #'(+ a (- b ...))])
+</span><span class="magit-diff-added">+(define-syntax </span><span class="magit-diff-added"><span class="diff-refine-added">name
++  (syntax</span></span><span class="magit-diff-added">-parser
++    [(\_ a b ...+)
++     #'(+ a (- b ...))]</span><span class="magit-diff-added"><span class="diff-refine-added">)</span></span><span class="magit-diff-added">)
+</span>
+</pre>
+</div>
+#+END_EXPORT
 
 * ~make-rename-transformer~
 
