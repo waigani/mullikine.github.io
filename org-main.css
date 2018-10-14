@@ -1765,3 +1765,10 @@ pre {
     border: none;
     box-shadow:none;
 }
+
+hr {
+    border: none;
+    padding: 0.1em;
+    margin: 0.4em 0.4em;
+    background: #eee;
+}
