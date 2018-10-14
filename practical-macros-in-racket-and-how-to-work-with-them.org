@@ -52,34 +52,35 @@ to define macros in a clean manner.
 + ~syntax-case~ :: _Sucks_ because you must write additional code to check the type during /macro/-time.
 + ~syntax-parse~ :: _Rules_ because you can assert that a term is an /identifier/ *or* a /keyword/ in a declarative manner.
 
+
 -----
 
 - There are also some other differences in how _arguments are applied_ and _errors are reported_.
 
 - ~syntax-parse~ is widely superior to ~syntax-case~.
 
+-----
+
++ ~with-syntax~ :: It's ~syntax-case~'s sibling and used a little differently.
+
 ** If you do use ~syntax-case~ then you can (and should) use ~with-syntax~ too
 
-*** ~with-syntax~ very similar to /(but should be used alongside)/ ~syntax-case~
+*** ~with-syntax~ should be used alongside ~syntax-case~
 ~with-syntax~ is part of the same family of *_[[http://racket/reference/stx-patterns.html#%28form._%28%28lib._racket%2Fprivate%2Fstxcase-scheme..rkt%29._with-syntax%29%29][Pattern-Based Syntax Matching]]_* forms as ~syntax-case~ and is nearly identical to ~syntax-case~ under the hood:
   | *Similar* to ~syntax-case~ | it matches a pattern to a syntax object                                    |
   | *Unlike* ~syntax-case~     | all patterns are matched, each to the result of a corresponding ~stx-expr~ |
   
 The *result* of the ~with-syntax~ form is the result of the _last body_, which is in tail position with respect to the ~with-syntax~ form. This is what ~syntax-case~ does too.
 
------
-
-But don't use ~with-syntax~ with ~syntax-parse~!
+But /don't/ use ~with-syntax~ with ~syntax-parse~!
 - ~with-syntax~ is incredibly useful in and alongside ~syntax-case~, but
-- inside ~syntax-parse~ we should use ~#:with~ instead.
+- inside ~syntax-parse~ we should use ~#:with~ instead for the same type of functionality.
 
 *** Examples: ~#:with~ vs ~with-syntax~ for use with ~define-syntax-parser~
 The advantage of ~#:with~ over ~with-syntax~ is the _use of types and better
 error reporting_ for ~syntax-parse~.
 
------
-
-This is awkwardly under the ~syntax-case~ section. ~with-syntax~ is the only thing here from the ~syntax-case~ family.
+These examples are awkwardly under the ~syntax-case~ section.
 
 #+BEGIN_SRC racket
   ; Define this so we can use (define-syntax-parser)
