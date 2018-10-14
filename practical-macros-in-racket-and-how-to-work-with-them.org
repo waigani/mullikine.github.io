@@ -1,4 +1,5 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="magit.css"/>
 #+TITLE:     Practical macros in Racket and how to work with them
 #+AUTHOR:    Kevin R. Stravers
 #+EMAIL:     mullikine@gmail.com
@@ -90,6 +91,23 @@ error reporting for ~syntax-parse~.
   (with-example 'zero)
   ; '(zero one two three)
 #+END_SRC
+
+**** diff: ~#:with~ vs ~with-syntax~
+- ~with-syntax~ uses more parentheses.
+
+#+BEGIN_EXPORT html
+<div class="org-src-container">
+    <pre class="src">
+ (define-syntax-parser with-example
+   [(\_ a)
+</span><span class="magit-diff-removed">-   </span><span class="magit-diff-removed"><span class="diff-refine-removed">#:</span></span><span class="magit-diff-removed">with (b</span><span class="magit-diff-removed"><span class="diff-refine-removed">:id</span></span><span class="magit-diff-removed"> ...) #'(one two three)
+-   #'(list a 'b ...)])
+</span><span class="magit-diff-added">+   </span><span class="magit-diff-added"><span class="diff-refine-added">(</span></span><span class="magit-diff-added">with</span><span class="magit-diff-added"><span class="diff-refine-added">-syntax</span></span><span class="magit-diff-added"> (</span><span class="magit-diff-added"><span class="diff-refine-added">[(</span></span><span class="magit-diff-added">b ...) #'(one two three)</span><span class="magit-diff-added"><span class="diff-refine-added">])</span></span><span class="magit-diff-added">
++     #'(list a 'b ...</span><span class="magit-diff-added"><span class="diff-refine-added">)</span></span><span class="magit-diff-added">)])
+</span>
+</pre>
+</div>
+#+END_EXPORT
 
 * The ~syntax-parse~ family
 
