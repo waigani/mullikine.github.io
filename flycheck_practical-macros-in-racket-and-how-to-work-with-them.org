@@ -47,8 +47,8 @@ manipulate syntax in a complex manner. It also prevents you from having
 to use ~define-syntax~ together with ~syntax-parse~. In essence it's a way
 to define macros in a clean manner.
 
-* Table of forms
-This is required knowledge.
+** Table of forms
+This is required knowledge for continuing.
 
 | syntax | description                                                                                                                                                                                                         |
 |----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
