@@ -5,6 +5,8 @@
 #+DATE:      <2017-11-17>
 #+LANGUAGE:  en
 
+* Read the original article [[https://kevin.stravers.net/2017/11/practical-macros-in-racket-and-how-to-work-with-them.html][here]].
+
 * Practical macros in Racket and how to work with them
 
 A macro is central in any Lisp and must be mastered in order to master
@@ -514,3 +516,5 @@ Note that the ~...~ operator in the syntax has left-associativity, so:
 - ~here ... ...~ /reduces to/ (in this case) ~((this) (some more stuff)) ...  ...~
 - which /reduces to/ ~(this) ... (some more stuff) ...~
 - which /reduces to/ ~this some more stuff~
+
+* Read the original article [[https://kevin.stravers.net/2017/11/practical-macros-in-racket-and-how-to-work-with-them.html][here]].
