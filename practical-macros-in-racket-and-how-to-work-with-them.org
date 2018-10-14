@@ -22,16 +22,18 @@ I've looked through the racket documentation and connected most of the
 syntax transformers there. Here are the biggest ones and some utility
 functions.
 
+#+NAME:relationships of the various syntax transformers
 [[file:macro-graph.png]]
 
-| symbol       | meaning                                              | example                                                                  |
-|--------------+------------------------------------------------------+--------------------------------------------------------------------------|
-| Arrows       | Denote that one can be defined in terms of the other | ~define-simple-macro~ can be defined in terms of ~define-syntax-parser~. |
-| Dashed boxes | Unimportant tools that ought to be deprecated.       |                                                                          |
-| Red boxes    | Indicate what I believe to be important tools        |                                                                          |
-| circles      | Denote important syntax primitives.                  |                                                                          |
-| Bold boxes   | Important but not essential.                         |                                                                          |
-| Normal boxes | Not that important, but good to know.                |                                                                          |
+| symbol        | meaning                                              | example                                                                                  |
+|---------------+------------------------------------------------------+------------------------------------------------------------------------------------------|
+| _*Arrows*_    | Denote that one can be defined in terms of the other | ~define-simple-macro~ ~->~ can be defined in terms of ~define-syntax-parser~.            |
+| _*Red boxes*_ | Indicate what I believe to be important _tools_      | ~define-syntax-parser~, ~define/syntax-parse~, ~syntax-protect~, ~make-set!-transformer~ |
+| _*circles*_   | Denote important _syntax primitives_.                | ~define-syntax~, ~syntax-parse~, ~syntax-case~                                           |
+| Bold boxes    | Important but not essential.                         | ~define-syntaxes~, ~begin-for-syntax~, ~define-simple-macro~, ~syntax-parser~            |
+| Normal boxes  | Not that important, but good to know.                | ~define~, ~syntax-arm~, ~local-expand~, ~free-identifier=?~                        |
+|---------------+------------------------------------------------------+------------------------------------------------------------------------------------------|
+| Dashed boxes  | Unimportant tools that ought to be deprecated.       | ~define-syntax-rule~, ~syntax-rules~, ~with-syntax~, ~with-syntax*~, ~define-with-syntax~, ~syntax-id-rules~ |
 
 For the new macro programmer this is quite a lot to take in, and there's
 a myriad of other tools that supplement these, but I can safely say that
@@ -283,7 +285,7 @@ We can use literals to discriminate between real and fake identifiers:
 #+END_SRC
 
 Note that ~(~literal x)~ as a pattern is the same as specifying ~#:literals
-(x)~ as keyword argument and using x as a pattern. Similarly for
+(x)~ as keyword argument and using ~x~ as a pattern. Similarly for
 ~#:datum-literals (x)~.
 
 * Experimenting with the lowest level
@@ -391,7 +393,8 @@ breaking them.
 
 * Syntax parameters, what are they for?
 
-An anaphoric macro is a macro that can define macro-local variables.
++ anaphoric macro :: A macro that can define /macro-local/ variables.
+
 This isn't composable because replacing code with anaphoric macros may
 break it, I present you exhibit A, the unhygienic macro:
 
@@ -443,7 +446,7 @@ parameter.
   ;; 10
 #+END_SRC
 
-During normal racket evaluation (from a file) you'll get a
+During normal racket evaluation (i.e. from a file) you'll get a
 ~duplicate-identifier~ error, in this context there's another error, but
 the point is that there is an error instead of letting the programmer
 scratch his head.
@@ -518,3 +521,12 @@ Note that the ~...~ operator in the syntax has left-associativity, so:
 - which /reduces to/ ~this some more stuff~
 
 * Read the original article [[https://kevin.stravers.net/2017/11/practical-macros-in-racket-and-how-to-work-with-them.html][here]].
+
+* Take-away notes
+
+** parts of syntax
+
+| syntax         | description | family         | use |
+|----------------+-------------+----------------+-----|
+| ~with-syntax~  |             | ~syntax-case~  | ✗   |
+| ~#with-syntax~ |             | ~syntax-parse~ | ✓   |
