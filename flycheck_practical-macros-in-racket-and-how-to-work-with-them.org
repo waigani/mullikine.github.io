@@ -547,6 +547,7 @@ match_ with the results from the pattern match:
   ;; #<syntax:60:0 (this is some syntax put stuff)>
 #+END_SRC
 
+*** Table of forms
 | syntax | description                                                                                                                                                                                                         |
 |----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ~...~          | a postfix operator that makes ~syntax-parse~ consider whatever is before as a list of that pattern. It will expand this list in the expander when it is encountered. This allows us to create pretty complex macros |
@@ -558,7 +559,7 @@ match_ with the results from the pattern match:
   ;; #<syntax:61:0 (this some is syntax put stuff)>
 #+END_SRC
 
-They can even be nested
+*** They can even be nested
 
 #+BEGIN_SRC racket
   (syntax-parse #'((this is) (some more stuff syntax))
