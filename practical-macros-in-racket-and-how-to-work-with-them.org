@@ -1,10 +1,11 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org-main.css"/>
 #+TITLE:     Practical macros in Racket and how to work with them
-##+SUBTITLE:  Making parsers for automatic code review
 #+AUTHOR:    Kevin R. Stravers
 #+EMAIL:     mullikine@gmail.com
 #+DATE:      <2017-11-17>
 #+LANGUAGE:  en
+
+* Practical macros in Racket and how to work with them
 
 A macro is central in any Lisp and must be mastered in order to master
 the language. However, Racket is in a state of macro chaos - at least in
@@ -19,17 +20,11 @@ I've looked through the racket documentation and connected most of the
 syntax transformers there. Here are the biggest ones and some utility
 functions.
 
-Arrows denote that one can be defined in terms of the other, e.g.:
-~define-simple-macro~ can be defined in terms of ~define-syntax-parser~.
-
-Dashed boxes are unimportant tools that ought to be deprecated.
-
-Red boxes indicate what I believe to be important tools, and the circles
-denote important syntax primitives.
-
-Bold boxes are important but not essential.
-
-Normal boxes are not that important, but good to know.
+- Arrows denote that one can be defined in terms of the other, e.g.: ~define-simple-macro~ can be defined in terms of ~define-syntax-parser~.
+- Dashed boxes are unimportant tools that ought to be deprecated.
+- Red boxes indicate what I believe to be important tools, and the circles denote important syntax primitives.
+- Bold boxes are important but not essential.
+- Normal boxes are not that important, but good to know.
 
 For the new macro programmer this is quite a lot to take in, and there's
 a myriad of other tools that supplement these, but I can safely say that
@@ -59,15 +54,16 @@ we should use ~#:with~ instead:
 
 Examples:
 
+#+NAME:code-segment-1
 #+BEGIN_SRC racket
-  (require syntax/parse/define)
+  (require syntax/parse/define)
 
-  (define-syntax-parser with-example
-    [(\_ a)
-     #:with (b:id ...) #'(one two three)
-     #'(list a 'b ...)])
+  (define-syntax-parser with-example
+    [(\_ a)
+     #:with (b:id ...) #'(one two three)
+     #'(list a 'b ...)])
 
-  (with-example 'zero)
+  (with-example 'zero)
   ; '(zero one two three)
 #+END_SRC
 
@@ -77,14 +73,14 @@ error reporting for ~syntax-parse~.
 For reference, here's ~with-syntax~:
 
 #+BEGIN_SRC racket
-  (require syntax/parse/define)
+  (require syntax/parse/define)
 
-  (define-syntax-parser with-example
-    [(\_ a)
-     (with-syntax ([(b ...) #'(one two three)])
-       #'(list a 'b ...))])
+  (define-syntax-parser with-example
+    [(\_ a)
+     (with-syntax ([(b ...) #'(one two three)])
+       #'(list a 'b ...))])
 
-  (with-example 'zero)
+  (with-example 'zero)
   ; '(zero one two three)
 #+END_SRC
 
@@ -94,61 +90,75 @@ For reference, here's ~with-syntax~:
 racket (as far as I know). Here are some examples.
 
 #+BEGIN_SRC racket
-  (require syntax/parse syntax/parse/define)
+  (require syntax/parse syntax/parse/define)
 
-  (define-syntax-parser name
-    [(\_ a b ...+)
-     #'(+ a (- b ...))])
+  (define-syntax-parser name
+    [(\_ a b ...+)
+     #'(+ a (- b ...))])
 
-  (name 1 2 3 4)
+  (name 1 2 3 4)
   ; -4
 #+END_SRC
 
-(define-syntax name
-(syntax-parser
-[(\_ a b ...+)
-#'(+ a (- b ...))]))
-(name 1 2 3 4)
--4
+#+BEGIN_SRC racket
+  (define-syntax name
+    (syntax-parser
+      [(\_ a b ...+)
+       #'(+ a (- b ...))]))
 
-(define-syntax (name stx)
-(syntax-parse stx
-[(\_ a b ...+)
-#'(+ a (- b ...))]))
-(name 1 2 3 4)
--4
+  (name 1 2 3 4)
+  ; -4
+#+END_SRC
+
+#+BEGIN_SRC racket
+  (define-syntax (name stx)
+    (syntax-parse stx
+      [(\_ a b ...+)
+       #'(+ a (- b ...))]))
+
+  (name 1 2 3 4)
+  ; -4
+#+END_SRC
 
 These forms are all acceptable depending on your situation. Most of the
-time we want to use define-syntax-parser because it saves us the effort
+time we want to use ~define-syntax-parser~ because it saves us the effort
 of typing so much.
 
-* make-rename-transformer
+* ~make-rename-transformer~
 
 This special transformer is basically an alias that preserves identifier
 equality.
 
-(define-syntax l (make-rename-transformer #'let))
-(let ([a 1] [b 2]) (+ a b))
-3
-(l ([a 1] [b 2]) (+ a b))
-3
-(free-identifier=? #'let #'l)
-#t
+#+BEGIN_SRC racket
+  (define-syntax l (make-rename-transformer #'let))
+  (let ([a 1] [b 2]) (+ a b))
+  ;; 3
 
-* make-set!-transformer
+  (l ([a 1] [b 2]) (+ a b))
+  ;; 3
 
-Another special transformer is the set!-transformer, it allows you to
+  (free-identifier=? #'let #'l)
+  ;; #t
+#+END_SRC
+
+* ~make-set!-transformer~
+
+Another special transformer is the ~set!-transformer~, it allows you to
 transform a mutation of an identifier.
 
-(define a 0)
-(define b 1)
-(let-syntax ([a (make-set!-transformer
-(syntax-parser #:literals (set!)
-[(set! \_ v) #'(set! b v)]
-[i:id #'a]))])
-(set! a 2)
-(list a b))
-'(0 2)
+#+BEGIN_SRC racket
+  (define a 0)
+  (define b 1)
+
+  (let-syntax ([a (make-set!-transformer
+                   (syntax-parser #:literals (set!)
+                                  [(set! \_ v) #'(set! b v)]
+                                  [i:id #'a]))])
+    (set! a 2)
+    (list a b))
+
+  ;; '(0 2)
+#+END_SRC
 
 I haven't had much use for this in my code so far, but I guess it's fine
 to keep in mind in case you need it.
@@ -162,86 +172,108 @@ tainted and can't be used further. Allow me to exemplify:
 
 Examples:
 
-(require syntax/parse/define)
-(define-syntax-parser a
-[(\_) (syntax-protect #'(c))])
-; (c) is armed here
-(define-syntax-parser b
-[(\_)
-; c is extracted from (c), which taints the result c
-#:with d (car (syntax-e (local-expand #'(a) 'expression #f)))
-; the macro expander inserts d which results in #'(+ TAINTED:c), so the expander rejects this
-#'(+ d)])
-(b)
-eval:22:0: #%top: cannot use identifier tainted by macro
-transformation
-in: #%top
+#+BEGIN_SRC racket
+  (require syntax/parse/define)
 
-This rejects the expression (+ c) because the identifier c is tainted.
-Why is it tainted? Because syntax-e tainted it. Why did it taint it?
-Because the syntax-object was armed.
+  (define-syntax-parser a
+    [(\_) (syntax-protect #'(c))])
+  ; (c) is armed here
 
-(require syntax/parse/define)
-(define c 10)
-(define-syntax-parser a
-[(\_) (syntax-protect #'c)])
-(define-syntax-parser b
-[(\_)
-#:with d #'(a)
-#'(displayln d)])
-(b)
-10
+  (define-syntax-parser b
+    [(\_)
+     ; c is extracted from (c), which taints the result c
+     #:with d (car (syntax-e (local-expand #'(a) 'expression #f)))
+     ; the macro expander inserts d which results in #'(+ TAINTED:c), so the expander rejects this
+     #'(+ d)])
+
+  (b)
+  ;; eval:22:0: #%top: cannot use identifier tainted by macro
+  ;; transformation
+  ;; in: #%top
+#+END_SRC
+
+This rejects the expression ~(+ c)~ because the identifier c is tainted.
+Why is it tainted? Because ~syntax-e~ tainted it. Why did it taint it?
+Because the ~syntax-object~ was armed.
+
+#+BEGIN_SRC racket
+  (require syntax/parse/define)
+  (define c 10)
+
+  (define-syntax-parser a
+    [(\_) (syntax-protect #'c)])
+
+  (define-syntax-parser b
+    [(\_)
+     #:with d #'(a)
+     #'(displayln d)])
+
+  (b)
+  ;; 10
+#+END_SRC
 
 This shows that the expander accepts: armed and clean syntax objects,
 but rejects tainted syntax objects.
 
 * Literals
 
-syntax-parse allows the use of literals:
+~syntax-parse~ allows the use of literals:
 
-(require syntax/parse/define)
-(define-syntax-parser my-parser
-#:datum-literals (a-word)
-[(\_ a-word b-word)
-#'(begin
-(displayln 'a-word)
-(displayln 'b-word))])
-(my-parser a-word 10)
-a-word
-10
+#+BEGIN_SRC racket
+  (require syntax/parse/define)
 
-#:literals is also possible. Then there's a need for an identifier to
+  (define-syntax-parser my-parser
+    #:datum-literals (a-word)
+    [(\_ a-word b-word)
+     #'(begin
+         (displayln 'a-word)
+         (displayln 'b-word))])
+
+  (my-parser a-word 10)
+
+  a-word
+  ;; 10
+#+END_SRC
+
+~#:literals~ is also possible. Then there's a need for an identifier to
 exist in the enclosing phase:
 
-(define-syntax-parser my-parser
-#:literals (is-this-bound?)
-[(\_ is-this-bound? b-word)
-#'(begin
-(displayln 'a-word)
-(displayln 'b-word))])
-(my-parser is-this-bound? 10)
-eval:33:0: syntax-parser: literal is unbound in phase 0
-(phase 0 relative to the enclosing module)
-at: is-this-bound?
-in: (syntax-parser #:literals (is-this-bound?) ((\_
-is-this-bound? b-word) (syntax (begin (displayln (quote
-a-word)) (displayln (quote b-word))))))
+#+BEGIN_SRC racket
+  (define-syntax-parser my-parser
+    #:literals (is-this-bound?)
+    [(\_ is-this-bound? b-word)
+     #'(begin
+         (displayln 'a-word)
+         (displayln 'b-word))])
+
+  (my-parser is-this-bound? 10)
+  ;; eval:33:0: syntax-parser: literal is unbound in phase 0
+  ;; (phase 0 relative to the enclosing module)
+  ;;   at: is-this-bound?
+  ;;   in: (syntax-parser #:literals (is-this-bound?) ((\_
+  ;; is-this-bound? b-word) (syntax (begin (displayln (quote
+  ;; a-word)) (displayln (quote b-word))))))
+#+END_SRC
 
 We can use literals to discriminate between real and fake identifiers:
 
-(define-syntax-parser is-it-let?
-[(\_ (~literal let)) #'#t]
-[(\_ (~datum let)) #'#f]
-[\_ #'#f])
-(is-it-let? let)
-#t
-(let ([let 0])
-(is-it-let? let))
-#f
+#+BEGIN_SRC racket
+  (define-syntax-parser is-it-let?
+    [(\_ (~literal let)) #'#t]
+    [(\_ (~datum let)) #'#f]
+    [\_ #'#f])
 
-Note that (~literal x) as a pattern is the same as specifying #:literals
+  (is-it-let? let)
+  ;; #t
+
+  (let ([let 0])
+    (is-it-let? let))
+  ;; #f
+#+END_SRC
+
+Note that ~(~literal x)~ as a pattern is the same as specifying ~#:literals~
 (x) as keyword argument and using x as a pattern. Similarly for
-#:datum-literals (x).
+#:~datum-literals~ (x).
 
 * Experimenting with the lowest level
 
@@ -252,81 +284,96 @@ with to understand what syntax-parse is actually doing.
 
 Vision is the most important thing, let's look at what's going on!
 
-; Note: a macro only takes on argument, which contains the entire syntax object
-(define-syntax (name stx)
-(displayln stx))
-(name hello world)
-#<syntax:39:0 (name hello world)>
-name: received value from syntax expander was not syntax
-received: #<void>
+#+BEGIN_SRC racket
+  ; Note: a macro only takes on argument, which contains the entire syntax object
+  (define-syntax (name stx)
+    (displayln stx))
+
+  (name hello world)
+  ;; #<syntax:39:0 (name hello world)>
+  ;; name: received value from syntax expander was not syntax
+  ;; received: #<void>
+#+END_SRC
 
 We need to add a result that is a syntax object:
 
-(define-syntax (name stx)
-(displayln stx)
-#'(void))
-(name hello world)
-#<syntax:41:0 (name hello world)>
+#+BEGIN_SRC racket
+  (define-syntax (name stx)
+    (displayln stx)
+    #'(void))
+
+  (name hello world)
+  ;; #<syntax:41:0 (name hello world)>
+#+END_SRC
 
 Now to extract some values. There are primitives used to extract
 information from syntax objects.
 
-(define-syntax (name stx)
-(displayln `("stx" ,stx))
-(displayln `("syntax-e" ,(syntax-e stx)))
-(displayln `("syntax->list" ,(syntax->list stx)))
-(displayln `("syntax-source" ,(syntax-source stx)))
-(displayln `("syntax-line" ,(syntax-line stx)))
-(displayln `("syntax-column" ,(syntax-column stx)))
-(displayln `("syntax-position" ,(syntax-position stx)))
-(displayln `("syntax?" ,(syntax? stx)))
-(displayln `("syntax-span" ,(syntax-span stx)))
-(displayln `("syntax-original?" ,(syntax-original? stx)))
-(displayln `("syntax-source-module" ,(syntax-source-module stx)))
-(displayln `("syntax->datum" ,(syntax->datum stx)))
-#'(void))
-(name hello world)
-(stx #<syntax:43:0 (name hello world)>)
-(syntax-e (#<syntax:43:0 name> #<syntax:43:0 hello> #<syntax:43:0 world>))
-(syntax->list (#<syntax:43:0 name> #<syntax:43:0 hello> #<syntax:43:0 world>))
-(syntax-source eval)
-(syntax-line 43)
-(syntax-column 0)
-(syntax-position 43)
-(syntax? #t)
-(syntax-span 1)
-(syntax-original? #f)
-(syntax-source-module #f)
-(syntax->datum (name hello world))
+#+BEGIN_SRC racket
+  (define-syntax (name stx)
+    (displayln `("stx" ,stx))
+    (displayln `("syntax-e" ,(syntax-e stx)))
+    (displayln `("syntax->list" ,(syntax->list stx)))
+    (displayln `("syntax-source" ,(syntax-source stx)))
+    (displayln `("syntax-line" ,(syntax-line stx)))
+    (displayln `("syntax-column" ,(syntax-column stx)))
+    (displayln `("syntax-position" ,(syntax-position stx)))
+    (displayln `("syntax?" ,(syntax? stx)))
+    (displayln `("syntax-span" ,(syntax-span stx)))
+    (displayln `("syntax-original?" ,(syntax-original? stx)))
+    (displayln `("syntax-source-module" ,(syntax-source-module stx)))
+    (displayln `("syntax->datum" ,(syntax->datum stx)))
+    #'(void))
+
+  (name hello world)
+  ;; (stx #<syntax:43:0 (name hello world)>)
+  ;; (syntax-e (#<syntax:43:0 name> #<syntax:43:0 hello> #<syntax:43:0 world>))
+  ;; (syntax->list (#<syntax:43:0 name> #<syntax:43:0 hello> #<syntax:43:0 world>))
+  ;; (syntax-source eval)
+  ;; (syntax-line 43)
+  ;; (syntax-column 0)
+  ;; (syntax-position 43)
+  ;; (syntax? #t)
+  ;; (syntax-span 1)
+  ;; (syntax-original? #f)
+  ;; (syntax-source-module #f)
+  ;; (syntax->datum (name hello world))
+#+END_SRC
 
 These are some of the functions that we can use on syntax objects.
 There's another one that allows us to turn datums into syntax called
-datum->syntax. Let's see if we can construct a simple macro based on
-this and syntax-e:
+~datum->syntax~. Let's see if we can construct a simple macro based on
+this and ~syntax-e~:
 
-We're gonna make (infix 1 + 2) return (+ 1 2).
+We're gonna make ~(infix 1 + 2)~ return ~(+ 1 2)~.
 
-(define-syntax (infix stx)
-(let ([elems (syntax-e stx)])
-(when (not (= (length elems) 4))
-(raise-syntax-error "there should be 3 elements"))
-(datum->syntax stx `(,(caddr elems) ,(cadr elems) ,(cadddr elems)))))
-(infix 1 + 2)
-3
+#+BEGIN_SRC racket
+  (define-syntax (infix stx)
+    (let ([elems (syntax-e stx)])
+      (when (not (= (length elems) 4))
+        (raise-syntax-error "there should be 3 elements"))
+      (datum->syntax stx `(,(caddr elems) ,(cadr elems) ,(cadddr elems)))))
+
+  (infix 1 + 2)
+  ; 3
+#+END_SRC
 
 Notice how there are 4 elements in the list, because infix is inside it
-too. We also need to provide a context for datum->syntax. The
+too. We also need to provide a context for ~datum->syntax~. The
 identifiers used in the result will be referenced from that context. In
-this case we used stx as the context. If you use #f, then + won't be
+this case we used stx as the context. If you use ~#f~, then ~+~ won't be
 found and we have an error. The macro is essentially equivalent to:
 
-(define-syntax-parser infix
-[(\_ a op b)
-#'(op a b)])
-(infix 1 + 2)
-3
+#+BEGIN_SRC racket
+  (define-syntax-parser infix
+    [(\_ a op b)
+     #'(op a b)])
 
-With syntax-parse the context is dependent on the input. This way we can
+  (infix 1 + 2)
+  ;; 3
+#+END_SRC
+
+With ~syntax-parse~ the context is dependent on the input. This way we can
 safely refer to variables from the caller's scope. This safety is what
 we call "macro hygiene", and allows us to compose macros without
 breaking them.
@@ -337,42 +384,45 @@ An anaphoric macro is a macro that can define macro-local variables.
 This isn't composable because replacing code with anaphoric macros may
 break it, I present you exhibit A, the unhygienic macro:
 
-(define-syntax (aif stx)
-(let ([elems (syntax-e stx)])
-(datum->syntax stx
-`(let ([it ,(cadr elems)])
-(if it ,(caddr elems) ,(cadddr elems))))))
-(define it 10)
-(aif (member 2 '(1 2 3))
-(displayln it)
-(void))
-(2 3)
+#+BEGIN_SRC racket
+  (define-syntax (aif stx)
+    (let ([elems (syntax-e stx)])
+      (datum->syntax stx
+                     `(let ([it ,(cadr elems)])
+                        (if it ,(caddr elems) ,(cadddr elems))))))
+
+  (define it 10)
+  (aif (member 2 '(1 2 3))
+       (displayln it)
+       (void))
+  ;; (2 3)
+#+END_SRC
 
 The programmer wanted to print 10 but instead something else got
 printed. This is a trivial example but quickly balloons with bigger
 programs and bigger macros.
 
-Let's instead use syntax-parameters. These can be used hygienically:
+Let's instead use ~syntax-parameters~. These can be used hygienically:
 
-(require racket/stxparam)
+(require racket/stxparam)
 
-(define-syntax-parameter it (syntax-parser))
-(define-syntax-parser aif
-[(\_ condition then otherwise)
-#'(let ([t condition])
-(syntax-parameterize ([it (syntax-parser [\_ #'t])])
-(if t then otherwise)))])
-(aif (member 2 '(1 2 3))
-(displayln it)
+(define-syntax-parameter it (syntax-parser))
+(define-syntax-parser aif
+[(\_ condition then otherwise)
+#'(let ([t condition])
+(syntax-parameterize ([it (syntax-parser [\_ #'t])])
+(if t then otherwise)))])
+(aif (member 2 '(1 2 3))
+(displayln it)
 (void))
 (2 3)
 
 If we now have a declaration of it, that will override the syntax
 parameter.
 
-(let ([it 10])
-(aif (member 2 '(1 2 3))
-(displayln it)
+(let ([it 10])
+(aif (member 2 '(1 2 3))
+(displayln it)
 (void)))
 10
 
@@ -381,9 +431,9 @@ duplicate-identifier error, in this context there's another error, but
 the point is that there is an error instead of letting the programmer
 scratch his head.
 
-(define it 10)
-(aif (member 2 '(1 2 3))
-(displayln it)
+(define it 10)
+(aif (member 2 '(1 2 3))
+(displayln it)
 (void))
 eval:53:0: syntax-parameterize: not bound as a syntax
 parameter
@@ -396,24 +446,24 @@ t))))) (if t (displayln it) (void)))
 syntax-parse works by replacing all syntax objects after the pattern
 match with the results from the pattern match:
 
-(syntax-parse #'(this is some syntax)
-[(here is the pattern) #'(pattern is put here)])
+(syntax-parse #'(this is some syntax)
+[(here is the pattern) #'(pattern is put here)])
 #<syntax:58:0 (syntax is put this)>
 
 So stuff like put is not in the pattern, so it's just pasted as-is.
 Another cool thing is that you can run arbitrary code in the body:
 
-(syntax-parse #'(this is some syntax)
-[(here is the pattern)
-(displayln "This is arbitrary code, we could download webpages for use in this macro, whatever you wish")
-#'(pattern is put here)])
+(syntax-parse #'(this is some syntax)
+[(here is the pattern)
+(displayln "This is arbitrary code, we could download webpages for use in this macro, whatever you wish")
+#'(pattern is put here)])
 This is arbitrary code, we could download webpages for use in this macro, whatever you wish
 #<syntax:59:0 (syntax is put this)>
 
 There are also some special pattern forms:
 
-(syntax-parse #'(this is some syntax)
-[(here ...) #'(here ... put stuff)])
+(syntax-parse #'(this is some syntax)
+[(here ...) #'(here ... put stuff)])
 #<syntax:60:0 (this is some syntax put stuff)>
 
 ... is a postfix operator that makes syntax-parse consider whatever is
@@ -423,14 +473,14 @@ macros:
 
 ...+ means one or more.
 
-(syntax-parse #'((this is) (some syntax))
-[((here there) ...+) #'(here ... there ... put stuff)])
+(syntax-parse #'((this is) (some syntax))
+[((here there) ...+) #'(here ... there ... put stuff)])
 #<syntax:61:0 (this some is syntax put stuff)>
 
 They can even be nested
 
-(syntax-parse #'((this is) (some more stuff syntax))
-[((here ... there) ...+) #'(here ... ... there ... put stuff)])
+(syntax-parse #'((this is) (some more stuff syntax))
+[((here ... there) ...+) #'(here ... ... there ... put stuff)])
 #<syntax:62:0 (this some more stuff is synt...>
 
 Note that the ... operator in the syntax has left-associativity, so here

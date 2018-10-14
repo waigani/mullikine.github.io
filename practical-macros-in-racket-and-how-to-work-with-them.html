@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-13 Sat 21:58 -->
+<!-- 2018-10-14 Sun 18:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Practical macros in Racket and how to work with them</title>
@@ -230,28 +230,30 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">Practical macros in Racket and how to work with them
-<br />
-<span class="subtitle">Making parsers for automatic code review</span>
-</h1>
+<h1 class="title">Practical macros in Racket and how to work with them</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge58c52b">1. What's all this racket?</a></li>
-<li><a href="#orga4596c2">2. <code>syntax-case</code>, don't use it!</a></li>
-<li><a href="#orgc13e0fd">3. <code>with-syntax</code></a></li>
-<li><a href="#orgb09bedb">4. The <code>syntax-parse</code> family</a></li>
-<li><a href="#org553c122">5. make-rename-transformer</a></li>
-<li><a href="#orgb6e6af0">6. make-set!-transformer</a></li>
-<li><a href="#org5e71833">7. Syntax taints, what are they?</a></li>
-<li><a href="#org020e2c0">8. Literals</a></li>
-<li><a href="#org02cb4f4">9. Experimenting with the lowest level</a></li>
-<li><a href="#org6ebf95f">10. Syntax parameters, what are they for?</a></li>
-<li><a href="#org5853f06">11. I don't get it, how does syntax-parse work?</a></li>
+<li><a href="#orgc41034a">1. Practical macros in Racket and how to work with them</a></li>
+<li><a href="#orgaa82f07">2. What's all this racket?</a></li>
+<li><a href="#orgfe07bfe">3. <code>syntax-case</code>, don't use it!</a></li>
+<li><a href="#orgf453646">4. <code>with-syntax</code></a></li>
+<li><a href="#orgf5e54a1">5. The <code>syntax-parse</code> family</a></li>
+<li><a href="#org6ab332c">6. <code>make-rename-transformer</code></a></li>
+<li><a href="#orgfb18897">7. <code>make-set!-transformer</code></a></li>
+<li><a href="#orgc43e6e9">8. Syntax taints, what are they?</a></li>
+<li><a href="#org61e49bc">9. Literals</a></li>
+<li><a href="#org0b33aa4">10. Experimenting with the lowest level</a></li>
+<li><a href="#org6fe35ef">11. Syntax parameters, what are they for?</a></li>
+<li><a href="#orgf28eca1">12. I don't get it, how does syntax-parse work?</a></li>
 </ul>
 </div>
 </div>
+
+<div id="outline-container-orgc41034a" class="outline-2">
+<h2 id="orgc41034a"><span class="section-number-2">1</span> Practical macros in Racket and how to work with them</h2>
+<div class="outline-text-2" id="text-1">
 <p>
 A macro is central in any Lisp and must be mastered in order to master
 the language. However, Racket is in a state of macro chaos - at least in
@@ -260,37 +262,25 @@ the official documentation. There's <code>define-syntax-rule</code>, <code>synta
 tutorial we'll investigate syntax transformers in Racket so we can get a
 complete picture.
 </p>
+</div>
+</div>
 
-<div id="outline-container-orge58c52b" class="outline-2">
-<h2 id="orge58c52b"><span class="section-number-2">1</span> What's all this racket?</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgaa82f07" class="outline-2">
+<h2 id="orgaa82f07"><span class="section-number-2">2</span> What's all this racket?</h2>
+<div class="outline-text-2" id="text-2">
 <p>
 I've looked through the racket documentation and connected most of the
 syntax transformers there. Here are the biggest ones and some utility
 functions.
 </p>
 
-<p>
-Arrows denote that one can be defined in terms of the other, e.g.:
-<code>define-simple-macro</code> can be defined in terms of <code>define-syntax-parser</code>.
-</p>
-
-<p>
-Dashed boxes are unimportant tools that ought to be deprecated.
-</p>
-
-<p>
-Red boxes indicate what I believe to be important tools, and the circles
-denote important syntax primitives.
-</p>
-
-<p>
-Bold boxes are important but not essential.
-</p>
-
-<p>
-Normal boxes are not that important, but good to know.
-</p>
+<ul class="org-ul">
+<li>Arrows denote that one can be defined in terms of the other, e.g.: <code>define-simple-macro</code> can be defined in terms of <code>define-syntax-parser</code>.</li>
+<li>Dashed boxes are unimportant tools that ought to be deprecated.</li>
+<li>Red boxes indicate what I believe to be important tools, and the circles denote important syntax primitives.</li>
+<li>Bold boxes are important but not essential.</li>
+<li>Normal boxes are not that important, but good to know.</li>
+</ul>
 
 <p>
 For the new macro programmer this is quite a lot to take in, and there's
@@ -304,9 +294,9 @@ to define macros in a clean manner.
 </div>
 </div>
 
-<div id="outline-container-orga4596c2" class="outline-2">
-<h2 id="orga4596c2"><span class="section-number-2">2</span> <code>syntax-case</code>, don't use it!</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgfe07bfe" class="outline-2">
+<h2 id="orgfe07bfe"><span class="section-number-2">3</span> <code>syntax-case</code>, don't use it!</h2>
+<div class="outline-text-2" id="text-3">
 <p>
 Why not use <code>syntax-case</code>? It appears to be an important primitive. Well
 to put it clearly: <code>syntax-case</code> is the typeless version of
@@ -324,9 +314,9 @@ We should ideally deprecate <code>syntax-case</code> for <code>end-user</code> u
 </div>
 </div>
 
-<div id="outline-container-orgc13e0fd" class="outline-2">
-<h2 id="orgc13e0fd"><span class="section-number-2">3</span> <code>with-syntax</code></h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgf453646" class="outline-2">
+<h2 id="orgf453646"><span class="section-number-2">4</span> <code>with-syntax</code></h2>
+<div class="outline-text-2" id="text-4">
 <p>
 <code>with-syntax</code> is incredibly useful in <code>syntax-case</code> but inside <code>syntax-parse</code>
 we should use <code>#:with</code> instead:
@@ -337,14 +327,14 @@ Examples:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-racket">(<span style="color: #a1db00;">require</span>&#160;syntax/parse/define)
+<pre class="src src-racket" id="org83294ca">(<span style="color: #a1db00;">require</span> syntax/parse/define)
 
-(define-syntax-parser&#160;with-example
-  [(\<span style="color: #a1db00;">_</span>&#160;a)
-   <span style="color: #cd5c5c;">#:with</span>&#160;(b:id&#160;<span style="color: #a1db00;">...</span>)&#160;#'(one&#160;two&#160;three)
-   #'(<span style="color: #d18aff;">list</span>&#160;a&#160;<span style="color: #2e8b57;">'b</span>&#160;<span style="color: #a1db00;">...</span>)])
+(define-syntax-parser <span style="color: #ff8700;">with-example</span>
+  [(\<span style="color: #a1db00;">_</span> a)
+   <span style="color: #cd5c5c;">#:with</span> (b:id <span style="color: #a1db00;">...</span>) #'(one two three)
+   #'(<span style="color: #d18aff;">list</span> a <span style="color: #2e8b57;">'b</span> <span style="color: #a1db00;">...</span>)])
 
-(with-example&#160;<span style="color: #2e8b57;">'zero</span>)
+(with-example <span style="color: #2e8b57;">'zero</span>)
 <span style="color: #6c6c6c; font-style: italic;">; </span><span style="color: #6c6c6c; font-style: italic;">'(zero one two three)</span>
 </pre>
 </div>
@@ -359,105 +349,115 @@ For reference, here's <code>with-syntax</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-racket">(<span style="color: #a1db00;">require</span>&#160;syntax/parse/define)
+<pre class="src src-racket">(<span style="color: #a1db00;">require</span> syntax/parse/define)
 
-(define-syntax-parser&#160;with-example
-  [(\<span style="color: #a1db00;">_</span>&#160;a)
-   (<span style="color: #a1db00;">with-syntax</span>&#160;([(b&#160;<span style="color: #a1db00;">...</span>)&#160;#'(one&#160;two&#160;three)])
-     #'(<span style="color: #d18aff;">list</span>&#160;a&#160;<span style="color: #2e8b57;">'b</span>&#160;<span style="color: #a1db00;">...</span>))])
+(define-syntax-parser <span style="color: #ff8700;">with-example</span>
+  [(\<span style="color: #a1db00;">_</span> a)
+   (<span style="color: #a1db00;">with-syntax</span> ([(b <span style="color: #a1db00;">...</span>) #'(one two three)])
+     #'(<span style="color: #d18aff;">list</span> a <span style="color: #2e8b57;">'b</span> <span style="color: #a1db00;">...</span>))])
 
-(with-example&#160;<span style="color: #2e8b57;">'zero</span>)
+(with-example <span style="color: #2e8b57;">'zero</span>)
 <span style="color: #6c6c6c; font-style: italic;">; </span><span style="color: #6c6c6c; font-style: italic;">'(zero one two three)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgb09bedb" class="outline-2">
-<h2 id="orgb09bedb"><span class="section-number-2">4</span> The <code>syntax-parse</code> family</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orgf5e54a1" class="outline-2">
+<h2 id="orgf5e54a1"><span class="section-number-2">5</span> The <code>syntax-parse</code> family</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 <code>syntax-parse</code> is the primitive of the most advanced syntax transformer in
 racket (as far as I know). Here are some examples.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-racket">(<span style="color: #a1db00;">require</span>&#160;syntax/parse&#160;syntax/parse/define)
+<pre class="src src-racket">(<span style="color: #a1db00;">require</span> syntax/parse syntax/parse/define)
 
-(define-syntax-parser&#160;name
-  [(\<span style="color: #a1db00;">_</span>&#160;a&#160;b&#160;...+)
-   #'(<span style="color: #d18aff;">+</span>&#160;a&#160;(<span style="color: #d18aff;">-</span>&#160;b&#160;<span style="color: #a1db00;">...</span>))])
+(define-syntax-parser <span style="color: #ff8700;">name</span>
+  [(\<span style="color: #a1db00;">_</span> a b ...+)
+   #'(<span style="color: #d18aff;">+</span> a (<span style="color: #d18aff;">-</span> b <span style="color: #a1db00;">...</span>))])
 
-(name&#160;<span style="color: #2e8b57;">1</span>&#160;<span style="color: #2e8b57;">2</span>&#160;<span style="color: #2e8b57;">3</span>&#160;<span style="color: #2e8b57;">4</span>)
+(name <span style="color: #2e8b57;">1</span> <span style="color: #2e8b57;">2</span> <span style="color: #2e8b57;">3</span> <span style="color: #2e8b57;">4</span>)
+<span style="color: #6c6c6c; font-style: italic;">; </span><span style="color: #6c6c6c; font-style: italic;">-4</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-racket">(<span style="color: #a1db00;">define-syntax</span> <span style="color: #ff8700;">name</span>
+  (<span style="color: #d18aff;">syntax-parser</span>
+    [(\<span style="color: #a1db00;">_</span> a b ...+)
+     #'(<span style="color: #d18aff;">+</span> a (<span style="color: #d18aff;">-</span> b <span style="color: #a1db00;">...</span>))]))
+
+(name <span style="color: #2e8b57;">1</span> <span style="color: #2e8b57;">2</span> <span style="color: #2e8b57;">3</span> <span style="color: #2e8b57;">4</span>)
+<span style="color: #6c6c6c; font-style: italic;">; </span><span style="color: #6c6c6c; font-style: italic;">-4</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-racket">(<span style="color: #a1db00;">define-syntax</span> (<span style="color: #ffd700;">name</span> stx)
+  (<span style="color: #d18aff;">syntax-parse</span> stx
+    [(\<span style="color: #a1db00;">_</span> a b ...+)
+     #'(<span style="color: #d18aff;">+</span> a (<span style="color: #d18aff;">-</span> b <span style="color: #a1db00;">...</span>))]))
+
+(name <span style="color: #2e8b57;">1</span> <span style="color: #2e8b57;">2</span> <span style="color: #2e8b57;">3</span> <span style="color: #2e8b57;">4</span>)
 <span style="color: #6c6c6c; font-style: italic;">; </span><span style="color: #6c6c6c; font-style: italic;">-4</span>
 </pre>
 </div>
 
 <p>
-(define-syntax name
-(syntax-parser
-[(\_ a b &#x2026;+)
-#'(+ a (- b &#x2026;))]))
-(name 1 2 3 4)
--4
-</p>
-
-<p>
-(define-syntax (name stx)
-(syntax-parse stx
-[(\_ a b &#x2026;+)
-#'(+ a (- b &#x2026;))]))
-(name 1 2 3 4)
--4
-</p>
-
-<p>
 These forms are all acceptable depending on your situation. Most of the
-time we want to use define-syntax-parser because it saves us the effort
+time we want to use <code>define-syntax-parser</code> because it saves us the effort
 of typing so much.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org553c122" class="outline-2">
-<h2 id="org553c122"><span class="section-number-2">5</span> make-rename-transformer</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-org6ab332c" class="outline-2">
+<h2 id="org6ab332c"><span class="section-number-2">6</span> <code>make-rename-transformer</code></h2>
+<div class="outline-text-2" id="text-6">
 <p>
 This special transformer is basically an alias that preserves identifier
 equality.
 </p>
 
-<p>
-(define-syntax l (make-rename-transformer #'let))
-(let ([a 1] [b 2]) (+ a b))
-3
-(l ([a 1] [b 2]) (+ a b))
-3
-(free-identifier=? #'let #'l)
-#t
-</p>
+<div class="org-src-container">
+<pre class="src src-racket">(<span style="color: #a1db00;">define-syntax</span> <span style="color: #ff8700;">l</span> (<span style="color: #d18aff;">make-rename-transformer</span> #<span style="color: #2e8b57;">'let</span>))
+(<span style="color: #a1db00;">let</span> ([<span style="color: #ff8700;">a</span> <span style="color: #2e8b57;">1</span>] [<span style="color: #ff8700;">b</span> <span style="color: #2e8b57;">2</span>]) (<span style="color: #d18aff;">+</span> a b))
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">3</span>
+
+(l ([a <span style="color: #2e8b57;">1</span>] [b <span style="color: #2e8b57;">2</span>]) (<span style="color: #d18aff;">+</span> a b))
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">3</span>
+
+(<span style="color: #d18aff;">free-identifier=?</span> #<span style="color: #2e8b57;">'let</span> #<span style="color: #2e8b57;">'l</span>)
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">#t</span>
+</pre>
+</div>
 </div>
 </div>
 
-<div id="outline-container-orgb6e6af0" class="outline-2">
-<h2 id="orgb6e6af0"><span class="section-number-2">6</span> make-set!-transformer</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-orgfb18897" class="outline-2">
+<h2 id="orgfb18897"><span class="section-number-2">7</span> <code>make-set!-transformer</code></h2>
+<div class="outline-text-2" id="text-7">
 <p>
-Another special transformer is the set!-transformer, it allows you to
+Another special transformer is the <code>set!-transformer</code>, it allows you to
 transform a mutation of an identifier.
 </p>
 
-<p>
-(define a 0)
-(define b 1)
-(let-syntax ([a (make-set!-transformer
-(syntax-parser #:literals (set!)
-[(set! \_ v) #'(set! b v)]
-[i:id #'a]))])
-(set! a 2)
-(list a b))
-'(0 2)
-</p>
+<div class="org-src-container">
+<pre class="src src-racket">(<span style="color: #a1db00;">define</span> <span style="color: #ff8700;">a</span> <span style="color: #2e8b57;">0</span>)
+(<span style="color: #a1db00;">define</span> <span style="color: #ff8700;">b</span> <span style="color: #2e8b57;">1</span>)
+
+(<span style="color: #a1db00;">let-syntax</span> ([<span style="color: #ff8700;">a</span> (<span style="color: #d18aff;">make-set!-transformer</span>
+                 (<span style="color: #d18aff;">syntax-parser</span> <span style="color: #cd5c5c;">#:literals</span> (<span style="color: #a1db00;">set!</span>)
+                                [(<span style="color: #a1db00;">set!</span> \<span style="color: #a1db00;">_</span> v) #'(<span style="color: #a1db00;">set!</span> b v)]
+                                [i:id #<span style="color: #2e8b57;">'a</span>]))])
+  (<span style="color: #a1db00;">set!</span> a <span style="color: #2e8b57;">2</span>)
+  (<span style="color: #d18aff;">list</span> a b))
+
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">'(0 2)</span>
+</pre>
+</div>
 
 <p>
 I haven't had much use for this in my code so far, but I guess it's fine
@@ -466,9 +466,9 @@ to keep in mind in case you need it.
 </div>
 </div>
 
-<div id="outline-container-org5e71833" class="outline-2">
-<h2 id="org5e71833"><span class="section-number-2">7</span> Syntax taints, what are they?</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-orgc43e6e9" class="outline-2">
+<h2 id="orgc43e6e9"><span class="section-number-2">8</span> Syntax taints, what are they?</h2>
+<div class="outline-text-2" id="text-8">
 <p>
 The documentation on syntax taints is confusing to me. Here's my
 synopsis: It prevents the arbitrary use of identifiers: if you extract
@@ -480,41 +480,49 @@ tainted and can't be used further. Allow me to exemplify:
 Examples:
 </p>
 
-<p>
-(require syntax/parse/define)
-(define-syntax-parser a
-[(\_) (syntax-protect #'(c))])
-; (c) is armed here
-(define-syntax-parser b
-[(\_)
-; c is extracted from (c), which taints the result c
-#:with d (car (syntax-e (local-expand #'(a) 'expression #f)))
-; the macro expander inserts d which results in #'(+ TAINTED:c), so the expander rejects this
-#'(+ d)])
+<div class="org-src-container">
+<pre class="src src-racket">(<span style="color: #a1db00;">require</span> syntax/parse/define)
+
+(define-syntax-parser <span style="color: #ff8700;">a</span>
+  [(\<span style="color: #a1db00;">_</span>) (<span style="color: #d18aff;">syntax-protect</span> #'(c))])
+<span style="color: #6c6c6c; font-style: italic;">; </span><span style="color: #6c6c6c; font-style: italic;">(c) is armed here</span>
+
+(define-syntax-parser <span style="color: #ff8700;">b</span>
+  [(\<span style="color: #a1db00;">_</span>)
+   <span style="color: #6c6c6c; font-style: italic;">; </span><span style="color: #6c6c6c; font-style: italic;">c is extracted from (c), which taints the result c</span>
+   <span style="color: #cd5c5c;">#:with</span> d (<span style="color: #d18aff;">car</span> (<span style="color: #d18aff;">syntax-e</span> (<span style="color: #d18aff;">local-expand</span> #'(a) <span style="color: #2e8b57;">'expression</span> <span style="color: #2e8b57;">#f</span>)))
+   <span style="color: #6c6c6c; font-style: italic;">; </span><span style="color: #6c6c6c; font-style: italic;">the macro expander inserts d which results in #'(+ TAINTED:c), so the expander rejects this</span>
+   #'(<span style="color: #d18aff;">+</span> d)])
+
 (b)
-eval:22:0: #%top: cannot use identifier tainted by macro
-transformation
-in: #%top
-</p>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">eval:22:0: #%top: cannot use identifier tainted by macro</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">transformation</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">in: #%top</span>
+</pre>
+</div>
 
 <p>
-This rejects the expression (+ c) because the identifier c is tainted.
-Why is it tainted? Because syntax-e tainted it. Why did it taint it?
-Because the syntax-object was armed.
+This rejects the expression <code>(+ c)</code> because the identifier c is tainted.
+Why is it tainted? Because <code>syntax-e</code> tainted it. Why did it taint it?
+Because the <code>syntax-object</code> was armed.
 </p>
 
-<p>
-(require syntax/parse/define)
-(define c 10)
-(define-syntax-parser a
-[(\_) (syntax-protect #'c)])
-(define-syntax-parser b
-[(\_)
-#:with d #'(a)
-#'(displayln d)])
+<div class="org-src-container">
+<pre class="src src-racket">(<span style="color: #a1db00;">require</span> syntax/parse/define)
+(<span style="color: #a1db00;">define</span> <span style="color: #ff8700;">c</span> <span style="color: #2e8b57;">10</span>)
+
+(define-syntax-parser <span style="color: #ff8700;">a</span>
+  [(\<span style="color: #a1db00;">_</span>) (<span style="color: #d18aff;">syntax-protect</span> #<span style="color: #2e8b57;">'c</span>)])
+
+(define-syntax-parser <span style="color: #ff8700;">b</span>
+  [(\<span style="color: #a1db00;">_</span>)
+   <span style="color: #cd5c5c;">#:with</span> d #'(a)
+   #'(<span style="color: #d18aff;">displayln</span> d)])
+
 (b)
-10
-</p>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">10</span>
+</pre>
+</div>
 
 <p>
 This shows that the expander accepts: armed and clean syntax objects,
@@ -523,74 +531,83 @@ but rejects tainted syntax objects.
 </div>
 </div>
 
-<div id="outline-container-org020e2c0" class="outline-2">
-<h2 id="org020e2c0"><span class="section-number-2">8</span> Literals</h2>
-<div class="outline-text-2" id="text-8">
+<div id="outline-container-org61e49bc" class="outline-2">
+<h2 id="org61e49bc"><span class="section-number-2">9</span> Literals</h2>
+<div class="outline-text-2" id="text-9">
 <p>
-syntax-parse allows the use of literals:
+<code>syntax-parse</code> allows the use of literals:
 </p>
 
-<p>
-(require syntax/parse/define)
-(define-syntax-parser my-parser
-#:datum-literals (a-word)
-[(\_ a-word b-word)
-#'(begin
-(displayln 'a-word)
-(displayln 'b-word))])
-(my-parser a-word 10)
+<div class="org-src-container">
+<pre class="src src-racket">(<span style="color: #a1db00;">require</span> syntax/parse/define)
+
+(define-syntax-parser <span style="color: #ff8700;">my-parser</span>
+  <span style="color: #cd5c5c;">#:datum-literals</span> (a-word)
+  [(\<span style="color: #a1db00;">_</span> a-word b-word)
+   #'(<span style="color: #a1db00;">begin</span>
+       (<span style="color: #d18aff;">displayln</span> <span style="color: #2e8b57;">'a-word</span>)
+       (<span style="color: #d18aff;">displayln</span> <span style="color: #2e8b57;">'b-word</span>))])
+
+(my-parser a-word <span style="color: #2e8b57;">10</span>)
+
 a-word
-10
-</p>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">10</span>
+</pre>
+</div>
 
 <p>
-#:literals is also possible. Then there's a need for an identifier to
+<code>#:literals</code> is also possible. Then there's a need for an identifier to
 exist in the enclosing phase:
 </p>
 
-<p>
-(define-syntax-parser my-parser
-#:literals (is-this-bound?)
-[(\_ is-this-bound? b-word)
-#'(begin
-(displayln 'a-word)
-(displayln 'b-word))])
-(my-parser is-this-bound? 10)
-eval:33:0: syntax-parser: literal is unbound in phase 0
-(phase 0 relative to the enclosing module)
-at: is-this-bound?
-in: (syntax-parser #:literals (is-this-bound?) ((\_
-is-this-bound? b-word) (syntax (begin (displayln (quote
-a-word)) (displayln (quote b-word))))))
-</p>
+<div class="org-src-container">
+<pre class="src src-racket">(define-syntax-parser <span style="color: #ff8700;">my-parser</span>
+  <span style="color: #cd5c5c;">#:literals</span> (is-this-bound?)
+  [(\<span style="color: #a1db00;">_</span> is-this-bound? b-word)
+   #'(<span style="color: #a1db00;">begin</span>
+       (<span style="color: #d18aff;">displayln</span> <span style="color: #2e8b57;">'a-word</span>)
+       (<span style="color: #d18aff;">displayln</span> <span style="color: #2e8b57;">'b-word</span>))])
+
+(my-parser is-this-bound? <span style="color: #2e8b57;">10</span>)
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">eval:33:0: syntax-parser: literal is unbound in phase 0</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">(phase 0 relative to the enclosing module)</span>
+<span style="color: #6c6c6c; font-style: italic;">;;   </span><span style="color: #6c6c6c; font-style: italic;">at: is-this-bound?</span>
+<span style="color: #6c6c6c; font-style: italic;">;;   </span><span style="color: #6c6c6c; font-style: italic;">in: (syntax-parser #:literals (is-this-bound?) ((\_</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">is-this-bound? b-word) (syntax (begin (displayln (quote</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">a-word)) (displayln (quote b-word))))))</span>
+</pre>
+</div>
 
 <p>
 We can use literals to discriminate between real and fake identifiers:
 </p>
 
-<p>
-(define-syntax-parser is-it-let?
-[(\_ (~literal let)) #'#t]
-[(\_ (~datum let)) #'#f]
-[\_ #'#f])
-(is-it-let? let)
-#t
-(let ([let 0])
-(is-it-let? let))
-#f
-</p>
+<div class="org-src-container">
+<pre class="src src-racket">(define-syntax-parser <span style="color: #ff8700;">is-it-let?</span>
+  [(\<span style="color: #a1db00;">_</span> (~literal <span style="color: #a1db00;">let</span>)) #<span style="color: #2e8b57;">'#t</span>]
+  [(\<span style="color: #a1db00;">_</span> (~datum <span style="color: #a1db00;">let</span>)) #<span style="color: #2e8b57;">'#f</span>]
+  [\<span style="color: #a1db00;">_</span> #<span style="color: #2e8b57;">'#f</span>])
+
+(is-it-let? <span style="color: #a1db00;">let</span>)
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">#t</span>
+
+(<span style="color: #a1db00;">let</span> ([<span style="color: #ff8700;">let</span> <span style="color: #2e8b57;">0</span>])
+  (is-it-let? <span style="color: #a1db00;">let</span>))
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">#f</span>
+</pre>
+</div>
 
 <p>
-Note that (~literal x) as a pattern is the same as specifying #:literals
+Note that <code>(~literal x)</code> as a pattern is the same as specifying <code>#:literals</code>
 (x) as keyword argument and using x as a pattern. Similarly for
-#:datum-literals (x).
+#:~datum-literals~ (x).
 </p>
 </div>
 </div>
 
-<div id="outline-container-org02cb4f4" class="outline-2">
-<h2 id="org02cb4f4"><span class="section-number-2">9</span> Experimenting with the lowest level</h2>
-<div class="outline-text-2" id="text-9">
+<div id="outline-container-org0b33aa4" class="outline-2">
+<h2 id="org0b33aa4"><span class="section-number-2">10</span> Experimenting with the lowest level</h2>
+<div class="outline-text-2" id="text-10">
 <p>
 Using define-syntax we can define simple functions that are essentially
 macros that don't pattern match. This style allows you to get to know
@@ -602,102 +619,112 @@ with to understand what syntax-parse is actually doing.
 Vision is the most important thing, let's look at what's going on!
 </p>
 
-<p>
-; Note: a macro only takes on argument, which contains the entire syntax object
-(define-syntax (name stx)
-(displayln stx))
-(name hello world)
-#&lt;syntax:39:0 (name hello world)&gt;
-name: received value from syntax expander was not syntax
-received: #&lt;void&gt;
-</p>
+<div class="org-src-container">
+<pre class="src src-racket"><span style="color: #6c6c6c; font-style: italic;">; </span><span style="color: #6c6c6c; font-style: italic;">Note: a macro only takes on argument, which contains the entire syntax object</span>
+(<span style="color: #a1db00;">define-syntax</span> (<span style="color: #ffd700;">name</span> stx)
+  (<span style="color: #d18aff;">displayln</span> stx))
+
+(name hello world)
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">#&lt;syntax:39:0 (name hello world)&gt;</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">name: received value from syntax expander was not syntax</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">received: #&lt;void&gt;</span>
+</pre>
+</div>
 
 <p>
 We need to add a result that is a syntax object:
 </p>
 
-<p>
-(define-syntax (name stx)
-(displayln stx)
-#'(void))
-(name hello world)
-#&lt;syntax:41:0 (name hello world)&gt;
-</p>
+<div class="org-src-container">
+<pre class="src src-racket">(<span style="color: #a1db00;">define-syntax</span> (<span style="color: #ffd700;">name</span> stx)
+  (<span style="color: #d18aff;">displayln</span> stx)
+  #'(<span style="color: #d18aff;">void</span>))
+
+(name hello world)
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">#&lt;syntax:41:0 (name hello world)&gt;</span>
+</pre>
+</div>
 
 <p>
 Now to extract some values. There are primitives used to extract
 information from syntax objects.
 </p>
 
-<p>
-(define-syntax (name stx)
-(displayln `("stx" ,stx))
-(displayln `("syntax-e" ,(syntax-e stx)))
-(displayln `("syntax-&gt;list" ,(syntax-&gt;list stx)))
-(displayln `("syntax-source" ,(syntax-source stx)))
-(displayln `("syntax-line" ,(syntax-line stx)))
-(displayln `("syntax-column" ,(syntax-column stx)))
-(displayln `("syntax-position" ,(syntax-position stx)))
-(displayln `("syntax?" ,(syntax? stx)))
-(displayln `("syntax-span" ,(syntax-span stx)))
-(displayln `("syntax-original?" ,(syntax-original? stx)))
-(displayln `("syntax-source-module" ,(syntax-source-module stx)))
-(displayln `("syntax-&gt;datum" ,(syntax-&gt;datum stx)))
-#'(void))
-(name hello world)
-(stx #&lt;syntax:43:0 (name hello world)&gt;)
-(syntax-e (#&lt;syntax:43:0 name&gt; #&lt;syntax:43:0 hello&gt; #&lt;syntax:43:0 world&gt;))
-(syntax-&gt;list (#&lt;syntax:43:0 name&gt; #&lt;syntax:43:0 hello&gt; #&lt;syntax:43:0 world&gt;))
-(syntax-source eval)
-(syntax-line 43)
-(syntax-column 0)
-(syntax-position 43)
-(syntax? #t)
-(syntax-span 1)
-(syntax-original? #f)
-(syntax-source-module #f)
-(syntax-&gt;datum (name hello world))
-</p>
+<div class="org-src-container">
+<pre class="src src-racket">(<span style="color: #a1db00;">define-syntax</span> (<span style="color: #ffd700;">name</span> stx)
+  (<span style="color: #d18aff;">displayln</span> `(<span style="color: #ff4ea3;">"stx"</span> ,stx))
+  (<span style="color: #d18aff;">displayln</span> `(<span style="color: #ff4ea3;">"syntax-e"</span> ,(<span style="color: #d18aff;">syntax-e</span> stx)))
+  (<span style="color: #d18aff;">displayln</span> `(<span style="color: #ff4ea3;">"syntax-&gt;list"</span> ,(<span style="color: #d18aff;">syntax-&gt;list</span> stx)))
+  (<span style="color: #d18aff;">displayln</span> `(<span style="color: #ff4ea3;">"syntax-source"</span> ,(<span style="color: #d18aff;">syntax-source</span> stx)))
+  (<span style="color: #d18aff;">displayln</span> `(<span style="color: #ff4ea3;">"syntax-line"</span> ,(<span style="color: #d18aff;">syntax-line</span> stx)))
+  (<span style="color: #d18aff;">displayln</span> `(<span style="color: #ff4ea3;">"syntax-column"</span> ,(<span style="color: #d18aff;">syntax-column</span> stx)))
+  (<span style="color: #d18aff;">displayln</span> `(<span style="color: #ff4ea3;">"syntax-position"</span> ,(<span style="color: #d18aff;">syntax-position</span> stx)))
+  (<span style="color: #d18aff;">displayln</span> `(<span style="color: #ff4ea3;">"syntax?"</span> ,(<span style="color: #d18aff;">syntax?</span> stx)))
+  (<span style="color: #d18aff;">displayln</span> `(<span style="color: #ff4ea3;">"syntax-span"</span> ,(<span style="color: #d18aff;">syntax-span</span> stx)))
+  (<span style="color: #d18aff;">displayln</span> `(<span style="color: #ff4ea3;">"syntax-original?"</span> ,(<span style="color: #d18aff;">syntax-original?</span> stx)))
+  (<span style="color: #d18aff;">displayln</span> `(<span style="color: #ff4ea3;">"syntax-source-module"</span> ,(<span style="color: #d18aff;">syntax-source-module</span> stx)))
+  (<span style="color: #d18aff;">displayln</span> `(<span style="color: #ff4ea3;">"syntax-&gt;datum"</span> ,(<span style="color: #d18aff;">syntax-&gt;datum</span> stx)))
+  #'(<span style="color: #d18aff;">void</span>))
+
+(name hello world)
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">(stx #&lt;syntax:43:0 (name hello world)&gt;)</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">(syntax-e (#&lt;syntax:43:0 name&gt; #&lt;syntax:43:0 hello&gt; #&lt;syntax:43:0 world&gt;))</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">(syntax-&gt;list (#&lt;syntax:43:0 name&gt; #&lt;syntax:43:0 hello&gt; #&lt;syntax:43:0 world&gt;))</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">(syntax-source eval)</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">(syntax-line 43)</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">(syntax-column 0)</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">(syntax-position 43)</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">(syntax? #t)</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">(syntax-span 1)</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">(syntax-original? #f)</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">(syntax-source-module #f)</span>
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">(syntax-&gt;datum (name hello world))</span>
+</pre>
+</div>
 
 <p>
 These are some of the functions that we can use on syntax objects.
 There's another one that allows us to turn datums into syntax called
-datum-&gt;syntax. Let's see if we can construct a simple macro based on
-this and syntax-e:
+<code>datum-&gt;syntax</code>. Let's see if we can construct a simple macro based on
+this and <code>syntax-e</code>:
 </p>
 
 <p>
-We're gonna make (infix 1 + 2) return (+ 1 2).
+We're gonna make <code>(infix 1 + 2)</code> return <code>(+ 1 2)</code>.
 </p>
 
-<p>
-(define-syntax (infix stx)
-(let ([elems (syntax-e stx)])
-(when (not (= (length elems) 4))
-(raise-syntax-error "there should be 3 elements"))
-(datum-&gt;syntax stx `(,(caddr elems) ,(cadr elems) ,(cadddr elems)))))
-(infix 1 + 2)
-3
-</p>
+<div class="org-src-container">
+<pre class="src src-racket">(<span style="color: #a1db00;">define-syntax</span> (<span style="color: #ffd700;">infix</span> stx)
+  (<span style="color: #a1db00;">let</span> ([<span style="color: #ff8700;">elems</span> (<span style="color: #d18aff;">syntax-e</span> stx)])
+    (<span style="color: #a1db00;">when</span> (<span style="color: #d18aff;">not</span> (<span style="color: #d18aff;">=</span> (<span style="color: #d18aff;">length</span> elems) <span style="color: #2e8b57;">4</span>))
+      (<span style="color: #d18aff;">raise-syntax-error</span> <span style="color: #ff4ea3;">"there should be 3 elements"</span>))
+    (<span style="color: #d18aff;">datum-&gt;syntax</span> stx `(,(<span style="color: #d18aff;">caddr</span> elems) ,(<span style="color: #d18aff;">cadr</span> elems) ,(<span style="color: #d18aff;">cadddr</span> elems)))))
+
+(infix <span style="color: #2e8b57;">1</span> <span style="color: #d18aff;">+</span> <span style="color: #2e8b57;">2</span>)
+<span style="color: #6c6c6c; font-style: italic;">; </span><span style="color: #6c6c6c; font-style: italic;">3</span>
+</pre>
+</div>
 
 <p>
 Notice how there are 4 elements in the list, because infix is inside it
-too. We also need to provide a context for datum-&gt;syntax. The
+too. We also need to provide a context for <code>datum-&gt;syntax</code>. The
 identifiers used in the result will be referenced from that context. In
-this case we used stx as the context. If you use #f, then + won't be
+this case we used stx as the context. If you use <code>#f</code>, then <code>+</code> won't be
 found and we have an error. The macro is essentially equivalent to:
 </p>
 
-<p>
-(define-syntax-parser infix
-[(\_ a op b)
-#'(op a b)])
-(infix 1 + 2)
-3
-</p>
+<div class="org-src-container">
+<pre class="src src-racket">(define-syntax-parser <span style="color: #ff8700;">infix</span>
+  [(\<span style="color: #a1db00;">_</span> a op b)
+   #'(op a b)])
+
+(infix <span style="color: #2e8b57;">1</span> <span style="color: #d18aff;">+</span> <span style="color: #2e8b57;">2</span>)
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">3</span>
+</pre>
+</div>
 
 <p>
-With syntax-parse the context is dependent on the input. This way we can
+With <code>syntax-parse</code> the context is dependent on the input. This way we can
 safely refer to variables from the caller's scope. This safety is what
 we call "macro hygiene", and allows us to compose macros without
 breaking them.
@@ -705,27 +732,29 @@ breaking them.
 </div>
 </div>
 
-<div id="outline-container-org6ebf95f" class="outline-2">
-<h2 id="org6ebf95f"><span class="section-number-2">10</span> Syntax parameters, what are they for?</h2>
-<div class="outline-text-2" id="text-10">
+<div id="outline-container-org6fe35ef" class="outline-2">
+<h2 id="org6fe35ef"><span class="section-number-2">11</span> Syntax parameters, what are they for?</h2>
+<div class="outline-text-2" id="text-11">
 <p>
 An anaphoric macro is a macro that can define macro-local variables.
 This isn't composable because replacing code with anaphoric macros may
 break it, I present you exhibit A, the unhygienic macro:
 </p>
 
-<p>
-(define-syntax (aif stx)
-(let ([elems (syntax-e stx)])
-(datum-&gt;syntax stx
-`(let ([it ,(cadr elems)])
-(if it ,(caddr elems) ,(cadddr elems))))))
-(define it 10)
-(aif (member 2 '(1 2 3))
-(displayln it)
-(void))
-(2 3)
-</p>
+<div class="org-src-container">
+<pre class="src src-racket">(<span style="color: #a1db00;">define-syntax</span> (<span style="color: #ffd700;">aif</span> stx)
+  (<span style="color: #a1db00;">let</span> ([<span style="color: #ff8700;">elems</span> (<span style="color: #d18aff;">syntax-e</span> stx)])
+    (<span style="color: #d18aff;">datum-&gt;syntax</span> stx
+                   `(<span style="color: #a1db00;">let</span> ([<span style="color: #ff8700;">it</span> ,(<span style="color: #d18aff;">cadr</span> elems)])
+                      (<span style="color: #a1db00;">if</span> it ,(<span style="color: #d18aff;">caddr</span> elems) ,(<span style="color: #d18aff;">cadddr</span> elems))))))
+
+(<span style="color: #a1db00;">define</span> <span style="color: #ff8700;">it</span> <span style="color: #2e8b57;">10</span>)
+(aif (<span style="color: #d18aff;">member</span> <span style="color: #2e8b57;">2</span> '(<span style="color: #2e8b57;">1</span> <span style="color: #2e8b57;">2</span> <span style="color: #2e8b57;">3</span>))
+     (<span style="color: #d18aff;">displayln</span> it)
+     (<span style="color: #d18aff;">void</span>))
+<span style="color: #6c6c6c; font-style: italic;">;; </span><span style="color: #6c6c6c; font-style: italic;">(2 3)</span>
+</pre>
+</div>
 
 <p>
 The programmer wanted to print 10 but instead something else got
@@ -734,22 +763,22 @@ programs and bigger macros.
 </p>
 
 <p>
-Let's instead use syntax-parameters. These can be used hygienically:
+Let's instead use <code>syntax-parameters</code>. These can be used hygienically:
 </p>
 
 <p>
-(require racket/stxparam)
+(require racket/stxparam)
 </p>
 
 <p>
-(define-syntax-parameter it (syntax-parser))
-(define-syntax-parser aif
-[(\_ condition then otherwise)
-#'(let ([t condition])
-(syntax-parameterize ([it (syntax-parser [\_ #'t])])
-(if t then otherwise)))])
-(aif (member 2 '(1 2 3))
-(displayln it)
+(define-syntax-parameter it (syntax-parser))
+(define-syntax-parser aif
+[(&ensp;condition then otherwise)
+#'(let ([t condition])
+(syntax-parameterize ([it (syntax-parser [&ensp;#'t])])
+(if t then otherwise)))])
+(aif (member 2 '(1 2 3))
+(displayln it)
 (void))
 (2 3)
 </p>
@@ -760,9 +789,9 @@ parameter.
 </p>
 
 <p>
-(let ([it 10])
-(aif (member 2 '(1 2 3))
-(displayln it)
+(let ([it 10])
+(aif (member 2 '(1 2 3))
+(displayln it)
 (void)))
 10
 </p>
@@ -775,9 +804,9 @@ scratch his head.
 </p>
 
 <p>
-(define it 10)
-(aif (member 2 '(1 2 3))
-(displayln it)
+(define it 10)
+(aif (member 2 '(1 2 3))
+(displayln it)
 (void))
 eval:53:0: syntax-parameterize: not bound as a syntax
 parameter
@@ -788,17 +817,17 @@ t))))) (if t (displayln it) (void)))
 </div>
 </div>
 
-<div id="outline-container-org5853f06" class="outline-2">
-<h2 id="org5853f06"><span class="section-number-2">11</span> I don't get it, how does syntax-parse work?</h2>
-<div class="outline-text-2" id="text-11">
+<div id="outline-container-orgf28eca1" class="outline-2">
+<h2 id="orgf28eca1"><span class="section-number-2">12</span> I don't get it, how does syntax-parse work?</h2>
+<div class="outline-text-2" id="text-12">
 <p>
 syntax-parse works by replacing all syntax objects after the pattern
 match with the results from the pattern match:
 </p>
 
 <p>
-(syntax-parse #'(this is some syntax)
-[(here is the pattern) #'(pattern is put here)])
+(syntax-parse #'(this is some syntax)
+[(here is the pattern) #'(pattern is put here)])
 #&lt;syntax:58:0 (syntax is put this)&gt;
 </p>
 
@@ -808,10 +837,10 @@ Another cool thing is that you can run arbitrary code in the body:
 </p>
 
 <p>
-(syntax-parse #'(this is some syntax)
-[(here is the pattern)
-(displayln "This is arbitrary code, we could download webpages for use in this macro, whatever you wish")
-#'(pattern is put here)])
+(syntax-parse #'(this is some syntax)
+[(here is the pattern)
+(displayln "This is arbitrary code, we could download webpages for use in this macro, whatever you wish")
+#'(pattern is put here)])
 This is arbitrary code, we could download webpages for use in this macro, whatever you wish
 #&lt;syntax:59:0 (syntax is put this)&gt;
 </p>
@@ -821,8 +850,8 @@ There are also some special pattern forms:
 </p>
 
 <p>
-(syntax-parse #'(this is some syntax)
-[(here &#x2026;) #'(here &#x2026; put stuff)])
+(syntax-parse #'(this is some syntax)
+[(here &#x2026;) #'(here &#x2026; put stuff)])
 #&lt;syntax:60:0 (this is some syntax put stuff)&gt;
 </p>
 
@@ -838,8 +867,8 @@ macros:
 </p>
 
 <p>
-(syntax-parse #'((this is) (some syntax))
-[((here there) &#x2026;+) #'(here &#x2026; there &#x2026; put stuff)])
+(syntax-parse #'((this is) (some syntax))
+[((here there) &#x2026;+) #'(here &#x2026; there &#x2026; put stuff)])
 #&lt;syntax:61:0 (this some is syntax put stuff)&gt;
 </p>
 
@@ -848,8 +877,8 @@ They can even be nested
 </p>
 
 <p>
-(syntax-parse #'((this is) (some more stuff syntax))
-[((here &#x2026; there) &#x2026;+) #'(here &#x2026; &#x2026; there &#x2026; put stuff)])
+(syntax-parse #'((this is) (some more stuff syntax))
+[((here &#x2026; there) &#x2026;+) #'(here &#x2026; &#x2026; there &#x2026; put stuff)])
 #&lt;syntax:62:0 (this some more stuff is synt&#x2026;&gt;
 </p>
 
@@ -864,7 +893,7 @@ some more stuff.</p>
 <div id="postamble" class="status">
 <p class="date">Date: 2017-11-17 Fri 00:00</p>
 <p class="author">Author: Kevin R. Stravers</p>
-<p class="date">Created: 2018-10-13 Sat 21:58</p>
+<p class="date">Created: 2018-10-14 Sun 18:18</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
