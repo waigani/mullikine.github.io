@@ -171,6 +171,8 @@ This defines some syntax which itself is defined by a parser, just like below.
 ** Perfectly fine example B: ~define-syntax~ ∘ ~syntax-parse~
 This is an expanded version of the above.
 
+-----
+
 This uses the naked, authentic ~syntax-parse~ form. It's the most expanded of the 3 examples.
 They're all good.
 
@@ -187,7 +189,9 @@ They're all good.
 ** Perfectly fine example C: ~define-syntax~ ∘ ~syntax-parser~ -- parse'R
 THe ~syntax-parser~ function. I guess it' needs fewer arguments.
 
-- ~stx~ is inferred here
+-----
+
+- ~stx~ is inferred here?
 #+BEGIN_SRC racket
   (define-syntax name
     (syntax-parser
