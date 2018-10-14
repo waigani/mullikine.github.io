@@ -43,27 +43,28 @@ manipulate syntax in a complex manner. It also prevents you from having
 to use ~define-syntax~ together with ~syntax-parse~. In essence it's a way
 to define macros in a clean manner.
 
-* ~syntax-case~, don't use it!
+* ~syntax-case~, the *typeless* version of ~syntax-parse~. Don't use it!
 
-Why not use ~syntax-case~? It appears to be an important primitive. Well
-to put it clearly: ~syntax-case~ is the *typeless* version of
-~syntax-parse~.There are some other differences in how arguments are
-applied and errors are reported, but what's in bold is the most
-important aspect. With ~syntax-parse~ we can assert that a term is an
-identifier or a keyword in a declarative manner whereas with ~syntax-case~
-we'd have to write code that checks types during ~macro-time~.
-~syntax-parse~ is widely superior to ~syntax-case~.
++ ~syntax-case~ :: _Sucks_ because you must write additional code to check the type during /macro/-time.
++ ~syntax-parse~ :: _Rules_ because you can assert that a term is an /identifier/ *or* a /keyword/ in a declarative manner.
 
-We should ideally deprecate ~syntax-case~ for ~end-user~ usage.
+-----
 
-* ~with-syntax~
+- There are also some other differences in how _arguments are applied_ and _errors are reported_.
 
-~with-syntax~ is incredibly useful in ~syntax-case~ but inside ~syntax-parse~
-we should use ~#:with~ instead:
+- ~syntax-parse~ is widely superior to ~syntax-case~.
 
-Examples:
+** ~with-syntax~
 
-#+NAME:code-segment-1
+- ... is incredibly useful in ~syntax-case~, but
+- inside ~syntax-parse~ we should use ~#:with~ instead.
+
+*** Examples:
+The advantage of ~#:with~ over ~with-syntax~ is the use of types and better
+error reporting for ~syntax-parse~.
+
+**** ~#:with~
+#+NAME:with
 #+BEGIN_SRC racket
   (require syntax/parse/define)
 
@@ -76,11 +77,8 @@ Examples:
   ; '(zero one two three)
 #+END_SRC
 
-The advantage of ~#:with~ over ~with-syntax~ is the use of types and better
-error reporting for ~syntax-parse~.
-
-For reference, here's ~with-syntax~:
-
+**** ~with-syntax~
+#+NAME:with-syntax
 #+BEGIN_SRC racket
   (require syntax/parse/define)
 
@@ -528,7 +526,7 @@ Note that the ~...~ operator in the syntax has left-associativity, so:
 
 | syntax         | description | family         | use |
 |----------------+-------------+----------------+-----|
-| ~#with-syntax~ |             | ~syntax-parse~ | ✓   |
+| ~#with~ |             | ~syntax-parse~ | ✓   |
 | ~with-syntax~  |             | ~syntax-case~  | ✗   |
 
 ** syntax transformer families
