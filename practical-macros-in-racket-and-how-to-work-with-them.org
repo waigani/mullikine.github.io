@@ -142,7 +142,7 @@ These examples are awkwardly under the ~syntax-case~ section.
 ~syntax-parse~ is the primitive of the most advanced syntax transformer in
 racket (as far as I know).
 
-Above, we used ~define-syntax-parser~. Expanded out, this uses the ~syntax-parse~ primitive.
+Above, we used ~define-syntax-parser~. Expanded out, you can see that it uses the ~syntax-parse~ primitive.
 
 Here are some examples of how to use ~syntax-parse~.
 
