@@ -157,6 +157,8 @@ Here are some examples of how to use ~syntax-parse~.
 ** Example A: (most concise). Uses ~define-syntax-parser~
 Most of the time we want to use ~define-syntax-parser~ because it saves us the effort of typing ~syntax-parse~ and ~stx~, as in the examples that follow.
 
+~define-syntax-parser~ = ~define-syntax~ ∘ ~syntax-parser~
+
 #+BEGIN_SRC racket
 
   (define-syntax-parser name
