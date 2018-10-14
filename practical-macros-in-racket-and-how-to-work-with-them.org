@@ -47,7 +47,7 @@ manipulate syntax in a complex manner. It also prevents you from having
 to use ~define-syntax~ together with ~syntax-parse~. In essence it's a way
 to define macros in a clean manner.
 
-* ~syntax-case~, the *typeless* version of ~syntax-parse~. Don't use it!
+* DISCARD ~syntax-case~, the *typeless* version of ~syntax-parse~. Don't use it!
 
 + ~syntax-case~ :: _Sucks_ because you must write additional code to check the type during /macro/-time.
 + ~syntax-parse~ :: _Rules_ because you can assert that a term is an /identifier/ *or* a /keyword/ in a declarative manner.
@@ -113,7 +113,7 @@ error reporting for ~syntax-parse~.
 </div>
 #+END_EXPORT
 
-* [#A] The ~syntax-parse~ family
+* TODO [#A] The ~syntax-parse~ family
 
 ~syntax-parse~ is the primitive of the most advanced syntax transformer in
 racket (as far as I know). Here are some examples of how to use ~syntax-parse~.
