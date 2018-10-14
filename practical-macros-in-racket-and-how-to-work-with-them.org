@@ -190,8 +190,8 @@ They're all good.
   ; -4
 #+END_SRC
 
-** Perfectly fine Example, C: ~define-syntax~ ∘ ~syntax-parser~ -er!!
-THe ~syntax-parser~ function. I guess it' needs fewer arguments.
+** Perfectly fine Example, C: ~define-syntax~ ∘ ~syntax-parser~ _r_!
+The ~syntax-parser~ function (with an 'r'). I guess it needs fewer arguments than ~syntax-parse~.
 
 -----
 
