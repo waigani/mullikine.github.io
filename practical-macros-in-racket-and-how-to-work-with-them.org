@@ -136,6 +136,9 @@ Most of the time we want to use ~define-syntax-parser~ because it saves us the e
   ; -4
 #+END_SRC
 
+#+RESULTS:
+: -4
+
 ** Perfectly fine example B: (expanded). Uses ~define-syntax~
 This is an expanded version of the above.
 

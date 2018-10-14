@@ -119,7 +119,7 @@ error reporting for ~syntax-parse~.
 racket (as far as I know). Here are some examples of how to use ~syntax-parse~.
 
 #+BEGIN_SRC racket
-  ;; Remember to requi this
+  ;; Remember to require this
   (require syntax/parse syntax/parse/define)
 #+END_SRC
 
@@ -135,6 +135,9 @@ Most of the time we want to use ~define-syntax-parser~ because it saves us the e
   (name 1 2 3 4)
   ; -4
 #+END_SRC
+
+#+RESULTS:
+: -4
 
 ** Perfectly fine example B: (expanded). Uses ~define-syntax~
 This is an expanded version of the above.
