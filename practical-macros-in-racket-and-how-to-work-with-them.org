@@ -232,7 +232,7 @@ The ~syntax-parser~ function (with an 'r'). I guess it needs fewer arguments tha
 </div>
 #+END_EXPORT
 
-* ~make-rename-transformer~
+* ~make-rename-transformer~ (function for aliasing identifiers)
 
 This special transformer is basically an alias that preserves identifier
 equality.
@@ -271,14 +271,22 @@ transform a mutation of an identifier.
 I haven't had much use for this in my code so far, but I guess it's fine
 to keep in mind in case you need it.
 
-* Syntax taints, what are they?
+* *Syntax taints*, what are they?
 
 The documentation on syntax taints is confusing to me. Here's my
-synopsis: It prevents the arbitrary use of identifiers: if you extract
-any part of another macro's armed result, then that extracted part is
-tainted and can't be used further. Allow me to exemplify:
+synopsis:
 
-Examples:
+-----
+
++ syntax taint :: Prevents the arbitrary use of identifiers.
+
+                  If you extract any part of another macro's armed result, then that extracted part is
+                  tainted and can't be used further.
+
+-----
+
+** Examples of syntax taints:
+*** 
 
 #+BEGIN_SRC racket
   (require syntax/parse/define)
@@ -305,6 +313,7 @@ This rejects the expression ~(+ c)~ because the identifier ~c~ is *tainted*.
 Why is it tainted? Because ~syntax-e~ tainted it. Why did it taint it?
 Because the ~syntax-object~ was *armed*.
 
+*** 
 #+BEGIN_SRC racket
   (require syntax/parse/define)
   (define c 10)
