@@ -234,7 +234,7 @@ The ~syntax-parser~ function (with an 'r'). I guess it needs fewer arguments tha
 
 * Miscellaneous ancillary syntax transformers
 
-** ~make-rename-transformer~ (for aliasing identifiers)
+** ~make-rename-transformer~ (for aliasing things?)
   :PROPERTIES:
   :Effort:   easy
   :END:
@@ -252,6 +252,14 @@ equality.
 
   (free-identifier=? #'let #'l)
   ;; #t
+#+END_SRC
+
+Maybe we should use it to rename itself to something simpler...
+
+#+BEGIN_SRC racket
+  (define-syntax mrt (make-rename-transformer #'make-rename-transformer))
+  (define-syntax p (mrt #'display))
+  ;; Nope! It appears that does not work.
 #+END_SRC
 
 ** ~make-set!-transformer~
