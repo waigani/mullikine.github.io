@@ -186,7 +186,7 @@ This is an expanded version of Example A.
 -----
 
 This uses the naked, authentic ~syntax-parse~ form, resulting in the most expanded of the 3 examples.
-All of them are great examples though. It depends on the situation as to the way you want to make this syntax parser.
+They're all great examples though. It depends on the situation as to the way you want to make this syntax parser.
 
 #+BEGIN_SRC racket
   (define-syntax (name stx)

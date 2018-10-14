@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-14 Sun 23:00 -->
+<!-- 2018-10-14 Sun 23:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Practical macros in Racket</title>
@@ -239,61 +239,61 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf028856">1. Read the original article <span class="underline">here</span>.</a></li>
-<li><a href="#org84a8d22">2. Practical macros in Racket and how to work with them</a></li>
-<li><a href="#org010eda2">3. What's all this racket?</a>
+<li><a href="#org05b11ae">1. Read the original article <span class="underline">here</span>.</a></li>
+<li><a href="#org1eb4440">2. Practical macros in Racket and how to work with them</a></li>
+<li><a href="#org128d856">3. What's all this racket?</a>
 <ul>
-<li><a href="#org84b2377">3.1. Table of forms</a></li>
+<li><a href="#orga703c80">3.1. Table of forms</a></li>
 </ul>
 </li>
-<li><a href="#org8414a31">4. <span class="done DISCARD">DISCARD</span> <code>syntax-case</code> (the <b>typeless</b> version of <code>syntax-parse</code>). Don't use it!</a>
+<li><a href="#org7082d1f">4. <span class="done DISCARD">DISCARD</span> <code>syntax-case</code> (the <b>typeless</b> version of <code>syntax-parse</code>). Don't use it!</a>
 <ul>
-<li><a href="#org2c8dfaa">4.1. If you do use <code>syntax-case</code> then you can (and should) use <code>with-syntax</code> too</a>
+<li><a href="#orgbe39ed8">4.1. If you do use <code>syntax-case</code> then you can (and should) use <code>with-syntax</code> too</a>
 <ul>
-<li><a href="#org972c199">4.1.1. <code>with-syntax</code> should be used alongside <code>syntax-case</code></a></li>
-<li><a href="#org5a18bc5">4.1.2. Examples: <code>#:with</code> vs <code>with-syntax</code> for use with <code>define-syntax-parser</code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgca623a8">5. <span class="todo TODO">TODO</span> Learn to use the <code>syntax-parse</code> family</a>
-<ul>
-<li><a href="#orgf708a54">5.1. Example A: (most concise). Uses <code>define-syntax-parser</code></a></li>
-<li><a href="#orgacdc41e">5.2. Perfectly fine Example, B: <code>define-syntax</code> ∘ <code>syntax-parse</code></a></li>
-<li><a href="#orgb3de3a7">5.3. Perfectly fine Example, C: <code>define-syntax</code> ∘ <code>syntax-parser</code> <span class="underline">r</span>!</a></li>
-<li><a href="#org7de263c">5.4. <code>define-syntax-parser</code> vs shorthand <code>define-syntax</code></a></li>
-</ul>
-</li>
-<li><a href="#orgf4d9c60">6. <code>make-rename-transformer</code></a></li>
-<li><a href="#orgbfc28a7">7. <code>make-set!-transformer</code></a></li>
-<li><a href="#org42e0d99">8. Syntax taints, what are they?</a></li>
-<li><a href="#org256af16">9. Literals</a></li>
-<li><a href="#orgb132aca">10. Experimenting with the lowest level</a></li>
-<li><a href="#org0758392">11. Syntax parameters, what are they for?</a></li>
-<li><a href="#org54dc1c9">12. I don't get it, how does <code>syntax-parse</code> work?</a>
-<ul>
-<li><a href="#org4e7a751">12.1. Another cool thing: you can run arbitrary code in the body:</a></li>
-<li><a href="#org0c7d07c">12.2. There are also some special pattern forms:</a>
-<ul>
-<li><a href="#org5da939c">12.2.1. Table of forms</a></li>
-<li><a href="#org6a7bb2c">12.2.2. They can even be nested</a></li>
+<li><a href="#org76bfdc0">4.1.1. <code>with-syntax</code> should be used alongside <code>syntax-case</code></a></li>
+<li><a href="#orgb93a6fe">4.1.2. Examples: <code>#:with</code> vs <code>with-syntax</code> for use with <code>define-syntax-parser</code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orge6e518c">13. Read the original article <span class="underline">here</span>.</a></li>
-<li><a href="#org3add47c">14. Take-away notes</a>
+<li><a href="#org3aa1601">5. <span class="todo TODO">TODO</span> Learn to use the <code>syntax-parse</code> family</a>
 <ul>
-<li><a href="#orgc9f9d89">14.1. parts of syntax</a></li>
-<li><a href="#orgde6d1d1">14.2. syntax transformer families</a></li>
+<li><a href="#org236ad74">5.1. Example A: (most concise). Uses <code>define-syntax-parser</code></a></li>
+<li><a href="#orga0c82f2">5.2. Perfectly fine Example, B: <code>define-syntax</code> ∘ <code>syntax-parse</code></a></li>
+<li><a href="#org4c3a19d">5.3. Perfectly fine Example, C: <code>define-syntax</code> ∘ <code>syntax-parser</code> <span class="underline">r</span>!</a></li>
+<li><a href="#orgcc62e3a">5.4. <code>define-syntax-parser</code> vs shorthand <code>define-syntax</code></a></li>
+</ul>
+</li>
+<li><a href="#org3d3c571">6. <code>make-rename-transformer</code></a></li>
+<li><a href="#orga701ce2">7. <code>make-set!-transformer</code></a></li>
+<li><a href="#orgdaca414">8. Syntax taints, what are they?</a></li>
+<li><a href="#org58f2e01">9. Literals</a></li>
+<li><a href="#org6c0c122">10. Experimenting with the lowest level</a></li>
+<li><a href="#orgf46b95e">11. Syntax parameters, what are they for?</a></li>
+<li><a href="#org362e8ca">12. I don't get it, how does <code>syntax-parse</code> work?</a>
+<ul>
+<li><a href="#orge489c1b">12.1. Another cool thing: you can run arbitrary code in the body:</a></li>
+<li><a href="#orgae68413">12.2. There are also some special pattern forms:</a>
+<ul>
+<li><a href="#org6a50f34">12.2.1. Table of forms</a></li>
+<li><a href="#orgf0dd5c4">12.2.2. They can even be nested</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgcf385e0">13. Read the original article <span class="underline">here</span>.</a></li>
+<li><a href="#org39b1210">14. Take-away notes</a>
+<ul>
+<li><a href="#orgcdfbc4b">14.1. parts of syntax</a></li>
+<li><a href="#org96ff276">14.2. syntax transformer families</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgf028856" class="outline-2">
-<h2 id="orgf028856"><span class="section-number-2">1</span> Read the original article <a href="https://kevin.stravers.net/2017/11/practical-macros-in-racket-and-how-to-work-with-them.html"><span class="underline">here</span></a>.</h2>
+<div id="outline-container-org05b11ae" class="outline-2">
+<h2 id="org05b11ae"><span class="section-number-2">1</span> Read the original article <a href="https://kevin.stravers.net/2017/11/practical-macros-in-racket-and-how-to-work-with-them.html"><span class="underline">here</span></a>.</h2>
 <div class="outline-text-2" id="text-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -316,8 +316,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org84a8d22" class="outline-2">
-<h2 id="org84a8d22"><span class="section-number-2">2</span> Practical macros in Racket and how to work with them</h2>
+<div id="outline-container-org1eb4440" class="outline-2">
+<h2 id="org1eb4440"><span class="section-number-2">2</span> Practical macros in Racket and how to work with them</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A macro is central in any Lisp and must be mastered in order to master
@@ -330,8 +330,8 @@ complete picture.
 </div>
 </div>
 
-<div id="outline-container-org010eda2" class="outline-2">
-<h2 id="org010eda2"><span class="section-number-2">3</span> What's all this racket?</h2>
+<div id="outline-container-org128d856" class="outline-2">
+<h2 id="org128d856"><span class="section-number-2">3</span> What's all this racket?</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 I've looked through the racket documentation and connected most of the
@@ -340,7 +340,7 @@ functions.
 </p>
 
 
-<div id="org2625124" class="figure">
+<div id="org0db5d64" class="figure">
 <p><img src="macro-graph.png" alt="macro-graph.png" />
 </p>
 </div>
@@ -413,8 +413,8 @@ to define macros in a clean manner.
 </p>
 </div>
 
-<div id="outline-container-org84b2377" class="outline-3">
-<h3 id="org84b2377"><span class="section-number-3">3.1</span> Table of forms</h3>
+<div id="outline-container-orga703c80" class="outline-3">
+<h3 id="orga703c80"><span class="section-number-3">3.1</span> Table of forms</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Keep this in mind as you continue reading.
@@ -450,8 +450,8 @@ Keep this in mind as you continue reading.
 </div>
 </div>
 
-<div id="outline-container-org8414a31" class="outline-2">
-<h2 id="org8414a31"><span class="section-number-2">4</span> <span class="done DISCARD">DISCARD</span> <code>syntax-case</code> (the <b>typeless</b> version of <code>syntax-parse</code>). Don't use it!</h2>
+<div id="outline-container-org7082d1f" class="outline-2">
+<h2 id="org7082d1f"><span class="section-number-2">4</span> <span class="done DISCARD">DISCARD</span> <code>syntax-case</code> (the <b>typeless</b> version of <code>syntax-parse</code>). Don't use it!</h2>
 <div class="outline-text-2" id="text-4">
 <dl class="org-dl">
 <dt><code>syntax-case</code></dt><dd><span class="underline">Sucks</span> because you must write additional code to check the type during <i>macro</i>-time.</dd>
@@ -474,12 +474,12 @@ Keep this in mind as you continue reading.
 </dl>
 </div>
 
-<div id="outline-container-org2c8dfaa" class="outline-3">
-<h3 id="org2c8dfaa"><span class="section-number-3">4.1</span> If you do use <code>syntax-case</code> then you can (and should) use <code>with-syntax</code> too</h3>
+<div id="outline-container-orgbe39ed8" class="outline-3">
+<h3 id="orgbe39ed8"><span class="section-number-3">4.1</span> If you do use <code>syntax-case</code> then you can (and should) use <code>with-syntax</code> too</h3>
 <div class="outline-text-3" id="text-4-1">
 </div>
-<div id="outline-container-org972c199" class="outline-4">
-<h4 id="org972c199"><span class="section-number-4">4.1.1</span> <code>with-syntax</code> should be used alongside <code>syntax-case</code></h4>
+<div id="outline-container-org76bfdc0" class="outline-4">
+<h4 id="org76bfdc0"><span class="section-number-4">4.1.1</span> <code>with-syntax</code> should be used alongside <code>syntax-case</code></h4>
 <div class="outline-text-4" id="text-4-1-1">
 <p>
 <code>with-syntax</code> is part of the same family of <b><span class="underline"><a href="http://racket/reference/stx-patterns.html#(form._((lib._racket/private/stxcase-scheme..rkt)._with-syntax))">Pattern-Based Syntax Matching</a></span></b> forms as <code>syntax-case</code> and is nearly identical to <code>syntax-case</code> under the hood:
@@ -519,8 +519,8 @@ But <i>don't</i> use <code>with-syntax</code> with <code>syntax-parse</code>!
 </div>
 </div>
 
-<div id="outline-container-org5a18bc5" class="outline-4">
-<h4 id="org5a18bc5"><span class="section-number-4">4.1.2</span> Examples: <code>#:with</code> vs <code>with-syntax</code> for use with <code>define-syntax-parser</code></h4>
+<div id="outline-container-orgb93a6fe" class="outline-4">
+<h4 id="orgb93a6fe"><span class="section-number-4">4.1.2</span> Examples: <code>#:with</code> vs <code>with-syntax</code> for use with <code>define-syntax-parser</code></h4>
 <div class="outline-text-4" id="text-4-1-2">
 <p>
 The advantage of <code>#:with</code> over <code>with-syntax</code> is the <span class="underline">use of types and better
@@ -539,10 +539,10 @@ These examples are awkwardly under the <code>syntax-case</code> section.
 </div>
 
 <ol class="org-ol">
-<li><a id="orgd007f42"></a><code>#:with</code><br />
+<li><a id="orgb8b46c6"></a><code>#:with</code><br />
 <div class="outline-text-5" id="text-4-1-2-1">
 <div class="org-src-container">
-<pre class="src src-racket" id="org6ab3993">(define-syntax-parser <span style="color: #ff8700;">with-example</span>
+<pre class="src src-racket" id="orga2b54ff">(define-syntax-parser <span style="color: #ff8700;">with-example</span>
   [(<span style="color: #a1db00;">_</span> a)
    <span style="color: #cd5c5c;">#:with</span> (b:id <span style="color: #a1db00;">...</span>) #'(one two three)
    #'(<span style="color: #d18aff;">list</span> a <span style="color: #2e8b57;">'b</span> <span style="color: #a1db00;">...</span>)])
@@ -554,10 +554,10 @@ These examples are awkwardly under the <code>syntax-case</code> section.
 </div>
 </li>
 
-<li><a id="org3f96fd2"></a><code>with-syntax</code><br />
+<li><a id="orga107b05"></a><code>with-syntax</code><br />
 <div class="outline-text-5" id="text-4-1-2-2">
 <div class="org-src-container">
-<pre class="src src-racket" id="orgafa08cd">(define-syntax-parser <span style="color: #ff8700;">with-example</span>
+<pre class="src src-racket" id="orgb491193">(define-syntax-parser <span style="color: #ff8700;">with-example</span>
   [(<span style="color: #a1db00;">_</span> a)
    (<span style="color: #a1db00;">with-syntax</span> ([(b <span style="color: #a1db00;">...</span>) #'(one two three)])
      #'(<span style="color: #d18aff;">list</span> a <span style="color: #2e8b57;">'b</span> <span style="color: #a1db00;">...</span>))])
@@ -569,7 +569,7 @@ These examples are awkwardly under the <code>syntax-case</code> section.
 </div>
 </li>
 
-<li><a id="org14ff829"></a><code>#:with</code> vs <code>with-syntax</code><br />
+<li><a id="org786b451"></a><code>#:with</code> vs <code>with-syntax</code><br />
 <div class="outline-text-5" id="text-4-1-2-3">
 <ul class="org-ul">
 <li><code>with-syntax</code> uses more parentheses.</li>
@@ -594,8 +594,8 @@ These examples are awkwardly under the <code>syntax-case</code> section.
 </div>
 </div>
 
-<div id="outline-container-orgca623a8" class="outline-2">
-<h2 id="orgca623a8"><span class="section-number-2">5</span> <span class="todo TODO">TODO</span> Learn to use the <code>syntax-parse</code> family</h2>
+<div id="outline-container-org3aa1601" class="outline-2">
+<h2 id="org3aa1601"><span class="section-number-2">5</span> <span class="todo TODO">TODO</span> Learn to use the <code>syntax-parse</code> family</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 <code>syntax-parse</code> is the primitive of the most advanced syntax transformer in
@@ -620,8 +620,8 @@ Here are some examples of how to use <code>syntax-parse</code>.
 </div>
 </div>
 
-<div id="outline-container-orgf708a54" class="outline-3">
-<h3 id="orgf708a54"><span class="section-number-3">5.1</span> Example A: (most concise). Uses <code>define-syntax-parser</code></h3>
+<div id="outline-container-org236ad74" class="outline-3">
+<h3 id="org236ad74"><span class="section-number-3">5.1</span> Example A: (most concise). Uses <code>define-syntax-parser</code></h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 Most of the time we want to use <code>define-syntax-parser</code> because it saves us the effort of typing <code>syntax-parse</code> and <code>stx</code>, as in the examples that follow.
@@ -656,8 +656,8 @@ This defines some syntax which itself is defined by a parser, just like below.
 </div>
 </div>
 
-<div id="outline-container-orgacdc41e" class="outline-3">
-<h3 id="orgacdc41e"><span class="section-number-3">5.2</span> Perfectly fine Example, B: <code>define-syntax</code> ∘ <code>syntax-parse</code></h3>
+<div id="outline-container-orga0c82f2" class="outline-3">
+<h3 id="orga0c82f2"><span class="section-number-3">5.2</span> Perfectly fine Example, B: <code>define-syntax</code> ∘ <code>syntax-parse</code></h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
 This is an expanded version of Example A.
@@ -666,7 +666,7 @@ This is an expanded version of Example A.
 <hr />
 
 <p>
-This uses the naked, authentic <code>syntax-parse</code> form. It's the most expanded of the 3 examples.
+This uses the naked, authentic <code>syntax-parse</code> form, resulting in the most expanded of the 3 examples.
 All of them are great examples though. It depends on the situation as to the way you want to make this syntax parser.
 </p>
 
@@ -683,8 +683,8 @@ All of them are great examples though. It depends on the situation as to the way
 </div>
 </div>
 
-<div id="outline-container-orgb3de3a7" class="outline-3">
-<h3 id="orgb3de3a7"><span class="section-number-3">5.3</span> Perfectly fine Example, C: <code>define-syntax</code> ∘ <code>syntax-parser</code> <span class="underline">r</span>!</h3>
+<div id="outline-container-org4c3a19d" class="outline-3">
+<h3 id="org4c3a19d"><span class="section-number-3">5.3</span> Perfectly fine Example, C: <code>define-syntax</code> ∘ <code>syntax-parser</code> <span class="underline">r</span>!</h3>
 <div class="outline-text-3" id="text-5-3">
 <p>
 The <code>syntax-parser</code> function (with an 'r'). I guess it needs fewer arguments than <code>syntax-parse</code>.
@@ -708,8 +708,8 @@ The <code>syntax-parser</code> function (with an 'r'). I guess it needs fewer ar
 </div>
 </div>
 
-<div id="outline-container-org7de263c" class="outline-3">
-<h3 id="org7de263c"><span class="section-number-3">5.4</span> <code>define-syntax-parser</code> vs shorthand <code>define-syntax</code></h3>
+<div id="outline-container-orgcc62e3a" class="outline-3">
+<h3 id="orgcc62e3a"><span class="section-number-3">5.4</span> <code>define-syntax-parser</code> vs shorthand <code>define-syntax</code></h3>
 <div class="outline-text-3" id="text-5-4">
 <div class="org-src-container">
     <pre>
@@ -727,8 +727,8 @@ The <code>syntax-parser</code> function (with an 'r'). I guess it needs fewer ar
 </div>
 </div>
 
-<div id="outline-container-orgf4d9c60" class="outline-2">
-<h2 id="orgf4d9c60"><span class="section-number-2">6</span> <code>make-rename-transformer</code></h2>
+<div id="outline-container-org3d3c571" class="outline-2">
+<h2 id="org3d3c571"><span class="section-number-2">6</span> <code>make-rename-transformer</code></h2>
 <div class="outline-text-2" id="text-6">
 <p>
 This special transformer is basically an alias that preserves identifier
@@ -750,8 +750,8 @@ equality.
 </div>
 </div>
 
-<div id="outline-container-orgbfc28a7" class="outline-2">
-<h2 id="orgbfc28a7"><span class="section-number-2">7</span> <code>make-set!-transformer</code></h2>
+<div id="outline-container-orga701ce2" class="outline-2">
+<h2 id="orga701ce2"><span class="section-number-2">7</span> <code>make-set!-transformer</code></h2>
 <div class="outline-text-2" id="text-7">
 <p>
 Another special transformer is the <code>set!-transformer</code>, it allows you to
@@ -780,8 +780,8 @@ to keep in mind in case you need it.
 </div>
 </div>
 
-<div id="outline-container-org42e0d99" class="outline-2">
-<h2 id="org42e0d99"><span class="section-number-2">8</span> Syntax taints, what are they?</h2>
+<div id="outline-container-orgdaca414" class="outline-2">
+<h2 id="orgdaca414"><span class="section-number-2">8</span> Syntax taints, what are they?</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 The documentation on syntax taints is confusing to me. Here's my
@@ -856,8 +856,8 @@ This shows that the expander
 </div>
 </div>
 
-<div id="outline-container-org256af16" class="outline-2">
-<h2 id="org256af16"><span class="section-number-2">9</span> Literals</h2>
+<div id="outline-container-org58f2e01" class="outline-2">
+<h2 id="org58f2e01"><span class="section-number-2">9</span> Literals</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 <code>syntax-parse</code> allows the use of literals:
@@ -930,8 +930,8 @@ Note that <code>(~literal x)</code> as a pattern is the same as specifying <code
 </div>
 </div>
 
-<div id="outline-container-orgb132aca" class="outline-2">
-<h2 id="orgb132aca"><span class="section-number-2">10</span> Experimenting with the lowest level</h2>
+<div id="outline-container-org6c0c122" class="outline-2">
+<h2 id="org6c0c122"><span class="section-number-2">10</span> Experimenting with the lowest level</h2>
 <div class="outline-text-2" id="text-10">
 <p>
 Using <code>define-syntax</code> we can define simple functions that are essentially
@@ -1057,8 +1057,8 @@ breaking them.
 </div>
 </div>
 
-<div id="outline-container-org0758392" class="outline-2">
-<h2 id="org0758392"><span class="section-number-2">11</span> Syntax parameters, what are they for?</h2>
+<div id="outline-container-orgf46b95e" class="outline-2">
+<h2 id="orgf46b95e"><span class="section-number-2">11</span> Syntax parameters, what are they for?</h2>
 <div class="outline-text-2" id="text-11">
 <dl class="org-dl">
 <dt>anaphoric macro</dt><dd>A macro that can define <i>macro-local</i> variables.</dd>
@@ -1148,8 +1148,8 @@ scratch his head.
 </div>
 </div>
 
-<div id="outline-container-org54dc1c9" class="outline-2">
-<h2 id="org54dc1c9"><span class="section-number-2">12</span> I don't get it, how does <code>syntax-parse</code> work?</h2>
+<div id="outline-container-org362e8ca" class="outline-2">
+<h2 id="org362e8ca"><span class="section-number-2">12</span> I don't get it, how does <code>syntax-parse</code> work?</h2>
 <div class="outline-text-2" id="text-12">
 <p>
 <code>syntax-parse</code> works by <b>replacing</b> <span class="underline">all syntax objects after the pattern
@@ -1168,8 +1168,8 @@ match</span> with the results from the pattern match:
 </p>
 </div>
 
-<div id="outline-container-org4e7a751" class="outline-3">
-<h3 id="org4e7a751"><span class="section-number-3">12.1</span> Another cool thing: you can run arbitrary code in the body:</h3>
+<div id="outline-container-orge489c1b" class="outline-3">
+<h3 id="orge489c1b"><span class="section-number-3">12.1</span> Another cool thing: you can run arbitrary code in the body:</h3>
 <div class="outline-text-3" id="text-12-1">
 <div class="org-src-container">
 <pre class="src src-racket">(<span style="color: #d18aff;">syntax-parse</span> #'(<span style="color: #d18aff;">this</span> is some <span style="color: #a1db00;">syntax</span>)
@@ -1184,8 +1184,8 @@ match</span> with the results from the pattern match:
 </div>
 </div>
 
-<div id="outline-container-org0c7d07c" class="outline-3">
-<h3 id="org0c7d07c"><span class="section-number-3">12.2</span> There are also some special pattern forms:</h3>
+<div id="outline-container-orgae68413" class="outline-3">
+<h3 id="orgae68413"><span class="section-number-3">12.2</span> There are also some special pattern forms:</h3>
 <div class="outline-text-3" id="text-12-2">
 <div class="org-src-container">
 <pre class="src src-racket">(<span style="color: #d18aff;">syntax-parse</span> #'(<span style="color: #d18aff;">this</span> is some <span style="color: #a1db00;">syntax</span>)
@@ -1195,8 +1195,8 @@ match</span> with the results from the pattern match:
 </div>
 </div>
 
-<div id="outline-container-org5da939c" class="outline-4">
-<h4 id="org5da939c"><span class="section-number-4">12.2.1</span> Table of forms</h4>
+<div id="outline-container-org6a50f34" class="outline-4">
+<h4 id="org6a50f34"><span class="section-number-4">12.2.1</span> Table of forms</h4>
 <div class="outline-text-4" id="text-12-2-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1234,8 +1234,8 @@ match</span> with the results from the pattern match:
 </div>
 </div>
 
-<div id="outline-container-org6a7bb2c" class="outline-4">
-<h4 id="org6a7bb2c"><span class="section-number-4">12.2.2</span> They can even be nested</h4>
+<div id="outline-container-orgf0dd5c4" class="outline-4">
+<h4 id="orgf0dd5c4"><span class="section-number-4">12.2.2</span> They can even be nested</h4>
 <div class="outline-text-4" id="text-12-2-2">
 <div class="org-src-container">
 <pre class="src src-racket">(<span style="color: #d18aff;">syntax-parse</span> #'((<span style="color: #d18aff;">this</span> is) (some more stuff <span style="color: #a1db00;">syntax</span>))
@@ -1257,16 +1257,16 @@ Note that the <code>...</code> operator in the syntax has left-associativity, so
 </div>
 </div>
 
-<div id="outline-container-orge6e518c" class="outline-2">
-<h2 id="orge6e518c"><span class="section-number-2">13</span> Read the original article <a href="https://kevin.stravers.net/2017/11/practical-macros-in-racket-and-how-to-work-with-them.html"><span class="underline">here</span></a>.</h2>
+<div id="outline-container-orgcf385e0" class="outline-2">
+<h2 id="orgcf385e0"><span class="section-number-2">13</span> Read the original article <a href="https://kevin.stravers.net/2017/11/practical-macros-in-racket-and-how-to-work-with-them.html"><span class="underline">here</span></a>.</h2>
 </div>
 
-<div id="outline-container-org3add47c" class="outline-2">
-<h2 id="org3add47c"><span class="section-number-2">14</span> Take-away notes</h2>
+<div id="outline-container-org39b1210" class="outline-2">
+<h2 id="org39b1210"><span class="section-number-2">14</span> Take-away notes</h2>
 <div class="outline-text-2" id="text-14">
 </div>
-<div id="outline-container-orgc9f9d89" class="outline-3">
-<h3 id="orgc9f9d89"><span class="section-number-3">14.1</span> parts of syntax</h3>
+<div id="outline-container-orgcdfbc4b" class="outline-3">
+<h3 id="orgcdfbc4b"><span class="section-number-3">14.1</span> parts of syntax</h3>
 <div class="outline-text-3" id="text-14-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1307,8 +1307,8 @@ Note that the <code>...</code> operator in the syntax has left-associativity, so
 </div>
 </div>
 
-<div id="outline-container-orgde6d1d1" class="outline-3">
-<h3 id="orgde6d1d1"><span class="section-number-3">14.2</span> syntax transformer families</h3>
+<div id="outline-container-org96ff276" class="outline-3">
+<h3 id="org96ff276"><span class="section-number-3">14.2</span> syntax transformer families</h3>
 <div class="outline-text-3" id="text-14-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1348,7 +1348,7 @@ Note that the <code>...</code> operator in the syntax has left-associativity, so
 <div id="postamble" class="status">
 <p class="date">Date: 2017-11-17 Fri 00:00</p>
 <p class="author">Author: Kevin R. Stravers</p>
-<p class="date">Created: 2018-10-14 Sun 23:00</p>
+<p class="date">Created: 2018-10-14 Sun 23:01</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
