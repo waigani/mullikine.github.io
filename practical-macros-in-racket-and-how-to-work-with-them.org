@@ -118,6 +118,9 @@ error reporting for ~syntax-parse~.
 ~syntax-parse~ is the primitive of the most advanced syntax transformer in
 racket (as far as I know). Here are some examples.
 
+** Example A: (The most concise way). Uses ~define-syntax-parser~
+Most of the time we want to use ~define-syntax-parser~ because it saves us the effort of typing ~syntax-parse~ and ~stx~.
+
 #+BEGIN_SRC racket
   (require syntax/parse syntax/parse/define)
 
@@ -129,16 +132,7 @@ racket (as far as I know). Here are some examples.
   ; -4
 #+END_SRC
 
-#+BEGIN_SRC racket
-  (define-syntax name
-    (syntax-parser
-      [(\_ a b ...+)
-       #'(+ a (- b ...))]))
-
-  (name 1 2 3 4)
-  ; -4
-#+END_SRC
-
+** Perfectly fine example B: (The most expanded way)
 #+BEGIN_SRC racket
   (define-syntax (name stx)
     (syntax-parse stx
@@ -149,9 +143,17 @@ racket (as far as I know). Here are some examples.
   ; -4
 #+END_SRC
 
-These forms are all acceptable depending on your situation. Most of the
-time we want to use ~define-syntax-parser~ because it saves us the effort
-of typing so much.
+** Perfectly fine example C: (shorthand, expanded)
+- ~stx~ is inferred here
+#+BEGIN_SRC racket
+  (define-syntax name
+    (syntax-parser
+      [(\_ a b ...+)
+       #'(+ a (- b ...))]))
+
+  (name 1 2 3 4)
+  ; -4
+#+END_SRC
 
 * ~make-rename-transformer~
 
