@@ -528,12 +528,12 @@ Note that the ~...~ operator in the syntax has left-associativity, so:
 
 | syntax         | description | family         | use |
 |----------------+-------------+----------------+-----|
-| ~with-syntax~  |             | ~syntax-case~  | ✗   |
 | ~#with-syntax~ |             | ~syntax-parse~ | ✓   |
+| ~with-syntax~  |             | ~syntax-case~  | ✗   |
 
 ** syntax transformer families
 
 | family         | description                          | use |
 |----------------+--------------------------------------+-----|
-| ~syntax-case~  | the typeless version of syntax-parse | ✗   |
 | ~syntax-parse~ | the most advanced                    | ✓   |
+| ~syntax-case~  | the typeless version of syntax-parse | ✗   |
