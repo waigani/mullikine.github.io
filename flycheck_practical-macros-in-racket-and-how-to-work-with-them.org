@@ -119,7 +119,7 @@ error reporting for ~syntax-parse~.
 racket (as far as I know). Here are some examples of how to use ~syntax-parse~.
 
 #+BEGIN_SRC racket
-  ;; Remember to include this
+  ;; Remember to requi this
   (require syntax/parse syntax/parse/define)
 #+END_SRC
 
