@@ -97,6 +97,7 @@ error reporting for ~syntax-parse~.
 
 **** ~#:with~ vs ~with-syntax~
 - ~with-syntax~ uses more parentheses.
+- ~#:with~ specifies type ~:id~ for ~b~
 
 #+BEGIN_EXPORT html
 <div class="org-src-container">
