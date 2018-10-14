@@ -20,11 +20,16 @@ I've looked through the racket documentation and connected most of the
 syntax transformers there. Here are the biggest ones and some utility
 functions.
 
-- Arrows denote that one can be defined in terms of the other, e.g.: ~define-simple-macro~ can be defined in terms of ~define-syntax-parser~.
-- Dashed boxes are unimportant tools that ought to be deprecated.
-- Red boxes indicate what I believe to be important tools, and the circles denote important syntax primitives.
-- Bold boxes are important but not essential.
-- Normal boxes are not that important, but good to know.
+[[file:macro-graph.png]]
+
+| symbol       | meaning                                              | example                                                                  |
+|--------------+------------------------------------------------------+--------------------------------------------------------------------------|
+| Arrows       | Denote that one can be defined in terms of the other | ~define-simple-macro~ can be defined in terms of ~define-syntax-parser~. |
+| Dashed boxes | Unimportant tools that ought to be deprecated.       |                                                                          |
+| Red boxes    | Indicate what I believe to be important tools        |                                                                          |
+| circles      | Denote important syntax primitives.                  |                                                                          |
+| Bold boxes   | Important but not essential.                         |                                                                          |
+| Normal boxes | Not that important, but good to know.                |                                                                          |
 
 For the new macro programmer this is quite a lot to take in, and there's
 a myriad of other tools that supplement these, but I can safely say that
@@ -37,7 +42,7 @@ to define macros in a clean manner.
 * ~syntax-case~, don't use it!
 
 Why not use ~syntax-case~? It appears to be an important primitive. Well
-to put it clearly: ~syntax-case~ is the typeless version of
+to put it clearly: ~syntax-case~ is the *typeless* version of
 ~syntax-parse~.There are some other differences in how arguments are
 applied and errors are reported, but what's in bold is the most
 important aspect. With ~syntax-parse~ we can assert that a term is an
@@ -192,9 +197,9 @@ Examples:
   ;; in: #%top
 #+END_SRC
 
-This rejects the expression ~(+ c)~ because the identifier c is tainted.
+This rejects the expression ~(+ c)~ because the identifier ~c~ is *tainted*.
 Why is it tainted? Because ~syntax-e~ tainted it. Why did it taint it?
-Because the ~syntax-object~ was armed.
+Because the ~syntax-object~ was *armed*.
 
 #+BEGIN_SRC racket
   (require syntax/parse/define)
@@ -212,8 +217,12 @@ Because the ~syntax-object~ was armed.
   ;; 10
 #+END_SRC
 
-This shows that the expander accepts: armed and clean syntax objects,
-but rejects tainted syntax objects.
+This shows that the expander
+- accepts
+  - /armed/, and
+  - /clean/ syntax objects, but
+- rejects
+  - /tainted/ syntax objects.
 
 * Literals
 
@@ -271,16 +280,16 @@ We can use literals to discriminate between real and fake identifiers:
   ;; #f
 #+END_SRC
 
-Note that ~(~literal x)~ as a pattern is the same as specifying ~#:literals~
-(x) as keyword argument and using x as a pattern. Similarly for
-#:~datum-literals~ (x).
+Note that ~(~literal x)~ as a pattern is the same as specifying ~#:literals
+(x)~ as keyword argument and using x as a pattern. Similarly for
+~#:datum-literals (x)~.
 
 * Experimenting with the lowest level
 
-Using define-syntax we can define simple functions that are essentially
+Using ~define-syntax~ we can define simple functions that are essentially
 macros that don't pattern match. This style allows you to get to know
 the low-level API, and I believe it to be very important to experiment
-with to understand what syntax-parse is actually doing.
+with to understand what ~syntax-parse~ is actually doing.
 
 Vision is the most important thing, let's look at what's going on!
 
@@ -404,86 +413,104 @@ programs and bigger macros.
 
 Let's instead use ~syntax-parameters~. These can be used hygienically:
 
-(require racket/stxparam)
+#+BEGIN_SRC racket
+  (require racket/stxparam)
 
-(define-syntax-parameter it (syntax-parser))
-(define-syntax-parser aif
-[(\_ condition then otherwise)
-#'(let ([t condition])
-(syntax-parameterize ([it (syntax-parser [\_ #'t])])
-(if t then otherwise)))])
-(aif (member 2 '(1 2 3))
-(displayln it)
-(void))
-(2 3)
+  (define-syntax-parameter it (syntax-parser))
+
+  (define-syntax-parser aif
+    [(\_ condition then otherwise)
+     #'(let ([t condition])
+         (syntax-parameterize ([it (syntax-parser [\_ #'t])])
+           (if t then otherwise)))])
+
+  (aif (member 2 '(1 2 3))
+       (displayln it)
+       (void))
+  ;; (2 3)
+#+END_SRC
 
 If we now have a declaration of it, that will override the syntax
 parameter.
 
-(let ([it 10])
-(aif (member 2 '(1 2 3))
-(displayln it)
-(void)))
-10
+#+BEGIN_SRC racket
+  (let ([it 10])
+    (aif (member 2 '(1 2 3))
+         (displayln it)
+         (void)))
+  ;; 10
+#+END_SRC
 
 During normal racket evaluation (from a file) you'll get a
-duplicate-identifier error, in this context there's another error, but
+~duplicate-identifier~ error, in this context there's another error, but
 the point is that there is an error instead of letting the programmer
 scratch his head.
 
-(define it 10)
-(aif (member 2 '(1 2 3))
-(displayln it)
-(void))
-eval:53:0: syntax-parameterize: not bound as a syntax
-parameter
-at: it
-in: (syntax-parameterize ((it (syntax-parser (\_ (syntax
-t))))) (if t (displayln it) (void)))
+#+BEGIN_SRC racket
+  (define it 10)
+  (aif (member 2 '(1 2 3))
+       (displayln it)
+       (void))
+  ;; eval:53:0: syntax-parameterize: not bound as a syntax
+  ;; parameter
+  ;;   at: it
+  ;;   in: (syntax-parameterize ((it (syntax-parser (\_ (syntax
+  ;; t))))) (if t (displayln it) (void)))
+#+END_SRC
 
-* I don't get it, how does syntax-parse work?
+* I don't get it, how does ~syntax-parse~ work?
 
-syntax-parse works by replacing all syntax objects after the pattern
-match with the results from the pattern match:
+~syntax-parse~ works by *replacing* _all syntax objects after the pattern
+match_ with the results from the pattern match:
 
-(syntax-parse #'(this is some syntax)
-[(here is the pattern) #'(pattern is put here)])
-#<syntax:58:0 (syntax is put this)>
+#+BEGIN_SRC racket
+  (syntax-parse #'(this is some syntax)
+    [(here is the pattern) #'(pattern is put here)])
+  ;; #<syntax:58:0 (syntax is put this)>
+#+END_SRC
 
-So stuff like put is not in the pattern, so it's just pasted as-is.
+~put~ is _*not* in the pattern_, so it's just pasted /as-is/.
+
 Another cool thing is that you can run arbitrary code in the body:
 
-(syntax-parse #'(this is some syntax)
-[(here is the pattern)
-(displayln "This is arbitrary code, we could download webpages for use in this macro, whatever you wish")
-#'(pattern is put here)])
-This is arbitrary code, we could download webpages for use in this macro, whatever you wish
-#<syntax:59:0 (syntax is put this)>
+#+BEGIN_SRC racket
+  (syntax-parse #'(this is some syntax)
+    [(here is the pattern)
+     (displayln "This is arbitrary code, we could download webpages for use in this macro, whatever you wish")
+     #'(pattern is put here)])
+
+  ;; This is arbitrary code, we could download webpages for use in this macro, whatever you wish
+  ;; #<syntax:59:0 (syntax is put this)>
+#+END_SRC
 
 There are also some special pattern forms:
 
-(syntax-parse #'(this is some syntax)
-[(here ...) #'(here ... put stuff)])
-#<syntax:60:0 (this is some syntax put stuff)>
+#+BEGIN_SRC racket
+  (syntax-parse #'(this is some syntax)
+    [(here ...) #'(here ... put stuff)])
+  ;; #<syntax:60:0 (this is some syntax put stuff)>
+#+END_SRC
 
-... is a postfix operator that makes syntax-parse consider whatever is
-before as a list of that pattern. It will expand this list in the
-expander when it is encountered. This allows us to create pretty complex
-macros:
+| syntax | description                                                                                                                                                                                                         |
+|----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ~...~          | a postfix operator that makes ~syntax-parse~ consider whatever is before as a list of that pattern. It will expand this list in the expander when it is encountered. This allows us to create pretty complex macros |
+| ~...+~         | means one or more.                                                                                                                                                                                                  |
 
-...+ means one or more.
-
-(syntax-parse #'((this is) (some syntax))
-[((here there) ...+) #'(here ... there ... put stuff)])
-#<syntax:61:0 (this some is syntax put stuff)>
+#+BEGIN_SRC racket
+  (syntax-parse #'((this is) (some syntax))
+    [((here there) ...+) #'(here ... there ... put stuff)])
+  ;; #<syntax:61:0 (this some is syntax put stuff)>
+#+END_SRC
 
 They can even be nested
 
-(syntax-parse #'((this is) (some more stuff syntax))
-[((here ... there) ...+) #'(here ... ... there ... put stuff)])
-#<syntax:62:0 (this some more stuff is synt...>
+#+BEGIN_SRC racket
+  (syntax-parse #'((this is) (some more stuff syntax))
+    [((here ... there) ...+) #'(here ... ... there ... put stuff)])
+  ;; #<syntax:62:0 (this some more stuff is synt...>
+#+END_SRC
 
-Note that the ... operator in the syntax has left-associativity, so here
-... ... reduces to (in this case) ((this) (some more stuff)) ... ...,
-which reduces to (this) ... (some more stuff) ... which reduces to this
-some more stuff.
+Note that the ~...~ operator in the syntax has left-associativity, so:
+- ~here ... ...~ /reduces to/ (in this case) ~((this) (some more stuff)) ...  ...~
+- which /reduces to/ ~(this) ... (some more stuff) ...~
+- which /reduces to/ ~this some more stuff~
