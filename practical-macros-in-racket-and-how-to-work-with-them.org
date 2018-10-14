@@ -163,7 +163,7 @@ Most of the time we want to use ~define-syntax-parser~ because it saves us the e
 
 -----
 
-That's ~-parser~, not ~-parse~.
+It uses the ~syntax-parser~ function (not ~syntax-parse~), which is why it doesn't need the ~stx~.
 
 #+BEGIN_SRC racket
 
