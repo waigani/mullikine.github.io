@@ -58,10 +58,23 @@ to define macros in a clean manner.
 
 - ~syntax-parse~ is widely superior to ~syntax-case~.
 
-** ~with-syntax~
+** If you're thinking of using ~syntax-case~ then you can use ~with-syntax~
 
-- ... is incredibly useful in ~syntax-case~, but
-- inside ~syntax-parse~ we should use ~#:with~ instead.
+*** ~with-syntax~
+
+Similar to ~syntax-case~, in that it matches a pattern to a syntax object.
+
+Unlike syntax-case, all patterns are matched, each to the result of a corresponding ~stx-expr~, and the pattern variables from all matches (which must be distinct) are bound with a single body sequence.
+
+The result of the with-syntax form is the result of the last body, which is in tail position with respect to the with-syntax form.
+
+~with-syntax~
+
++ But don't use ~with-syntax~ anywhere else!
+ -----
+
+ - ~with-syntax~ is incredibly useful in ~syntax-case~, but
+ - inside ~syntax-parse~ we should use ~#:with~ instead.
 
 *** Examples:
 The advantage of ~#:with~ over ~with-syntax~ is the use of types and better
