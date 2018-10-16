@@ -9,7 +9,7 @@ At the heart of all table driven tests is the table itself, which
 provides the inputs and expected results of the function under test.
 
 ** Only check ~.go~ files which are integration tests
-Find all files in the integration test folder with path ~= '^.*_test\.go$'.
+Find all files in the integration test folder with paths that match ~'^.*_test\.go$'.~
 
 [[/home/shane/var/smulliga/source/git/kubernetes/kubernetes/test/integration][test/integration]]
 
