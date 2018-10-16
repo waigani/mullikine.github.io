@@ -24,5 +24,42 @@ I'm writing a linter specially for the kubernetes project; I don't need to actua
     you typically only submit a namespace and name of an object. then kubernetes itself assigns a uid dynamically after the object is created.
 #+END_SRC
 
-[[https://mullikine.github.io/codelingo/compulsory-metadata-files.txt][mullikine.github.io/codelingo/compulsory-metadata-files.txt]]
-[[https://mullikine.github.io/codelingo/compulsory-metadata-grep.txt][mullikine.github.io/codelingo/compulsory-metadata-grep.txt]]
+* files that contain all 3 terms; 'metadata', 'namespace' and 'name'
+
+| # files |
+|---------|
+|     550 |
+
+** command
+#+BEGIN_SRC sh
+  eack -F <(cd /; find "$HOME$MYGIT/kubernetes/kubernetes" -type f -path '*/k8s.io/api/*' | eipct "xa cat | grep -q -P 'namespace'" | eipct "xa cat | grep -q -P '\bname\b'" | eipct "xa cat | grep -q -P '\bmetadata\b'") '\bmetadata\b'
+#+END_SRC
+
+** grep output
+[[https://mullikine.github.io/codelingo/compulsory-metadata-files-metadata-namespace-name.txt][mullikine.github.io/codelingo/compulsory-metadata-files-metadata-namespace-name.txt]]
+
+* files which contain only 2 terms; 'metadata' and 'namespace'
+I forgot to add 'name' to the search. Here for posterity.
+
+** command
+#+BEGIN_SRC sh
+  eack -F <(cd /; find "$HOME$MYGIT/kubernetes/kubernetes" -type f -path '*/k8s.io/api/*' | eipct "xa cat | grep -q -P 'namespace'" | eipct "xa cat | grep -q -P '\bmetadata\b'") '\bmetadata\b'
+#+END_SRC
+
+** grep output
+| # files |
+|---------|
+|     559 |
+
+[[https://mullikine.github.io/codelingo/compulsory-metadata-files-metadata-namespace.txt][mullikine.github.io/codelingo/compulsory-metadata-files-metadata-namespace.txt]]
+
+* list of files and line numbers which contain 'metadata' and 'namespace'
+| # files |
+|---------|
+|     559 |
+[[https://mullikine.github.io/codelingo/compulsory-metadata-grep-metadata-namespace.txt][mullikine.github.io/codelingo/compulsory-metadata-grep-metadata-namespace.txt]]
+
+# * diff of grep for file list that contain all 3 terms and those that contain only 2
+# 
+# This wasn't helpful. I expected it to reveal 100 or so files
+# [[https://mullikine.github.io/codelingo/compulsory-metadata-grep-diff.txt][mullikine.github.io/codelingo/compulsory-metadata-grep-diff.txt]]

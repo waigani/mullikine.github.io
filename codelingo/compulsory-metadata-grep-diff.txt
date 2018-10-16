@@ -1,0 +1,637 @@
+1c1
+< 790 matches in 550 lines for "\bmetadata\b" in buffer: *stdin*<43>
+---
+> 803 matches in 559 lines for "\bmetadata\b" in buffer: *stdin*<42>
+242,551c242,560
+<     241:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/networking/v1/types.go:31:	// Standard object's metadata.
+<     242:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/networking/v1/types.go:32:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     243:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/networking/v1/types.go:34:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     244:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/networking/v1/types.go:196:	// Standard list metadata.
+<     245:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/networking/v1/types.go:197:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     246:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/networking/v1/types.go:199:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     247:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:111:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     248:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:220:	"metadata":   "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     249:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:230:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+<     250:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:240:	"metadata":   "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     251:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:270:	"metadata": "More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     252:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:280:	"namespace":        "Namespace is the metadata.namespace of the referenced ConfigMap. This field is required in all cases.",
+<     253:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:281:	"name":             "Name is the metadata.name of the referenced ConfigMap. This field is required in all cases.",
+<     254:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:282:	"uid":              "UID is the metadata.UID of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.",
+<     255:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:283:	"resourceVersion":  "ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.",
+<     256:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:511:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     257:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:521:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+<     258:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:553:	"fieldRef":         "Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP.",
+<     259:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:565:	"metadata":           "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     260:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:588:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+<     261:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:667:	"datasetName": "Name of the dataset stored as metadata -> name on the dataset for Flocker should be considered as deprecated",
+<     262:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:824:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     263:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:848:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+<     264:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:916:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     265:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:927:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+<     266:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:955:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     267:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:999:	"":          "NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata) must be non-nil.",
+<     268:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1030:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+<     269:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1164:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     270:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1175:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     271:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1198:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+<     272:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1245:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+<     273:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1322:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     274:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1425:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+<     275:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1479:	"runAsUser":          "The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.",
+<     276:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1559:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     277:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1569:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     278:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1579:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+<     279:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1589:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     280:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1709:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     281:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1720:	"metadata": "If the Labels of a ReplicationController are empty, they are defaulted to be the same as the Pod(s) that the replication controller manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     282:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1744:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+<     283:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1791:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     284:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1802:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+<     285:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1911:	"metadata":   "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     286:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1942:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+<     287:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1987:	"runAsUser":                "The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.",
+<     288:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:2010:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     289:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:2021:	"metadata":                     "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     290:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:2033:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+<     291:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:2054:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+<     292:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:274:	// Standard object's metadata.
+<     293:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:275:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     294:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:277:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     295:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:389:	// Standard list metadata.
+<     296:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:392:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     297:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:404:	// Standard object's metadata.
+<     298:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:405:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     299:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:407:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     300:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:426:	// Standard list metadata.
+<     301:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:429:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     302:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:848:	// Name of the dataset stored as metadata -> name on the dataset for Flocker
+<     303:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:1770:	// Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations,
+<     304:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:2926:	// Defaults to user specified in image metadata if unspecified.
+<     305:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3093:	// Standard object's metadata.
+<     306:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3094:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     307:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3096:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     308:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3113:	// Standard object's metadata.
+<     309:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3114:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     310:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3116:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     311:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3137:	// Standard list metadata.
+<     312:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3140:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     313:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3149:	// Standard object's metadata.
+<     314:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3150:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     315:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3152:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     316:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3166:	// Standard object's metadata.
+<     317:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3167:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     318:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3169:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     319:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3182:	// Standard list metadata.
+<     320:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3185:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     321:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3295:	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     322:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3297:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     323:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3318:	// Standard list metadata.
+<     324:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3321:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     325:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3580:	// Standard object's metadata.
+<     326:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3581:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     327:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3583:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     328:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3609:	// Standard list metadata.
+<     329:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3612:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     330:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3627:	// Standard object's metadata.
+<     331:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3628:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     332:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3630:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     333:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3657:	// Standard list metadata.
+<     334:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3660:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     335:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3684:	// Standard object's metadata.
+<     336:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3685:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     337:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3687:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     338:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3768:	// Standard list metadata.
+<     339:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3771:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     340:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3803:// NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata) must be non-nil.
+<     341:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3822:	// Namespace is the metadata.namespace of the referenced ConfigMap.
+<     342:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3826:	// Name is the metadata.name of the referenced ConfigMap.
+<     343:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3830:	// UID is the metadata.UID of the referenced ConfigMap.
+<     344:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3835:	// ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap.
+<     345:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4154:	// Standard object's metadata.
+<     346:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4155:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     347:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4157:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     348:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4177:	// Standard list metadata.
+<     349:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4180:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     350:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4230:	// Standard object's metadata.
+<     351:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4231:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     352:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4233:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     353:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4251:	// Standard list metadata.
+<     354:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4254:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     355:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4267:	// Standard object's metadata.
+<     356:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4268:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     357:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4270:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     358:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4552:	// Standard object's metadata.
+<     359:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4553:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     360:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4554:	metav1.ObjectMeta `json:"metadata" protobuf:"bytes,1,opt,name=metadata"`
+<     361:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4639:	// Standard list metadata.
+<     362:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4642:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     363:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4699:	// Standard object's metadata.
+<     364:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4700:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     365:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4702:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     366:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4715:	// Standard list metadata.
+<     367:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4718:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     368:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4855:	// Standard object's metadata.
+<     369:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4856:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     370:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4858:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     371:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4876:	// Standard list metadata.
+<     372:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4879:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     373:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4893:	// Standard object's metadata.
+<     374:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4894:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     375:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4896:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     376:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5006:	// Standard list metadata.
+<     377:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5009:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     378:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5022:	// Standard object's metadata.
+<     379:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5023:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     380:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5025:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     381:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5052:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     382:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5054:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     383:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5093:	// Standard object's metadata.
+<     384:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5094:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     385:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5096:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     386:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5110:	// Standard list metadata.
+<     387:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5113:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     388:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5186:	// Defaults to user specified in image metadata if unspecified.
+<     389:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5260:	// Standard object's metadata.
+<     390:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5261:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     391:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5263:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     392:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:163:  // Standard object's metadata.
+<     393:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:164:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     394:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:166:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     395:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:388:  // Standard object's metadata.
+<     396:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:389:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     397:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:391:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     398:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:402:  // Standard list metadata.
+<     399:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:405:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+<     400:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:413:  // Standard object's metadata.
+<     401:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:414:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     402:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:416:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     403:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:466:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     404:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:468:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+<     405:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:476:  // Namespace is the metadata.namespace of the referenced ConfigMap.
+<     406:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:480:  // Name is the metadata.name of the referenced ConfigMap.
+<     407:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:484:  // UID is the metadata.UID of the referenced ConfigMap.
+<     408:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:489:  // ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap.
+<     409:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1017:  // Standard object's metadata.
+<     410:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1018:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     411:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1020:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     412:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1035:  // Standard list metadata.
+<     413:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1038:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+<     414:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1082:  // Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations,
+<     415:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1103:  // Standard object's metadata.
+<     416:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1104:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     417:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1105:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     418:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1168:  // Standard list metadata.
+<     419:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1171:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+<     420:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1306:  // Name of the dataset stored as metadata -> name on the dataset for Flocker
+<     421:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1624:  // Standard object's metadata.
+<     422:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1625:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     423:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1627:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     424:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1664:  // Standard list metadata.
+<     425:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1667:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+<     426:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1682:  // Standard list metadata.
+<     427:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1685:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+<     428:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1759:  // Standard object's metadata.
+<     429:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1760:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     430:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1762:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     431:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1777:  // Standard list metadata.
+<     432:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1780:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+<     433:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1806:  // Standard object's metadata.
+<     434:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1807:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     435:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1809:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     436:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1881:// NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata) must be non-nil.
+<     437:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1946:  // Standard list metadata.
+<     438:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1949:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+<     439:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2193:  // Standard object's metadata.
+<     440:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2194:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     441:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2196:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     442:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2214:  // Standard object's metadata.
+<     443:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2215:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     444:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2217:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     445:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2258:  // Standard list metadata.
+<     446:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2261:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+<     447:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2352:  // Standard list metadata.
+<     448:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2355:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+<     449:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2553:  // Standard object's metadata.
+<     450:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2554:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     451:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2556:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     452:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2775:  // Standard list metadata.
+<     453:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2778:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+<     454:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2869:  // Defaults to user specified in image metadata if unspecified.
+<     455:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3222:  // Standard object's metadata.
+<     456:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3223:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     457:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3225:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     458:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3238:  // Standard object's metadata.
+<     459:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3239:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     460:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3241:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     461:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3251:  // Standard list metadata.
+<     462:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3254:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+<     463:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3262:  // Standard object's metadata.
+<     464:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3263:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     465:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3265:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     466:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3503:  // Standard object's metadata.
+<     467:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3504:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     468:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3506:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     469:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3519:  // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     470:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3521:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     471:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3560:  // Standard list metadata.
+<     472:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3563:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+<     473:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3646:  // Standard object's metadata.
+<     474:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3647:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     475:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3649:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     476:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3664:  // Standard list metadata.
+<     477:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3667:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+<     478:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3860:  // Standard object's metadata.
+<     479:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3861:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     480:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3863:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     481:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3914:  // Standard list metadata.
+<     482:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3917:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+<     483:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:4017:  // Defaults to user specified in image metadata if unspecified.
+<     484:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:4072:  // Standard object's metadata.
+<     485:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:4073:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     486:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:4075:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     487:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:4095:  // Standard object's metadata.
+<     488:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:4096:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     489:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:4098:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     490:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:4122:  // Standard list metadata.
+<     491:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:4125:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+<     492:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:4160:  // Standard list metadata.
+<     493:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:4163:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+<     494:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/imagepolicy/v1alpha1/types.go:32:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     495:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/types_swagger_doc_generated.go:32:	"metadata": "Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     496:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/types_swagger_doc_generated.go:43:	"metadata": "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     497:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/types.go:32:	// Standard object metadata.
+<     498:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/types.go:33:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     499:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/types.go:35:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     500:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/types.go:53:	// Standard list metadata
+<     501:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/types.go:54:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     502:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/types.go:56:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     503:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/generated.proto:36:  // Standard object metadata.
+<     504:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/generated.proto:37:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     505:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/generated.proto:39:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     506:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/generated.proto:54:  // Standard list metadata
+<     507:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/generated.proto:55:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     508:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/generated.proto:57:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+<     509:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types_swagger_doc_generated.go:32:	"metadata":             "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     510:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types_swagger_doc_generated.go:48:	"metadata": "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     511:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types_swagger_doc_generated.go:58:	"metadata": "Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     512:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types_swagger_doc_generated.go:69:	"metadata": "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     513:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:35:	// Standard object's metadata.
+<     514:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:36:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     515:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:38:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     516:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:82:	// Standard list metadata
+<     517:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:83:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     518:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:85:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     519:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:117:	// Standard object metadata.
+<     520:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:118:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     521:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:120:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     522:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:138:	// Standard list metadata
+<     523:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:139:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     524:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:141:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     525:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:38:  // Standard object's metadata.
+<     526:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:39:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     527:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:41:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     528:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:82:  // Standard list metadata
+<     529:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:83:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     530:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:85:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+<     531:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:96:  // Standard object metadata.
+<     532:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:97:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     533:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:99:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     534:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:114:  // Standard list metadata
+<     535:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:115:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     536:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:117:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+<     537:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/types_swagger_doc_generated.go:32:	"metadata":             "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     538:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/types_swagger_doc_generated.go:48:	"metadata": "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+<     539:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/types.go:35:	// Standard object's metadata.
+<     540:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/types.go:36:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     541:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/types.go:38:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     542:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/types.go:82:	// Standard list metadata
+<     543:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/types.go:83:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     544:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/types.go:85:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+<     545:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/generated.proto:38:  // Standard object's metadata.
+<     546:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/generated.proto:39:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     547:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/generated.proto:41:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+<     548:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/generated.proto:82:  // Standard list metadata
+<     549:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/generated.proto:83:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+<     550:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/generated.proto:85:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+\ No newline at end of file
+---
+>     241:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/networking/v1/types_swagger_doc_generated.go:42:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     242:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/networking/v1/types_swagger_doc_generated.go:72:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     243:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/networking/v1/types.go:31:	// Standard object's metadata.
+>     244:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/networking/v1/types.go:32:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     245:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/networking/v1/types.go:34:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     246:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/networking/v1/types.go:196:	// Standard list metadata.
+>     247:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/networking/v1/types.go:197:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     248:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/networking/v1/types.go:199:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     249:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/networking/v1/generated.proto:50:  // Standard object's metadata.
+>     250:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/networking/v1/generated.proto:51:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     251:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/networking/v1/generated.proto:53:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     252:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/networking/v1/generated.proto:103:  // Standard list metadata.
+>     253:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/networking/v1/generated.proto:104:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     254:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/networking/v1/generated.proto:106:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+>     255:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:111:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     256:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:220:	"metadata":   "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     257:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:230:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+>     258:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:240:	"metadata":   "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     259:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:270:	"metadata": "More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     260:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:280:	"namespace":        "Namespace is the metadata.namespace of the referenced ConfigMap. This field is required in all cases.",
+>     261:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:281:	"name":             "Name is the metadata.name of the referenced ConfigMap. This field is required in all cases.",
+>     262:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:282:	"uid":              "UID is the metadata.UID of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.",
+>     263:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:283:	"resourceVersion":  "ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.",
+>     264:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:511:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     265:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:521:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+>     266:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:553:	"fieldRef":         "Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP.",
+>     267:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:565:	"metadata":           "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     268:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:588:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+>     269:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:667:	"datasetName": "Name of the dataset stored as metadata -> name on the dataset for Flocker should be considered as deprecated",
+>     270:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:824:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     271:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:848:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+>     272:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:916:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     273:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:927:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+>     274:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:955:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     275:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:999:	"":          "NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata) must be non-nil.",
+>     276:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1030:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+>     277:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1164:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     278:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1175:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     279:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1198:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+>     280:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1245:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+>     281:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1322:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     282:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1425:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+>     283:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1479:	"runAsUser":          "The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.",
+>     284:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1559:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     285:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1569:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     286:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1579:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+>     287:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1589:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     288:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1709:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     289:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1720:	"metadata": "If the Labels of a ReplicationController are empty, they are defaulted to be the same as the Pod(s) that the replication controller manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     290:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1744:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+>     291:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1791:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     292:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1802:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+>     293:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1911:	"metadata":   "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     294:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1942:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+>     295:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:1987:	"runAsUser":                "The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.",
+>     296:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:2010:	"metadata": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     297:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:2021:	"metadata":                     "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     298:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:2033:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+>     299:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types_swagger_doc_generated.go:2054:	"metadata": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+>     300:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:274:	// Standard object's metadata.
+>     301:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:275:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     302:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:277:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     303:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:389:	// Standard list metadata.
+>     304:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:392:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     305:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:404:	// Standard object's metadata.
+>     306:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:405:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     307:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:407:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     308:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:426:	// Standard list metadata.
+>     309:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:429:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     310:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:848:	// Name of the dataset stored as metadata -> name on the dataset for Flocker
+>     311:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:1770:	// Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations,
+>     312:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:2926:	// Defaults to user specified in image metadata if unspecified.
+>     313:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3093:	// Standard object's metadata.
+>     314:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3094:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     315:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3096:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     316:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3113:	// Standard object's metadata.
+>     317:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3114:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     318:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3116:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     319:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3137:	// Standard list metadata.
+>     320:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3140:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     321:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3149:	// Standard object's metadata.
+>     322:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3150:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     323:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3152:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     324:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3166:	// Standard object's metadata.
+>     325:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3167:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     326:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3169:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     327:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3182:	// Standard list metadata.
+>     328:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3185:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     329:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3295:	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     330:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3297:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     331:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3318:	// Standard list metadata.
+>     332:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3321:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     333:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3580:	// Standard object's metadata.
+>     334:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3581:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     335:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3583:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     336:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3609:	// Standard list metadata.
+>     337:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3612:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     338:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3627:	// Standard object's metadata.
+>     339:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3628:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     340:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3630:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     341:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3657:	// Standard list metadata.
+>     342:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3660:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     343:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3684:	// Standard object's metadata.
+>     344:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3685:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     345:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3687:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     346:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3768:	// Standard list metadata.
+>     347:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3771:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     348:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3803:// NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata) must be non-nil.
+>     349:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3822:	// Namespace is the metadata.namespace of the referenced ConfigMap.
+>     350:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3826:	// Name is the metadata.name of the referenced ConfigMap.
+>     351:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3830:	// UID is the metadata.UID of the referenced ConfigMap.
+>     352:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:3835:	// ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap.
+>     353:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4154:	// Standard object's metadata.
+>     354:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4155:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     355:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4157:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     356:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4177:	// Standard list metadata.
+>     357:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4180:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     358:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4230:	// Standard object's metadata.
+>     359:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4231:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     360:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4233:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     361:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4251:	// Standard list metadata.
+>     362:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4254:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     363:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4267:	// Standard object's metadata.
+>     364:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4268:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     365:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4270:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     366:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4552:	// Standard object's metadata.
+>     367:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4553:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     368:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4554:	metav1.ObjectMeta `json:"metadata" protobuf:"bytes,1,opt,name=metadata"`
+>     369:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4639:	// Standard list metadata.
+>     370:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4642:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     371:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4699:	// Standard object's metadata.
+>     372:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4700:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     373:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4702:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     374:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4715:	// Standard list metadata.
+>     375:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4718:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     376:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4855:	// Standard object's metadata.
+>     377:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4856:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     378:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4858:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     379:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4876:	// Standard list metadata.
+>     380:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4879:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     381:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4893:	// Standard object's metadata.
+>     382:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4894:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     383:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:4896:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     384:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5006:	// Standard list metadata.
+>     385:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5009:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     386:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5022:	// Standard object's metadata.
+>     387:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5023:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     388:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5025:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     389:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5052:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     390:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5054:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     391:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5093:	// Standard object's metadata.
+>     392:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5094:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     393:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5096:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     394:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5110:	// Standard list metadata.
+>     395:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5113:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     396:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5186:	// Defaults to user specified in image metadata if unspecified.
+>     397:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5260:	// Standard object's metadata.
+>     398:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5261:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     399:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/types.go:5263:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     400:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:163:  // Standard object's metadata.
+>     401:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:164:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     402:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:166:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     403:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:388:  // Standard object's metadata.
+>     404:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:389:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     405:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:391:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     406:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:402:  // Standard list metadata.
+>     407:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:405:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+>     408:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:413:  // Standard object's metadata.
+>     409:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:414:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     410:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:416:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     411:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:466:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     412:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:468:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+>     413:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:476:  // Namespace is the metadata.namespace of the referenced ConfigMap.
+>     414:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:480:  // Name is the metadata.name of the referenced ConfigMap.
+>     415:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:484:  // UID is the metadata.UID of the referenced ConfigMap.
+>     416:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:489:  // ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap.
+>     417:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1017:  // Standard object's metadata.
+>     418:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1018:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     419:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1020:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     420:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1035:  // Standard list metadata.
+>     421:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1038:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+>     422:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1082:  // Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations,
+>     423:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1103:  // Standard object's metadata.
+>     424:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1104:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     425:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1105:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     426:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1168:  // Standard list metadata.
+>     427:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1171:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+>     428:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1306:  // Name of the dataset stored as metadata -> name on the dataset for Flocker
+>     429:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1624:  // Standard object's metadata.
+>     430:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1625:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     431:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1627:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     432:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1664:  // Standard list metadata.
+>     433:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1667:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+>     434:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1682:  // Standard list metadata.
+>     435:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1685:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+>     436:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1759:  // Standard object's metadata.
+>     437:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1760:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     438:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1762:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     439:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1777:  // Standard list metadata.
+>     440:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1780:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+>     441:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1806:  // Standard object's metadata.
+>     442:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1807:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     443:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1809:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     444:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1881:// NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata) must be non-nil.
+>     445:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1946:  // Standard list metadata.
+>     446:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:1949:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+>     447:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2193:  // Standard object's metadata.
+>     448:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2194:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     449:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2196:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     450:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2214:  // Standard object's metadata.
+>     451:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2215:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     452:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2217:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     453:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2258:  // Standard list metadata.
+>     454:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2261:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+>     455:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2352:  // Standard list metadata.
+>     456:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2355:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+>     457:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2553:  // Standard object's metadata.
+>     458:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2554:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     459:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2556:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     460:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2775:  // Standard list metadata.
+>     461:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2778:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+>     462:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:2869:  // Defaults to user specified in image metadata if unspecified.
+>     463:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3222:  // Standard object's metadata.
+>     464:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3223:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     465:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3225:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     466:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3238:  // Standard object's metadata.
+>     467:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3239:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     468:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3241:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     469:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3251:  // Standard list metadata.
+>     470:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3254:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+>     471:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3262:  // Standard object's metadata.
+>     472:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3263:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     473:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3265:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     474:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3503:  // Standard object's metadata.
+>     475:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3504:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     476:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3506:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     477:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3519:  // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     478:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3521:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     479:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3560:  // Standard list metadata.
+>     480:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3563:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+>     481:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3646:  // Standard object's metadata.
+>     482:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3647:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     483:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3649:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     484:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3664:  // Standard list metadata.
+>     485:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3667:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+>     486:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3860:  // Standard object's metadata.
+>     487:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3861:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     488:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3863:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     489:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3914:  // Standard list metadata.
+>     490:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:3917:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+>     491:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:4017:  // Defaults to user specified in image metadata if unspecified.
+>     492:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:4072:  // Standard object's metadata.
+>     493:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:4073:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     494:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:4075:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     495:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:4095:  // Standard object's metadata.
+>     496:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:4096:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     497:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:4098:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     498:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:4122:  // Standard list metadata.
+>     499:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:4125:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+>     500:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:4160:  // Standard list metadata.
+>     501:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/core/v1/generated.proto:4163:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+>     502:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/imagepolicy/v1alpha1/types.go:32:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     503:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/imagepolicy/v1alpha1/generated.proto:34:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     504:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/types_swagger_doc_generated.go:32:	"metadata": "Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     505:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/types_swagger_doc_generated.go:43:	"metadata": "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     506:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/types.go:32:	// Standard object metadata.
+>     507:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/types.go:33:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     508:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/types.go:35:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     509:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/types.go:53:	// Standard list metadata
+>     510:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/types.go:54:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     511:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/types.go:56:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     512:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/generated.proto:36:  // Standard object metadata.
+>     513:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/generated.proto:37:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     514:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/generated.proto:39:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     515:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/generated.proto:54:  // Standard list metadata
+>     516:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/generated.proto:55:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     517:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1alpha1/generated.proto:57:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+>     518:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types_swagger_doc_generated.go:32:	"metadata":             "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     519:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types_swagger_doc_generated.go:48:	"metadata": "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     520:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types_swagger_doc_generated.go:58:	"metadata": "Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     521:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types_swagger_doc_generated.go:69:	"metadata": "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     522:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:35:	// Standard object's metadata.
+>     523:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:36:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     524:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:38:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     525:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:82:	// Standard list metadata
+>     526:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:83:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     527:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:85:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     528:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:117:	// Standard object metadata.
+>     529:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:118:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     530:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:120:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     531:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:138:	// Standard list metadata
+>     532:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:139:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     533:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/types.go:141:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     534:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:38:  // Standard object's metadata.
+>     535:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:39:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     536:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:41:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     537:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:82:  // Standard list metadata
+>     538:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:83:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     539:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:85:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+>     540:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:96:  // Standard object metadata.
+>     541:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:97:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     542:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:99:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     543:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:114:  // Standard list metadata
+>     544:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:115:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     545:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1beta1/generated.proto:117:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+>     546:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/types_swagger_doc_generated.go:32:	"metadata":             "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     547:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/types_swagger_doc_generated.go:48:	"metadata": "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
+>     548:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/types.go:35:	// Standard object's metadata.
+>     549:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/types.go:36:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     550:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/types.go:38:	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     551:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/types.go:82:	// Standard list metadata
+>     552:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/types.go:83:	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     553:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/types.go:85:	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+>     554:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/generated.proto:38:  // Standard object's metadata.
+>     555:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/generated.proto:39:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     556:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/generated.proto:41:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+>     557:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/generated.proto:82:  // Standard list metadata
+>     558:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/generated.proto:83:  // More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+>     559:/home/shane/var/smulliga/source/git/kubernetes/kubernetes/staging/src/k8s.io/api/storage/v1/generated.proto:85:  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+\ No newline at end of file
