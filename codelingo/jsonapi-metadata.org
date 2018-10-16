@@ -1,0 +1,28 @@
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="magit.css"/>
+
+* Question on slack
+Hey guys. Sorry for asking again, but it's a little bit urgent for me to get to the bottom of this. According to https://github.com/kubernetes/community/blob/master/contributors/guide/scalability-good-practices.md
+
+snippet:
+
+Every object kind MUST have the following metadata in a nested object field called "metadata":
+
+-  namespace:
+-  name:
+-  uid:
+
+Could someone please give me an example of what an 'object kind is' and where these fields are populated?
+
+I'm writing a linter specially for the kubernetes project; I don't need to actually extend the code myself so not looking to understand how it all works. I just need to know where to look. An example would be great. Thanks!
+
+#+BEGIN_SRC text
+  Question:
+    i cant find any files which match all 3 terms. so i dont know how to make even a basic linter
+  Answer:
+    the reason is that the UID is assigned after creation.
+    you typically only submit a namespace and name of an object. then kubernetes itself assigns a uid dynamically after the object is created.
+#+END_SRC
+
+[[https://mullikine.github.io/codelingo/compulsory-metadata-files.txt][mullikine.github.io/codelingo/compulsory-metadata-files.txt]]
+[[https://mullikine.github.io/codelingo/compulsory-metadata-grep.txt][mullikine.github.io/codelingo/compulsory-metadata-grep.txt]]
