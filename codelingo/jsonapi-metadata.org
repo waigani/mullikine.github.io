@@ -36,7 +36,7 @@ I'm writing a linter specially for the kubernetes project; I don't need to actua
 #+END_SRC
 
 ** grep output
-[[https://mullikine.github.io/codelingo/compulsory-metadata-files-metadata-namespace-name.txt][mullikine.github.io/codelingo/compulsory-metadata-files-metadata-namespace-name.txt]]
+[[https://mullikine.github.io/codelingo/compulsory-metadata-grep-metadata-namespace-name.txt][mullikine.github.io/codelingo/compulsory-metadata-grep-metadata-namespace-name.txt]]
 
 * files which contain only 2 terms; 'metadata' and 'namespace'
 I forgot to add 'name' to the search. Here for posterity.

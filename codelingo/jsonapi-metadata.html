@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-16 Tue 17:38 -->
+<!-- 2018-10-16 Tue 17:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -235,26 +235,26 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org2c109af">1. Question on slack</a></li>
-<li><a href="#orgb319346">2. files that contain all 3 terms; 'metadata', 'namespace' and 'name'</a>
+<li><a href="#org00e8c3e">1. Question on slack</a></li>
+<li><a href="#orgfa12b95">2. files that contain all 3 terms; 'metadata', 'namespace' and 'name'</a>
 <ul>
-<li><a href="#org3baed07">2.1. command</a></li>
-<li><a href="#orgc5884f4">2.2. grep output</a></li>
+<li><a href="#org580c6ea">2.1. command</a></li>
+<li><a href="#orgf69a99f">2.2. grep output</a></li>
 </ul>
 </li>
-<li><a href="#org1dfc9b8">3. files which contain only 2 terms; 'metadata' and 'namespace'</a>
+<li><a href="#org14d7bdf">3. files which contain only 2 terms; 'metadata' and 'namespace'</a>
 <ul>
-<li><a href="#org7983dc2">3.1. command</a></li>
-<li><a href="#org82e5b03">3.2. grep output</a></li>
+<li><a href="#orgaa02c9a">3.1. command</a></li>
+<li><a href="#org3d5710f">3.2. grep output</a></li>
 </ul>
 </li>
-<li><a href="#org5e3d396">4. list of files and line numbers which contain 'metadata' and 'namespace'</a></li>
+<li><a href="#org01cd17a">4. list of files and line numbers which contain 'metadata' and 'namespace'</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org2c109af" class="outline-2">
-<h2 id="org2c109af"><span class="section-number-2">1</span> Question on slack</h2>
+<div id="outline-container-org00e8c3e" class="outline-2">
+<h2 id="org00e8c3e"><span class="section-number-2">1</span> Question on slack</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Hey guys. Sorry for asking again, but it's a little bit urgent for me to get to the bottom of this. According to <a href="https://github.com/kubernetes/community/blob/master/contributors/guide/scalability-good-practices.md">https://github.com/kubernetes/community/blob/master/contributors/guide/scalability-good-practices.md</a>
@@ -293,8 +293,8 @@ Answer:
 </div>
 </div>
 
-<div id="outline-container-orgb319346" class="outline-2">
-<h2 id="orgb319346"><span class="section-number-2">2</span> files that contain all 3 terms; 'metadata', 'namespace' and 'name'</h2>
+<div id="outline-container-orgfa12b95" class="outline-2">
+<h2 id="orgfa12b95"><span class="section-number-2">2</span> files that contain all 3 terms; 'metadata', 'namespace' and 'name'</h2>
 <div class="outline-text-2" id="text-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -315,8 +315,8 @@ Answer:
 </table>
 </div>
 
-<div id="outline-container-org3baed07" class="outline-3">
-<h3 id="org3baed07"><span class="section-number-3">2.1</span> command</h3>
+<div id="outline-container-org580c6ea" class="outline-3">
+<h3 id="org580c6ea"><span class="section-number-3">2.1</span> command</h3>
 <div class="outline-text-3" id="text-2-1">
 <div class="org-src-container">
 <pre class="src src-sh">eack -F &lt;(<span style="color: #d18aff;">cd</span> /; find <span style="color: #ff4ea3;">"$HOME$MYGIT/kubernetes/kubernetes"</span> -type f -path <span style="color: #ff4ea3;">'*/k8s.io/api/*'</span> | eipct <span style="color: #ff4ea3;">"xa cat | grep -q -P 'namespace'"</span> | eipct <span style="color: #ff4ea3;">"xa cat | grep -q -P '\bname\b'"</span> | eipct <span style="color: #ff4ea3;">"xa cat | grep -q -P '\bmetadata\b'"</span>) <span style="color: #ff4ea3;">'\bmetadata\b'</span>
@@ -325,26 +325,26 @@ Answer:
 </div>
 </div>
 
-<div id="outline-container-orgc5884f4" class="outline-3">
-<h3 id="orgc5884f4"><span class="section-number-3">2.2</span> grep output</h3>
+<div id="outline-container-orgf69a99f" class="outline-3">
+<h3 id="orgf69a99f"><span class="section-number-3">2.2</span> grep output</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
-<a href="https://mullikine.github.io/codelingo/compulsory-metadata-files-metadata-namespace-name.txt">mullikine.github.io/codelingo/compulsory-metadata-files-metadata-namespace-name.txt</a>
+<a href="https://mullikine.github.io/codelingo/compulsory-metadata-grep-metadata-namespace-name.txt">mullikine.github.io/codelingo/compulsory-metadata-grep-metadata-namespace-name.txt</a>
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org1dfc9b8" class="outline-2">
-<h2 id="org1dfc9b8"><span class="section-number-2">3</span> files which contain only 2 terms; 'metadata' and 'namespace'</h2>
+<div id="outline-container-org14d7bdf" class="outline-2">
+<h2 id="org14d7bdf"><span class="section-number-2">3</span> files which contain only 2 terms; 'metadata' and 'namespace'</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 I forgot to add 'name' to the search. Here for posterity.
 </p>
 </div>
 
-<div id="outline-container-org7983dc2" class="outline-3">
-<h3 id="org7983dc2"><span class="section-number-3">3.1</span> command</h3>
+<div id="outline-container-orgaa02c9a" class="outline-3">
+<h3 id="orgaa02c9a"><span class="section-number-3">3.1</span> command</h3>
 <div class="outline-text-3" id="text-3-1">
 <div class="org-src-container">
 <pre class="src src-sh">eack -F &lt;(<span style="color: #d18aff;">cd</span> /; find <span style="color: #ff4ea3;">"$HOME$MYGIT/kubernetes/kubernetes"</span> -type f -path <span style="color: #ff4ea3;">'*/k8s.io/api/*'</span> | eipct <span style="color: #ff4ea3;">"xa cat | grep -q -P 'namespace'"</span> | eipct <span style="color: #ff4ea3;">"xa cat | grep -q -P '\bmetadata\b'"</span>) <span style="color: #ff4ea3;">'\bmetadata\b'</span>
@@ -353,8 +353,8 @@ I forgot to add 'name' to the search. Here for posterity.
 </div>
 </div>
 
-<div id="outline-container-org82e5b03" class="outline-3">
-<h3 id="org82e5b03"><span class="section-number-3">3.2</span> grep output</h3>
+<div id="outline-container-org3d5710f" class="outline-3">
+<h3 id="org3d5710f"><span class="section-number-3">3.2</span> grep output</h3>
 <div class="outline-text-3" id="text-3-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -381,8 +381,8 @@ I forgot to add 'name' to the search. Here for posterity.
 </div>
 </div>
 
-<div id="outline-container-org5e3d396" class="outline-2">
-<h2 id="org5e3d396"><span class="section-number-2">4</span> list of files and line numbers which contain 'metadata' and 'namespace'</h2>
+<div id="outline-container-org01cd17a" class="outline-2">
+<h2 id="org01cd17a"><span class="section-number-2">4</span> list of files and line numbers which contain 'metadata' and 'namespace'</h2>
 <div class="outline-text-2" id="text-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -409,7 +409,7 @@ I forgot to add 'name' to the search. Here for posterity.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: shane</p>
-<p class="date">Created: 2018-10-16 Tue 17:38</p>
+<p class="date">Created: 2018-10-16 Tue 17:48</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
