@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-10-18 Thu 18:55 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="shane" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="org-main.css"/>
+<link rel="stylesheet" type="text/css" href="magit.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org21c7fc3">1. Creating the tenet <code>flags-have-underscores</code></a>
+<ul>
+<li><a href="#org993d140">1.1. Selected</a>
+<ul>
+<li><a href="#org66e5e35">1.1.1. Generated CLQL (A)</a></li>
+<li><a href="#orgc427f09">1.1.2. refined CLQL (A)</a></li>
+</ul>
+</li>
+<li><a href="#orgccd1a87">1.2. Selected</a>
+<ul>
+<li><a href="#orgb08a461">1.2.1. Generated CLQL (B)</a></li>
+<li><a href="#orgd6a18a7">1.2.2. Refined CLQL (B)</a></li>
+</ul>
+</li>
+<li><a href="#org8c46a01">1.3. Removed <code>@playground.highlight</code>, added <code>@review.comment</code></a></li>
+<li><a href="#org384023b">1.4. Merged CLQL (A) and CLQL (B)</a>
+<ul>
+<li><a href="#org3b9ae1b">1.4.1. Also, removed superfluous facts and added (depth = X) arguments</a></li>
+</ul>
+</li>
+<li><a href="#orgedc4522">1.5. kubernetes had a <code>vendor</code> folder and codelingo refused to injest it</a>
+<ul>
+<li><a href="#org08bff26">1.5.1. Contents of <code>.codelingoignore</code></a></li>
+</ul>
+</li>
+<li><a href="#orgd72e97a">1.6. Once you have created the <code>.codelingoignore</code> file there are two ways to test tenet:</a>
+<ul>
+<li><a href="#orgd8b8fce">1.6.1. 1. copy <code>codelingo.yaml</code> file into the kubernetes repository</a></li>
+<li><a href="#orgf9c9abf">1.6.2. 2. <code>cd</code> into the <code>kubernetes</code> repository directory and run the following command</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org21c7fc3" class="outline-2">
+<h2 id="org21c7fc3"><span class="section-number-2">1</span> Creating the tenet <code>flags-have-underscores</code></h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org993d140" class="outline-3">
+<h3 id="org993d140"><span class="section-number-3">1.1</span> Selected</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #a1db00;">func</span> (f *<span style="color: #00d7af;">ConfigFlags</span>) <span style="color: #ffd700;">AddFlags</span>(flags *<span style="color: #00d7af;">pflag.FlagSet</span>) {
+    flags.<span style="color: #ffd700;">StringVar</span>(f.CertFile, flagGoodName
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org66e5e35" class="outline-4">
+<h4 id="org66e5e35"><span class="section-number-4">1.1.1</span> Generated CLQL (A)</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.file(depth = any)</span>:
+  <span style="color: #ff8700;">go.decls</span>:
+    @playground.highlight
+    <span style="color: #ff8700;">go.func_decl</span>:
+      <span style="color: #ff8700;">go.field_list</span>:
+        <span style="color: #ff8700;">go.field</span>:
+          <span style="color: #ff8700;">go.names</span>:
+            <span style="color: #ff8700;">go.ident</span>:
+              child_count == 0
+              name == <span style="color: #ff4ea3;">"f"</span>
+              private == <span style="color: #ff4ea3;">"true"</span>
+              public == <span style="color: #ff4ea3;">"false"</span>
+              type == <span style="color: #ff4ea3;">"*/resource/example.go.ConfigFlags"</span>
+          <span style="color: #ff8700;">go.star_expr</span>:
+            <span style="color: #ff8700;">go.ident</span>:
+              child_count == 0
+              name == <span style="color: #ff4ea3;">"ConfigFlags"</span>
+              private == <span style="color: #ff4ea3;">"false"</span>
+              public == <span style="color: #ff4ea3;">"true"</span>
+              type == <span style="color: #ff4ea3;">"/resource/example.go.ConfigFlags"</span>
+      <span style="color: #ff8700;">go.ident</span>:
+        child_count == 0
+        name == <span style="color: #ff4ea3;">"AddFlags"</span>
+        private == <span style="color: #ff4ea3;">"false"</span>
+        public == <span style="color: #ff4ea3;">"true"</span>
+      <span style="color: #ff8700;">go.func_type</span>:
+        <span style="color: #ff8700;">go.field_list</span>:
+          <span style="color: #ff8700;">go.field</span>:
+            <span style="color: #ff8700;">go.names</span>:
+              <span style="color: #ff8700;">go.ident</span>:
+                child_count == 0
+                name == <span style="color: #ff4ea3;">"flags"</span>
+                private == <span style="color: #ff4ea3;">"true"</span>
+                public == <span style="color: #ff4ea3;">"false"</span>
+                type == <span style="color: #ff4ea3;">"*invalid type"</span>
+            <span style="color: #ff8700;">go.star_expr</span>:
+              <span style="color: #ff8700;">go.selector_expr</span>:
+                <span style="color: #ff8700;">go.ident</span>:
+                  child_count == 0
+                  name == <span style="color: #ff4ea3;">"pflag"</span>
+                  private == <span style="color: #ff4ea3;">"true"</span>
+                  public == <span style="color: #ff4ea3;">"false"</span>
+                <span style="color: #ff8700;">go.ident</span>:
+                  child_count == 0
+                  name == <span style="color: #ff4ea3;">"FlagSet"</span>
+                  private == <span style="color: #ff4ea3;">"false"</span>
+                  public == <span style="color: #ff4ea3;">"true"</span>
+      <span style="color: #ff8700;">go.block_stmt</span>:
+        <span style="color: #ff8700;">go.list</span>:
+          <span style="color: #ff8700;">go.expr_stmt</span>:
+            <span style="color: #ff8700;">go.call_expr</span>:
+              <span style="color: #ff8700;">go.selector_expr</span>:
+                <span style="color: #ff8700;">go.ident</span>:
+                  child_count == 0
+                  name == <span style="color: #ff4ea3;">"flags"</span>
+                  private == <span style="color: #ff4ea3;">"true"</span>
+                  public == <span style="color: #ff4ea3;">"false"</span>
+                  type == <span style="color: #ff4ea3;">"*invalid type"</span>
+                <span style="color: #ff8700;">go.ident</span>:
+                  child_count == 0
+                  name == <span style="color: #ff4ea3;">"StringVar"</span>
+                  private == <span style="color: #ff4ea3;">"false"</span>
+                  public == <span style="color: #ff4ea3;">"true"</span>
+              <span style="color: #ff8700;">go.args</span>:
+                <span style="color: #ff8700;">go.selector_expr</span>:
+                  <span style="color: #ff8700;">go.ident</span>:
+                    child_count == 0
+                    name == <span style="color: #ff4ea3;">"f"</span>
+                    private == <span style="color: #ff4ea3;">"true"</span>
+                    public == <span style="color: #ff4ea3;">"false"</span>
+                    type == <span style="color: #ff4ea3;">"*/resource/example.go.ConfigFlags"</span>
+                  <span style="color: #ff8700;">go.ident</span>:
+                    child_count == 0
+                    name == <span style="color: #ff4ea3;">"CertFile"</span>
+                    private == <span style="color: #ff4ea3;">"false"</span>
+                    public == <span style="color: #ff4ea3;">"true"</span>
+                <span style="color: #ff8700;">go.ident</span>:
+                  child_count == 0
+                  name == <span style="color: #ff4ea3;">"flagGoodName"</span>
+                  private == <span style="color: #ff4ea3;">"true"</span>
+                  public == <span style="color: #ff4ea3;">"false"</span>
+                  type == <span style="color: #ff4ea3;">"untyped string"</span>
+                  value == <span style="color: #ff4ea3;">"\"good-name\""</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgc427f09" class="outline-4">
+<h4 id="orgc427f09"><span class="section-number-4">1.1.2</span> refined CLQL (A)</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #ff8700;">functions</span>:
+  - <span style="color: #ff8700;">name</span>: contains
+    <span style="color: #ff8700;">type</span>: asserter
+    <span style="color: #ff8700;">body</span>: |
+      <span style="color: #ff4ea3;">function (str, substr) {</span>
+<span style="color: #ff4ea3;">        return str.indexOf(substr) != -1</span>
+<span style="color: #ff4ea3;">      }</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.file(depth = any)</span>:
+  <span style="color: #ff8700;">go.decls</span>:
+    <span style="color: #ff8700;">go.func_decl</span>:
+      <span style="color: #ff8700;">go.func_type</span>:
+        <span style="color: #ff8700;">go.field_list</span>:
+          <span style="color: #ff8700;">go.field</span>:
+            <span style="color: #ff8700;">go.names</span>:
+              <span style="color: #ff8700;">go.ident</span>:
+                name as paraname
+            <span style="color: #ff8700;">go.star_expr</span>:
+              <span style="color: #ff8700;">go.selector_expr</span>:
+                <span style="color: #ff8700;">go.ident</span>:
+                  name == <span style="color: #ff4ea3;">"pflag"</span>
+                <span style="color: #ff8700;">go.ident</span>:
+                  name == <span style="color: #ff4ea3;">"FlagSet"</span>
+      <span style="color: #ff8700;">go.block_stmt</span>:
+        <span style="color: #ff8700;">go.list</span>:
+          <span style="color: #ff8700;">go.expr_stmt</span>:
+            <span style="color: #ff8700;">go.call_expr</span>:
+              <span style="color: #ff8700;">go.selector_expr</span>:
+                <span style="color: #ff8700;">go.ident</span>:
+                  name == paraname
+                <span style="color: #ff8700;">go.ident</span>:
+                  name == <span style="color: #ff4ea3;">"StringVar"</span>
+              <span style="color: #ff8700;">go.args</span>:
+                @review.comment
+                <span style="color: #ff8700;">go.ident</span>:
+                  value as flagname
+                  contains(flagname, <span style="color: #ff4ea3;">"_"</span>)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgccd1a87" class="outline-3">
+<h3 id="orgccd1a87"><span class="section-number-3">1.2</span> Selected</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #a1db00;">import</span> (
+    <span style="color: #ff4ea3;">"github.com/spf13/pflag"</span>
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgb08a461" class="outline-4">
+<h4 id="orgb08a461"><span class="section-number-4">1.2.1</span> Generated CLQL (B)</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.file(depth = any)</span>:
+  <span style="color: #ff8700;">go.decls</span>:
+    <span style="color: #ff8700;">go.gen_decl</span>:
+      <span style="color: #ff8700;">go.import_spec</span>:
+        @playground.highlight
+        <span style="color: #ff8700;">go.basic_lit</span>:
+          child_count == 0
+          kind == <span style="color: #ff4ea3;">"string"</span>
+          value == <span style="color: #ff4ea3;">"github.com/spf13/pflag"</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd6a18a7" class="outline-4">
+<h4 id="orgd6a18a7"><span class="section-number-4">1.2.2</span> Refined CLQL (B)</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.file(depth = any)</span>:
+  <span style="color: #ff8700;">go.decls</span>:
+    <span style="color: #ff8700;">go.gen_decl</span>:
+      <span style="color: #ff8700;">go.import_spec</span>:
+        <span style="color: #ff8700;">go.basic_lit</span>:
+          value == <span style="color: #ff4ea3;">"github.com/spf13/pflag"</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8c46a01" class="outline-3">
+<h3 id="org8c46a01"><span class="section-number-3">1.3</span> Removed <code>@playground.highlight</code>, added <code>@review.comment</code></h3>
+</div>
+
+<div id="outline-container-org384023b" class="outline-3">
+<h3 id="org384023b"><span class="section-number-3">1.4</span> Merged CLQL (A) and CLQL (B)</h3>
+<div class="outline-text-3" id="text-1-4">
+</div>
+<div id="outline-container-org3b9ae1b" class="outline-4">
+<h4 id="org3b9ae1b"><span class="section-number-4">1.4.1</span> Also, removed superfluous facts and added (depth = X) arguments</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<div class="org-src-container">
+<pre class="src src-yaml">import codelingo/ast/go
+
+<span style="color: #ff8700;">go.file(depth = any)</span>:
+  <span style="color: #ff8700;">go.decls</span>:
+    <span style="color: #ff8700;">go.import_spec(depth = 1)</span>:
+      <span style="color: #ff8700;">go.basic_lit</span>:
+        value == <span style="color: #ff4ea3;">"github.com/spf13/pflag"</span>
+    <span style="color: #ff8700;">go.func_decl</span>:
+      <span style="color: #ff8700;">go.func_type</span>:
+        <span style="color: #ff8700;">go.field_list</span>:
+          <span style="color: #ff8700;">go.field</span>:
+            <span style="color: #ff8700;">go.names</span>:
+              <span style="color: #ff8700;">go.ident</span>:
+                name as paraname
+            <span style="color: #ff8700;">go.star_expr</span>:
+              <span style="color: #ff8700;">go.selector_expr</span>:
+                <span style="color: #ff8700;">go.ident</span>:
+                  name == <span style="color: #ff4ea3;">"pflag"</span>
+                <span style="color: #ff8700;">go.ident</span>:
+                  name == <span style="color: #ff4ea3;">"FlagSet"</span>
+      <span style="color: #ff8700;">go.call_expr(depth = 3)</span>:
+        <span style="color: #ff8700;">go.selector_expr</span>:
+          <span style="color: #ff8700;">go.ident</span>:
+            name == paraname
+          <span style="color: #ff8700;">go.ident</span>:
+            name == <span style="color: #ff4ea3;">"StringVar"</span>
+        <span style="color: #ff8700;">go.args</span>:
+          @review.comment
+          <span style="color: #ff8700;">go.ident</span>:
+            value as flagname
+            contains(flagname, <span style="color: #ff4ea3;">"_"</span>)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgedc4522" class="outline-3">
+<h3 id="orgedc4522"><span class="section-number-3">1.5</span> kubernetes had a <code>vendor</code> folder and codelingo refused to injest it</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+Make a <code>.codelingoignore</code> file within the kubernetes repository
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">vim ./github.com/kubernetes/kubernetes/.codelingoignore
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org08bff26" class="outline-4">
+<h4 id="org08bff26"><span class="section-number-4">1.5.1</span> Contents of <code>.codelingoignore</code></h4>
+<div class="outline-text-4" id="text-1-5-1">
+<div class="org-src-container">
+<pre class="src src-text">vendor/
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd72e97a" class="outline-3">
+<h3 id="orgd72e97a"><span class="section-number-3">1.6</span> Once you have created the <code>.codelingoignore</code> file there are two ways to test tenet:</h3>
+<div class="outline-text-3" id="text-1-6">
+</div>
+<div id="outline-container-orgd8b8fce" class="outline-4">
+<h4 id="orgd8b8fce"><span class="section-number-4">1.6.1</span> 1. copy <code>codelingo.yaml</code> file into the kubernetes repository</h4>
+<div class="outline-text-4" id="text-1-6-1">
+<div class="org-src-container">
+<pre class="src src-sh">cp ./github.com/codelingo/codelingo/tenets/codelingo/k8/flags-have-underscores/codelingo.yaml ./github.com/kubernetes/kubernetes/
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf9c9abf" class="outline-4">
+<h4 id="orgf9c9abf"><span class="section-number-4">1.6.2</span> 2. <code>cd</code> into the <code>kubernetes</code> repository directory and run the following command</h4>
+<div class="outline-text-4" id="text-1-6-2">
+<div class="org-src-container">
+<pre class="src src-sh">lingo run review -lingo-file ./github.com/codelingo/codelingo/tenets/codelingo/k8/flags-have-underscores/codelingo.yaml
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: shane</p>
+<p class="date">Created: 2018-10-18 Thu 18:55</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
