@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.51 in css mode. -->
+<html>
+  <head>
+    <title>magit-diff: td_dir1eaVo7Q</title>
+    <style type="text/css">
+    <!--
+      body {
+        color: #c6c6c6;
+        background-color: #303030;
+      }
+      .diff-refine-added {
+        /* diff-refine-added */
+        color: #eeeeee;
+        background-color: #008700;
+        font-weight: bold;
+      }
+      .diff-refine-removed {
+        /* diff-refine-removed */
+        color: #eeeeee;
+        background-color: #a40000;
+        font-weight: bold;
+      }
+      .magit-diff-added {
+        /* magit-diff-added */
+        color: #d7ff5f;
+        font-weight: bold;
+      }
+      .magit-diff-context {
+        /* magit-diff-context */
+        color: #c6c6c6;
+      }
+      .magit-diff-file-heading {
+        /* magit-diff-file-heading */
+        color: #eeeeee;
+        font-weight: bold;
+      }
+      .magit-diff-hunk-heading {
+        /* magit-diff-hunk-heading */
+        color: #8a8a8a;
+        background-color: #4e4e4e;
+        font-weight: bold;
+      }
+      .magit-diff-removed {
+        /* magit-diff-removed */
+        color: #ff4b4b;
+        font-weight: bold;
+      }
+      .magit-diffstat-added {
+        /* magit-diffstat-added */
+        color: #5faf00;
+        background-color: #d7ff5f;
+        font-weight: bold;
+      }
+      .magit-diffstat-removed {
+        /* magit-diffstat-removed */
+        color: #a40000;
+        background-color: #ff4b4b;
+        font-weight: bold;
+      }
+      .magit-filename {
+        /* magit-filename */
+        color: #5fafd7;
+      }
+      .magit-section-highlight {
+        /* magit-section-highlight */
+        background-color: #4e4e4e;
+      }
+
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="magit-diff-file-heading"><span class="magit-section-highlight">1 file changed, 67 insertions(+), 14 deletions(-)
+</span></span><span class="magit-filename"><span class="magit-section-highlight">file.dat</span></span><span class="magit-section-highlight"> | 81 </span><span class="magit-diffstat-added"><span class="magit-section-highlight">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span></span><span class="magit-diffstat-removed"><span class="magit-section-highlight">--------------</span></span><span class="magit-section-highlight">
+
+</span><span class="magit-diff-file-heading">modified   file.dat
+</span><span class="magit-diff-hunk-heading">@@ -1,29 +1,82 @@
+</span><span class="magit-diff-added">+funcs:
++  - name: newConcat
++    type: resolver
++    body: |
++      function (a, b) {
++        return a.concat(b);
++      }
+</span><span class="magit-diff-context"> tenets:
+</span><span class="magit-diff-removed">-  - name: </span><span class="magit-diff-removed"><span class="diff-refine-removed">shadowed</span></span><span class="magit-diff-removed">-</span><span class="magit-diff-removed"><span class="diff-refine-removed">func</span></span><span class="magit-diff-removed">-</span><span class="magit-diff-removed"><span class="diff-refine-removed">parameter</span></span><span class="magit-diff-removed">
+</span><span class="magit-diff-added">+  - name: </span><span class="magit-diff-added"><span class="diff-refine-added">misused</span></span><span class="magit-diff-added">-</span><span class="magit-diff-added"><span class="diff-refine-added">nil</span></span><span class="magit-diff-added">-</span><span class="magit-diff-added"><span class="diff-refine-added">interface</span></span><span class="magit-diff-added">
+</span><span class="magit-diff-context">     flows:
+       codelingo/docs:
+</span><span class="magit-diff-removed">-        title: </span><span class="magit-diff-removed"><span class="diff-refine-removed">Shadowed</span></span><span class="magit-diff-removed"> </span><span class="magit-diff-removed"><span class="diff-refine-removed">Function</span></span><span class="magit-diff-removed"> </span><span class="magit-diff-removed"><span class="diff-refine-removed">Parameter</span></span><span class="magit-diff-removed">
+</span><span class="magit-diff-added">+        title: </span><span class="magit-diff-added"><span class="diff-refine-added">Misused</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">Nil</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">Interface</span></span><span class="magit-diff-added">
+</span><span class="magit-diff-context">         body: |
+</span><span class="magit-diff-removed">-          </span><span class="magit-diff-removed"><span class="diff-refine-removed">Shadowing</span></span><span class="magit-diff-removed"> is </span><span class="magit-diff-removed"><span class="diff-refine-removed">considered</span></span><span class="magit-diff-removed"> </span><span class="magit-diff-removed"><span class="diff-refine-removed">harmful</span></span><span class="magit-diff-removed"> </span><span class="magit-diff-removed"><span class="diff-refine-removed">to</span></span><span class="magit-diff-removed"> </span><span class="magit-diff-removed"><span class="diff-refine-removed">your</span></span><span class="magit-diff-removed"> </span><span class="magit-diff-removed"><span class="diff-refine-removed">sanity</span></span><span class="magit-diff-removed">.
+</span><span class="magit-diff-added">+          </span><span class="magit-diff-added"><span class="diff-refine-added">Nil interface</span></span><span class="magit-diff-added"> is </span><span class="magit-diff-added"><span class="diff-refine-added">not</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">the</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">same</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">as</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">having a nil pointer in the interface</span></span><span class="magit-diff-added">.
+</span><span class="magit-diff-context">       codelingo/review:
+</span><span class="magit-diff-removed">-        comment: </span><span class="magit-diff-removed"><span class="diff-refine-removed">Identifier</span></span><span class="magit-diff-removed">
+</span><span class="magit-diff-added">+        comment: </span><span class="magit-diff-added"><span class="diff-refine-added">The variable being tested for nil, `{{varname}}` is a pointer to a pointer to nil.</span></span><span class="magit-diff-added">
+</span><span class="magit-diff-context">     query: |
+       import codelingo/ast/go
+       
+       go.file(depth = any):
+         go.decls:
+</span><span class="magit-diff-added">+          go.gen_decl:
++            go.type_spec:
++              go.ident: # cat
++                type as interfacetype
++              go.interface_type:
++                go.field_list:
++                  go.field:
++                    go.names:
++                      go.ident: # meow
++                        name as purevirtualfuncname
++                        type == "func()"
++          go.gen_decl:
++            go.type_spec:
++              go.ident:
++                type as typename
++              go.struct_type
++          go.func_decl: # meow of tabby
++            go.field_list:
++              go.field:
++                go.star_expr:
++                  go.ident: # tabby
++                    type == typename
++            go.ident: # meow
++              name == purevirtualfuncname
++            go.func_type
+</span><span class="magit-diff-context">           go.func_decl:
+</span><span class="magit-diff-added">+            go.ident: # getacat
++              name as factoryfuncname
+</span><span class="magit-diff-context">             go.func_type:
+</span><span class="magit-diff-removed">-              go.field_list # </span><span class="magit-diff-removed"><span class="diff-refine-removed">could</span></span><span class="magit-diff-removed"> </span><span class="magit-diff-removed"><span class="diff-refine-removed">be</span></span><span class="magit-diff-removed"> </span><span class="magit-diff-removed"><span class="diff-refine-removed">a</span></span><span class="magit-diff-removed"> </span><span class="magit-diff-removed"><span class="diff-refine-removed">function</span></span><span class="magit-diff-removed"> </span><span class="magit-diff-removed"><span class="diff-refine-removed">argument</span></span><span class="magit-diff-removed"> </span><span class="magit-diff-removed"><span class="diff-refine-removed">or</span></span><span class="magit-diff-removed"> return </span><span class="magit-diff-removed"><span class="diff-refine-removed">parameter</span></span><span class="magit-diff-removed">
+</span><span class="magit-diff-added">+              go.field_list
+</span><span class="magit-diff-added"><span class="diff-refine-added">+              go.field_list:</span></span><span class="magit-diff-added"> # </span><span class="magit-diff-added"><span class="diff-refine-added">the</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">2nd</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">field</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">list</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">specifies</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">the</span></span><span class="magit-diff-added"> return </span><span class="magit-diff-added"><span class="diff-refine-added">parameters. this is an important distinction here but without an 'order:' fact, clql does not know this</span></span><span class="magit-diff-added">
+</span><span class="magit-diff-context">                 go.field:
+</span><span class="magit-diff-removed">-                  go.</span><span class="magit-diff-removed"><span class="diff-refine-removed">names: # important to distinguish from type name
+-                    go.</span></span><span class="magit-diff-removed">ident:
+-                      </span><span class="magit-diff-removed"><span class="diff-refine-removed">name as paraname</span></span><span class="magit-diff-removed">
+</span><span class="magit-diff-added">+                  go.ident:
++                    </span><span class="magit-diff-added"><span class="diff-refine-added">type</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">==</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">interfacetype</span></span><span class="magit-diff-added">
+</span><span class="magit-diff-context">             go.block_stmt:
+               go.list:
+</span><span class="magit-diff-removed">-                go.</span><span class="magit-diff-removed"><span class="diff-refine-removed">list(depth</span></span><span class="magit-diff-removed"> = </span><span class="magit-diff-removed"><span class="diff-refine-removed">any</span></span><span class="magit-diff-removed">)</span><span class="magit-diff-removed"><span class="diff-refine-removed">:</span></span><span class="magit-diff-removed">
+-                  go.</span><span class="magit-diff-removed"><span class="diff-refine-removed">assign</span></span><span class="magit-diff-removed">_</span><span class="magit-diff-removed"><span class="diff-refine-removed">stmt</span></span><span class="magit-diff-removed">:
+-                    go.</span><span class="magit-diff-removed"><span class="diff-refine-removed">lhs</span></span><span class="magit-diff-removed">: # important
+-                      @review comment
+-                      go.ident:
+-                        name == </span><span class="magit-diff-removed"><span class="diff-refine-removed">paraname</span></span><span class="magit-diff-removed">
+</span><span class="magit-diff-added">+                go.</span><span class="magit-diff-added"><span class="diff-refine-added">decl_stmt:
++                  go.gen_decl:
++                    go.value_spec:
++                      go.names:
++                        go.ident:
++                          type</span></span><span class="magit-diff-added"> =</span><span class="magit-diff-added"><span class="diff-refine-added">=</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">newConcat("*/", typename</span></span><span class="magit-diff-added">)
++                      go.</span><span class="magit-diff-added"><span class="diff-refine-added">star</span></span><span class="magit-diff-added">_</span><span class="magit-diff-added"><span class="diff-refine-added">expr</span></span><span class="magit-diff-added">:
++                        go.</span><span class="magit-diff-added"><span class="diff-refine-added">ident:
++                          type == typename
++                      go.values:
++                        go.ident</span></span><span class="magit-diff-added">:
+</span><span class="magit-diff-added"><span class="diff-refine-added">+                          name == "nil"</span></span><span class="magit-diff-added"> # important</span><span class="magit-diff-added"><span class="diff-refine-added">. set pointer to pointer to nil
++                go.return_stmt:
++                  go.results:
++                    go.ident:
++                      type == newConcat("*/", typename)</span></span><span class="magit-diff-added">
++          </span><span class="magit-diff-added"><span class="diff-refine-added">go.func_decl: # TestGetACat
++            go.block_stmt:
++              go.binary_expr(depth = 2):
++                go.call_expr:
++                  go.ident:
++                    name == factoryfuncname
++</span></span><span class="magit-diff-added">                @review comment
++                go.ident:
++                  name == </span><span class="magit-diff-added"><span class="diff-refine-added">"nil" # important. test is equal to nil</span></span><span class="magit-diff-added">
+</span>
+</pre>
+  </body>
+</html>

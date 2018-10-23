@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-10-24 Wed 12:37 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="shane" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="org-main.css"/>
+<link rel="stylesheet" type="text/css" href="magit.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orga3a56e4">1. troubleshooting new tenet <code>shadowed-func-parameter</code></a>
+<ul>
+<li>
+<ul>
+<li><a href="#orgf4b2986">1.0.1. This fails</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga3a56e4" class="outline-2">
+<h2 id="orga3a56e4"><span class="section-number-2">1</span> troubleshooting new tenet <code>shadowed-func-parameter</code></h2>
+<div class="outline-text-2" id="text-1">
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #a1db00;">package</span> main
+
+<span style="color: #a1db00;">import</span> <span style="color: #ff4ea3;">"fmt"</span>
+<span style="color: #a1db00;">import</span> <span style="color: #ff4ea3;">"errors"</span>
+
+<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">tryTheThing</span>() (<span style="color: #00d7af;">string</span>, <span style="color: #00d7af;">error</span>) {
+        <span style="color: #a1db00;">return</span> <span style="color: #ff4ea3;">"hi"</span>, <span style="color: #5fafd7;">nil</span>
+}
+
+<span style="color: #a1db00;">var</span> ErrDidNotWork = errors.<span style="color: #ffd700;">New</span>(<span style="color: #ff4ea3;">"did not work"</span>)
+
+<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">DoTheThing</span>(reallyDoIt <span style="color: #00d7af;">bool</span>) (err <span style="color: #00d7af;">error</span>) {
+  <span style="color: #a1db00;">if</span> reallyDoIt {
+    result, err := <span style="color: #ffd700;">tryTheThing</span>()
+    <span style="color: #a1db00;">if</span> err != <span style="color: #5fafd7;">nil</span> || result != <span style="color: #ff4ea3;">"it worked"</span> {
+      err = ErrDidNotWork
+    }
+  }
+  <span style="color: #a1db00;">return</span> err
+}
+
+<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">main</span>() {
+        e := <span style="color: #ffd700;">DoTheThing</span>(<span style="color: #5fafd7;">true</span>)
+        fmt.<span style="color: #ffd700;">Printf</span>(<span style="color: #ff4ea3;">"%v\n"</span>, e)
+        <span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">e.g. result, err := tryTheThing(). look for err := within a function where err is a parameter</span>
+}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgf4b2986" class="outline-4">
+<h4 id="orgf4b2986"><span class="section-number-4">1.0.1</span> This fails</h4>
+<div class="outline-text-4" id="text-1-0-1">
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #ff8700;">tenets</span>:
+  - <span style="color: #ff8700;">name</span>: shadowed-func-parameter
+    <span style="color: #ff8700;">flows</span>:
+      <span style="color: #ff8700;">codelingo/docs</span>:
+        <span style="color: #ff8700;">title</span>: Shadowed Function Parameter
+        <span style="color: #ff8700;">body</span>: |
+          <span style="color: #ff4ea3;">Shadowing is considered harmful to your sanity.</span>
+      <span style="color: #ff8700;">codelingo/review</span>:
+        <span style="color: #ff8700;">comment</span>: Identifier
+    <span style="color: #ff8700;">query</span>: |
+      <span style="color: #ff4ea3;">import codelingo/ast/go</span>
+
+<span style="color: #ff4ea3;">      go.file(depth = any):</span>
+<span style="color: #ff4ea3;">        go.decls:</span>
+<span style="color: #ff4ea3;">          go.func_decl:</span>
+<span style="color: #ff4ea3;">            go.func_type:</span>
+              go.field_list <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">could be a function argument or return parameter</span>
+<span style="color: #ff4ea3;">                go.field:</span>
+                  <span style="color: #ff8700;">go.names</span>: <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">important to distinguish from type name</span>
+<span style="color: #ff4ea3;">                    go.ident:</span>
+<span style="color: #ff4ea3;">                      name as paraname</span>
+<span style="color: #ff4ea3;">            go.block_stmt:</span>
+<span style="color: #ff4ea3;">              go.list:</span>
+<span style="color: #ff4ea3;">                go.list(depth = any):</span>
+<span style="color: #ff4ea3;">                  go.assign_stmt:</span>
+                    <span style="color: #ff8700;">go.lhs</span>: <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">important</span>
+<span style="color: #ff4ea3;">                      @review comment</span>
+<span style="color: #ff4ea3;">                      go.ident:</span>
+<span style="color: #ff4ea3;">                        name == paraname</span>
+</pre>
+</div>
+</div>
+
+<ol class="org-ol">
+<li><a id="org6f3676f"></a>With error<br />
+<div class="outline-text-5" id="text-1-0-1-1">
+<div class="org-src-container">
+<pre class="src src-text">Running review flow...
+rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code = Unknown desc = Failed run Flow function: <span style="color: #ffff00; background-color: #cccc00;">failed</span> to parse codelingo.yaml file `codelingo.yaml`: line 8:10 - extraneous input '          ' expecting {N_OF, 'include', 'exclude', 'edge', 'path', 'pathcontinue', ESCAPED_NAME, NAME, '@', DEDENT}
+exit status 1
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org96500a3"></a>Diagnose the problem<br />
+<div class="outline-text-5" id="text-1-0-1-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">cause determined?</th>
+<th scope="col" class="org-left">tests</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">✗</td>
+<td class="org-left">try removing double usage of var which is used twice in comment?</td>
+</tr>
+
+<tr>
+<td class="org-left">✗</td>
+<td class="org-left">try simplifying the comment to almost nothing</td>
+</tr>
+
+<tr>
+<td class="org-left">✗</td>
+<td class="org-left">try only removing the # comment from the end of the comment:</td>
+</tr>
+
+<tr>
+<td class="org-left">✗</td>
+<td class="org-left">try adding whitespace to empty line of clql</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+
+<li><a id="org4d320a0"></a>Difference to a working tenet<br />
+<div class="outline-text-5" id="text-1-0-1-3">
+<p>
+I think whitespace is not an issue.
+</p>
+
+<div class="org-src-container">
+<pre>
+<span class="magit-diff-file-heading"><span class="magit-section-highlight">1 file changed, 67 insertions(+), 14 deletions(-)
+</span></span><span class="magit-filename"><span class="magit-section-highlight">file.dat</span></span><span class="magit-section-highlight"> | 81 </span><span class="magit-diffstat-added"><span class="magit-section-highlight">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span></span><span class="magit-diffstat-removed"><span class="magit-section-highlight">--------------</span></span><span class="magit-section-highlight">
+
+</span><span class="magit-diff-file-heading">modified   file.dat
+</span><span class="magit-diff-hunk-heading">@@ -1,29 +1,82 @@
+</span><span class="magit-diff-added">+funcs:
++  - name: newConcat
++    type: resolver
++    body: |
++      function (a, b) {
++        return a.concat(b);
++      }
+</span><span class="magit-diff-context"> tenets:
+</span><span class="magit-diff-removed">-  - name: </span><span class="magit-diff-removed"><span class="diff-refine-removed">shadowed</span></span><span class="magit-diff-removed">-</span><span class="magit-diff-removed"><span class="diff-refine-removed">func</span></span><span class="magit-diff-removed">-</span><span class="magit-diff-removed"><span class="diff-refine-removed">parameter</span></span><span class="magit-diff-removed">
+</span><span class="magit-diff-added">+  - name: </span><span class="magit-diff-added"><span class="diff-refine-added">misused</span></span><span class="magit-diff-added">-</span><span class="magit-diff-added"><span class="diff-refine-added">nil</span></span><span class="magit-diff-added">-</span><span class="magit-diff-added"><span class="diff-refine-added">interface</span></span><span class="magit-diff-added">
+</span><span class="magit-diff-context">     flows:
+       codelingo/docs:
+</span><span class="magit-diff-removed">-        title: </span><span class="magit-diff-removed"><span class="diff-refine-removed">Shadowed</span></span><span class="magit-diff-removed"> </span><span class="magit-diff-removed"><span class="diff-refine-removed">Function</span></span><span class="magit-diff-removed"> </span><span class="magit-diff-removed"><span class="diff-refine-removed">Parameter</span></span><span class="magit-diff-removed">
+</span><span class="magit-diff-added">+        title: </span><span class="magit-diff-added"><span class="diff-refine-added">Misused</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">Nil</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">Interface</span></span><span class="magit-diff-added">
+</span><span class="magit-diff-context">         body: |
+</span><span class="magit-diff-removed">-          </span><span class="magit-diff-removed"><span class="diff-refine-removed">Shadowing</span></span><span class="magit-diff-removed"> is </span><span class="magit-diff-removed"><span class="diff-refine-removed">considered</span></span><span class="magit-diff-removed"> </span><span class="magit-diff-removed"><span class="diff-refine-removed">harmful</span></span><span class="magit-diff-removed"> </span><span class="magit-diff-removed"><span class="diff-refine-removed">to</span></span><span class="magit-diff-removed"> </span><span class="magit-diff-removed"><span class="diff-refine-removed">your</span></span><span class="magit-diff-removed"> </span><span class="magit-diff-removed"><span class="diff-refine-removed">sanity</span></span><span class="magit-diff-removed">.
+</span><span class="magit-diff-added">+          </span><span class="magit-diff-added"><span class="diff-refine-added">Nil interface</span></span><span class="magit-diff-added"> is </span><span class="magit-diff-added"><span class="diff-refine-added">not</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">the</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">same</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">as</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">having a nil pointer in the interface</span></span><span class="magit-diff-added">.
+</span><span class="magit-diff-context">       codelingo/review:
+</span><span class="magit-diff-removed">-        comment: </span><span class="magit-diff-removed"><span class="diff-refine-removed">Identifier</span></span><span class="magit-diff-removed">
+</span><span class="magit-diff-added">+        comment: </span><span class="magit-diff-added"><span class="diff-refine-added">The variable being tested for nil, `{{varname}}` is a pointer to a pointer to nil.</span></span><span class="magit-diff-added">
+</span><span class="magit-diff-context">     query: |
+       import codelingo/ast/go
+       
+       go.file(depth = any):
+         go.decls:
+</span><span class="magit-diff-added">+          go.gen_decl:
++            go.type_spec:
++              go.ident: # cat
++                type as interfacetype
++              go.interface_type:
++                go.field_list:
++                  go.field:
++                    go.names:
++                      go.ident: # meow
++                        name as purevirtualfuncname
++                        type == "func()"
++          go.gen_decl:
++            go.type_spec:
++              go.ident:
++                type as typename
++              go.struct_type
++          go.func_decl: # meow of tabby
++            go.field_list:
++              go.field:
++                go.star_expr:
++                  go.ident: # tabby
++                    type == typename
++            go.ident: # meow
++              name == purevirtualfuncname
++            go.func_type
+</span><span class="magit-diff-context">           go.func_decl:
+</span><span class="magit-diff-added">+            go.ident: # getacat
++              name as factoryfuncname
+</span><span class="magit-diff-context">             go.func_type:
+</span><span class="magit-diff-removed">-              go.field_list # </span><span class="magit-diff-removed"><span class="diff-refine-removed">could</span></span><span class="magit-diff-removed"> </span><span class="magit-diff-removed"><span class="diff-refine-removed">be</span></span><span class="magit-diff-removed"> </span><span class="magit-diff-removed"><span class="diff-refine-removed">a</span></span><span class="magit-diff-removed"> </span><span class="magit-diff-removed"><span class="diff-refine-removed">function</span></span><span class="magit-diff-removed"> </span><span class="magit-diff-removed"><span class="diff-refine-removed">argument</span></span><span class="magit-diff-removed"> </span><span class="magit-diff-removed"><span class="diff-refine-removed">or</span></span><span class="magit-diff-removed"> return </span><span class="magit-diff-removed"><span class="diff-refine-removed">parameter</span></span><span class="magit-diff-removed">
+</span><span class="magit-diff-added">+              go.field_list
+</span><span class="magit-diff-added"><span class="diff-refine-added">+              go.field_list:</span></span><span class="magit-diff-added"> # </span><span class="magit-diff-added"><span class="diff-refine-added">the</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">2nd</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">field</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">list</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">specifies</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">the</span></span><span class="magit-diff-added"> return </span><span class="magit-diff-added"><span class="diff-refine-added">parameters. this is an important distinction here but without an 'order:' fact, clql does not know this</span></span><span class="magit-diff-added">
+</span><span class="magit-diff-context">                 go.field:
+</span><span class="magit-diff-removed">-                  go.</span><span class="magit-diff-removed"><span class="diff-refine-removed">names: # important to distinguish from type name
+-                    go.</span></span><span class="magit-diff-removed">ident:
+-                      </span><span class="magit-diff-removed"><span class="diff-refine-removed">name as paraname</span></span><span class="magit-diff-removed">
+</span><span class="magit-diff-added">+                  go.ident:
++                    </span><span class="magit-diff-added"><span class="diff-refine-added">type</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">==</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">interfacetype</span></span><span class="magit-diff-added">
+</span><span class="magit-diff-context">             go.block_stmt:
+               go.list:
+</span><span class="magit-diff-removed">-                go.</span><span class="magit-diff-removed"><span class="diff-refine-removed">list(depth</span></span><span class="magit-diff-removed"> = </span><span class="magit-diff-removed"><span class="diff-refine-removed">any</span></span><span class="magit-diff-removed">)</span><span class="magit-diff-removed"><span class="diff-refine-removed">:</span></span><span class="magit-diff-removed">
+-                  go.</span><span class="magit-diff-removed"><span class="diff-refine-removed">assign</span></span><span class="magit-diff-removed">_</span><span class="magit-diff-removed"><span class="diff-refine-removed">stmt</span></span><span class="magit-diff-removed">:
+-                    go.</span><span class="magit-diff-removed"><span class="diff-refine-removed">lhs</span></span><span class="magit-diff-removed">: # important
+-                      @review comment
+-                      go.ident:
+-                        name == </span><span class="magit-diff-removed"><span class="diff-refine-removed">paraname</span></span><span class="magit-diff-removed">
+</span><span class="magit-diff-added">+                go.</span><span class="magit-diff-added"><span class="diff-refine-added">decl_stmt:
++                  go.gen_decl:
++                    go.value_spec:
++                      go.names:
++                        go.ident:
++                          type</span></span><span class="magit-diff-added"> =</span><span class="magit-diff-added"><span class="diff-refine-added">=</span></span><span class="magit-diff-added"> </span><span class="magit-diff-added"><span class="diff-refine-added">newConcat("*/", typename</span></span><span class="magit-diff-added">)
++                      go.</span><span class="magit-diff-added"><span class="diff-refine-added">star</span></span><span class="magit-diff-added">_</span><span class="magit-diff-added"><span class="diff-refine-added">expr</span></span><span class="magit-diff-added">:
++                        go.</span><span class="magit-diff-added"><span class="diff-refine-added">ident:
++                          type == typename
++                      go.values:
++                        go.ident</span></span><span class="magit-diff-added">:
+</span><span class="magit-diff-added"><span class="diff-refine-added">+                          name == "nil"</span></span><span class="magit-diff-added"> # important</span><span class="magit-diff-added"><span class="diff-refine-added">. set pointer to pointer to nil
++                go.return_stmt:
++                  go.results:
++                    go.ident:
++                      type == newConcat("*/", typename)</span></span><span class="magit-diff-added">
++          </span><span class="magit-diff-added"><span class="diff-refine-added">go.func_decl: # TestGetACat
++            go.block_stmt:
++              go.binary_expr(depth = 2):
++                go.call_expr:
++                  go.ident:
++                    name == factoryfuncname
++</span></span><span class="magit-diff-added">                @review comment
++                go.ident:
++                  name == </span><span class="magit-diff-added"><span class="diff-refine-added">"nil" # important. test is equal to nil</span></span><span class="magit-diff-added">
+</span>
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: shane</p>
+<p class="date">Created: 2018-10-24 Wed 12:37</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
