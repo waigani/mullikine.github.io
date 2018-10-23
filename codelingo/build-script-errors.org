@@ -1,0 +1,167 @@
+* Plan
+** Make k8 tenets
+Once I'm sure my build scripts are working.
+
+** Solving jx rewrite issues
+| done | result                                       | plan                                                                                                                   |
+|------+----------------------------------------------+------------------------------------------------------------------------------------------------------------------------|
+| ✓    | fails with slack error on all jx repo clones | try tenet on jx                                                                                                        |
+| ✓    | it works                                     | try tenet on test cases                                                                                                |
+|      |                                              | find out why jx doesnt work try tenet on new copy of jx repo -- after stripping commits. reinitialize and rename repo. |
+
+** Solving build script issues
+*** problem 1 : ~run rewrite~ and ~go run ...rewrite~ commands work differently
+**** TODO Reproduce the problem
++ the problem :: ~run rewrite~ and ~go run ...rewrite~ commands work differently
+
+**** Conclusion
+They do not work differently.
+
+**** Checklist
+| reproduced | issue                                                           | blocker                                                                                             |
+|------------+-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------|
+|            | ~run rewrite~ and ~go run ...rewrite~ commands work differently | they only work differently on jx repo. it might be an issue with the jx repo, not with the command. |
+
+*** problem 2 : binaries are not all compiling and they are at different versions
+
+|         | 386 | 64 |
+|---------+-----+----|
+| flow    |     |    |
+| rewrite |     |    |
+
+**** It appears they are not being built when I do a buildall
+#+BEGIN_SRC sh
+  cd "$HOME/go/src/github.com/codelingo/codelingo/sdk/flow"; ./buildall.sh
+  cd "$HOME/go/src/github.com/codelingo/codelingo/flows"; tp find-here-path "cmd.tar.gz" | xargs ls -ldt 
+  cd "$HOME/go/src/github.com/codelingo/codelingo/flows"; tp find-here-path "cmd" | xargs rm
+  cd "$HOME/go/src/github.com/codelingo/codelingo/flows"; tp find-here-path "cmd.tar.gz" | while read line; do ( cd "$(dirname "$line")"; tar -zxf "$(basename "$line")" ); done
+  cd "$HOME/go/src/github.com/codelingo/codelingo/flows"; tp find-here-path "cmd" | xargs ls -ldt 
+#+END_SRC
+***** DONE These ones are not kept up-to-date (and should be removed) -- git pull and they're gone
+#+BEGIN_SRC text
+  -rw-rw-r-- 1 shane shane 5642688 Oct 19 17:14 ./codelingo/rewrite/bin/linux/amd64/cmd.tar.gz
+  -rw-rw-r-- 1 shane shane 5424580 Oct 19 17:14 ./codelingo/rewrite/bin/linux/386/cmd.tar.gz
+  -rw-rw-r-- 1 shane shane 5538951 Oct 19 17:14 ./codelingo/rewrite/bin/darwin/amd64/cmd.tar.gz
+  -rw-rw-r-- 1 shane shane 5620949 Oct 19 17:14 ./codelingo/review/bin/linux/amd64/cmd.tar.gz
+  -rw-rw-r-- 1 shane shane 5404110 Oct 19 17:14 ./codelingo/review/bin/linux/386/cmd.tar.gz
+  -rw-rw-r-- 1 shane shane 5518764 Oct 19 17:14 ./codelingo/review/bin/darwin/amd64/cmd.tar.gz
+#+END_SRC
+
+The ones that *are* new, should be the ones that are being installed into the codelingo directory
+
+****** github repo -- origin
+
+[[/home/shane/go/src/github.com/codelingo/codelingo/flows][codelingo/flows]]
+
+****** ~.codelingo~ -- destination
+[[/home/shane/.codelingo/flows/codelingo][flows/codelingo]]
+
+It appears these ones are the same old tarballs.
+
+#+BEGIN_SRC sh
+  cd "$HOME/.codelingo/flows/codelingo"; tp find-here-path "cmd.tar.gz" | xargs ls -ldt 
+#+END_SRC
+
+The issue must be that the new ones are not being installed.
+
+**** This must be the faulty script
+[[/home/shane/go/src/github.com/codelingo/codelingo/sdk/flow/installall.sh][flow/installall.sh]]
+
+The install script does not install the tarballs. It compiles ~cmd~ files directly into the ~.codelingo~ directory.
+Therefore, it should be fine.
+But I must run ~installall.sh~ after ~buildall.sh~ every time.
+
+This does not preclude the possibility that running ~lingo install rewrite~ does not update the flow.
+
+***** Hopefully, after running ~installall.sh~, ~lingo run rewrite~ now works.
+
+It appears not.
+
+https://codelingo.slack.com/archives/GAYUSPKPU/p1540246709000200
+
+Still get ~transport is closing~ error.
+
+#+BEGIN_SRC sh
+  lingo-error-annotate
+#+END_SRC
+
+#+BEGIN_SRC sh
+  cd "$HOME/source/git/mullikine/jx"; lingo run rewrite
+#+END_SRC
+
+**** Need to be able to construct truth tables of arbitrary dimensionality
+
+* Tasks
+** Stabilize build scripts
+*** Blockers
+**** Stabilize review
+** Stabilize review
+
+* Hypothesis
+** H1: My jx git repository is at fault -- or there is something about this repository that prevents it from being tested
+Probably true.
+Repository is large enough to trigger the 1 min timeout -- need heartbeat fix.
+
+*** DONE Try rewrite on a different repository
+**** [#A] Try rewrite on a tiny test repo
+***** DISCARD Use ~go run~ (on the tenet test)
+
+***** Use ~lingo run rewrite~
+#+BEGIN_SRC sh
+  lingo test-tenet -w $HOME/source/git/mullikine/codelingo/tenets/codelingo/jenkinsx/parallel-in-tests
+#+END_SRC
+
+This worked.
+
+This means my jx git repository is probably at fault.
+
+**** Try rewrite on k8.
+Make a new rewrite tenet for k8
+
+* TODO Automate test log ingestion
+** Extract facts from logs -- use regex or something.
+** Build a table of executions
+** Divide terminal history into ~awk~ records
+*** Filter each record through a property collector -- another script that extracts facts for each test run.
+
+* <2018-10-23 Tue> Stabilize my installation
+** See why 64 bit build script for rewrite flow is not building
+** See why 32 bit build script for review flow gives errors
+** Ensure all flow builds are kept up-to-date
+** Building lingo should ensure that everything is kept up-to-date
+** Investigate difference between running with ~go run~ and using ~lingo run rewrite~
+| repo | commit   | branch            |
+|------+----------+-------------------|
+| jx   | 90b9644a | parallel-in-tests |
+
+*** interpreter
+#+BEGIN_SRC sh
+  cd $HOME/source/git/mullikine/jx
+  go run ~/go/src/github.com/codelingo/codelingo/flows/codelingo/rewrite/main.go
+#+END_SRC
+
+*** compiled
+#+BEGIN_SRC sh
+  cd $HOME/source/git/mullikine/jx
+  lingo run rewrite
+#+END_SRC
+
+**** Test 1
+ #+BEGIN_SRC text
+   90b9644a parallel-in-tests 'codelingo/parallel-in-tests' » lingo run rewrite
+   Checking for updates...
+   Syncing your repo...
+   Running rewrite flow...
+   Sorry, a server error occurred and the connection was broken. Please try again.
+   exit status 1
+ #+END_SRC
+
+***** Run this through fact extactor
+Put it into a database of some kind.
+
+***** Must collect information from slack error messages too.
+****** error
+https://codelingo.slack.com/archives/GAYUSPKPU/p1540241027000100
+
+* Conclusions
+** H1 is probably true. jx repository is the only one that causes error.
