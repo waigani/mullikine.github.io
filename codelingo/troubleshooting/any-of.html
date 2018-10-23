@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-23 Tue 16:50 -->
+<!-- 2018-10-23 Tue 16:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -180,6 +180,8 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
+<link rel="stylesheet" type="text/css" href="org-main.css"/>
+<link rel="stylesheet" type="text/css" href="magit.css"/>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -233,14 +235,14 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org1c60521">1. troubleshooting new tenet <code>looped-vars-outside</code></a>
+<li><a href="#orgf32f7ef">1. troubleshooting new tenet <code>looped-vars-outside</code></a>
 <ul>
-<li><a href="#org9c6efcd">1.1. example.go</a></li>
-<li><a href="#org52db9f8">1.2. Testing</a>
+<li><a href="#orgf005b5a">1.1. example.go</a></li>
+<li><a href="#org62bc7dd">1.2. Testing</a>
 <ul>
-<li><a href="#org311f72d">1.2.1. This fails</a></li>
-<li><a href="#org054859e">1.2.2. This works (ex. A)</a></li>
-<li><a href="#org0908cc9">1.2.3. This works (ex. B)</a></li>
+<li><a href="#orgdd41bb4">1.2.1. This fails</a></li>
+<li><a href="#org0b4bd4b">1.2.2. This works (ex. A)</a></li>
+<li><a href="#org4a9e2f3">1.2.3. This works (ex. B)</a></li>
 </ul>
 </li>
 </ul>
@@ -248,102 +250,103 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org1c60521" class="outline-2">
-<h2 id="org1c60521"><span class="section-number-2">1</span> troubleshooting new tenet <code>looped-vars-outside</code></h2>
+
+<div id="outline-container-orgf32f7ef" class="outline-2">
+<h2 id="orgf32f7ef"><span class="section-number-2">1</span> troubleshooting new tenet <code>looped-vars-outside</code></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <code>anyof:</code> is breaking the tenet.
 </p>
 </div>
 
-<div id="outline-container-org9c6efcd" class="outline-3">
-<h3 id="org9c6efcd"><span class="section-number-3">1.1</span> example.go</h3>
+<div id="outline-container-orgf005b5a" class="outline-3">
+<h3 id="orgf005b5a"><span class="section-number-3">1.1</span> example.go</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
-<pre class="src src-go"><span style="color: #268bd2; font-weight: bold;">package</span> main
+<pre class="src src-go"><span style="color: #a1db00;">package</span> main
 
-<span style="color: #008787; background-color: #262626;">// </span><span style="color: #008787; background-color: #262626;">Heuristic:</span>
-<span style="color: #008787; background-color: #262626;">// </span><span style="color: #008787; background-color: #262626;">&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;</span>
-<span style="color: #008787; background-color: #262626;">// </span><span style="color: #008787; background-color: #262626;">'&amp;'i inside for i. also, func(){} without (i)</span>
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">Heuristic:</span>
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;</span>
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">'&amp;'i inside for i. also, func(){} without (i)</span>
 
-<span style="color: #268bd2; font-weight: bold;">import</span> <span style="color: #2aa198;">"fmt"</span>
+<span style="color: #a1db00;">import</span> <span style="color: #ff4ea3;">"fmt"</span>
 
-<span style="color: #268bd2; font-weight: bold;">func</span> <span style="color: #268bd2;">print</span><span style="color: #268bd2;">(</span>pi *<span style="color: #df005f; font-weight: bold;">int</span><span style="color: #268bd2;">)</span> <span style="color: #268bd2;">{</span> fmt.<span style="color: #d75fd7; font-weight: bold;">Println</span><span style="color: #d75fd7;">(</span>*pi<span style="color: #d75fd7;">)</span> <span style="color: #268bd2;">}</span>
+<span style="color: #a1db00;">func</span> <span style="color: #d18aff;">print</span>(pi *<span style="color: #00d7af;">int</span>) { fmt.<span style="color: #ffd700;">Println</span>(*pi) }
 
-<span style="color: #268bd2; font-weight: bold;">func</span> <span style="color: #d75fd7; font-weight: bold;">main</span><span style="color: #268bd2;">()</span> <span style="color: #268bd2;">{</span>
-        <span style="color: #268bd2; font-weight: bold;">for</span> i := <span style="color: #d75fd7;">0</span>; i &lt; <span style="color: #d75fd7;">10</span>; i++ <span style="color: #d75fd7;">{</span> <span style="color: #008787; background-color: #262626;">// </span><span style="color: #cc9393;">TODO</span><span style="color: #008787; background-color: #262626;"> capture i (in clql)</span>
-                <span style="color: #268bd2; font-weight: bold;">defer</span> fmt.<span style="color: #d75fd7; font-weight: bold;">Println</span><span style="color: #2aa198;">(</span>i<span style="color: #2aa198;">)</span>                    <span style="color: #008787; background-color: #262626;">// </span><span style="color: #008787; background-color: #262626;">1) OK; prints 9 ... 0</span>
-                <span style="color: #268bd2; font-weight: bold;">defer</span> <span style="color: #268bd2; font-weight: bold;">func</span><span style="color: #2aa198;">()</span> <span style="color: #2aa198;">{</span> fmt.<span style="color: #d75fd7; font-weight: bold;">Println</span><span style="color: #67b11d;">(</span>i<span style="color: #67b11d;">)</span> <span style="color: #2aa198;">}()</span>       <span style="color: #008787; background-color: #262626;">// </span><span style="color: #008787; background-color: #262626;">2) WRNG; prints "10" 10 times</span>
-                <span style="color: #268bd2; font-weight: bold;">func</span><span style="color: #2aa198;">()</span> <span style="color: #2aa198;">{</span> fmt.<span style="color: #d75fd7; font-weight: bold;">Println</span><span style="color: #67b11d;">(</span>i<span style="color: #67b11d;">)</span> <span style="color: #2aa198;">}()</span>             <span style="color: #008787; background-color: #262626;">// </span><span style="color: #008787; background-color: #262626;">2.1) WRNG; prints "10" 10 times</span>
-                <span style="color: #268bd2; font-weight: bold;">func</span><span style="color: #2aa198;">()</span> <span style="color: #2aa198;">{</span> fmt.<span style="color: #d75fd7; font-weight: bold;">Println</span><span style="color: #67b11d;">(</span>i<span style="color: #67b11d;">)</span> <span style="color: #2aa198;">}</span>               <span style="color: #008787; background-color: #262626;">// </span><span style="color: #008787; background-color: #262626;">2.2) WRNG; prints "10" 10 times</span>
-                <span style="color: #268bd2; font-weight: bold;">defer</span> <span style="color: #268bd2; font-weight: bold;">func</span><span style="color: #2aa198;">(</span>i <span style="color: #df005f; font-weight: bold;">int</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span> fmt.<span style="color: #d75fd7; font-weight: bold;">Println</span><span style="color: #67b11d;">(</span>i<span style="color: #67b11d;">)</span> <span style="color: #2aa198;">}(</span>i<span style="color: #2aa198;">)</span> <span style="color: #008787; background-color: #262626;">// </span><span style="color: #008787; background-color: #262626;">3) OK</span>
-                <span style="color: #268bd2; font-weight: bold;">defer</span> <span style="color: #268bd2;">print</span><span style="color: #2aa198;">(</span>&amp;i<span style="color: #2aa198;">)</span>                         <span style="color: #008787; background-color: #262626;">// </span><span style="color: #008787; background-color: #262626;">4) WRONG; prints "10" 10 times</span>
-                <span style="color: #268bd2; font-weight: bold;">go</span> fmt.<span style="color: #d75fd7; font-weight: bold;">Println</span><span style="color: #2aa198;">(</span>i<span style="color: #2aa198;">)</span>                       <span style="color: #008787; background-color: #262626;">// </span><span style="color: #008787; background-color: #262626;">5) OK; prints 0 ... 9 in unpredictable order</span>
-                <span style="color: #268bd2; font-weight: bold;">go</span> <span style="color: #268bd2; font-weight: bold;">func</span><span style="color: #2aa198;">()</span> <span style="color: #2aa198;">{</span> fmt.<span style="color: #d75fd7; font-weight: bold;">Println</span><span style="color: #67b11d;">(</span>i<span style="color: #67b11d;">)</span> <span style="color: #2aa198;">}()</span>          <span style="color: #008787; background-color: #262626;">// </span><span style="color: #008787; background-color: #262626;">6) WRONG; totally unpredictable.</span>
-        <span style="color: #d75fd7;">}</span>
+<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">main</span>() {
+        <span style="color: #a1db00;">for</span> i := 0; i &lt; 10; i++ { <span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">TODO capture i (in clql)</span>
+                <span style="color: #a1db00;">defer</span> fmt.<span style="color: #ffd700;">Println</span>(i)                    <span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">1) OK; prints 9 ... 0</span>
+                <span style="color: #a1db00;">defer</span> <span style="color: #a1db00;">func</span>() { fmt.<span style="color: #ffd700;">Println</span>(i) }()       <span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">2) WRNG; prints "10" 10 times</span>
+                <span style="color: #a1db00;">func</span>() { fmt.<span style="color: #ffd700;">Println</span>(i) }()             <span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">2.1) WRNG; prints "10" 10 times</span>
+                <span style="color: #a1db00;">func</span>() { fmt.<span style="color: #ffd700;">Println</span>(i) }               <span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">2.2) WRNG; prints "10" 10 times</span>
+                <span style="color: #a1db00;">defer</span> <span style="color: #a1db00;">func</span>(i <span style="color: #00d7af;">int</span>) { fmt.<span style="color: #ffd700;">Println</span>(i) }(i) <span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">3) OK</span>
+                <span style="color: #a1db00;">defer</span> <span style="color: #d18aff;">print</span>(&amp;i)                         <span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">4) WRONG; prints "10" 10 times</span>
+                <span style="color: #a1db00;">go</span> fmt.<span style="color: #ffd700;">Println</span>(i)                       <span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">5) OK; prints 0 ... 9 in unpredictable order</span>
+                <span style="color: #a1db00;">go</span> <span style="color: #a1db00;">func</span>() { fmt.<span style="color: #ffd700;">Println</span>(i) }()          <span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">6) WRONG; totally unpredictable.</span>
+        }
 
-        <span style="color: #008787; background-color: #262626;">// </span><span style="color: #008787; background-color: #262626;">for key, value := range myMap {</span>
-        <span style="color: #008787; background-color: #262626;">//      </span><span style="color: #008787; background-color: #262626;">// Same for key &amp; value as i!</span>
-        <span style="color: #008787; background-color: #262626;">// </span><span style="color: #008787; background-color: #262626;">}</span>
-<span style="color: #268bd2;">}</span>
+        <span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">for key, value := range myMap {</span>
+        <span style="color: #6c6c6c; font-style: italic;">//      </span><span style="color: #6c6c6c; font-style: italic;">// Same for key &amp; value as i!</span>
+        <span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">}</span>
+}
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org52db9f8" class="outline-3">
-<h3 id="org52db9f8"><span class="section-number-3">1.2</span> Testing</h3>
+<div id="outline-container-org62bc7dd" class="outline-3">
+<h3 id="org62bc7dd"><span class="section-number-3">1.2</span> Testing</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-org311f72d" class="outline-4">
-<h4 id="org311f72d"><span class="section-number-4">1.2.1</span> This fails</h4>
+<div id="outline-container-orgdd41bb4" class="outline-4">
+<h4 id="orgdd41bb4"><span class="section-number-4">1.2.1</span> This fails</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <div class="org-src-container">
-<pre class="src src-go"><span style="color: #d75fd7;">tenets</span>:
+<pre class="src src-go"><span style="color: #5fafd7;">tenets</span>:
   - name: looped-vars-outside
-    <span style="color: #d75fd7;">flows</span>:
+    <span style="color: #5fafd7;">flows</span>:
       codelingo/docs:
-        <span style="color: #d75fd7;">title</span>: Looped Vars Outside
-        <span style="color: #d75fd7;">body</span>: |
+        <span style="color: #5fafd7;">title</span>: Looped Vars Outside
+        <span style="color: #5fafd7;">body</span>: |
           In Go, the memory locations of loop variables are reused over iterations. Therefore, these addresses should never be allowed to escape the loop. Doing so may result in unpredictable behavior.
       codelingo/review:
-        <span style="color: #d75fd7;">comment</span>: Loop variable <span style="color: #268bd2;">{</span><span style="color: #d75fd7;">{</span>loopvarname<span style="color: #d75fd7;">}</span><span style="color: #268bd2;">}</span> is used outside the loop. Make a copy instead <span style="color: #268bd2; font-weight: bold;">if</span> you indent to use its value.
-    <span style="color: #d75fd7;">query</span>: |
-      <span style="color: #268bd2; font-weight: bold;">import</span> codelingo/ast/<span style="color: #268bd2; font-weight: bold;">go</span>
+        <span style="color: #5fafd7;">comment</span>: Loop variable {{loopvarname}} is used outside the loop. Make a copy instead <span style="color: #a1db00;">if</span> you indent to use its value.
+    <span style="color: #5fafd7;">query</span>: |
+      <span style="color: #a1db00;">import</span> codelingo/ast/<span style="color: #a1db00;">go</span>
 
-      <span style="color: #268bd2; font-weight: bold;">go</span>.<span style="color: #d75fd7; font-weight: bold;">file</span><span style="color: #268bd2;">(</span>depth = any<span style="color: #268bd2;">)</span>:
-        <span style="color: #268bd2; font-weight: bold;">go</span>.<span style="color: #d75fd7; font-weight: bold;">for_stmt</span><span style="color: #268bd2;">(</span>depth = any<span style="color: #268bd2;">)</span>: # important. could also use depth = <span style="color: #d75fd7;">4</span>
-          <span style="color: #268bd2; font-weight: bold;">go</span>.assign_stmt:
-            <span style="color: #268bd2; font-weight: bold;">go</span>.lhs:
-              <span style="color: #268bd2; font-weight: bold;">go</span>.ident:
+      <span style="color: #a1db00;">go</span>.<span style="color: #ffd700;">file</span>(depth = any):
+        <span style="color: #a1db00;">go</span>.<span style="color: #ffd700;">for_stmt</span>(depth = any): # important. could also use depth = 4
+          <span style="color: #a1db00;">go</span>.assign_stmt:
+            <span style="color: #a1db00;">go</span>.lhs:
+              <span style="color: #a1db00;">go</span>.ident:
                 name as loopvarname
-          <span style="color: #268bd2; font-weight: bold;">go</span>.block_stmt:
-            <span style="color: #268bd2; font-weight: bold;">go</span>.list:
-              <span style="color: #268bd2; font-weight: bold;">go</span>.expr_stmt:
-                # well, actually, i don<span style="color: #2aa198;">'t think the call is needed. If a bad function is defined, that'</span>s bad enough
+          <span style="color: #a1db00;">go</span>.block_stmt:
+            <span style="color: #a1db00;">go</span>.list:
+              <span style="color: #a1db00;">go</span>.expr_stmt:
+                # well, actually, i don<span style="color: #ff4ea3;">'t think the call is needed. If a bad function is defined, that'</span>s bad enough
                 # TODO Tested alone: 
-                <span style="color: #d75fd7;">any_of</span>:
+                <span style="color: #5fafd7;">any_of</span>:
                   # DONE Tested alone: Works
                   # A lambda call.
-                  <span style="color: #268bd2; font-weight: bold;">go</span>.call_expr: # important
-                    <span style="color: #268bd2; font-weight: bold;">go</span>.func_lit: # important
-                      <span style="color: #268bd2; font-weight: bold;">go</span>.<span style="color: #d75fd7; font-weight: bold;">args</span><span style="color: #268bd2;">(</span>depth = any<span style="color: #268bd2;">)</span>: # or <span style="color: #d75fd7;">4</span>
+                  <span style="color: #a1db00;">go</span>.call_expr: # important
+                    <span style="color: #a1db00;">go</span>.func_lit: # important
+                      <span style="color: #a1db00;">go</span>.<span style="color: #ffd700;">args</span>(depth = any): # or 4
                         @review comment
-                        <span style="color: #268bd2; font-weight: bold;">go</span>.ident:
+                        <span style="color: #a1db00;">go</span>.ident:
                           name == loopvarname
                   # TODO Tested alone: 
                   # A lambda definition
-                  <span style="color: #268bd2; font-weight: bold;">go</span>.func_lit: # important
-                    <span style="color: #268bd2; font-weight: bold;">go</span>.<span style="color: #d75fd7; font-weight: bold;">args</span><span style="color: #268bd2;">(</span>depth = any<span style="color: #268bd2;">)</span>: # or <span style="color: #d75fd7;">4</span>
+                  <span style="color: #a1db00;">go</span>.func_lit: # important
+                    <span style="color: #a1db00;">go</span>.<span style="color: #ffd700;">args</span>(depth = any): # or 4
                       @review comment
-                      <span style="color: #268bd2; font-weight: bold;">go</span>.ident:
+                      <span style="color: #a1db00;">go</span>.ident:
                         name == loopvarname
 </pre>
 </div>
 </div>
 
 <ol class="org-ol">
-<li><a id="org915f04a"></a>With slack error<br />
+<li><a id="org12ae5d4"></a>With slack error<br />
 <div class="outline-text-5" id="text-1-2-1-1">
 <p>
 <a href="https://codelingo.slack.com/messages/GAYUSPKPU/convo/GCMBY9E23-1539924167.000100/">got 0 results expecting 1 for block x, fact "common.args"</a>
@@ -353,83 +356,83 @@ for the JavaScript code in this tag.
 </ol>
 </div>
 
-<div id="outline-container-org054859e" class="outline-4">
-<h4 id="org054859e"><span class="section-number-4">1.2.2</span> This works (ex. A)</h4>
+<div id="outline-container-org0b4bd4b" class="outline-4">
+<h4 id="org0b4bd4b"><span class="section-number-4">1.2.2</span> This works (ex. A)</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 Removing the <code>anyof:</code> and including only the first branch.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml"><span style="color: #8787d7;">tenets</span>:
-  - <span style="color: #8787d7;">name</span>: looped-vars-outside
-    <span style="color: #8787d7;">flows</span>:
-      <span style="color: #8787d7;">codelingo/docs</span>:
-        <span style="color: #8787d7;">title</span>: Looped Vars Outside
-        <span style="color: #8787d7;">body</span>: |
-          <span style="color: #2aa198;">In Go, the memory locations of loop variables are reused over iterations. Therefore, these addresses should never be allowed to escape the loop. Doing so may result in unpredictable behavior.</span>
-      <span style="color: #8787d7;">codelingo/review</span>:
-        <span style="color: #8787d7;">comment</span>: Loop variable <span style="color: #268bd2;">{</span><span style="color: #d75fd7;">{</span>loopvarname<span style="color: #d75fd7;">}</span><span style="color: #268bd2;">}</span> is used outside the loop. Make a copy instead if you indent to use its value.
-    <span style="color: #8787d7;">query</span>: |
-      <span style="color: #2aa198;">import codelingo/ast/go</span>
+<pre class="src src-yaml"><span style="color: #ff8700;">tenets</span>:
+  - <span style="color: #ff8700;">name</span>: looped-vars-outside
+    <span style="color: #ff8700;">flows</span>:
+      <span style="color: #ff8700;">codelingo/docs</span>:
+        <span style="color: #ff8700;">title</span>: Looped Vars Outside
+        <span style="color: #ff8700;">body</span>: |
+          <span style="color: #ff4ea3;">In Go, the memory locations of loop variables are reused over iterations. Therefore, these addresses should never be allowed to escape the loop. Doing so may result in unpredictable behavior.</span>
+      <span style="color: #ff8700;">codelingo/review</span>:
+        <span style="color: #ff8700;">comment</span>: Loop variable {{loopvarname}} is used outside the loop. Make a copy instead if you indent to use its value.
+    <span style="color: #ff8700;">query</span>: |
+      <span style="color: #ff4ea3;">import codelingo/ast/go</span>
 
-<span style="color: #2aa198;">      go.file(depth = any):</span>
-        <span style="color: #8787d7;">go.for_stmt(depth = any)</span>: <span style="color: #008787; background-color: #262626;"># </span><span style="color: #008787; background-color: #262626;">important. could also use depth = 4</span>
-<span style="color: #2aa198;">          go.assign_stmt:</span>
-<span style="color: #2aa198;">            go.lhs:</span>
-<span style="color: #2aa198;">              @review comment</span>
-<span style="color: #2aa198;">              go.ident:</span>
-<span style="color: #2aa198;">                name as loopvarname</span>
-<span style="color: #2aa198;">          go.block_stmt:</span>
-<span style="color: #2aa198;">            go.list:</span>
-<span style="color: #2aa198;">              go.expr_stmt:</span>
-                <span style="color: #008787; background-color: #262626;"># </span><span style="color: #008787; background-color: #262626;">well, actually, i don't think the call is needed. If a bad function is defined, that's bad enough</span>
-                <span style="color: #008787; background-color: #262626;"># </span><span style="color: #afd8af;">DONE</span><span style="color: #008787; background-color: #262626;"> Tested alone: Works</span>
-                <span style="color: #008787; background-color: #262626;"># </span><span style="color: #008787; background-color: #262626;">A lambda call.</span>
-                <span style="color: #8787d7;">go.call_expr</span>: <span style="color: #008787; background-color: #262626;"># </span><span style="color: #008787; background-color: #262626;">important</span>
-                  <span style="color: #8787d7;">go.func_lit</span>: <span style="color: #008787; background-color: #262626;"># </span><span style="color: #008787; background-color: #262626;">important</span>
-                    <span style="color: #8787d7;">go.args(depth = any)</span>: <span style="color: #008787; background-color: #262626;"># </span><span style="color: #008787; background-color: #262626;">or 4</span>
-<span style="color: #2aa198;">                      go.ident:</span>
-<span style="color: #2aa198;">                        name == loopvarname</span>
+<span style="color: #ff4ea3;">      go.file(depth = any):</span>
+        <span style="color: #ff8700;">go.for_stmt(depth = any)</span>: <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">important. could also use depth = 4</span>
+<span style="color: #ff4ea3;">          go.assign_stmt:</span>
+<span style="color: #ff4ea3;">            go.lhs:</span>
+<span style="color: #ff4ea3;">              @review comment</span>
+<span style="color: #ff4ea3;">              go.ident:</span>
+<span style="color: #ff4ea3;">                name as loopvarname</span>
+<span style="color: #ff4ea3;">          go.block_stmt:</span>
+<span style="color: #ff4ea3;">            go.list:</span>
+<span style="color: #ff4ea3;">              go.expr_stmt:</span>
+                <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">well, actually, i don't think the call is needed. If a bad function is defined, that's bad enough</span>
+                <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">DONE Tested alone: Works</span>
+                <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">A lambda call.</span>
+                <span style="color: #ff8700;">go.call_expr</span>: <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">important</span>
+                  <span style="color: #ff8700;">go.func_lit</span>: <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">important</span>
+                    <span style="color: #ff8700;">go.args(depth = any)</span>: <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">or 4</span>
+<span style="color: #ff4ea3;">                      go.ident:</span>
+<span style="color: #ff4ea3;">                        name == loopvarname</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0908cc9" class="outline-4">
-<h4 id="org0908cc9"><span class="section-number-4">1.2.3</span> This works (ex. B)</h4>
+<div id="outline-container-org4a9e2f3" class="outline-4">
+<h4 id="org4a9e2f3"><span class="section-number-4">1.2.3</span> This works (ex. B)</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
 Removing the <code>anyof:</code> and including only the second branch.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml"><span style="color: #8787d7;">tenets</span>:
-  - <span style="color: #8787d7;">name</span>: looped-vars-outside
-    <span style="color: #8787d7;">flows</span>:
-      <span style="color: #8787d7;">codelingo/docs</span>:
-        <span style="color: #8787d7;">title</span>: Looped Vars Outside
-        <span style="color: #8787d7;">body</span>: |
-          <span style="color: #2aa198;">In Go, the memory locations of loop variables are reused over iterations. Therefore, these addresses should never be allowed to escape the loop. Doing so may result in unpredictable behavior.</span>
-      <span style="color: #8787d7;">codelingo/review</span>:
-        <span style="color: #8787d7;">comment</span>: Loop variable <span style="color: #268bd2;">{</span><span style="color: #d75fd7;">{</span>loopvarname<span style="color: #d75fd7;">}</span><span style="color: #268bd2;">}</span> is used outside the loop. Make a copy instead if you indent to use its value.
-    <span style="color: #8787d7;">query</span>: |
-      <span style="color: #2aa198;">import codelingo/ast/go</span>
+<pre class="src src-yaml"><span style="color: #ff8700;">tenets</span>:
+  - <span style="color: #ff8700;">name</span>: looped-vars-outside
+    <span style="color: #ff8700;">flows</span>:
+      <span style="color: #ff8700;">codelingo/docs</span>:
+        <span style="color: #ff8700;">title</span>: Looped Vars Outside
+        <span style="color: #ff8700;">body</span>: |
+          <span style="color: #ff4ea3;">In Go, the memory locations of loop variables are reused over iterations. Therefore, these addresses should never be allowed to escape the loop. Doing so may result in unpredictable behavior.</span>
+      <span style="color: #ff8700;">codelingo/review</span>:
+        <span style="color: #ff8700;">comment</span>: Loop variable {{loopvarname}} is used outside the loop. Make a copy instead if you indent to use its value.
+    <span style="color: #ff8700;">query</span>: |
+      <span style="color: #ff4ea3;">import codelingo/ast/go</span>
 
-<span style="color: #2aa198;">      go.file(depth = any):</span>
-        <span style="color: #8787d7;">go.for_stmt(depth = any)</span>: <span style="color: #008787; background-color: #262626;"># </span><span style="color: #008787; background-color: #262626;">important. could also use depth = 4</span>
-<span style="color: #2aa198;">          go.assign_stmt:</span>
-<span style="color: #2aa198;">            go.lhs:</span>
-<span style="color: #2aa198;">              @review comment</span>
-<span style="color: #2aa198;">              go.ident:</span>
-<span style="color: #2aa198;">                name as loopvarname</span>
-<span style="color: #2aa198;">          go.block_stmt:</span>
-<span style="color: #2aa198;">            go.list:</span>
-<span style="color: #2aa198;">              go.expr_stmt:</span>
-                <span style="color: #8787d7;">go.func_lit</span>: <span style="color: #008787; background-color: #262626;"># </span><span style="color: #008787; background-color: #262626;">important</span>
-                  <span style="color: #8787d7;">go.args(depth = any)</span>: <span style="color: #008787; background-color: #262626;"># </span><span style="color: #008787; background-color: #262626;">or 4</span>
-<span style="color: #2aa198;">                    go.ident:</span>
-<span style="color: #2aa198;">                      name == loopvarname</span>
+<span style="color: #ff4ea3;">      go.file(depth = any):</span>
+        <span style="color: #ff8700;">go.for_stmt(depth = any)</span>: <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">important. could also use depth = 4</span>
+<span style="color: #ff4ea3;">          go.assign_stmt:</span>
+<span style="color: #ff4ea3;">            go.lhs:</span>
+<span style="color: #ff4ea3;">              @review comment</span>
+<span style="color: #ff4ea3;">              go.ident:</span>
+<span style="color: #ff4ea3;">                name as loopvarname</span>
+<span style="color: #ff4ea3;">          go.block_stmt:</span>
+<span style="color: #ff4ea3;">            go.list:</span>
+<span style="color: #ff4ea3;">              go.expr_stmt:</span>
+                <span style="color: #ff8700;">go.func_lit</span>: <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">important</span>
+                  <span style="color: #ff8700;">go.args(depth = any)</span>: <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">or 4</span>
+<span style="color: #ff4ea3;">                    go.ident:</span>
+<span style="color: #ff4ea3;">                      name == loopvarname</span>
 </pre>
 </div>
 </div>
@@ -439,7 +442,7 @@ Removing the <code>anyof:</code> and including only the second branch.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: shane</p>
-<p class="date">Created: 2018-10-23 Tue 16:50</p>
+<p class="date">Created: 2018-10-23 Tue 16:53</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
