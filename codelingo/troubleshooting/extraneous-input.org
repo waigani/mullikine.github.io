@@ -193,3 +193,16 @@ I think whitespace is not an issue.
 </pre>
 </div>
 #+END_EXPORT
+
+* cause determined
+This fact should have a ~:~ after it.
+#+BEGIN_SRC yaml
+  go.field_list # could be a function argument or return parameter
+#+END_SRC
+
+* New card: Error message is spurious for forgetting a ~:~ after a fact
+** Error message
+#+BEGIN_SRC text
+  Running review flow...
+  rpc error: code = Unknown desc = Failed run Flow function: failed to parse codelingo.yaml file `codelingo.yaml`: line 8:10 - extraneous input '          ' expecting {N_OF, 'include', 'exclude', 'edge', 'path', 'pathcontinue', ESCAPED_NAME, NAME, '@', DEDENT}
+#+END_SRC
