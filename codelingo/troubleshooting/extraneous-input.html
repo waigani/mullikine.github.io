@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-24 Wed 12:37 -->
+<!-- 2018-10-24 Wed 13:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -235,11 +235,13 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga3a56e4">1. troubleshooting new tenet <code>shadowed-func-parameter</code></a>
+<li><a href="#orgf3c9dde">1. troubleshooting new tenet <code>shadowed-func-parameter</code></a>
 <ul>
-<li>
+<li><a href="#orgbfbe463">1.1. <code>codelingo.yaml</code></a></li>
+<li><a href="#org18904b9">1.2. This fails</a>
 <ul>
-<li><a href="#orgf4b2986">1.0.1. This fails</a></li>
+<li><a href="#org8ef40f4">1.2.1. With error</a></li>
+<li><a href="#org8d27f19">1.2.2. Diagnose the problem</a></li>
 </ul>
 </li>
 </ul>
@@ -248,9 +250,13 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orga3a56e4" class="outline-2">
-<h2 id="orga3a56e4"><span class="section-number-2">1</span> troubleshooting new tenet <code>shadowed-func-parameter</code></h2>
+<div id="outline-container-orgf3c9dde" class="outline-2">
+<h2 id="orgf3c9dde"><span class="section-number-2">1</span> troubleshooting new tenet <code>shadowed-func-parameter</code></h2>
 <div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgbfbe463" class="outline-3">
+<h3 id="orgbfbe463"><span class="section-number-3">1.1</span> <code>codelingo.yaml</code></h3>
+<div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-go"><span style="color: #a1db00;">package</span> main
 
@@ -281,10 +287,11 @@ for the JavaScript code in this tag.
 </pre>
 </div>
 </div>
+</div>
 
-<div id="outline-container-orgf4b2986" class="outline-4">
-<h4 id="orgf4b2986"><span class="section-number-4">1.0.1</span> This fails</h4>
-<div class="outline-text-4" id="text-1-0-1">
+<div id="outline-container-org18904b9" class="outline-3">
+<h3 id="org18904b9"><span class="section-number-3">1.2</span> This fails</h3>
+<div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 <pre class="src src-yaml"><span style="color: #ff8700;">tenets</span>:
   - <span style="color: #ff8700;">name</span>: shadowed-func-parameter
@@ -319,9 +326,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<ol class="org-ol">
-<li><a id="org6f3676f"></a>With error<br />
-<div class="outline-text-5" id="text-1-0-1-1">
+<div id="outline-container-org8ef40f4" class="outline-4">
+<h4 id="org8ef40f4"><span class="section-number-4">1.2.1</span> With error</h4>
+<div class="outline-text-4" id="text-1-2-1">
 <div class="org-src-container">
 <pre class="src src-text">Running review flow...
 rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code = Unknown desc = Failed run Flow function: <span style="color: #ffff00; background-color: #cccc00;">failed</span> to parse codelingo.yaml file `codelingo.yaml`: line 8:10 - extraneous input '          ' expecting {N_OF, 'include', 'exclude', 'edge', 'path', 'pathcontinue', ESCAPED_NAME, NAME, '@', DEDENT}
@@ -329,10 +336,11 @@ exit status 1
 </pre>
 </div>
 </div>
-</li>
+</div>
 
-<li><a id="org96500a3"></a>Diagnose the problem<br />
-<div class="outline-text-5" id="text-1-0-1-2">
+<div id="outline-container-org8d27f19" class="outline-4">
+<h4 id="org8d27f19"><span class="section-number-4">1.2.2</span> Diagnose the problem</h4>
+<div class="outline-text-4" id="text-1-2-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -370,12 +378,16 @@ exit status 1
 </tbody>
 </table>
 </div>
-</li>
 
-<li><a id="org4d320a0"></a>Difference to a working tenet<br />
-<div class="outline-text-5" id="text-1-0-1-3">
+<ol class="org-ol">
+<li><a id="orgaf758fe"></a>Difference to a working tenet, <code>misused-nil-interface</code><br />
+<div class="outline-text-5" id="text-1-2-2-1">
 <p>
 I think whitespace is not an issue.
+</p>
+
+<p>
+<code>shadowed-func-parameter</code> is the failling tenet.
 </p>
 
 <div class="org-src-container">
@@ -490,9 +502,10 @@ I think whitespace is not an issue.
 </div>
 </div>
 </div>
+</div>
 <div id="postamble" class="status">
 <p class="author">Author: shane</p>
-<p class="date">Created: 2018-10-24 Wed 12:37</p>
+<p class="date">Created: 2018-10-24 Wed 13:09</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
