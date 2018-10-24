@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-24 Wed 13:25 -->
+<!-- 2018-10-24 Wed 13:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>troubleshooting new tenet <code>shadowed-func-parameter</code></title>
@@ -236,26 +236,26 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc2b52de">1. <code>example.go</code></a></li>
-<li><a href="#orgf77be7d">2. This <code>codelingo.yaml</code> fails</a></li>
-<li><a href="#org2fe535f">3. With error</a></li>
-<li><a href="#orgb442c0f">4. Diagnose the problem</a>
+<li><a href="#org3d95875">1. <code>example.go</code></a></li>
+<li><a href="#orgdc1cc68">2. This <code>codelingo.yaml</code> fails</a></li>
+<li><a href="#org1b7fe76">3. With error</a></li>
+<li><a href="#orgfd09766">4. Diagnose the problem</a>
 <ul>
-<li><a href="#org7b89ba7">4.1. Difference to a working tenet, <code>misused-nil-interface</code></a></li>
+<li><a href="#orgcb840ea">4.1. Difference to a working tenet, <code>misused-nil-interface</code></a></li>
 </ul>
 </li>
-<li><a href="#orga7a023a">5. cause determined</a></li>
-<li><a href="#orgd8f0dce">6. New card: Error message is spurious for forgetting a <code>:</code> after a fact</a>
+<li><a href="#org122c2dd">5. cause determined</a></li>
+<li><a href="#org9a0d01b">6. New card: Error message is spurious for forgetting a <code>:</code> after a fact</a>
 <ul>
-<li><a href="#org91a8ee1">6.1. Error message</a></li>
+<li><a href="#org8efd4d4">6.1. Error message</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgc2b52de" class="outline-2">
-<h2 id="orgc2b52de"><span class="section-number-2">1</span> <code>example.go</code></h2>
+<div id="outline-container-org3d95875" class="outline-2">
+<h2 id="org3d95875"><span class="section-number-2">1</span> <code>example.go</code></h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
 <pre class="src src-go"><span style="color: #a1db00;">package</span> main
@@ -289,8 +289,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgf77be7d" class="outline-2">
-<h2 id="orgf77be7d"><span class="section-number-2">2</span> This <code>codelingo.yaml</code> fails</h2>
+<div id="outline-container-orgdc1cc68" class="outline-2">
+<h2 id="orgdc1cc68"><span class="section-number-2">2</span> This <code>codelingo.yaml</code> fails</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-yaml"><span style="color: #ff8700;">tenets</span>:
@@ -327,8 +327,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org2fe535f" class="outline-2">
-<h2 id="org2fe535f"><span class="section-number-2">3</span> With error</h2>
+<div id="outline-container-org1b7fe76" class="outline-2">
+<h2 id="org1b7fe76"><span class="section-number-2">3</span> With error</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 <pre class="src src-text">Running review flow...
@@ -339,8 +339,8 @@ exit status 1
 </div>
 </div>
 
-<div id="outline-container-orgb442c0f" class="outline-2">
-<h2 id="orgb442c0f"><span class="section-number-2">4</span> Diagnose the problem</h2>
+<div id="outline-container-orgfd09766" class="outline-2">
+<h2 id="orgfd09766"><span class="section-number-2">4</span> Diagnose the problem</h2>
 <div class="outline-text-2" id="text-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -380,8 +380,8 @@ exit status 1
 </table>
 </div>
 
-<div id="outline-container-org7b89ba7" class="outline-3">
-<h3 id="org7b89ba7"><span class="section-number-3">4.1</span> Difference to a working tenet, <code>misused-nil-interface</code></h3>
+<div id="outline-container-orgcb840ea" class="outline-3">
+<h3 id="orgcb840ea"><span class="section-number-3">4.1</span> Difference to a working tenet, <code>misused-nil-interface</code></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 I think whitespace is not an issue.
@@ -501,8 +501,8 @@ I think whitespace is not an issue.
 </div>
 </div>
 
-<div id="outline-container-orga7a023a" class="outline-2">
-<h2 id="orga7a023a"><span class="section-number-2">5</span> cause determined</h2>
+<div id="outline-container-org122c2dd" class="outline-2">
+<h2 id="org122c2dd"><span class="section-number-2">5</span> cause determined</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 This fact should have a <code>:</code> after it.
@@ -514,12 +514,12 @@ This fact should have a <code>:</code> after it.
 </div>
 </div>
 
-<div id="outline-container-orgd8f0dce" class="outline-2">
-<h2 id="orgd8f0dce"><span class="section-number-2">6</span> New card: Error message is spurious for forgetting a <code>:</code> after a fact</h2>
+<div id="outline-container-org9a0d01b" class="outline-2">
+<h2 id="org9a0d01b"><span class="section-number-2">6</span> New card: Error message is spurious for forgetting a <code>:</code> after a fact</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-org91a8ee1" class="outline-3">
-<h3 id="org91a8ee1"><span class="section-number-3">6.1</span> Error message</h3>
+<div id="outline-container-org8efd4d4" class="outline-3">
+<h3 id="org8efd4d4"><span class="section-number-3">6.1</span> Error message</h3>
 <div class="outline-text-3" id="text-6-1">
 <div class="org-src-container">
 <pre class="src src-text">Running review flow...
@@ -532,7 +532,7 @@ rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code 
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: shane</p>
-<p class="date">Created: 2018-10-24 Wed 13:25</p>
+<p class="date">Created: 2018-10-24 Wed 13:27</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
