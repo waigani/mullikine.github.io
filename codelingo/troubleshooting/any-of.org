@@ -1,8 +1,8 @@
+#+TITLE: troubleshooting new tenet ~looped-vars-outside~
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org-main.css"/>
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="magit.css"/>
 
-* troubleshooting new tenet ~looped-vars-outside~
-~anyof:~ is breaking the tenet.
+* ~anyof:~ is breaking the tenet.
 
 ** example.go
 #+BEGIN_SRC go

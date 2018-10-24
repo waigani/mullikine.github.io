@@ -1,0 +1,221 @@
+#+TITLE: Trying to ~dep ensure~ on latest jx
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="magit.css"/>
+
+* dep ensure can't get all deps
+- This is for the older jx repo.
+- This is blocking me from running unit tests.
+
+#+BEGIN_SRC text
+  8a7da5f3 parallel-in-tests 'origin/parallel-in-tests' » dep ensure
+  Solving failure: No versions of github.com/banzaicloud/bank-vaults met constraints:
+          0.3.7: Could not introduce github.com/banzaicloud/bank-vaults@0.3.7, as it has a dependency on k8s.io/api with constraint release-1.10, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.3.6: Could not introduce github.com/banzaicloud/bank-vaults@0.3.6, as it has a dependency on k8s.io/apimachinery with constraint release-1.10, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.3.5: Could not introduce github.com/banzaicloud/bank-vaults@0.3.5, as it has a dependency on k8s.io/apimachinery with constraint release-1.10, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.3.4: Could not introduce github.com/banzaicloud/bank-vaults@0.3.4, as it has a dependency on k8s.io/apimachinery with constraint release-1.10, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.3.3: Could not introduce github.com/banzaicloud/bank-vaults@0.3.3, as it has a dependency on k8s.io/apimachinery with constraint release-1.10, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.3.2: Could not introduce github.com/banzaicloud/bank-vaults@0.3.2, as it has a dependency on k8s.io/apimachinery with constraint release-1.10, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.3.1: Could not introduce github.com/banzaicloud/bank-vaults@0.3.1, as it has a dependency on k8s.io/apimachinery with constraint release-1.10, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.3.0: Could not introduce github.com/banzaicloud/bank-vaults@0.3.0, as it has a dependency on k8s.io/apimachinery with constraint release-1.10, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.2.26: Could not introduce github.com/banzaicloud/bank-vaults@0.2.26, as it has a dependency on k8s.io/client-go with constraint 7.0.0, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+
+          0.2.25: Could not introduce github.com/banzaicloud/bank-vaults@0.2.25, as it has a dependency on k8s.io/apimachinery with constraint release-1.10, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.2.24: Could not introduce github.com/banzaicloud/bank-vaults@0.2.24, as it has a dependency on k8s.io/apimachinery with constraint release-1.10, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.2.23: Could not introduce github.com/banzaicloud/bank-vaults@0.2.23, as it has a dependency on k8s.io/apimachinery with constraint release-1.10, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.2.22: Could not introduce github.com/banzaicloud/bank-vaults@0.2.22, as it has a dependency on k8s.io/client-go with constraint 7.0.0, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+
+          0.2.21: Could not introduce github.com/banzaicloud/bank-vaults@0.2.21, as it has a dependency on k8s.io/apimachinery with constraint release-1.10, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.2.20: Could not introduce github.com/banzaicloud/bank-vaults@0.2.20, as it has a dependency on k8s.io/apimachinery with constraint release-1.10, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.2.19: Could not introduce github.com/banzaicloud/bank-vaults@0.2.19, as it has a dependency on k8s.io/apimachinery with constraint release-1.10, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.2.18: Could not introduce github.com/banzaicloud/bank-vaults@0.2.18, as it has a dependency on k8s.io/apimachinery with constraint release-1.11, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.2.17: Could not introduce github.com/banzaicloud/bank-vaults@0.2.17, as it has a dependency on k8s.io/apimachinery with constraint release-1.11, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.2.16: Could not introduce github.com/banzaicloud/bank-vaults@0.2.16, as it has a dependency on k8s.io/apimachinery with constraint release-1.11, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.2.15: Could not introduce github.com/banzaicloud/bank-vaults@0.2.15, as it has a dependency on k8s.io/apimachinery with constraint release-1.11, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.2.14: Could not introduce github.com/banzaicloud/bank-vaults@0.2.14, as it has a dependency on k8s.io/apimachinery with constraint release-1.11, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.2.13: Could not introduce github.com/banzaicloud/bank-vaults@0.2.13, as it has a dependency on k8s.io/apimachinery with constraint release-1.11, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.2.12: Could not introduce github.com/banzaicloud/bank-vaults@0.2.12, as it has a dependency on k8s.io/apimachinery with constraint release-1.11, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.2.11: Could not introduce github.com/banzaicloud/bank-vaults@0.2.11, as it has a dependency on k8s.io/client-go with constraint release-8.0, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+
+          0.2.10: Could not introduce github.com/banzaicloud/bank-vaults@0.2.10, as it has a dependency on k8s.io/apimachinery with constraint release-1.11, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.2.9: Could not introduce github.com/banzaicloud/bank-vaults@0.2.9, as it has a dependency on k8s.io/apimachinery with constraint release-1.11, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.2.8: Could not introduce github.com/banzaicloud/bank-vaults@0.2.8, as it has a dependency on k8s.io/client-go with constraint release-8.0, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+
+          0.2.7: Could not introduce github.com/banzaicloud/bank-vaults@0.2.7, as it has a dependency on k8s.io/apimachinery with constraint release-1.11, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.2.6: Could not introduce github.com/banzaicloud/bank-vaults@0.2.6, as it has a dependency on k8s.io/apimachinery with constraint release-1.11, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.2.5: Could not introduce github.com/banzaicloud/bank-vaults@0.2.5, as it has a dependency on k8s.io/apimachinery with constraint release-1.11, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.2.4: Could not introduce github.com/banzaicloud/bank-vaults@0.2.4, as it has a dependency on k8s.io/apimachinery with constraint release-1.11, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          0.2.3: Could not introduce github.com/banzaicloud/bank-vaults@0.2.3, as its subpackage github.com/banzaicloud/bank-vaults/operator/pkg/client/clientset/versioned is missing. (Package is required by github.com/jenkins-x/jx@v1.3.444.)
+          0.2.2: Could not introduce github.com/banzaicloud/bank-vaults@0.2.2, as its subpackage github.com/banzaicloud/bank-vaults/operator/pkg/client/clientset/versioned is missing. (Package is required by github.com/jenkins-x/jx@v1.3.444.)
+          0.2.1: Could not introduce github.com/banzaicloud/bank-vaults@0.2.1, as its subpackage github.com/banzaicloud/bank-vaults/operator/pkg/client/clientset/versioned is missing. (Package is required by github.com/jenkins-x/jx@v1.3.444.)
+          0.2.0: Could not introduce github.com/banzaicloud/bank-vaults@0.2.0, as its subpackage github.com/banzaicloud/bank-vaults/operator/pkg/client/clientset/versioned is missing. (Package is required by github.com/jenkins-x/jx@v1.3.444.)
+          0.1.4: Could not introduce github.com/banzaicloud/bank-vaults@0.1.4 due to multiple problematic subpackages:
+          Subpackage github.com/banzaicloud/bank-vaults/operator/pkg/apis/vault/v1alpha1 is missing. (Package is required by github.com/jenkins-x/jx@v1.3.444.)    Subpackage github.com/banzaicloud/bank-vaults/operator/pkg/client/clientset/versioned is missing. (Package is required by github.com/jenkins-x/jx@v1.3.444.)
+          0.1.3: Could not introduce github.com/banzaicloud/bank-vaults@0.1.3 due to multiple problematic subpackages:
+          Subpackage github.com/banzaicloud/bank-vaults/operator/pkg/apis/vault/v1alpha1 is missing. (Package is required by github.com/jenkins-x/jx@v1.3.444.)    Subpackage github.com/banzaicloud/bank-vaults/operator/pkg/client/clientset/versioned is missing. (Package is required by github.com/jenkins-x/jx@v1.3.444.)
+          0.1.2: Could not introduce github.com/banzaicloud/bank-vaults@0.1.2 due to multiple problematic subpackages:
+          Subpackage github.com/banzaicloud/bank-vaults/operator/pkg/apis/vault/v1alpha1 is missing. (Package is required by github.com/jenkins-x/jx@v1.3.444.)    Subpackage github.com/banzaicloud/bank-vaults/operator/pkg/client/clientset/versioned is missing. (Package is required by github.com/jenkins-x/jx@v1.3.444.)
+          0.1.1: Could not introduce github.com/banzaicloud/bank-vaults@0.1.1 due to multiple problematic subpackages:
+          Subpackage github.com/banzaicloud/bank-vaults/operator/pkg/apis/vault/v1alpha1 is missing. (Package is required by github.com/jenkins-x/jx@v1.3.444.)    Subpackage github.com/banzaicloud/bank-vaults/operator/pkg/client/clientset/versioned is missing. (Package is required by github.com/jenkins-x/jx@v1.3.444.)
+          0.1.0: Could not introduce github.com/banzaicloud/bank-vaults@0.1.0 due to multiple problematic subpackages:
+          Subpackage github.com/banzaicloud/bank-vaults/operator/pkg/apis/vault/v1alpha1 is missing. (Package is required by github.com/jenkins-x/jx@v1.3.444.)    Subpackage github.com/banzaicloud/bank-vaults/operator/pkg/client/clientset/versioned is missing. (Package is required by github.com/jenkins-x/jx@v1.3.444.)
+          master: Could not introduce github.com/banzaicloud/bank-vaults@master, as it has a dependency on k8s.io/api with constraint release-1.10, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          master_k8s_1.11: Could not introduce github.com/banzaicloud/bank-vaults@master_k8s_1.11, as it has a dependency on k8s.io/apimachinery with constraint kubernetes-1.11.1, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+
+          tls-auto-renewal: Could not introduce github.com/banzaicloud/bank-vaults@tls-auto-renewal, as it has a dependency on k8s.io/apimachinery with constraint release-1.10, which has no overlap with the following existing constraints:
+          kubernetes-1.11.0 from (root)
+          kubernetes-1.11.0 from github.com/heptio/sonobuoy (from https://github.com/jenkins-x/sonobuoy.git)@kubernetes-1.11.0
+          kubernetes-1.11.0 from github.com/knative/build@master
+          kubernetes-1.11.0 from k8s.io/test-infra (from https://github.com/jenkins-x/test-infra.git)@build_id
+#+END_SRC
