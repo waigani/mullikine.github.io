@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-29 Mon 18:02 -->
+<!-- 2018-10-29 Mon 18:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>troubleshooting new tenet <code>well-named-lists</code></title>
@@ -236,18 +236,19 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7df8982">1. <code>example.go</code></a></li>
-<li><a href="#orgd98cc7f">2. This <code>codelingo.yaml</code> fails</a>
+<li><a href="#org0773b3f">1. <code>example.go</code></a></li>
+<li><a href="#org7c36c11">2. This <code>codelingo.yaml</code> fails</a>
 <ul>
-<li><a href="#org9c422ae">2.1. With error</a></li>
+<li><a href="#org15c580f">2.1. With error</a></li>
 </ul>
 </li>
+<li><a href="#org69480f8">3. This <code>codelingo.yaml</code> succeeds</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org7df8982" class="outline-2">
-<h2 id="org7df8982"><span class="section-number-2">1</span> <code>example.go</code></h2>
+<div id="outline-container-org0773b3f" class="outline-2">
+<h2 id="org0773b3f"><span class="section-number-2">1</span> <code>example.go</code></h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
 <pre class="src src-go"><span style="color: #a1db00;">package</span> main
@@ -266,9 +267,13 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgd98cc7f" class="outline-2">
-<h2 id="orgd98cc7f"><span class="section-number-2">2</span> This <code>codelingo.yaml</code> fails</h2>
+<div id="outline-container-org7c36c11" class="outline-2">
+<h2 id="org7c36c11"><span class="section-number-2">2</span> This <code>codelingo.yaml</code> fails</h2>
 <div class="outline-text-2" id="text-2">
+<p>
+It appears that <code>missingListSuffix(listName)</code> stops <code>@var</code> from working.
+</p>
+
 <div class="org-src-container">
 <pre class="src src-yaml"><span style="color: #ff8700;">funcs</span>:
   - <span style="color: #ff8700;">name</span>: missingListSuffix
@@ -316,8 +321,8 @@ tenets:
 </div>
 </div>
 
-<div id="outline-container-org9c422ae" class="outline-3">
-<h3 id="org9c422ae"><span class="section-number-3">2.1</span> With error</h3>
+<div id="outline-container-org15c580f" class="outline-3">
+<h3 id="org15c580f"><span class="section-number-3">2.1</span> With error</h3>
 <div class="outline-text-3" id="text-2-1">
 <div class="org-src-container">
 <pre class="src src-text">mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;">error</span>: "var reviewListName" can only decorate a fact
@@ -327,10 +332,65 @@ tenets:
 </div>
 </div>
 </div>
+
+<div id="outline-container-org69480f8" class="outline-2">
+<h2 id="org69480f8"><span class="section-number-2">3</span> This <code>codelingo.yaml</code> succeeds</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+But I am now missing the assertion missingListSuffix
+</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #ff8700;">funcs</span>:
+  - <span style="color: #ff8700;">name</span>: missingListSuffix
+    <span style="color: #ff8700;">type</span>: asserter
+    <span style="color: #ff8700;">body</span>: |
+      <span style="color: #ff4ea3;">function (str) {</span>
+<span style="color: #ff4ea3;">        return !str.match(/.*List$/);</span>
+<span style="color: #ff4ea3;">      }</span>
+tenets:
+  - <span style="color: #ff8700;">name</span>: well-named-lists
+    <span style="color: #ff8700;">flows</span>:
+      <span style="color: #ff8700;">codelingo/docs</span>:
+        <span style="color: #ff8700;">title</span>: Well Named Lists
+        <span style="color: #ff8700;">body</span>: |
+          <span style="color: #ff4ea3;">The name of a list kind must end with List.</span>
+      <span style="color: #ff8700;">codelingo/review</span>:
+        <span style="color: #ff8700;">comment</span>: The kind `{{reviewListName}}` is a collection of resources and its name must end in `List`.
+    <span style="color: #ff8700;">query</span>: |
+      <span style="color: #ff4ea3;">import codelingo/ast/go</span>
+
+<span style="color: #ff4ea3;">      go.file(depth = any):</span>
+<span style="color: #ff4ea3;">        go.decls:</span>
+<span style="color: #ff4ea3;">          go.gen_decl:</span>
+<span style="color: #ff4ea3;">            go.type_spec:</span>
+<span style="color: #ff4ea3;">              @review comment</span>
+<span style="color: #ff4ea3;">              go.ident:</span>
+<span style="color: #ff4ea3;">                @var reviewListName</span>
+<span style="color: #ff4ea3;">                name as listName</span>
+                <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">missingListSuffix(listName)</span>
+<span style="color: #ff4ea3;">              go.struct_type:</span>
+<span style="color: #ff4ea3;">                go.field_list:</span>
+<span style="color: #ff4ea3;">                  go.field:</span>
+<span style="color: #ff4ea3;">                    go.selector_expr:</span>
+<span style="color: #ff4ea3;">                      go.ident:</span>
+                        name == <span style="color: #ff4ea3;">"metav1"</span>
+<span style="color: #ff4ea3;">                      go.ident:</span>
+                        name == <span style="color: #ff4ea3;">"TypeMeta"</span>
+<span style="color: #ff4ea3;">                  go.field:</span>
+<span style="color: #ff4ea3;">                    go.selector_expr:</span>
+<span style="color: #ff4ea3;">                      go.ident:</span>
+                        name == <span style="color: #ff4ea3;">"metav1"</span>
+<span style="color: #ff4ea3;">                      go.ident:</span>
+                        name == <span style="color: #ff4ea3;">"ListMeta"</span>
+</pre>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: shane</p>
-<p class="date">Created: 2018-10-29 Mon 18:02</p>
+<p class="date">Created: 2018-10-29 Mon 18:07</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

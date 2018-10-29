@@ -18,6 +18,8 @@
 #+END_SRC
 
 * This ~codelingo.yaml~ fails
+It appears that ~missingListSuffix(listName)~ stops ~@var~ from working.
+
 #+BEGIN_SRC yaml
   funcs:
     - name: missingListSuffix
@@ -67,4 +69,52 @@
 #+BEGIN_SRC text
   mullikine hit a uncaught error: "var reviewListName" can only decorate a fact
   /home/dev/projects/src/github.com/codelingo/platform/flow/flows/clair/result/buildissues.go:78: "var reviewListName" can only decorate a fact
+#+END_SRC
+
+* This ~codelingo.yaml~ succeeds
+But I am now missing the assertion missingListSuffix
+
+#+BEGIN_SRC yaml
+  funcs:
+    - name: missingListSuffix
+      type: asserter
+      body: |
+        function (str) {
+          return !str.match(/.*List$/);
+        }
+  tenets:
+    - name: well-named-lists
+      flows:
+        codelingo/docs:
+          title: Well Named Lists
+          body: |
+            The name of a list kind must end with List.
+        codelingo/review:
+          comment: The kind `{{reviewListName}}` is a collection of resources and its name must end in `List`.
+      query: |
+        import codelingo/ast/go
+        
+        go.file(depth = any):
+          go.decls:
+            go.gen_decl:
+              go.type_spec:
+                @review comment
+                go.ident:
+                  @var reviewListName
+                  name as listName
+                  # missingListSuffix(listName)
+                go.struct_type:
+                  go.field_list:
+                    go.field:
+                      go.selector_expr:
+                        go.ident:
+                          name == "metav1"
+                        go.ident:
+                          name == "TypeMeta"
+                    go.field:
+                      go.selector_expr:
+                        go.ident:
+                          name == "metav1"
+                        go.ident:
+                          name == "ListMeta"
 #+END_SRC
