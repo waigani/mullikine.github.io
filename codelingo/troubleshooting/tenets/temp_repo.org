@@ -1,0 +1,383 @@
+#+TITLE: troubleshooting new tenet ~temp_repo~
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
+
+* ~example.go~
+#+BEGIN_SRC go
+  package main
+  
+  import "fmt"
+  
+  type anyStruct struct {
+  	lock sync.Mutex
+  }
+  
+  type badStruct struct {
+  	badLock sync.Mutex
+  }
+  
+  type MockAddresses struct {
+  	lockA sync.Mutex
+  	lockB sync.Mutex
+  }
+#+END_SRC
+
+* This ~codelingo.yaml~ fails
+#+BEGIN_SRC yaml
+  tenets:
+    - name: well-named-lock
+      flows:
+        codelingo/docs:
+          title: Well Named Lock
+          body: |
+            A lock should be called `lock` unless other locks are present.
+        codelingo/review:
+          comment: There are no other locks besides '{{lockname}}' here. Rename '{{lockname}}' to 'lock'.
+      query: |
+        import codelingo/ast/go
+        
+        go.file(depth = any):
+          go.decls:
+            go.gen_decl:
+              go.type_spec:
+                go.struct_type:
+                  go.field_list:
+                    go.field:
+                      go.names:
+                        @review comment
+                        go.ident:
+                          name as lockname
+                          name != "lock"
+                      go.selector_expr:
+                        go.ident:
+                          name == "sync"
+                        go.ident:
+                          name == "Mutex"
+                    exclude:
+                      go.field:
+                        go.names:
+                          go.ident
+                        go.selector_expr:
+                          go.ident:
+                            name == "sync"
+                          go.ident:
+                            name == "Mutex"
+#+END_SRC
+
+* ~tty-output.log~
+#+BEGIN_SRC go
+  W  lingo-rewrite         (rewrite with codelingo/codelingo binaries, not reliable)
+  9  lingo-rewrite -version
+  E  run-example
+  t
+  lingo test-tenet .
+  tenet: well-named-lock
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  lingo -here run review --lingo-file "/home/shane/var/smulliga/source/git/mullikine/codelingo/tenets/codelingo/k8/well-named-lock/codelin
+  go.yaml"
+  Constructing new git repo in temp folder... :: Wed Oct 31 11:59:10 NZDT 2018
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  Running: $HOME/scripts/rs -nc
+          -nogit
+          -noswap
+          $HOME/source/git/mullikine/codelingo/tenets/codelingo/k8/well-named-lock/
+          /tmp/td_wdKr8gQ4/temp_repo
+  /usr/bin/rsync  -a -rtlhx -pug -s  --inplace --append   --exclude .cache  --exclude .git/ --exclude .gitignore --exclude TODO  --exclude
+   '*~' --exclude '.#*'  $HOME/source/git/mullikine/codelingo/tenets/codelingo/k8/well-named-lock/ /tmp/td_wdKr8gQ4/temp_repo
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  Syncing your repo...
+  Running review flow...
+  Done! No issues found.
+  
+  review finished
+  Annotate errors?
+  
+   [Yn]: n
+  
+  Reformulate?
+  
+  [.] edit
+  [y] yes_edit
+  [v] vim_edit
+  [S] zsh
+  [r] review
+  [L] save-tty-log
+  [B] upload-to-blog
+  [D] review-debug
+  [w] rewrite
+  [X] rewrite-debug
+  [R] ranger
+  [d] done
+  [n] no
+  : r
+  On branch master
+  nothing to commit, working tree clean
+  HEAD: 4ce320c921ea02b7d5d777a86adb5212ca44755d
+  
+  Syncing your repo...
+  Running review flow...
+  Done! No issues found.
+  [.] edit
+  [y] yes_edit
+  [v] vim_edit
+  [S] zsh
+  [r] review
+  [L] save-tty-log
+  [B] upload-to-blog
+  [D] review-debug
+  [w] rewrite
+  [X] rewrite-debug
+  [R] ranger
+  [d] done
+  [n] no
+  : n
+  
+  Run again?
+  
+   [Yn]: n
+  Press 'c' to continue
+  2e9683f k8mocktenets »
+  2e9683f k8mocktenets » pwd
+  /home/shane/var/smulliga/source/git/mullikine/codelingo/tenets/codelingo/k8/well-named-lock
+  2e9683f k8mocktenets » ls
+  codelingo.yaml  example.go  expected.json  README.md
+  2e9683f k8mocktenets » sh-ranger-lingo .
+  /home/shane/scripts/sh-ranger-lingo
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  .  EDIT
+  t  lingo test-tenet      (review flow)    (not necessarily a tenet, but this copies the repo)
+  w  lingo test-tenet -w   (rewrite flow)   (not necessarily a tenet, but this copies the repo)
+  r  lingo-review-here
+  R  lingo-review          (review with codelingo/codelingo binaries, not reliable)
+  D  lingo-review --debug  (review with codelingo/codelingo binaries, not reliable)
+  8  lingo-review -version
+  W  lingo-rewrite         (rewrite with codelingo/codelingo binaries, not reliable)
+  9  lingo-rewrite -version
+  E  run-example
+  t
+  lingo test-tenet .
+  tenet: well-named-lock
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  lingo -here run review --lingo-file "/home/shane/var/smulliga/source/git/mullikine/codelingo/tenets/codelingo/k8/well-named-lock/codelin
+  go.yaml"
+  Constructing new git repo in temp folder... :: Wed Oct 31 12:05:20 NZDT 2018
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  Running: $HOME/scripts/rs -nc
+          -nogit
+          -noswap
+          $HOME/source/git/mullikine/codelingo/tenets/codelingo/k8/well-named-lock/
+          /tmp/td_wd9Iixu9/temp_repo
+  /usr/bin/rsync  -a -rtlhx -pug -s  --inplace --append   --exclude .cache  --exclude .git/ --exclude .gitignore --exclude TODO  --exclude
+   '*~' --exclude '.#*'  $HOME/source/git/mullikine/codelingo/tenets/codelingo/k8/well-named-lock/ /tmp/td_wd9Iixu9/temp_repo
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  Syncing your repo...
+  Running review flow...
+  Done! No issues found.
+  
+  review finished
+  
+  Reformulate?
+  
+  [.] edit
+  [a] annotate
+  [y] yes_edit
+  [v] vim_edit
+  [S] zsh
+  [r] review
+  [L] save-tty-log
+  [B] upload-to-blog
+  [D] review-debug
+  [w] rewrite
+  [X] rewrite-debug
+  [R] ranger
+  [d] done
+  [n] no
+  : a
+  [.] edit
+  [a] annotate
+  [y] yes_edit
+  [v] vim_edit
+  [S] zsh
+  [r] review
+  [L] save-tty-log
+  [B] upload-to-blog
+  [D] review-debug
+  [w] rewrite
+  [X] rewrite-debug
+  [R] ranger
+  [d] done
+  [n] no
+  : L
+  [.] edit
+  [a] annotate
+  [y] yes_edit
+  [v] vim_edit
+  [S] zsh
+  [r] review
+  [L] save-tty-log
+  [B] upload-to-blog
+  [D] review-debug
+  [w] rewrite
+  [X] rewrite-debug
+  [R] ranger
+  [d] done
+  [n] no
+  : S
+  [.] edit
+  [a] annotate
+  [y] yes_edit
+  [v] vim_edit
+  [S] zsh
+  [r] review
+  [L] save-tty-log
+  [B] upload-to-blog
+  [D] review-debug
+  [w] rewrite
+  [X] rewrite-debug
+  [R] ranger
+  [d] done
+  [n] no
+  : B
+  
+  W  lingo-rewrite         (rewrite with codelingo/codelingo binaries, not reliable)
+  9  lingo-rewrite -version
+  E  run-example
+  t
+  lingo test-tenet .
+  tenet: well-named-lock
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  lingo -here run review --lingo-file "/home/shane/var/smulliga/source/git/mullikine/codelingo/tenets/codelingo/k8/well-named-lock/codelingo.yaml"
+  Constructing new git repo in temp folder... :: Wed Oct 31 11:59:10 NZDT 2018
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  Running: $HOME/scripts/rs -nc
+          -nogit
+          -noswap
+          $HOME/source/git/mullikine/codelingo/tenets/codelingo/k8/well-named-lock/
+          /tmp/td_wdKr8gQ4/temp_repo
+  /usr/bin/rsync  -a -rtlhx -pug -s  --inplace --append   --exclude .cache  --exclude .git/ --exclude .gitignore --exclude TODO  --exclude '*~' --exclude '.#*'  $HOME/source/git/mullikine/codelingo/tenets/codelingo/k8/well-named-lock/ /tmp/td_wdKr8gQ4/temp_repo
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  Syncing your repo...
+  Running review flow...
+  Done! No issues found.
+  
+  review finished
+  Annotate errors?
+  
+   [Yn]: n
+  
+  Reformulate?
+  
+  [.] edit
+  [y] yes_edit
+  [v] vim_edit
+  [S] zsh
+  [r] review
+  [L] save-tty-log
+  [B] upload-to-blog
+  [D] review-debug
+  [w] rewrite
+  [X] rewrite-debug
+  [R] ranger
+  [d] done
+  [n] no
+  : r
+  On branch master
+  nothing to commit, working tree clean
+  HEAD: 4ce320c921ea02b7d5d777a86adb5212ca44755d
+  
+  Syncing your repo...
+  Running review flow...
+  Done! No issues found.
+  [.] edit
+  [y] yes_edit
+  [v] vim_edit
+  [S] zsh
+  [r] review
+  [L] save-tty-log
+  [B] upload-to-blog
+  [D] review-debug
+  [w] rewrite
+  [X] rewrite-debug
+  [R] ranger
+  [d] done
+  [n] no
+  : n
+  
+  Run again?
+  
+   [Yn]: n
+  Press 'c' to continue
+  2e9683f k8mocktenets » 
+  2e9683f k8mocktenets » pwd
+  /home/shane/var/smulliga/source/git/mullikine/codelingo/tenets/codelingo/k8/well-named-lock
+  2e9683f k8mocktenets » ls
+  codelingo.yaml  example.go  expected.json  README.md
+  2e9683f k8mocktenets » sh-ranger-lingo .
+  /home/shane/scripts/sh-ranger-lingo
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  .  EDIT
+  t  lingo test-tenet      (review flow)    (not necessarily a tenet, but this copies the repo)
+  w  lingo test-tenet -w   (rewrite flow)   (not necessarily a tenet, but this copies the repo)
+  r  lingo-review-here
+  R  lingo-review          (review with codelingo/codelingo binaries, not reliable)
+  D  lingo-review --debug  (review with codelingo/codelingo binaries, not reliable)
+  8  lingo-review -version
+  W  lingo-rewrite         (rewrite with codelingo/codelingo binaries, not reliable)
+  9  lingo-rewrite -version
+  E  run-example
+  t
+  lingo test-tenet .
+  tenet: well-named-lock
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  lingo -here run review --lingo-file "/home/shane/var/smulliga/source/git/mullikine/codelingo/tenets/codelingo/k8/well-named-lock/codelingo.yaml"
+  Constructing new git repo in temp folder... :: Wed Oct 31 12:05:20 NZDT 2018
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  Running: $HOME/scripts/rs -nc
+          -nogit
+          -noswap
+          $HOME/source/git/mullikine/codelingo/tenets/codelingo/k8/well-named-lock/
+          /tmp/td_wd9Iixu9/temp_repo
+  /usr/bin/rsync  -a -rtlhx -pug -s  --inplace --append   --exclude .cache  --exclude .git/ --exclude .gitignore --exclude TODO  --exclude '*~' --exclude '.#*'  $HOME/source/git/mullikine/codelingo/tenets/codelingo/k8/well-named-lock/ /tmp/td_wd9Iixu9/temp_repo
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  Syncing your repo...
+  Running review flow...
+  Done! No issues found.
+  
+  review finished
+  
+  Reformulate?
+  
+  [.] edit
+  [a] annotate
+  [y] yes_edit
+  [v] vim_edit
+  [S] zsh
+  [r] review
+  [L] save-tty-log
+  [B] upload-to-blog
+  [D] review-debug
+  [w] rewrite
+  [X] rewrite-debug
+  [R] ranger
+  [d] done
+  [n] no
+  : a
+  [.] edit
+  [a] annotate
+  [y] yes_edit
+  [v] vim_edit
+  [S] zsh
+  [r] review
+  [L] save-tty-log
+  [B] upload-to-blog
+  [D] review-debug
+  [w] rewrite
+  [X] rewrite-debug
+  [R] ranger
+  [d] done
+  [n] no
+  : L
+  
+#+END_SRC

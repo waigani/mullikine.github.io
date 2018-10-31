@@ -1,0 +1,173 @@
+#+TITLE: troubleshooting new tenet ~well-named-lock~
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
+
+| url                                                             |
+|-----------------------------------------------------------------|
+| [[https://github.com/mullikine/tenets/blob/master/blog/well-named-lock][tenets/blog/well-named-lock at master  mullikine/tenets  GitHub]] |
+
+* Problem
+Can't look for ~field_list~ with only one ~field~ using exclude.
+Tried excluding fields with "name != lockname", to see if being more explicit helps.
+It does not.
+
+* ~example.go~
+#+BEGIN_SRC go
+  package main
+  
+  import "fmt"
+  
+  type anyStruct struct {
+  	lock sync.Mutex
+  }
+  
+  type badStruct struct {
+  	badLock sync.Mutex
+  }
+  
+  type MockAddresses struct {
+  	lockA sync.Mutex
+  	lockB sync.Mutex
+  }
+#+END_SRC
+
+* This ~codelingo.yaml~ fails
+#+BEGIN_SRC yaml
+  tenets:
+    - name: well-named-lock
+      flows:
+        codelingo/docs:
+          title: Well Named Lock
+          body: |
+            A lock should be called `lock` unless other locks are present.
+        codelingo/review:
+          comment: There are no other locks besides '{{lockname}}' here. Rename '{{lockname}}' to 'lock'.
+      query: |
+        import codelingo/ast/go
+        
+        go.file(depth = any):
+          go.decls:
+            go.gen_decl:
+              go.type_spec:
+                go.struct_type:
+                  go.field_list:
+                    go.field:
+                      go.names:
+                        @review comment
+                        go.ident:
+                          name as lockname
+                          name != "lock"
+                      go.selector_expr:
+                        go.ident:
+                          name == "sync"
+                        go.ident:
+                          name == "Mutex"
+                    exclude:
+                      go.field:
+                        go.names:
+                          go.ident
+                          name != lockname
+                        go.selector_expr:
+                          go.ident:
+                            name == "sync"
+                          go.ident:
+                            name == "Mutex"
+#+END_SRC
+
+* annotated ~tty-output.log~
+#+BEGIN_SRC text
+  Constructing new git repo in temp folder... :: Thu Nov  1 10:07:31 NZDT 2018
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  Running: $HOME/scripts/rs -nc
+          -nogit
+          -noswap
+          $HOME/source/git/mullikine/codelingo/tenets/codelingo/k8/well-named-lock/
+          /tmp/td_wdhaxvq6/temp_repo
+  /usr/bin/rsync  -a -rtlhx -pug -s  --inplace --append   --exclude .cache  --exclude .git/ --exclude .gitignore --exclude TODO  --exclude '*~' --exclude '.#*'  $HOME/source/git/mullikine/codelingo/tenets/codelingo/k8/well-named-lock/ /tmp/td_wdhaxvq6/temp_repo
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  Syncing your repo...
+  Running review flow...
+  Done! No issues found.
+  review finished
+  Reformulate?
+  : y
+  : r
+  [master ceebf83] edit
+   1 file changed, 8 insertions(+), 9 deletions(-)
+  diff --git a/codelingo.yaml b/codelingo.yaml
+  index 3aba859..a1e6a00 100644
+  --- a/codelingo.yaml
+  +++ b/codelingo.yaml
+  @@ -27,12 +27,11 @@ tenets:
+                           name == "sync"
+                         go.ident:
+                           name == "Mutex"
+  -                  exclude:
+  -                    go.field:
+  -                      go.names:
+  -                        go.ident
+  -                      go.selector_expr:
+  -                        go.ident:
+  -                          name == "sync"
+  -                        go.ident:
+  -                          name == "Mutex"
+  \ No newline at end of file
+  +                  go.field:
+  +                    go.names:
+  +                      go.ident
+  +                    go.selector_expr:
+  +                      go.ident:
+  +                        name == "sync"
+  +                      go.ident:
+  +                        name == "Mutex"
+  \ No newline at end of file
+  HEAD: ceebf834af1d092186b38cbd46d8d136e40c854c
+  Syncing your repo...
+  Running review flow...
+  example.go:14:7
+      There are no other locks besides 'lockA' here. Rename 'lockA' to 'lock'.
+      ...
+      type MockAddresses struct {
+    +     lockA sync.Mutex
+          lockB sync.Mutex
+      }
+      ...
+  [o]pen [k]eep [d]iscard : k
+  Done! 1 issues found.
+  : y
+  : r
+  [master 60a42df] edit
+   1 file changed, 10 insertions(+), 8 deletions(-)
+  diff --git a/codelingo.yaml b/codelingo.yaml
+  index a1e6a00..36329fd 100644
+  --- a/codelingo.yaml
+  +++ b/codelingo.yaml
+  @@ -27,11 +27,13 @@ tenets:
+                           name == "sync"
+                         go.ident:
+                           name == "Mutex"
+  -                  go.field:
+  -                    go.names:
+  -                      go.ident
+  -                    go.selector_expr:
+  -                      go.ident:
+  -                        name == "sync"
+  -                      go.ident:
+  -                        name == "Mutex"
+  \ No newline at end of file
+  +                  exclude:
+  +                    go.field:
+  +                      go.names:
+  +                        go.ident
+  +                        name != lockname
+  +                      go.selector_expr:
+  +                        go.ident:
+  +                          name == "sync"
+  +                        go.ident:
+  +                          name == "Mutex"
+  \ No newline at end of file
+  HEAD: 60a42df4b14ac9f6f3dbbb8fe6e228b9456086c0
+  Syncing your repo...
+  Running review flow...
+  Done! No issues found.
+#+END_SRC

@@ -18,7 +18,7 @@
   }
 #+END_SRC
 
-* This ~codelingo.yaml~ fails
+* This ~codelingo.yaml~ gives me strange results
 #+BEGIN_SRC yaml
   tenets:
     - name: well-formed-lists
@@ -36,7 +36,6 @@
           go.decls:
             go.gen_decl:
               go.type_spec:
-                @review comment
                 go.ident:
                   name as listName
                 go.struct_type:
@@ -55,6 +54,7 @@
                           name == "ListMeta"
                     go.field:
                       go.names:
+                        @review comment
                         go.ident:
                           name == "Items"
 #+END_SRC
