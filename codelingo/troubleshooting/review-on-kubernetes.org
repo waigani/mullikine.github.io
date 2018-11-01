@@ -4,8 +4,11 @@
 | well-formed-lists    | transport failure | transport is closing                    |
 | well-named-interface | lexicon error     | failed to start cmd "/server/bin/go_lex |
 | well-named-locks     | lexicon error     | failed to start cmd "/server/bin/go_lex |
+| well-named-lists     | lexicon error     |                                         |
 
 ** well-formed-lists
++ tenet source :: [[https://github.com/mullikine/codelingo/blob/k8mocktenets/tenets/codelingo/k8/well-formed-lists/codelingo.yaml][codelingo/codelingo.yaml at k8mocktenets  mullikine/codelingo  GitHub]]
+
 | outcome           | message           |                      |
 |-------------------+-------------------+----------------------|
 | well-formed-lists | transport failure | transport is closing |
@@ -81,6 +84,8 @@
   #+END_SRC
 
 ** well-named-interface
++ tenet source :: [[https://github.com/mullikine/codelingo/blob/k8mocktenets/tenets/codelingo/k8/well-named-interface/codelingo.yaml][codelingo/codelingo.yaml at k8mocktenets  mullikine/codelingo  GitHub]]
+
 | outcome       | message                                 |
 |---------------+-----------------------------------------|
 | lexicon error | failed to start cmd "/server/bin/go_lex |
@@ -122,6 +127,8 @@
 #+END_SRC
 
 ** well-named-locks
++ tenet source :: [[https://github.com/mullikine/codelingo/blob/k8mocktenets/tenets/codelingo/k8/well-named-locks/codelingo.yaml][codelingo/codelingo.yaml at k8mocktenets  mullikine/codelingo  GitHub]]
+
 | outcome       | message                                 |
 |---------------+-----------------------------------------|
 | lexicon error | failed to start cmd "/server/bin/go_lex |
@@ -179,7 +186,174 @@
      well-named-locks
  #+END_SRC
 
+** well-named-lists
++ tenet source :: [[https://github.com/mullikine/codelingo/blob/k8mocktenets/tenets/codelingo/k8/well-named-lists/codelingo.yaml][codelingo/codelingo.yaml at k8mocktenets  mullikine/codelingo  GitHub]]
+
+| outcome       | message                                          |
+|---------------+--------------------------------------------------|
+| lexicon error | failed to send result from flow server to client |
+
+*** tty output log
+#+BEGIN_SRC text
+  db3347cf73 master » time lingo -time run review --debug
+  Nov 02 11:45:15 2018-11-02T11:45:15.051+1300    DEBUG   review/cli.go:89        reviewCMD called
+  Nov 02 11:45:15 Syncing your repo...
+  Nov 02 11:54:23 Running review flow...
+  Nov 02 11:54:23 2018-11-02T11:54:23.384+1300    DEBUG   review/review.go:24     opening connection to flow server ...
+  Nov 02 11:54:23 2018-11-02T11:54:23.384+1300    DEBUG   service/service.go:76   getting tls cert from cache...
+  Nov 02 11:54:23 2018-11-02T11:54:23.388+1300    DEBUG   service/service.go:125  dialing grpc server...
+  Nov 02 11:54:23 2018-11-02T11:54:23.388+1300    DEBUG   service/service.go:109  ...got answer from grpc server.
+  Nov 02 11:54:23 2018-11-02T11:54:23.388+1300    DEBUG   review/review.go:29     ...connection to flow server opened
+  Nov 02 11:54:23 2018-11-02T11:54:23.390+1300    DEBUG   review/review.go:43     sending request to flow server...
+  Nov 02 11:54:24 2018-11-02T11:54:24.186+1300    DEBUG   review/review.go:48     ...request to flow server sent. Received reply channel.
+  Nov 02 11:55:23 2018-11-02T11:55:23.510+1300    DEBUG   flow/cli.go:237 Result error: rpc error: code = Unavailable desc = transport is closing
+  Nov 02 11:55:23 github.com/codelingo/rpc/flow/client/client.go:42:
+  Nov 02 11:55:23 2018-11-02T11:55:23.510+1300    DEBUG   flow/cli.go:206 rpc error: code = Unavailable desc = transport is closing
+  Nov 02 11:55:23 github.com/codelingo/rpc/flow/client/client.go:42:
+  Nov 02 11:55:23 $HOME/go/src/github.com/codelingo/codelingo/sdk/flow/cli.go:238:
+  Nov 02 11:55:23 Sorry, a server error occurred and the connection was broken. Please try again.
+  Nov 02 11:55:23 exit status 1
+  lingo -time run review --debug  11.10s user 4.47s system 2% cpu 10:08.96 total
+#+END_SRC
+
+*** slack errors
+#+BEGIN_SRC text
+  platform-errors APP [11:55 AM]
+  2 errors occurred in the last 30s
+  mullikine hit a uncaught error: rpc error: code = Canceled desc = context canceled
+  /home/dev/projects/src/github.com/codelingo/platform/flow/bots/processor/streamed.go:54: rpc error: code = Canceled desc = context canceled
+  /home/dev/projects/src/github.com/codelingo/platform/flow/util/util.go:11:
+  /home/dev/projects/src/github.com/codelingo/platform/flow/server/server.go:170:
+  /home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+  mullikine hit a userfacing error: failed to send result from flow server to client: Sorry, an error occurred while processing your request. Please try again.
+  Sorry, an error occurred while processing your request. Please try again.
+  /home/dev/projects/src/github.com/codelingo/platform/flow/server/server.go:175: failed to send result from flow server to client
+  /home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a userfacing error
+  2 errors occurred in the last 30s
+  mullikine hit a lexicon error: request failed after 12 attempts: request dump POST /register HTTP/1.1 Host: router.lexicon-engine.svc.cluster.local:80 Content-Type: application/json  {"lexicon":"codelingo-vcs-git-latest","setup":{"Steps":[]}}: Post http://router.lexicon-engine.svc.cluster.local:80/r…
+  Post http://router.lexicon-engine.svc.cluster.local:80/register: context canceled
+  /home/dev/projects/src/github.com/codelingo/platform/vendor/github.com/codelingo/lexicon/lib/lexicon/response.go:58: request failed after 12 attempts: request dump POST /register HTTP/1.1
+  Host: router.lexicon-engine.svc.cluster.local:80
+  Content-Type: application/json
+
+  {"lexicon":"codelingo-vcs-git-latest","setup":{"Steps":[]}}
+  /home/dev/projects/src/github.com/codelingo/platform/vendor/github.com/codelingo/lexicon/lib/lexicon/service.go:86: request failed after 12 attempts: request dump POST /register HTTP/1.1
+  Host: router.lexicon-engine.svc.cluster.local:80
+  Content-Type: application/json
+
+  {"lexicon":"codelingo-vcs-git-latest","setup":{"Steps":[]}}: Post http://router.lexicon-engine.svc.cluster.local:80/register: context canceled
+  /home/dev/projects/src/github.com/codelingo/platform/backend/lexicon/vcs/generic/generic.go:22:
+  /home/dev/projects/src/github.com/codelingo/platform/backend/lexicon/factory/factory.go:30:
+  /home/dev/projects/src/github.com/codelingo/platform/controller/ingestengine/querysubtrees/querysubtrees.go:236:
+  /home/dev/projects/src/github.com/codelingo/platform/controller/ingestengine/worker/lexicons/vcs/manifold.go:83:
+  /home/dev/projects/src/github.com/codelingo/platform/controller/ingestengine/ingestengine.go:217:
+  /home/dev/projects/src/github.com/codelingo/platform/controller/querysession/querysession.go:75:
+  /home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a lexicon error
+  mullikine hit a uncaught error: rpc error: code = Internal desc = transport: connection error: desc = "transport is closing"
+  rpc error: code = Internal desc = transport: connection error: desc = "transport is closing"
+  /home/dev/projects/src/github.com/codelingo/platform/frontend/service/internal.go:87:
+  /home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+#+END_SRC
+
+*** repo state
++ url :: https://github.com/kubernetes/kubernetes/blob/master
+
+ | command        | value                                    |
+ |----------------+------------------------------------------|
+ | cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+ | vc url         | https://github.com/kubernetes/kubernetes |
+ | vc get-hash    | db3347cf73edc6c349b119f4f2370972ce58b9d0 |
+ | vc branch      | master                                   |
+ | go version     | go version go1.11.1 linux/amd64          |
+
+**** recent commits
+ #+BEGIN_SRC text
+   commit db3347cf73edc6c349b119f4f2370972ce58b9d0
+   Author: Shane Mulligan <mullikine@gmail.com>
+   Date:   Fri Nov 2 11:45:10 2018 +1300
+  
+       added codelingoingore and codelingo.yaml
+ #+END_SRC
+**** diff with origin/master
+ #+BEGIN_SRC diff
+   diff --git a/.codelingoignore b/.codelingoignore
+   new file mode 100644
+   index 0000000000..a87f8bf33c
+   --- /dev/null
+   +++ b/.codelingoignore
+   @@ -0,0 +1,2 @@
+   +vendor/
+   +staging/
+   \ No newline at end of file
+   diff --git a/codelingo.yaml b/codelingo.yaml
+   new file mode 100644
+   index 0000000000..2e577ec55b
+   --- /dev/null
+   +++ b/codelingo.yaml
+   @@ -0,0 +1,41 @@
+   +funcs:
+   +  - name: missingListSuffix
+   +    type: asserter
+   +    body: |
+   +      function (str) {
+   +        return !str.match(/.*List$/);
+   +      }
+   +tenets:
+   +  - name: well-named-lists
+   +    flows:
+   +      codelingo/docs:
+   +        title: Well Named Lists
+   +        body: |
+   +          The name of a list kind must end with List.
+   +      codelingo/review:
+   +        comment: The kind `{{listName}}` is a collection of resources and its name must end in `List`.
+   +    query: |
+   +      import codelingo/ast/go
+   +      
+   +      go.file(depth = any):
+   +        go.decls:
+   +          go.gen_decl:
+   +            go.type_spec:
+   +              @review comment
+   +              go.ident:
+   +                name as listName
+   +                missingListSuffix(listName)
+   +              go.struct_type:
+   +                go.field_list:
+   +                  go.field:
+   +                    go.selector_expr:
+   +                      go.ident:
+   +                        name == "metav1"
+   +                      go.ident:
+   +                        name == "TypeMeta"
+   +                  go.field:
+   +                    go.selector_expr:
+   +                      go.ident:
+   +                        name == "metav1"
+   +                      go.ident:
+   +                        name == "ListMeta"
+   \ No newline at end of file
+ #+END_SRC
+**** origin/master
+ #+BEGIN_SRC diff
+   commit 7e102de72305ae568de3f2413bd468ea151589f3
+   Merge: 78b43cc631 84db64fbcc
+   Author: k8s-ci-robot <k8s-ci-robot@users.noreply.github.com>
+   Date:   Thu Nov 1 13:44:27 2018 -0700
+  
+       Merge pull request #70475 from pohly/csi-driver-deployment-logging
+      
+       e2e: less verbose item creation
+ #+END_SRC
+**** ~.codelingoignore~
+ #+BEGIN_SRC text
+   vendor/
+   staging/
+ #+END_SRC
+
 ** template
++ tenet source :: 
+
 | outcome      | message              |
 |--------------+----------------------|
 
