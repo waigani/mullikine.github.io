@@ -162,6 +162,23 @@
   rpc error: code = Unknown desc = failed to start cmd "/server/bin/go_lex --method=parse-project --trunk-key=20520261 --base-dir=/resource/ --ignored-files=vendor --changed-files=vendor/github.com/aws/aws-sdk-go/service/ecr/errors.go vendor/github.com/fatih/camelcase/LICENSE.md vendor/github.com/google/certificate-transparency-go/x509/root_darwin_armx.go test/e2e/apps/replica_set.go staging/src/k8s.io/client-go/kubernetes/typed/apps/v1beta2/fake/fake_statefulset.go vendor/github.com/coreos/etcd/etcdserver/etcdserverpb/raft_internal.pb.go pkg/kubectl/generate/versioned/secret_test.go vendor/github.com/heketi/heketi/COPYING-LGPLV3 vendor/github.com/opencontainers/runc/libcontainer/intelrdt/BUILD vendor/golang.org/x/crypto/ssh/server.go vendor/gopkg.in/inf.v0/LICENSE vendor/github.com/coreos/etcd/pkg/fileutil/lock_plan9.go vendor/github.com/docker/docker/client/image_history.go vendor/github.com/gophercloud/gophercloud/provider_client.go vendor/github.com/rancher/go-rancher/client/generated_compose_config.go vendor/github.com/vishvananda/netlink/Makefile vendor/github.com/coreos/etcd/pkg/ioutil/reader.go vendor/github.com/docker/docker/api/types/graph_driver_data.go vendor/github.com/imdario/mergo/.gitignore vendor/github.com/rancher/go-rancher/client/generated_nfs_config.go pkg/volume/util/device_util_linux.go vendor/github.com/Azure/azure-sdk-for-go/storage/authorization.go vendor/github.com/aws/aws-sdk-go/private/protocol/query/BUILD vendor/github.com/daviddengcn/go-colortext/BUILD vendor/gopkg.in/yaml.v2/go.mod vendor/github.com/Azure/azure-sdk-for-go/services/storage/mgmt/2018-07-01/storage/accounts.go vendor/github.com/rancher/go-rancher/client/generated_kubernetes_service.go pkg/client/listers/certificates/internalversion/BUILD pkg/kubectl/polymorphichelpers/logsforobject_test.go vendor/github.com/containerd/containerd/api/types/mount.pb.go vendor/k8s.io/gengo/namer/doc.go cmd/kubeadm/app/apis/kubeadm/v1alpha3/types.go vendor/github.com/prometheus/procfs/buddyinf…
 #+END_SRC
 
+*** https://github.com/kubernetes/kubernetes/blob/master
+ | command        | value                                    |
+ |----------------+------------------------------------------|
+ | cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+ | vc url         | https://github.com/kubernetes/kubernetes |
+ | vc get-hash    | 6dcc2ea2248148108693e5599cbe2e1cd4237cfc |
+ | vc branch      | master                                   |
+ | go version     | go version go1.11.1 linux/amd64          |
+
+ #+BEGIN_SRC text
+ commit 6dcc2ea2248148108693e5599cbe2e1cd4237cfc
+ Author: Shane Mulligan <mullikine@gmail.com>
+ Date:   Fri Nov 2 10:57:42 2018 +1300
+
+     well-named-locks
+ #+END_SRC
+
 ** template
 | outcome      | message              |
 |--------------+----------------------|
