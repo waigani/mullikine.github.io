@@ -351,16 +351,93 @@
    staging/
  #+END_SRC
 
-** template
-+ tenet source :: 
+** well-named-lists - vendor and staging deleted
++ tenet source :: [[https://github.com/mullikine/codelingo/blob/k8mocktenets/tenets/codelingo/k8/well-named-lists/codelingo.yaml][codelingo/codelingo.yaml at k8mocktenets  mullikine/codelingo  GitHub]]
 
-| outcome      | message              |
-|--------------+----------------------|
+| outcome       | message                                 |
+|---------------+-----------------------------------------|
+| lexicon error | Unavailable desc = transport is closing |
 
 *** tty output log
 #+BEGIN_SRC text
+  e405126f65 master » time lingo -time run review --debug
+  Nov 02 12:04:14 2018-11-02T12:04:14.041+1300    DEBUG   review/cli.go:89        reviewCMD called
+  Nov 02 12:04:14 Syncing your repo...
+  Nov 02 12:04:15 Running review flow...
+  Nov 02 12:04:15 2018-11-02T12:04:15.970+1300    DEBUG   review/review.go:24     opening connection to flow server ...
+  Nov 02 12:04:15 2018-11-02T12:04:15.970+1300    DEBUG   service/service.go:76   getting tls cert from cache...
+  Nov 02 12:04:15 2018-11-02T12:04:15.971+1300    DEBUG   service/service.go:125  dialing grpc server...
+  Nov 02 12:04:15 2018-11-02T12:04:15.972+1300    DEBUG   service/service.go:109  ...got answer from grpc server.
+  Nov 02 12:04:15 2018-11-02T12:04:15.972+1300    DEBUG   review/review.go:29     ...connection to flow server opened
+  Nov 02 12:04:15 2018-11-02T12:04:15.972+1300    DEBUG   review/review.go:43     sending request to flow server...
+  Nov 02 12:04:16 2018-11-02T12:04:16.754+1300    DEBUG   review/review.go:48     ...request to flow server sent. Received reply channel.
+  Nov 02 12:08:27 2018-11-02T12:08:27.250+1300    DEBUG   flow/cli.go:237 Result error: $HOME/go/src/github.com/codelingo/codelingo/flows/codelingo/review/review/review.go:68: Sorry, an error occurred while processing your request. Please try again.
+  Nov 02 12:08:27 2018-11-02T12:08:27.250+1300    DEBUG   flow/cli.go:206 $HOME/go/src/github.com/codelingo/codelingo/flows/codelingo/review/review/review.go:68: Sorry, an error occurred while processing your request. Please try again.
+  Nov 02 12:08:27 $HOME/go/src/github.com/codelingo/codelingo/sdk/flow/cli.go:238:
+  Nov 02 12:08:27 Sorry, an error occurred while processing your request. Please try again.
+  Nov 02 12:08:27 exit status 1
+  lingo -time run review --debug  0.20s user 0.13s system 0% cpu 4:13.61 total
 #+END_SRC
 
 *** slack errors
 #+BEGIN_SRC text
+  1 errors occurred in the last 30s
+  mullikine hit a lexicon error: 1 errors occurred, returning the first: rpc error: code = Unavailable desc = transport is closing
+  rpc error: code = Unavailable desc = transport is closing
+  /home/dev/projects/src/github.com/codelingo/platform/vendor/github.com/codelingo/lexicon/lib/lexicon/service.go:222: rpc error: code = Unavailable desc = transport is closing
+  /home/dev/projects/src/github.com/codelingo/platform/controller/ingestengine/worker/grow/grow.go:135: 1 errors occurred, returning the first
+  /home/dev/projects/src/github.com/codelingo/platform/controller/ingestengine/worker/harvest/manifold.go:71:
+  /home/dev/projects/src/github.com/codelingo/platform/controller/ingestengine/worker/harvest/manifold.go:75:
+  /home/dev/projects/src/github.com/codelingo/platform/controller/ingestengine/ingestengine.go:217:
+  /home/dev/projects/src/github.com/codelingo/platform/controller/querysession/querysession.go:75:
+  /home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a lexicon error
+  1 errors occurred in the last 30s
+  mullikine hit a uncaught error: Sorry, an error occurred while processing your request. Please try again.
+  /home/dev/projects/src/github.com/codelingo/platform/flow/bots/processor/streamed.go:54: Sorry, an error occurred while processing your request. Please try again.
+  /home/dev/projects/src/github.com/codelingo/platform/flow/util/util.go:11:
+  /home/dev/projects/src/github.com/codelingo/platform/flow/server/server.go:170:
+  /home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
 #+END_SRC
+
+*** repo state
+ + url :: https://github.com/kubernetes/kubernetes/blob/master
+
+ | command        | value                                    |
+ |----------------+------------------------------------------|
+ | cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+ | vc url         | https://github.com/kubernetes/kubernetes |
+ | vc get-hash    | e405126f65e267f2ee42ad41bee884673227c948 |
+ | vc branch      | master                                   |
+ | go version     | go version go1.11.1 linux/amd64          |
+
+**** recent commits
+ #+BEGIN_SRC git
+   commit e405126f65e267f2ee42ad41bee884673227c948
+   Author: Shane Mulligan <mullikine@gmail.com>
+  
+       removed vendor and staging
+  
+   commit db3347cf73edc6c349b119f4f2370972ce58b9d0
+   Author: Shane Mulligan <mullikine@gmail.com>
+  
+       added codelingoingore and codelingo.yaml
+  
+   commit 7e102de72305ae568de3f2413bd468ea151589f3
+   Merge: 78b43cc631 84db64fbcc
+   Author: k8s-ci-robot <k8s-ci-robot@users.noreply.github.com>
+  
+       Merge pull request #70475 from pohly/csi-driver-deployment-logging
+  
+   commit 84db64fbcc55be6721278fe377312e914f91d134
+   Author: Patrick Ohly <patrick.ohly@intel.com>
+  
+       e2e: less verbose item creation
+ #+END_SRC
+**** diff with origin/master
+ diff too long to display
+
+**** ~.codelingoignore~
+ #+BEGIN_SRC text
+   vendor/
+   staging/
+ #+END_SRC
