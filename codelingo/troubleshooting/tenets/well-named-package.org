@@ -3,14 +3,10 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
 
 * Problem
-~packageName~ has conflicting definitions here. 
-Not sure what is causing this.
+Getting server error.
 
-This faces the same issue as ~new-package-requires-test~.
-
-** slack error
 #+BEGIN_SRC text
-  mullikine hit a uncaught error: argument "packageName" has conflicting definitions
+  mullikine hit a uncaught error: variable dependency error: variable "packageName" undefined
 #+END_SRC
 
 ** ~example.go~
@@ -49,17 +45,18 @@ This faces the same issue as ~new-package-requires-test~.
 
 ** annotated ~tty-output.log~
 #+BEGIN_SRC text
-  Constructing new git repo in temp folder... :: Thu Nov  1 12:56:14 NZDT 2018
+  Constructing new git repo in temp folder... :: Thu Nov  1 13:25:13 NZDT 2018
   ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
   Running: $HOME/scripts/rs -nc
           -nogit
           -noswap
           $HOME/source/git/mullikine/codelingo/tenets/codelingo/k8/well-named-package/
-          /tmp/td_well-named-packageI6e9pO
-  /usr/bin/rsync  -a -rtlhx -pug -s  --inplace --append   --exclude .cache  --exclude .git/ --exclude .gitignore --exclude TODO  --exclude '*~' --exclude '.#*'  $HOME/source/git/mullikine/codelingo/tenets/codelingo/k8/well-named-package/ /tmp/td_well-named-packageI6e9pO
+          /tmp/td_well-named-packageibME53
+  /usr/bin/rsync  -a -rtlhx -pug -s  --inplace --append   --exclude .cache  --exclude .git/ --exclude .gitignore --exclude TODO  --exclude '*~' --exclude '.#*'  $HOME/source/git/mullikine/codelingo/tenets/codelingo/k8/well-named-package/ /tmp/td_well-named-packageibME53
   ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-  /tmp/td_well-named-packageI6e9pO
-  working_dir (initial): /tmp/td_well-named-packageI6e9pO
+  /tmp/td_well-named-packageibME53
+  working_dir (initial): /tmp/td_well-named-packageibME53
+  Checking for updates...
   Syncing your repo...
   Running review flow...
   Sorry, an error occurred while processing your request. Please try again.
@@ -67,9 +64,9 @@ This faces the same issue as ~new-package-requires-test~.
   exit status 1
   review finished
   Reformulate?
-  working_dir (loop): /tmp/td_well-named-packageI6e9pO
+  working_dir (loop): /tmp/td_well-named-packageibME53
   : B
-  working_dir: /tmp/td_well-named-packageI6e9pO
+  working_dir: /tmp/td_well-named-packageibME53
   Continue?
 #+END_SRC
 
@@ -78,9 +75,9 @@ This faces the same issue as ~new-package-requires-test~.
 |--------------------------------------------------------------------|
 | [[https://github.com/mullikine/tenets/blob/master/blog/well-named-package][tenets/blog/well-named-package at master  mullikine/tenets  GitHub]] |
 
-| org                                                                                                          |
-|--------------------------------------------------------------------------------------------------------------|
-| [[https://github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/tenets/well-named-package.org][github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/tenets/well-named-package.org]] |
+| org                                                                                         |
+|---------------------------------------------------------------------------------------------|
+| [[https://github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/tenets/well-named-package.org][mullikine.github.io/well-named-package.org at master  mullikine/mullikine.github.io  GitHub]] |
 
 ** https://github.com/codelingo/codelingo/blob/master
 | command        | value                                    |
