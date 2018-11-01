@@ -1,0 +1,1176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-11-02 Fri 12:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="shane" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org8baf166">1. Tenets tested on kubernetes</a>
+<ul>
+<li><a href="#org6f22e63">1.1. well-formed-lists</a>
+<ul>
+<li><a href="#orgb69f1b7">1.1.1. tty output log</a></li>
+<li><a href="#org666c32f">1.1.2. slack errors</a></li>
+<li><a href="#org56bf337">1.1.3. kubernetes repo status</a></li>
+</ul>
+</li>
+<li><a href="#org1efef86">1.2. well-named-interface</a>
+<ul>
+<li><a href="#orga78446a">1.2.1. tty output log</a></li>
+<li><a href="#orga5075c3">1.2.2. slack errors</a></li>
+</ul>
+</li>
+<li><a href="#orgfea872f">1.3. well-named-locks</a>
+<ul>
+<li><a href="#org7a948cc">1.3.1. tty output log</a></li>
+<li><a href="#org0577c73">1.3.2. slack errors</a></li>
+<li><a href="#org7e5a8fd">1.3.3. https://github.com/kubernetes/kubernetes/blob/master</a></li>
+</ul>
+</li>
+<li><a href="#org05d1e12">1.4. well-named-lists</a>
+<ul>
+<li><a href="#org1a14654">1.4.1. tty output log</a></li>
+<li><a href="#orgcf8f5ec">1.4.2. slack errors</a></li>
+<li><a href="#org4226620">1.4.3. repo state</a></li>
+</ul>
+</li>
+<li><a href="#orgdccad0b">1.5. well-named-lists - vendor and staging deleted</a>
+<ul>
+<li><a href="#org5e43b41">1.5.1. tty output log</a></li>
+<li><a href="#org602ae38">1.5.2. slack errors</a></li>
+<li><a href="#orgd60bf4e">1.5.3. repo state</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8baf166" class="outline-2">
+<h2 id="org8baf166"><span class="section-number-2">1</span> Tenets tested on kubernetes</h2>
+<div class="outline-text-2" id="text-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">tenet</th>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">outcome</th>
+<th scope="col" class="org-left">message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">well-formed-lists</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">transport failure</td>
+<td class="org-left">transport is closing</td>
+</tr>
+
+<tr>
+<td class="org-left">well-named-interface</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">lexicon error</td>
+<td class="org-left">failed to start cmd "/server/bin/go<sub>lex</sub></td>
+</tr>
+
+<tr>
+<td class="org-left">well-named-locks</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">lexicon error</td>
+<td class="org-left">failed to start cmd "/server/bin/go<sub>lex</sub></td>
+</tr>
+
+<tr>
+<td class="org-left">well-named-lists</td>
+<td class="org-left">using .codelingoignore</td>
+<td class="org-left">lexicon error</td>
+<td class="org-left">failed to send result from flow server to client</td>
+</tr>
+
+<tr>
+<td class="org-left">well-named-lists</td>
+<td class="org-left">vendor and staging removed</td>
+<td class="org-left">lexicon error</td>
+<td class="org-left">rpc error: code = Unavailable desc = transport is closing</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-org6f22e63" class="outline-3">
+<h3 id="org6f22e63"><span class="section-number-3">1.1</span> well-formed-lists</h3>
+<div class="outline-text-3" id="text-1-1">
+<dl class="org-dl">
+<dt>tenet source</dt><dd><a href="https://github.com/mullikine/codelingo/blob/k8mocktenets/tenets/codelingo/k8/well-formed-lists/codelingo.yaml">codelingo/codelingo.yaml at k8mocktenets  mullikine/codelingo  GitHub</a></dd>
+</dl>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">outcome</th>
+<th scope="col" class="org-left">message</th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">well-formed-lists</td>
+<td class="org-left">transport failure</td>
+<td class="org-left">transport is closing</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-orgb69f1b7" class="outline-4">
+<h4 id="orgb69f1b7"><span class="section-number-4">1.1.1</span> tty output log</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<div class="org-src-container">
+<pre class="src src-text">Inherited CWD: $HOME/source/git/kubernetes/kubernetes/
+/home/shane/var/smulliga/source/git/kubernetes/kubernetes
+ls
+7b23499c5f master 'codelingo/master' &#187; ls
+api          CHANGELOG-1.10.md  CHANGELOG-1.13.md  CHANGELOG-1.4.md  CHANGELOG-1.7.md  CHANGELOG.md  codelingo.yaml      docs    LICENSE   Makefile.generated_files  pkg        SECURITY_CONTACTS  test          vendor
+build        CHANGELOG-1.11.md  CHANGELOG-1.2.md   CHANGELOG-1.5.md  CHANGELOG-1.8.md  cluster       code-of-conduct.md  Godeps  logo      OWNERS                    plugin     staging            third_party   WORKSPACE
+BUILD.bazel  CHANGELOG-1.12.md  CHANGELOG-1.3.md   CHANGELOG-1.6.md  CHANGELOG-1.9.md  cmd           CONTRIBUTING.md     hack    Makefile  OWNERS_ALIASES            README.md  SUPPORT.md         translations
+7b23499c5f master 'codelingo/master' &#187; pwd
+/home/shane/var/smulliga/source/git/kubernetes/kubernetes
+7b23499c5f master 'codelingo/master' &#187; time lingo -time run review --debug
+bck-i-search: run_
+7b23499c5f master 'codelingo/master' &#187; time lingo -time run review --debug
+Nov 02 10:12:08 2018-11-02T10:12:08.594+1300    DEBUG   review/cli.go:89        reviewCMD called
+Nov 02 10:12:08 Syncing your repo...
+Nov 02 10:12:10 Running review flow...
+Nov 02 10:12:10 2018-11-02T10:12:10.408+1300    DEBUG   review/review.go:24     opening connection to flow server ...
+Nov 02 10:12:10 2018-11-02T10:12:10.408+1300    DEBUG   service/service.go:76   getting tls cert from cache...
+Nov 02 10:12:10 2018-11-02T10:12:10.409+1300    DEBUG   service/service.go:125  dialing grpc server...
+Nov 02 10:12:10 2018-11-02T10:12:10.409+1300    DEBUG   service/service.go:109  ...got answer from grpc server.
+Nov 02 10:12:10 2018-11-02T10:12:10.409+1300    DEBUG   review/review.go:29     ...connection to flow server opened
+Nov 02 10:12:10 2018-11-02T10:12:10.410+1300    DEBUG   review/review.go:43     sending request to flow server...
+Nov 02 10:12:11 2018-11-02T10:12:11.271+1300    DEBUG   review/review.go:48     ...request to flow server sent. Received reply channel.
+Nov 02 10:13:11 2018-11-02T10:13:11.332+1300    DEBUG   flow/cli.go:237 Result <span style="color: #ffff00; background-color: #cccc00;">error</span>: rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code = Unavailable desc = transport is closing
+Nov 02 10:13:11 github.com/codelingo/rpc/flow/client/client.go:42:
+Nov 02 10:13:11 2018-11-02T10:13:11.332+1300    DEBUG   flow/cli.go:206 rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code = Unavailable desc = transport is closing
+Nov 02 10:13:11 github.com/codelingo/rpc/flow/client/client.go:42:
+Nov 02 10:13:11 $HOME/go/src/github.com/codelingo/codelingo/sdk/flow/cli.go:238:
+Nov 02 10:13:11 Sorry, a server <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred and the connection was broken. Please try again.
+Nov 02 10:13:11 exit status 1
+lingo -time run review --debug  0.21s user 0.32s system 0% cpu 1:03.26 total
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org666c32f" class="outline-4">
+<h4 id="org666c32f"><span class="section-number-4">1.1.2</span> slack errors</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<div class="org-src-container">
+<pre class="src src-text">platform-errors APP [10:13 AM]
+2 errors occurred in the last 30s
+mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;">error</span>: rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code = Canceled desc = context canceled
+rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code = Canceled desc = context canceled
+/home/dev/projects/src/github.com/codelingo/platform/flow/bots/query/query.go:41:
+/home/dev/projects/src/github.com/codelingo/platform/flow/flows/clair/clair.go:94:
+/home/dev/projects/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;">error</span>
+mullikine hit a userfacing <span style="color: #ffff00; background-color: #cccc00;">error</span>: <span style="color: #ffff00; background-color: #cccc00;">failed</span> to send result from flow server to client: Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+/home/dev/projects/src/github.com/codelingo/platform/flow/server/server.go:175: <span style="color: #ffff00; background-color: #cccc00;">failed</span> to send result from flow server to client
+/home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a userfacing <span style="color: #ffff00; background-color: #cccc00;">error</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org56bf337" class="outline-4">
+<h4 id="org56bf337"><span class="section-number-4">1.1.3</span> kubernetes repo status</h4>
+<div class="outline-text-4" id="text-1-1-3">
+</div>
+<ol class="org-ol">
+<li><a id="org77d586c"></a><a href="https://github.com/kubernetes/kubernetes/blob/master">https://github.com/kubernetes/kubernetes/blob/master</a><br />
+<div class="outline-text-5" id="text-1-1-3-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">command</th>
+<th scope="col" class="org-left">value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">cat /etc/issue</td>
+<td class="org-left">Ubuntu 16.04.4 LTS \n \l</td>
+</tr>
+
+<tr>
+<td class="org-left">vc url</td>
+<td class="org-left"><a href="https://github.com/kubernetes/kubernetes">https://github.com/kubernetes/kubernetes</a></td>
+</tr>
+
+<tr>
+<td class="org-left">vc get-hash</td>
+<td class="org-left">7b23499c5f811df0ba22ab91d45ca2cee76d4316</td>
+</tr>
+
+<tr>
+<td class="org-left">vc branch</td>
+<td class="org-left">master</td>
+</tr>
+
+<tr>
+<td class="org-left">go version</td>
+<td class="org-left">go version go1.11.1 linux/amd64</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-text">commit 7b23499c5f811df0ba22ab91d45ca2cee76d4316
+Author: Shane Mulligan <a href="mailto:mullikine%40gmail.com">&lt;mullikine@gmail.com&gt;</a>
+Date:   Thu Nov 1 16:35:45 2018 +1300
+
+    codelingo.yaml
+
+    added codelingoignore
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org1efef86" class="outline-3">
+<h3 id="org1efef86"><span class="section-number-3">1.2</span> well-named-interface</h3>
+<div class="outline-text-3" id="text-1-2">
+<dl class="org-dl">
+<dt>tenet source</dt><dd><a href="https://github.com/mullikine/codelingo/blob/k8mocktenets/tenets/codelingo/k8/well-named-interface/codelingo.yaml">codelingo/codelingo.yaml at k8mocktenets  mullikine/codelingo  GitHub</a></dd>
+</dl>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">outcome</th>
+<th scope="col" class="org-left">message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">lexicon error</td>
+<td class="org-left">failed to start cmd "/server/bin/go<sub>lex</sub></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-orga78446a" class="outline-4">
+<h4 id="orga78446a"><span class="section-number-4">1.2.1</span> tty output log</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<div class="org-src-container">
+<pre class="src src-text">9552aaee0b master &#187; time lingo -time run review --debug
+Nov 02 10:37:51 2018-11-02T10:37:51.173+1300    DEBUG   review/cli.go:89        reviewCMD called
+Nov 02 10:37:51 Syncing your repo...
+Nov 02 10:37:53 Running review flow...
+Nov 02 10:37:53 2018-11-02T10:37:53.118+1300    DEBUG   review/review.go:24     opening connection to flow server ...
+Nov 02 10:37:53 2018-11-02T10:37:53.118+1300    DEBUG   service/service.go:76   getting tls cert from cache...
+Nov 02 10:37:53 2018-11-02T10:37:53.119+1300    DEBUG   service/service.go:125  dialing grpc server...
+Nov 02 10:37:53 2018-11-02T10:37:53.120+1300    DEBUG   service/service.go:109  ...got answer from grpc server.
+Nov 02 10:37:53 2018-11-02T10:37:53.120+1300    DEBUG   review/review.go:29     ...connection to flow server opened
+Nov 02 10:37:53 2018-11-02T10:37:53.120+1300    DEBUG   review/review.go:43     sending request to flow server...
+Nov 02 10:37:54 2018-11-02T10:37:54.007+1300    DEBUG   review/review.go:48     ...request to flow server sent. Received reply channel.
+Nov 02 10:38:28 2018-11-02T10:38:28.631+1300    DEBUG   flow/cli.go:237 Result <span style="color: #ffff00; background-color: #cccc00;">error</span>: $HOME/go/src/github.com/codelingo/codelingo/flows/codelingo/review/review/review.go:68: Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+Nov 02 10:38:28 2018-11-02T10:38:28.632+1300    DEBUG   flow/cli.go:206 $HOME/go/src/github.com/codelingo/codelingo/flows/codelingo/review/review/review.go:68: Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+Nov 02 10:38:28 $HOME/go/src/github.com/codelingo/codelingo/sdk/flow/cli.go:238:
+Nov 02 10:38:28 Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+Nov 02 10:38:28 exit status 1
+lingo -time run review --debug  0.25s user 0.26s system 1% cpu 37.847 total
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga5075c3" class="outline-4">
+<h4 id="orga5075c3"><span class="section-number-4">1.2.2</span> slack errors</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<div class="org-src-container">
+<pre class="src src-text">platform-errors APP [10:38 AM]
+1 errors occurred in the last 30s
+mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;">error</span>: Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+/home/dev/projects/src/github.com/codelingo/platform/flow/bots/processor/streamed.go:54: Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+/home/dev/projects/src/github.com/codelingo/platform/flow/util/util.go:11:
+/home/dev/projects/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;">error</span>
+
+1 errors occurred in the last 30s
+mullikine hit a lexicon <span style="color: #ffff00; background-color: #cccc00;">error</span>: 1 errors occurred, returning the first: rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code = Unknown desc = <span style="color: #ffff00; background-color: #cccc00;">failed</span> to start cmd "/server/bin/go_lex --method=parse-project --trunk-key=20520218 --base-dir=/resource/ --ignored-files=vendor --changed-files=vendor/github.com/sirupsen/logrus/formatter.go vend&#8230;
+rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code = Unknown desc = <span style="color: #ffff00; background-color: #cccc00;">failed</span> to start cmd "/server/bin/go_lex --method=parse-project --trunk-key=20520218 --base-dir=/resource/ --ignored-files=vendor --changed-files=vendor/github.com/sirupsen/logrus/formatter.go vendor/k8s.io/csi-api pkg/kubectl/polymorphichelpers/protocolsforobject_test.go pkg/registry/apps/daemonset/storage/BUILD staging/src/k8s.io/apiserver/Godeps/Godeps.json test/integration/auth/bootstraptoken_test.go vendor/github.com/docker/docker/client/container_diff.go staging/src/k8s.io/client-go/kubernetes/typed/batch/v2alpha1/fake/fake_cronjob.go vendor/github.com/cloudflare/cfssl/scan/crypto/tls/conn.go vendor/github.com/coreos/etcd/clientv3/compare.go cluster/addons/fluentd-elasticsearch/fluentd-es-configmap.yaml staging/src/k8s.io/cloud-provider/Godeps/Godeps.json vendor/github.com/Azure/azure-sdk-for-go/storage/directory.go vendor/github.com/NYTimes/gziphandler/LICENSE.md vendor/github.com/go-openapi/spec/BUILD vendor/github.com/gogo/protobuf/plugin/compare/comparetest.go vendor/github.com/onsi/ginkgo/internal/remote/output_interceptor_win.go vendor/golang.org/x/text/internal/utf8internal/BUILD vendor/github.com/gophercloud/gophercloud/openstack/networking/v2/extensions/layer3/floatingips/doc.go vendor/github.com/pkg/sftp/server_stubs.go vendor/github.com/rancher/go-rancher/client/generated_publish.go vendor/github.com/ugorji/go/codec/gen.generated.go pkg/apis/extensions/validation/validation.go staging/src/k8s.io/client-go/kubernetes/typed/rbac/v1alpha1/fake/fake_clusterrole.go vendor/github.com/Rican7/retry/backoff/backoff.go vendor/github.com/exponent-io/jsonpath/path.go vendor/github.com/rancher/go-rancher/client/generated_compose_project.go vendor/google.golang.org/grpc/stats/stats.go pkg/apis/apps/v1beta1/zz_generated.conversion.go vendor/github.com/gophercloud/gophercloud/results.go vendor/golang.org/x/tools/imports/imports.go vendor/gopkg.in/gcfg.v1/doc.go pkg/cloudprovider/providers/azure/azure_managedDiskController.go vendor/g&#8230;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfea872f" class="outline-3">
+<h3 id="orgfea872f"><span class="section-number-3">1.3</span> well-named-locks</h3>
+<div class="outline-text-3" id="text-1-3">
+<dl class="org-dl">
+<dt>tenet source</dt><dd><a href="https://github.com/mullikine/codelingo/blob/k8mocktenets/tenets/codelingo/k8/well-named-locks/codelingo.yaml">codelingo/codelingo.yaml at k8mocktenets  mullikine/codelingo  GitHub</a></dd>
+</dl>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">outcome</th>
+<th scope="col" class="org-left">message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">lexicon error</td>
+<td class="org-left">failed to start cmd "/server/bin/go<sub>lex</sub></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-org7a948cc" class="outline-4">
+<h4 id="org7a948cc"><span class="section-number-4">1.3.1</span> tty output log</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<div class="org-src-container">
+<pre class="src src-text">6dcc2ea224 master &#187; time lingo -time run review --debug
+Nov 02 10:57:45 Syncing your repo...
+Nov 02 10:57:45 2018-11-02T10:57:45.406+1300    DEBUG   review/cli.go:89        reviewCMD called
+Nov 02 10:57:48 Running review flow...
+Nov 02 10:57:48 2018-11-02T10:57:48.250+1300    DEBUG   review/review.go:24     opening connection to flow server ...
+Nov 02 10:57:48 2018-11-02T10:57:48.250+1300    DEBUG   service/service.go:76   getting tls cert from cache...
+Nov 02 10:57:48 2018-11-02T10:57:48.257+1300    DEBUG   service/service.go:125  dialing grpc server...
+Nov 02 10:57:48 2018-11-02T10:57:48.258+1300    DEBUG   service/service.go:109  ...got answer from grpc server.
+Nov 02 10:57:48 2018-11-02T10:57:48.258+1300    DEBUG   review/review.go:29     ...connection to flow server opened
+Nov 02 10:57:48 2018-11-02T10:57:48.258+1300    DEBUG   review/review.go:43     sending request to flow server...
+Nov 02 10:57:49 2018-11-02T10:57:49.177+1300    DEBUG   review/review.go:48     ...request to flow server sent. Received reply channel.
+Nov 02 10:58:21 2018-11-02T10:58:21.375+1300    DEBUG   flow/cli.go:237 Result <span style="color: #ffff00; background-color: #cccc00;">error</span>: $HOME/go/src/github.com/codelingo/codelingo/flows/codelingo/review/review/review.go:68: Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+Nov 02 10:58:21 2018-11-02T10:58:21.375+1300    DEBUG   flow/cli.go:206 $HOME/go/src/github.com/codelingo/codelingo/flows/codelingo/review/review/review.go:68: Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+Nov 02 10:58:21 $HOME/go/src/github.com/codelingo/codelingo/sdk/flow/cli.go:238:
+Nov 02 10:58:21 Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+Nov 02 10:58:21 exit status 1
+lingo -time run review --debug  0.37s user 0.41s system 2% cpu 36.711 total
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0577c73" class="outline-4">
+<h4 id="org0577c73"><span class="section-number-4">1.3.2</span> slack errors</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<div class="org-src-container">
+<pre class="src src-text">platform-errors APP [10:58 AM]
+1 errors occurred in the last 30s
+mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;">error</span>: Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+/home/dev/projects/src/github.com/codelingo/platform/flow/bots/processor/streamed.go:54: Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+/home/dev/projects/src/github.com/codelingo/platform/flow/util/util.go:11:
+/home/dev/projects/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;">error</span>
+
+1 errors occurred in the last 30s
+mullikine hit a lexicon <span style="color: #ffff00; background-color: #cccc00;">error</span>: 1 errors occurred, returning the first: rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code = Unknown desc = <span style="color: #ffff00; background-color: #cccc00;">failed</span> to start cmd "/server/bin/go_lex --method=parse-project --trunk-key=20520261 --base-dir=/resource/ --ignored-files=vendor --changed-files=vendor/github.com/aws/aws-sdk-go/service/ecr/errors&#8230;
+rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code = Unknown desc = <span style="color: #ffff00; background-color: #cccc00;">failed</span> to start cmd "/server/bin/go_lex --method=parse-project --trunk-key=20520261 --base-dir=/resource/ --ignored-files=vendor --changed-files=vendor/github.com/aws/aws-sdk-go/service/ecr/errors.go vendor/github.com/fatih/camelcase/LICENSE.md vendor/github.com/google/certificate-transparency-go/x509/root_darwin_armx.go test/e2e/apps/replica_set.go staging/src/k8s.io/client-go/kubernetes/typed/apps/v1beta2/fake/fake_statefulset.go vendor/github.com/coreos/etcd/etcdserver/etcdserverpb/raft_internal.pb.go pkg/kubectl/generate/versioned/secret_test.go vendor/github.com/heketi/heketi/COPYING-LGPLV3 vendor/github.com/opencontainers/runc/libcontainer/intelrdt/BUILD vendor/golang.org/x/crypto/ssh/server.go vendor/gopkg.in/inf.v0/LICENSE vendor/github.com/coreos/etcd/pkg/fileutil/lock_plan9.go vendor/github.com/docker/docker/client/image_history.go vendor/github.com/gophercloud/gophercloud/provider_client.go vendor/github.com/rancher/go-rancher/client/generated_compose_config.go vendor/github.com/vishvananda/netlink/Makefile vendor/github.com/coreos/etcd/pkg/ioutil/reader.go vendor/github.com/docker/docker/api/types/graph_driver_data.go vendor/github.com/imdario/mergo/.gitignore vendor/github.com/rancher/go-rancher/client/generated_nfs_config.go pkg/volume/util/device_util_linux.go vendor/github.com/Azure/azure-sdk-for-go/storage/authorization.go vendor/github.com/aws/aws-sdk-go/private/protocol/query/BUILD vendor/github.com/daviddengcn/go-colortext/BUILD vendor/gopkg.in/yaml.v2/go.mod vendor/github.com/Azure/azure-sdk-for-go/services/storage/mgmt/2018-07-01/storage/accounts.go vendor/github.com/rancher/go-rancher/client/generated_kubernetes_service.go pkg/client/listers/certificates/internalversion/BUILD pkg/kubectl/polymorphichelpers/logsforobject_test.go vendor/github.com/containerd/containerd/api/types/mount.pb.go vendor/k8s.io/gengo/namer/doc.go cmd/kubeadm/app/apis/kubeadm/v1alpha3/types.go vendor/github.com/prometheus/procfs/buddyinf&#8230;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7e5a8fd" class="outline-4">
+<h4 id="org7e5a8fd"><span class="section-number-4">1.3.3</span> <a href="https://github.com/kubernetes/kubernetes/blob/master">https://github.com/kubernetes/kubernetes/blob/master</a></h4>
+<div class="outline-text-4" id="text-1-3-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">command</th>
+<th scope="col" class="org-left">value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">cat /etc/issue</td>
+<td class="org-left">Ubuntu 16.04.4 LTS \n \l</td>
+</tr>
+
+<tr>
+<td class="org-left">vc url</td>
+<td class="org-left"><a href="https://github.com/kubernetes/kubernetes">https://github.com/kubernetes/kubernetes</a></td>
+</tr>
+
+<tr>
+<td class="org-left">vc get-hash</td>
+<td class="org-left">6dcc2ea2248148108693e5599cbe2e1cd4237cfc</td>
+</tr>
+
+<tr>
+<td class="org-left">vc branch</td>
+<td class="org-left">master</td>
+</tr>
+
+<tr>
+<td class="org-left">go version</td>
+<td class="org-left">go version go1.11.1 linux/amd64</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-text">commit 6dcc2ea2248148108693e5599cbe2e1cd4237cfc
+Author: Shane Mulligan <a href="mailto:mullikine%40gmail.com">&lt;mullikine@gmail.com&gt;</a>
+Date:   Fri Nov 2 10:57:42 2018 +1300
+
+    well-named-locks
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org05d1e12" class="outline-3">
+<h3 id="org05d1e12"><span class="section-number-3">1.4</span> well-named-lists</h3>
+<div class="outline-text-3" id="text-1-4">
+<dl class="org-dl">
+<dt>tenet source</dt><dd><a href="https://github.com/mullikine/codelingo/blob/k8mocktenets/tenets/codelingo/k8/well-named-lists/codelingo.yaml">codelingo/codelingo.yaml at k8mocktenets  mullikine/codelingo  GitHub</a></dd>
+</dl>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">outcome</th>
+<th scope="col" class="org-left">message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">lexicon error</td>
+<td class="org-left">failed to send result from flow server to client</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-org1a14654" class="outline-4">
+<h4 id="org1a14654"><span class="section-number-4">1.4.1</span> tty output log</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<div class="org-src-container">
+<pre class="src src-text">db3347cf73 master &#187; time lingo -time run review --debug
+Nov 02 11:45:15 2018-11-02T11:45:15.051+1300    DEBUG   review/cli.go:89        reviewCMD called
+Nov 02 11:45:15 Syncing your repo...
+Nov 02 11:54:23 Running review flow...
+Nov 02 11:54:23 2018-11-02T11:54:23.384+1300    DEBUG   review/review.go:24     opening connection to flow server ...
+Nov 02 11:54:23 2018-11-02T11:54:23.384+1300    DEBUG   service/service.go:76   getting tls cert from cache...
+Nov 02 11:54:23 2018-11-02T11:54:23.388+1300    DEBUG   service/service.go:125  dialing grpc server...
+Nov 02 11:54:23 2018-11-02T11:54:23.388+1300    DEBUG   service/service.go:109  ...got answer from grpc server.
+Nov 02 11:54:23 2018-11-02T11:54:23.388+1300    DEBUG   review/review.go:29     ...connection to flow server opened
+Nov 02 11:54:23 2018-11-02T11:54:23.390+1300    DEBUG   review/review.go:43     sending request to flow server...
+Nov 02 11:54:24 2018-11-02T11:54:24.186+1300    DEBUG   review/review.go:48     ...request to flow server sent. Received reply channel.
+Nov 02 11:55:23 2018-11-02T11:55:23.510+1300    DEBUG   flow/cli.go:237 Result <span style="color: #ffff00; background-color: #cccc00;">error</span>: rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code = Unavailable desc = transport is closing
+Nov 02 11:55:23 github.com/codelingo/rpc/flow/client/client.go:42:
+Nov 02 11:55:23 2018-11-02T11:55:23.510+1300    DEBUG   flow/cli.go:206 rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code = Unavailable desc = transport is closing
+Nov 02 11:55:23 github.com/codelingo/rpc/flow/client/client.go:42:
+Nov 02 11:55:23 $HOME/go/src/github.com/codelingo/codelingo/sdk/flow/cli.go:238:
+Nov 02 11:55:23 Sorry, a server <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred and the connection was broken. Please try again.
+Nov 02 11:55:23 exit status 1
+lingo -time run review --debug  11.10s user 4.47s system 2% cpu 10:08.96 total
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcf8f5ec" class="outline-4">
+<h4 id="orgcf8f5ec"><span class="section-number-4">1.4.2</span> slack errors</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<div class="org-src-container">
+<pre class="src src-text">platform-errors APP [11:55 AM]
+2 errors occurred in the last 30s
+mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;">error</span>: rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code = Canceled desc = context canceled
+/home/dev/projects/src/github.com/codelingo/platform/flow/bots/processor/streamed.go:54: rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code = Canceled desc = context canceled
+/home/dev/projects/src/github.com/codelingo/platform/flow/util/util.go:11:
+/home/dev/projects/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;">error</span>
+mullikine hit a userfacing <span style="color: #ffff00; background-color: #cccc00;">error</span>: <span style="color: #ffff00; background-color: #cccc00;">failed</span> to send result from flow server to client: Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+/home/dev/projects/src/github.com/codelingo/platform/flow/server/server.go:175: <span style="color: #ffff00; background-color: #cccc00;">failed</span> to send result from flow server to client
+/home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a userfacing <span style="color: #ffff00; background-color: #cccc00;">error</span>
+2 errors occurred in the last 30s
+mullikine hit a lexicon <span style="color: #ffff00; background-color: #cccc00;">error</span>: request <span style="color: #ffff00; background-color: #cccc00;">failed</span> after 12 attempts: request dump POST /register HTTP/1.1 Host: router.lexicon-engine.svc.cluster.local:80 Content-Type: application/json  {"lexicon":"codelingo-vcs-git-latest","setup":{"Steps":[]}}: Post http://router.lexicon-engine.svc.cluster.local:80/r&#8230;
+Post http://router.lexicon-engine.svc.cluster.local:80/register: context canceled
+/home/dev/projects/src/github.com/codelingo/platform/vendor/github.com/codelingo/lexicon/lib/lexicon/response.go:58: request <span style="color: #ffff00; background-color: #cccc00;">failed</span> after 12 attempts: request dump POST /register HTTP/1.1
+Host: router.lexicon-engine.svc.cluster.local:80
+Content-Type: application/json
+
+{"lexicon":"codelingo-vcs-git-latest","setup":{"Steps":[]}}
+/home/dev/projects/src/github.com/codelingo/platform/vendor/github.com/codelingo/lexicon/lib/lexicon/service.go:86: request <span style="color: #ffff00; background-color: #cccc00;">failed</span> after 12 attempts: request dump POST /register HTTP/1.1
+Host: router.lexicon-engine.svc.cluster.local:80
+Content-Type: application/json
+
+{"lexicon":"codelingo-vcs-git-latest","setup":{"Steps":[]}}: Post http://router.lexicon-engine.svc.cluster.local:80/register: context canceled
+/home/dev/projects/src/github.com/codelingo/platform/backend/lexicon/vcs/generic/generic.go:22:
+/home/dev/projects/src/github.com/codelingo/platform/backend/lexicon/factory/factory.go:30:
+/home/dev/projects/src/github.com/codelingo/platform/controller/ingestengine/querysubtrees/querysubtrees.go:236:
+/home/dev/projects/src/github.com/codelingo/platform/controller/ingestengine/worker/lexicons/vcs/manifold.go:83:
+/home/dev/projects/src/github.com/codelingo/platform/controller/ingestengine/ingestengine.go:217:
+/home/dev/projects/src/github.com/codelingo/platform/controller/querysession/querysession.go:75:
+/home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a lexicon <span style="color: #ffff00; background-color: #cccc00;">error</span>
+mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;">error</span>: rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code = Internal desc = transport: connection <span style="color: #ffff00; background-color: #cccc00;">error</span>: desc = "transport is closing"
+rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code = Internal desc = transport: connection <span style="color: #ffff00; background-color: #cccc00;">error</span>: desc = "transport is closing"
+/home/dev/projects/src/github.com/codelingo/platform/frontend/service/internal.go:87:
+/home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;">error</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4226620" class="outline-4">
+<h4 id="org4226620"><span class="section-number-4">1.4.3</span> repo state</h4>
+<div class="outline-text-4" id="text-1-4-3">
+<dl class="org-dl">
+<dt>url</dt><dd><p>
+<a href="https://github.com/kubernetes/kubernetes/blob/master">https://github.com/kubernetes/kubernetes/blob/master</a>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">command</th>
+<th scope="col" class="org-left">value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">cat /etc/issue</td>
+<td class="org-left">Ubuntu 16.04.4 LTS \n \l</td>
+</tr>
+
+<tr>
+<td class="org-left">vc url</td>
+<td class="org-left"><a href="https://github.com/kubernetes/kubernetes">https://github.com/kubernetes/kubernetes</a></td>
+</tr>
+
+<tr>
+<td class="org-left">vc get-hash</td>
+<td class="org-left">db3347cf73edc6c349b119f4f2370972ce58b9d0</td>
+</tr>
+
+<tr>
+<td class="org-left">vc branch</td>
+<td class="org-left">master</td>
+</tr>
+
+<tr>
+<td class="org-left">go version</td>
+<td class="org-left">go version go1.11.1 linux/amd64</td>
+</tr>
+</tbody>
+</table></dd>
+</dl>
+</div>
+
+<ol class="org-ol">
+<li><a id="orgb8a173a"></a>recent commits<br />
+<div class="outline-text-5" id="text-1-4-3-1">
+<div class="org-src-container">
+<pre class="src src-text">commit db3347cf73edc6c349b119f4f2370972ce58b9d0
+Author: Shane Mulligan <a href="mailto:mullikine%40gmail.com">&lt;mullikine@gmail.com&gt;</a>
+Date:   Fri Nov 2 11:45:10 2018 +1300
+
+    added codelingoingore and codelingo.yaml
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org88e24a8"></a>diff with origin/master<br />
+<div class="outline-text-5" id="text-1-4-3-2">
+<div class="org-src-container">
+<pre class="src src-diff"><span style="color: #6c6c6c;">diff --git a/.codelingoignore b/.codelingoignore</span>
+<span style="color: #6c6c6c;">new file mode 100644</span>
+<span style="color: #6c6c6c;">index 0000000000..a87f8bf33c</span>
+<span style="color: #005f87; background-color: #afd7ff;">--- </span><span style="color: #303030; background-color: #afd7ff; font-weight: bold;">/dev/null</span>
+<span style="color: #005f87; background-color: #afd7ff;">+++ </span><span style="color: #303030; background-color: #afd7ff; font-weight: bold;">b/.codelingoignore</span>
+<span style="color: #afd7ff; background-color: #4e4e4e; font-weight: bold;">@@ -0,0 +1,2 @@</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">vendor/</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">staging/</span>
+<span style="color: #6c6c6c;">\ No newline at end of file</span>
+<span style="color: #6c6c6c;">diff --git a/codelingo.yaml b/codelingo.yaml</span>
+<span style="color: #6c6c6c;">new file mode 100644</span>
+<span style="color: #6c6c6c;">index 0000000000..2e577ec55b</span>
+<span style="color: #005f87; background-color: #afd7ff;">--- </span><span style="color: #303030; background-color: #afd7ff; font-weight: bold;">/dev/null</span>
+<span style="color: #005f87; background-color: #afd7ff;">+++ </span><span style="color: #303030; background-color: #afd7ff; font-weight: bold;">b/codelingo.yaml</span>
+<span style="color: #afd7ff; background-color: #4e4e4e; font-weight: bold;">@@ -0,0 +1,41 @@</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">funcs:</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">  - name: missingListSuffix</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">    type: asserter</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">    body: |</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">      function (str) {</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">        return !str.match(/.*List$/);</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">      }</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">tenets:</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">  - name: well-named-lists</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">    flows:</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">      codelingo/docs:</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">        title: Well Named Lists</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">        body: |</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">          The name of a list kind must end with List.</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">      codelingo/review:</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">        comment: The kind `{{listName}}` is a collection of resources and its name must end in `List`.</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">    query: |</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">      import codelingo/ast/go</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">      </span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">      go.file(depth = any):</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">        go.decls:</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">          go.gen_decl:</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">            go.type_spec:</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">              @review comment</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">              go.ident:</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">                name as listName</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">                missingListSuffix(listName)</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">              go.struct_type:</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">                go.field_list:</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">                  go.field:</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">                    go.selector_expr:</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">                      go.ident:</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">                        name == "metav1"</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">                      go.ident:</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">                        name == "TypeMeta"</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">                  go.field:</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">                    go.selector_expr:</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">                      go.ident:</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">                        name == "metav1"</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">                      go.ident:</span>
+<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">+</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;">                        name == "ListMeta"</span>
+\ No newline at end of file
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org76a85aa"></a>origin/master<br />
+<div class="outline-text-5" id="text-1-4-3-3">
+<div class="org-src-container">
+<pre class="src src-diff"><span style="color: #6c6c6c;">commit 7e102de72305ae568de3f2413bd468ea151589f3</span>
+<span style="color: #6c6c6c;">Merge: 78b43cc631 84db64fbcc</span>
+<span style="color: #6c6c6c;">Author: k8s-ci-robot <a href="mailto:k8s-ci-robot%40users.noreply.github.com">&lt;k8s-ci-robot@users.noreply.github.com&gt;</a></span>
+<span style="color: #6c6c6c;">Date:   Thu Nov 1 13:44:27 2018 -0700</span>
+
+<span style="color: #6c6c6c;">    Merge pull request #70475 from pohly/csi-driver-deployment-logging</span>
+
+    e2e: less verbose item creation
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org6e40ba5"></a><code>.codelingoignore</code><br />
+<div class="outline-text-5" id="text-1-4-3-4">
+<div class="org-src-container">
+<pre class="src src-text">vendor/
+staging/
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgdccad0b" class="outline-3">
+<h3 id="orgdccad0b"><span class="section-number-3">1.5</span> well-named-lists - vendor and staging deleted</h3>
+<div class="outline-text-3" id="text-1-5">
+<dl class="org-dl">
+<dt>tenet source</dt><dd><a href="https://github.com/mullikine/codelingo/blob/k8mocktenets/tenets/codelingo/k8/well-named-lists/codelingo.yaml">codelingo/codelingo.yaml at k8mocktenets  mullikine/codelingo  GitHub</a></dd>
+</dl>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">outcome</th>
+<th scope="col" class="org-left">message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">lexicon error</td>
+<td class="org-left">Unavailable desc = transport is closing</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-org5e43b41" class="outline-4">
+<h4 id="org5e43b41"><span class="section-number-4">1.5.1</span> tty output log</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<div class="org-src-container">
+<pre class="src src-text">e405126f65 master &#187; time lingo -time run review --debug
+Nov 02 12:04:14 2018-11-02T12:04:14.041+1300    DEBUG   review/cli.go:89        reviewCMD called
+Nov 02 12:04:14 Syncing your repo...
+Nov 02 12:04:15 Running review flow...
+Nov 02 12:04:15 2018-11-02T12:04:15.970+1300    DEBUG   review/review.go:24     opening connection to flow server ...
+Nov 02 12:04:15 2018-11-02T12:04:15.970+1300    DEBUG   service/service.go:76   getting tls cert from cache...
+Nov 02 12:04:15 2018-11-02T12:04:15.971+1300    DEBUG   service/service.go:125  dialing grpc server...
+Nov 02 12:04:15 2018-11-02T12:04:15.972+1300    DEBUG   service/service.go:109  ...got answer from grpc server.
+Nov 02 12:04:15 2018-11-02T12:04:15.972+1300    DEBUG   review/review.go:29     ...connection to flow server opened
+Nov 02 12:04:15 2018-11-02T12:04:15.972+1300    DEBUG   review/review.go:43     sending request to flow server...
+Nov 02 12:04:16 2018-11-02T12:04:16.754+1300    DEBUG   review/review.go:48     ...request to flow server sent. Received reply channel.
+Nov 02 12:08:27 2018-11-02T12:08:27.250+1300    DEBUG   flow/cli.go:237 Result <span style="color: #ffff00; background-color: #cccc00;">error</span>: $HOME/go/src/github.com/codelingo/codelingo/flows/codelingo/review/review/review.go:68: Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+Nov 02 12:08:27 2018-11-02T12:08:27.250+1300    DEBUG   flow/cli.go:206 $HOME/go/src/github.com/codelingo/codelingo/flows/codelingo/review/review/review.go:68: Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+Nov 02 12:08:27 $HOME/go/src/github.com/codelingo/codelingo/sdk/flow/cli.go:238:
+Nov 02 12:08:27 Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+Nov 02 12:08:27 exit status 1
+lingo -time run review --debug  0.20s user 0.13s system 0% cpu 4:13.61 total
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org602ae38" class="outline-4">
+<h4 id="org602ae38"><span class="section-number-4">1.5.2</span> slack errors</h4>
+<div class="outline-text-4" id="text-1-5-2">
+<div class="org-src-container">
+<pre class="src src-text">1 errors occurred in the last 30s
+mullikine hit a lexicon <span style="color: #ffff00; background-color: #cccc00;">error</span>: 1 errors occurred, returning the first: rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code = Unavailable desc = transport is closing
+rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code = Unavailable desc = transport is closing
+/home/dev/projects/src/github.com/codelingo/platform/vendor/github.com/codelingo/lexicon/lib/lexicon/service.go:222: rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code = Unavailable desc = transport is closing
+/home/dev/projects/src/github.com/codelingo/platform/controller/ingestengine/worker/grow/grow.go:135: 1 errors occurred, returning the first
+/home/dev/projects/src/github.com/codelingo/platform/controller/ingestengine/worker/harvest/manifold.go:71:
+/home/dev/projects/src/github.com/codelingo/platform/controller/ingestengine/worker/harvest/manifold.go:75:
+/home/dev/projects/src/github.com/codelingo/platform/controller/ingestengine/ingestengine.go:217:
+/home/dev/projects/src/github.com/codelingo/platform/controller/querysession/querysession.go:75:
+/home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a lexicon <span style="color: #ffff00; background-color: #cccc00;">error</span>
+1 errors occurred in the last 30s
+mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;">error</span>: Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+/home/dev/projects/src/github.com/codelingo/platform/flow/bots/processor/streamed.go:54: Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+/home/dev/projects/src/github.com/codelingo/platform/flow/util/util.go:11:
+/home/dev/projects/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;">error</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd60bf4e" class="outline-4">
+<h4 id="orgd60bf4e"><span class="section-number-4">1.5.3</span> repo state</h4>
+<div class="outline-text-4" id="text-1-5-3">
+<dl class="org-dl">
+<dt>url</dt><dd><a href="https://github.com/kubernetes/kubernetes/blob/master">https://github.com/kubernetes/kubernetes/blob/master</a></dd>
+</dl>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">command</th>
+<th scope="col" class="org-left">value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">cat /etc/issue</td>
+<td class="org-left">Ubuntu 16.04.4 LTS \n \l</td>
+</tr>
+
+<tr>
+<td class="org-left">vc url</td>
+<td class="org-left"><a href="https://github.com/kubernetes/kubernetes">https://github.com/kubernetes/kubernetes</a></td>
+</tr>
+
+<tr>
+<td class="org-left">vc get-hash</td>
+<td class="org-left">e405126f65e267f2ee42ad41bee884673227c948</td>
+</tr>
+
+<tr>
+<td class="org-left">vc branch</td>
+<td class="org-left">master</td>
+</tr>
+
+<tr>
+<td class="org-left">go version</td>
+<td class="org-left">go version go1.11.1 linux/amd64</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<ol class="org-ol">
+<li><a id="orgce80cbf"></a>recent commits<br />
+<div class="outline-text-5" id="text-1-5-3-1">
+<div class="org-src-container">
+<pre class="src src-git">commit e405126f65e267f2ee42ad41bee884673227c948
+Author: Shane Mulligan &lt;mullikine@gmail.com&gt;
+
+    removed vendor and staging
+
+commit db3347cf73edc6c349b119f4f2370972ce58b9d0
+Author: Shane Mulligan &lt;mullikine@gmail.com&gt;
+
+    added codelingoingore and codelingo.yaml
+
+commit 7e102de72305ae568de3f2413bd468ea151589f3
+Merge: 78b43cc631 84db64fbcc
+Author: k8s-ci-robot &lt;k8s-ci-robot@users.noreply.github.com&gt;
+
+    Merge pull request #70475 from pohly/csi-driver-deployment-logging
+
+commit 84db64fbcc55be6721278fe377312e914f91d134
+Author: Patrick Ohly &lt;patrick.ohly@intel.com&gt;
+
+    e2e: less verbose item creation
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org8c3515e"></a>diff with origin/master<br />
+<div class="outline-text-5" id="text-1-5-3-2">
+<p>
+diff too long to display
+</p>
+</div>
+</li>
+
+<li><a id="org9657a84"></a><code>.codelingoignore</code><br />
+<div class="outline-text-5" id="text-1-5-3-3">
+<div class="org-src-container">
+<pre class="src src-text">vendor/
+staging/
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: shane</p>
+<p class="date">Created: 2018-11-02 Fri 12:30</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
