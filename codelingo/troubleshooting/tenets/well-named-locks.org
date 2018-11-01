@@ -1,0 +1,200 @@
+#+TITLE: troubleshooting new tenet ~well-named-locks~
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
+
+* Problem
+
+~lockA sync.Mutex~ should be detected here as a bad lock name. Not sure how to write a query to match this.
+Might need to combine with an ~any_of:~.
+Not going to proceed until ~any_of:~ bug is fixed.
+
+** ~example.go~
+#+BEGIN_SRC go
+  // ./example.go
+  package main
+  
+  import "fmt"
+  
+  type anyStruct struct {
+      lock sync.Mutex
+  }
+  
+  type bStruct struct {
+      bLock sync.Mutex
+  }
+  
+  type MockAddresses struct {
+      lockA sync.Mutex
+      bLock sync.Mutex
+      lockC sync.Mutex
+  }
+  
+  type AllGoodLocks struct {
+      stateLock sync.Mutex
+      stateBLock sync.Mutex
+      anotherLock sync.Mutex
+  }
+  
+  type BadLocks struct {
+      lock sync.Mutex
+      badlock sync.Mutex
+      badlockC sync.Mutex
+  }
+  
+#+END_SRC
+
+** This ~codelingo.yaml~ fails
+#+BEGIN_SRC yaml
+  funcs:
+    - name: isInvalidLockName
+      type: asserter
+      body: |
+        function (a) {
+          return a.match(/^[a-z]+([A-Z][a-z]*)*Lock$/) === null
+        }
+  tenets:
+    - name: well-named-locks
+      flows:
+        codelingo/docs:
+          title: Well Named Locks
+          body: |
+            Locks should be called `lock` and should never be embedded 
+            (always `lock sync.Mutex`). When multiple locks are present, 
+            give each lock a distinct name following Go conventions 
+            - `stateLock`, `mapLock` etc.
+        codelingo/review:
+          comment: Mutex {{lockname}} is named unconventionally. When multiple locks are present, give each lock a distinct name following Go conventions - `stateLock`, `mapLock` etc.
+      query: |
+        import codelingo/ast/go
+        
+        go.file(depth = any):
+          go.decls:
+            go.gen_decl:
+              go.type_spec:
+                go.struct_type:
+                  go.field_list:
+                    go.field:
+                      go.names:
+                        go.ident
+                      go.selector_expr:
+                        go.ident:
+                          name == "sync"
+                        go.ident:
+                          name == "Mutex"
+                    go.field:
+                      go.names:
+                        @review comment
+                        go.ident:
+                          name as lockname
+                          isInvalidLockName(lockname)
+                      go.selector_expr:
+                        go.ident:
+                          name == "sync"
+                        go.ident:
+                          name == "Mutex"
+                    
+#+END_SRC
+
+** annotated ~tty-output.log~
+#+BEGIN_SRC text
+  Constructing new git repo in temp folder... :: Thu Nov  1 14:54:42 NZDT 2018
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  Running: $HOME/scripts/rs -nc
+          -nogit
+          -noswap
+          $HOME/source/git/Daanikus/tenets/k8s/well-named-locks/
+          /tmp/td_well-named-lockszalIwI
+  /usr/bin/rsync  -a -rtlhx -pug -s  --inplace --append   --exclude .cache  --exclude .git/ --exclude .gitignore --exclude TODO  --exclude '*~' --exclude '.#*'  $HOME/source/git/Daanikus/tenets/k8s/well-named-locks/ /tmp/td_well-named-lockszalIwI
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  /tmp/td_well-named-lockszalIwI
+  working_dir (initial): /tmp/td_well-named-lockszalIwI
+  Syncing your repo...
+  Running review flow...
+  example.go:27:12
+      Mutex badlock is named unconventionally. When multiple locks are present, give each lock a distinct name following Go conventions - `stateLock`, `mapLock` etc.
+      ...
+      type BadLocks struct {
+          lock sync.Mutex
+    +     badlock sync.Mutex
+          badlockC sync.Mutex
+      }
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:28:13
+      Mutex badlockC is named unconventionally. When multiple locks are present, give each lock a distinct name following Go conventions - `stateLock`, `mapLock` etc.
+      ...
+          lock sync.Mutex
+          badlock sync.Mutex
+    +     badlockC sync.Mutex
+      }
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:26:9
+      Mutex lock is named unconventionally. When multiple locks are present, give each lock a distinct name following Go conventions - `stateLock`, `mapLock` etc.
+      ...
+      type BadLocks struct {
+    +     lock sync.Mutex
+          badlock sync.Mutex
+          badlockC sync.Mutex
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:16:10
+      Mutex lockC is named unconventionally. When multiple locks are present, give each lock a distinct name following Go conventions - `stateLock`, `mapLock` etc.
+      ...
+          lockA sync.Mutex
+          bLock sync.Mutex
+    +     lockC sync.Mutex
+      }
+      ...
+  [o]pen [k]eep [d]iscard : k
+  Done! 4 issues found.
+  : B
+  working_dir: /tmp/td_well-named-lockszalIwI
+  Continue?
+#+END_SRC
+
+** repository info
+| tenet source                                                     |
+|------------------------------------------------------------------|
+| [[https://github.com/mullikine/tenets/blob/master/blog/well-named-locks][tenets/blog/well-named-locks at master  mullikine/tenets  GitHub]] |
+
+| org                                                                                                        |
+|------------------------------------------------------------------------------------------------------------|
+| [[https://github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/tenets/well-named-locks.org][github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/tenets/well-named-locks.org]] |
+
+** https://github.com/codelingo/codelingo/blob/master
+|command|value|
+|-
+|cat /etc/issue|Ubuntu 16.04.4 LTS \n \l
+|vc url|https://github.com/codelingo/codelingo
+|vc get-hash|eae3300ad7c32994725f90344f7cc25edfee6eca
+|vc branch|master
+|go version|go version go1.11.1 linux/amd64
+
+#+BEGIN_SRC text
+commit eae3300ad7c32994725f90344f7cc25edfee6eca
+Author: Jesse Meek <waigani@gmail.com>
+Date:   Sat Oct 27 10:37:36 2018 +1300
+
+    Disable test Tenet until mem spike is fixed.
+#+END_SRC
+
+** git@github.com:mullikine/lingo.git/blob/master
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | git@github.com:mullikine/lingo.git       |
+| vc get-hash    | fa9b4edd1dcad69f83892282d69877ab51f4e89c |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
+
+#+BEGIN_SRC text
+commit fa9b4edd1dcad69f83892282d69877ab51f4e89c
+Merge: f34abad d1910ac
+Author: BlakeMScurr <blake@codelingo.io>
+Date:   Wed Oct 17 17:45:51 2018 +1300
+
+    Merge pull request #424 from BlakeMScurr/docs-update
+    
+    Update doc fields.
+#+END_SRC
