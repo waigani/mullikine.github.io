@@ -1,0 +1,73 @@
+* At the moment, just hitting this like everyone else
+
+But on the failure noted in the card, it was about 20 min into review.
+
+#+BEGIN_SRC text
+  mullikine hit a lexicon error: request failed after 12 attempts: request dump POST /register HTTP/1.1 Host: router.lexicon-engine.svc.cluster.local:80 Content-Type: application/json  {"lexicon":"codelingo-vcs-git-latest","setup":{"Steps":[]}}: Post http://router.lexicon-engine.svc.cluster.local:80/r…
+#+END_SRC
+
+#+BEGIN_SRC text
+  8caf2bd115 k8-test 'codelingo/k8-test' » lingo run review --debug
+  working_dir (initial):
+  2018-11-01T15:34:30.876+1300    DEBUG   review/cli.go:89        reviewCMD called
+  Syncing your repo...
+  Running review flow...
+  2018-11-01T15:34:32.291+1300    DEBUG   review/review.go:24     opening connection to flow server ...
+  2018-11-01T15:34:32.291+1300    DEBUG   service/service.go:76   getting tls cert from cache...
+  2018-11-01T15:34:32.292+1300    DEBUG   service/service.go:125  dialing grpc server...
+  2018-11-01T15:34:32.292+1300    DEBUG   service/service.go:109  ...got answer from grpc server.
+  2018-11-01T15:34:32.292+1300    DEBUG   review/review.go:29     ...connection to flow server opened
+  2018-11-01T15:34:32.292+1300    DEBUG   review/review.go:43     sending request to flow server...
+  2018-11-01T15:34:33.069+1300    DEBUG   review/review.go:48     ...request to flow server sent. Received reply channel.
+  2018-11-01T15:36:01.944+1300    DEBUG   flow/cli.go:237 Result error: /home/shane/go/src/github.com/codelingo/codelingo/flows/codelingo/review/review/review.go:68: Sorry, an error occurred while processing your request. Please try again.
+  2018-11-01T15:36:01.944+1300    DEBUG   flow/cli.go:206 /home/shane/go/src/github.com/codelingo/codelingo/flows/codelingo/review/review/review.go:68: Sorry, an error occurred while processing your request. Please try again.
+  /home/shane/go/src/github.com/codelingo/codelingo/sdk/flow/cli.go:238:
+  Sorry, an error occurred while processing your request. Please try again.
+  exit status 1
+#+END_SRC
+
+#+BEGIN_SRC text
+  mullikine hit a lexicon error: request failed after 12 attempts: request dump POST /register HTTP/1.1 Host: router.lexicon-engine.svc.cluster.local:80 Content-Type: application/json  {"lexicon":"codelingo-vcs-git-latest","setup":{"Steps":[]}}: Post http://router.lexicon-engine.svc.cluster.local:80/r…
+  Post http://router.lexicon-engine.svc.cluster.local:80/register: context canceled
+  /home/dev/projects/src/github.com/codelingo/platform/vendor/github.com/codelingo/lexicon/lib/lexicon/response.go:58: request failed after 12 attempts: request dump POST /register HTTP/1.1
+  Host: router.lexicon-engine.svc.cluster.local:80
+  Content-Type: application/json
+
+  {"lexicon":"codelingo-vcs-git-latest","setup":{"Steps":[]}}
+  /home/dev/projects/src/github.com/codelingo/platform/vendor/github.com/codelingo/lexicon/lib/lexicon/service.go:86: request failed after 12 attempts: request dump POST /register HTTP/1.1
+  Host: router.lexicon-engine.svc.cluster.local:80
+  Content-Type: application/json
+
+  {"lexicon":"codelingo-vcs-git-latest","setup":{"Steps":[]}}: Post http://router.lexicon-engine.svc.cluster.local:80/register: context canceled
+  /home/dev/projects/src/github.com/codelingo/platform/backend/lexicon/vcs/generic/generic.go:22:
+  /home/dev/projects/src/github.com/codelingo/platform/backend/lexicon/factory/factory.go:30:
+  /home/dev/projects/src/github.com/codelingo/platform/controller/ingestengine/querysubtrees/querysubtrees.go:236:
+  /home/dev/projects/src/github.com/codelingo/platform/controller/ingestengine/worker/lexicons/vcs/manifold.go:83:
+  /home/dev/projects/src/github.com/codelingo/platform/controller/ingestengine/ingestengine.go:217:
+  /home/dev/projects/src/github.com/codelingo/platform/controller/querysession/querysession.go:75:
+  /home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a lexicon error
+  mullikine hit a uncaught error: rpc error: code = Internal desc = transport: connection error: desc = "transport is closing"
+  rpc error: code = Internal desc = transport: connection error: desc = "transport is closing"
+  /home/dev/projects/src/github.com/codelingo/platform/frontend/service/internal.go:87:
+  /home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+  mullikine hit a lexicon error: request failed after 12 attempts: request dump POST /register HTTP/1.1 Host: router.lexicon-engine.svc.cluster.local:80 Content-Type: application/json  {"lexicon":"codelingo-vcs-git-latest","setup":{"Steps":[]}}: Post http://router.lexicon-engine.svc.cluster.local:80/r…
+  Post http://router.lexicon-engine.svc.cluster.local:80/register: context canceled
+  /home/dev/projects/src/github.com/codelingo/platform/vendor/github.com/codelingo/lexicon/lib/lexicon/response.go:58: request failed after 12 attempts: request dump POST /register HTTP/1.1
+  Host: router.lexicon-engine.svc.cluster.local:80
+  Content-Type: application/json
+
+  {"lexicon":"codelingo-vcs-git-latest","setup":{"Steps":[]}}
+  /home/dev/projects/src/github.com/codelingo/platform/vendor/github.com/codelingo/lexicon/lib/lexicon/service.go:86: request failed after 12 attempts: request dump POST /register HTTP/1.1
+  Host: router.lexicon-engine.svc.cluster.local:80
+  Content-Type: application/json
+
+  {"lexicon":"codelingo-vcs-git-latest","setup":{"Steps":[]}}: Post http://router.lexicon-engine.svc.cluster.local:80/register: context canceled
+  /home/dev/projects/src/github.com/codelingo/platform/backend/lexicon/vcs/generic/generic.go:22:
+  /home/dev/projects/src/github.com/codelingo/platform/backend/lexicon/factory/factory.go:30:
+  /home/dev/projects/src/github.com/codelingo/platform/controller/ingestengine/querysubtrees/querysubtrees.go:236:
+  /home/dev/projects/src/github.com/codelingo/platform/controller/ingestengine/worker/lexicons/vcs/manifold.go:83:
+  /home/dev/projects/src/github.com/codelingo/platform/controller/ingestengine/ingestengine.go:217:
+  /home/dev/projects/src/github.com/codelingo/platform/controller/querysession/querysession.go:75:
+  /home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a lexicon error
+  [OK] CPU Usage by Node alert
+#+END_SRC
