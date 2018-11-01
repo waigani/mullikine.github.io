@@ -1,10 +1,11 @@
 * Tenets tested on kubernetes
-| tenet                | outcome           | message                                 |
-|----------------------+-------------------+-----------------------------------------|
-| well-formed-lists    | transport failure | transport is closing                    |
-| well-named-interface | lexicon error     | failed to start cmd "/server/bin/go_lex |
-| well-named-locks     | lexicon error     | failed to start cmd "/server/bin/go_lex |
-| well-named-lists     | lexicon error     |                                         |
+| tenet                |                            | outcome           | message                                                   |
+|----------------------+----------------------------+-------------------+-----------------------------------------------------------|
+| well-formed-lists    |                            | transport failure | transport is closing                                      |
+| well-named-interface |                            | lexicon error     | failed to start cmd "/server/bin/go_lex                   |
+| well-named-locks     |                            | lexicon error     | failed to start cmd "/server/bin/go_lex                   |
+| well-named-lists     | using .codelingoignore     | lexicon error     | failed to send result from flow server to client          |
+| well-named-lists     | vendor and staging removed | lexicon error     | rpc error: code = Unavailable desc = transport is closing |
 
 ** well-formed-lists
 + tenet source :: [[https://github.com/mullikine/codelingo/blob/k8mocktenets/tenets/codelingo/k8/well-formed-lists/codelingo.yaml][codelingo/codelingo.yaml at k8mocktenets  mullikine/codelingo  GitHub]]
