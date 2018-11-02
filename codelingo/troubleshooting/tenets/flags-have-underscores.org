@@ -3,7 +3,6 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
 
 * Problem
-Server error.
 Lexicon error. Transport closing.
 
 ** ~example.go~
@@ -120,13 +119,13 @@ Lexicon error. Transport closing.
 | [[https://github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/tenets/flags-have-underscores.org][github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/tenets/flags-have-underscores.org]] |
 
 ** https://github.com/codelingo/codelingo/blob/master
-|command|value|
-|-
-|cat /etc/issue|Ubuntu 16.04.4 LTS \n \l
-|vc url|https://github.com/codelingo/codelingo
-|vc get-hash|eae3300ad7c32994725f90344f7cc25edfee6eca
-|vc branch|master
-|go version|go version go1.11.1 linux/amd64
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | https://github.com/codelingo/codelingo   |
+| vc get-hash    | eae3300ad7c32994725f90344f7cc25edfee6eca |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
 
 #+BEGIN_SRC text
 commit eae3300ad7c32994725f90344f7cc25edfee6eca
