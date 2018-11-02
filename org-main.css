@@ -45,10 +45,12 @@ a
   -webkit-text-decoration-skip: objects;
 }
 
+/*
 a:active,a:hover
 {
   outline-width: 0;
 }
+*/
 
 abbr[title]
 {
@@ -1069,11 +1071,13 @@ a
   text-decoration: none;
 }
 
+/*
 a:hover
 {
   color: #035;
   border-bottom: 1px dotted;
 }
+*/
 
 figure
 {
