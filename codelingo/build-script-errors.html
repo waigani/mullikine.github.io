@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-11-02 Fri 21:36 -->
+<!-- 2018-11-02 Fri 21:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Troubleshooting build scripts</title>
@@ -236,77 +236,77 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org2be83ea">1. Plan</a>
+<li><a href="#org737dcd7">1. Plan</a>
 <ul>
-<li><a href="#orgc6c145e">1.1. Make k8 tenets</a></li>
-<li><a href="#orgdf51d40">1.2. Solving jx rewrite issues</a></li>
-<li><a href="#org4d5f917">1.3. Solving build script issues</a>
+<li><a href="#orgac75041">1.1. Make k8 tenets</a></li>
+<li><a href="#org1c237cb">1.2. Solving jx rewrite issues</a></li>
+<li><a href="#orgff0dd76">1.3. Solving build script issues</a>
 <ul>
-<li><a href="#orgea759f0">1.3.1. problem 1 : <code>run rewrite</code> and <code>go run ...rewrite</code> commands work differently</a></li>
-<li><a href="#org163ce98">1.3.2. problem 2 : binaries are not all compiling and they are at different versions</a></li>
+<li><a href="#org3ac8be6">1.3.1. problem 1 : <code>run rewrite</code> and <code>go run ...rewrite</code> commands work differently</a></li>
+<li><a href="#orgae6982b">1.3.2. problem 2 : binaries are not all compiling and they are at different versions</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org1085ea5">2. Tasks</a>
+<li><a href="#orgee7455e">2. Tasks</a>
 <ul>
-<li><a href="#org42fe986">2.1. Stabilize build scripts</a>
+<li><a href="#org95b2103">2.1. Stabilize build scripts</a>
 <ul>
-<li><a href="#org5ea81fd">2.1.1. Blockers</a></li>
+<li><a href="#orgf149221">2.1.1. Blockers</a></li>
 </ul>
 </li>
-<li><a href="#org0edae6f">2.2. Stabilize review</a></li>
+<li><a href="#org9845c08">2.2. Stabilize review</a></li>
 </ul>
 </li>
-<li><a href="#orge655e2d">3. Hypothesis</a>
+<li><a href="#org5a515c1">3. Hypothesis</a>
 <ul>
-<li><a href="#org06a3c0c">3.1. H1: My jx git repository is at fault &#x2013; or there is something about this repository that prevents it from being tested</a>
+<li><a href="#org2c99013">3.1. H1: My jx git repository is at fault &#x2013; or there is something about this repository that prevents it from being tested</a>
 <ul>
-<li><a href="#orgc2d528d">3.1.1. <span class="done DONE">DONE</span> Try rewrite on a different repository</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgdd40db8">4. <span class="todo TODO">TODO</span> Automate test log ingestion</a>
-<ul>
-<li><a href="#org4a38943">4.1. Extract facts from logs &#x2013; use regex or something.</a></li>
-<li><a href="#org380ea56">4.2. Build a table of executions</a></li>
-<li><a href="#orgc218524">4.3. Divide terminal history into <code>awk</code> records</a>
-<ul>
-<li><a href="#org285943a">4.3.1. Filter each record through a property collector &#x2013; another script that extracts facts for each test run.</a></li>
+<li><a href="#org17a6a74">3.1.1. <span class="done DONE">DONE</span> Try rewrite on a different repository</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org47eaf5c">5. <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-10-23 Tue&gt; </span></span> Stabilize my installation</a>
+<li><a href="#orgc85e226">4. <span class="todo TODO">TODO</span> Automate test log ingestion</a>
 <ul>
-<li><a href="#org66a6f6a">5.1. See why 64 bit build script for rewrite flow is not building</a></li>
-<li><a href="#org9ffd18d">5.2. See why 32 bit build script for review flow gives errors</a></li>
-<li><a href="#orgc2ae914">5.3. Ensure all flow builds are kept up-to-date</a></li>
-<li><a href="#org4938dfa">5.4. Building lingo should ensure that everything is kept up-to-date</a></li>
-<li><a href="#org5a00cfc">5.5. Investigate difference between running with <code>go run</code> and using <code>lingo run rewrite</code></a>
+<li><a href="#org058e3f2">4.1. Extract facts from logs &#x2013; use regex or something.</a></li>
+<li><a href="#orgdc45e6c">4.2. Build a table of executions</a></li>
+<li><a href="#org92b4d8f">4.3. Divide terminal history into <code>awk</code> records</a>
 <ul>
-<li><a href="#org4e34820">5.5.1. interpreter</a></li>
-<li><a href="#orgc09e9ef">5.5.2. compiled</a></li>
+<li><a href="#org58a54ef">4.3.1. Filter each record through a property collector &#x2013; another script that extracts facts for each test run.</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org358d6ec">6. Conclusions</a>
+<li><a href="#orgf243845">5. <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-10-23 Tue&gt; </span></span> Stabilize my installation</a>
 <ul>
-<li><a href="#orgd197b8c">6.1. H1 is probably true. jx repository is the only one that causes error.</a></li>
+<li><a href="#org1f76212">5.1. See why 64 bit build script for rewrite flow is not building</a></li>
+<li><a href="#orgb49ccae">5.2. See why 32 bit build script for review flow gives errors</a></li>
+<li><a href="#org81f1998">5.3. Ensure all flow builds are kept up-to-date</a></li>
+<li><a href="#org424baca">5.4. Building lingo should ensure that everything is kept up-to-date</a></li>
+<li><a href="#orgdb835a8">5.5. Investigate difference between running with <code>go run</code> and using <code>lingo run rewrite</code></a>
+<ul>
+<li><a href="#org1a081fc">5.5.1. interpreter</a></li>
+<li><a href="#orgfcaed4f">5.5.2. compiled</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgda69714">6. Conclusions</a>
+<ul>
+<li><a href="#orga71c7be">6.1. H1 is probably true. jx repository is the only one that causes error.</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org2be83ea" class="outline-2">
-<h2 id="org2be83ea"><span class="section-number-2">1</span> Plan</h2>
+<div id="outline-container-org737dcd7" class="outline-2">
+<h2 id="org737dcd7"><span class="section-number-2">1</span> Plan</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgc6c145e" class="outline-3">
-<h3 id="orgc6c145e"><span class="section-number-3">1.1</span> Make k8 tenets</h3>
+<div id="outline-container-orgac75041" class="outline-3">
+<h3 id="orgac75041"><span class="section-number-3">1.1</span> Make k8 tenets</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Once I'm sure my build scripts are working.
@@ -314,8 +314,8 @@ Once I'm sure my build scripts are working.
 </div>
 </div>
 
-<div id="outline-container-orgdf51d40" class="outline-3">
-<h3 id="orgdf51d40"><span class="section-number-3">1.2</span> Solving jx rewrite issues</h3>
+<div id="outline-container-org1c237cb" class="outline-3">
+<h3 id="org1c237cb"><span class="section-number-3">1.2</span> Solving jx rewrite issues</h3>
 <div class="outline-text-3" id="text-1-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -357,16 +357,16 @@ Once I'm sure my build scripts are working.
 </div>
 </div>
 
-<div id="outline-container-org4d5f917" class="outline-3">
-<h3 id="org4d5f917"><span class="section-number-3">1.3</span> Solving build script issues</h3>
+<div id="outline-container-orgff0dd76" class="outline-3">
+<h3 id="orgff0dd76"><span class="section-number-3">1.3</span> Solving build script issues</h3>
 <div class="outline-text-3" id="text-1-3">
 </div>
-<div id="outline-container-orgea759f0" class="outline-4">
-<h4 id="orgea759f0"><span class="section-number-4">1.3.1</span> problem 1 : <code>run rewrite</code> and <code>go run ...rewrite</code> commands work differently</h4>
+<div id="outline-container-org3ac8be6" class="outline-4">
+<h4 id="org3ac8be6"><span class="section-number-4">1.3.1</span> problem 1 : <code>run rewrite</code> and <code>go run ...rewrite</code> commands work differently</h4>
 <div class="outline-text-4" id="text-1-3-1">
 </div>
 <ol class="org-ol">
-<li><a id="org59f20e6"></a><span class="todo TODO">TODO</span> Reproduce the problem<br />
+<li><a id="orgb4b4e7c"></a><span class="todo TODO">TODO</span> Reproduce the problem<br />
 <div class="outline-text-5" id="text-1-3-1-1">
 <dl class="org-dl">
 <dt>the problem</dt><dd><code>run rewrite</code> and <code>go run ...rewrite</code> commands work differently</dd>
@@ -374,7 +374,7 @@ Once I'm sure my build scripts are working.
 </div>
 </li>
 
-<li><a id="org017e8b2"></a>Conclusion<br />
+<li><a id="orgfc216d1"></a>Conclusion<br />
 <div class="outline-text-5" id="text-1-3-1-2">
 <p>
 They do not work differently.
@@ -382,7 +382,7 @@ They do not work differently.
 </div>
 </li>
 
-<li><a id="orgfbb17c5"></a>Checklist<br />
+<li><a id="org41ed6ad"></a>Checklist<br />
 <div class="outline-text-5" id="text-1-3-1-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -414,8 +414,8 @@ They do not work differently.
 </ol>
 </div>
 
-<div id="outline-container-org163ce98" class="outline-4">
-<h4 id="org163ce98"><span class="section-number-4">1.3.2</span> problem 2 : binaries are not all compiling and they are at different versions</h4>
+<div id="outline-container-orgae6982b" class="outline-4">
+<h4 id="orgae6982b"><span class="section-number-4">1.3.2</span> problem 2 : binaries are not all compiling and they are at different versions</h4>
 <div class="outline-text-4" id="text-1-3-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -451,7 +451,7 @@ They do not work differently.
 </div>
 
 <ol class="org-ol">
-<li><a id="org8e30002"></a>It appears they are not being built when I do a buildall<br />
+<li><a id="orge2574fb"></a>It appears they are not being built when I do a buildall<br />
 <div class="outline-text-5" id="text-1-3-2-1">
 <div class="org-src-container">
 <pre class="src src-sh"><span style="color: #d18aff;">cd</span> <span style="color: #ff4ea3;">"$HOME/go/src/github.com/codelingo/codelingo/sdk/flow"</span>; ./buildall.sh
@@ -463,7 +463,7 @@ They do not work differently.
 </div>
 </div>
 <ol class="org-ol">
-<li><a id="orgd835874"></a><span class="done DONE">DONE</span> These ones are not kept up-to-date (and should be removed) &#x2013; git pull and they're gone<br />
+<li><a id="org8bb0189"></a><span class="done DONE">DONE</span> These ones are not kept up-to-date (and should be removed) &#x2013; git pull and they're gone<br />
 <div class="outline-text-6" id="text-1-3-2-1-1">
 <div class="org-src-container">
 <pre class="src src-text">-rw-rw-r-- 1 shane shane 5642688 Oct 19 17:14 ./codelingo/rewrite/bin/linux/amd64/cmd.tar.gz
@@ -481,7 +481,7 @@ The ones that <b>are</b> new, should be the ones that are being installed into t
 </div>
 
 <ol class="org-ol">
-<li><a id="org29e7bb8"></a>github repo &#x2013; origin<br />
+<li><a id="org59eeedc"></a>github repo &#x2013; origin<br />
 <div class="outline-text-7" id="text-1-3-2-1-1-1">
 <p>
 <a href="file:///home/shane/go/src/github.com/codelingo/codelingo/flows">codelingo/flows</a>
@@ -489,7 +489,7 @@ The ones that <b>are</b> new, should be the ones that are being installed into t
 </div>
 </li>
 
-<li><a id="org9a98cad"></a><code>.codelingo</code> &#x2013; destination<br />
+<li><a id="orgc7e4be5"></a><code>.codelingo</code> &#x2013; destination<br />
 <div class="outline-text-7" id="text-1-3-2-1-1-2">
 <p>
 <a href="file:///home/shane/.codelingo/flows/codelingo">flows/codelingo</a>
@@ -514,7 +514,7 @@ The issue must be that the new ones are not being installed.
 </ol>
 </li>
 
-<li><a id="org6d8345c"></a>This must be the faulty script<br />
+<li><a id="org03a216f"></a>This must be the faulty script<br />
 <div class="outline-text-5" id="text-1-3-2-2">
 <p>
 <a href="file:///home/shane/go/src/github.com/codelingo/codelingo/sdk/flow/installall.sh">flow/installall.sh</a>
@@ -532,7 +532,7 @@ This does not preclude the possibility that running <code>lingo install rewrite<
 </div>
 
 <ol class="org-ol">
-<li><a id="org860a563"></a>Hopefully, after running <code>installall.sh</code>, <code>lingo run rewrite</code> now works.<br />
+<li><a id="org1c2ea5a"></a>Hopefully, after running <code>installall.sh</code>, <code>lingo run rewrite</code> now works.<br />
 <div class="outline-text-6" id="text-1-3-2-2-1">
 <p>
 It appears not.
@@ -560,40 +560,40 @@ Still get <code>transport is closing</code> error.
 </ol>
 </li>
 
-<li><a id="org3115f07"></a>Need to be able to construct truth tables of arbitrary dimensionality<br /></li>
+<li><a id="org8ff91ea"></a>Need to be able to construct truth tables of arbitrary dimensionality<br /></li>
 </ol>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org1085ea5" class="outline-2">
-<h2 id="org1085ea5"><span class="section-number-2">2</span> Tasks</h2>
+<div id="outline-container-orgee7455e" class="outline-2">
+<h2 id="orgee7455e"><span class="section-number-2">2</span> Tasks</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org42fe986" class="outline-3">
-<h3 id="org42fe986"><span class="section-number-3">2.1</span> Stabilize build scripts</h3>
+<div id="outline-container-org95b2103" class="outline-3">
+<h3 id="org95b2103"><span class="section-number-3">2.1</span> Stabilize build scripts</h3>
 <div class="outline-text-3" id="text-2-1">
 </div>
-<div id="outline-container-org5ea81fd" class="outline-4">
-<h4 id="org5ea81fd"><span class="section-number-4">2.1.1</span> Blockers</h4>
+<div id="outline-container-orgf149221" class="outline-4">
+<h4 id="orgf149221"><span class="section-number-4">2.1.1</span> Blockers</h4>
 <div class="outline-text-4" id="text-2-1-1">
 </div>
 <ol class="org-ol">
-<li><a id="org817c902"></a>Stabilize review<br /></li>
+<li><a id="org3d2f2d8"></a>Stabilize review<br /></li>
 </ol>
 </div>
 </div>
-<div id="outline-container-org0edae6f" class="outline-3">
-<h3 id="org0edae6f"><span class="section-number-3">2.2</span> Stabilize review</h3>
+<div id="outline-container-org9845c08" class="outline-3">
+<h3 id="org9845c08"><span class="section-number-3">2.2</span> Stabilize review</h3>
 </div>
 </div>
 
-<div id="outline-container-orge655e2d" class="outline-2">
-<h2 id="orge655e2d"><span class="section-number-2">3</span> Hypothesis</h2>
+<div id="outline-container-org5a515c1" class="outline-2">
+<h2 id="org5a515c1"><span class="section-number-2">3</span> Hypothesis</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org06a3c0c" class="outline-3">
-<h3 id="org06a3c0c"><span class="section-number-3">3.1</span> H1: My jx git repository is at fault &#x2013; or there is something about this repository that prevents it from being tested</h3>
+<div id="outline-container-org2c99013" class="outline-3">
+<h3 id="org2c99013"><span class="section-number-3">3.1</span> H1: My jx git repository is at fault &#x2013; or there is something about this repository that prevents it from being tested</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Probably true.
@@ -601,16 +601,16 @@ Repository is large enough to trigger the 1 min timeout &#x2013; need heartbeat 
 </p>
 </div>
 
-<div id="outline-container-orgc2d528d" class="outline-4">
-<h4 id="orgc2d528d"><span class="section-number-4">3.1.1</span> <span class="done DONE">DONE</span> Try rewrite on a different repository</h4>
+<div id="outline-container-org17a6a74" class="outline-4">
+<h4 id="org17a6a74"><span class="section-number-4">3.1.1</span> <span class="done DONE">DONE</span> Try rewrite on a different repository</h4>
 <div class="outline-text-4" id="text-3-1-1">
 </div>
 <ol class="org-ol">
-<li><a id="orge99d94e"></a>Try rewrite on a tiny test repo<br />
+<li><a id="org136c1e3"></a>Try rewrite on a tiny test repo<br />
 <ol class="org-ol">
-<li><a id="orgbfa6cc0"></a><span class="done DISCARD">DISCARD</span> Use <code>go run</code> (on the tenet test)<br /></li>
+<li><a id="org2d357bf"></a><span class="done DISCARD">DISCARD</span> Use <code>go run</code> (on the tenet test)<br /></li>
 
-<li><a id="orgc6e5fe4"></a>Use <code>lingo run rewrite</code><br />
+<li><a id="org7e76803"></a>Use <code>lingo run rewrite</code><br />
 <div class="outline-text-6" id="text-3-1-1-1-2">
 <div class="org-src-container">
 <pre class="src src-sh">lingo test-tenet -w $<span style="color: #ff8700;">HOME</span>/source/git/mullikine/codelingo/tenets/codelingo/jenkinsx/parallel-in-tests
@@ -629,7 +629,7 @@ This means my jx git repository is probably at fault.
 </ol>
 </li>
 
-<li><a id="org9dbd44f"></a>Try rewrite on k8.<br />
+<li><a id="org8e0e449"></a>Try rewrite on k8.<br />
 <div class="outline-text-5" id="text-3-1-1-2">
 <p>
 Make a new rewrite tenet for k8
@@ -641,44 +641,44 @@ Make a new rewrite tenet for k8
 </div>
 </div>
 
-<div id="outline-container-orgdd40db8" class="outline-2">
-<h2 id="orgdd40db8"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> Automate test log ingestion</h2>
+<div id="outline-container-orgc85e226" class="outline-2">
+<h2 id="orgc85e226"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> Automate test log ingestion</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org4a38943" class="outline-3">
-<h3 id="org4a38943"><span class="section-number-3">4.1</span> Extract facts from logs &#x2013; use regex or something.</h3>
+<div id="outline-container-org058e3f2" class="outline-3">
+<h3 id="org058e3f2"><span class="section-number-3">4.1</span> Extract facts from logs &#x2013; use regex or something.</h3>
 </div>
-<div id="outline-container-org380ea56" class="outline-3">
-<h3 id="org380ea56"><span class="section-number-3">4.2</span> Build a table of executions</h3>
+<div id="outline-container-orgdc45e6c" class="outline-3">
+<h3 id="orgdc45e6c"><span class="section-number-3">4.2</span> Build a table of executions</h3>
 </div>
-<div id="outline-container-orgc218524" class="outline-3">
-<h3 id="orgc218524"><span class="section-number-3">4.3</span> Divide terminal history into <code>awk</code> records</h3>
+<div id="outline-container-org92b4d8f" class="outline-3">
+<h3 id="org92b4d8f"><span class="section-number-3">4.3</span> Divide terminal history into <code>awk</code> records</h3>
 <div class="outline-text-3" id="text-4-3">
 </div>
-<div id="outline-container-org285943a" class="outline-4">
-<h4 id="org285943a"><span class="section-number-4">4.3.1</span> Filter each record through a property collector &#x2013; another script that extracts facts for each test run.</h4>
+<div id="outline-container-org58a54ef" class="outline-4">
+<h4 id="org58a54ef"><span class="section-number-4">4.3.1</span> Filter each record through a property collector &#x2013; another script that extracts facts for each test run.</h4>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org47eaf5c" class="outline-2">
-<h2 id="org47eaf5c"><span class="section-number-2">5</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-10-23 Tue&gt; </span></span> Stabilize my installation</h2>
+<div id="outline-container-orgf243845" class="outline-2">
+<h2 id="orgf243845"><span class="section-number-2">5</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-10-23 Tue&gt; </span></span> Stabilize my installation</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org66a6f6a" class="outline-3">
-<h3 id="org66a6f6a"><span class="section-number-3">5.1</span> See why 64 bit build script for rewrite flow is not building</h3>
+<div id="outline-container-org1f76212" class="outline-3">
+<h3 id="org1f76212"><span class="section-number-3">5.1</span> See why 64 bit build script for rewrite flow is not building</h3>
 </div>
-<div id="outline-container-org9ffd18d" class="outline-3">
-<h3 id="org9ffd18d"><span class="section-number-3">5.2</span> See why 32 bit build script for review flow gives errors</h3>
+<div id="outline-container-orgb49ccae" class="outline-3">
+<h3 id="orgb49ccae"><span class="section-number-3">5.2</span> See why 32 bit build script for review flow gives errors</h3>
 </div>
-<div id="outline-container-orgc2ae914" class="outline-3">
-<h3 id="orgc2ae914"><span class="section-number-3">5.3</span> Ensure all flow builds are kept up-to-date</h3>
+<div id="outline-container-org81f1998" class="outline-3">
+<h3 id="org81f1998"><span class="section-number-3">5.3</span> Ensure all flow builds are kept up-to-date</h3>
 </div>
-<div id="outline-container-org4938dfa" class="outline-3">
-<h3 id="org4938dfa"><span class="section-number-3">5.4</span> Building lingo should ensure that everything is kept up-to-date</h3>
+<div id="outline-container-org424baca" class="outline-3">
+<h3 id="org424baca"><span class="section-number-3">5.4</span> Building lingo should ensure that everything is kept up-to-date</h3>
 </div>
-<div id="outline-container-org5a00cfc" class="outline-3">
-<h3 id="org5a00cfc"><span class="section-number-3">5.5</span> Investigate difference between running with <code>go run</code> and using <code>lingo run rewrite</code></h3>
+<div id="outline-container-orgdb835a8" class="outline-3">
+<h3 id="orgdb835a8"><span class="section-number-3">5.5</span> Investigate difference between running with <code>go run</code> and using <code>lingo run rewrite</code></h3>
 <div class="outline-text-3" id="text-5-5">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -707,8 +707,8 @@ Make a new rewrite tenet for k8
 </table>
 </div>
 
-<div id="outline-container-org4e34820" class="outline-4">
-<h4 id="org4e34820"><span class="section-number-4">5.5.1</span> interpreter</h4>
+<div id="outline-container-org1a081fc" class="outline-4">
+<h4 id="org1a081fc"><span class="section-number-4">5.5.1</span> interpreter</h4>
 <div class="outline-text-4" id="text-5-5-1">
 <div class="org-src-container">
 <pre class="src src-sh"><span style="color: #d18aff;">cd</span> $<span style="color: #ff8700;">HOME</span>/source/git/mullikine/jx
@@ -718,8 +718,8 @@ go run ~/go/src/github.com/codelingo/codelingo/flows/codelingo/rewrite/main.go
 </div>
 </div>
 
-<div id="outline-container-orgc09e9ef" class="outline-4">
-<h4 id="orgc09e9ef"><span class="section-number-4">5.5.2</span> compiled</h4>
+<div id="outline-container-orgfcaed4f" class="outline-4">
+<h4 id="orgfcaed4f"><span class="section-number-4">5.5.2</span> compiled</h4>
 <div class="outline-text-4" id="text-5-5-2">
 <div class="org-src-container">
 <pre class="src src-sh"><span style="color: #d18aff;">cd</span> $<span style="color: #ff8700;">HOME</span>/source/git/mullikine/jx
@@ -729,7 +729,7 @@ lingo run rewrite
 </div>
 
 <ol class="org-ol">
-<li><a id="org5a598e4"></a>Test 1<br />
+<li><a id="orgf5fc1c4"></a>Test 1<br />
 <div class="outline-text-5" id="text-5-5-2-1">
 <div class="org-src-container">
 <pre class="src src-text">90b9644a parallel-in-tests 'codelingo/parallel-in-tests' &#187; lingo run rewrite
@@ -743,7 +743,7 @@ exit status 1
 </div>
 
 <ol class="org-ol">
-<li><a id="org9a65a40"></a>Run this through fact extactor<br />
+<li><a id="org06347e8"></a>Run this through fact extactor<br />
 <div class="outline-text-6" id="text-5-5-2-1-1">
 <p>
 Put it into a database of some kind.
@@ -751,9 +751,9 @@ Put it into a database of some kind.
 </div>
 </li>
 
-<li><a id="org8ba7af0"></a>Must collect information from slack error messages too.<br />
+<li><a id="orgce3d43a"></a>Must collect information from slack error messages too.<br />
 <ol class="org-ol">
-<li><a id="org39aeaba"></a>error<br />
+<li><a id="org9ee6dbb"></a>error<br />
 <div class="outline-text-7" id="text-5-5-2-1-2-1">
 <p>
 <a href="https://codelingo.slack.com/archives/GAYUSPKPU/p1540241027000100">https://codelingo.slack.com/archives/GAYUSPKPU/p1540241027000100</a>
@@ -769,18 +769,18 @@ Put it into a database of some kind.
 </div>
 </div>
 
-<div id="outline-container-org358d6ec" class="outline-2">
-<h2 id="org358d6ec"><span class="section-number-2">6</span> Conclusions</h2>
+<div id="outline-container-orgda69714" class="outline-2">
+<h2 id="orgda69714"><span class="section-number-2">6</span> Conclusions</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-orgd197b8c" class="outline-3">
-<h3 id="orgd197b8c"><span class="section-number-3">6.1</span> H1 is probably true. jx repository is the only one that causes error.</h3>
+<div id="outline-container-orga71c7be" class="outline-3">
+<h3 id="orga71c7be"><span class="section-number-3">6.1</span> H1 is probably true. jx repository is the only one that causes error.</h3>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: shane</p>
-<p class="date">Created: 2018-11-02 Fri 21:36</p>
+<p class="date">Created: 2018-11-02 Fri 21:39</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

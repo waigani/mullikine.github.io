@@ -1,3 +1,4 @@
+#+TITLE: Get help on Kubernetes' JSON API
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
 
