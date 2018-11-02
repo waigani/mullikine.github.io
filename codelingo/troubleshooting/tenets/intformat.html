@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-11-02 Fri 19:20 -->
+<!-- 2018-11-02 Fri 19:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>troubleshooting new tenet <code>intformat</code></title>
@@ -258,21 +258,21 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge69d435">1. Problem</a>
+<li><a href="#org3fc486d">1. Problem</a>
 <ul>
-<li><a href="#org8828ea6">1.1. <code>example.go</code></a></li>
-<li><a href="#org8ed2c7c">1.2. This <code>codelingo.yaml</code> fails</a></li>
-<li><a href="#org5f40cf0">1.3. annotated <code>tty-output.log</code></a></li>
-<li><a href="#orge61c164">1.4. slack error</a></li>
-<li><a href="#orgc61765f">1.5. repository info</a></li>
-<li><a href="#org2053790">1.6. repo state</a>
+<li><a href="#org098473d">1.1. <code>example.go</code></a></li>
+<li><a href="#org14dbb15">1.2. This <code>codelingo.yaml</code> fails</a></li>
+<li><a href="#orgc3b7125">1.3. annotated <code>tty-output.log</code></a></li>
+<li><a href="#org09b93a1">1.4. slack error</a></li>
+<li><a href="#orgdd247b0">1.5. repository info</a></li>
+<li><a href="#org12cb80f">1.6. repo state</a>
 <ul>
-<li><a href="#org3691706">1.6.1. recent commits</a></li>
+<li><a href="#org7b9d7c2">1.6.1. recent commits</a></li>
 </ul>
 </li>
-<li><a href="#org5a22de6">1.7. repo state</a>
+<li><a href="#orgaa5ea19">1.7. repo state</a>
 <ul>
-<li><a href="#org1f90981">1.7.1. recent commits</a></li>
+<li><a href="#org7704087">1.7.1. recent commits</a></li>
 </ul>
 </li>
 </ul>
@@ -281,16 +281,16 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orge69d435" class="outline-2">
-<h2 id="orge69d435"><span class="section-number-2">1</span> Problem</h2>
+<div id="outline-container-org3fc486d" class="outline-2">
+<h2 id="org3fc486d"><span class="section-number-2">1</span> Problem</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 After hitting the 8th <code>k</code> of a <code>run rewrite</code>, I receive slack error.
 </p>
 </div>
 
-<div id="outline-container-org8828ea6" class="outline-3">
-<h3 id="org8828ea6"><span class="section-number-3">1.1</span> <code>example.go</code></h3>
+<div id="outline-container-org098473d" class="outline-3">
+<h3 id="org098473d"><span class="section-number-3">1.1</span> <code>example.go</code></h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-go"><span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">./src/dpf/dpf.go</span>
@@ -524,8 +524,8 @@ After hitting the 8th <code>k</code> of a <code>run rewrite</code>, I receive sl
 </div>
 </div>
 
-<div id="outline-container-org8ed2c7c" class="outline-3">
-<h3 id="org8ed2c7c"><span class="section-number-3">1.2</span> This <code>codelingo.yaml</code> fails</h3>
+<div id="outline-container-org14dbb15" class="outline-3">
+<h3 id="org14dbb15"><span class="section-number-3">1.2</span> This <code>codelingo.yaml</code> fails</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 <pre class="src src-yaml"><span style="color: #ff8700;">funcs</span>:
@@ -824,8 +824,8 @@ tenets:
 </div>
 </div>
 
-<div id="outline-container-org5f40cf0" class="outline-3">
-<h3 id="org5f40cf0"><span class="section-number-3">1.3</span> annotated <code>tty-output.log</code></h3>
+<div id="outline-container-orgc3b7125" class="outline-3">
+<h3 id="orgc3b7125"><span class="section-number-3">1.3</span> annotated <code>tty-output.log</code></h3>
 <div class="outline-text-3" id="text-1-3">
 <div class="org-src-container">
 <pre class="src src-text">Constructing new git repo in temp folder... :: Fri Nov  2 16:53:26 NZDT 2018
@@ -926,8 +926,8 @@ Continue?
 </div>
 </div>
 
-<div id="outline-container-orge61c164" class="outline-3">
-<h3 id="orge61c164"><span class="section-number-3">1.4</span> slack error</h3>
+<div id="outline-container-org09b93a1" class="outline-3">
+<h3 id="org09b93a1"><span class="section-number-3">1.4</span> slack error</h3>
 <div class="outline-text-3" id="text-1-4">
 <div class="org-src-container">
 <pre class="src src-text">mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;">error</span>: <span style="color: #ffff00; background-color: #cccc00;">failed</span> to build hunk: '%!s(MISSING)' can only decorate a fact
@@ -947,8 +947,8 @@ mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;
 </div>
 </div>
 
-<div id="outline-container-orgc61765f" class="outline-3">
-<h3 id="orgc61765f"><span class="section-number-3">1.5</span> repository info</h3>
+<div id="outline-container-orgdd247b0" class="outline-3">
+<h3 id="orgdd247b0"><span class="section-number-3">1.5</span> repository info</h3>
 <div class="outline-text-3" id="text-1-5">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -988,8 +988,8 @@ mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;
 </div>
 </div>
 
-<div id="outline-container-org2053790" class="outline-3">
-<h3 id="org2053790"><span class="section-number-3">1.6</span> repo state</h3>
+<div id="outline-container-org12cb80f" class="outline-3">
+<h3 id="org12cb80f"><span class="section-number-3">1.6</span> repo state</h3>
 <div class="outline-text-3" id="text-1-6">
 <dl class="org-dl">
 <dt>url</dt><dd><a href="https://github.com/codelingo/codelingo/blob/master">https://github.com/codelingo/codelingo/blob/master</a></dd>
@@ -1038,8 +1038,8 @@ mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;
 </table>
 </div>
 
-<div id="outline-container-org3691706" class="outline-4">
-<h4 id="org3691706"><span class="section-number-4">1.6.1</span> recent commits</h4>
+<div id="outline-container-org7b9d7c2" class="outline-4">
+<h4 id="org7b9d7c2"><span class="section-number-4">1.6.1</span> recent commits</h4>
 <div class="outline-text-4" id="text-1-6-1">
 <div class="org-src-container">
 <pre class="src src-text">commit eae3300ad7c32994725f90344f7cc25edfee6eca
@@ -1052,8 +1052,8 @@ Author: Jesse Meek <a href="mailto:waigani%40gmail.com">&lt;waigani@gmail.com&gt
 </div>
 </div>
 
-<div id="outline-container-org5a22de6" class="outline-3">
-<h3 id="org5a22de6"><span class="section-number-3">1.7</span> repo state</h3>
+<div id="outline-container-orgaa5ea19" class="outline-3">
+<h3 id="orgaa5ea19"><span class="section-number-3">1.7</span> repo state</h3>
 <div class="outline-text-3" id="text-1-7">
 <dl class="org-dl">
 <dt>url</dt><dd>git@github.com:mullikine/lingo.git/blob/master</dd>
@@ -1102,8 +1102,8 @@ Author: Jesse Meek <a href="mailto:waigani%40gmail.com">&lt;waigani@gmail.com&gt
 </table>
 </div>
 
-<div id="outline-container-org1f90981" class="outline-4">
-<h4 id="org1f90981"><span class="section-number-4">1.7.1</span> recent commits</h4>
+<div id="outline-container-org7704087" class="outline-4">
+<h4 id="org7704087"><span class="section-number-4">1.7.1</span> recent commits</h4>
 <div class="outline-text-4" id="text-1-7-1">
 <div class="org-src-container">
 <pre class="src src-text">commit fc18bb8b8a83c483aa58606f0695de1e1cd55f1b
@@ -1125,7 +1125,7 @@ Author: BlakeMScurr <a href="mailto:blakemscurr%40gmail.com">&lt;blakemscurr@gma
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: shane</p>
-<p class="date">Created: 2018-11-02 Fri 19:20</p>
+<p class="date">Created: 2018-11-02 Fri 19:22</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
