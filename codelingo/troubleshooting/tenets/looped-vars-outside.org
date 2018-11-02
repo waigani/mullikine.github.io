@@ -3,13 +3,10 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
 
 * Problem
-Getting new server error as of <2018-11-01 Thu>.
-
-[[https://trello.com/c/bGpLCjGY/1771-0-results-expecting-1-for-block-x-fact-commonargs][trello.com/c/bGpLCjGY/1771-0-results-expecting-1-for-block-x-fact-commonargs]]
-
-Cannot confirm if below is still blocked because of above server error.
-
-Blocked by [[https://trello.com/c/6wBdbgcP/430-bug-with-anyof][trello.com/c/6wBdbgcP/430-bug-with-anyof]]
++ Getting new _server error_ as of <2018-11-01 Thu>.
+  [[https://trello.com/c/bGpLCjGY/1771-0-results-expecting-1-for-block-x-fact-commonargs][trello.com/c/bGpLCjGY/1771-0-results-expecting-1-for-block-x-fact-commonargs]]
++ Cannot confirm if below is still blocked because of above server error.
+  _Blocked_ by [[https://trello.com/c/6wBdbgcP/430-bug-with-anyof][trello.com/c/6wBdbgcP/430-bug-with-anyof]]
 
 ** ~example.go~
 #+BEGIN_SRC go
