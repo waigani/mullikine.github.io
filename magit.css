@@ -72,8 +72,8 @@ a {
   /* border: 0.1em solid #99f; */
   font: inherit;
   /* text-decoration: inherit; */
-  text-decoration: underline;
+  text-decoration: none;
 }
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
