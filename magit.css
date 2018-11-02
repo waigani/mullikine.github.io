@@ -63,6 +63,7 @@ pre {
 a {
   border-radius: 0.1em;
   margin: 0.2em;
+  color: black;
   display: inline-block;
   background: #eef;
   padding: 0.2em 0.3em;
