@@ -32,8 +32,9 @@ Typically, the generated query comprises the bulk of the code you end up with.  
 
 -----
 
-**** Refining the CLQL
-***** Before: Generated CLQL
+**** Before: Generated CLQL
+This generated query contains more information that we need.
+
 #+BEGIN_SRC yaml
   import codelingo/ast/go
 
@@ -51,7 +52,7 @@ Typically, the generated query comprises the bulk of the code you end up with.  
             child_count == 0
 #+END_SRC
 
-***** Refining the CLQL
+**** Refining the CLQL
 The process of crafting CLQL is mainly subtractive, especially for simple tenets.
 
 #+BEGIN_EXPORT html
@@ -77,7 +78,9 @@ The process of crafting CLQL is mainly subtractive, especially for simple tenets
 </div>
 #+END_EXPORT
 
-***** After: Refined CLQL
+**** After: Refined CLQL
+Short and sweet.
+
 #+BEGIN_SRC yaml
   import codelingo/ast/go
 
