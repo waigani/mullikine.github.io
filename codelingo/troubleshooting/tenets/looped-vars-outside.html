@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-11-02 Fri 19:14 -->
+<!-- 2018-11-02 Fri 19:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>troubleshooting new tenet <code>looped-vars-outside</code></title>
@@ -258,36 +258,42 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge33d4b8">1. Problem</a>
+<li><a href="#orgdd96819">1. Problem</a>
 <ul>
-<li><a href="#orge1e5807">1.1. <code>example.go</code></a></li>
-<li><a href="#orgfdb76fc">1.2. This <code>codelingo.yaml</code> fails</a></li>
-<li><a href="#orge0e53d0">1.3. annotated <code>tty-output.log</code></a></li>
-<li><a href="#org7d06223">1.4. repository info</a></li>
-<li><a href="#org3808058">1.5. https://github.com/codelingo/codelingo/blob/master</a></li>
-<li><a href="#orgf9536ce">1.6. git@github.com:mullikine/lingo.git/blob/master</a></li>
+<li><a href="#org66134ca">1.1. <code>example.go</code></a></li>
+<li><a href="#org4c9724c">1.2. This <code>codelingo.yaml</code> fails</a></li>
+<li><a href="#org4f300c3">1.3. annotated <code>tty-output.log</code></a></li>
+<li><a href="#orgce57576">1.4. repository info</a></li>
+<li><a href="#orgefb5169">1.5. https://github.com/codelingo/codelingo/blob/master</a></li>
+<li><a href="#orgce7195e">1.6. git@github.com:mullikine/lingo.git/blob/master</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orge33d4b8" class="outline-2">
-<h2 id="orge33d4b8"><span class="section-number-2">1</span> Problem</h2>
+<div id="outline-container-orgdd96819" class="outline-2">
+<h2 id="orgdd96819"><span class="section-number-2">1</span> Problem</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-Getting new server error as of <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-11-01 Thu&gt;</span></span>
-<a href="https://trello.com/c/bGpLCjGY/1771-0-results-expecting-1-for-block-x-fact-commonargs">https://trello.com/c/bGpLCjGY/1771-0-results-expecting-1-for-block-x-fact-commonargs</a>
+Getting new server error as of <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-11-01 Thu&gt;</span></span>.
 </p>
 
 <p>
-Cannot confirm if below is still blocked because of above server error
-Blocked by <a href="https://trello.com/c/6wBdbgcP/430-bug-with-anyof">https://trello.com/c/6wBdbgcP/430-bug-with-anyof</a>
+<a href="https://trello.com/c/bGpLCjGY/1771-0-results-expecting-1-for-block-x-fact-commonargs">trello.com/c/bGpLCjGY/1771-0-results-expecting-1-for-block-x-fact-commonargs</a>
+</p>
+
+<p>
+Cannot confirm if below is still blocked because of above server error.
+</p>
+
+<p>
+Blocked by <a href="https://trello.com/c/6wBdbgcP/430-bug-with-anyof">trello.com/c/6wBdbgcP/430-bug-with-anyof</a>
 </p>
 </div>
 
-<div id="outline-container-orge1e5807" class="outline-3">
-<h3 id="orge1e5807"><span class="section-number-3">1.1</span> <code>example.go</code></h3>
+<div id="outline-container-org66134ca" class="outline-3">
+<h3 id="org66134ca"><span class="section-number-3">1.1</span> <code>example.go</code></h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-go"><span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">./example.go</span>
@@ -323,8 +329,8 @@ Blocked by <a href="https://trello.com/c/6wBdbgcP/430-bug-with-anyof">https://tr
 </div>
 </div>
 
-<div id="outline-container-orgfdb76fc" class="outline-3">
-<h3 id="orgfdb76fc"><span class="section-number-3">1.2</span> This <code>codelingo.yaml</code> fails</h3>
+<div id="outline-container-org4c9724c" class="outline-3">
+<h3 id="org4c9724c"><span class="section-number-3">1.2</span> This <code>codelingo.yaml</code> fails</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 <pre class="src src-yaml"><span style="color: #ff8700;">tenets</span>:
@@ -413,8 +419,8 @@ Blocked by <a href="https://trello.com/c/6wBdbgcP/430-bug-with-anyof">https://tr
 </div>
 </div>
 
-<div id="outline-container-orge0e53d0" class="outline-3">
-<h3 id="orge0e53d0"><span class="section-number-3">1.3</span> annotated <code>tty-output.log</code></h3>
+<div id="outline-container-org4f300c3" class="outline-3">
+<h3 id="org4f300c3"><span class="section-number-3">1.3</span> annotated <code>tty-output.log</code></h3>
 <div class="outline-text-3" id="text-1-3">
 <div class="org-src-container">
 <pre class="src src-text">Constructing new git repo in temp folder... :: Thu Nov  1 13:50:32 NZDT 2018
@@ -444,8 +450,8 @@ Continue?
 </div>
 </div>
 
-<div id="outline-container-org7d06223" class="outline-3">
-<h3 id="org7d06223"><span class="section-number-3">1.4</span> repository info</h3>
+<div id="outline-container-orgce57576" class="outline-3">
+<h3 id="orgce57576"><span class="section-number-3">1.4</span> repository info</h3>
 <div class="outline-text-3" id="text-1-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -485,8 +491,8 @@ Continue?
 </div>
 </div>
 
-<div id="outline-container-org3808058" class="outline-3">
-<h3 id="org3808058"><span class="section-number-3">1.5</span> <a href="https://github.com/codelingo/codelingo/blob/master">https://github.com/codelingo/codelingo/blob/master</a></h3>
+<div id="outline-container-orgefb5169" class="outline-3">
+<h3 id="orgefb5169"><span class="section-number-3">1.5</span> <a href="https://github.com/codelingo/codelingo/blob/master">https://github.com/codelingo/codelingo/blob/master</a></h3>
 <div class="outline-text-3" id="text-1-5">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -541,8 +547,8 @@ Date:   Sat Oct 27 10:37:36 2018 +1300
 </div>
 </div>
 
-<div id="outline-container-orgf9536ce" class="outline-3">
-<h3 id="orgf9536ce"><span class="section-number-3">1.6</span> git@github.com:mullikine/lingo.git/blob/master</h3>
+<div id="outline-container-orgce7195e" class="outline-3">
+<h3 id="orgce7195e"><span class="section-number-3">1.6</span> git@github.com:mullikine/lingo.git/blob/master</h3>
 <div class="outline-text-3" id="text-1-6">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -603,7 +609,7 @@ Date:   Wed Oct 17 17:45:51 2018 +1300
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: shane</p>
-<p class="date">Created: 2018-11-02 Fri 19:14</p>
+<p class="date">Created: 2018-11-02 Fri 19:16</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
