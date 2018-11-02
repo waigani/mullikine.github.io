@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-16 Tue 17:48 -->
+<!-- 2018-11-02 Fri 21:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>Contents</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="shane" />
 <style type="text/css">
@@ -231,185 +231,17 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#org00e8c3e">1. Question on slack</a></li>
-<li><a href="#orgfa12b95">2. files that contain all 3 terms; 'metadata', 'namespace' and 'name'</a>
-<ul>
-<li><a href="#org580c6ea">2.1. command</a></li>
-<li><a href="#orgf69a99f">2.2. grep output</a></li>
-</ul>
-</li>
-<li><a href="#org14d7bdf">3. files which contain only 2 terms; 'metadata' and 'namespace'</a>
-<ul>
-<li><a href="#orgaa02c9a">3.1. command</a></li>
-<li><a href="#org3d5710f">3.2. grep output</a></li>
-</ul>
-</li>
-<li><a href="#org01cd17a">4. list of files and line numbers which contain 'metadata' and 'namespace'</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org00e8c3e" class="outline-2">
-<h2 id="org00e8c3e"><span class="section-number-2">1</span> Question on slack</h2>
-<div class="outline-text-2" id="text-1">
+<h1 class="title">Contents</h1>
 <p>
-Hey guys. Sorry for asking again, but it's a little bit urgent for me to get to the bottom of this. According to <a href="https://github.com/kubernetes/community/blob/master/contributors/guide/scalability-good-practices.md">https://github.com/kubernetes/community/blob/master/contributors/guide/scalability-good-practices.md</a>
+<a href="https://mullikine.github.io/codelingo/build-script-errors.html">mullikine.github.io/codelingo/build-script-errors.html</a>
+<a href="https://mullikine.github.io/codelingo/first-kubernetes-tenet.html">Creating the tenet &lt;code&gt;flags-have-underscores&lt;/code&gt;</a>
+<a href="https://mullikine.github.io/codelingo/jsonapi-metadata.html">mullikine.github.io/codelingo/jsonapi-metadata.html</a>
+<a href="https://mullikine.github.io/codelingo/table-driven-test-kubernetes.html">mullikine.github.io/codelingo/table-driven-test-kubernetes.html</a>
 </p>
-
-<p>
-snippet:
-</p>
-
-<p>
-Every object kind MUST have the following metadata in a nested object field called "metadata":
-</p>
-
-<ul class="org-ul">
-<li>namespace:</li>
-<li>name:</li>
-<li>uid:</li>
-</ul>
-
-<p>
-Could someone please give me an example of what an 'object kind is' and where these fields are populated?
-</p>
-
-<p>
-I'm writing a linter specially for the kubernetes project; I don't need to actually extend the code myself so not looking to understand how it all works. I just need to know where to look. An example would be great. Thanks!
-</p>
-
-<div class="org-src-container">
-<pre class="src src-text">Question:
-  i cant find any files which match all 3 terms. so i dont know how to <span style="color: #ffff00; background-color: #cccc00;">make</span> even a basic linter
-Answer:
-  the reason is that the UID is assigned after creation.
-  you typically only submit a namespace and name of an object. then kubernetes itself assigns a uid dynamically after the object is created.
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgfa12b95" class="outline-2">
-<h2 id="orgfa12b95"><span class="section-number-2">2</span> files that contain all 3 terms; 'metadata', 'namespace' and 'name'</h2>
-<div class="outline-text-2" id="text-2">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-right" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-right"># files</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-right">550</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<div id="outline-container-org580c6ea" class="outline-3">
-<h3 id="org580c6ea"><span class="section-number-3">2.1</span> command</h3>
-<div class="outline-text-3" id="text-2-1">
-<div class="org-src-container">
-<pre class="src src-sh">eack -F &lt;(<span style="color: #d18aff;">cd</span> /; find <span style="color: #ff4ea3;">"$HOME$MYGIT/kubernetes/kubernetes"</span> -type f -path <span style="color: #ff4ea3;">'*/k8s.io/api/*'</span> | eipct <span style="color: #ff4ea3;">"xa cat | grep -q -P 'namespace'"</span> | eipct <span style="color: #ff4ea3;">"xa cat | grep -q -P '\bname\b'"</span> | eipct <span style="color: #ff4ea3;">"xa cat | grep -q -P '\bmetadata\b'"</span>) <span style="color: #ff4ea3;">'\bmetadata\b'</span>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgf69a99f" class="outline-3">
-<h3 id="orgf69a99f"><span class="section-number-3">2.2</span> grep output</h3>
-<div class="outline-text-3" id="text-2-2">
-<p>
-<a href="https://mullikine.github.io/codelingo/compulsory-metadata-grep-metadata-namespace-name.txt">mullikine.github.io/codelingo/compulsory-metadata-grep-metadata-namespace-name.txt</a>
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org14d7bdf" class="outline-2">
-<h2 id="org14d7bdf"><span class="section-number-2">3</span> files which contain only 2 terms; 'metadata' and 'namespace'</h2>
-<div class="outline-text-2" id="text-3">
-<p>
-I forgot to add 'name' to the search. Here for posterity.
-</p>
-</div>
-
-<div id="outline-container-orgaa02c9a" class="outline-3">
-<h3 id="orgaa02c9a"><span class="section-number-3">3.1</span> command</h3>
-<div class="outline-text-3" id="text-3-1">
-<div class="org-src-container">
-<pre class="src src-sh">eack -F &lt;(<span style="color: #d18aff;">cd</span> /; find <span style="color: #ff4ea3;">"$HOME$MYGIT/kubernetes/kubernetes"</span> -type f -path <span style="color: #ff4ea3;">'*/k8s.io/api/*'</span> | eipct <span style="color: #ff4ea3;">"xa cat | grep -q -P 'namespace'"</span> | eipct <span style="color: #ff4ea3;">"xa cat | grep -q -P '\bmetadata\b'"</span>) <span style="color: #ff4ea3;">'\bmetadata\b'</span>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org3d5710f" class="outline-3">
-<h3 id="org3d5710f"><span class="section-number-3">3.2</span> grep output</h3>
-<div class="outline-text-3" id="text-3-2">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-right" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-right"># files</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-right">559</td>
-</tr>
-</tbody>
-</table>
-
-<p>
-<a href="https://mullikine.github.io/codelingo/compulsory-metadata-files-metadata-namespace.txt">mullikine.github.io/codelingo/compulsory-metadata-files-metadata-namespace.txt</a>
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org01cd17a" class="outline-2">
-<h2 id="org01cd17a"><span class="section-number-2">4</span> list of files and line numbers which contain 'metadata' and 'namespace'</h2>
-<div class="outline-text-2" id="text-4">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-right" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-right"># files</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-right">559</td>
-</tr>
-</tbody>
-</table>
-<p>
-<a href="https://mullikine.github.io/codelingo/compulsory-metadata-grep-metadata-namespace.txt">mullikine.github.io/codelingo/compulsory-metadata-grep-metadata-namespace.txt</a>
-</p>
-</div>
-</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: shane</p>
-<p class="date">Created: 2018-10-16 Tue 17:48</p>
+<p class="date">Created: 2018-11-02 Fri 21:38</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
