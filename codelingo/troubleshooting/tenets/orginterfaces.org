@@ -1,0 +1,267 @@
+#+TITLE: troubleshooting new tenet ~orginterfaces~
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
+
+* Problem
+It appears as though when a second ~go.file~ fact is placed here in this tenet, the interface is not matched.
+
+** ~example files~
+#+BEGIN_SRC go
+  // ./bad-interface.go
+  package main
+  
+  import "fmt"
+  import "math"
+  
+  // This should live in `interface.go`
+  type badlyPlacedGeometry interface {
+  	area() float64
+  	perim() float64
+  }
+  
+  type rect struct {
+  	width, height float64
+  }
+  type circle struct {
+  	radius float64
+  }
+  
+  func (r rect) area() float64 {
+  	return r.width * r.height
+  }
+  func (r rect) perim() float64 {
+  	return 2*r.width + 2*r.height
+  }
+  
+  func (c circle) area() float64 {
+  	return math.Pi * c.radius * c.radius
+  }
+  func (c circle) perim() float64 {
+  	return 2 * math.Pi * c.radius
+  }
+  
+  func measure(g badlyPlacedGeometry) {
+  	fmt.Println(g)
+  	fmt.Println(g.area())
+  	fmt.Println(g.perim())
+  }
+  
+  func main() {
+  	r := rect{width: 3, height: 4}
+  	c := circle{radius: 5}
+  
+  	measure(r)
+  	measure(c)
+  }
+  
+  // ./interface.go
+  package main
+  
+  import "fmt"
+  import "math"
+  
+  type wellPlacedGeometry interface {
+  	area() float64
+  	perim() float64
+  }
+  
+  func measureFoo(g wellPlacedGeometry) {
+  	fmt.Println(g)
+  	fmt.Println(g.area())
+  	fmt.Println(g.perim())
+  }
+  
+  // ./example/bad-interface-2.go
+  package main
+  
+  import "fmt"
+  import "math"
+  
+  type badGeometry interface {
+  	badArea() float64
+  	badPerim() float64
+  }
+  
+  type badRect struct {
+  	width, height float64
+  }
+  type badCircle struct {
+  	radius float64
+  }
+  
+  func (r badRect) badArea() float64 {
+  	return r.width * r.height
+  }
+  func (r badRect) badPerim() float64 {
+  	return 2*r.width + 2*r.height
+  }
+  
+  func (c badCircle) badArea() float64 {
+  	return math.Pi * c.radius * c.radius
+  }
+  func (c badCircle) badPerim() float64 {
+  	return 2 * math.Pi * c.radius
+  }
+  
+  func badMeasure(g badGeometry) {
+  	fmt.Println(g)
+  	fmt.Println(g.badArea())
+  	fmt.Println(g.badPerim())
+  }
+  
+  
+  // ./example/interface.go
+  package main
+  
+  import "fmt"
+  import "math"
+  
+  type goodGeometry interface {
+  	goodArea() float64
+  	goodPerim() float64
+  }
+  
+  type goodRect struct {
+  	width, height float64
+  }
+  type goodCircle struct {
+  	radius float64
+  }
+  
+  func (r goodRect) goodArea() float64 {
+  	return r.width * r.height
+  }
+  func (r goodRect) goodPerim() float64 {
+  	return 2*r.width + 2*r.height
+  }
+  
+  func (c goodCircle) goodArea() float64 {
+  	return math.Pi * c.radius * c.radius
+  }
+  func (c goodCircle) goodPerim() float64 {
+  	return 2 * math.Pi * c.radius
+  }
+  
+  func goodMeasure(g goodGeometry) {
+  	fmt.Println(g)
+  	fmt.Println(g.goodArea())
+  	fmt.Println(g.goodPerim())
+  }
+  
+  //func main() {
+  //	r := goodRect{width: 3, height: 4}
+  //	c := goodCircle{radius: 5}
+  //
+  //	goodMeasure(r)
+  //	goodMeasure(c)
+  //}
+  
+#+END_SRC
+
+** This ~codelingo.yaml~ fails
+#+BEGIN_SRC yaml
+  funcs:
+  - name: isNotInterfaceFile
+    type: asserter
+    body: |
+      function (str) {
+        return ! str.match(/(^|\/)interface.go$/);
+      }
+  - name: isInterfaceFile
+    type: asserter
+    body: |
+      function (str) {
+        return str.match(/(^|\/)interface.go$/);
+      }
+  tenets:
+    - name: orginterfaces
+      flows:
+        codelingo/docs:
+          title: Interface Not In The Interface File
+          body: Finds interfaces which are not defined in `interface.go`.
+        codelingo/review:
+          comment: Interface `{{iname}}` is defined in a file named `{{fnamebad}}`. There exists, however, a file named `{{fnameinterfacego}}` in same directory. Interfaces should be defined in the `interface.go` of the relevant folder.
+        codelingo/rewrite:
+      query: |
+        import codelingo/ast/go
+  
+        go.dir:
+          go.file:
+            filename as fnamebad
+  
+            @rewrite --cut src
+            @review comment
+            go.type_spec(depth = any):
+              go.ident:
+                name as iname
+              go.interface_type
+  
+          @rewrite --append --line src
+          go.file:
+            filename as fnameinterfacego
+#+END_SRC
+
+** repository info
+| tenet source                                                  |
+|---------------------------------------------------------------|
+| [[https://github.com/mullikine/tenets/blob/master/blog/orginterfaces][tenets/blog/orginterfaces at master  mullikine/tenets  GitHub]] |
+
+| org                                                                                                     |
+|---------------------------------------------------------------------------------------------------------|
+| [[https://github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/tenets/orginterfaces.org][github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/tenets/orginterfaces.org]] |
+
+** repo state
++ url :: https://github.com/codelingo/codelingo/blob/master
+
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | https://github.com/codelingo/codelingo   |
+| vc get-hash    | eae3300ad7c32994725f90344f7cc25edfee6eca |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
+
+*** ~git status~
+- Verify that there are no unstaged changes here.
+*** recent commits
+#+BEGIN_SRC git
+  commit eae3300ad7c32994725f90344f7cc25edfee6eca
+  Author: Jesse Meek <waigani@gmail.com>
+  
+      Disable test Tenet until mem spike is fixed.
+#+END_SRC
+** repo state
++ url :: git@github.com:mullikine/lingo.git/blob/master
+
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | git@github.com:mullikine/lingo.git       |
+| vc get-hash    | fc18bb8b8a83c483aa58606f0695de1e1cd55f1b |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
+
+*** ~git status~
+- Verify that there are no unstaged changes here.
+#+BEGIN_SRC git
+  On branch master
+  Your branch is ahead of 'origin/master' by 47 commits.
+    (use "git push" to publish your local commits)
+  
+  Changes not staged for commit:
+    (use "git add <file>..." to update what will be committed)
+    (use "git checkout -- <file>..." to discard changes in working directory)
+  
+  	modified:   Gopkg.lock
+  
+  no changes added to commit (use "git add" and/or "git commit -a")
+#+END_SRC
+*** recent commits
+#+BEGIN_SRC git
+  commit fc18bb8b8a83c483aa58606f0695de1e1cd55f1b
+  Merge: ca7671c 191b3c4
+  Author: BlakeMScurr <blake@codelingo.io>
+  
+      Merge pull request #431 from BlakeMScurr/insecure
+ 
+#+END_SRC
