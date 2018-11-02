@@ -63,7 +63,8 @@ pre {
 a {
   border-radius: 0.1em;
   display: inline-block.
-  padding: 0.1em 0.2em;
+  background: #ddf;
+  padding: 0.2em 0.3em;
   /* color: white; */
   border: 0.1em solid #99f;
   font: inherit;
