@@ -1,3 +1,7 @@
+#+TITLE: troubleshooting kubernetes tenets on kubernetes
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
+
 * Tenets tested on kubernetes
 | tenet                |                            | outcome           | message                                                   |
 |----------------------+----------------------------+-------------------+-----------------------------------------------------------|
