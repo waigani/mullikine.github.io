@@ -5,7 +5,9 @@
 * Problem
 
 ~lockA sync.Mutex~ should be detected here as a bad lock name. Not sure how to write a query to match this.
+
 Might need to combine with an ~any_of:~.
+
 Not going to proceed until ~any_of:~ bug is fixed.
 
 ** ~example.go~
@@ -163,13 +165,13 @@ Not going to proceed until ~any_of:~ bug is fixed.
 | [[https://github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/tenets/well-named-locks.org][github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/tenets/well-named-locks.org]] |
 
 ** https://github.com/codelingo/codelingo/blob/master
-|command|value|
-|-
-|cat /etc/issue|Ubuntu 16.04.4 LTS \n \l
-|vc url|https://github.com/codelingo/codelingo
-|vc get-hash|eae3300ad7c32994725f90344f7cc25edfee6eca
-|vc branch|master
-|go version|go version go1.11.1 linux/amd64
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | https://github.com/codelingo/codelingo   |
+| vc get-hash    | eae3300ad7c32994725f90344f7cc25edfee6eca |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
 
 #+BEGIN_SRC text
 commit eae3300ad7c32994725f90344f7cc25edfee6eca
