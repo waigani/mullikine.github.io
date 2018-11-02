@@ -3,3 +3,8 @@
 #+BEGIN_SRC sh
   gh cs "\.md" "contributing"
 #+END_SRC
+
+** Do this tutorial
+#+BEGIN_SRC sh
+  gc "https://github.com/tensorflow/nmt"
+#+END_SRC
