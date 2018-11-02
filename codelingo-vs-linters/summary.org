@@ -1,5 +1,5 @@
 #+OPTIONS: \n:t 
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org.css"/>
 #+TITLE:     CodeLingo vs Linters
 #+SUBTITLE:  Making parsers for automatic code review
 #+AUTHOR:    Shane Mulligan
