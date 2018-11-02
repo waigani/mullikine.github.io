@@ -62,6 +62,7 @@ pre {
 
 a {
   border-radius: 0.1em;
+  margin: 0.2em;
   display: inline-block;
   background: #ddf;
   padding: 0.2em 0.3em;
