@@ -1,0 +1,1132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-11-02 Fri 19:20 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>troubleshooting new tenet <code>intformat</code></title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="shane" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+<link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">troubleshooting new tenet <code>intformat</code></h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orge69d435">1. Problem</a>
+<ul>
+<li><a href="#org8828ea6">1.1. <code>example.go</code></a></li>
+<li><a href="#org8ed2c7c">1.2. This <code>codelingo.yaml</code> fails</a></li>
+<li><a href="#org5f40cf0">1.3. annotated <code>tty-output.log</code></a></li>
+<li><a href="#orge61c164">1.4. slack error</a></li>
+<li><a href="#orgc61765f">1.5. repository info</a></li>
+<li><a href="#org2053790">1.6. repo state</a>
+<ul>
+<li><a href="#org3691706">1.6.1. recent commits</a></li>
+</ul>
+</li>
+<li><a href="#org5a22de6">1.7. repo state</a>
+<ul>
+<li><a href="#org1f90981">1.7.1. recent commits</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge69d435" class="outline-2">
+<h2 id="orge69d435"><span class="section-number-2">1</span> Problem</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+After hitting the 8th <code>k</code> of a <code>run rewrite</code>, I receive slack error.
+</p>
+</div>
+
+<div id="outline-container-org8828ea6" class="outline-3">
+<h3 id="org8828ea6"><span class="section-number-3">1.1</span> <code>example.go</code></h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-go"><span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">./src/dpf/dpf.go</span>
+<span style="color: #a1db00;">package</span> dpf
+
+<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">dpf</span>() {}
+
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">./src/dpf/dpf_integration_test.go</span>
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">+build integration</span>
+
+<span style="color: #a1db00;">package</span> dpf_test
+
+<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">Testdpf</span>() {
+      <span style="color: #ffd700;">dpf</span>()
+}
+
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">./src/opf/opf_integration_test.go</span>
+
+
+<span style="color: #a1db00;">package</span> opf_test
+
+<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">Testopf</span>() {
+      <span style="color: #ffd700;">opf</span>()
+}
+
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">./src/opf/opf.go</span>
+<span style="color: #a1db00;">package</span> opf
+
+<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">opf</span>() {}
+
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">./src/dof/dof_integration_test.go</span>
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">+build integration</span>
+
+<span style="color: #a1db00;">package</span> dofinvalid
+
+<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">Testdof</span>() {
+      <span style="color: #ffd700;">dof</span>()
+}
+
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">./src/dof/dof.go</span>
+<span style="color: #a1db00;">package</span> dof
+
+<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">dof</span>() {}
+
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">./src/doo/dooinvalid.go</span>
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">+build integration</span>
+
+<span style="color: #a1db00;">package</span> dooinvalid
+
+<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">Testdoo</span>() {
+      <span style="color: #ffd700;">doo</span>()
+}
+
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">./src/doo/doo.go</span>
+<span style="color: #a1db00;">package</span> doo
+
+<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">doo</span>() {}
+
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">./src/ooo/oooinvalid.go</span>
+
+
+<span style="color: #a1db00;">package</span> oooinvalid
+
+<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">Testooo</span>() {
+      <span style="color: #ffd700;">ooo</span>()
+}
+
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">./src/ooo/ooo.go</span>
+<span style="color: #a1db00;">package</span> ooo
+
+<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">ooo</span>() {}
+
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">./src/dpo/dpo.go</span>
+<span style="color: #a1db00;">package</span> dpo
+
+<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">dpo</span>() {}
+
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">./src/dpo/dpoinvalid.go</span>
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">+build integration</span>
+
+<span style="color: #a1db00;">package</span> dpo_test
+
+<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">Testdpo</span>() {
+      <span style="color: #ffd700;">dpo</span>()
+}
+
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">./src/opo/opo.go</span>
+<span style="color: #a1db00;">package</span> opo
+
+<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">opo</span>() {}
+
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">./src/opo/opoinvalid.go</span>
+
+
+<span style="color: #a1db00;">package</span> opo_test
+
+<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">Testopo</span>() {
+      <span style="color: #ffd700;">opo</span>()
+}
+
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">./src/oof/oof_integration_test.go</span>
+
+
+<span style="color: #a1db00;">package</span> oofinvalid
+
+<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">Testoof</span>() {
+      <span style="color: #ffd700;">oof</span>()
+}
+
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">./src/oof/oof.go</span>
+<span style="color: #a1db00;">package</span> oof
+
+<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">oof</span>() {}
+
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">./generate_tests.go</span>
+<span style="color: #a1db00;">package</span> main
+
+<span style="color: #a1db00;">import</span> (
+      <span style="color: #ff4ea3;">"fmt"</span>
+      <span style="color: #ff4ea3;">"io/ioutil"</span>
+      <span style="color: #ff4ea3;">"os"</span>
+      <span style="color: #ff4ea3;">"path/filepath"</span>
+)
+
+<span style="color: #a1db00;">type</span> <span style="color: #00d7af;">srccode</span> <span style="color: #a1db00;">struct</span> {
+      hasIntegrationDirective bool
+      hasValidFilename        bool
+      hasValidPackage         bool
+}
+
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">Integration tests must have a build directive, a certain filename, and a certain</span>
+<span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">package name. Generate a test file for each possible combination of having/missing</span>
+<span style="color: #6c6c6c; font-style: italic;">//  </span><span style="color: #6c6c6c; font-style: italic;">those characteristics.</span>
+<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">main</span>() {
+      <span style="color: #a1db00;">for</span> _, example := <span style="color: #a1db00;">range</span> []<span style="color: #00d7af;">srccode</span>{
+              {<span style="color: #5fafd7;">false</span>, <span style="color: #5fafd7;">false</span>, <span style="color: #5fafd7;">false</span>},
+              {<span style="color: #5fafd7;">false</span>, <span style="color: #5fafd7;">false</span>, <span style="color: #5fafd7;">true</span>},
+              {<span style="color: #5fafd7;">false</span>, <span style="color: #5fafd7;">true</span>, <span style="color: #5fafd7;">false</span>},
+              {<span style="color: #5fafd7;">false</span>, <span style="color: #5fafd7;">true</span>, <span style="color: #5fafd7;">true</span>},
+              {<span style="color: #5fafd7;">true</span>, <span style="color: #5fafd7;">false</span>, <span style="color: #5fafd7;">false</span>},
+              {<span style="color: #5fafd7;">true</span>, <span style="color: #5fafd7;">false</span>, <span style="color: #5fafd7;">true</span>},
+              {<span style="color: #5fafd7;">true</span>, <span style="color: #5fafd7;">true</span>, <span style="color: #5fafd7;">false</span>},
+              {<span style="color: #5fafd7;">true</span>, <span style="color: #5fafd7;">true</span>, <span style="color: #5fafd7;">true</span>},
+      } {
+              <span style="color: #a1db00;">var</span> idString string
+              <span style="color: #a1db00;">var</span> integrationDirective = <span style="color: #ff4ea3;">""</span>
+              <span style="color: #a1db00;">if</span> example.hasIntegrationDirective {
+                      integrationDirective = <span style="color: #ff4ea3;">"// +build integration"</span>
+                      idString += <span style="color: #ff4ea3;">"d"</span>
+              } <span style="color: #a1db00;">else</span> {
+                      idString += <span style="color: #ff4ea3;">"o"</span>
+              }
+
+              <span style="color: #a1db00;">if</span> example.hasValidPackage {
+                      idString += <span style="color: #ff4ea3;">"p"</span>
+              } <span style="color: #a1db00;">else</span> {
+                      idString += <span style="color: #ff4ea3;">"o"</span>
+              }
+
+              <span style="color: #a1db00;">if</span> example.hasValidFilename {
+                      idString += <span style="color: #ff4ea3;">"f"</span>
+              } <span style="color: #a1db00;">else</span> {
+                      idString += <span style="color: #ff4ea3;">"o"</span>
+              }
+
+              testPackageName := idString
+              <span style="color: #a1db00;">if</span> example.hasValidPackage {
+                      testPackageName += <span style="color: #ff4ea3;">"_test"</span>
+              } <span style="color: #a1db00;">else</span> {
+                      testPackageName += invalidator
+              }
+
+              testFileName := idString
+              <span style="color: #a1db00;">if</span> example.hasValidFilename {
+                      testFileName += <span style="color: #ff4ea3;">"_integration_test"</span>
+              } <span style="color: #a1db00;">else</span> {
+                      testFileName += invalidator
+              }
+
+              testFileName = filepath.<span style="color: #ffd700;">Join</span>(<span style="color: #ff4ea3;">"src"</span>, idString, testFileName+<span style="color: #ff4ea3;">".go"</span>)
+              dirFileName := filepath.<span style="color: #ffd700;">Join</span>(<span style="color: #ff4ea3;">"src"</span>, idString)
+              srcFileName := filepath.<span style="color: #ffd700;">Join</span>(<span style="color: #ff4ea3;">"src"</span>, idString, idString+<span style="color: #ff4ea3;">".go"</span>)
+
+              <span style="color: #a1db00;">if</span> _, err := os.<span style="color: #ffd700;">Stat</span>(dirFileName); os.<span style="color: #ffd700;">IsNotExist</span>(err) {
+                      os.<span style="color: #ffd700;">Mkdir</span>(dirFileName, os.<span style="color: #ffd700;">FileMode</span>(0777))
+              }
+
+              fileMode := os.<span style="color: #ffd700;">FileMode</span>(0666)
+              err := ioutil.<span style="color: #ffd700;">WriteFile</span>(testFileName, []<span style="color: #ffd700;">byte</span>(fmt.<span style="color: #ffd700;">Sprintf</span>(
+                      testFileTemplate,
+                      integrationDirective,
+                      testPackageName,
+                      idString,
+                      idString,
+              )), fileMode)
+              <span style="color: #a1db00;">if</span> err != <span style="color: #5fafd7;">nil</span> {
+                      <span style="color: #d18aff;">panic</span>(err)
+              }
+
+              err = ioutil.<span style="color: #ffd700;">WriteFile</span>(srcFileName, []<span style="color: #ffd700;">byte</span>(fmt.<span style="color: #ffd700;">Sprintf</span>(
+                      srcFileTemplate,
+                      idString,
+                      idString,
+              )), fileMode)
+              <span style="color: #a1db00;">if</span> err != <span style="color: #5fafd7;">nil</span> {
+                      <span style="color: #d18aff;">panic</span>(err)
+              }
+      }
+}
+
+<span style="color: #a1db00;">var</span> invalidator = <span style="color: #ff4ea3;">"invalid"</span>
+
+<span style="color: #a1db00;">var</span> testFileTemplate = <span style="color: #ff4ea3;">`</span>
+<span style="color: #ff4ea3;">%s</span>
+
+<span style="color: #ff4ea3;">package %s</span>
+
+<span style="color: #ff4ea3;">func Test%s() {</span>
+<span style="color: #ff4ea3;">      %s()</span>
+<span style="color: #ff4ea3;">}</span>
+<span style="color: #ff4ea3;">`</span>[1:]
+
+<span style="color: #a1db00;">var</span> srcFileTemplate = <span style="color: #ff4ea3;">`</span>
+<span style="color: #ff4ea3;">package %s</span>
+
+<span style="color: #ff4ea3;">func %s() {}</span>
+<span style="color: #ff4ea3;">`</span>[1:]
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8ed2c7c" class="outline-3">
+<h3 id="org8ed2c7c"><span class="section-number-3">1.2</span> This <code>codelingo.yaml</code> fails</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #ff8700;">funcs</span>:
+- <span style="color: #ff8700;">name</span>: append
+  <span style="color: #ff8700;">type</span>: resolver
+  <span style="color: #ff8700;">body</span>: |
+    <span style="color: #ff4ea3;">function (a, b) {</span>
+<span style="color: #ff4ea3;">      return a + b</span>
+<span style="color: #ff4ea3;">    }</span>
+- name: appendIntegrationTest
+  <span style="color: #ff8700;">type</span>: resolver
+  <span style="color: #ff8700;">body</span>: |
+    <span style="color: #ff4ea3;">function (fname) {</span>
+      fname.replace(/\.go$/, <span style="color: #ff4ea3;">""</span>)
+      fname.replace(/_test$/, <span style="color: #ff4ea3;">""</span>)
+      return fname + <span style="color: #ff4ea3;">"_integration_test.go"</span>
+<span style="color: #ff4ea3;">    }</span>
+- name: doesNotMatch
+  <span style="color: #ff8700;">type</span>: asserter
+  <span style="color: #ff8700;">body</span>: |
+    <span style="color: #ff4ea3;">function (reg, str) {</span>
+<span style="color: #ff4ea3;">      return !str.match(reg)</span>
+<span style="color: #ff4ea3;">    }</span>
+tenets:
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">Tenets that ensure integration tests have the correct package name, file name,</span>
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">and custom build directive as per https://github.com/jenkins-x/jx/blob/master/docs/contributing/hacking.md#integration-tests.</span>
+
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">There is a test file for each possible combination of having the directive (D),</span>
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">correct package name (P), and correct filename (F). Every combination except</span>
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">DPF and OOO will be matched by two tenets. For example, DOO will be matched by</span>
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">right-build-directive-wrong-file and right-build-directive-wrong-package,</span>
+  <span style="color: #6c6c6c; font-style: italic;">#  </span><span style="color: #6c6c6c; font-style: italic;">and OPF will be matched by right-package-wrong-build-directive and </span>
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">right-file-wrong-build-directive.</span>
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">This gives a total of 12 issues.</span>
+
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">Caveat: we don't test that the test package name is `&lt;pkgname&gt;_test`, we just test</span>
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">that it ends in `_test`. Similarly we don't test that the test file name is</span>
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">`&lt;pkgname&gt;_integration_test.go`, we just test that it ends in `integration_test.go`.</span>
+
+  <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">There is an explicit tenet for each case. See more concise possible solutions below.</span>
+  - <span style="color: #ff8700;">name</span>: right-build-directive-wrong-file
+    <span style="color: #ff8700;">flows</span>:
+      <span style="color: #ff8700;">codelingo/docs</span>:
+        <span style="color: #ff8700;">title</span>: Append
+        <span style="color: #ff8700;">body</span>: |
+          <span style="color: #ff4ea3;">Integration tests should have the custom build directive `// +build integration`,</span>
+<span style="color: #ff4ea3;">          belong to a file called `.*_integration_test.go`, and a a package called `&lt;packagename&gt;_test`</span>
+      <span style="color: #ff8700;">codelingo/review</span>:
+        <span style="color: #ff8700;">comment</span>: |
+          <span style="color: #ff4ea3;">right-build-directive-wrong-file</span>
+<span style="color: #ff4ea3;">          Integration tests should have the custom build directive `// +build integration`,</span>
+<span style="color: #ff4ea3;">          belong to a file called `.*_integration_test.go`, and a a package called `&lt;packagename&gt;_test`</span>
+      <span style="color: #ff8700;">codelingo/rewrite</span>:
+    <span style="color: #ff8700;">query</span>: |
+      <span style="color: #ff4ea3;">import codelingo/ast/go</span>
+
+<span style="color: #ff4ea3;">      go.dir(depth = any):</span>
+<span style="color: #ff4ea3;">        go.file(depth = 0:2):</span>
+<span style="color: #ff4ea3;">          go.ident:</span>
+<span style="color: #ff4ea3;">            name as packageName</span>
+<span style="color: #ff4ea3;">            doesNotMatch(/test/, packageName)</span>
+<span style="color: #ff4ea3;">        @review comment</span>
+<span style="color: #ff4ea3;">        go.file:</span>
+<span style="color: #ff4ea3;">          go.comment_group:</span>
+<span style="color: #ff4ea3;">            go.comment:</span>
+<span style="color: #ff4ea3;">              start_offset == 0</span>
+              text == <span style="color: #ff4ea3;">"// +build integration"</span>
+          @rewrite <span style="color: #ff4ea3;">"{{ appendIntegrationTest(fname) }}""</span>
+<span style="color: #ff4ea3;">          filename as fname</span>
+<span style="color: #ff4ea3;">          doesNotMatch(/_integration_test.go/, fname)</span>
+<span style="color: #ff4ea3;">          # filename != append("</span>packageName", <span style="color: #ff4ea3;">"_integration_test.go"</span>)
+
+  - <span style="color: #ff8700;">name</span>: right-build-directive-wrong-package
+    <span style="color: #ff8700;">flows</span>:
+      <span style="color: #ff8700;">codelingo/rewrite</span>:
+        <span style="color: #ff8700;">name</span>: |
+          <span style="color: #ff4ea3;">{{packageName}}_test</span>
+      <span style="color: #ff8700;">codelingo/docs</span>:
+        <span style="color: #ff8700;">title</span>: Right Build Directive Wrong Package
+        <span style="color: #ff8700;">body</span>:
+          Integration tests should have the custom build directive `// +build integration`,
+          belong to a file called `.<span style="color: #ffd700;">*_integration_test</span>.go`, and a a package called `&lt;packagename&gt;_test`
+      <span style="color: #ff8700;">codelingo/review</span>:
+        <span style="color: #ff8700;">comment</span>: |
+          <span style="color: #ff4ea3;">right-build-directive-wrong-package</span>
+<span style="color: #ff4ea3;">          Integration tests should have the custom build directive `// +build integration`,</span>
+<span style="color: #ff4ea3;">          belong to a file called `.*_integration_test.go`, and a a package called `&lt;packagename&gt;_test`</span>
+    <span style="color: #ff8700;">query</span>: |
+      <span style="color: #ff4ea3;">import codelingo/ast/go</span>
+
+<span style="color: #ff4ea3;">      go.dir(depth = any):</span>
+<span style="color: #ff4ea3;">        go.file(depth = 0:2):</span>
+<span style="color: #ff4ea3;">          @rewrite --replace name</span>
+<span style="color: #ff4ea3;">          go.ident:</span>
+<span style="color: #ff4ea3;">            name as packageName</span>
+<span style="color: #ff4ea3;">            doesNotMatch(/test/, packageName)</span>
+        <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">@review comment</span>
+<span style="color: #ff4ea3;">        go.file:</span>
+<span style="color: #ff4ea3;">          go.comment_group:</span>
+<span style="color: #ff4ea3;">            go.comment:</span>
+<span style="color: #ff4ea3;">              start_offset == 0</span>
+              text == <span style="color: #ff4ea3;">"// +build integration"</span>
+          <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">The only top level ident in a go file is (should be) the package name</span>
+<span style="color: #ff4ea3;">          @review comment</span>
+<span style="color: #ff4ea3;">          go.ident(depth = 0:2):</span>
+<span style="color: #ff4ea3;">            name as testPackageName</span>
+<span style="color: #ff4ea3;">            doesNotMatch(/_test/, testPackageName)</span>
+            <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">name != append(packageName, "_test")</span>
+
+  - <span style="color: #ff8700;">name</span>: right-package-wrong-build-directive
+    <span style="color: #ff8700;">flows</span>:
+      <span style="color: #ff8700;">codelingo/rewrite</span>:
+        <span style="color: #ff8700;">name</span>: filler <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">non-empty rewrite section required for parse error</span>
+      <span style="color: #ff8700;">codelingo/docs</span>:
+        <span style="color: #ff8700;">title</span>: Right Package Wrong Build Directive
+        <span style="color: #ff8700;">body</span>:
+          Integration tests should have the custom build directive `// +build integration`,
+          belong to a file called `.<span style="color: #ffd700;">*_integration_test</span>.go`, and a a package called `&lt;packagename&gt;_test`
+      <span style="color: #ff8700;">codelingo/review</span>:
+        <span style="color: #ff8700;">comment</span>: |
+          <span style="color: #ff4ea3;">right-package-wrong-build-directive</span>
+<span style="color: #ff4ea3;">          Integration tests should have the custom build directive `// +build integration`,</span>
+<span style="color: #ff4ea3;">          belong to a file called `.*_integration_test.go`, and a a package called `&lt;packagename&gt;_test`</span>
+    <span style="color: #ff8700;">query</span>: |
+      <span style="color: #ff4ea3;">import codelingo/ast/go</span>
+
+<span style="color: #ff4ea3;">      go.dir(depth = any):</span>
+<span style="color: #ff4ea3;">        go.file(depth = 0:2):</span>
+<span style="color: #ff4ea3;">          go.ident:</span>
+<span style="color: #ff4ea3;">            name as packageName</span>
+<span style="color: #ff4ea3;">            doesNotMatch(/test/, packageName)</span>
+<span style="color: #ff4ea3;">        @review comment</span>
+<span style="color: #ff4ea3;">        go.file:</span>
+          <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">The only top level ident in a go file is (should be) the package name</span>
+          @rewrite --prepend <span style="color: #ff4ea3;">"// +build integration"</span>
+<span style="color: #ff4ea3;">          go.ident:</span>
+            name == append(packageName, <span style="color: #ff4ea3;">"_test"</span>)
+<span style="color: #ff4ea3;">          exclude:</span>
+<span style="color: #ff4ea3;">            go.comment_group:</span>
+<span style="color: #ff4ea3;">              go.comment:</span>
+<span style="color: #ff4ea3;">                start_offset == 0</span>
+                text == <span style="color: #ff4ea3;">"// +build integration"</span>
+
+  - <span style="color: #ff8700;">name</span>: right-package-wrong-file
+    <span style="color: #ff8700;">flows</span>:
+      <span style="color: #ff8700;">codelingo/rewrite</span>:
+        <span style="color: #ff8700;">name</span>: filler <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">non-empty rewrite section required for parse error</span>
+      <span style="color: #ff8700;">codelingo/docs</span>:
+        <span style="color: #ff8700;">title</span>: Right Package Wrong File
+        <span style="color: #ff8700;">body</span>:
+          Integration tests should have the custom build directive `// +build integration`,
+          belong to a file called `.<span style="color: #ffd700;">*_integration_test</span>.go`, and a a package called `&lt;packagename&gt;_test`
+      <span style="color: #ff8700;">codelingo/review</span>:
+        <span style="color: #ff8700;">comment</span>: |
+          <span style="color: #ff4ea3;">right-package-wrong-file</span>
+<span style="color: #ff4ea3;">          Integration tests should have the custom build directive `// +build integration`,</span>
+<span style="color: #ff4ea3;">          belong to a file called `.*_integration_test.go`, and a a package called `&lt;packagename&gt;_test`</span>
+    <span style="color: #ff8700;">query</span>: |
+      <span style="color: #ff4ea3;">import codelingo/ast/go</span>
+
+<span style="color: #ff4ea3;">      go.dir(depth = any):</span>
+<span style="color: #ff4ea3;">        go.file(depth = 0:2):</span>
+<span style="color: #ff4ea3;">          go.ident:</span>
+<span style="color: #ff4ea3;">            name as packageName</span>
+<span style="color: #ff4ea3;">            doesNotMatch(/test/, packageName)</span>
+<span style="color: #ff4ea3;">        @review comment</span>
+<span style="color: #ff4ea3;">        go.file:</span>
+          <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">The only top level ident in a go file is (should be) the package name</span>
+<span style="color: #ff4ea3;">          go.ident:</span>
+            name == append(packageName, <span style="color: #ff4ea3;">"_test"</span>)
+          @rewrite <span style="color: #ff4ea3;">"{{ appendIntegrationTest(fname) }}""</span>
+<span style="color: #ff4ea3;">          filename as fname</span>
+<span style="color: #ff4ea3;">          doesNotMatch(/_integration_test.go/, fname)</span>
+<span style="color: #ff4ea3;">          # filename != append(packageName, "</span>_integration_test.go")
+
+  - <span style="color: #ff8700;">name</span>: right-file-wrong-build-directive
+    <span style="color: #ff8700;">flows</span>:
+      <span style="color: #ff8700;">codelingo/rewrite</span>:
+        <span style="color: #ff8700;">name</span>: filler <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">non-empty rewrite section required for parse error</span>
+      <span style="color: #ff8700;">codelingo/docs</span>:
+        <span style="color: #ff8700;">title</span>: Right File Wrong Build Directive
+        <span style="color: #ff8700;">body</span>:
+          Integration tests should have the custom build directive `// +build integration`,
+          belong to a file called `.<span style="color: #ffd700;">*_integration_test</span>.go`, and a a package called `&lt;packagename&gt;_test`
+      <span style="color: #ff8700;">codelingo/review</span>:
+        <span style="color: #ff8700;">comment</span>: |
+          <span style="color: #ff4ea3;">right-file-wrong-build-directive</span>
+<span style="color: #ff4ea3;">          Integration tests should have the custom build directive `// +build integration`,</span>
+<span style="color: #ff4ea3;">          belong to a file called `.*_integration_test.go`, and a a package called `&lt;packagename&gt;_test`</span>
+    <span style="color: #ff8700;">query</span>: |
+      <span style="color: #ff4ea3;">import codelingo/ast/go</span>
+
+<span style="color: #ff4ea3;">      go.dir(depth = any):</span>
+<span style="color: #ff4ea3;">        go.file(depth = 0:2):</span>
+<span style="color: #ff4ea3;">          go.ident:</span>
+<span style="color: #ff4ea3;">            name as packageName</span>
+<span style="color: #ff4ea3;">            doesNotMatch(/test/, packageName)</span>
+<span style="color: #ff4ea3;">        @review comment</span>
+<span style="color: #ff4ea3;">        go.file:</span>
+          @rewrite --prepend <span style="color: #ff4ea3;">"// +build integration"</span>
+<span style="color: #ff4ea3;">          go.ident</span>
+<span style="color: #ff4ea3;">          filename as fname</span>
+<span style="color: #ff4ea3;">          regex(/integration_test.go/, fname)</span>
+          <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">filename == append(packageName, "integration_test.go")</span>
+<span style="color: #ff4ea3;">          exclude:</span>
+<span style="color: #ff4ea3;">            go.comment_group:</span>
+<span style="color: #ff4ea3;">              go.comment:</span>
+<span style="color: #ff4ea3;">                start_offset == 0</span>
+                text == <span style="color: #ff4ea3;">"// +build integration"</span>
+
+  - <span style="color: #ff8700;">name</span>: right-file-wrong-package
+    <span style="color: #ff8700;">flows</span>:
+      <span style="color: #ff8700;">codelingo/rewrite</span>:
+        <span style="color: #ff8700;">name</span>: |
+          <span style="color: #ff4ea3;">{{packageName}}_test</span>
+      <span style="color: #ff8700;">codelingo/docs</span>:
+        <span style="color: #ff8700;">title</span>: Right File Wrong Package
+        <span style="color: #ff8700;">body</span>:
+          Integration tests should have the custom build directive `// +build integration`,
+          belong to a file called `.<span style="color: #ffd700;">*_integration_test</span>.go`, and a a package called `&lt;packagename&gt;_test`
+      <span style="color: #ff8700;">codelingo/review</span>:
+        <span style="color: #ff8700;">comment</span>: |
+          <span style="color: #ff4ea3;">right-file-wrong-package</span>
+<span style="color: #ff4ea3;">          Integration tests should have the custom build directive `// +build integration`,</span>
+<span style="color: #ff4ea3;">          belong to a file called `.*_integration_test.go`, and a a package called `&lt;packagename&gt;_test`</span>
+    <span style="color: #ff8700;">query</span>: |
+      <span style="color: #ff4ea3;">import codelingo/ast/go</span>
+
+<span style="color: #ff4ea3;">      go.dir(depth = any):</span>
+<span style="color: #ff4ea3;">        go.file(depth = 0:2):</span>
+<span style="color: #ff4ea3;">          @rewrite --replace name</span>
+<span style="color: #ff4ea3;">          go.ident:</span>
+<span style="color: #ff4ea3;">            name as packageName</span>
+<span style="color: #ff4ea3;">            doesNotMatch(/test/, packageName)</span>
+<span style="color: #ff4ea3;">        @review comment</span>
+<span style="color: #ff4ea3;">        go.file:</span>
+<span style="color: #ff4ea3;">          filename as fname</span>
+<span style="color: #ff4ea3;">          regex(/integration_test.go/, fname)</span>
+          <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">filename == append(packageName, "integration_test.go")</span>
+<span style="color: #ff4ea3;">          exclude:</span>
+            <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">The only top level ident in a go file is (should be) the package name</span>
+<span style="color: #ff4ea3;">            go.ident:</span>
+<span style="color: #ff4ea3;">              name as testPackagename</span>
+<span style="color: #ff4ea3;">              regex(/_test/, testPackagename)</span>
+              <span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">name == append(packageName, "_test")</span>
+
+<span style="color: #6c6c6c; font-style: italic;">## </span><span style="color: #6c6c6c; font-style: italic;">Better solutions:</span>
+<span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">Match files that have at least one of the three characteristics of an integration</span>
+<span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">test and are also missing at least one.</span>
+<span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">Failing due to "hit a uncaught error: got 0 results expecting 1 for block h, fact "common.comment_group"</span>
+
+<span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">@review comment</span>
+<span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">go.file(depth = any):</span>
+<span style="color: #6c6c6c; font-style: italic;">#   </span><span style="color: #6c6c6c; font-style: italic;">any_of:</span>
+<span style="color: #6c6c6c; font-style: italic;">#     </span><span style="color: #6c6c6c; font-style: italic;">filename as fname</span>
+<span style="color: #6c6c6c; font-style: italic;">#     </span><span style="color: #6c6c6c; font-style: italic;">filename == append(packageName, "integration_test.go")</span>
+<span style="color: #6c6c6c; font-style: italic;">#     </span><span style="color: #6c6c6c; font-style: italic;">go.comment_group:</span>
+<span style="color: #6c6c6c; font-style: italic;">#       </span><span style="color: #6c6c6c; font-style: italic;">go.comment:</span>
+<span style="color: #6c6c6c; font-style: italic;">#         </span><span style="color: #6c6c6c; font-style: italic;">start_offset == 0</span>
+<span style="color: #6c6c6c; font-style: italic;">#         </span><span style="color: #6c6c6c; font-style: italic;">text == "// +build integration"</span>
+<span style="color: #6c6c6c; font-style: italic;">#     </span><span style="color: #6c6c6c; font-style: italic;"># The only top level ident in a go file is (should be) the package name</span>
+<span style="color: #6c6c6c; font-style: italic;">#     </span><span style="color: #6c6c6c; font-style: italic;">go.ident:</span>
+<span style="color: #6c6c6c; font-style: italic;">#       </span><span style="color: #6c6c6c; font-style: italic;">name as testPackageName</span>
+<span style="color: #6c6c6c; font-style: italic;">#       </span><span style="color: #6c6c6c; font-style: italic;">name == append(packageName, "_test")</span>
+<span style="color: #6c6c6c; font-style: italic;">#   </span><span style="color: #6c6c6c; font-style: italic;">exclude:</span>
+<span style="color: #6c6c6c; font-style: italic;">#     </span><span style="color: #6c6c6c; font-style: italic;"># TODO: with fragment for fully repeated code</span>
+<span style="color: #6c6c6c; font-style: italic;">#     </span><span style="color: #6c6c6c; font-style: italic;">any_of:</span>
+<span style="color: #6c6c6c; font-style: italic;">#       </span><span style="color: #6c6c6c; font-style: italic;">filename as fname</span>
+<span style="color: #6c6c6c; font-style: italic;">#       </span><span style="color: #6c6c6c; font-style: italic;">regex(/.*_test.go, fname/)</span>
+<span style="color: #6c6c6c; font-style: italic;">#       </span><span style="color: #6c6c6c; font-style: italic;">go.comment_group:</span>
+<span style="color: #6c6c6c; font-style: italic;">#         </span><span style="color: #6c6c6c; font-style: italic;">go.comment:</span>
+<span style="color: #6c6c6c; font-style: italic;">#           </span><span style="color: #6c6c6c; font-style: italic;">start_offset == 0</span>
+<span style="color: #6c6c6c; font-style: italic;">#           </span><span style="color: #6c6c6c; font-style: italic;">text == "// +build integration"</span>
+<span style="color: #6c6c6c; font-style: italic;">#       </span><span style="color: #6c6c6c; font-style: italic;"># The only top level ident in a go file is (should be) the package name</span>
+<span style="color: #6c6c6c; font-style: italic;">#       </span><span style="color: #6c6c6c; font-style: italic;">go.ident:</span>
+<span style="color: #6c6c6c; font-style: italic;">#         </span><span style="color: #6c6c6c; font-style: italic;">name as testPackageName</span>
+<span style="color: #6c6c6c; font-style: italic;">#       </span><span style="color: #6c6c6c; font-style: italic;">name == append(packageName, "_test")</span>
+
+<span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">Match a file that has one or two of the three charateristics of integration tests</span>
+<span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">Not implemented</span>
+<span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">@review comment</span>
+<span style="color: #6c6c6c; font-style: italic;"># </span><span style="color: #6c6c6c; font-style: italic;">go.file(depth = any):</span>
+<span style="color: #6c6c6c; font-style: italic;">#   </span><span style="color: #6c6c6c; font-style: italic;">1:2_of:</span>
+<span style="color: #6c6c6c; font-style: italic;">#     </span><span style="color: #6c6c6c; font-style: italic;">filename as fname</span>
+<span style="color: #6c6c6c; font-style: italic;">#     </span><span style="color: #6c6c6c; font-style: italic;">filename == append(packageName, "integration_test.go")</span>
+<span style="color: #6c6c6c; font-style: italic;">#     </span><span style="color: #6c6c6c; font-style: italic;">go.comment_group:</span>
+<span style="color: #6c6c6c; font-style: italic;">#       </span><span style="color: #6c6c6c; font-style: italic;">go.comment:</span>
+<span style="color: #6c6c6c; font-style: italic;">#         </span><span style="color: #6c6c6c; font-style: italic;">start_offset == 0</span>
+<span style="color: #6c6c6c; font-style: italic;">#         </span><span style="color: #6c6c6c; font-style: italic;">text == "// +build integration"</span>
+<span style="color: #6c6c6c; font-style: italic;">#     </span><span style="color: #6c6c6c; font-style: italic;"># The only top level ident in a go file is (should be) the package name</span>
+<span style="color: #6c6c6c; font-style: italic;">#     </span><span style="color: #6c6c6c; font-style: italic;">go.ident:</span>
+<span style="color: #6c6c6c; font-style: italic;">#       </span><span style="color: #6c6c6c; font-style: italic;">name as testPackageName</span>
+<span style="color: #6c6c6c; font-style: italic;">#       </span><span style="color: #6c6c6c; font-style: italic;">name == append(packageName, "_test")</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5f40cf0" class="outline-3">
+<h3 id="org5f40cf0"><span class="section-number-3">1.3</span> annotated <code>tty-output.log</code></h3>
+<div class="outline-text-3" id="text-1-3">
+<div class="org-src-container">
+<pre class="src src-text">Constructing new git repo in temp folder... :: Fri Nov  2 16:53:26 NZDT 2018
+&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;
+Running: $HOME/scripts/rs -nc
+        -nogit
+        -noswap
+        $HOME/source/git/mullikine/codelingo/tenets/codelingo/jenkinsx/intformat/
+        /tmp/td_intformat7R9GTx
+/usr/bin/rsync  -a -rtlhx -pug -s  --inplace --append   --exclude .cache  --exclude .git/ --exclude .gitignore --exclude TODO  --exclude '*~' --exclude '.#*'  $HOME/source/git/mullikine/codelingo/tenets/codelingo/jenkinsx/intformat/ /tmp/td_intformat7R9GTx
+&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;
+/tmp/td_intformat7R9GTx
+Clear git remotes?
+ [Yn]: y
+fatal: <span style="color: #ffff00; background-color: #cccc00;">No such</span> remote: codelingo
+Syncing your repo...
+Running rewrite flow...
+  + dofinvalid_test
+  +
+[o]pen [k]eep [d]iscard : k
+  + dooinvalid_test
+  +
+[o]pen [k]eep [d]iscard : k
+  + doo_test
+  +
+[o]pen [k]eep [d]iscard : k
+  + dof_test
+  +
+[o]pen [k]eep [d]iscard : k
+  + dofinvalid_test
+  +
+[o]pen [k]eep [d]iscard : k
+  + oofinvalid_test
+  +
+[o]pen [k]eep [d]iscard : k
+  + dof_test
+  +
+[o]pen [k]eep [d]iscard : k
+  + oof_test
+  +
+[o]pen [k]eep [d]iscard : k
+Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> occurred while processing your request. Please try again.
+&lt;Check slack <span style="color: #ffff00; background-color: #cccc00;">error</span>&gt;
+exit status 1
+rewrite finished
+Reformulate?
+: S
+: B
+working_dir: /tmp/td_intformat7R9GTx
+Continue?
+ [Yn]: y
+Running: $HOME/scripts/rs -nc
+        -nogit
+        -noswap
+        /tmp/td_intformat7R9GTx/
+        $MYGIT/mullikine/tenets/blog/
+/usr/bin/rsync  -a -rtlhx -pug -s  --inplace --append   --exclude .cache  --exclude .git/ --exclude .gitignore --exclude TODO  --exclude '*~' --exclude '.#*'  /tmp/td_intformat7R9GTx/ $MYGIT/mullikine/tenets/blog/
+&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;&#8254;
+/tmp/td_intformat7R9GTx
+[master ccbeccc] added
+ 20 files changed, 769 insertions(+)
+ create mode 100644 blog/codelingo.yaml
+ create mode 100644 blog/expected.json
+ create mode 100644 blog/generate_tests.go
+ create mode 100644 blog/src/dof/dof.go
+ create mode 100644 blog/src/dof/dof_integration_test.go
+ create mode 100644 blog/src/doo/doo.go
+ create mode 100644 blog/src/doo/dooinvalid.go
+ create mode 100644 blog/src/dpf/dpf.go
+ create mode 100644 blog/src/dpf/dpf_integration_test.go
+ create mode 100644 blog/src/dpo/dpo.go
+ create mode 100644 blog/src/dpo/dpoinvalid.go
+ create mode 100644 blog/src/oof/oof.go
+ create mode 100644 blog/src/oof/oof_integration_test.go
+ create mode 100644 blog/src/ooo/ooo.go
+ create mode 100644 blog/src/ooo/oooinvalid.go
+ create mode 100644 blog/src/opf/opf.go
+ create mode 100644 blog/src/opf/opf_integration_test.go
+ create mode 100644 blog/src/opo/opo.go
+ create mode 100644 blog/src/opo/opoinvalid.go
+ create mode 100644 blog/tty-output.log
+Enumerating objects: 34, done.
+Counting objects: 100% (34/34), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (19/19), done.
+Writing objects: 100% (32/32), 5.49 KiB | 2.75 MiB/s, done.
+Total 32 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/mullikine/tenets
+   96ce3cd..ccbeccc  master -&gt; master
+: S
+: S
+: B
+working_dir: /tmp/td_intformat7R9GTx
+Continue?
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge61c164" class="outline-3">
+<h3 id="orge61c164"><span class="section-number-3">1.4</span> slack error</h3>
+<div class="outline-text-3" id="text-1-4">
+<div class="org-src-container">
+<pre class="src src-text">mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;">error</span>: <span style="color: #ffff00; background-color: #cccc00;">failed</span> to build hunk: '%!s(MISSING)' can only decorate a fact
+/home/dev/projects/src/github.com/codelingo/platform/flow/flows/rewrite/result/buildhunks.go:73: '%!s(MISSING)' can only decorate a fact
+/home/dev/projects/src/github.com/codelingo/platform/flow/flows/rewrite/result/router.go:50: <span style="color: #ffff00; background-color: #cccc00;">failed</span> to build hunk
+/home/dev/projects/src/github.com/codelingo/platform/flow/util/util.go:11:
+/home/dev/projects/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;">error</span>
+mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;">error</span>: <span style="color: #ffff00; background-color: #cccc00;">failed</span> to build hunk: '%!s(MISSING)' can only decorate a fact
+/home/dev/projects/src/github.com/codelingo/platform/flow/flows/rewrite/result/buildhunks.go:73: '%!s(MISSING)' can only decorate a fact
+/home/dev/projects/src/github.com/codelingo/platform/flow/flows/rewrite/result/router.go:50: <span style="color: #ffff00; background-color: #cccc00;">failed</span> to build hunk
+/home/dev/projects/src/github.com/codelingo/platform/flow/util/util.go:11:
+/home/dev/projects/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;">error</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc61765f" class="outline-3">
+<h3 id="orgc61765f"><span class="section-number-3">1.5</span> repository info</h3>
+<div class="outline-text-3" id="text-1-5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">tenet source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><a href="https://github.com/mullikine/tenets/blob/master/blog/intformat">tenets/blog/intformat at master  mullikine/tenets  GitHub</a></td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">org</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><a href="https://github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/tenets/intformat.org">github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/tenets/intformat.org</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org2053790" class="outline-3">
+<h3 id="org2053790"><span class="section-number-3">1.6</span> repo state</h3>
+<div class="outline-text-3" id="text-1-6">
+<dl class="org-dl">
+<dt>url</dt><dd><a href="https://github.com/codelingo/codelingo/blob/master">https://github.com/codelingo/codelingo/blob/master</a></dd>
+</dl>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">command</th>
+<th scope="col" class="org-left">value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">cat /etc/issue</td>
+<td class="org-left">Ubuntu 16.04.4 LTS \n \l</td>
+</tr>
+
+<tr>
+<td class="org-left">vc url</td>
+<td class="org-left"><a href="https://github.com/codelingo/codelingo">https://github.com/codelingo/codelingo</a></td>
+</tr>
+
+<tr>
+<td class="org-left">vc get-hash</td>
+<td class="org-left">eae3300ad7c32994725f90344f7cc25edfee6eca</td>
+</tr>
+
+<tr>
+<td class="org-left">vc branch</td>
+<td class="org-left">master</td>
+</tr>
+
+<tr>
+<td class="org-left">go version</td>
+<td class="org-left">go version go1.11.1 linux/amd64</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-org3691706" class="outline-4">
+<h4 id="org3691706"><span class="section-number-4">1.6.1</span> recent commits</h4>
+<div class="outline-text-4" id="text-1-6-1">
+<div class="org-src-container">
+<pre class="src src-text">commit eae3300ad7c32994725f90344f7cc25edfee6eca
+Author: Jesse Meek <a href="mailto:waigani%40gmail.com">&lt;waigani@gmail.com&gt;</a>
+
+    Disable test Tenet until mem spike is fixed.
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5a22de6" class="outline-3">
+<h3 id="org5a22de6"><span class="section-number-3">1.7</span> repo state</h3>
+<div class="outline-text-3" id="text-1-7">
+<dl class="org-dl">
+<dt>url</dt><dd>git@github.com:mullikine/lingo.git/blob/master</dd>
+</dl>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">command</th>
+<th scope="col" class="org-left">value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">cat /etc/issue</td>
+<td class="org-left">Ubuntu 16.04.4 LTS \n \l</td>
+</tr>
+
+<tr>
+<td class="org-left">vc url</td>
+<td class="org-left">git@github.com:mullikine/lingo.git</td>
+</tr>
+
+<tr>
+<td class="org-left">vc get-hash</td>
+<td class="org-left">fc18bb8b8a83c483aa58606f0695de1e1cd55f1b</td>
+</tr>
+
+<tr>
+<td class="org-left">vc branch</td>
+<td class="org-left">master</td>
+</tr>
+
+<tr>
+<td class="org-left">go version</td>
+<td class="org-left">go version go1.11.1 linux/amd64</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-org1f90981" class="outline-4">
+<h4 id="org1f90981"><span class="section-number-4">1.7.1</span> recent commits</h4>
+<div class="outline-text-4" id="text-1-7-1">
+<div class="org-src-container">
+<pre class="src src-text">commit fc18bb8b8a83c483aa58606f0695de1e1cd55f1b
+Merge: ca7671c 191b3c4
+Author: BlakeMScurr <a href="mailto:blake%40codelingo.io">&lt;blake@codelingo.io&gt;</a>
+
+    Merge pull request #431 from BlakeMScurr/insecure
+
+commit 191b3c436d34827aec4a3913636d6b72dcf051ec
+Author: BlakeMScurr <a href="mailto:blakemscurr%40gmail.com">&lt;blakemscurr@gmail.com&gt;</a>
+
+    Allow <span style="color: #ffff00; background-color: #cccc00;">failed</span> cert creation for insecure connections.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: shane</p>
+<p class="date">Created: 2018-11-02 Fri 19:20</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
