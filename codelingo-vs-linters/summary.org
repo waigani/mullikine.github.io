@@ -31,7 +31,8 @@ Typically, the generated query comprises the bulk of the code you end up with.  
 
 -----
 
-**** *Before and after:* Refining the CLQL
+**** Refining the CLQL
+***** Before: Generated CLQL
 #+BEGIN_SRC yaml
   import codelingo/ast/go
 
@@ -49,6 +50,33 @@ Typically, the generated query comprises the bulk of the code you end up with.  
             child_count == 0
 #+END_SRC
 
+***** Refining the CLQL
+The process of crafting CLQL is mainly subtractive, especially for simple tenets.
+
+#+BEGIN_EXPORT html
+<div class="org-src-container">
+<pre>
+<span class="magit-diff-hunk-heading">@@ -2,13 +2,10 @@ import codelingo/ast/go
+</span><span class="magit-diff-context"> 
+ go.file(depth = any):
+   go.decls:
+</span><span class="magit-diff-removed">-    @playground.highlight
+</span><span class="magit-diff-context">     go.func_decl:
+</span><span class="magit-diff-added">+      @ review.comment
+</span><span class="magit-diff-context">       go.ident:
+</span><span class="magit-diff-removed">-        child_count == 0
+</span><span class="magit-diff-context">         name == "init"
+</span><span class="magit-diff-removed">-        private == "true"
+-        public == "false"
+</span><span class="magit-diff-context">       go.func_type:
+         go.field_list:
+           child_count == 0
+</span>
+</pre>
+</div>
+#+END_EXPORT
+
+***** After: Refined CLQL
 #+BEGIN_SRC yaml
   import codelingo/ast/go
 
@@ -62,13 +90,6 @@ Typically, the generated query comprises the bulk of the code you end up with.  
           go.field_list:
             child_count == 0
 #+END_SRC
-
-The process of crafting CLQL is mainly subtractive, especially for simple tenets.
-
-
-  *Left:* Generated CLQL
-
-  *Right:* Refined CLQL
 
 See the full article [[http://mullikine.github.io/codelingo-vs-linters/main.html][here]] for further explanation.
 
