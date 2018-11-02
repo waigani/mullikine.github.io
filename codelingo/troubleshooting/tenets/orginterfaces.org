@@ -224,7 +224,7 @@ It appears as though when a second ~go.file~ fact is placed here in this tenet, 
 *** ~git status~
 - Verify that there are no unstaged changes here.
 *** recent commits
-#+BEGIN_SRC git
+#+BEGIN_SRC text
   commit eae3300ad7c32994725f90344f7cc25edfee6eca
   Author: Jesse Meek <waigani@gmail.com>
   
@@ -243,7 +243,7 @@ It appears as though when a second ~go.file~ fact is placed here in this tenet, 
 
 *** ~git status~
 - Verify that there are no unstaged changes here.
-#+BEGIN_SRC git
+#+BEGIN_SRC text
   On branch master
   Your branch is ahead of 'origin/master' by 47 commits.
     (use "git push" to publish your local commits)
@@ -256,12 +256,12 @@ It appears as though when a second ~go.file~ fact is placed here in this tenet, 
   
   no changes added to commit (use "git add" and/or "git commit -a")
 #+END_SRC
+
 *** recent commits
-#+BEGIN_SRC git
+#+BEGIN_SRC text
   commit fc18bb8b8a83c483aa58606f0695de1e1cd55f1b
   Merge: ca7671c 191b3c4
   Author: BlakeMScurr <blake@codelingo.io>
   
-      Merge pull request #431 from BlakeMScurr/insecure
- 
+      Merge pull request #431 from BlakeMScurr/insecure 
 #+END_SRC
