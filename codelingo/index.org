@@ -1,3 +1,7 @@
+#+TITLE: Contents
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
+
 [[build-script-errors.html][build-script-errors.html]]
 [[first-kubernetes-tenet.html][first-kubernetes-tenet.html]]
 [[index.html][index.html]]
