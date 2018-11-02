@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-18 Thu 19:13 -->
+<!-- 2018-11-02 Fri 21:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>Creating the tenet <code>flags-have-underscores</code></title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="shane" />
 <style type="text/css">
@@ -231,59 +231,60 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
+<h1 class="title">Creating the tenet <code>flags-have-underscores</code></h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd1ce72c">1. Creating the tenet <code>flags-have-underscores</code></a>
+<li><a href="#orgee7e65a">1. Creating the tenet <code>flags-have-underscores</code></a>
 <ul>
-<li><a href="#org3af5945">1.1. Selected</a>
+<li><a href="#org2cfd9d9">1.1. Selected</a>
 <ul>
-<li><a href="#orgd678e8f">1.1.1. Generated CLQL (A)</a></li>
-<li><a href="#org2525224">1.1.2. refined CLQL (A)</a></li>
+<li><a href="#orgf7f607b">1.1.1. Generated CLQL (A)</a></li>
+<li><a href="#org9359538">1.1.2. refined CLQL (A)</a></li>
 </ul>
 </li>
-<li><a href="#orgbeeaa69">1.2. Selected</a>
+<li><a href="#org6eeb053">1.2. Selected</a>
 <ul>
-<li><a href="#orgaa227bd">1.2.1. Generated CLQL (B)</a></li>
-<li><a href="#org1f51dd6">1.2.2. Refined CLQL (B)</a></li>
+<li><a href="#orgd5f00f4">1.2.1. Generated CLQL (B)</a></li>
+<li><a href="#org2bf9cbf">1.2.2. Refined CLQL (B)</a></li>
 </ul>
 </li>
-<li><a href="#org3adf417">1.3. Removed <code>@playground.highlight</code>, added <code>@review.comment</code></a></li>
-<li><a href="#org438b433">1.4. Merged CLQL (A) and CLQL (B)</a>
+<li><a href="#org80c7914">1.3. Removed <code>@playground.highlight</code>, added <code>@review.comment</code></a></li>
+<li><a href="#orge5c6e55">1.4. Merged CLQL (A) and CLQL (B)</a>
 <ul>
-<li><a href="#org8b6461b">1.4.1. Also, removed superfluous facts and added (depth = X) arguments</a></li>
+<li><a href="#orgcb8a261">1.4.1. Also, removed superfluous facts and added (depth = X) arguments</a></li>
 </ul>
 </li>
-<li><a href="#orgabcbc72">1.5. kubernetes had a <code>vendor</code> folder and codelingo refused to injest it</a>
+<li><a href="#org5f1965a">1.5. kubernetes had a <code>vendor</code> folder and codelingo refused to injest it</a>
 <ul>
-<li><a href="#org68a587a">1.5.1. Contents of <code>.codelingoignore</code></a></li>
+<li><a href="#org936c585">1.5.1. Contents of <code>.codelingoignore</code></a></li>
 </ul>
 </li>
-<li><a href="#orgdac47b7">1.6. Once you have created the <code>.codelingoignore</code> file there are two ways to test tenet:</a>
+<li><a href="#org584db1d">1.6. Once you have created the <code>.codelingoignore</code> file there are two ways to test tenet:</a>
 <ul>
-<li><a href="#org2923964">1.6.1. 1. copy <code>codelingo.yaml</code> file into the kubernetes repository</a></li>
-<li><a href="#orgfa413e2">1.6.2. 2. <code>cd</code> into the <code>kubernetes</code> repository directory and run the following command</a></li>
+<li><a href="#org3f2b641">1.6.1. 1. copy <code>codelingo.yaml</code> file into the kubernetes repository</a></li>
+<li><a href="#org998e3c3">1.6.2. 2. <code>cd</code> into the <code>kubernetes</code> repository directory and run the following command</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgb68b876">2. problems</a>
+<li><a href="#orga988e10">2. problems</a>
 <ul>
-<li><a href="#orgea1bb7c">2.1. codelingo website does not make it <b>clear</b> that you should select lots of code and refine from there</a></li>
-<li><a href="#orgf813610">2.2. Equality testing with <code>depth = X</code> uses <code>=</code> where <code>==</code> is used for properties.</a></li>
+<li><a href="#orgcb9d512">2.1. codelingo website does not make it <b>clear</b> that you should select lots of code and refine from there</a></li>
+<li><a href="#org34e4662">2.2. Equality testing with <code>depth = X</code> uses <code>=</code> where <code>==</code> is used for properties.</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgd1ce72c" class="outline-2">
-<h2 id="orgd1ce72c"><span class="section-number-2">1</span> Creating the tenet <code>flags-have-underscores</code></h2>
+<div id="outline-container-orgee7e65a" class="outline-2">
+<h2 id="orgee7e65a"><span class="section-number-2">1</span> Creating the tenet <code>flags-have-underscores</code></h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org3af5945" class="outline-3">
-<h3 id="org3af5945"><span class="section-number-3">1.1</span> Selected</h3>
+<div id="outline-container-org2cfd9d9" class="outline-3">
+<h3 id="org2cfd9d9"><span class="section-number-3">1.1</span> Selected</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-go"><span style="color: #a1db00;">func</span> (f *<span style="color: #00d7af;">ConfigFlags</span>) <span style="color: #ffd700;">AddFlags</span>(flags *<span style="color: #00d7af;">pflag.FlagSet</span>) {
@@ -292,8 +293,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgd678e8f" class="outline-4">
-<h4 id="orgd678e8f"><span class="section-number-4">1.1.1</span> Generated CLQL (A)</h4>
+<div id="outline-container-orgf7f607b" class="outline-4">
+<h4 id="orgf7f607b"><span class="section-number-4">1.1.1</span> Generated CLQL (A)</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <div class="org-src-container">
 <pre class="src src-yaml">import codelingo/ast/go
@@ -387,8 +388,8 @@ for the JavaScript code in this tag.
 </div>
 
 
-<div id="outline-container-org2525224" class="outline-4">
-<h4 id="org2525224"><span class="section-number-4">1.1.2</span> refined CLQL (A)</h4>
+<div id="outline-container-org9359538" class="outline-4">
+<h4 id="org9359538"><span class="section-number-4">1.1.2</span> refined CLQL (A)</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <div class="org-src-container">
 <pre class="src src-yaml"><span style="color: #ff8700;">functions</span>:
@@ -439,8 +440,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgbeeaa69" class="outline-3">
-<h3 id="orgbeeaa69"><span class="section-number-3">1.2</span> Selected</h3>
+<div id="outline-container-org6eeb053" class="outline-3">
+<h3 id="org6eeb053"><span class="section-number-3">1.2</span> Selected</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 <pre class="src src-go"><span style="color: #a1db00;">import</span> (
@@ -449,8 +450,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgaa227bd" class="outline-4">
-<h4 id="orgaa227bd"><span class="section-number-4">1.2.1</span> Generated CLQL (B)</h4>
+<div id="outline-container-orgd5f00f4" class="outline-4">
+<h4 id="orgd5f00f4"><span class="section-number-4">1.2.1</span> Generated CLQL (B)</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <div class="org-src-container">
 <pre class="src src-yaml">import codelingo/ast/go
@@ -469,8 +470,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org1f51dd6" class="outline-4">
-<h4 id="org1f51dd6"><span class="section-number-4">1.2.2</span> Refined CLQL (B)</h4>
+<div id="outline-container-org2bf9cbf" class="outline-4">
+<h4 id="org2bf9cbf"><span class="section-number-4">1.2.2</span> Refined CLQL (B)</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <div class="org-src-container">
 <pre class="src src-yaml">import codelingo/ast/go
@@ -487,16 +488,16 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org3adf417" class="outline-3">
-<h3 id="org3adf417"><span class="section-number-3">1.3</span> Removed <code>@playground.highlight</code>, added <code>@review.comment</code></h3>
+<div id="outline-container-org80c7914" class="outline-3">
+<h3 id="org80c7914"><span class="section-number-3">1.3</span> Removed <code>@playground.highlight</code>, added <code>@review.comment</code></h3>
 </div>
 
-<div id="outline-container-org438b433" class="outline-3">
-<h3 id="org438b433"><span class="section-number-3">1.4</span> Merged CLQL (A) and CLQL (B)</h3>
+<div id="outline-container-orge5c6e55" class="outline-3">
+<h3 id="orge5c6e55"><span class="section-number-3">1.4</span> Merged CLQL (A) and CLQL (B)</h3>
 <div class="outline-text-3" id="text-1-4">
 </div>
-<div id="outline-container-org8b6461b" class="outline-4">
-<h4 id="org8b6461b"><span class="section-number-4">1.4.1</span> Also, removed superfluous facts and added (depth = X) arguments</h4>
+<div id="outline-container-orgcb8a261" class="outline-4">
+<h4 id="orgcb8a261"><span class="section-number-4">1.4.1</span> Also, removed superfluous facts and added (depth = X) arguments</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <div class="org-src-container">
 <pre class="src src-yaml">import codelingo/ast/go
@@ -536,8 +537,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgabcbc72" class="outline-3">
-<h3 id="orgabcbc72"><span class="section-number-3">1.5</span> kubernetes had a <code>vendor</code> folder and codelingo refused to injest it</h3>
+<div id="outline-container-org5f1965a" class="outline-3">
+<h3 id="org5f1965a"><span class="section-number-3">1.5</span> kubernetes had a <code>vendor</code> folder and codelingo refused to injest it</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 Make a <code>.codelingoignore</code> file within the kubernetes repository
@@ -549,8 +550,8 @@ Make a <code>.codelingoignore</code> file within the kubernetes repository
 </div>
 </div>
 
-<div id="outline-container-org68a587a" class="outline-4">
-<h4 id="org68a587a"><span class="section-number-4">1.5.1</span> Contents of <code>.codelingoignore</code></h4>
+<div id="outline-container-org936c585" class="outline-4">
+<h4 id="org936c585"><span class="section-number-4">1.5.1</span> Contents of <code>.codelingoignore</code></h4>
 <div class="outline-text-4" id="text-1-5-1">
 <div class="org-src-container">
 <pre class="src src-text">vendor/
@@ -560,12 +561,12 @@ Make a <code>.codelingoignore</code> file within the kubernetes repository
 </div>
 </div>
 
-<div id="outline-container-orgdac47b7" class="outline-3">
-<h3 id="orgdac47b7"><span class="section-number-3">1.6</span> Once you have created the <code>.codelingoignore</code> file there are two ways to test tenet:</h3>
+<div id="outline-container-org584db1d" class="outline-3">
+<h3 id="org584db1d"><span class="section-number-3">1.6</span> Once you have created the <code>.codelingoignore</code> file there are two ways to test tenet:</h3>
 <div class="outline-text-3" id="text-1-6">
 </div>
-<div id="outline-container-org2923964" class="outline-4">
-<h4 id="org2923964"><span class="section-number-4">1.6.1</span> 1. copy <code>codelingo.yaml</code> file into the kubernetes repository</h4>
+<div id="outline-container-org3f2b641" class="outline-4">
+<h4 id="org3f2b641"><span class="section-number-4">1.6.1</span> 1. copy <code>codelingo.yaml</code> file into the kubernetes repository</h4>
 <div class="outline-text-4" id="text-1-6-1">
 <div class="org-src-container">
 <pre class="src src-sh">cp ./github.com/codelingo/codelingo/tenets/codelingo/k8/flags-have-underscores/codelingo.yaml ./github.com/kubernetes/kubernetes/
@@ -574,8 +575,8 @@ Make a <code>.codelingoignore</code> file within the kubernetes repository
 </div>
 </div>
 
-<div id="outline-container-orgfa413e2" class="outline-4">
-<h4 id="orgfa413e2"><span class="section-number-4">1.6.2</span> 2. <code>cd</code> into the <code>kubernetes</code> repository directory and run the following command</h4>
+<div id="outline-container-org998e3c3" class="outline-4">
+<h4 id="org998e3c3"><span class="section-number-4">1.6.2</span> 2. <code>cd</code> into the <code>kubernetes</code> repository directory and run the following command</h4>
 <div class="outline-text-4" id="text-1-6-2">
 <div class="org-src-container">
 <pre class="src src-sh">lingo run review -lingo-file ./github.com/codelingo/codelingo/tenets/codelingo/k8/flags-have-underscores/codelingo.yaml
@@ -586,12 +587,12 @@ Make a <code>.codelingoignore</code> file within the kubernetes repository
 </div>
 </div>
 
-<div id="outline-container-orgb68b876" class="outline-2">
-<h2 id="orgb68b876"><span class="section-number-2">2</span> problems</h2>
+<div id="outline-container-orga988e10" class="outline-2">
+<h2 id="orga988e10"><span class="section-number-2">2</span> problems</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orgea1bb7c" class="outline-3">
-<h3 id="orgea1bb7c"><span class="section-number-3">2.1</span> codelingo website does not make it <b>clear</b> that you should select lots of code and refine from there</h3>
+<div id="outline-container-orgcb9d512" class="outline-3">
+<h3 id="orgcb9d512"><span class="section-number-3">2.1</span> codelingo website does not make it <b>clear</b> that you should select lots of code and refine from there</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 In theory, you <b>could</b> select the entire file and refine from there and this, in theory would give you the information you need to refine. This is an important concept.
@@ -607,14 +608,14 @@ In theory, you <b>could</b> select the entire file and refine from there and thi
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf813610" class="outline-3">
-<h3 id="orgf813610"><span class="section-number-3">2.2</span> Equality testing with <code>depth = X</code> uses <code>=</code> where <code>==</code> is used for properties.</h3>
+<div id="outline-container-org34e4662" class="outline-3">
+<h3 id="org34e4662"><span class="section-number-3">2.2</span> Equality testing with <code>depth = X</code> uses <code>=</code> where <code>==</code> is used for properties.</h3>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: shane</p>
-<p class="date">Created: 2018-10-18 Thu 19:13</p>
+<p class="date">Created: 2018-11-02 Fri 21:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

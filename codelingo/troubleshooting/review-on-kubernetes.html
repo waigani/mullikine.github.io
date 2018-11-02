@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-11-02 Fri 12:30 -->
+<!-- 2018-11-02 Fri 21:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>troubleshooting kubernetes tenets on kubernetes</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="shane" />
 <style type="text/css">
@@ -180,6 +180,8 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
+<link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+<link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -251,44 +253,45 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
+<h1 class="title">troubleshooting kubernetes tenets on kubernetes</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org8baf166">1. Tenets tested on kubernetes</a>
+<li><a href="#orgebfceaf">1. Tenets tested on kubernetes</a>
 <ul>
-<li><a href="#org6f22e63">1.1. well-formed-lists</a>
+<li><a href="#org390776a">1.1. Testing tenet <code>well-formed-lists</code></a>
 <ul>
-<li><a href="#orgb69f1b7">1.1.1. tty output log</a></li>
-<li><a href="#org666c32f">1.1.2. slack errors</a></li>
-<li><a href="#org56bf337">1.1.3. kubernetes repo status</a></li>
+<li><a href="#org245e4cb">1.1.1. tty output log</a></li>
+<li><a href="#org542161f">1.1.2. slack errors</a></li>
+<li><a href="#org48fcd52">1.1.3. kubernetes repo status</a></li>
 </ul>
 </li>
-<li><a href="#org1efef86">1.2. well-named-interface</a>
+<li><a href="#org10f1bdd">1.2. Testing tenet <code>well-named-interface</code></a>
 <ul>
-<li><a href="#orga78446a">1.2.1. tty output log</a></li>
-<li><a href="#orga5075c3">1.2.2. slack errors</a></li>
+<li><a href="#org1f00ae0">1.2.1. tty output log</a></li>
+<li><a href="#org58ab18b">1.2.2. slack errors</a></li>
 </ul>
 </li>
-<li><a href="#orgfea872f">1.3. well-named-locks</a>
+<li><a href="#org6d64685">1.3. Testing tenet <code>well-named-locks</code></a>
 <ul>
-<li><a href="#org7a948cc">1.3.1. tty output log</a></li>
-<li><a href="#org0577c73">1.3.2. slack errors</a></li>
-<li><a href="#org7e5a8fd">1.3.3. https://github.com/kubernetes/kubernetes/blob/master</a></li>
+<li><a href="#org9342254">1.3.1. tty output log</a></li>
+<li><a href="#org7337398">1.3.2. slack errors</a></li>
+<li><a href="#orgee06d02">1.3.3. https://github.com/kubernetes/kubernetes/blob/master</a></li>
 </ul>
 </li>
-<li><a href="#org05d1e12">1.4. well-named-lists</a>
+<li><a href="#org1691f6e">1.4. Testing tenet <code>well-named-lists</code></a>
 <ul>
-<li><a href="#org1a14654">1.4.1. tty output log</a></li>
-<li><a href="#orgcf8f5ec">1.4.2. slack errors</a></li>
-<li><a href="#org4226620">1.4.3. repo state</a></li>
+<li><a href="#org39bd42d">1.4.1. tty output log</a></li>
+<li><a href="#orgb2d2e89">1.4.2. slack errors</a></li>
+<li><a href="#org80c0290">1.4.3. repo state</a></li>
 </ul>
 </li>
-<li><a href="#orgdccad0b">1.5. well-named-lists - vendor and staging deleted</a>
+<li><a href="#orge22c39f">1.5. Testing tenet <code>well-named-lists</code> with vendor and staging deleted</a>
 <ul>
-<li><a href="#org5e43b41">1.5.1. tty output log</a></li>
-<li><a href="#org602ae38">1.5.2. slack errors</a></li>
-<li><a href="#orgd60bf4e">1.5.3. repo state</a></li>
+<li><a href="#org3e623d4">1.5.1. tty output log</a></li>
+<li><a href="#orgbc9f78c">1.5.2. slack errors</a></li>
+<li><a href="#org1201750">1.5.3. repo state</a></li>
 </ul>
 </li>
 </ul>
@@ -296,8 +299,9 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org8baf166" class="outline-2">
-<h2 id="org8baf166"><span class="section-number-2">1</span> Tenets tested on kubernetes</h2>
+
+<div id="outline-container-orgebfceaf" class="outline-2">
+<h2 id="orgebfceaf"><span class="section-number-2">1</span> Tenets tested on kubernetes</h2>
 <div class="outline-text-2" id="text-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -358,8 +362,8 @@ for the JavaScript code in this tag.
 </table>
 </div>
 
-<div id="outline-container-org6f22e63" class="outline-3">
-<h3 id="org6f22e63"><span class="section-number-3">1.1</span> well-formed-lists</h3>
+<div id="outline-container-org390776a" class="outline-3">
+<h3 id="org390776a"><span class="section-number-3">1.1</span> Testing tenet <code>well-formed-lists</code></h3>
 <div class="outline-text-3" id="text-1-1">
 <dl class="org-dl">
 <dt>tenet source</dt><dd><a href="https://github.com/mullikine/codelingo/blob/k8mocktenets/tenets/codelingo/k8/well-formed-lists/codelingo.yaml">codelingo/codelingo.yaml at k8mocktenets  mullikine/codelingo  GitHub</a></dd>
@@ -392,8 +396,8 @@ for the JavaScript code in this tag.
 </table>
 </div>
 
-<div id="outline-container-orgb69f1b7" class="outline-4">
-<h4 id="orgb69f1b7"><span class="section-number-4">1.1.1</span> tty output log</h4>
+<div id="outline-container-org245e4cb" class="outline-4">
+<h4 id="org245e4cb"><span class="section-number-4">1.1.1</span> tty output log</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <div class="org-src-container">
 <pre class="src src-text">Inherited CWD: $HOME/source/git/kubernetes/kubernetes/
@@ -431,8 +435,8 @@ lingo -time run review --debug  0.21s user 0.32s system 0% cpu 1:03.26 total
 </div>
 </div>
 
-<div id="outline-container-org666c32f" class="outline-4">
-<h4 id="org666c32f"><span class="section-number-4">1.1.2</span> slack errors</h4>
+<div id="outline-container-org542161f" class="outline-4">
+<h4 id="org542161f"><span class="section-number-4">1.1.2</span> slack errors</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <div class="org-src-container">
 <pre class="src src-text">platform-errors APP [10:13 AM]
@@ -452,12 +456,12 @@ Sorry, an <span style="color: #ffff00; background-color: #cccc00;">error</span> 
 </div>
 </div>
 
-<div id="outline-container-org56bf337" class="outline-4">
-<h4 id="org56bf337"><span class="section-number-4">1.1.3</span> kubernetes repo status</h4>
+<div id="outline-container-org48fcd52" class="outline-4">
+<h4 id="org48fcd52"><span class="section-number-4">1.1.3</span> kubernetes repo status</h4>
 <div class="outline-text-4" id="text-1-1-3">
 </div>
 <ol class="org-ol">
-<li><a id="org77d586c"></a><a href="https://github.com/kubernetes/kubernetes/blob/master">https://github.com/kubernetes/kubernetes/blob/master</a><br />
+<li><a id="org3323243"></a><a href="https://github.com/kubernetes/kubernetes/blob/master">https://github.com/kubernetes/kubernetes/blob/master</a><br />
 <div class="outline-text-5" id="text-1-1-3-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -517,8 +521,8 @@ Date:   Thu Nov 1 16:35:45 2018 +1300
 </div>
 </div>
 
-<div id="outline-container-org1efef86" class="outline-3">
-<h3 id="org1efef86"><span class="section-number-3">1.2</span> well-named-interface</h3>
+<div id="outline-container-org10f1bdd" class="outline-3">
+<h3 id="org10f1bdd"><span class="section-number-3">1.2</span> Testing tenet <code>well-named-interface</code></h3>
 <div class="outline-text-3" id="text-1-2">
 <dl class="org-dl">
 <dt>tenet source</dt><dd><a href="https://github.com/mullikine/codelingo/blob/k8mocktenets/tenets/codelingo/k8/well-named-interface/codelingo.yaml">codelingo/codelingo.yaml at k8mocktenets  mullikine/codelingo  GitHub</a></dd>
@@ -547,8 +551,8 @@ Date:   Thu Nov 1 16:35:45 2018 +1300
 </table>
 </div>
 
-<div id="outline-container-orga78446a" class="outline-4">
-<h4 id="orga78446a"><span class="section-number-4">1.2.1</span> tty output log</h4>
+<div id="outline-container-org1f00ae0" class="outline-4">
+<h4 id="org1f00ae0"><span class="section-number-4">1.2.1</span> tty output log</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <div class="org-src-container">
 <pre class="src src-text">9552aaee0b master &#187; time lingo -time run review --debug
@@ -573,8 +577,8 @@ lingo -time run review --debug  0.25s user 0.26s system 1% cpu 37.847 total
 </div>
 </div>
 
-<div id="outline-container-orga5075c3" class="outline-4">
-<h4 id="orga5075c3"><span class="section-number-4">1.2.2</span> slack errors</h4>
+<div id="outline-container-org58ab18b" class="outline-4">
+<h4 id="org58ab18b"><span class="section-number-4">1.2.2</span> slack errors</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <div class="org-src-container">
 <pre class="src src-text">platform-errors APP [10:38 AM]
@@ -594,8 +598,8 @@ rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code 
 </div>
 </div>
 
-<div id="outline-container-orgfea872f" class="outline-3">
-<h3 id="orgfea872f"><span class="section-number-3">1.3</span> well-named-locks</h3>
+<div id="outline-container-org6d64685" class="outline-3">
+<h3 id="org6d64685"><span class="section-number-3">1.3</span> Testing tenet <code>well-named-locks</code></h3>
 <div class="outline-text-3" id="text-1-3">
 <dl class="org-dl">
 <dt>tenet source</dt><dd><a href="https://github.com/mullikine/codelingo/blob/k8mocktenets/tenets/codelingo/k8/well-named-locks/codelingo.yaml">codelingo/codelingo.yaml at k8mocktenets  mullikine/codelingo  GitHub</a></dd>
@@ -624,8 +628,8 @@ rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code 
 </table>
 </div>
 
-<div id="outline-container-org7a948cc" class="outline-4">
-<h4 id="org7a948cc"><span class="section-number-4">1.3.1</span> tty output log</h4>
+<div id="outline-container-org9342254" class="outline-4">
+<h4 id="org9342254"><span class="section-number-4">1.3.1</span> tty output log</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <div class="org-src-container">
 <pre class="src src-text">6dcc2ea224 master &#187; time lingo -time run review --debug
@@ -650,8 +654,8 @@ lingo -time run review --debug  0.37s user 0.41s system 2% cpu 36.711 total
 </div>
 </div>
 
-<div id="outline-container-org0577c73" class="outline-4">
-<h4 id="org0577c73"><span class="section-number-4">1.3.2</span> slack errors</h4>
+<div id="outline-container-org7337398" class="outline-4">
+<h4 id="org7337398"><span class="section-number-4">1.3.2</span> slack errors</h4>
 <div class="outline-text-4" id="text-1-3-2">
 <div class="org-src-container">
 <pre class="src src-text">platform-errors APP [10:58 AM]
@@ -670,8 +674,8 @@ rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code 
 </div>
 </div>
 
-<div id="outline-container-org7e5a8fd" class="outline-4">
-<h4 id="org7e5a8fd"><span class="section-number-4">1.3.3</span> <a href="https://github.com/kubernetes/kubernetes/blob/master">https://github.com/kubernetes/kubernetes/blob/master</a></h4>
+<div id="outline-container-orgee06d02" class="outline-4">
+<h4 id="orgee06d02"><span class="section-number-4">1.3.3</span> <a href="https://github.com/kubernetes/kubernetes/blob/master">https://github.com/kubernetes/kubernetes/blob/master</a></h4>
 <div class="outline-text-4" id="text-1-3-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -727,8 +731,8 @@ Date:   Fri Nov 2 10:57:42 2018 +1300
 </div>
 </div>
 
-<div id="outline-container-org05d1e12" class="outline-3">
-<h3 id="org05d1e12"><span class="section-number-3">1.4</span> well-named-lists</h3>
+<div id="outline-container-org1691f6e" class="outline-3">
+<h3 id="org1691f6e"><span class="section-number-3">1.4</span> Testing tenet <code>well-named-lists</code></h3>
 <div class="outline-text-3" id="text-1-4">
 <dl class="org-dl">
 <dt>tenet source</dt><dd><a href="https://github.com/mullikine/codelingo/blob/k8mocktenets/tenets/codelingo/k8/well-named-lists/codelingo.yaml">codelingo/codelingo.yaml at k8mocktenets  mullikine/codelingo  GitHub</a></dd>
@@ -757,8 +761,8 @@ Date:   Fri Nov 2 10:57:42 2018 +1300
 </table>
 </div>
 
-<div id="outline-container-org1a14654" class="outline-4">
-<h4 id="org1a14654"><span class="section-number-4">1.4.1</span> tty output log</h4>
+<div id="outline-container-org39bd42d" class="outline-4">
+<h4 id="org39bd42d"><span class="section-number-4">1.4.1</span> tty output log</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <div class="org-src-container">
 <pre class="src src-text">db3347cf73 master &#187; time lingo -time run review --debug
@@ -785,8 +789,8 @@ lingo -time run review --debug  11.10s user 4.47s system 2% cpu 10:08.96 total
 </div>
 </div>
 
-<div id="outline-container-orgcf8f5ec" class="outline-4">
-<h4 id="orgcf8f5ec"><span class="section-number-4">1.4.2</span> slack errors</h4>
+<div id="outline-container-orgb2d2e89" class="outline-4">
+<h4 id="orgb2d2e89"><span class="section-number-4">1.4.2</span> slack errors</h4>
 <div class="outline-text-4" id="text-1-4-2">
 <div class="org-src-container">
 <pre class="src src-text">platform-errors APP [11:55 AM]
@@ -829,8 +833,8 @@ rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code 
 </div>
 </div>
 
-<div id="outline-container-org4226620" class="outline-4">
-<h4 id="org4226620"><span class="section-number-4">1.4.3</span> repo state</h4>
+<div id="outline-container-org80c0290" class="outline-4">
+<h4 id="org80c0290"><span class="section-number-4">1.4.3</span> repo state</h4>
 <div class="outline-text-4" id="text-1-4-3">
 <dl class="org-dl">
 <dt>url</dt><dd><p>
@@ -882,7 +886,7 @@ rpc <span style="color: #ffff00; background-color: #cccc00;">error</span>: code 
 </div>
 
 <ol class="org-ol">
-<li><a id="orgb8a173a"></a>recent commits<br />
+<li><a id="org7ad92b6"></a>recent commits<br />
 <div class="outline-text-5" id="text-1-4-3-1">
 <div class="org-src-container">
 <pre class="src src-text">commit db3347cf73edc6c349b119f4f2370972ce58b9d0
@@ -894,7 +898,7 @@ Date:   Fri Nov 2 11:45:10 2018 +1300
 </div>
 </div>
 </li>
-<li><a id="org88e24a8"></a>diff with origin/master<br />
+<li><a id="orga280749"></a>diff with origin/master<br />
 <div class="outline-text-5" id="text-1-4-3-2">
 <div class="org-src-container">
 <pre class="src src-diff"><span style="color: #6c6c6c;">diff --git a/.codelingoignore b/.codelingoignore</span>
@@ -958,7 +962,7 @@ Date:   Fri Nov 2 11:45:10 2018 +1300
 </div>
 </div>
 </li>
-<li><a id="org76a85aa"></a>origin/master<br />
+<li><a id="org60776e1"></a>origin/master<br />
 <div class="outline-text-5" id="text-1-4-3-3">
 <div class="org-src-container">
 <pre class="src src-diff"><span style="color: #6c6c6c;">commit 7e102de72305ae568de3f2413bd468ea151589f3</span>
@@ -973,7 +977,7 @@ Date:   Fri Nov 2 11:45:10 2018 +1300
 </div>
 </div>
 </li>
-<li><a id="org6e40ba5"></a><code>.codelingoignore</code><br />
+<li><a id="org194fc0a"></a><code>.codelingoignore</code><br />
 <div class="outline-text-5" id="text-1-4-3-4">
 <div class="org-src-container">
 <pre class="src src-text">vendor/
@@ -986,8 +990,8 @@ staging/
 </div>
 </div>
 
-<div id="outline-container-orgdccad0b" class="outline-3">
-<h3 id="orgdccad0b"><span class="section-number-3">1.5</span> well-named-lists - vendor and staging deleted</h3>
+<div id="outline-container-orge22c39f" class="outline-3">
+<h3 id="orge22c39f"><span class="section-number-3">1.5</span> Testing tenet <code>well-named-lists</code> with vendor and staging deleted</h3>
 <div class="outline-text-3" id="text-1-5">
 <dl class="org-dl">
 <dt>tenet source</dt><dd><a href="https://github.com/mullikine/codelingo/blob/k8mocktenets/tenets/codelingo/k8/well-named-lists/codelingo.yaml">codelingo/codelingo.yaml at k8mocktenets  mullikine/codelingo  GitHub</a></dd>
@@ -1016,8 +1020,8 @@ staging/
 </table>
 </div>
 
-<div id="outline-container-org5e43b41" class="outline-4">
-<h4 id="org5e43b41"><span class="section-number-4">1.5.1</span> tty output log</h4>
+<div id="outline-container-org3e623d4" class="outline-4">
+<h4 id="org3e623d4"><span class="section-number-4">1.5.1</span> tty output log</h4>
 <div class="outline-text-4" id="text-1-5-1">
 <div class="org-src-container">
 <pre class="src src-text">e405126f65 master &#187; time lingo -time run review --debug
@@ -1042,8 +1046,8 @@ lingo -time run review --debug  0.20s user 0.13s system 0% cpu 4:13.61 total
 </div>
 </div>
 
-<div id="outline-container-org602ae38" class="outline-4">
-<h4 id="org602ae38"><span class="section-number-4">1.5.2</span> slack errors</h4>
+<div id="outline-container-orgbc9f78c" class="outline-4">
+<h4 id="orgbc9f78c"><span class="section-number-4">1.5.2</span> slack errors</h4>
 <div class="outline-text-4" id="text-1-5-2">
 <div class="org-src-container">
 <pre class="src src-text">1 errors occurred in the last 30s
@@ -1067,8 +1071,8 @@ mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;
 </div>
 </div>
 
-<div id="outline-container-orgd60bf4e" class="outline-4">
-<h4 id="orgd60bf4e"><span class="section-number-4">1.5.3</span> repo state</h4>
+<div id="outline-container-org1201750" class="outline-4">
+<h4 id="org1201750"><span class="section-number-4">1.5.3</span> repo state</h4>
 <div class="outline-text-4" id="text-1-5-3">
 <dl class="org-dl">
 <dt>url</dt><dd><a href="https://github.com/kubernetes/kubernetes/blob/master">https://github.com/kubernetes/kubernetes/blob/master</a></dd>
@@ -1118,7 +1122,7 @@ mullikine hit a uncaught <span style="color: #ffff00; background-color: #cccc00;
 </div>
 
 <ol class="org-ol">
-<li><a id="orgce80cbf"></a>recent commits<br />
+<li><a id="org06e272e"></a>recent commits<br />
 <div class="outline-text-5" id="text-1-5-3-1">
 <div class="org-src-container">
 <pre class="src src-git">commit e405126f65e267f2ee42ad41bee884673227c948
@@ -1145,7 +1149,7 @@ Author: Patrick Ohly &lt;patrick.ohly@intel.com&gt;
 </div>
 </div>
 </li>
-<li><a id="org8c3515e"></a>diff with origin/master<br />
+<li><a id="orgd01fc28"></a>diff with origin/master<br />
 <div class="outline-text-5" id="text-1-5-3-2">
 <p>
 diff too long to display
@@ -1153,11 +1157,28 @@ diff too long to display
 </div>
 </li>
 
-<li><a id="org9657a84"></a><code>.codelingoignore</code><br />
+<li><a id="org9e37338"></a><code>.codelingoignore</code><br />
 <div class="outline-text-5" id="text-1-5-3-3">
 <div class="org-src-container">
 <pre class="src src-text">vendor/
 staging/
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org9094cb6"></a><code>git status</code><br />
+<div class="outline-text-5" id="text-1-5-3-4">
+<ul class="org-ul">
+<li>Verify that there are no unstaged changes here.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-text">On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
 </pre>
 </div>
 </div>
@@ -1169,7 +1190,7 @@ staging/
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: shane</p>
-<p class="date">Created: 2018-11-02 Fri 12:30</p>
+<p class="date">Created: 2018-11-02 Fri 21:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-10-16 Tue 16:48 -->
+<!-- 2018-11-02 Fri 21:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -235,12 +235,12 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9058ef5">1. Table-driven tests</a></li>
-<li><a href="#orgdcd96ad">2. heruistic</a>
+<li><a href="#orgd504bb3">1. Table-driven tests</a></li>
+<li><a href="#orgcee5570">2. heruistic</a>
 <ul>
-<li><a href="#org4f9f287">2.1. Only check <code>.go</code> files which are integration tests</a>
+<li><a href="#orgc90d605">2.1. Only check <code>.go</code> files which are integration tests</a>
 <ul>
-<li><a href="#org38a6da0">2.1.1. For each test <code>func Test...</code> in the file</a></li>
+<li><a href="#org5be05f2">2.1.1. For each test <code>func Test...</code> in the file</a></li>
 </ul>
 </li>
 </ul>
@@ -249,8 +249,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org9058ef5" class="outline-2">
-<h2 id="org9058ef5"><span class="section-number-2">1</span> Table-driven tests</h2>
+<div id="outline-container-orgd504bb3" class="outline-2">
+<h2 id="orgd504bb3"><span class="section-number-2">1</span> Table-driven tests</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <a href="https://dave.cheney.net/2013/06/09/writing-table-driven-tests-in-go">https://dave.cheney.net/2013/06/09/writing-table-driven-tests-in-go</a>
@@ -258,8 +258,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgdcd96ad" class="outline-2">
-<h2 id="orgdcd96ad"><span class="section-number-2">2</span> heruistic</h2>
+<div id="outline-container-orgcee5570" class="outline-2">
+<h2 id="orgcee5570"><span class="section-number-2">2</span> heruistic</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 At the heart of all table driven tests is the table itself, which
@@ -267,8 +267,8 @@ provides the inputs and expected results of the function under test.
 </p>
 </div>
 
-<div id="outline-container-org4f9f287" class="outline-3">
-<h3 id="org4f9f287"><span class="section-number-3">2.1</span> Only check <code>.go</code> files which are integration tests</h3>
+<div id="outline-container-orgc90d605" class="outline-3">
+<h3 id="orgc90d605"><span class="section-number-3">2.1</span> Only check <code>.go</code> files which are integration tests</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Find all files in the integration test folder with paths that match <code>'^.*_test\.go$'.</code>
@@ -279,12 +279,12 @@ Find all files in the integration test folder with paths that match <code>'^.*_t
 </p>
 </div>
 
-<div id="outline-container-org38a6da0" class="outline-4">
-<h4 id="org38a6da0"><span class="section-number-4">2.1.1</span> For each test <code>func Test...</code> in the file</h4>
+<div id="outline-container-org5be05f2" class="outline-4">
+<h4 id="org5be05f2"><span class="section-number-4">2.1.1</span> For each test <code>func Test...</code> in the file</h4>
 <div class="outline-text-4" id="text-2-1-1">
 </div>
 <ol class="org-ol">
-<li><a id="org3dc4235"></a>Are there multiple <code>Errorf("Expected</code> lines within the test? Then this infers there are multiple scenarios / inputs<br />
+<li><a id="org5e140ee"></a>Are there multiple <code>Errorf("Expected</code> lines within the test? Then this infers there are multiple scenarios / inputs<br />
 <div class="outline-text-5" id="text-2-1-1-1">
 <p>
 Because either we have duplicated code for testing more than one input, or the test can fail in multiple ways, which indicates it should be broken up.
@@ -303,7 +303,7 @@ I think we can assume the tests are testing only one thing, so checking for mult
 </div>
 
 <ol class="org-ol">
-<li><a id="org1334621"></a>If a test case is found which throws multiple errors then check the following for the antipattern<br />
+<li><a id="org086f1ed"></a>If a test case is found which throws multiple errors then check the following for the antipattern<br />
 <div class="outline-text-6" id="text-2-1-1-1-1">
 <p>
 There must exist a slice of type struct which has a field of type <code>map[X]bool</code> where <code>X</code> is any type.
@@ -333,7 +333,7 @@ For example, this field.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: shane</p>
-<p class="date">Created: 2018-10-16 Tue 16:48</p>
+<p class="date">Created: 2018-11-02 Fri 21:11</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
