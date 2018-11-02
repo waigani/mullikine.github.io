@@ -63,9 +63,10 @@ pre {
 a {
   border-radius: 0.1em;
   margin: 0.2em;
-  color: #111;
+  color: #009;
   display: inline-block;
-  background: #eef;
+  background: white;
+  opacity: 0.8;
   padding: 0.2em 0.3em;
   line-height: 1.2em;
   /* color: white; */
