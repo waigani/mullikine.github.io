@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-11-02 Fri 21:20 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>troubleshooting new tenet <code>looped-vars-outside</code></title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="shane" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+<link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">troubleshooting new tenet <code>looped-vars-outside</code></h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org9d6d61c">1. Getting and Building</a>
+<ul>
+<li><a href="#org116432e">1.1. Other Considerations</a></li>
+</ul>
+</li>
+<li><a href="#org21ae1d7">2. Style Guide</a></li>
+<li><a href="#org1fe1c30">3. Commit Messages</a></li>
+<li><a href="#org359cc86">4. Code Review Workflow</a></li>
+<li><a href="#orge73caa1">5. Debugging</a></li>
+</ul>
+</div>
+</div>
+<p>
+Before you start contributing, review these
+<a href="https://www.cockroachlabs.com/docs/stable/contribute-to-cockroachdb.html">basic
+guidelines</a> on finding a project, determining its complexity, and
+learning what to expect in your collaboration with the Cockroach Labs
+team.
+</p>
+
+<p>
+If you <i>really</i> want to dig deep into our processes and mindset, you may
+also want to peruse our extensive first PR guide,
+which is part of our on-boarding for new engineers.
+</p>
+
+<div id="outline-container-org9d6d61c" class="outline-2">
+<h2 id="org9d6d61c"><span class="section-number-2">1</span> Getting and Building</h2>
+<div class="outline-text-2" id="text-1">
+<ol class="org-ol">
+<li>Install the following prerequisites, as necessary:</li>
+
+<li>Either a working Docker install able to run GNU/Linux binaries (e.g.
+Docker on Linux, macOS, Windows), so you can reuse our pre-populated
+Docker image with all necessary development dependencies; or</li>
+
+<li>The tools needed to build CockroachDB from scratch:
+
+<ul class="org-ul">
+<li>A C++ compiler that supports C++11. Note that GCC prior to 6.0
+doesn't work due to
+<a href="https://gcc.gnu.org/bugzilla/show%5C_bug.cgi?id=48891">https://gcc.gnu.org/bugzilla/show\_bug.cgi?id=48891</a></li>
+<li>The standard C/C++ development headers on your system.</li>
+<li>On GNU/Linux, the terminfo development libraries, which may be
+part of a ncurses development package (e.g. <code>libncurses-dev</code> on
+Debian/Ubuntu, but <code>ncurses-devel</code> on CentOS).</li>
+<li>A Go 1.9+ environment with a recent 64-bit version of the
+toolchain. Note that the Makefile enforces the specific version
+required, as it is updated frequently.</li>
+<li>Git 1.9+</li>
+<li>Bash (4+ is preferred)</li>
+<li>GNU Make (3.81+ is known to work)</li>
+<li>CMake 3.1+</li>
+<li>Autoconf 2.68+</li>
+<li>NodeJS 6.x and Yarn 1.7+</li>
+</ul></li>
+</ol>
+
+<p>
+Note that at least 4GB of RAM is required to build from source and run
+tests.
+</p>
+
+<ol class="org-ol">
+<li>Get the CockroachDB code:</li>
+</ol>
+
+<p>
+<code>shell    git clone https://github.com/cockroachdb/cockroach $(go env GOPATH)/src/github.com/cockroachdb/cockroach    cd $(go env GOPATH)/src/github.com/cockroachdb/cockroach</code>
+</p>
+
+<ol class="org-ol">
+<li>Run <code>make build</code>, <code>make test</code>, or anything else our Makefile offers.</li>
+</ol>
+
+<p>
+If you wish to reuse our builder image instead of installing all the
+dependencies manually, prefix the <code>make</code> command with
+<code>build/builder.sh</code>; for example <code>build/builder.sh make build</code>.
+</p>
+
+<p>
+Note that the first time you run <code>make</code>, it can take some time to
+download and install various dependencies. After running <code>make build</code>,
+the <code>cockroach</code> executable will be in your current directory and can be
+run as shown in the README.
+</p>
+</div>
+
+<div id="outline-container-org116432e" class="outline-3">
+<h3 id="org116432e"><span class="section-number-3">1.1</span> Other Considerations</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>The default binary contains core open-source functionally covered by
+the Apache License 2 (APL2) and enterprise functionality covered by
+the CockroachDB Community License (CCL). To build a pure open-source
+(APL2) version excluding enterprise functionality, use
+<code>make   buildoss</code>. See this
+<a href="https://www.cockroachlabs.com/blog/how-were-building-a-business-to-last/">blog
+post</a> for more details.</li>
+
+<li>If you plan on working on the UI, check out the UI README.</li>
+
+<li>To add or update a Go dependency:</li>
+<li>See build/README.md for details on adding or
+updating dependencies.</li>
+<li>Run <code>make generate</code> to update generated files.</li>
+<li>Create a PR with all the changes.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org21ae1d7" class="outline-2">
+<h2 id="org21ae1d7"><span class="section-number-2">2</span> Style Guide</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+See our separate style guide document.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1fe1c30" class="outline-2">
+<h2 id="org1fe1c30"><span class="section-number-2">3</span> Commit Messages</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+When you're ready to commit, be sure to write a Good Commit Message™.
+</p>
+
+<p>
+Our commit message guidelines are detailed here:
+<a href="https://github.com/cockroachdb/cockroach/wiki/Git-Commit-Messages">https://github.com/cockroachdb/cockroach/wiki/Git-Commit-Messages</a>
+</p>
+
+<p>
+In summary (the wiki page details the rationales and provides further
+suggestions): - Keep in mind who reads: think of the reviewer, think of
+the release notes -
+<a href="https://github.com/cockroachdb/cockroach/wiki/Git-Commit-Messages#commit-title">Separate
+subject from body with a blank line</a> -
+<a href="https://github.com/cockroachdb/cockroach/wiki/Git-Commit-Messages#commit-description">Use
+the body to explain <i>what</i> and <i>why</i> vs. <i>how</i></a> -
+<a href="https://github.com/cockroachdb/cockroach/wiki/Git-Commit-Messages#commit-title">Prefix
+the subject line with the affected package/area</a> -
+<a href="https://github.com/cockroachdb/cockroach/wiki/Git-Commit-Messages#release-notes">Include
+a release note annotation</a>, in the right position -
+<a href="https://github.com/cockroachdb/cockroach/wiki/Git-Commit-Messages#commit-title">Use
+the imperative mood in the subject line</a> -
+<a href="https://github.com/cockroachdb/cockroach/wiki/Git-Commit-Messages#commit-title">Keep
+the commit title concise but information-rich</a> -
+<a href="https://github.com/cockroachdb/cockroach/wiki/Git-Commit-Messages#commit-description">Wrap
+the body at some consistent width under 100 characters</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org359cc86" class="outline-2">
+<h2 id="org359cc86"><span class="section-number-2">4</span> Code Review Workflow</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>All contributors need to sign the
+<a href="https://cla-assistant.io/cockroachdb/cockroach">Contributor License
+Agreement</a>.</li>
+
+<li>Create a local feature branch to do work on, ideally on one thing at
+a time. If you are working on your own fork, see
+<a href="http://blog.campoy.cat/2014/03/github-and-go-forking-pull-requests-and.html">this
+tip</a> on forking in Go, which ensures that Go import paths will be
+correct.</li>
+</ul>
+
+<p>
+<code>shell   git checkout -b update-readme</code>
+</p>
+
+<ul class="org-ul">
+<li>Hack away and commit your changes locally using <code>git add</code> and
+<code>git commit</code>. Remember to write tests! The following are helpful for
+running specific subsets of tests:</li>
+</ul>
+
+<p>
+<code>shell   make test   # Run all tests in ./pkg/storage   make test PKG</code>./pkg/storage   # Run all kv tests matching '<sup>TestFoo</sup>' with a timeout of 10s   make test PKG=./pkg/kv TESTS='<sup>TestFoo</sup>' TESTTIMEOUT=10s   # Run the sql logic tests   make test PKG=./pkg/sql TESTS='TestLogic\['   # or, using a shortcut,   make testlogic   # Run a specific sql logic subtest   make test PKG=./pkg/sql TESTS='TestLogic\]/select$$'   # or, using a shortcut,   make testlogic FILES=select=
+</p>
+
+<p>
+Logs are disabled during tests by default. To enable them, include
+<code>TESTFLAGS</code>"-v -show-logs"= as an argument the test command:
+</p>
+
+<p>
+<code>shell   make test ... TESTFLAGS</code>"-v -show-logs"=
+</p>
+
+<ul class="org-ul">
+<li>Run the linters, code generators, and unit test suites locally:</li>
+</ul>
+
+<p>
+```shell make pre-push ````
+</p>
+
+<p>
+This will take several minutes.
+</p>
+
+<ul class="org-ul">
+<li>When you're ready for review, groom your work: each commit should
+pass tests and contain a substantial (but not overwhelming) unit of
+work. You may also want to <code>git fetch origin</code> and run
+<code>git rebase -i --exec "make lint test" origin/master</code> to make sure
+you're submitting your changes on top of the newest version of our
+code. Next, push to your fork:</li>
+</ul>
+
+<p>
+<code>shell   git push -u &lt;yourfork&gt; update-readme</code>
+</p>
+
+<ul class="org-ul">
+<li>Then
+<a href="https://help.github.com/articles/creating-a-pull-request">create a
+pull request using GitHub's UI</a>. If you know of another GitHub user
+particularly suited to reviewing your pull request, be sure to
+mention them in the pull request body. If you possess the necessary
+GitHub privileges, please also
+<a href="https://help.github.com/articles/assigning-issues-and-pull-requests-to-other-github-users/">assign
+them to the pull request using GitHub's UI</a>. This will help focus
+and expedite the code review process.</li>
+
+<li>Address test failures and feedback by amending your commits. If your
+change contains multiple commits, address each piece of feedback by
+amending that commit to which the particular feedback is aimed. Wait
+(or ask) for new feedback on those commits if they are not
+straightforward. An <code>LGTM</code> ("looks good to me") by someone qualified
+is usually posted when you're free to go ahead and merge. Most new
+contributors aren't allowed to merge themselves; in that case, we'll
+do it for you.</li>
+
+<li>Direct merges using GitHub's "big green button" are avoided. Instead,
+we use <a href="https://bors.tech/documentation/">bors-ng</a> to manage our
+merges to prevent "merge skew". When you're ready to merge, add a
+comment to your PR of the form <code>bors r+</code>. Craig (our Bors bot) will
+run CI on your changes, and if it passes, merge them. For more
+information, see
+<a href="https://github.com/cockroachdb/cockroach/wiki/Bors-merge-bot">the
+wiki</a>.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge73caa1" class="outline-2">
+<h2 id="orge73caa1"><span class="section-number-2">5</span> Debugging</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Peeking into a running cluster can be done in several ways:
+</p>
+
+<ul class="org-ul">
+<li>the <a href="https://godoc.org/golang.org/x/net/trace">net/trace</a> endpoint
+at <code>/debug/requests</code>. It has a breakdown of the recent traced
+requests, in particularly slow ones. Two families are traced: <code>node</code>
+and <code>coord</code>, the former (and likely more interesting one) containing
+what happens inside of <code>Node=/=Store=/=Replica</code> and the other inside
+of the coordinator (<code>TxnCoordSender</code>).</li>
+<li><a href="https://golang.org/pkg/net/http/pprof/">pprof</a> gives us (among
+other things) heap and cpu profiles;
+<a href="https://github.com/cockroachdb/cockroach/wiki/pprof">this wiki
+page</a> gives an overview and walks you through using it to profile
+Cockroach. <a href="http://blog.golang.org/profiling-go-programs">This
+golang blog post</a> explains it extremely well and
+<a href="https://software.intel.com/en-us/blogs/2014/05/10/debugging-performance-issues-in-go-programs">this
+one by Dmitry Vuykov</a> goes into even more detail.</li>
+</ul>
+
+<p>
+An easy way to locally run a workload against a cluster are the
+acceptance tests. For example,
+</p>
+
+<pre class="example">
+make acceptance TESTS='TestPut$$' TESTFLAGS='-v -d 1200s -l .' TESTTIMEOUT=1210s
+</pre>
+
+<p>
+runs the <code>Put</code> acceptance test for 20 minutes with logging (useful to
+look at the stack trace in case of a node dying). When it starts, all
+the relevant commands for <code>pprof</code>, <code>trace</code> and logs are logged to allow
+for convenient inspection of the cluster.</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: shane</p>
+<p class="date">Created: 2018-11-02 Fri 21:20</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
