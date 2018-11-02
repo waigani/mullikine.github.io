@@ -1,8 +1,0 @@
-#+TITLE: Contents
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
-
-+ [[https://mullikine.github.io/codelingo/build-script-errors.html][Troubleshooting build scripts]]
-+ [[https://mullikine.github.io/codelingo/first-kubernetes-tenet.html][Creating the tenet <code>flags-have-underscores</code>]]
-+ [[https://mullikine.github.io/codelingo/jsonapi-metadata.html][Get help on Kubernetes' JSON API]]
-+ [[https://mullikine.github.io/codelingo/table-driven-test-kubernetes.html][Get help on Kubernetes' table-driven tests]]
