@@ -14,3 +14,6 @@
 #+BEGIN_SRC sh
   gc "https://github.com/tensorflow/nmt"
 #+END_SRC
+
+*** Read this
+[[/home/shane/var/smulliga/source/git/tensorflow/nmt/README.md][nmt/README.md]]
