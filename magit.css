@@ -70,7 +70,8 @@ a {
   /* color: white; */
   border: 0.1em solid #99f;
   font: inherit;
-  text-decoration: inherit;
+  /* text-decoration: inherit; */
+  text-decoration: underline;
 }
 a:hover {
   text-decoration: underline;
