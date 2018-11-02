@@ -61,14 +61,14 @@ pre {
 }
 
 a {
-  border-radius: 0.1em;
-  margin: 0.2em;
+  /* border-radius: 0.1em; */
+  /* margin: 0.2em; */
   color: #00f;
-  display: inline-block;
+  /* display: inline-block; */
   /* background: white; */
   opacity: 0.8;
-  padding: 0.2em 0.3em;
-  line-height: 1.2em;
+  /* padding: 0.2em 0.3em; */
+  /* line-height: 1.2em; */
   /* color: white; */
   /* border: 0.1em solid #99f; */
   font: inherit;
