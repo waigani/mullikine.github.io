@@ -1,0 +1,5 @@
+* Search for some types of files I would like to model with NMT
+
+#+BEGIN_SRC sh
+  gh cs "\.md" "contributing"
+#+END_SRC
