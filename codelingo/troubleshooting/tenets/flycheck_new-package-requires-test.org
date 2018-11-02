@@ -1,0 +1,148 @@
+#+TITLE: troubleshooting new tenet ~new-package-requires-test~
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
+
+* Problem
+Blocked on:
+https://trello.com/c/0wPE9xAw/1766-unexpected-behaviour-in-clql-package-name-undefined
+
+Can't confirm if below is resolved until above is fixed: 
+https://trello.com/c/2FxX4b7L/1765-unexpected-behaviour-in-clql-package-name-conflicting-defintions
+
+** ~example.go~
+#+BEGIN_SRC go
+  // ./test/testing-good.go
+  package test
+  
+  import "goodpack"
+  // ./goodpack/example-good.go
+  package goodpack
+  
+  // this should be tested, and it is
+  // ./badpack/example-bad.go
+  package goodpack
+  
+  // this is not tested, but should be
+#+END_SRC
+
+** This ~codelingo.yaml~ fails
+#+BEGIN_SRC yaml
+  funcs:
+    - name: isTestPath
+      type: asserter
+      body: |
+        function (str) {
+          return str.indexOf("test/") == 0
+        }
+    - name: isNotTestPath
+      type: asserter
+      body: |
+        function (str) {
+          return str.indexOf("test/") != 0
+        }
+  tenets:
+    - name: new-package-requires-test
+      flows:
+        codelingo/docs:
+          title: New Package Requires Test
+          body: |
+            All new packages must come with unit tests.
+        codelingo/review:
+          comment: The package {{packageName}} is not unit tested. Please write either an integration (test/integration) and/or an end-to-end (test/e2e) test that tests it.
+      query: |
+        import codelingo/ast/go
+  
+        go.dir(depth = any):
+          filename as packageDirName
+          isNotTestPath(packageDirName)
+          go.file:
+            filename as packageFileName
+            @review comment
+            go.ident:
+              # This matches multiple things. Possibly because I am using go.dir.
+              # Because of multiple matches, I believe it thinks I am
+              # making multiple definitions
+              name as packageName
+        exclude:
+          go.dir(depth = any):
+            filename as testDirName
+            isTestPath(testDirName)
+            go.file:
+              filename as fileName
+              go.import_spec(depth = any):
+                go.basic_lit:
+                  kind == "string"
+                  value == packageName
+#+END_SRC
+
+** annotated ~tty-output.log~
+#+BEGIN_SRC text
+  Constructing new git repo in temp folder... :: Thu Nov  1 14:02:28 NZDT 2018
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  Running: $HOME/scripts/rs -nc
+          -nogit
+          -noswap
+          $HOME/source/git/mullikine/codelingo/tenets/codelingo/k8/new-package-requires-test/
+          /tmp/td_new-package-requires-testFsI2Zy
+  /usr/bin/rsync  -a -rtlhx -pug -s  --inplace --append   --exclude .cache  --exclude .git/ --exclude .gitignore --exclude TODO  --exclude '*~' --exclude '.#*'  $HOME/source/git/mullikine/codelingo/tenets/codelingo/k8/new-package-requires-test/ /tmp/td_new-package-requires-testFsI2Zy
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  /tmp/td_new-package-requires-testFsI2Zy
+  working_dir (initial): /tmp/td_new-package-requires-testFsI2Zy
+  Syncing your repo...
+  Running review flow...
+  Sorry, an error occurred while processing your request. Please try again.
+  <Check slack error>
+  exit status 1
+  review finished
+  Reformulate?
+  working_dir (loop): /tmp/td_new-package-requires-testFsI2Zy
+  : B
+  working_dir: /tmp/td_new-package-requires-testFsI2Zy
+  Continue?
+#+END_SRC
+
+** repository info
+| tenet source                                                              |
+|---------------------------------------------------------------------------|
+| [[https://github.com/mullikine/tenets/blob/master/blog/new-package-requires-test][tenets/blog/new-package-requires-test at master  mullikine/tenets  GitHub]] |
+
+| org                                                                                                |
+|----------------------------------------------------------------------------------------------------|
+| [[https://github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/tenets/new-package-requires-test.org][mullikine.github.io/new-package-requires-test.org at master  mullikine/mullikine.github.io  GitHub]] |
+
+** https://github.com/codelingo/codelingo/blob/master
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | https://github.com/codelingo/codelingo   |
+| vc get-hash    | eae3300ad7c32994725f90344f7cc25edfee6eca |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
+
+#+BEGIN_SRC text
+commit eae3300ad7c32994725f90344f7cc25edfee6eca
+Author: Jesse Meek <waigani@gmail.com>
+Date:   Sat Oct 27 10:37:36 2018 +1300
+
+    Disable test Tenet until mem spike is fixed.
+#+END_SRC
+
+** git@github.com:mullikine/lingo.git/blob/master
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | git@github.com:mullikine/lingo.git       |
+| vc get-hash    | fa9b4edd1dcad69f83892282d69877ab51f4e89c |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
+
+#+BEGIN_SRC text
+commit fa9b4edd1dcad69f83892282d69877ab51f4e89c
+Merge: f34abad d1910ac
+Author: BlakeMScurr <blake@codelingo.io>
+Date:   Wed Oct 17 17:45:51 2018 +1300
+
+    Merge pull request #424 from BlakeMScurr/docs-update
+    
+    Update doc fields.
+#+END_SRC
