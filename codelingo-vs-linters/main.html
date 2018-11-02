@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-11-02 Fri 21:06 -->
+<!-- 2018-11-02 Fri 21:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CodeLingo vs Linters</title>
@@ -239,71 +239,71 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9ed6b1c">1. Making tenets with CLQL that do the job of existing linters</a>
+<li><a href="#org65f086d">1. Making tenets with CLQL that do the job of existing linters</a>
 <ul>
-<li><a href="#org462c745">1.1. Defintions taken from the project docs</a></li>
-<li><a href="#org4104f7a">1.2. The general process of writing one tenet</a>
+<li><a href="#org9dba732">1.1. Defintions taken from the project docs</a></li>
+<li><a href="#org1a6d939">1.2. The general process of writing one tenet</a>
 <ul>
-<li><a href="#org283ce3e">1.2.1. Writing the CLQL</a></li>
-<li><a href="#org9b4d382">1.2.2. Writing the unit test</a></li>
+<li><a href="#org4f64e4c">1.2.1. Writing the CLQL</a></li>
+<li><a href="#org859f91f">1.2.2. Writing the unit test</a></li>
 </ul>
 </li>
-<li><a href="#orgc22eeab">1.3. Making a new tenet named 'init'</a>
+<li><a href="#orgc91e220">1.3. Making a new tenet named 'init'</a>
 <ul>
-<li><a href="#org517d400">1.3.1. I started by visiting the <span class="underline">CodeLingo Playground</span></a></li>
-<li><a href="#org6e83630">1.3.2. The tenet</a></li>
-<li><a href="#orgd9174ec">1.3.3. The test code, <code>example.go</code></a></li>
+<li><a href="#org29976e2">1.3.1. I started by visiting the <span class="underline">CodeLingo Playground</span></a></li>
+<li><a href="#orgae4e5cd">1.3.2. The tenet</a></li>
+<li><a href="#orgbaba7d7">1.3.3. The test code, <code>example.go</code></a></li>
 </ul>
 </li>
-<li><a href="#orgc18c865">1.4. unconvert</a>
+<li><a href="#orgd1c1ba3">1.4. unconvert</a>
 <ul>
-<li><a href="#org2659c9e">1.4.1. Visit the CodeLingo Playground</a></li>
-<li><a href="#org59dbbd2">1.4.2. The tenet</a></li>
-<li><a href="#orgcd0bda1">1.4.3. The test code</a></li>
+<li><a href="#orgf75454c">1.4.1. Visit the CodeLingo Playground</a></li>
+<li><a href="#org48c40cb">1.4.2. The tenet</a></li>
+<li><a href="#org1a2f2c2">1.4.3. The test code</a></li>
 </ul>
 </li>
-<li><a href="#org911b05b">1.5. tenet vs nofuncflags</a>
+<li><a href="#orgc694256">1.5. tenet vs nofuncflags</a>
 <ul>
-<li><a href="#orgbd845f4">1.5.1. Original CLQL query</a></li>
-<li><a href="#orgd5b3c30">1.5.2. Refined CLQL query</a></li>
-<li><a href="#orgb4840f0">1.5.3. CLQL query written by Blake</a></li>
-<li><a href="#org711cd38">1.5.4. Difference between Blake's query and my own</a></li>
+<li><a href="#org2df2f10">1.5.1. Original CLQL query</a></li>
+<li><a href="#org91f2bad">1.5.2. Refined CLQL query</a></li>
+<li><a href="#org6aa4796">1.5.3. CLQL query written by Blake</a></li>
+<li><a href="#orge1ace03">1.5.4. Difference between Blake's query and my own</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgbb0d056">2. Results</a>
+<li><a href="#orgf3f395b">2. Results</a>
 <ul>
-<li><a href="#org39c1a97">2.1. Size comparison</a>
+<li><a href="#org4fcdf11">2.1. Size comparison</a>
 <ul>
-<li><a href="#org00abb18">2.1.1. Parser</a></li>
-<li><a href="#orgc61beac">2.1.2. Unit tests</a></li>
-<li><a href="#orgbd29313">2.1.3. Links to source code</a></li>
+<li><a href="#orgcf4dc85">2.1.1. Parser</a></li>
+<li><a href="#orga3927af">2.1.2. Unit tests</a></li>
+<li><a href="#org30c78e3">2.1.3. Links to source code</a></li>
 </ul>
 </li>
-<li><a href="#org50d1e06">2.2. The work it took to write these tenets</a></li>
-<li><a href="#orgce6c832">2.3. The work it took to write their unit tests</a>
+<li><a href="#orgb1ac99d">2.2. The work it took to write these tenets</a></li>
+<li><a href="#orgacaccd0">2.3. The work it took to write their unit tests</a>
 <ul>
-<li><a href="#orgd636fd4">2.3.1. Caveats</a></li>
+<li><a href="#orgd3a22cb">2.3.1. Caveats</a></li>
 </ul>
 </li>
-<li><a href="#org76c7e0d">2.4. Conclusions</a></li>
+<li><a href="#org9465973">2.4. Conclusions</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org9ed6b1c" class="outline-2">
-<h2 id="org9ed6b1c"><span class="section-number-2">1</span> Making tenets with CLQL that do the job of existing linters</h2>
+<div id="outline-container-org65f086d" class="outline-2">
+<h2 id="org65f086d"><span class="section-number-2">1</span> Making tenets with CLQL that do the job of existing linters</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 I started learning Go and CodeLingo / CLQL at the same time, so while I have found it generally easy and straightforward to create these tenets, I feel like I could've knocked them out even faster if I didn't need to look up answers to questions such as '<i>what is an interface in golang?</i>', for example. The process has been intuitive; I think in part to having a good naming convention. I've had to learn what CodeLingo is, what a '<b>tenet</b>' and a '<b>flow</b>' is. Long story short, they are just as what they sound like they are.
 </p>
 </div>
 
-<div id="outline-container-org462c745" class="outline-3">
-<h3 id="org462c745"><span class="section-number-3">1.1</span> Defintions taken from the project docs</h3>
+<div id="outline-container-org9dba732" class="outline-3">
+<h3 id="org9dba732"><span class="section-number-3">1.1</span> Defintions taken from the project docs</h3>
 <div class="outline-text-3" id="text-1-1">
 <dl class="org-dl">
 <dt>tenet</dt><dd><p>
@@ -325,8 +325,8 @@ A Flow is an <i>automated</i> development <span class="underline">workflow</span
 </div>
 </div>
 
-<div id="outline-container-org4104f7a" class="outline-3">
-<h3 id="org4104f7a"><span class="section-number-3">1.2</span> The general process of writing one tenet</h3>
+<div id="outline-container-org1a6d939" class="outline-3">
+<h3 id="org1a6d939"><span class="section-number-3">1.2</span> The general process of writing one tenet</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 The process of crafting CLQL is mainly subtractive, especially for simple tenets.
@@ -335,12 +335,12 @@ Writing a tenet to describe an antipattern might be trivial in CLQL, but the cor
 </p>
 </div>
 
-<div id="outline-container-org283ce3e" class="outline-4">
-<h4 id="org283ce3e"><span class="section-number-4">1.2.1</span> Writing the CLQL</h4>
+<div id="outline-container-org4f64e4c" class="outline-4">
+<h4 id="org4f64e4c"><span class="section-number-4">1.2.1</span> Writing the CLQL</h4>
 <div class="outline-text-4" id="text-1-2-1">
 </div>
 <ol class="org-ol">
-<li><a id="org7499503"></a>The <b>first</b> step is usually to generate a verbose CLQL query from the CodeLingo playground.<br />
+<li><a id="orgb68c86f"></a>The <b>first</b> step is usually to generate a verbose CLQL query from the CodeLingo playground.<br />
 <div class="outline-text-5" id="text-1-2-1-1">
 <p>
 To do this you select the part of the code you would like to match and then click the <span class="underline">generate</span><sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> button.
@@ -348,7 +348,7 @@ To do this you select the part of the code you would like to match and then clic
 </div>
 </li>
 
-<li><a id="orgf839b81"></a>The <b>next</b> step is to refine that query into something that captures the logic of what you want a tenet to match.<br />
+<li><a id="org8add463"></a>The <b>next</b> step is to refine that query into something that captures the logic of what you want a tenet to match.<br />
 <div class="outline-text-5" id="text-1-2-1-2">
 <p>
 Typically, the generated query comprises the bulk of the code you end up with.  You can therefore choose what to leave in, or add new logic, depending on the needs of the tenet.
@@ -358,12 +358,12 @@ Typically, the generated query comprises the bulk of the code you end up with.  
 </ol>
 </div>
 
-<div id="outline-container-org9b4d382" class="outline-4">
-<h4 id="org9b4d382"><span class="section-number-4">1.2.2</span> Writing the unit test</h4>
+<div id="outline-container-org859f91f" class="outline-4">
+<h4 id="org859f91f"><span class="section-number-4">1.2.2</span> Writing the unit test</h4>
 <div class="outline-text-4" id="text-1-2-2">
 </div>
 <ol class="org-ol">
-<li><a id="orgab8f434"></a>Obtaining test code for the <code>example.go</code> file<br />
+<li><a id="orgc1bba80"></a>Obtaining test code for the <code>example.go</code> file<br />
 <div class="outline-text-5" id="text-1-2-2-1">
 <p>
 I found <b>'Go by example'</b><sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> a good place to both learn Go and to obtain test code for tenets.
@@ -373,7 +373,7 @@ CodeLingo test code just looks like regular code, except it should contain the t
 </li>
 
 
-<li><a id="org7ce9e38"></a>Generating JSON for the "Expected results" file, <code>expected.json</code><br />
+<li><a id="orgfd97b41"></a>Generating JSON for the "Expected results" file, <code>expected.json</code><br />
 <div class="outline-text-5" id="text-1-2-2-2">
 <p>
 After a review on the CLI, a JSON file is presented. You can just copy and paste this JSON code into a file called <code>expected.json</code>.
@@ -384,12 +384,12 @@ After a review on the CLI, a JSON file is presented. You can just copy and paste
 </div>
 </div>
 
-<div id="outline-container-orgc22eeab" class="outline-3">
-<h3 id="orgc22eeab"><span class="section-number-3">1.3</span> Making a new tenet named 'init'</h3>
+<div id="outline-container-orgc91e220" class="outline-3">
+<h3 id="orgc91e220"><span class="section-number-3">1.3</span> Making a new tenet named 'init'</h3>
 <div class="outline-text-3" id="text-1-3">
 </div>
-<div id="outline-container-org517d400" class="outline-4">
-<h4 id="org517d400"><span class="section-number-4">1.3.1</span> I started by visiting the <span class="underline"><a href="https://www.codelingo.io/playground/?lang=go">CodeLingo Playground</a></span></h4>
+<div id="outline-container-org29976e2" class="outline-4">
+<h4 id="org29976e2"><span class="section-number-4">1.3.1</span> I started by visiting the <span class="underline"><a href="https://www.codelingo.io/playground/?lang=go">CodeLingo Playground</a></span></h4>
 <div class="outline-text-4" id="text-1-3-1">
 <p>
 A good way to start is by generating some CLQL for the thing you would like to match.
@@ -397,25 +397,25 @@ A good way to start is by generating some CLQL for the thing you would like to m
 </div>
 
 <ol class="org-ol">
-<li><a id="org6ee3c5c"></a>Step 1: <b>Generate</b> some CLQL<br />
+<li><a id="org5aa6231"></a>Step 1: <b>Generate</b> some CLQL<br />
 <ol class="org-ol">
-<li><a id="org5e6cd04"></a>Write an init function into the <span class="underline">Source Code: Go"</span> section<br />
+<li><a id="orgc10ac9f"></a>Write an init function into the <span class="underline">Source Code: Go"</span> section<br />
 <div class="outline-text-6" id="text-1-3-1-1-1">
 <div class="org-src-container">
-<pre class="src src-go"><span style="color: #a1db00;">package</span> code <span style="color: #6c6c6c; font-style: italic;">// </span><span style="color: #6c6c6c; font-style: italic;">you also need to say it's part of a package</span>
+<pre class="src src-go"><span style="color: #268bd2; font-weight: bold;">package</span> code <span style="color: #008787; background-color: #262626;">// </span><span style="color: #008787; background-color: #262626;">you also need to say it's part of a package</span>
 
-<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">init</span>() {
-}
+<span style="color: #268bd2; font-weight: bold;">func</span> <span style="color: #d75fd7; font-weight: bold;">init</span><span style="color: #268bd2;">()</span> <span style="color: #268bd2;">{</span>
+<span style="color: #268bd2;">}</span>
 </pre>
 </div>
 </div>
 </li>
 
-<li><a id="org1ce41b5"></a>Double tap on 'init' to select it.<br /></li>
+<li><a id="orgff5d4a6"></a>Double tap on 'init' to select it.<br /></li>
 
-<li><a id="org8ed3140"></a>Click on <span class="underline">Generate Query</span> and copy the resulting CLQL code<br />
+<li><a id="org35b6618"></a>Click on <span class="underline">Generate Query</span> and copy the resulting CLQL code<br />
 <ol class="org-ol">
-<li><a id="orgb16d46d"></a>This is what the button looks like.<br />
+<li><a id="orgbb0bf25"></a>This is what the button looks like.<br />
 <div class="outline-text-7" id="text-1-3-1-1-3-1">
 
 <div class="figure">
@@ -425,22 +425,22 @@ A good way to start is by generating some CLQL for the thing you would like to m
 </div>
 </li>
 
-<li><a id="org45dd246"></a>This is what the generated CLQL looks like.<br />
+<li><a id="org878a784"></a>This is what the generated CLQL looks like.<br />
 <div class="outline-text-7" id="text-1-3-1-1-3-2">
 <div class="org-src-container">
 <pre class="src src-yaml">import codelingo/ast/go
 
-<span style="color: #ff8700;">go.file(depth = any)</span>:
-  <span style="color: #ff8700;">go.decls</span>:
+<span style="color: #8787d7;">go.file(depth = any)</span>:
+  <span style="color: #8787d7;">go.decls</span>:
     @playground.highlight
-    <span style="color: #ff8700;">go.func_decl</span>:
-      <span style="color: #ff8700;">go.ident</span>:
+    <span style="color: #8787d7;">go.func_decl</span>:
+      <span style="color: #8787d7;">go.ident</span>:
         child_count == 0
-        name == <span style="color: #ff4ea3;">"init"</span>
-        private == <span style="color: #ff4ea3;">"true"</span>
-        public == <span style="color: #ff4ea3;">"false"</span>
-      <span style="color: #ff8700;">go.func_type</span>:
-        <span style="color: #ff8700;">go.field_list</span>:
+        name == <span style="color: #2aa198;">"init"</span>
+        private == <span style="color: #2aa198;">"true"</span>
+        public == <span style="color: #2aa198;">"false"</span>
+      <span style="color: #8787d7;">go.func_type</span>:
+        <span style="color: #8787d7;">go.field_list</span>:
           child_count == 0
 </pre>
 </div>
@@ -477,26 +477,26 @@ A good way to start is by generating some CLQL for the thing you would like to m
 </ol>
 </li>
 
-<li><a id="org89ee072"></a>Step 2: <b>Refine</b> the CLQL<br />
+<li><a id="org83d1c3e"></a>Step 2: <b>Refine</b> the CLQL<br />
 <div class="outline-text-5" id="text-1-3-1-2">
 <div class="org-src-container">
 <pre class="src src-yaml">import codelingo/ast/go
 
-<span style="color: #ff8700;">go.file(depth = any)</span>:
-  <span style="color: #ff8700;">go.decls</span>:
-    <span style="color: #ff8700;">go.func_decl</span>:
+<span style="color: #8787d7;">go.file(depth = any)</span>:
+  <span style="color: #8787d7;">go.decls</span>:
+    <span style="color: #8787d7;">go.func_decl</span>:
       @ review.comment
-      <span style="color: #ff8700;">go.ident</span>:
-        name == <span style="color: #ff4ea3;">"init"</span>
-      <span style="color: #ff8700;">go.func_type</span>:
-        <span style="color: #ff8700;">go.field_list</span>:
+      <span style="color: #8787d7;">go.ident</span>:
+        name == <span style="color: #2aa198;">"init"</span>
+      <span style="color: #8787d7;">go.func_type</span>:
+        <span style="color: #8787d7;">go.field_list</span>:
           child_count == 0
 </pre>
 </div>
 </div>
 
 <ol class="org-ol">
-<li><a id="orgd06dffa"></a>Actions<br />
+<li><a id="org088045c"></a>Actions<br />
 <div class="outline-text-6" id="text-1-3-1-2-1">
 <ul class="org-ul">
 <li>Remove <code>@playground.highlight</code></li>
@@ -518,8 +518,8 @@ The second <code>child_count</code> was left in because we'd like to match "init
 The visibility assertions in this case are not neccessary. Usually we want the tenet to be able to generalise.
 </p>
 <div class="org-src-container">
-<pre class="src src-yaml">private == <span style="color: #ff4ea3;">"true"</span>
-public == <span style="color: #ff4ea3;">"false"</span>
+<pre class="src src-yaml">private == <span style="color: #2aa198;">"true"</span>
+public == <span style="color: #2aa198;">"false"</span>
 </pre>
 </div></li>
 </ul></li>
@@ -527,7 +527,7 @@ public == <span style="color: #ff4ea3;">"false"</span>
 </div>
 </li>
 
-<li><a id="org94202fe"></a>This is the diff of the refinement we made to the CLQL<br />
+<li><a id="org06ae167"></a>This is the diff of the refinement we made to the CLQL<br />
 <div class="outline-text-6" id="text-1-3-1-2-2">
 <div class="org-src-container">
 <pre>
@@ -556,8 +556,8 @@ public == <span style="color: #ff4ea3;">"false"</span>
 </ol>
 </div>
 
-<div id="outline-container-org6e83630" class="outline-4">
-<h4 id="org6e83630"><span class="section-number-4">1.3.2</span> The tenet</h4>
+<div id="outline-container-orgae4e5cd" class="outline-4">
+<h4 id="orgae4e5cd"><span class="section-number-4">1.3.2</span> The tenet</h4>
 <div class="outline-text-4" id="text-1-3-2">
 <p>
 After indenting with 6 spaces (3 indents), I copied the CLQL into the <code>query:</code> section of a new <code>codelingo.yaml</code> file.
@@ -565,25 +565,25 @@ The <code>codelingo.yaml</code> file is the file you might simply call the '<b>t
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml"><span style="color: #ff8700;">tenets</span>:
-  - <span style="color: #ff8700;">name</span>: init
-    <span style="color: #ff8700;">doc</span>: |
-      <span style="color: #ff4ea3;">Check that no inits functions are present in Go code.</span>
-    <span style="color: #ff8700;">flows</span>:
-      <span style="color: #ff8700;">codelingo/review</span>:
-        <span style="color: #ff8700;">comment</span>: Init functions cause an import to have a side effects, and side effects are hard to test, reduce readability and increase the complexity of code.
-    <span style="color: #ff8700;">query</span>: |
-      <span style="color: #ff4ea3;">import codelingo/ast/go</span>
+<pre class="src src-yaml"><span style="color: #8787d7;">tenets</span>:
+  - <span style="color: #8787d7;">name</span>: init
+    <span style="color: #8787d7;">doc</span>: |
+      <span style="color: #2aa198;">Check that no inits functions are present in Go code.</span>
+    <span style="color: #8787d7;">flows</span>:
+      <span style="color: #8787d7;">codelingo/review</span>:
+        <span style="color: #8787d7;">comment</span>: Init functions cause an import to have a side effects, and side effects are hard to test, reduce readability and increase the complexity of code.
+    <span style="color: #8787d7;">query</span>: |
+      <span style="color: #2aa198;">import codelingo/ast/go</span>
 
-<span style="color: #ff4ea3;">      go.file(depth = any):</span>
-<span style="color: #ff4ea3;">        go.decls:</span>
-<span style="color: #ff4ea3;">          go.func_decl:</span>
-<span style="color: #ff4ea3;">            @ review.comment</span>
-<span style="color: #ff4ea3;">            go.ident:</span>
-              name == <span style="color: #ff4ea3;">"init"</span>
-<span style="color: #ff4ea3;">            go.func_type:</span>
-<span style="color: #ff4ea3;">              go.field_list:</span>
-<span style="color: #ff4ea3;">                child_count == 0</span>
+<span style="color: #2aa198;">      go.file(depth = any):</span>
+<span style="color: #2aa198;">        go.decls:</span>
+<span style="color: #2aa198;">          go.func_decl:</span>
+<span style="color: #2aa198;">            @ review.comment</span>
+<span style="color: #2aa198;">            go.ident:</span>
+              name == <span style="color: #2aa198;">"init"</span>
+<span style="color: #2aa198;">            go.func_type:</span>
+<span style="color: #2aa198;">              go.field_list:</span>
+<span style="color: #2aa198;">                child_count == 0</span>
 </pre>
 </div>
 
@@ -593,7 +593,7 @@ There are 3 more files that typically go into making a full-featured tenet.
 </div>
 
 <ol class="org-ol">
-<li><a id="org6e26693"></a><span class="done DONE">DONE</span> <br />
+<li><a id="orgbb5503b"></a><span class="done DONE">DONE</span> <br />
 <div class="outline-text-5" id="text-1-3-2-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -619,7 +619,7 @@ There are 3 more files that typically go into making a full-featured tenet.
 </div>
 </li>
 
-<li><a id="org9c37ea3"></a><span class="todo TODO">TODO</span> <br />
+<li><a id="org1421a9b"></a><span class="todo TODO">TODO</span> <br />
 <div class="outline-text-5" id="text-1-3-2-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -657,61 +657,61 @@ There are 3 more files that typically go into making a full-featured tenet.
 </ol>
 </div>
 
-<div id="outline-container-orgd9174ec" class="outline-4">
-<h4 id="orgd9174ec"><span class="section-number-4">1.3.3</span> The test code, <code>example.go</code></h4>
+<div id="outline-container-orgbaba7d7" class="outline-4">
+<h4 id="orgbaba7d7"><span class="section-number-4">1.3.3</span> The test code, <code>example.go</code></h4>
 <div class="outline-text-4" id="text-1-3-3">
 <div class="org-src-container">
-<pre class="src src-go"><span style="color: #a1db00;">package</span> code
+<pre class="src src-go"><span style="color: #268bd2; font-weight: bold;">package</span> code
 
-<span style="color: #a1db00;">var</span> myVar = 0
+<span style="color: #268bd2; font-weight: bold;">var</span> myVar = <span style="color: #d75fd7;">0</span>
 
-<span style="color: #a1db00;">type</span> <span style="color: #00d7af;">S</span> <span style="color: #a1db00;">struct</span>{}
+<span style="color: #268bd2; font-weight: bold;">type</span> <span style="color: #df005f; font-weight: bold;">S</span> <span style="color: #268bd2; font-weight: bold;">struct</span><span style="color: #268bd2;">{}</span>
 
-<span style="color: #a1db00;">func</span> (s <span style="color: #00d7af;">S</span>) <span style="color: #ffd700;">init</span>(arg <span style="color: #00d7af;">string</span>) <span style="color: #00d7af;">bool</span> {
-        yourVar := <span style="color: #5fafd7;">true</span>
-        <span style="color: #a1db00;">return</span> yourVar
-}
+<span style="color: #268bd2; font-weight: bold;">func</span> <span style="color: #268bd2;">(</span>s <span style="color: #df005f; font-weight: bold;">S</span><span style="color: #268bd2;">)</span> <span style="color: #d75fd7; font-weight: bold;">init</span><span style="color: #268bd2;">(</span>arg <span style="color: #df005f; font-weight: bold;">string</span><span style="color: #268bd2;">)</span> <span style="color: #df005f; font-weight: bold;">bool</span> <span style="color: #268bd2;">{</span>
+        yourVar := <span style="color: #d75fd7;">true</span>
+        <span style="color: #268bd2; font-weight: bold;">return</span> yourVar
+<span style="color: #268bd2;">}</span>
 
-<span style="color: #a1db00;">var</span> theVar = <span style="color: #5fafd7;">true</span>
+<span style="color: #268bd2; font-weight: bold;">var</span> theVar = <span style="color: #d75fd7;">true</span>
 
-<span style="color: #a1db00;">type</span> <span style="color: #00d7af;">S</span> <span style="color: #a1db00;">struct</span>{}
+<span style="color: #268bd2; font-weight: bold;">type</span> <span style="color: #df005f; font-weight: bold;">S</span> <span style="color: #268bd2; font-weight: bold;">struct</span><span style="color: #268bd2;">{}</span>
 
-<span style="color: #a1db00;">const</span> constant = 0
+<span style="color: #268bd2; font-weight: bold;">const</span> constant = <span style="color: #d75fd7;">0</span>
 
-<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">function</span>(arg <span style="color: #00d7af;">string</span>) <span style="color: #00d7af;">bool</span> {
-        yourVar := <span style="color: #5fafd7;">true</span>
-        <span style="color: #a1db00;">return</span> yourVar
-}
+<span style="color: #268bd2; font-weight: bold;">func</span> <span style="color: #d75fd7; font-weight: bold;">function</span><span style="color: #268bd2;">(</span>arg <span style="color: #df005f; font-weight: bold;">string</span><span style="color: #268bd2;">)</span> <span style="color: #df005f; font-weight: bold;">bool</span> <span style="color: #268bd2;">{</span>
+        yourVar := <span style="color: #d75fd7;">true</span>
+        <span style="color: #268bd2; font-weight: bold;">return</span> yourVar
+<span style="color: #268bd2;">}</span>
 
-<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">init</span>() {
-}
+<span style="color: #268bd2; font-weight: bold;">func</span> <span style="color: #d75fd7; font-weight: bold;">init</span><span style="color: #268bd2;">()</span> <span style="color: #268bd2;">{</span>
+<span style="color: #268bd2;">}</span>
 
-<span style="color: #a1db00;">type</span> <span style="color: #00d7af;">S</span> <span style="color: #a1db00;">struct</span>{}
+<span style="color: #268bd2; font-weight: bold;">type</span> <span style="color: #df005f; font-weight: bold;">S</span> <span style="color: #268bd2; font-weight: bold;">struct</span><span style="color: #268bd2;">{}</span>
 
-<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">function</span>() {
-        init := <span style="color: #a1db00;">func</span>() {}
-        <span style="color: #ffd700;">init</span>()
-}
+<span style="color: #268bd2; font-weight: bold;">func</span> <span style="color: #d75fd7; font-weight: bold;">function</span><span style="color: #268bd2;">()</span> <span style="color: #268bd2;">{</span>
+        init := <span style="color: #268bd2; font-weight: bold;">func</span><span style="color: #d75fd7;">()</span> <span style="color: #d75fd7;">{}</span>
+        <span style="color: #d75fd7; font-weight: bold;">init</span><span style="color: #d75fd7;">()</span>
+<span style="color: #268bd2;">}</span>
 
-<span style="color: #a1db00;">var</span> _ = 0
+<span style="color: #268bd2; font-weight: bold;">var</span> _ = <span style="color: #d75fd7;">0</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgc18c865" class="outline-3">
-<h3 id="orgc18c865"><span class="section-number-3">1.4</span> unconvert</h3>
+<div id="outline-container-orgd1c1ba3" class="outline-3">
+<h3 id="orgd1c1ba3"><span class="section-number-3">1.4</span> unconvert</h3>
 <div class="outline-text-3" id="text-1-4">
 </div>
-<div id="outline-container-org2659c9e" class="outline-4">
-<h4 id="org2659c9e"><span class="section-number-4">1.4.1</span> Visit the CodeLingo Playground</h4>
+<div id="outline-container-orgf75454c" class="outline-4">
+<h4 id="orgf75454c"><span class="section-number-4">1.4.1</span> Visit the CodeLingo Playground</h4>
 <div class="outline-text-4" id="text-1-4-1">
 </div>
 <ol class="org-ol">
-<li><a id="org5cdab16"></a>Generate some CLQL<br />
+<li><a id="org7c0e6e6"></a>Generate some CLQL<br />
 <ol class="org-ol">
-<li><a id="org6c33c4d"></a>Write the antipattern into the <span class="underline">Source Code: Go"</span> section<br />
+<li><a id="org4fff435"></a>Write the antipattern into the <span class="underline">Source Code: Go"</span> section<br />
 <div class="outline-text-6" id="text-1-4-1-1-1">
 <p>
 We dont want to use the <code>float64()</code> type-conversion function on a variable we already know is a float.
@@ -719,18 +719,18 @@ Honestly, this wasn't hard to write.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-go"><span style="color: #a1db00;">func</span> <span style="color: #ffd700;">main</span>() {
-        <span style="color: #a1db00;">var</span> f float64
-        fmt.<span style="color: #ffd700;">Printf</span>(<span style="color: #ff4ea3;">"%t\n"</span>, !math.<span style="color: #ffd700;">IsNaN</span>(<span style="color: #ffd700;">float64</span>(f)))
-}
+<pre class="src src-go"><span style="color: #268bd2; font-weight: bold;">func</span> <span style="color: #d75fd7; font-weight: bold;">main</span><span style="color: #268bd2;">()</span> <span style="color: #268bd2;">{</span>
+        <span style="color: #268bd2; font-weight: bold;">var</span> f float64
+        fmt.<span style="color: #d75fd7; font-weight: bold;">Printf</span><span style="color: #d75fd7;">(</span><span style="color: #2aa198;">"%t\n"</span>, !math.<span style="color: #d75fd7; font-weight: bold;">IsNaN</span><span style="color: #2aa198;">(</span><span style="color: #d75fd7; font-weight: bold;">float64</span><span style="color: #67b11d;">(</span>f<span style="color: #67b11d;">)</span><span style="color: #2aa198;">)</span><span style="color: #d75fd7;">)</span>
+<span style="color: #268bd2;">}</span>
 </pre>
 </div>
 </div>
 </li>
 
-<li><a id="org8eb194a"></a>Click on <span class="underline">Generate Query</span> and copy the resulting CLQL code<br />
+<li><a id="org3757f16"></a>Click on <span class="underline">Generate Query</span> and copy the resulting CLQL code<br />
 <ol class="org-ol">
-<li><a id="org1268424"></a>This is what the generated CLQL looks like.<br /></li>
+<li><a id="org63048f2"></a>This is what the generated CLQL looks like.<br /></li>
 </ol>
 </li>
 </ol>
@@ -738,139 +738,139 @@ Honestly, this wasn't hard to write.
 </ol>
 </div>
 
-<div id="outline-container-org59dbbd2" class="outline-4">
-<h4 id="org59dbbd2"><span class="section-number-4">1.4.2</span> The tenet</h4>
+<div id="outline-container-org48c40cb" class="outline-4">
+<h4 id="org48c40cb"><span class="section-number-4">1.4.2</span> The tenet</h4>
 <div class="outline-text-4" id="text-1-4-2">
 <div class="org-src-container">
-<pre class="src src-yaml"><span style="color: #ff8700;">tenets</span>:
-  - <span style="color: #ff8700;">name</span>: unconvert
-    <span style="color: #ff8700;">doc</span>: |
-      <span style="color: #ff4ea3;">Identify unnecessary type conversions</span>
-    <span style="color: #ff8700;">flows</span>:
-      <span style="color: #ff8700;">codelingo/review</span>:
-        <span style="color: #ff8700;">comment</span>: Unnecessary type conversion {{name}}; i.e., expression {{name}}(x) where x already has type {{name}}.
-    <span style="color: #ff8700;">query</span>: |
-      <span style="color: #ff4ea3;">import codelingo/ast/go</span>
-<span style="color: #ff4ea3;">      go.file(depth = any):</span>
-<span style="color: #ff4ea3;">        go.call_expr(depth = any):</span>
-<span style="color: #ff4ea3;">          go.ident:</span>
-<span style="color: #ff4ea3;">            @ review.vars.name</span>
-<span style="color: #ff4ea3;">            name as typeName</span>
-<span style="color: #ff4ea3;">          go.args:</span>
-<span style="color: #ff4ea3;">            @ review.comment</span>
-<span style="color: #ff4ea3;">            go.ident:</span>
-<span style="color: #ff4ea3;">              type == typeName</span>
+<pre class="src src-yaml"><span style="color: #8787d7;">tenets</span>:
+  - <span style="color: #8787d7;">name</span>: unconvert
+    <span style="color: #8787d7;">doc</span>: |
+      <span style="color: #2aa198;">Identify unnecessary type conversions</span>
+    <span style="color: #8787d7;">flows</span>:
+      <span style="color: #8787d7;">codelingo/review</span>:
+        <span style="color: #8787d7;">comment</span>: Unnecessary type conversion <span style="color: #268bd2;">{</span><span style="color: #d75fd7;">{</span>name<span style="color: #d75fd7;">}</span><span style="color: #268bd2;">}</span>; i.e., expression <span style="color: #268bd2;">{</span><span style="color: #d75fd7;">{</span>name<span style="color: #d75fd7;">}</span><span style="color: #268bd2;">}</span>(x) where x already has type <span style="color: #268bd2;">{</span><span style="color: #d75fd7;">{</span>name<span style="color: #d75fd7;">}</span><span style="color: #268bd2;">}</span>.
+    <span style="color: #8787d7;">query</span>: |
+      <span style="color: #2aa198;">import codelingo/ast/go</span>
+<span style="color: #2aa198;">      go.file(depth = any):</span>
+<span style="color: #2aa198;">        go.call_expr(depth = any):</span>
+<span style="color: #2aa198;">          go.ident:</span>
+<span style="color: #2aa198;">            @ review.vars.name</span>
+<span style="color: #2aa198;">            name as typeName</span>
+<span style="color: #2aa198;">          go.args:</span>
+<span style="color: #2aa198;">            @ review.comment</span>
+<span style="color: #2aa198;">            go.ident:</span>
+<span style="color: #2aa198;">              type == typeName</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgcd0bda1" class="outline-4">
-<h4 id="orgcd0bda1"><span class="section-number-4">1.4.3</span> The test code</h4>
+<div id="outline-container-org1a2f2c2" class="outline-4">
+<h4 id="org1a2f2c2"><span class="section-number-4">1.4.3</span> The test code</h4>
 <div class="outline-text-4" id="text-1-4-3">
 <div class="org-src-container">
-<pre class="src src-go"><span style="color: #a1db00;">package</span> main
+<pre class="src src-go"><span style="color: #268bd2; font-weight: bold;">package</span> main
 
-<span style="color: #a1db00;">import</span> <span style="color: #ff4ea3;">"fmt"</span>
-<span style="color: #a1db00;">import</span> <span style="color: #ff4ea3;">"math"</span>
+<span style="color: #268bd2; font-weight: bold;">import</span> <span style="color: #2aa198;">"fmt"</span>
+<span style="color: #268bd2; font-weight: bold;">import</span> <span style="color: #2aa198;">"math"</span>
 
-<span style="color: #a1db00;">func</span> <span style="color: #ffd700;">main</span>() {
-        <span style="color: #a1db00;">var</span> f float64
-        <span style="color: #a1db00;">var</span> f32 float32
-        <span style="color: #a1db00;">var</span> f64 float64
-        fmt.<span style="color: #ffd700;">Printf</span>(<span style="color: #ff4ea3;">"%t\n"</span>, !math.<span style="color: #ffd700;">IsNaN</span>(<span style="color: #ffd700;">float64</span>(f)))
-        fmt.<span style="color: #ffd700;">Printf</span>(<span style="color: #ff4ea3;">"%t\n"</span>, !math.<span style="color: #ffd700;">IsNaN</span>(<span style="color: #ffd700;">float64</span>(f32)))
-        fmt.<span style="color: #ffd700;">Printf</span>(<span style="color: #ff4ea3;">"%t\n"</span>, !math.<span style="color: #ffd700;">IsNaN</span>(<span style="color: #ffd700;">float64</span>(f64)))
-}
+<span style="color: #268bd2; font-weight: bold;">func</span> <span style="color: #d75fd7; font-weight: bold;">main</span><span style="color: #268bd2;">()</span> <span style="color: #268bd2;">{</span>
+        <span style="color: #268bd2; font-weight: bold;">var</span> f float64
+        <span style="color: #268bd2; font-weight: bold;">var</span> f32 float32
+        <span style="color: #268bd2; font-weight: bold;">var</span> f64 float64
+        fmt.<span style="color: #d75fd7; font-weight: bold;">Printf</span><span style="color: #d75fd7;">(</span><span style="color: #2aa198;">"%t\n"</span>, !math.<span style="color: #d75fd7; font-weight: bold;">IsNaN</span><span style="color: #2aa198;">(</span><span style="color: #d75fd7; font-weight: bold;">float64</span><span style="color: #67b11d;">(</span>f<span style="color: #67b11d;">)</span><span style="color: #2aa198;">)</span><span style="color: #d75fd7;">)</span>
+        fmt.<span style="color: #d75fd7; font-weight: bold;">Printf</span><span style="color: #d75fd7;">(</span><span style="color: #2aa198;">"%t\n"</span>, !math.<span style="color: #d75fd7; font-weight: bold;">IsNaN</span><span style="color: #2aa198;">(</span><span style="color: #d75fd7; font-weight: bold;">float64</span><span style="color: #67b11d;">(</span>f32<span style="color: #67b11d;">)</span><span style="color: #2aa198;">)</span><span style="color: #d75fd7;">)</span>
+        fmt.<span style="color: #d75fd7; font-weight: bold;">Printf</span><span style="color: #d75fd7;">(</span><span style="color: #2aa198;">"%t\n"</span>, !math.<span style="color: #d75fd7; font-weight: bold;">IsNaN</span><span style="color: #2aa198;">(</span><span style="color: #d75fd7; font-weight: bold;">float64</span><span style="color: #67b11d;">(</span>f64<span style="color: #67b11d;">)</span><span style="color: #2aa198;">)</span><span style="color: #d75fd7;">)</span>
+<span style="color: #268bd2;">}</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org911b05b" class="outline-3">
-<h3 id="org911b05b"><span class="section-number-3">1.5</span> tenet vs nofuncflags</h3>
+<div id="outline-container-orgc694256" class="outline-3">
+<h3 id="orgc694256"><span class="section-number-3">1.5</span> tenet vs nofuncflags</h3>
 <div class="outline-text-3" id="text-1-5">
 </div>
-<div id="outline-container-orgbd845f4" class="outline-4">
-<h4 id="orgbd845f4"><span class="section-number-4">1.5.1</span> Original CLQL query</h4>
+<div id="outline-container-org2df2f10" class="outline-4">
+<h4 id="org2df2f10"><span class="section-number-4">1.5.1</span> Original CLQL query</h4>
 <div class="outline-text-4" id="text-1-5-1">
 <div class="org-src-container">
 <pre class="src src-yaml">import codelingo/ast/go
 
-<span style="color: #ff8700;">go.file(depth = any)</span>:
-  <span style="color: #ff8700;">go.decls</span>:
-    <span style="color: #ff8700;">go.func_decl</span>:
-      <span style="color: #ff8700;">go.func_type</span>:
-        <span style="color: #ff8700;">go.field_list</span>:
+<span style="color: #8787d7;">go.file(depth = any)</span>:
+  <span style="color: #8787d7;">go.decls</span>:
+    <span style="color: #8787d7;">go.func_decl</span>:
+      <span style="color: #8787d7;">go.func_type</span>:
+        <span style="color: #8787d7;">go.field_list</span>:
           @playground.highlight
-          <span style="color: #ff8700;">go.field</span>:
-            <span style="color: #ff8700;">go.names</span>:
-              <span style="color: #ff8700;">go.ident</span>:
+          <span style="color: #8787d7;">go.field</span>:
+            <span style="color: #8787d7;">go.names</span>:
+              <span style="color: #8787d7;">go.ident</span>:
                 child_count == 0
-                name == <span style="color: #ff4ea3;">"aFlag"</span>
-                private == <span style="color: #ff4ea3;">"true"</span>
-                public == <span style="color: #ff4ea3;">"false"</span>
-                type == <span style="color: #ff4ea3;">"bool"</span>
-            <span style="color: #ff8700;">go.ident</span>:
+                name == <span style="color: #2aa198;">"aFlag"</span>
+                private == <span style="color: #2aa198;">"true"</span>
+                public == <span style="color: #2aa198;">"false"</span>
+                type == <span style="color: #2aa198;">"bool"</span>
+            <span style="color: #8787d7;">go.ident</span>:
               child_count == 0
-              name == <span style="color: #ff4ea3;">"bool"</span>
-              private == <span style="color: #ff4ea3;">"true"</span>
-              public == <span style="color: #ff4ea3;">"false"</span>
+              name == <span style="color: #2aa198;">"bool"</span>
+              private == <span style="color: #2aa198;">"true"</span>
+              public == <span style="color: #2aa198;">"false"</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgd5b3c30" class="outline-4">
-<h4 id="orgd5b3c30"><span class="section-number-4">1.5.2</span> Refined CLQL query</h4>
+<div id="outline-container-org91f2bad" class="outline-4">
+<h4 id="org91f2bad"><span class="section-number-4">1.5.2</span> Refined CLQL query</h4>
 <div class="outline-text-4" id="text-1-5-2">
 <div class="org-src-container">
 <pre class="src src-yaml">import codelingo/ast/go
 
-<span style="color: #ff8700;">go.func_decl(depth = any)</span>:
-  <span style="color: #ff8700;">go.func_type</span>:
-    <span style="color: #ff8700;">go.field_list</span>:
-      <span style="color: #ff8700;">go.field</span>:
-        <span style="color: #ff8700;">go.names</span>:
+<span style="color: #8787d7;">go.func_decl(depth = any)</span>:
+  <span style="color: #8787d7;">go.func_type</span>:
+    <span style="color: #8787d7;">go.field_list</span>:
+      <span style="color: #8787d7;">go.field</span>:
+        <span style="color: #8787d7;">go.names</span>:
           @ review.comment
-          <span style="color: #ff8700;">go.ident</span>:
-            type == <span style="color: #ff4ea3;">"bool"</span>
+          <span style="color: #8787d7;">go.ident</span>:
+            type == <span style="color: #2aa198;">"bool"</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgb4840f0" class="outline-4">
-<h4 id="orgb4840f0"><span class="section-number-4">1.5.3</span> CLQL query written by Blake</h4>
+<div id="outline-container-org6aa4796" class="outline-4">
+<h4 id="org6aa4796"><span class="section-number-4">1.5.3</span> CLQL query written by Blake</h4>
 <div class="outline-text-4" id="text-1-5-3">
 <div class="org-src-container">
 <pre class="src src-yaml">import codelingo/ast/go
 
 @ review.comment
-<span style="color: #ff8700;">go.func_decl(depth = any)</span>:
-  <span style="color: #ff8700;">go.func_type</span>:
-    <span style="color: #ff8700;">go.field_list</span>:
-      <span style="color: #ff8700;">go.field</span>:
-        <span style="color: #ff8700;">go.names</span>:
-          <span style="color: #ff8700;">go.ident</span>:
-            type == <span style="color: #ff4ea3;">"bool"</span>
+<span style="color: #8787d7;">go.func_decl(depth = any)</span>:
+  <span style="color: #8787d7;">go.func_type</span>:
+    <span style="color: #8787d7;">go.field_list</span>:
+      <span style="color: #8787d7;">go.field</span>:
+        <span style="color: #8787d7;">go.names</span>:
+          <span style="color: #8787d7;">go.ident</span>:
+            type == <span style="color: #2aa198;">"bool"</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org711cd38" class="outline-4">
-<h4 id="org711cd38"><span class="section-number-4">1.5.4</span> Difference between Blake's query and my own</h4>
+<div id="outline-container-orge1ace03" class="outline-4">
+<h4 id="orge1ace03"><span class="section-number-4">1.5.4</span> Difference between Blake's query and my own</h4>
 <div class="outline-text-4" id="text-1-5-4">
 <p>
 The only difference between our queries was the position of the <code>@ review.comment</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-diff"><span style="color: #afd7ff; background-color: #4e4e4e; font-weight: bold;">2a3</span>
-<span style="color: #eeeeee; background-color: #5faf00; font-weight: bold;">&gt;</span><span style="color: #d7ff5f; background-color: #3a3a3a; font-weight: bold;"> @ review.comment</span>
-<span style="color: #afd7ff; background-color: #4e4e4e; font-weight: bold;">8d8</span>
-&lt;           @ review.comment
+<pre class="src src-diff"><span style="color: #d75fd7; background-color: #333333;">2a3</span>
+<span style="color: #67b11d;">&gt;</span><span style="color: #dc752f;"> </span><span style="color: #67b11d;">@</span><span style="color: #dc752f;"> </span><span style="color: #67b11d;">review.comment</span>
+<span style="color: #d75fd7; background-color: #333333;">8d8</span>
+&lt;<span style="color: #dc752f;">           </span>@<span style="color: #dc752f;"> </span>review.comment
 </pre>
 </div>
 
@@ -882,19 +882,19 @@ They are functionally equivalent, though.
 </div>
 </div>
 
-<div id="outline-container-orgbb0d056" class="outline-2">
-<h2 id="orgbb0d056"><span class="section-number-2">2</span> Results</h2>
+<div id="outline-container-orgf3f395b" class="outline-2">
+<h2 id="orgf3f395b"><span class="section-number-2">2</span> Results</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org39c1a97" class="outline-3">
-<h3 id="org39c1a97"><span class="section-number-3">2.1</span> Size comparison</h3>
+<div id="outline-container-org4fcdf11" class="outline-3">
+<h3 id="org4fcdf11"><span class="section-number-3">2.1</span> Size comparison</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Here I compare the amount of code written to make the tenets vs the linters I modelled them from.
 </p>
 </div>
-<div id="outline-container-org00abb18" class="outline-4">
-<h4 id="org00abb18"><span class="section-number-4">2.1.1</span> Parser</h4>
+<div id="outline-container-orgcf4dc85" class="outline-4">
+<h4 id="orgcf4dc85"><span class="section-number-4">2.1.1</span> Parser</h4>
 <div class="outline-text-4" id="text-2-1-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1008,8 +1008,8 @@ Here I compare the amount of code written to make the tenets vs the linters I mo
 </div>
 </div>
 
-<div id="outline-container-orgc61beac" class="outline-4">
-<h4 id="orgc61beac"><span class="section-number-4">2.1.2</span> Unit tests</h4>
+<div id="outline-container-orga3927af" class="outline-4">
+<h4 id="orga3927af"><span class="section-number-4">2.1.2</span> Unit tests</h4>
 <div class="outline-text-4" id="text-2-1-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1115,8 +1115,8 @@ Here I compare the amount of code written to make the tenets vs the linters I mo
 </div>
 </div>
 
-<div id="outline-container-orgbd29313" class="outline-4">
-<h4 id="orgbd29313"><span class="section-number-4">2.1.3</span> Links to source code</h4>
+<div id="outline-container-org30c78e3" class="outline-4">
+<h4 id="org30c78e3"><span class="section-number-4">2.1.3</span> Links to source code</h4>
 <div class="outline-text-4" id="text-2-1-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1195,8 +1195,8 @@ Here I compare the amount of code written to make the tenets vs the linters I mo
 </div>
 </div>
 
-<div id="outline-container-org50d1e06" class="outline-3">
-<h3 id="org50d1e06"><span class="section-number-3">2.2</span> The work it took to write these tenets</h3>
+<div id="outline-container-orgb1ac99d" class="outline-3">
+<h3 id="orgb1ac99d"><span class="section-number-3">2.2</span> The work it took to write these tenets</h3>
 <div class="outline-text-3" id="text-2-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1280,8 +1280,8 @@ Here I compare the amount of code written to make the tenets vs the linters I mo
 </div>
 
 
-<div id="outline-container-orgce6c832" class="outline-3">
-<h3 id="orgce6c832"><span class="section-number-3">2.3</span> The work it took to write their unit tests</h3>
+<div id="outline-container-orgacaccd0" class="outline-3">
+<h3 id="orgacaccd0"><span class="section-number-3">2.3</span> The work it took to write their unit tests</h3>
 <div class="outline-text-3" id="text-2-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1366,12 +1366,12 @@ Here I compare the amount of code written to make the tenets vs the linters I mo
 </table>
 </div>
 
-<div id="outline-container-orgd636fd4" class="outline-4">
-<h4 id="orgd636fd4"><span class="section-number-4">2.3.1</span> Caveats</h4>
+<div id="outline-container-orgd3a22cb" class="outline-4">
+<h4 id="orgd3a22cb"><span class="section-number-4">2.3.1</span> Caveats</h4>
 <div class="outline-text-4" id="text-2-3-1">
 </div>
 <ol class="org-ol">
-<li><a id="orgc5e38ce"></a>unconvert<br />
+<li><a id="org0abc808"></a>unconvert<br />
 <div class="outline-text-5" id="text-2-3-1-1">
 <ul class="org-ul">
 <li><p>
@@ -1385,7 +1385,7 @@ I ran the original linter on a repository to find an example of what to put into
 </div>
 </li>
 
-<li><a id="orgfd5b876"></a>blanket<br />
+<li><a id="orgc2674fc"></a>blanket<br />
 <div class="outline-text-5" id="text-2-3-1-2">
 <ul class="org-ul">
 <li><p>
@@ -1415,8 +1415,8 @@ So it doesn't have the same recursive limitation as blanket, but may give rise t
 </div>
 
 
-<div id="outline-container-org76c7e0d" class="outline-3">
-<h3 id="org76c7e0d"><span class="section-number-3">2.4</span> Conclusions</h3>
+<div id="outline-container-org9465973" class="outline-3">
+<h3 id="org9465973"><span class="section-number-3">2.4</span> Conclusions</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 Even though the <code>bool-param</code> tenet was already made by Blake, it took no longer than 10 minutes for myself, a total newbie, to make.
@@ -1471,7 +1471,7 @@ The number of times I had to <b>test</b> the tenet.
 <div id="postamble" class="status">
 <p class="date">Date: 2018-10-05 Fri 00:00</p>
 <p class="author">Author: Shane Mulligan</p>
-<p class="date">Created: 2018-11-02 Fri 21:06</p>
+<p class="date">Created: 2018-11-02 Fri 21:29</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
