@@ -1,4 +1,4 @@
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
 #+TITLE:     CodeLingo vs Linters
 #+SUBTITLE:  Making parsers for automatic code review
 #+AUTHOR:    Shane Mulligan

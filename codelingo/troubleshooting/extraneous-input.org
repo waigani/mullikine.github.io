@@ -1,6 +1,6 @@
 #+TITLE: troubleshooting new tenet ~shadowed-func-parameter~
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org-main.css"/>
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="magit.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
 
 * ~example.go~
 #+BEGIN_SRC go

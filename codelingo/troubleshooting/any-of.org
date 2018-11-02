@@ -1,6 +1,6 @@
 #+TITLE: troubleshooting new tenet ~looped-vars-outside~
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org-main.css"/>
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="magit.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
 
 * ~anyof:~ is breaking the tenet.
 
