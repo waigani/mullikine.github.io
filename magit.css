@@ -75,7 +75,7 @@ a {
   /* text-decoration: inherit; */
   text-decoration: none;
 }
-pre > anchor {
+pre a {
     background: white;
 }
 a:hover {
