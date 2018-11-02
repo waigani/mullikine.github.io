@@ -116,7 +116,7 @@ Lexicon error. Transport closing.
 
 | org                                                                                                              |
 |------------------------------------------------------------------------------------------------------------------|
-| [[https://github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/tenets/flags-have-underscores.org][github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/tenets/flags-have-underscores.org]] |
+| [[https://github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/tenets/flags-have-underscores.org][mullikine.github.io/flags-have-underscores.org at master  mullikine/mullikine.github.io  GitHub]]  |
 
 ** https://github.com/codelingo/codelingo/blob/master
 | command        | value                                    |
