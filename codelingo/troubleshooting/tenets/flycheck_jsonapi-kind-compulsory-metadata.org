@@ -1,0 +1,500 @@
+#+TITLE: troubleshooting new tenet ~jsonapi-kind-compulsory-metadata~
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
+
+* Problem
+Too many matches for CLQL. 4 per struct.
+Should it be 1?
+
+** ~example.go~
+#+BEGIN_SRC go
+  // ./example.go
+  package main
+  
+  import "fmt"
+  
+  type KindWithoutName struct {
+  	UID         types.UID                   `json:"uid" protobuf:"bytes,1,opt,name=uid"`
+  	Kind        metav1.GroupVersionKind     `json:"kind" protobuf:"bytes,2,opt,name=kind"`
+  	Resource    metav1.GroupVersionResource `json:"resource" protobuf:"bytes,3,opt,name=resource"`
+  	SubResource string                      `json:"subResource,omitempty" protobuf:"bytes,4,opt,name=subResource"`
+  	Namespace   string                      `json:"namespace,omitempty" protobuf:"bytes,6,opt,name=namespace"`
+  	Operation   Operation                   `json:"operation" protobuf:"bytes,7,opt,name=operation"`
+  	UserInfo    authenticationv1.UserInfo   `json:"userInfo" protobuf:"bytes,8,opt,name=userInfo"`
+  	Object      runtime.RawExtension        `json:"object,omitempty" protobuf:"bytes,9,opt,name=object"`
+  	OldObject   runtime.RawExtension        `json:"oldObject,omitempty" protobuf:"bytes,10,opt,name=oldObject"`
+  	DryRun      *bool                       `json:"dryRun,omitempty" protobuf:"varint,11,opt,name=dryRun"`
+  }
+  
+  type KindWithoutNamespace struct {
+  	UID         types.UID                   `json:"uid" protobuf:"bytes,1,opt,name=uid"`
+  	Kind        metav1.GroupVersionKind     `json:"kind" protobuf:"bytes,2,opt,name=kind"`
+  	Resource    metav1.GroupVersionResource `json:"resource" protobuf:"bytes,3,opt,name=resource"`
+  	SubResource string                      `json:"subResource,omitempty" protobuf:"bytes,4,opt,name=subResource"`
+  	Name        string                      `json:"name,omitempty" protobuf:"bytes,5,opt,name=name"`
+  	Operation   Operation                   `json:"operation" protobuf:"bytes,7,opt,name=operation"`
+  	UserInfo    authenticationv1.UserInfo   `json:"userInfo" protobuf:"bytes,8,opt,name=userInfo"`
+  	Object      runtime.RawExtension        `json:"object,omitempty" protobuf:"bytes,9,opt,name=object"`
+  	OldObject   runtime.RawExtension        `json:"oldObject,omitempty" protobuf:"bytes,10,opt,name=oldObject"`
+  	DryRun      *bool                       `json:"dryRun,omitempty" protobuf:"varint,11,opt,name=dryRun"`
+  }
+  
+  type AdmissionRequest struct {
+  	UID         types.UID                   `json:"uid" protobuf:"bytes,1,opt,name=uid"`
+  	Kind        metav1.GroupVersionKind     `json:"kind" protobuf:"bytes,2,opt,name=kind"`
+  	Resource    metav1.GroupVersionResource `json:"resource" protobuf:"bytes,3,opt,name=resource"`
+  	SubResource string                      `json:"subResource,omitempty" protobuf:"bytes,4,opt,name=subResource"`
+  	Name        string                      `json:"name,omitempty" protobuf:"bytes,5,opt,name=name"`
+  	Namespace   string                      `json:"namespace,omitempty" protobuf:"bytes,6,opt,name=namespace"`
+  	Operation   Operation                   `json:"operation" protobuf:"bytes,7,opt,name=operation"`
+  	UserInfo    authenticationv1.UserInfo   `json:"userInfo" protobuf:"bytes,8,opt,name=userInfo"`
+  	Object      runtime.RawExtension        `json:"object,omitempty" protobuf:"bytes,9,opt,name=object"`
+  	OldObject   runtime.RawExtension        `json:"oldObject,omitempty" protobuf:"bytes,10,opt,name=oldObject"`
+  	DryRun      *bool                       `json:"dryRun,omitempty" protobuf:"varint,11,opt,name=dryRun"`
+  }
+  
+  // So, look for ~name=kind~ which does not have ~name=namespace~, nor ~name=name~.
+  
+#+END_SRC
+
+** This ~codelingo.yaml~ fails
+#+BEGIN_SRC yaml
+  funcs:
+    - name: isKind
+      type: asserter
+      body: |
+        function (a) {
+          return a.match(/^`json:.*,name=kind\"`$/)
+        }
+    - name: isNamespace
+      type: asserter
+      body: |
+        function (a) {
+          return a.match(/^`json:.*,name=namespace\"`$/)
+        }
+    - name: isName
+      type: asserter
+      body: |
+        function (a) {
+          return a.match(/^`json:.*,name=name\"`$/)
+        }
+  tenets:
+    - name: jsonapi-kind-compulsory-metadata
+      flows:
+        codelingo/docs:
+          title: JSON API kind compulsory metadata
+          body: |
+            Every object kind must provide a nested object field called 'metadata' that contains both a 'namespace' and a 'name' field.
+        codelingo/review:
+          comment: This object kind has not provided a nested object field called 'metadata' containing a 'namespace' and a 'name' field.
+      query: |
+        import codelingo/ast/go
+              
+        go.file(depth = any):
+          go.decls:
+            go.gen_decl:
+              go.type_spec:
+                @review comment
+                go.struct_type:
+                  go.field_list:
+                    go.field:
+                      go.names:
+                        go.ident:
+                          type == "string"
+                      go.ident:
+                        name == "string"
+                      go.basic_lit:
+                        kind == "string"
+                        value as propAValue
+                        # isKind(propAValue)
+                    go.field:
+                      go.names:
+                        go.ident:
+                          type == "string"
+                      go.ident:
+                        name == "string"
+                      go.basic_lit:
+                        kind == "string"
+                        value as propBValue
+                        # isName(propBValue)
+                    go.field:
+                      go.basic_lit:
+                        kind == "string"
+                        value as propCValue
+                        # isNamespace(propCValue)
+#+END_SRC
+
+** annotated ~tty-output.log~
+#+BEGIN_SRC text
+  Constructing new git repo in temp folder... :: Mon Nov  5 14:43:21 NZDT 2018
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  Running: $HOME/scripts/rs -nc
+          -nogit
+          -noswap
+          $HOME/source/git/mullikine/codelingo/tenets/codelingo/k8/jsonapi-kind-compulsory-metadata/
+          /tmp/td_jsonapi-kind-compulsory-metadataMJJssl
+  /usr/bin/rsync  -a -rtlhx -pug -s  --inplace --append   --exclude .cache  --exclude .git/ --exclude .gitignore --exclude TODO  --exclude '*~' --exclude '.#*'  $HOME/source/git/mullikine/codelingo/tenets/codelingo/k8/jsonapi-kind-compulsory-metadata/ /tmp/td_jsonapi-kind-compulsory-metadataMJJssl
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  /tmp/td_jsonapi-kind-compulsory-metadataMJJssl
+  Syncing your repo...
+  Running review flow...
+  example.go:16:2
+      This object kind has not provided a nested object field called 'metadata' containing a 'namespace' and a 'name' field.
+      ...
+      import "fmt"
+    + type KindWithoutName struct {
+    +     UID         types.UID                   `json:"uid" protobuf:"bytes,1,opt,name=uid"`
+    +     Kind        metav1.GroupVersionKind     `json:"kind" protobuf:"bytes,2,opt,name=kind"`
+    +     Resource    metav1.GroupVersionResource `json:"resource" protobuf:"bytes,3,opt,name=resource"`
+    +     SubResource string                      `json:"subResource,omitempty" protobuf:"bytes,4,opt,name=subResource"`
+    +     Namespace   string                      `json:"namespace,omitempty" protobuf:"bytes,6,opt,name=namespace"`
+    +     Operation   Operation                   `json:"operation" protobuf:"bytes,7,opt,name=operation"`
+    +     UserInfo    authenticationv1.UserInfo   `json:"userInfo" protobuf:"bytes,8,opt,name=userInfo"`
+    +     Object      runtime.RawExtension        `json:"object,omitempty" protobuf:"bytes,9,opt,name=object"`
+    +     OldObject   runtime.RawExtension        `json:"oldObject,omitempty" protobuf:"bytes,10,opt,name=oldObject"`
+    +     DryRun      *bool                       `json:"dryRun,omitempty" protobuf:"varint,11,opt,name=dryRun"`
+    + }
+      type KindWithoutNamespace struct {
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:16:2
+      This object kind has not provided a nested object field called 'metadata' containing a 'namespace' and a 'name' field.
+      ...
+      import "fmt"
+    + type KindWithoutName struct {
+    +     UID         types.UID                   `json:"uid" protobuf:"bytes,1,opt,name=uid"`
+    +     Kind        metav1.GroupVersionKind     `json:"kind" protobuf:"bytes,2,opt,name=kind"`
+    +     Resource    metav1.GroupVersionResource `json:"resource" protobuf:"bytes,3,opt,name=resource"`
+    +     SubResource string                      `json:"subResource,omitempty" protobuf:"bytes,4,opt,name=subResource"`
+    +     Namespace   string                      `json:"namespace,omitempty" protobuf:"bytes,6,opt,name=namespace"`
+    +     Operation   Operation                   `json:"operation" protobuf:"bytes,7,opt,name=operation"`
+    +     UserInfo    authenticationv1.UserInfo   `json:"userInfo" protobuf:"bytes,8,opt,name=userInfo"`
+    +     Object      runtime.RawExtension        `json:"object,omitempty" protobuf:"bytes,9,opt,name=object"`
+    +     OldObject   runtime.RawExtension        `json:"oldObject,omitempty" protobuf:"bytes,10,opt,name=oldObject"`
+    +     DryRun      *bool                       `json:"dryRun,omitempty" protobuf:"varint,11,opt,name=dryRun"`
+    + }
+      type KindWithoutNamespace struct {
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:16:2
+      This object kind has not provided a nested object field called 'metadata' containing a 'namespace' and a 'name' field.
+      ...
+      import "fmt"
+    + type KindWithoutName struct {
+    +     UID         types.UID                   `json:"uid" protobuf:"bytes,1,opt,name=uid"`
+    +     Kind        metav1.GroupVersionKind     `json:"kind" protobuf:"bytes,2,opt,name=kind"`
+    +     Resource    metav1.GroupVersionResource `json:"resource" protobuf:"bytes,3,opt,name=resource"`
+    +     SubResource string                      `json:"subResource,omitempty" protobuf:"bytes,4,opt,name=subResource"`
+    +     Namespace   string                      `json:"namespace,omitempty" protobuf:"bytes,6,opt,name=namespace"`
+    +     Operation   Operation                   `json:"operation" protobuf:"bytes,7,opt,name=operation"`
+    +     UserInfo    authenticationv1.UserInfo   `json:"userInfo" protobuf:"bytes,8,opt,name=userInfo"`
+    +     Object      runtime.RawExtension        `json:"object,omitempty" protobuf:"bytes,9,opt,name=object"`
+    +     OldObject   runtime.RawExtension        `json:"oldObject,omitempty" protobuf:"bytes,10,opt,name=oldObject"`
+    +     DryRun      *bool                       `json:"dryRun,omitempty" protobuf:"varint,11,opt,name=dryRun"`
+    + }
+      type KindWithoutNamespace struct {
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:16:2
+      This object kind has not provided a nested object field called 'metadata' containing a 'namespace' and a 'name' field.
+      ...
+      import "fmt"
+    + type KindWithoutName struct {
+    +     UID         types.UID                   `json:"uid" protobuf:"bytes,1,opt,name=uid"`
+    +     Kind        metav1.GroupVersionKind     `json:"kind" protobuf:"bytes,2,opt,name=kind"`
+    +     Resource    metav1.GroupVersionResource `json:"resource" protobuf:"bytes,3,opt,name=resource"`
+    +     SubResource string                      `json:"subResource,omitempty" protobuf:"bytes,4,opt,name=subResource"`
+    +     Namespace   string                      `json:"namespace,omitempty" protobuf:"bytes,6,opt,name=namespace"`
+    +     Operation   Operation                   `json:"operation" protobuf:"bytes,7,opt,name=operation"`
+    +     UserInfo    authenticationv1.UserInfo   `json:"userInfo" protobuf:"bytes,8,opt,name=userInfo"`
+    +     Object      runtime.RawExtension        `json:"object,omitempty" protobuf:"bytes,9,opt,name=object"`
+    +     OldObject   runtime.RawExtension        `json:"oldObject,omitempty" protobuf:"bytes,10,opt,name=oldObject"`
+    +     DryRun      *bool                       `json:"dryRun,omitempty" protobuf:"varint,11,opt,name=dryRun"`
+    + }
+      type KindWithoutNamespace struct {
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:43:2
+      This object kind has not provided a nested object field called 'metadata' containing a 'namespace' and a 'name' field.
+      ...
+      }
+    + type AdmissionRequest struct {
+    +     UID         types.UID                   `json:"uid" protobuf:"bytes,1,opt,name=uid"`
+    +     Kind        metav1.GroupVersionKind     `json:"kind" protobuf:"bytes,2,opt,name=kind"`
+    +     Resource    metav1.GroupVersionResource `json:"resource" protobuf:"bytes,3,opt,name=resource"`
+    +     SubResource string                      `json:"subResource,omitempty" protobuf:"bytes,4,opt,name=subResource"`
+    +     Name        string                      `json:"name,omitempty" protobuf:"bytes,5,opt,name=name"`
+    +     Namespace   string                      `json:"namespace,omitempty" protobuf:"bytes,6,opt,name=namespace"`
+    +     Operation   Operation                   `json:"operation" protobuf:"bytes,7,opt,name=operation"`
+    +     UserInfo    authenticationv1.UserInfo   `json:"userInfo" protobuf:"bytes,8,opt,name=userInfo"`
+    +     Object      runtime.RawExtension        `json:"object,omitempty" protobuf:"bytes,9,opt,name=object"`
+    +     OldObject   runtime.RawExtension        `json:"oldObject,omitempty" protobuf:"bytes,10,opt,name=oldObject"`
+    +     DryRun      *bool                       `json:"dryRun,omitempty" protobuf:"varint,11,opt,name=dryRun"`
+    + }
+      // So, look for ~name=kind~ which does not have ~name=namespace~, nor ~name=name~.
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:43:2
+      This object kind has not provided a nested object field called 'metadata' containing a 'namespace' and a 'name' field.
+      ...
+      }
+    + type AdmissionRequest struct {
+    +     UID         types.UID                   `json:"uid" protobuf:"bytes,1,opt,name=uid"`
+    +     Kind        metav1.GroupVersionKind     `json:"kind" protobuf:"bytes,2,opt,name=kind"`
+    +     Resource    metav1.GroupVersionResource `json:"resource" protobuf:"bytes,3,opt,name=resource"`
+    +     SubResource string                      `json:"subResource,omitempty" protobuf:"bytes,4,opt,name=subResource"`
+    +     Name        string                      `json:"name,omitempty" protobuf:"bytes,5,opt,name=name"`
+    +     Namespace   string                      `json:"namespace,omitempty" protobuf:"bytes,6,opt,name=namespace"`
+    +     Operation   Operation                   `json:"operation" protobuf:"bytes,7,opt,name=operation"`
+    +     UserInfo    authenticationv1.UserInfo   `json:"userInfo" protobuf:"bytes,8,opt,name=userInfo"`
+    +     Object      runtime.RawExtension        `json:"object,omitempty" protobuf:"bytes,9,opt,name=object"`
+    +     OldObject   runtime.RawExtension        `json:"oldObject,omitempty" protobuf:"bytes,10,opt,name=oldObject"`
+    +     DryRun      *bool                       `json:"dryRun,omitempty" protobuf:"varint,11,opt,name=dryRun"`
+    + }
+      // So, look for ~name=kind~ which does not have ~name=namespace~, nor ~name=name~.
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:43:2
+      This object kind has not provided a nested object field called 'metadata' containing a 'namespace' and a 'name' field.
+      ...
+      }
+    + type AdmissionRequest struct {
+    +     UID         types.UID                   `json:"uid" protobuf:"bytes,1,opt,name=uid"`
+    +     Kind        metav1.GroupVersionKind     `json:"kind" protobuf:"bytes,2,opt,name=kind"`
+    +     Resource    metav1.GroupVersionResource `json:"resource" protobuf:"bytes,3,opt,name=resource"`
+    +     SubResource string                      `json:"subResource,omitempty" protobuf:"bytes,4,opt,name=subResource"`
+    +     Name        string                      `json:"name,omitempty" protobuf:"bytes,5,opt,name=name"`
+    +     Namespace   string                      `json:"namespace,omitempty" protobuf:"bytes,6,opt,name=namespace"`
+    +     Operation   Operation                   `json:"operation" protobuf:"bytes,7,opt,name=operation"`
+    +     UserInfo    authenticationv1.UserInfo   `json:"userInfo" protobuf:"bytes,8,opt,name=userInfo"`
+    +     Object      runtime.RawExtension        `json:"object,omitempty" protobuf:"bytes,9,opt,name=object"`
+    +     OldObject   runtime.RawExtension        `json:"oldObject,omitempty" protobuf:"bytes,10,opt,name=oldObject"`
+    +     DryRun      *bool                       `json:"dryRun,omitempty" protobuf:"varint,11,opt,name=dryRun"`
+    + }
+      // So, look for ~name=kind~ which does not have ~name=namespace~, nor ~name=name~.
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:43:2
+      This object kind has not provided a nested object field called 'metadata' containing a 'namespace' and a 'name' field.
+      ...
+      }
+    + type AdmissionRequest struct {
+    +     UID         types.UID                   `json:"uid" protobuf:"bytes,1,opt,name=uid"`
+    +     Kind        metav1.GroupVersionKind     `json:"kind" protobuf:"bytes,2,opt,name=kind"`
+    +     Resource    metav1.GroupVersionResource `json:"resource" protobuf:"bytes,3,opt,name=resource"`
+    +     SubResource string                      `json:"subResource,omitempty" protobuf:"bytes,4,opt,name=subResource"`
+    +     Name        string                      `json:"name,omitempty" protobuf:"bytes,5,opt,name=name"`
+    +     Namespace   string                      `json:"namespace,omitempty" protobuf:"bytes,6,opt,name=namespace"`
+    +     Operation   Operation                   `json:"operation" protobuf:"bytes,7,opt,name=operation"`
+    +     UserInfo    authenticationv1.UserInfo   `json:"userInfo" protobuf:"bytes,8,opt,name=userInfo"`
+    +     Object      runtime.RawExtension        `json:"object,omitempty" protobuf:"bytes,9,opt,name=object"`
+    +     OldObject   runtime.RawExtension        `json:"oldObject,omitempty" protobuf:"bytes,10,opt,name=oldObject"`
+    +     DryRun      *bool                       `json:"dryRun,omitempty" protobuf:"varint,11,opt,name=dryRun"`
+    + }
+      // So, look for ~name=kind~ which does not have ~name=namespace~, nor ~name=name~.
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:43:2
+      This object kind has not provided a nested object field called 'metadata' containing a 'namespace' and a 'name' field.
+      ...
+      }
+    + type AdmissionRequest struct {
+    +     UID         types.UID                   `json:"uid" protobuf:"bytes,1,opt,name=uid"`
+    +     Kind        metav1.GroupVersionKind     `json:"kind" protobuf:"bytes,2,opt,name=kind"`
+    +     Resource    metav1.GroupVersionResource `json:"resource" protobuf:"bytes,3,opt,name=resource"`
+    +     SubResource string                      `json:"subResource,omitempty" protobuf:"bytes,4,opt,name=subResource"`
+    +     Name        string                      `json:"name,omitempty" protobuf:"bytes,5,opt,name=name"`
+    +     Namespace   string                      `json:"namespace,omitempty" protobuf:"bytes,6,opt,name=namespace"`
+    +     Operation   Operation                   `json:"operation" protobuf:"bytes,7,opt,name=operation"`
+    +     UserInfo    authenticationv1.UserInfo   `json:"userInfo" protobuf:"bytes,8,opt,name=userInfo"`
+    +     Object      runtime.RawExtension        `json:"object,omitempty" protobuf:"bytes,9,opt,name=object"`
+    +     OldObject   runtime.RawExtension        `json:"oldObject,omitempty" protobuf:"bytes,10,opt,name=oldObject"`
+    +     DryRun      *bool                       `json:"dryRun,omitempty" protobuf:"varint,11,opt,name=dryRun"`
+    + }
+      // So, look for ~name=kind~ which does not have ~name=namespace~, nor ~name=name~.
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:43:2
+      This object kind has not provided a nested object field called 'metadata' containing a 'namespace' and a 'name' field.
+      ...
+      }
+    + type AdmissionRequest struct {
+    +     UID         types.UID                   `json:"uid" protobuf:"bytes,1,opt,name=uid"`
+    +     Kind        metav1.GroupVersionKind     `json:"kind" protobuf:"bytes,2,opt,name=kind"`
+    +     Resource    metav1.GroupVersionResource `json:"resource" protobuf:"bytes,3,opt,name=resource"`
+    +     SubResource string                      `json:"subResource,omitempty" protobuf:"bytes,4,opt,name=subResource"`
+    +     Name        string                      `json:"name,omitempty" protobuf:"bytes,5,opt,name=name"`
+    +     Namespace   string                      `json:"namespace,omitempty" protobuf:"bytes,6,opt,name=namespace"`
+    +     Operation   Operation                   `json:"operation" protobuf:"bytes,7,opt,name=operation"`
+    +     UserInfo    authenticationv1.UserInfo   `json:"userInfo" protobuf:"bytes,8,opt,name=userInfo"`
+    +     Object      runtime.RawExtension        `json:"object,omitempty" protobuf:"bytes,9,opt,name=object"`
+    +     OldObject   runtime.RawExtension        `json:"oldObject,omitempty" protobuf:"bytes,10,opt,name=oldObject"`
+    +     DryRun      *bool                       `json:"dryRun,omitempty" protobuf:"varint,11,opt,name=dryRun"`
+    + }
+      // So, look for ~name=kind~ which does not have ~name=namespace~, nor ~name=name~.
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:43:2
+      This object kind has not provided a nested object field called 'metadata' containing a 'namespace' and a 'name' field.
+      ...
+      }
+    + type AdmissionRequest struct {
+    +     UID         types.UID                   `json:"uid" protobuf:"bytes,1,opt,name=uid"`
+    +     Kind        metav1.GroupVersionKind     `json:"kind" protobuf:"bytes,2,opt,name=kind"`
+    +     Resource    metav1.GroupVersionResource `json:"resource" protobuf:"bytes,3,opt,name=resource"`
+    +     SubResource string                      `json:"subResource,omitempty" protobuf:"bytes,4,opt,name=subResource"`
+    +     Name        string                      `json:"name,omitempty" protobuf:"bytes,5,opt,name=name"`
+    +     Namespace   string                      `json:"namespace,omitempty" protobuf:"bytes,6,opt,name=namespace"`
+    +     Operation   Operation                   `json:"operation" protobuf:"bytes,7,opt,name=operation"`
+    +     UserInfo    authenticationv1.UserInfo   `json:"userInfo" protobuf:"bytes,8,opt,name=userInfo"`
+    +     Object      runtime.RawExtension        `json:"object,omitempty" protobuf:"bytes,9,opt,name=object"`
+    +     OldObject   runtime.RawExtension        `json:"oldObject,omitempty" protobuf:"bytes,10,opt,name=oldObject"`
+    +     DryRun      *bool                       `json:"dryRun,omitempty" protobuf:"varint,11,opt,name=dryRun"`
+    + }
+      // So, look for ~name=kind~ which does not have ~name=namespace~, nor ~name=name~.
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:43:2
+      This object kind has not provided a nested object field called 'metadata' containing a 'namespace' and a 'name' field.
+      ...
+      }
+    + type AdmissionRequest struct {
+    +     UID         types.UID                   `json:"uid" protobuf:"bytes,1,opt,name=uid"`
+    +     Kind        metav1.GroupVersionKind     `json:"kind" protobuf:"bytes,2,opt,name=kind"`
+    +     Resource    metav1.GroupVersionResource `json:"resource" protobuf:"bytes,3,opt,name=resource"`
+    +     SubResource string                      `json:"subResource,omitempty" protobuf:"bytes,4,opt,name=subResource"`
+    +     Name        string                      `json:"name,omitempty" protobuf:"bytes,5,opt,name=name"`
+    +     Namespace   string                      `json:"namespace,omitempty" protobuf:"bytes,6,opt,name=namespace"`
+    +     Operation   Operation                   `json:"operation" protobuf:"bytes,7,opt,name=operation"`
+    +     UserInfo    authenticationv1.UserInfo   `json:"userInfo" protobuf:"bytes,8,opt,name=userInfo"`
+    +     Object      runtime.RawExtension        `json:"object,omitempty" protobuf:"bytes,9,opt,name=object"`
+    +     OldObject   runtime.RawExtension        `json:"oldObject,omitempty" protobuf:"bytes,10,opt,name=oldObject"`
+    +     DryRun      *bool                       `json:"dryRun,omitempty" protobuf:"varint,11,opt,name=dryRun"`
+    + }
+      // So, look for ~name=kind~ which does not have ~name=namespace~, nor ~name=name~.
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:29:2
+      This object kind has not provided a nested object field called 'metadata' containing a 'namespace' and a 'name' field.
+      ...
+      }
+    + type KindWithoutNamespace struct {
+    +     UID         types.UID                   `json:"uid" protobuf:"bytes,1,opt,name=uid"`
+    +     Kind        metav1.GroupVersionKind     `json:"kind" protobuf:"bytes,2,opt,name=kind"`
+    +     Resource    metav1.GroupVersionResource `json:"resource" protobuf:"bytes,3,opt,name=resource"`
+    +     SubResource string                      `json:"subResource,omitempty" protobuf:"bytes,4,opt,name=subResource"`
+    +     Name        string                      `json:"name,omitempty" protobuf:"bytes,5,opt,name=name"`
+    +     Operation   Operation                   `json:"operation" protobuf:"bytes,7,opt,name=operation"`
+    +     UserInfo    authenticationv1.UserInfo   `json:"userInfo" protobuf:"bytes,8,opt,name=userInfo"`
+    +     Object      runtime.RawExtension        `json:"object,omitempty" protobuf:"bytes,9,opt,name=object"`
+    +     OldObject   runtime.RawExtension        `json:"oldObject,omitempty" protobuf:"bytes,10,opt,name=oldObject"`
+    +     DryRun      *bool                       `json:"dryRun,omitempty" protobuf:"varint,11,opt,name=dryRun"`
+    + }
+      type AdmissionRequest struct {
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:29:2
+      This object kind has not provided a nested object field called 'metadata' containing a 'namespace' and a 'name' field.
+      ...
+      }
+    + type KindWithoutNamespace struct {
+    +     UID         types.UID                   `json:"uid" protobuf:"bytes,1,opt,name=uid"`
+    +     Kind        metav1.GroupVersionKind     `json:"kind" protobuf:"bytes,2,opt,name=kind"`
+    +     Resource    metav1.GroupVersionResource `json:"resource" protobuf:"bytes,3,opt,name=resource"`
+    +     SubResource string                      `json:"subResource,omitempty" protobuf:"bytes,4,opt,name=subResource"`
+    +     Name        string                      `json:"name,omitempty" protobuf:"bytes,5,opt,name=name"`
+    +     Operation   Operation                   `json:"operation" protobuf:"bytes,7,opt,name=operation"`
+    +     UserInfo    authenticationv1.UserInfo   `json:"userInfo" protobuf:"bytes,8,opt,name=userInfo"`
+    +     Object      runtime.RawExtension        `json:"object,omitempty" protobuf:"bytes,9,opt,name=object"`
+    +     OldObject   runtime.RawExtension        `json:"oldObject,omitempty" protobuf:"bytes,10,opt,name=oldObject"`
+    +     DryRun      *bool                       `json:"dryRun,omitempty" protobuf:"varint,11,opt,name=dryRun"`
+    + }
+      type AdmissionRequest struct {
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:29:2
+      This object kind has not provided a nested object field called 'metadata' containing a 'namespace' and a 'name' field.
+      ...
+      }
+    + type KindWithoutNamespace struct {
+    +     UID         types.UID                   `json:"uid" protobuf:"bytes,1,opt,name=uid"`
+    +     Kind        metav1.GroupVersionKind     `json:"kind" protobuf:"bytes,2,opt,name=kind"`
+    +     Resource    metav1.GroupVersionResource `json:"resource" protobuf:"bytes,3,opt,name=resource"`
+    +     SubResource string                      `json:"subResource,omitempty" protobuf:"bytes,4,opt,name=subResource"`
+    +     Name        string                      `json:"name,omitempty" protobuf:"bytes,5,opt,name=name"`
+    +     Operation   Operation                   `json:"operation" protobuf:"bytes,7,opt,name=operation"`
+    +     UserInfo    authenticationv1.UserInfo   `json:"userInfo" protobuf:"bytes,8,opt,name=userInfo"`
+    +     Object      runtime.RawExtension        `json:"object,omitempty" protobuf:"bytes,9,opt,name=object"`
+    +     OldObject   runtime.RawExtension        `json:"oldObject,omitempty" protobuf:"bytes,10,opt,name=oldObject"`
+    +     DryRun      *bool                       `json:"dryRun,omitempty" protobuf:"varint,11,opt,name=dryRun"`
+    + }
+      type AdmissionRequest struct {
+      ...
+  [o]pen [k]eep [d]iscard : k
+  Done! 15 issues found.
+  review finished
+  Reformulate?
+  working_dir (loop): /tmp/td_jsonapi-kind-compulsory-metadataMJJssl
+  : B
+  working_dir: /tmp/td_jsonapi-kind-compulsory-metadataMJJssl
+  Continue?
+#+END_SRC
+
+** repository info
+| tenet source                                                                     |
+|----------------------------------------------------------------------------------|
+| [[https://github.com/mullikine/tenets/blob/master/blog/jsonapi-kind-compulsory-metadata][tenets/blog/jsonapi-kind-compulsory-metadata at master  mullikine/tenets  GitHub]] |
+
+| org                                                                                       |
+|-------------------------------------------------------------------------------------------|
+| [[https://mullikine.github.io/codelingo/troubleshooting/tenets/jsonapi-kind-compulsory-metadata.org][mullikine.github.io/codelingo/troubleshooting/tenets/jsonapi-kind-compulsory-metadata.org]] |
+
+** repo state
++ url :: https://github.com/codelingo/codelingo/blob/master
+
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | https://github.com/codelingo/codelingo   |
+| vc get-hash    | a1fb7b5ce6e792dc8d66270a9501e6c2219b14de |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
+
+*** recent commits
+#+BEGIN_SRC text
+  commit a1fb7b5ce6e792dc8d66270a9501e6c2219b14de
+  Merge: c307805 ba4ce54
+  Author: Jesse Meek <jesse@lingo.reviews>
+  
+      Merge pull request #162 from waigani/fixes
+  
+  commit ba4ce5432e9b8243db67f66a0793a3fc1efb4bb3
+  Author: codelingo <hello@codelingo.io>
+  
+      Add review flow to test Tenet
+#+END_SRC
+
+** repo state
++ url :: git@github.com:mullikine/lingo/blob/master
+
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | git@github.com:mullikine/lingo           |
+| vc get-hash    | 88ea7cd829c5368c565e143a1395946fc83f0d2d |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
+
+*** recent commits
+#+BEGIN_SRC text
+  commit 88ea7cd829c5368c565e143a1395946fc83f0d2d
+  Author: Emerson Wood <13581922+emersonwood@users.noreply.github.com>
+  
+      Update version v0.7.2 (#433)
+  
+  commit 9322dc849176903ad1e543f16edff82c0cccd0ea
+  Merge: 5660a4b 35e69f7
+  Author: BlakeMScurr <blake@codelingo.io>
+  
+      Merge pull request #399 from BlakeMScurr/update-default
+#+END_SRC
