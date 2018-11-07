@@ -1,4 +1,7 @@
-* It appears as though playground is using review when run like this
+* Getting server error with basic clql query
++ slack error :: ~review requires a fact to be decorated with '@review'~
+
+** It appears as though playground is using review when run like this
 ~example~
 #+BEGIN_SRC go
   package main
