@@ -1,0 +1,77 @@
+* It appears as though playground is using review when run like this
+#+BEGIN_SRC go
+  package main
+
+  import proto "github.com/golang/protobuf/proto"
+
+  import "fmt"
+
+  type TestPB struct {
+          CorrectName []byte `protobuf:"bytes,2,opt,name=correct_name,proto3" json:"correct_name,omitempty"`
+          IncorrectName []byte `protobuf:"bytes,2,opt,name=incorrectname,proto3" json:"incorrect_name,omitempty"`
+          AnotherIncorrectName []byte `protobuf:"bytes,2,opt,name=incorrect_name,proto3" json:"incorrect_name,omitempty"`
+  }
+#+END_SRC
+
+#+BEGIN_SRC yaml
+  import codelingo/ast/go
+
+  go.file(depth = any):
+    go.decls:
+      go.gen_decl:
+        go.type_spec:
+          go.struct_type:
+            go.field_list:
+              go.field:
+                @playground highlight
+                go.basic_lit:
+                  value == "`protobuf:\"bytes,2,opt,name=correct_name,proto3\" json:\"correct_name,omitempty\"`"
+#+END_SRC
+
+#+BEGIN_SRC text
+  2 errors occurred in the last 30s
+  uncaught error: review requires a fact to be decorated with '@review'
+  /home/dev/projects/src/github.com/codelingo/platform/flow/flows/clair/result/buildissues.go:97: review requires a fact to be decorated with '@review'
+  /home/dev/projects/src/github.com/codelingo/platform/flow/flows/clair/result/router.go:49:
+  /home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:110: uncaught error
+  userfacing error: Sorry, an error occurred while processing your request. Please try again.
+  Sorry, an error occurred while processing your request. Please try again.
+  /home/dev/projects/src/github.com/codelingo/platform/flow/flows/clair/clair.go:146:
+  /home/dev/projects/src/github.com/codelingo/platform/flow/server/server.go:170:
+  /home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:110: userfacing error
+#+END_SRC
+
+** Also like this
+#+BEGIN_SRC yaml
+  import codelingo/ast/go
+
+  @playground highlight
+  go.file(depth = any):
+    go.decls:
+      go.gen_decl:
+        go.type_spec:
+          go.struct_type:
+            go.field_list:
+              go.field:                
+                go.basic_lit:
+                  value == "`protobuf:\"bytes,2,opt,name=correct_name,proto3\" json:\"correct_name,omitempty\"`"
+#+END_SRC
+
+* This works
+#+BEGIN_SRC yaml
+  import codelingo/ast/go
+
+  go.file(depth = any):
+    go.decls:
+      go.gen_decl:
+        go.type_spec:
+          go.struct_type:
+            go.field_list:
+              go.field:
+                go.names:
+                  @playground.highlight
+                  go.ident:
+                    name == "CorrectName"
+#+END_SRC
+
+Is it when ~@playground.highlight~ is highlighting a ~go.basic_lit~ that the bug manifests?
