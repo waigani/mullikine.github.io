@@ -1,0 +1,280 @@
+#+TITLE: troubleshooting new tenet ~rpc-responses-display-uniformly~
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
+
+* Problem
+It appears that putting single quotes at the start of the review comment line gives the following error.
+** error from output of lingo run review
+#+BEGIN_SRC text
+  rpc error: code = Unknown desc = Failed run Flow function: failed to parse codelingo.yaml file `codelingo.yaml`: yaml: line 67: did not find expected key
+#+END_SRC
+
+This is not a blocker.
+
+** ~example.go~
+#+BEGIN_SRC go
+  // ./example.go
+  package main
+  
+  import proto "github.com/golang/protobuf/proto"
+  
+  import "fmt"
+  
+  type TestPB struct {
+  	CorrectName []byte `protobuf:"bytes,2,opt,name=correct_name,proto3" json:"correct_name,omitempty"`
+  	IncorrectName []byte `protobuf:"bytes,2,opt,name=incorrectname,proto3" json:"incorrect_name,omitempty"`
+  	AnotherIncorrectName []byte `protobuf:"bytes,2,opt,name=incorrect_name,proto3" json:"incorrect_name,omitempty"`
+  }
+#+END_SRC
+
+** This ~codelingo.yaml~ fails
+#+BEGIN_SRC yaml
+  funcs:
+    - name: protoNameNotSnakeCase
+      type: asserter
+      body: |
+        function (a) {
+          function notSnakeCase(a) {
+            return a.indexOf(" ") || a.match(/[A-Z]/)
+          }
+          var m = a.match(/^`protobuf:"[^"]*name=([^,"]+)/)
+          return m && notSnakeCase(m[1])
+        }
+    - name: protoNameNotEqualsJsonName
+      type: asserter
+      body: |
+        function (a) {
+          var m = a.match(/^`protobuf:"[^"]*name=([^,"]+).+ json:"([^,"]+)/)
+          return m && m[1] != m[2]
+        }
+    - name: identNameNotMatchesProtoName
+      type: asserter
+      body: |
+        function (ident, a) {
+          function singleCapitalize(str) {
+            function capitalizeFirstLetter(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+            return capitalizeFirstLetter(str.replace(/_+/g, '').replace(/\s+/g, ''));
+          }
+          function camelize(str) {
+            function capitalizeFirstLetter(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+            return capitalizeFirstLetter(str.replace(/_+/g, ' ').replace(/(?:^\w|[A-Z]|\b\w)/g, function(letter, index) {
+              return index == 0 ? letter.toLowerCase() : letter.toUpperCase();
+            }).replace(/\s+/g, ''));
+          }
+          var m = a.match(/^`protobuf:"[^"]*name=([^,"]+)/)
+          return m && ! ( ident == camelize(m[1]) || ident == singleCapitalize(m[1]) )
+        }
+  tenets:
+    - name: rpc-responses-display-uniformly-fields-equal
+      flows:
+        codelingo/docs:
+          title: RPC responses display uniformly with fields equal
+          body: |
+        codelingo/review:
+          comment: protobuf name and json_name are not equal here. Please change their values to match in the corresponding .proto file.
+      query: |
+        import codelingo/ast/go
+        
+        go.file(depth = any):
+          go.decls:
+            go.gen_decl:
+              go.type_spec:
+                go.struct_type:
+                  go.field_list:
+                    @review comment
+                    go.field:
+                      go.basic_lit:
+                        value as literalValue
+                        protoNameNotEqualsJsonName(literalValue)
+    - name: rpc-responses-display-uniformly-ident-matches
+      flows:
+        codelingo/docs:
+          title: RPC responses display uniformly with matching ident
+          body: |
+        codelingo/review:
+          comment: type field does not match the protobuf name and json_names defined here. Please change their values to match in the corresponding .proto file.
+      query: |
+        import codelingo/ast/go
+        
+        go.file(depth = any):
+          go.decls:
+            go.gen_decl:
+              go.type_spec:
+                go.struct_type:
+                  go.field_list:
+                    @review comment
+                    go.field:
+                      go.names:
+                        go.ident:
+                          name as identName
+                      go.basic_lit:
+                        value as literalValue
+                        identNameNotMatchesProtoName(identName, literalValue)
+    - name: rpc-responses-display-uniformly-snake-case
+      flows:
+        codelingo/docs:
+          title: RPC responses display uniformly with snake case
+          body: |
+        codelingo/review:
+          comment: The protobuf name and json_name must be snake_case. Please change their values in the corresponding .proto file.
+      query: |
+        import codelingo/ast/go
+        
+        go.file(depth = any):
+          go.decls:
+            go.gen_decl:
+              go.type_spec:
+                go.struct_type:
+                  go.field_list:
+                    @review comment
+                    go.field:
+                      go.basic_lit:
+                        value as literalValue
+                        protoNameNotSnakeCase(literalValue)
+#+END_SRC
+
+** annotated ~tty-output.log~ (the relevant part of it anyway)
+#+BEGIN_SRC text
+  Constructing new git repo in temp folder... :: Thu Nov  8 09:39:57 NZDT 2018
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  Running: $HOME/scripts/rs -nc
+          -nogit
+          -noswap
+          $HOME/source/git/mullikine/codelingo/tenets/codelingo/lightning-network-daemon/rpc-responses-display-uniformly/
+          /tmp/td_bpEHVB
+  /usr/bin/rsync  -a -rtlhx -pug -s  --inplace --append   --exclude .cache  --exclude .git/ --exclude .gitignore --exclude TODO  --exclude '*~' --exclude '.#*'  $HOME/source/git/mullikine/codelingo/tenets/codelingo/lightning-network-daemon/rpc-responses-display-uniformly/ /tmp/td_bpEHVB
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  /tmp/td_bpEHVB
+  Checking for updates...
+   [Yn]: n
+  Syncing your repo...
+  Running review flow...
+  ...
+  rpc error: code = Unknown desc = Failed run Flow function: failed to parse codelingo.yaml file `codelingo.yaml`: yaml: line 67: did not find expected key
+  <Most likely bad YAML. But also could be CLQL error>
+  <you probably need to run: lingo install review>
+  exit status 1
+  + test -f ''
+  + notify-send 'review finished on %793'
+  + :
+  ++ qa -. edit -c clear_remote -a annotate -y yes_edit -v vim_edit -S zsh -r review -L save-tty-log -B upload-to-blog -D review-debug -w rewrite -X rewrite-debug -R ranger -d done -n no
+  : S
+  + ans=zsh
+  + case "$ans" in
+  ++ pwd
+  + tm -d spv -c /tmp/td_bpEHVB zsh
+  + :
+  ++ qa -. edit -c clear_remote -a annotate -y yes_edit -v vim_edit -S zsh -r review -L save-tty-log -B upload-to-blog -D review-debug -w rewrite -X rewrite-debug -R ranger -d done -n no
+  : r
+  + ans=review
+  + case "$ans" in
+  + commit-changes-and-show-diff
+  + git add -A .
+  + git commit -m edit
+  On branch master
+  nothing to commit, working tree clean
+  + set -x
+  + diff-so-fancy
+  + less --tabs=4
+  + git diff 'HEAD^!'
+  + echo
+  + git diff 'HEAD^!'
+  + cat
+  diff --git a/codelingo.yaml b/codelingo.yaml
+  index 990a3a7..9ebce3d 100644
+  --- a/codelingo.yaml
+  +++ b/codelingo.yaml
+  @@ -65,7 +65,7 @@ tenets:
+           title: RPC responses display uniformly with matching ident
+           body: |
+         codelingo/review:
+  -        comment: 'type' field does not match the protobuf name and json_names defined here. Please change their values to match in the corresponding .proto file.
+  +        comment: type field does not match the protobuf name and json_names defined here. Please change their values to match in the corresponding .proto file.
+       query: |
+         import codelingo/ast/go
+  ++ vc get-hash
+  + echo 'HEAD: 42bd0db30b6318c0823ae750307f2042de6c72f7'
+  HEAD: 42bd0db30b6318c0823ae750307f2042de6c72f7
+  + echo
+  + rm -f tags expected.json
+  + git commit -m 'removed expected.json'
+  On branch master
+  nothing to commit, working tree clean
+  + lingo run review -o expected.json
+  Clear git remotes?
+   [Yn]: n
+  Syncing your repo...
+  Running review flow...
+  example.go:9:105
+      The protobuf name and json_name must be snake_case. Please change their values in the corresponding .proto file.
+      ...
+      type TestPB struct {
+          CorrectName []byte `protobuf:"bytes,2,opt,name=correct_name,proto3" json:"correct_name,omitempty"`
+    +     IncorrectName []byte `protobuf:"bytes,2,opt,name=incorrectname,proto3" json:"incorrect_name,omitempty"`
+          AnotherIncorrectName []byte `protobuf:"bytes,2,opt,name=incorrect_name,proto3" json:"incorrect_name,omitempty"`
+      }
+      ...
+#+END_SRC
+
+** repository info
+| tenet source                                                                                          |
+|-------------------------------------------------------------------------------------------------------|
+| /tree/master/home/shane/var/smulliga/source/git/mullikine/tenets/blog/rpc-responses-display-uniformly |
+
+| org                                                                                                                                                |
+|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| /tree/master/home/shane/var/smulliga/source/git/mullikine/mullikine.github.io/codelingo/troubleshooting/tenets/rpc-responses-display-uniformly.org |
+
+** repo state
++ url :: https://github.com/codelingo/codelingo/blob/master
+
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | https://github.com/codelingo/codelingo   |
+| vc get-hash    | a1fb7b5ce6e792dc8d66270a9501e6c2219b14de |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
+
+*** recent commits
+#+BEGIN_SRC text
+  commit a1fb7b5ce6e792dc8d66270a9501e6c2219b14de
+  Merge: c307805 ba4ce54
+  Author: Jesse Meek <jesse@lingo.reviews>
+  
+      Merge pull request #162 from waigani/fixes
+  
+  commit ba4ce5432e9b8243db67f66a0793a3fc1efb4bb3
+  Author: codelingo <hello@codelingo.io>
+  
+      Add review flow to test Tenet
+#+END_SRC
+
+** repo state
++ url :: git@github.com:mullikine/lingo/blob/master
+
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | git@github.com:mullikine/lingo           |
+| vc get-hash    | 88ea7cd829c5368c565e143a1395946fc83f0d2d |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
+
+*** recent commits
+#+BEGIN_SRC text
+  commit 88ea7cd829c5368c565e143a1395946fc83f0d2d
+  Author: Emerson Wood <13581922+emersonwood@users.noreply.github.com>
+  
+      Update version v0.7.2 (#433)
+  
+  commit 9322dc849176903ad1e543f16edff82c0cccd0ea
+  Merge: 5660a4b 35e69f7
+  Author: BlakeMScurr <blake@codelingo.io>
+  
+      Merge pull request #399 from BlakeMScurr/update-default
+#+END_SRC
