@@ -1,4 +1,5 @@
 * It appears as though playground is using review when run like this
+~example~
 #+BEGIN_SRC go
   package main
 
@@ -13,6 +14,7 @@
   }
 #+END_SRC
 
+~clql~
 #+BEGIN_SRC yaml
   import codelingo/ast/go
 
@@ -28,6 +30,7 @@
                   value == "`protobuf:\"bytes,2,opt,name=correct_name,proto3\" json:\"correct_name,omitempty\"`"
 #+END_SRC
 
+~slack error~
 #+BEGIN_SRC text
   2 errors occurred in the last 30s
   uncaught error: review requires a fact to be decorated with '@review'
@@ -42,6 +45,7 @@
 #+END_SRC
 
 ** Also like this
+~clql~
 #+BEGIN_SRC yaml
   import codelingo/ast/go
 
@@ -58,6 +62,7 @@
 #+END_SRC
 
 * This works
+~clql~
 #+BEGIN_SRC yaml
   import codelingo/ast/go
 
