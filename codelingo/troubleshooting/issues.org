@@ -47,7 +47,7 @@
   /home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:110: userfacing error
 #+END_SRC
 
-** Also like this
+** Also this gives above error
 ~clql~
 #+BEGIN_SRC yaml
   import codelingo/ast/go
