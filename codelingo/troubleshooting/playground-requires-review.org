@@ -64,7 +64,7 @@
                   value == "`protobuf:\"bytes,2,opt,name=correct_name,proto3\" json:\"correct_name,omitempty\"`"
 #+END_SRC
 
-* This works
+* This works without errors
 ~clql~
 #+BEGIN_SRC yaml
   import codelingo/ast/go
@@ -83,3 +83,20 @@
 #+END_SRC
 
 Is it when ~@playground.highlight~ is highlighting a ~go.basic_lit~ that the bug manifests?
+
+#+BEGIN_EXPORT html
+<div class="org-src-container">
+<pre>
+<span class="magit-diff-file-heading"><span class="magit-section-highlight">1 file changed, 1 insertion(+), 1 deletion(-)
+</span><span class="magit-diff-file-heading">modified   file.dat
+</span><span class="magit-diff-hunk-heading">@@ -8,5 +8,5 @@ go.file(depth = any):
+</span><span class="magit-diff-context">         go.struct_type:
+           go.field_list:
+             go.field:                
+</span><span class="magit-diff-removed">-              go.</span><span class="magit-diff-removed"><span class="diff-refine-removed">ident</span></span><span class="magit-diff-removed">(depth = any):
+</span><span class="magit-diff-added">+              go.</span><span class="magit-diff-added"><span class="diff-refine-added">basic_lit</span></span><span class="magit-diff-added">(depth = any):
+</span><span class="magit-diff-context">                 value == "`protobuf:\"bytes,2,opt,name=correct_name,proto3\" json:\"correct_name,omitempty\"`"
+</span>
+</pre>
+</div>
+#+END_EXPORT
