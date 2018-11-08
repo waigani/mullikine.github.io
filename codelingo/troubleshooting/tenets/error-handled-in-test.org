@@ -1,0 +1,225 @@
+#+TITLE: troubleshooting new tenet ~error-handled-in-test~
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
+
+* Problem
+Much reduction of tenet size boiled down to this. I can't make a query that matches the return parameter ~error~
+
+** ~example.go~
+#+BEGIN_SRC go
+  // ./example/main_test.go
+  package main
+  
+  import (
+  	"testing"
+  )
+  
+  func TestSayA() {
+  	err := SayA()
+  }
+  
+  func TestSayB() {
+  	err := SayB()
+  	if err != nil {
+  		t.Fatalf("failed: %v", err)
+  	}
+  }
+  
+  // ./example/main.go
+  package main
+  
+  import "fmt"
+  
+  import (
+  	"testing"
+  )
+  
+  func SayA() error {
+  	return "I'm a ", nil
+  }
+  
+  func SayB() error {
+  	return "I'm b ", nil
+  }
+  
+#+END_SRC
+
+** generated clql
+The key point is that there is an ident named ~"error"~.
+
+#+BEGIN_SRC yaml
+  go.ident:
+    child_count == 0
+    name == "error"
+#+END_SRC
+
+~Full generated clql~
+
+#+BEGIN_SRC yaml
+  import codelingo/ast/go
+
+  @playground.highlight
+  go.file(depth = any):
+    go.ident:
+      child_count == 0
+      name == "main"
+      private == "true"
+      public == "false"
+    go.decls:
+      go.gen_decl:
+        go.import_spec:
+          go.basic_lit:
+            child_count == 0
+            kind == "string"
+            value == "fmt"
+      go.gen_decl:
+        go.import_spec:
+          go.basic_lit:
+            child_count == 0
+            kind == "string"
+            value == "testing"
+      go.func_decl:
+        go.ident:
+          child_count == 0
+          name == "SayA"
+          private == "false"
+          public == "true"
+          type == "*ast.FuncType"
+        go.func_type:
+          go.field_list:
+            child_count == 0
+          go.field_list:
+            go.field:
+              go.ident:
+                child_count == 0
+                name == "error"
+                private == "true"
+                public == "false"
+        go.block_stmt:
+          go.list:
+            go.return_stmt:
+              go.results:
+                go.basic_lit:
+                  child_count == 0
+                  kind == "string"
+                  value == "I'm a "
+                go.ident:
+                  child_count == 0
+                  name == "nil"
+                  private == "true"
+                  public == "false"
+      go.func_decl:
+        go.ident:
+          child_count == 0
+          name == "SayB"
+          private == "false"
+          public == "true"
+          type == "*ast.FuncType"
+        go.func_type:
+          go.field_list:
+            child_count == 0
+          go.field_list:
+            go.field:
+              go.ident:
+                child_count == 0
+                name == "error"
+                private == "true"
+                public == "false"
+        go.block_stmt:
+          go.list:
+            go.return_stmt:
+              go.results:
+                go.basic_lit:
+                  child_count == 0
+                  kind == "string"
+                  value == "I'm b "
+                go.ident:
+                  child_count == 0
+                  name == "nil"
+                  private == "true"
+                  public == "false"
+#+END_SRC
+
+** This ~codelingo.yaml~ fails
+#+BEGIN_SRC yaml
+  tenets:
+    - name: error-handled-in-test
+      flows:
+        codelingo/docs:
+          title: Error is handled in tests
+          body: |
+            docs string
+        codelingo/review:
+          comment: basic comment
+      query: |
+        import codelingo/ast/go
+  
+        go.ident(depth = any):
+          name == "error"
+#+END_SRC
+
+** annotated ~tty-output.log~
+#+BEGIN_SRC text
+  Syncing your repo...
+  Running review flow...
+  Done! No issues found.
+#+END_SRC
+
+** repository info
+| tenet source                                                                                |
+|---------------------------------------------------------------------------------------------|
+| /tree/master/home/shane/var/smulliga/source/git/mullikine/tenets/blog/error-handled-in-test |
+
+| org                                                                                                                                      |
+|------------------------------------------------------------------------------------------------------------------------------------------|
+| /tree/master/home/shane/var/smulliga/source/git/mullikine/mullikine.github.io/codelingo/troubleshooting/tenets/error-handled-in-test.org |
+
+** repo state
++ url :: https://github.com/codelingo/codelingo/blob/master
+
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | https://github.com/codelingo/codelingo   |
+| vc get-hash    | a1fb7b5ce6e792dc8d66270a9501e6c2219b14de |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
+
+*** recent commits
+#+BEGIN_SRC text
+  commit a1fb7b5ce6e792dc8d66270a9501e6c2219b14de
+  Merge: c307805 ba4ce54
+  Author: Jesse Meek <jesse@lingo.reviews>
+  
+      Merge pull request #162 from waigani/fixes
+  
+  commit ba4ce5432e9b8243db67f66a0793a3fc1efb4bb3
+  Author: codelingo <hello@codelingo.io>
+  
+      Add review flow to test Tenet
+#+END_SRC
+
+** repo state
++ url :: git@github.com:mullikine/lingo/blob/master
+
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | git@github.com:mullikine/lingo           |
+| vc get-hash    | 88ea7cd829c5368c565e143a1395946fc83f0d2d |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
+
+*** recent commits
+#+BEGIN_SRC text
+  commit 88ea7cd829c5368c565e143a1395946fc83f0d2d
+  Author: Emerson Wood <13581922+emersonwood@users.noreply.github.com>
+  
+      Update version v0.7.2 (#433)
+  
+  commit 9322dc849176903ad1e543f16edff82c0cccd0ea
+  Merge: 5660a4b 35e69f7
+  Author: BlakeMScurr <blake@codelingo.io>
+  
+      Merge pull request #399 from BlakeMScurr/update-default
+#+END_SRC
