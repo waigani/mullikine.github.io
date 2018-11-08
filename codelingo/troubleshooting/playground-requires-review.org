@@ -82,7 +82,7 @@
                     name == "CorrectName"
 #+END_SRC
 
-Is it when ~@playground.highlight~ is highlighting a ~go.basic_lit~ that the bug manifests?
+Is it when ~@playground highlight~ is highlighting a ~go.basic_lit~ that the bug manifests?
 
 #+BEGIN_EXPORT html
 <div class="org-src-container">
