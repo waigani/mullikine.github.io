@@ -3,7 +3,7 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
 
 * Problem
-Removing ~go.file~ appears to break these tenets. Results in ~no issues found~.
+Can't use JS functions inside ~comment~ or ~rewrite~.
 
 ** ~example.go~
 #+BEGIN_SRC go
@@ -21,9 +21,36 @@ Removing ~go.file~ appears to break these tenets. Results in ~no issues found~.
   }
 #+END_SRC
 
+** The problematic part of the ~codelingo.yaml~ file
+*** Without quotes
+When written like this
+#+BEGIN_SRC yaml
+  vars:
+    pName: {{ protoName(literalValue) }}
+#+END_SRC
+I get the error:
+#+BEGIN_SRC text
+  `line 74: cannot unmarshal !!map into string` while trying to run this tenet. Not sure if I have my vars syntax correct.
+#+END_SRC
+*** With quotes
+Tried using quotes but it treats the function call as a variable.
+#+BEGIN_SRC text
+  `mullikine hit a uncaught error: variable dependency error: variable "protoName(literalValue)" undefined`.
+#+END_SRC
+
 ** This ~codelingo.yaml~ fails
 #+BEGIN_SRC yaml
   funcs:
+    - name: protoName
+      type: resolver
+      body: |
+        function (a) {
+          var m = a.match(/^protobuf:"[^"]*name=([^,"]+).+ json:"([^,"]+)/)
+          if (m) {
+            return m[1]
+          }
+          return ""
+        }
     - name: protoNameNotSnakeCase
       type: asserter
       body: |
@@ -32,7 +59,7 @@ Removing ~go.file~ appears to break these tenets. Results in ~no issues found~.
             return a.indexOf(" ") || a.match(/[A-Z]/)
           }
           var m = a.match(/^protobuf:"[^"]*name=([^,"]+).+ json:"([^,"]+)/)
-          return m && notSnakeCase(m[1]) && notSnakeCase(m[2])
+          return m && (notSnakeCase(m[1]) || notSnakeCase(m[2]))
         }
     - name: protoNameNotEqualsJsonName
       type: asserter
@@ -85,12 +112,14 @@ Removing ~go.file~ appears to break these tenets. Results in ~no issues found~.
                         value as literalValue
                         protoNameNotEqualsJsonName(literalValue)
     - name: rpc-responses-display-uniformly-ident-matches
+      vars:
+        pName: {{ protoName(literalValue) }}
       flows:
         codelingo/docs:
           title: RPC responses display uniformly with matching ident
           body: |
         codelingo/review:
-          comment: type field does not match the protobuf name and json_names defined here. Please change their values to match in the corresponding .proto file.
+          comment: type field does not match the protobuf name {{ pName }} and json_names defined here. Please change their values to match in the corresponding .proto file.
       query: |
         import codelingo/ast/go
         
@@ -133,212 +162,38 @@ Removing ~go.file~ appears to break these tenets. Results in ~no issues found~.
 
 ** annotated ~tty-output.log~
 #+BEGIN_SRC text
+  Constructing new git repo in temp folder... :: Fri Nov  9 11:30:39 NZDT 2018
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  Running: $HOME/scripts/rs -nc
+          -nogit
+          -noswap
+          $HOME/source/git/mullikine/codelingo/tenets/codelingo/lightning-network-daemon/rpc-responses-display-uniformly/
+          /tmp/td_JUIp7J
+  /usr/bin/rsync  -a -rtlhx -pug -s  --inplace --append   --exclude .cache  --exclude .git/ --exclude .gitignore --exclude TODO  --exclude '*~' --exclude '.#*'  $HOME/source/git/mullikine/codelingo/tenets/codelingo/lightning-network-daemon/rpc-responses-display-uniformly/ /tmp/td_JUIp7J
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  /tmp/td_JUIp7J
   Syncing your repo...
   Running review flow...
-  Done! No issues found.
-
+  rpc error: code = Unknown desc = Failed run Flow function: failed to parse codelingo.yaml file `codelingo.yaml`: yaml: unmarshal errors:
+  <Most likely bad YAML. But also could be CLQL error>
+  <your yaml syntax is wrong. out of date or wrong.>
+    line 74: cannot unmarshal !!map into string
+  exit status 1
   review finished
-
   Reformulate?
-
-  working_dir (loop): /tmp/td_ek1omX
-  : r
-  [master d1fb650] edit
-   2 files changed, 36 insertions(+), 71 deletions(-)
-   delete mode 100644 expected.json
-  + diff-so-fancy
-  + less --tabs=4
-  + git diff 'HEAD^!'
-  + echo
-
-  + git diff 'HEAD^!'
-  + cat
-  diff --git a/codelingo.yaml b/codelingo.yaml
-  index 2b1d354..9df88d4 100644
-  --- a/codelingo.yaml
-  +++ b/codelingo.yaml
-  @@ -48,16 +48,17 @@ tenets:
-       query: |
-         import codelingo/ast/go
-
-  -      go.decls:
-  -        go.gen_decl:
-  -          go.type_spec:
-  -            go.struct_type:
-  -              go.field_list:
-  -                @review comment
-  -                go.field:
-  -                  go.basic_lit:
-  -                    value as literalValue
-  -                    protoNameNotEqualsJsonName(literalValue)
-  +      go.file(depth = any):
-  +        go.decls:
-  +          go.gen_decl:
-  +            go.type_spec:
-  +              go.struct_type:
-  +                go.field_list:
-  +                  @review comment
-  +                  go.field:
-  +                    go.basic_lit:
-  +                      value as literalValue
-  +                      protoNameNotEqualsJsonName(literalValue)
-     - name: rpc-responses-display-uniformly-ident-matches
-       flows:
-         codelingo/docs:
-  @@ -68,19 +69,20 @@ tenets:
-       query: |
-         import codelingo/ast/go
-
-  -      go.decls:
-  -        go.gen_decl:
-  -          go.type_spec:
-  -            go.struct_type:
-  -              go.field_list:
-  -                @review comment
-  -                go.field:
-  -                  go.names:
-  -                    go.ident:
-  -                      name as identName
-  -                  go.basic_lit:
-  -                    value as literalValue
-  -                    identNameNotMatchesProtoName(identName, literalValue)
-  +      go.file(depth = any):
-  +        go.decls:
-  +          go.gen_decl:
-  +            go.type_spec:
-  +              go.struct_type:
-  +                go.field_list:
-  +                  @review comment
-  +                  go.field:
-  +                    go.names:
-  +                      go.ident:
-  +                        name as identName
-  +                    go.basic_lit:
-  +                      value as literalValue
-  +                      identNameNotMatchesProtoName(identName, literalValue)
-     - name: rpc-responses-display-uniformly-snake-case
-       flows:
-         codelingo/docs:
-  @@ -91,13 +93,14 @@ tenets:
-       query: |
-         import codelingo/ast/go
-
-  -      go.decls:
-  -        go.gen_decl:
-  -          go.type_spec:
-  -            go.struct_type:
-  -              go.field_list:
-  -                @review comment
-  -                go.field:
-  -                  go.basic_lit:
-  -                    value as literalValue
-  -                    protoNameNotSnakeCase(literalValue)
-  +      go.file(depth = any):
-  +        go.decls:
-  +          go.gen_decl:
-  +            go.type_spec:
-  +              go.struct_type:
-  +                go.field_list:
-  +                  @review comment
-  +                  go.field:
-  +                    go.basic_lit:
-  +                      value as literalValue
-  +                      protoNameNotSnakeCase(literalValue)
-  diff --git a/expected.json b/expected.json
-  deleted file mode 100644
-  index 8c37bef..0000000
-  --- a/expected.json
-  +++ /dev/null
-  @@ -1,38 +0,0 @@
-  -[
-  -  {
-  -   "Comment": "protobuf name and json_name are not equal here. Please change their values to match in the corresponding .proto file.",
-  -   "Filename": "example.go",
-  -   "Line": 9,
-  -   "Snippet": "type TestPB struct {\n\tCorrectName []byte `protobuf:\"bytes,2,opt,name=correct_name,proto3\" json:\"correct_name,omitempty\"`\n\tIncorrectName []byte `protobuf:\"bytes,2,opt,name=incorrectname,proto3\" json:\"incorrect_name,omitempty\"`\n\tAnotherIncorrectName []byte `protobuf:\"bytes,2,opt,name=incorrect_name,proto3\" json:\"incorrect_name,omitempty\"`\n}"
-  -  },
-  -  {
-  -   "Comment": "The protobuf name and json_name must be snake_case. Please change their values in the corresponding .proto file.",
-  -   "Filename": "example.go",
-  -   "Line": 9,
-  -   "Snippet": "type TestPB struct {\n\tCorrectName []byte `protobuf:\"bytes,2,opt,name=correct_name,proto3\" json:\"correct_name,omitempty\"`\n\tIncorrectName []byte `protobuf:\"bytes,2,opt,name=incorrectname,proto3\" json:\"incorrect_name,omitempty\"`\n\tAnotherIncorrectName []byte `protobuf:\"bytes,2,opt,name=incorrect_name,proto3\" json:\"incorrect_name,omitempty\"`\n}"
-  -  },
-  -  {
-  -   "Comment": "The protobuf name and json_name must be snake_case. Please change their values in the corresponding .proto file.",
-  -   "Filename": "example.go",
-  -   "Line": 10,
-  -   "Snippet": "\tCorrectName []byte `protobuf:\"bytes,2,opt,name=correct_name,proto3\" json:\"correct_name,omitempty\"`\n\tIncorrectName []byte `protobuf:\"bytes,2,opt,name=incorrectname,proto3\" json:\"incorrect_name,omitempty\"`\n\tAnotherIncorrectName []byte `protobuf:\"bytes,2,opt,name=incorrect_name,proto3\" json:\"incorrect_name,omitempty\"`\n}"
-  -  },
-  -  {
-  -   "Comment": "The protobuf name and json_name must be snake_case. Please change their values in the corresponding .proto file.",
-  -   "Filename": "example.go",
-  -   "Line": 8,
-  -   "Snippet": "\ntype TestPB struct {\n\tCorrectName []byte `protobuf:\"bytes,2,opt,name=correct_name,proto3\" json:\"correct_name,omitempty\"`\n\tIncorrectName []byte `protobuf:\"bytes,2,opt,name=incorrectname,proto3\" json:\"incorrect_name,omitempty\"`\n\tAnotherIncorrectName []byte `protobuf:\"bytes,2,opt,name=incorrect_name,proto3\" json:\"incorrect_name,omitempty\"`"
-  -  },
-  -  {
-  -   "Comment": "type field does not match the protobuf name and json_names defined here. Please change their values to match in the corresponding .proto file.",
-  -   "Filename": "example.go",
-  -   "Line": 9,
-  -   "Snippet": "type TestPB struct {\n\tCorrectName []byte `protobuf:\"bytes,2,opt,name=correct_name,proto3\" json:\"correct_name,omitempty\"`\n\tIncorrectName []byte `protobuf:\"bytes,2,opt,name=incorrectname,proto3\" json:\"incorrect_name,omitempty\"`\n\tAnotherIncorrectName []byte `protobuf:\"bytes,2,opt,name=incorrect_name,proto3\" json:\"incorrect_name,omitempty\"`\n}"
-  -  },
-  -  {
-  -   "Comment": "type field does not match the protobuf name and json_names defined here. Please change their values to match in the corresponding .proto file.",
-  -   "Filename": "example.go",
-  -   "Line": 10,
-  -   "Snippet": "\tCorrectName []byte `protobuf:\"bytes,2,opt,name=correct_name,proto3\" json:\"correct_name,omitempty\"`\n\tIncorrectName []byte `protobuf:\"bytes,2,opt,name=incorrectname,proto3\" json:\"incorrect_name,omitempty\"`\n\tAnotherIncorrectName []byte `protobuf:\"bytes,2,opt,name=incorrect_name,proto3\" json:\"incorrect_name,omitempty\"`\n}"
-  -  }
-  - ]
-  \ No newline at end of file
-  ++ vc get-hash
-  + echo 'HEAD: d1fb650de93ee794ca1f030431f533127d5b0507'
-  HEAD: d1fb650de93ee794ca1f030431f533127d5b0507
-  + echo
-
-  + rm -f tags expected.json
-  + git commit -m 'removed expected.json'
-  On branch master
-  nothing to commit, working tree clean
-  + lingo run review -o expected.json
-  Clear git remotes?
-
-   [Yn]: n
-  Syncing your repo...
-  Running review flow...
-  example.go:10:113
-
-      type field does not match the protobuf name and json_names defined here. Please change their values to match in the corresponding .proto file.
-
-
-      ...
-          CorrectName []byte `protobuf:"bytes,2,opt,name=correct_name,proto3" json:"correct_name,omitempty"`
-          IncorrectName []byte `protobuf:"bytes,2,opt,name=incorrectname,proto3" json:"incorrect_name,omitempty"`
-    +     AnotherIncorrectName []byte `protobuf:"bytes,2,opt,name=incorrect_name,proto3" json:"incorrect_name,omitempty"`
-      }
-      ...
-
-  [o]pen [k]eep [d]iscard : k
-  example.go:9:105
-
-      type field does not match the protobuf name and json_names defined here. Please change their values to match in the corresponding .proto file.
-
-
-      ...
-      type TestPB struct {
-          CorrectName []byte `protobuf:"bytes,2,opt,name=correct_name,proto3" json:"correct_name,omitempty"`
-    +     IncorrectName []byte `protobuf:"bytes,2,opt,name=incorrectname,proto3" json:"incorrect_name,omitempty"`
-          AnotherIncorrectName []byte `protobuf:"bytes,2,opt,name=incorrect_name,proto3" json:"incorrect_name,omitempty"`
-      }
-      ...
-
-  [o]pen [k]eep [d]iscard : k
-  Done! 2 issues found.
-  Done! 2 issues written to expected.json
+  working_dir (loop): /tmp/td_JUIp7J
+  : B
+  working_dir: /tmp/td_JUIp7J
+  Continue?
+   [Yn]: y
+  Differentiate tenet with a problem name?
+   [Yn]: y
 #+END_SRC
 
 ** repository info
-| tenet source                                                                    |
-|---------------------------------------------------------------------------------|
-| [[https://github.com/mullikine/tenets/tree/master/blog/rpc-responses-display-uniformly][tenets/blog/rpc-responses-display-uniformly at master  mullikine/tenets  GitHub]] |
+| tenet source                                                                                                        |
+|---------------------------------------------------------------------------------------------------------------------|
+| [[https://github.com/mullikine/tenets/tree/master/blog/rpc-responses-display-uniformly/functions-treated-as-var-in-comment][tenets/blog/rpc-responses-display-uniformly/functions-treated-as-var-in-comment at master  mullikine/tenets  GitHub]] |
 
 | org                                                                                                                       |
 |---------------------------------------------------------------------------------------------------------------------------|
