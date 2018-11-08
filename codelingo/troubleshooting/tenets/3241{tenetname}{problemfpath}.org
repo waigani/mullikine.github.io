@@ -4,7 +4,7 @@
 
 * Problem
 ~go.file~ is not being inferred sometimes.
-If I add ~go.file~ to the top of this tenet, it will find issues.
+If I add ~go.file~ to the top of the CLQL, it *will* find issues.
 
 ** ~example.go~
 #+BEGIN_SRC go
@@ -22,7 +22,7 @@ If I add ~go.file~ to the top of this tenet, it will find issues.
   }
 #+END_SRC
 
-** This ~codelingo.yaml~ shows no issues found
+** This ~codelingo.yaml~ fails
 #+BEGIN_SRC yaml
   funcs:
     - name: isNotAWellFormedLiteral
@@ -76,24 +76,24 @@ If I add ~go.file~ to the top of this tenet, it will find issues.
 #+END_SRC
 
 ** repository info
-| tenet source
-|-
-| [[https://github.com/mullikine/tenets/tree/master/blog/rpc-responses-display-uniformly/go-file-is-not-being-inferred-sometimes][tenets/blog/rpc-responses-display-uniformly/go-file-is-not-being-inferred-sometimes at master  mullikine/tenets  GitHub]]
+| tenet source                                                                                                            |
+|-------------------------------------------------------------------------------------------------------------------------|
+| [[https://github.com/mullikine/tenets/tree/master/blog/rpc-responses-display-uniformly/go-file-is-not-being-inferred-sometimes][tenets/blog/rpc-responses-display-uniformly/go-file-is-not-being-inferred-sometimes at master  mullikine/tenets  GitHub]] |
 
-| org
-|-
-| [[https://github.com/mullikine/mullikine.github.io/tree/master/codelingo/troubleshooting/tenets/3241{tenetname}{problemfpath}.org][github.com/mullikine/mullikine.github.io/tree/master/codelingo/troubleshooting/tenets/3241{tenetname}{problemfpath}.org]]
+| org                                                                                                                     |
+|-------------------------------------------------------------------------------------------------------------------------|
+| [[https://github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/tenets/3241{tenetname}{problemfpath}.org][github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/tenets/3241{tenetname}{problemfpath}.org]] |
 
 ** repo state
 + url :: https://github.com/codelingo/codelingo/blob/master
 
-|command|value|
-|-
-|cat /etc/issue|Ubuntu 16.04.4 LTS \n \l
-|vc url|https://github.com/codelingo/codelingo
-|vc get-hash|a1fb7b5ce6e792dc8d66270a9501e6c2219b14de
-|vc branch|master
-|go version|go version go1.11.1 linux/amd64
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | https://github.com/codelingo/codelingo   |
+| vc get-hash    | a1fb7b5ce6e792dc8d66270a9501e6c2219b14de |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
 
 *** recent commits
 #+BEGIN_SRC text
@@ -112,13 +112,13 @@ If I add ~go.file~ to the top of this tenet, it will find issues.
 ** repo state
 + url :: git@github.com:mullikine/lingo/blob/master
 
-|command|value|
-|-
-|cat /etc/issue|Ubuntu 16.04.4 LTS \n \l
-|vc url|git@github.com:mullikine/lingo
-|vc get-hash|88ea7cd829c5368c565e143a1395946fc83f0d2d
-|vc branch|master
-|go version|go version go1.11.1 linux/amd64
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | git@github.com:mullikine/lingo           |
+| vc get-hash    | 88ea7cd829c5368c565e143a1395946fc83f0d2d |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
 
 *** recent commits
 #+BEGIN_SRC text
