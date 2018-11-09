@@ -1,0 +1,112 @@
+#+TITLE: troubleshooting new tenet ~exported-package-is-tested~
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
+
+* Problem
+Clearing remote fixes no issues found temporarily.
+
+No matter how simple I made the tenet, I would always get ~no issues found~ until I cleared the remotes.
+
+** Tenet test directory with git history. (Repository that caused this)
+https://github.com/mullikine/exported-package-is-tested-no-issues-found
+
+** ~example.go~
+#+BEGIN_SRC go
+  // ./test/my_test.go
+  package testpackage
+  
+  import "goodpack"
+  
+  // ./goodpack/example-good.go
+  package goodpack
+  
+  // this should be tested, and it is
+  // ./badpack/example-bad.go
+  package goodpack
+  
+  // this is not tested, but should be
+#+END_SRC
+
+** This ~codelingo.yaml~ fails
+#+BEGIN_SRC yaml
+  tenets:
+    - name: exported-package-is-tested
+      flows:
+        codelingo/docs:
+          title: Exported package is tested
+          body: |
+        codelingo/review:
+          comment: The publicly exported package is untested. Consider writing a test to exercise its behavior.
+      query: |
+        import codelingo/ast/go
+        
+        @review comment
+        go.file(depth = any):
+          go.ident
+#+END_SRC
+
+** annotated ~tty-output.log~
+https://github.com/mullikine/exported-package-is-tested-no-issues-found/blob/master/tty-output.log
+
+** repository info
+| tenet source                                                                                                                 |
+|------------------------------------------------------------------------------------------------------------------------------|
+| [[https://github.com/mullikine/tenets/tree/master/blog/exported-package-is-tested/clearing-remote-fixes-no-issues-found-temporarily][tenets/blog/exported-package-is-tested/clearing-remote-fixes-no-issues-found-temporarily at master  mullikine/tenets  GitHub]] |
+
+| org                                                                                                                                                                    |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [[https://github.com/mullikine/mullikine.github.io/tree/master/codelingo/troubleshooting/tenets/exported-package-is-tested_clearing-remote-fixes-no-issues-found-temporarily.org][github.com/mullikine/mullikine.github.io/tree/master/codelingo/troubleshooting/tenets/exported-package-is-tested_clearing-remote-fixes-no-issues-found-temporarily.org]] |
+
+** repo state
++ url :: https://github.com/codelingo/codelingo/blob/master
+
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | https://github.com/codelingo/codelingo   |
+| vc get-hash    | e57af1bcf93c9cfb24d2444a5d07e0f10d67a21a |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
+
+*** recent commits
+#+BEGIN_SRC text
+  commit e57af1bcf93c9cfb24d2444a5d07e0f10d67a21a
+  Merge: 19693f5 3843cc3
+  Author: Reuben <reuben@codelingo.io>
+  
+      Merge pull request #183 from rstorr/fix_misused_nil_interface
+  
+  commit 3843cc36c452c3283323ad701f3c517f1c020860
+  Author: rstorr <rstorr95@gmail.com>
+  
+      prevent matching func param.
+#+END_SRC
+*** ~.codelingoignore~
+#+BEGIN_SRC text
+  vendor/
+#+END_SRC
+
+** repo state
++ url :: git@github.com:mullikine/lingo/blob/master
+
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | git@github.com:mullikine/lingo           |
+| vc get-hash    | 88ea7cd829c5368c565e143a1395946fc83f0d2d |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
+
+*** recent commits
+#+BEGIN_SRC text
+  commit 88ea7cd829c5368c565e143a1395946fc83f0d2d
+  Author: Emerson Wood <13581922+emersonwood@users.noreply.github.com>
+  
+      Update version v0.7.2 (#433)
+  
+  commit 9322dc849176903ad1e543f16edff82c0cccd0ea
+  Merge: 5660a4b 35e69f7
+  Author: BlakeMScurr <blake@codelingo.io>
+  
+      Merge pull request #399 from BlakeMScurr/update-default
+#+END_SRC
