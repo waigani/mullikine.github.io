@@ -1,0 +1,198 @@
+* root folder
+** CONTRIBUTING.md
+https://github.com/juju/juju/blob/develop/CONTRIBUTING.md
+
+*** new tenet
+| name             |
+|------------------|
+| order-of-imports |
+
+**** tenet extracted from
+Imports section of:
+
+https://github.com/juju/juju/blob/develop/CONTRIBUTING.md
+
+***** Specifically
+#+BEGIN_SRC markdown
+Imports
+-------
+
+Import statements are grouped into 3 sections: standard library, 3rd party
+libraries, juju imports. The tool "go fmt" can be used to ensure each
+group is alphabetically sorted. eg:
+
+```go
+import (
+"fmt"
+"time"
+
+"labix.org/v2/mgo"
+"github.com/juju/loggo"
+gc "gopkg.in/check.v1"
+
+"github.com/juju/juju/state"
+"github.com/juju/juju/worker"
+)
+```
+#+END_SRC
+
+*** new tenet
+| name                   |
+|------------------------|
+| linted-by-gometalinter |
+
+**** tenet extracted from
+~Static Analysis~ section of:
+
+https://github.com/juju/juju/blob/develop/CONTRIBUTING.md
+
+***** Specifically
+#+BEGIN_SRC markdown
+Static Analysis
+---------------
+
+Static Analysis of the code is provided by
+[gometalinter](https://github.com/alecthomas/gometalinter).
+
+The Static Analysis runs every linter in parallel over the Juju code base with
+the aim to spot any potential errors that should be resolved. As a default all
+the linters are disabled and only a selection of linters are run on each pass.
+The linters that are run, are known to pass with the state of the current code
+base.
+
+You can independently run the linters on the code base to validate any issues
+before committing or pushing using the following command from the root of the
+repo:
+
+```bash
+./scripts/gometalinter.bash
+```
+#+END_SRC
+
+*** new tenet
+| name                        |
+|-----------------------------|
+| bug-pr-has-launchpad-number |
+
+**** tenet extracted from
+~Pushing~ section of:
+
+https://github.com/juju/juju/blob/develop/CONTRIBUTING.md
+
+***** Specifically
+#+BEGIN_SRC markdown
+Make sure to add a clear description of why and what has been changed, and
+include the Launchpad bug number if one exists.
+#+END_SRC
+
+*** new tenet
+| name                                  |
+|---------------------------------------|
+| new-feature-has-branched-from-develop |
+
+**** new tenet extracted from
+~Feature branches~ section of 
+
+https://github.com/juju/juju/blob/develop/CONTRIBUTING.md
+
+***** Specifically
+#+BEGIN_SRC markdown
+Feature branches
+----------------
+
+All development should be done on feature branches based on a current copy of
+develop. So after pulling up your local repo, make a new branch for your work:
+
+```bash
+git checkout -b new_feature
+#+END_SRC
+
+* docs folder
+https://github.com/juju/juju/tree/develop/doc
+
+** fixing-bugs.md
+https://github.com/juju/juju/blob/develop/doc/contributions/fixing-bugs.md
+
+** review-checklist.md
+https://github.com/juju/juju/blob/develop/doc/contributions/review-checklist.md
+
+*** new tenet
+| name                 |
+|----------------------|
+| var-could-be-inlined |
+
+**** extracted from ~Variables~ section of 
+https://github.com/juju/juju/blob/develop/doc/contributions/review-checklist.md
+
+***** Specifically
+#+BEGIN_SRC markdown
+## Variables:
+- Is a var only used once? If so, can we inline the var? e.g.
+
+```go
+func someFunc() string {
+a := "a string"
+return someOtherFunc(a)
+}
+```
+
+can be simplified to:
+
+```
+func someFunc() string {
+return someOtherFunc("a string")
+}
+```
+
+- Could/should a pointer be used instead of a reference?
+- `var ( )` is not needed if it has only one var in it.
+#+END_SRC
+
+*** new tenet
+| name                          |
+|-------------------------------|
+| error-messages-well-formatted |
+
+**** extracted from ~Errors~ section of review-checklist.md
+https://github.com/juju/juju/blob/develop/doc/contributions/review-checklist.md
+
+***** specifically
+#+BEGIN_SRC markdown
+## Errors:
+
+- Error messages are lowercase with no full stop (see 'Errors' in the [Style Guide](/doc/contributions/style-guide.md))
+#+END_SRC
+
+*** new tenet
+| name               |
+|--------------------|
+| errors-are-handled |
+
+**** extracted from ~Errors~ section of review-checklist.md
+https://github.com/juju/juju/blob/develop/doc/contributions/review-checklist.md
+
+***** specifically
+#+BEGIN_SRC markdown
+- All errors should be handled:
++ If not, a reason should be given in a comment
++ Search for `_`
++ Check signature of function calls that do not assign the result to a var.
+- is juju/errors being used appropriately (see 'Errors' in the [Style Guide](/doc/contributions/style-guide.md))?
+#+END_SRC
+
+** style-guide.md
+https://github.com/juju/juju/blob/develop/doc/contributions/style-guide.md
+
+*** new tenet
+| name                              |
+|-----------------------------------|
+| function-comment-starts-with-name |
+
+**** extracted from ~Comments~ section of style-guide.md
+https://github.com/juju/juju/blob/develop/doc/contributions/style-guide.md
+
+#+BEGIN_SRC markdown
+## Comments:
+
+- Function comments should start with the function name (see 'Comments' in the Style Guide)
+#+END_SRC
