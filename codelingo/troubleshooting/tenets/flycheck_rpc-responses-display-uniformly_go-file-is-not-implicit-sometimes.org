@@ -1,0 +1,296 @@
+#+TITLE: troubleshooting new tenet ~rpc-responses-display-uniformly~
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
+
+* Problem
+~go.file~ is not implicit sometimes.
+A ~go.file~ fact is required to get results.
+
+** ~example.go~
+#+BEGIN_SRC go
+  // ./example.go
+  package main
+  
+  import proto "github.com/golang/protobuf/proto"
+  
+  import "fmt"
+  
+  type TestPB struct {
+  	CorrectName []byte `protobuf:"bytes,2,opt,name=correct_name,proto3" json:"correct_name,omitempty"`
+  	IncorrectName []byte `protobuf:"bytes,2,opt,name=incorrectname,proto3" json:"incorrect_name,omitempty"`
+  	AnotherIncorrectName []byte `protobuf:"bytes,2,opt,name=incorrect_name,proto3" json:"incorrect_name,omitempty"`
+  }
+#+END_SRC
+
+** This ~codelingo.yaml~ shows no results
+#+BEGIN_SRC yaml
+  funcs:
+    - name: isNotAWellFormedLiteral
+      type: asserter
+      body: |
+        function (ident, a) {
+          function notSnakeCase(b) {
+            return b.match(/ /) || b.match(/[A-Z]/)
+          }
+          function singleCapitalize(str) {
+            function capitalizeFirstLetter(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+            return capitalizeFirstLetter(str.replace(/_+/g, '').replace(/\s+/g, ''));
+          }
+          function camelize(str) {
+            function capitalizeFirstLetter(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+            return capitalizeFirstLetter(str.replace(/_+/g, ' ').replace(/(?:^\w|[A-Z]|\b\w)/g, function(letter, index) {
+              return index == 0 ? letter.toLowerCase() : letter.toUpperCase();
+            }).replace(/\s+/g, ''));
+          }
+          var m = a.match(/protobuf:"[^"]*name=([^,"]+).+ json:"([^,"]+)/)
+          return m && ((m[1] != m[2]) || (notSnakeCase(m[1]) || notSnakeCase(m[2])) || (! ( ident == camelize(m[1]) || ident == singleCapitalize(m[1]) )))
+        }
+  tenets:
+    - name: rpc-responses-display-uniformly
+      flows:
+        codelingo/docs:
+          title: RPC responses display uniformly
+          body: |
+        codelingo/review:
+          comment: The protobuf name and json_name must be snake_case and their values must be equal and the type field name must have a matching name. Please change their values in the corresponding .proto file.
+      query: |
+        import codelingo/ast/go
+        
+        go.decls:
+          go.gen_decl:
+            go.type_spec:
+              go.struct_type:
+                go.field_list:
+                  @review comment
+                  go.field:
+                    go.names:
+                      go.ident:
+                        name as identName
+                    go.basic_lit:
+                      value as literalValue
+                      isNotAWellFormedLiteral(identName, literalValue)
+#+END_SRC
+
+** annotated ~tty-output.log~
+#+BEGIN_SRC text
+  Syncing your repo...
+  Running review flow...
+  example.go:10:113
+
+      The protobuf name and json_name must be snake_case and their values must be equal and the type field name must have a matching name. Please change their values in the corresponding .proto file.
+
+
+      ...
+          CorrectName []byte `protobuf:"bytes,2,opt,name=correct_name,proto3" json:"correct_name,omitempty"`
+          IncorrectName []byte `protobuf:"bytes,2,opt,name=incorrectname,proto3" json:"incorrect_name,omitempty"`
+    +     AnotherIncorrectName []byte `protobuf:"bytes,2,opt,name=incorrect_name,proto3" json:"incorrect_name,omitempty"`
+      }
+      ...
+
+  [o]pen [k]eep [d]iscard : k
+  example.go:9:105
+
+      The protobuf name and json_name must be snake_case and their values must be equal and the type field name must have a matching name. Please change their values in the corresponding .proto file.
+
+
+      ...
+      type TestPB struct {
+          CorrectName []byte `protobuf:"bytes,2,opt,name=correct_name,proto3" json:"correct_name,omitempty"`
+    +     IncorrectName []byte `protobuf:"bytes,2,opt,name=incorrectname,proto3" json:"incorrect_name,omitempty"`
+          AnotherIncorrectName []byte `protobuf:"bytes,2,opt,name=incorrect_name,proto3" json:"incorrect_name,omitempty"`
+      }
+      ...
+
+  [o]pen [k]eep [d]iscard : k
+  Done! 2 issues found.
+  Done! 2 issues written to expected.json
+
+
+  review finished
+
+  Reformulate?
+
+  working_dir (loop): /tmp/td_AgliKL
+  [.] edit
+  [c] clear_remote
+  [a] annotate
+  [y] yes_edit
+  [v] vim_edit
+  [S] zsh
+  [H] hsplit
+  [r] review
+  [L] save-tty-log
+  [B] upload-to-blog
+  [D] review-debug
+  [w] rewrite
+  [X] rewrite-debug
+  [R] ranger
+  [d] done
+  [x] exit
+  : y
+  [.] edit
+  [c] clear_remote
+  [a] annotate
+  [y] yes_edit
+  [v] vim_edit
+  [S] zsh
+  [H] hsplit
+  [r] review
+  [L] save-tty-log
+  [B] upload-to-blog
+  [D] review-debug
+  [w] rewrite
+  [X] rewrite-debug
+  [R] ranger
+  [d] done
+  [x] exit
+  : r
+  [master d467a90] edit
+   2 files changed, 17 insertions(+), 18 deletions(-)
+  + diff-so-fancy
+  + less --tabs=4
+  + git diff 'HEAD^!'
+  + echo
+
+  + git diff 'HEAD^!'
+  + cat
+  diff --git a/codelingo.yaml b/codelingo.yaml
+  index 2ec51c7..7deeabd 100644
+  --- a/codelingo.yaml
+  +++ b/codelingo.yaml
+  @@ -34,17 +34,16 @@ tenets:
+       query: |
+         import codelingo/ast/go
+
+  -      go.file:
+  -        go.decls:
+  -          go.gen_decl:
+  -            go.type_spec:
+  -              go.struct_type:
+  -                go.field_list:
+  -                  @review comment
+  -                  go.field:
+  -                    go.names:
+  -                      go.ident:
+  -                        name as identName
+  -                    go.basic_lit:
+  -                      value as literalValue
+  -                      isNotAWellFormedLiteral(identName, literalValue)
+  +      go.decls:
+  +        go.gen_decl:
+  +          go.type_spec:
+  +            go.struct_type:
+  +              go.field_list:
+  +                @review comment
+  +                go.field:
+  +                  go.names:
+  +                    go.ident:
+  +                      name as identName
+  +                  go.basic_lit:
+  +                    value as literalValue
+  +                    isNotAWellFormedLiteral(identName, literalValue)
+  diff --git a/expected.json b/expected.json
+  index 2dbc2ec..d655868 100644
+  --- a/expected.json
+  +++ b/expected.json
+  @@ -2,13 +2,13 @@
+     {
+      "Comment": "The protobuf name and json_name must be snake_case and their values must be equal and the type field name must have a matching name. Please change their values in the corresponding .proto file.",
+      "Filename": "example.go",
+  -   "Line": 9,
+  -   "Snippet": "type TestPB struct {\n\tCorrectName []byte `protobuf:\"bytes,2,opt,name=correct_name,proto3\" json:\"correct_name,omitempty\"`\n\tIncorrectName []byte `protobuf:\"bytes,2,opt,name=incorrectname,proto3\" json:\"incorrect_name,omitempty\"`\n\tAnotherIncorrectName []byte `protobuf:\"bytes,2,opt,name=incorrect_name,proto3\" json:\"incorrect_name,omitempty\"`\n}"
+  +   "Line": 10,
+  +   "Snippet": "\tCorrectName []byte `protobuf:\"bytes,2,opt,name=correct_name,proto3\" json:\"correct_name,omitempty\"`\n\tIncorrectName []byte `protobuf:\"bytes,2,opt,name=incorrectname,proto3\" json:\"incorrect_name,omitempty\"`\n\tAnotherIncorrectName []byte `protobuf:\"bytes,2,opt,name=incorrect_name,proto3\" json:\"incorrect_name,omitempty\"`\n}"
+     },
+     {
+      "Comment": "The protobuf name and json_name must be snake_case and their values must be equal and the type field name must have a matching name. Please change their values in the corresponding .proto file.",
+      "Filename": "example.go",
+  -   "Line": 10,
+  -   "Snippet": "\tCorrectName []byte `protobuf:\"bytes,2,opt,name=correct_name,proto3\" json:\"correct_name,omitempty\"`\n\tIncorrectName []byte `protobuf:\"bytes,2,opt,name=incorrectname,proto3\" json:\"incorrect_name,omitempty\"`\n\tAnotherIncorrectName []byte `protobuf:\"bytes,2,opt,name=incorrect_name,proto3\" json:\"incorrect_name,omitempty\"`\n}"
+  +   "Line": 9,
+  +   "Snippet": "type TestPB struct {\n\tCorrectName []byte `protobuf:\"bytes,2,opt,name=correct_name,proto3\" json:\"correct_name,omitempty\"`\n\tIncorrectName []byte `protobuf:\"bytes,2,opt,name=incorrectname,proto3\" json:\"incorrect_name,omitempty\"`\n\tAnotherIncorrectName []byte `protobuf:\"bytes,2,opt,name=incorrect_name,proto3\" json:\"incorrect_name,omitempty\"`\n}"
+     }
+    ]
+  \ No newline at end of file
+  ++ vc get-hash
+  + echo 'HEAD: d467a9092ee6759f5f45fd75234a293e2c0295ae'
+  HEAD: d467a9092ee6759f5f45fd75234a293e2c0295ae
+  + echo
+
+  + rm -f tags expected.json
+  + git add -u
+  + git commit -m 'removed expected.json'
+  [master 8e2a018] removed expected.json
+   1 file changed, 14 deletions(-)
+   delete mode 100644 expected.json
+  + lingo run review -o expected.json
+  Clear git remotes?
+
+   [Yn]: n
+  Syncing your repo...
+  Running review flow...
+  Done! No issues found.
+#+END_SRC
+
+** repository info
+| tenet source                                                                                                      |
+|-------------------------------------------------------------------------------------------------------------------|
+| [[https://github.com/mullikine/tenets/tree/master/blog/rpc-responses-display-uniformly/go-file-is-not-implicit-sometimes][tenets/blog/rpc-responses-display-uniformly/go-file-is-not-implicit-sometimes at master  mullikine/tenets  GitHub]] |
+
+| org                                                                                                                                                         |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [[https://github.com/mullikine/mullikine.github.io/tree/master/codelingo/troubleshooting/tenets/rpc-responses-display-uniformly_go-file-is-not-implicit-sometimes.org][github.com/mullikine/mullikine.github.io/tree/master/codelingo/troubleshooting/tenets/rpc-responses-display-uniformly_go-file-is-not-implicit-sometimes.org]] |
+
+** repo state
++ url :: https://github.com/codelingo/codelingo/blob/master
+
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | https://github.com/codelingo/codelingo   |
+| vc get-hash    | a1fb7b5ce6e792dc8d66270a9501e6c2219b14de |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
+
+*** recent commits
+#+BEGIN_SRC text
+  commit a1fb7b5ce6e792dc8d66270a9501e6c2219b14de
+  Merge: c307805 ba4ce54
+  Author: Jesse Meek <jesse@lingo.reviews>
+  
+      Merge pull request #162 from waigani/fixes
+  
+  commit ba4ce5432e9b8243db67f66a0793a3fc1efb4bb3
+  Author: codelingo <hello@codelingo.io>
+  
+      Add review flow to test Tenet
+#+END_SRC
+
+** repo state
++ url :: git@github.com:mullikine/lingo/blob/master
+
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | git@github.com:mullikine/lingo           |
+| vc get-hash    | 88ea7cd829c5368c565e143a1395946fc83f0d2d |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
+
+*** recent commits
+#+BEGIN_SRC text
+  commit 88ea7cd829c5368c565e143a1395946fc83f0d2d
+  Author: Emerson Wood <13581922+emersonwood@users.noreply.github.com>
+  
+      Update version v0.7.2 (#433)
+  
+  commit 9322dc849176903ad1e543f16edff82c0cccd0ea
+  Merge: 5660a4b 35e69f7
+  Author: BlakeMScurr <blake@codelingo.io>
+  
+      Merge pull request #399 from BlakeMScurr/update-default
+#+END_SRC
