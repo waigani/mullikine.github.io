@@ -1,7 +1,7 @@
 * Create a tenet that finds error codes which are not handled in ~_test.go~ files
 
 ** Completed tenet that is blocked
-https://github.com/mullikine/tenets/tree/lightning-network-daemon/blog/error-handled-in-test
+https://github.com/mullikine/codelingo/blob/lightning-network-daemon/tenets/codelingo/lightning-network-daemon/error-handled-in-test/codelingo.yaml
 
 *** Review comment
 This error code is not handled within any "_test.go" that can be seen. Consider writing a test which handles this code.
