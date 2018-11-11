@@ -16,11 +16,4 @@ Look for variables of type `FlagSet` who's `StringVar` method is run with second
 
 There is a very similar one for ~kubectl~.
 
-*** TODO Make a keybinding to create a github url that highlights the thing at the cursor
-
-| editor | kb                 |
-|--------+--------------------|
-| vim    | yL                 |
-| emacs  | M-y M-L or M-y M-G |
-
 https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/cli-runtime/pkg/genericclioptions/config_flags.go#L18
