@@ -1,0 +1,231 @@
+#+TITLE: troubleshooting new tenet ~exported-package-is-tested~
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
+
+* Problem
+The tenet works. The examples fail as expected. I get a server error, however, trying to run on LND.
+
+** ~example.go~
+#+BEGIN_SRC go
+  // ./test/my_test.go
+  package testpackage
+  
+  import "github.com/lightningnetwork/lnd/goodpack"
+  
+  import (
+      "github.com/lightningnetwork/lnd/goodpack"
+  )
+  
+  // ./goodpack/example-good.go
+  package goodpack
+  
+  // this should be tested, and it is
+  // ./badpack/example-bad.go
+  package badpack
+  
+  // this is not tested, but should be
+#+END_SRC
+
+** This ~codelingo.yaml~ fails
+#+BEGIN_SRC yaml
+  funcs:
+    - name: isTestFile
+      type: asserter
+      body: |
+        function (str) {
+          return str.match(/_test\.go$/)
+        }
+    - name: isNotTestFile
+      type: asserter
+      body: |
+        function (str) {
+          return ! str.match(/_test\.go$/)
+        }
+    - name: importsPackage
+      type: asserter
+      body: |
+        function (lit, pack) {
+          return lit === "github.com/lightningnetwork/lnd/".concat(pack)
+        }
+  tenets:
+    - name: exported-package-is-not-tested
+      flows:
+        codelingo/docs:
+          title: Exported package is tested
+          body: |
+        codelingo/review:
+          comment: The publicly exported package `{{packageName}}` is untested. Consider writing a test to exercise its behavior.
+      query: |
+        import codelingo/ast/go
+        
+        go.dir(depth = any):
+          go.file:
+            filename as packageFileName
+            isNotTestFile(packageFileName)
+            @review comment
+            go.ident:
+              name as packageName
+  
+        exclude:
+          go.dir(depth = any):
+            go.file:
+              filename as testFileName
+              isTestFile(testFileName)
+              go.decls(depth = any):
+                go.gen_decl:
+                  go.import_spec:
+                    go.basic_lit:
+                      value as importValue
+                      importsPackage(importValue, packageName)
+#+END_SRC
+
+** annotated ~tty-output.log~
+#+BEGIN_SRC text
+  Constructing new git repo in temp folder... :: Mon Nov 12 10:47:24 NZDT 2018
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  Running: $HOME/scripts/rs -nc
+          -nogit
+          -noswap
+          $HOME/source/git/mullikine/codelingo/tenets/codelingo/lightning-network-daemon/exported-package-is-tested/
+          /tmp/td_qChb8J
+  /usr/bin/rsync  -a -rtlhx -pug -s  --inplace --append   --exclude .cache  --exclude .git/ --exclude .gitignore --exclude TODO  --exclude '*~' --exclude '.#*'  $HOME/source/git/mullikine/codelingo/tenets/codelingo/lightning-network-daemon/exported-package-is-tested/ /tmp/td_qChb8J
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  /tmp/td_qChb8J
+  Syncing your repo...
+  Running review flow...
+  badpack/example-bad.go:1:16
+      The publicly exported package `badpack` is untested. Consider writing a test to exercise its behavior.
+      ...
+    + package badpack
+      // this is not tested, but should be
+      ...
+  [o]pen [k]eep [d]iscard : k
+  Done! 1 issues found.
+  Done! 1 issues written to expected.json
+  review finished
+  Reformulate?
+  working_dir (loop): /tmp/td_qChb8J
+  : B
+  working_dir: /tmp/td_qChb8J
+  Continue?
+   [Yn]: y
+  Differentiate tenet with a problem name?
+   [Yn]: w
+   [Yn]: y
+#+END_SRC
+
+** timed tty output, running review on LND
+[[https://github.com/mullikine/tenets/blob/master/blog/exported-package-is-tested/working/tty-output-lnd.log][github.com/mullikine/tenets/blob/master/blog/exported-package-is-tested/working/tty-output-lnd.log]]
+
+#+BEGIN_SRC text
+  d9040236 master » time lingo -time run review --debug
+  Nov 12 10:50:02 2018-11-12T10:50:02.410+1300    DEBUG   review/cli.go:94        reviewCMD called
+  Nov 12 10:50:02 2018-11-12T10:50:02.411+1300    DEBUG   review/cli.go:104       insecure false
+  Nov 12 10:50:02 Syncing your repo...
+  Nov 12 10:50:04 Running review flow...
+  Nov 12 10:50:04 2018-11-12T10:50:04.346+1300    DEBUG   review/review.go:24     opening connection to flow server ...
+  Nov 12 10:50:04 2018-11-12T10:50:04.380+1300    DEBUG   service/service.go:75   getting tls cert from cache...
+  Nov 12 10:50:04 2018-11-12T10:50:04.381+1300    DEBUG   service/service.go:129  dialing grpc server...
+  Nov 12 10:50:04 2018-11-12T10:50:04.381+1300    DEBUG   service/service.go:108  ...got answer from grpc server.
+  Nov 12 10:50:04 2018-11-12T10:50:04.383+1300    DEBUG   review/review.go:29     ...connection to flow server opened
+  Nov 12 10:50:04 2018-11-12T10:50:04.383+1300    DEBUG   review/review.go:43     sending request to flow server...
+  Nov 12 10:50:05 2018-11-12T10:50:05.217+1300    DEBUG   review/review.go:48     ...request to flow server sent. Received reply channel.
+  Nov 12 11:01:10 2018-11-12T11:01:10.604+1300    DEBUG   flow/cli.go:237 Result error: $HOME/go/src/github.com/codelingo/codelingo/flows/codelingo/review/review/review.go:68: Sorry, an error occurred while processing your request. Please try again.
+  Nov 12 11:01:10 2018-11-12T11:01:10.604+1300    DEBUG   flow/cli.go:206 $HOME/go/src/github.com/codelingo/codelingo/flows/codelingo/review/review/review.go:68: Sorry, an error occurred while processing your request. Please try again.
+  Nov 12 11:01:10 $HOME/go/src/github.com/codelingo/codelingo/sdk/flow/cli.go:238:
+  Nov 12 11:01:10 Sorry, an error occurred while processing your request. Please try again.
+  Nov 12 11:01:10 exit status 1
+  lingo -time run review --debug  0.18s user 0.09s system 0% cpu 11:10.13 total
+#+END_SRC
+
+| time taken | size of repository |
+|------------+--------------------|
+| 11 minutes | 31M                |
+
+** server error
+#+BEGIN_SRC text
+platform-errors APP [10:56 AM]
+[Alerting] Memory Usage by Node alert
+Working Set ip-172-20-58-74.us-west-2.compute.internal
+50063127347.2
+Grafana vv4.4.3Today at 10:56 AM
+
+platform-errors APP [11:01 AM]
+2 errors occurred in the last 30s
+mullikine hit a uncaught error: rpc error: code = Unavailable desc = transport is closing
+/home/dev/projects/src/github.com/codelingo/platform/flow/bots/processor/streamed.go:54: rpc error: code = Unavailable desc = transport is closing
+/home/dev/projects/src/github.com/codelingo/platform/flow/util/util.go:11:
+/home/dev/projects/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+daanikus hit a uncaught error: rpc error: code = Unavailable desc = transport is closing
+/home/dev/projects/src/github.com/codelingo/platform/flow/bots/processor/streamed.go:54: rpc error: code = Unavailable desc = transport is closing
+/home/dev/projects/src/github.com/codelingo/platform/flow/util/util.go:11:
+/home/dev/projects/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/dev/projects/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: daanikus hit a uncaught error
+
+[OK] Memory Usage by Node alert
+Grafana vv4.4.3Today at 11:02 AM
+#+END_SRC
+
+** repository info
+| tenet source                                                                       |
+|------------------------------------------------------------------------------------|
+| [[https://github.com/mullikine/tenets/tree/master/blog/exported-package-is-tested/working][tenets/blog/exported-package-is-tested/working at master  mullikine/tenets  GitHub]] |
+
+| org                                                                                                                          |
+|------------------------------------------------------------------------------------------------------------------------------|
+| [[https://github.com/mullikine/mullikine.github.io/tree/master/codelingo/troubleshooting/tenets/exported-package-is-tested_working.org][github.com/mullikine/mullikine.github.io/tree/master/codelingo/troubleshooting/tenets/exported-package-is-tested_working.org]] |
+
+** repo state
++ url :: https://github.com/codelingo/codelingo/blob/master
+
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | https://github.com/codelingo/codelingo   |
+| vc get-hash    | e57af1bcf93c9cfb24d2444a5d07e0f10d67a21a |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
+
+*** recent commits
+#+BEGIN_SRC text
+  commit e57af1bcf93c9cfb24d2444a5d07e0f10d67a21a
+  Merge: 19693f5 3843cc3
+  Author: Reuben <reuben@codelingo.io>
+  
+      Merge pull request #183 from rstorr/fix_misused_nil_interface
+  
+  commit 3843cc36c452c3283323ad701f3c517f1c020860
+  Author: rstorr <rstorr95@gmail.com>
+  
+      prevent matching func param.
+#+END_SRC
+*** ~.codelingoignore~
+#+BEGIN_SRC text
+  vendor/
+#+END_SRC
+
+** repo state
++ url :: git@github.com:mullikine/lingo/blob/master
+
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | git@github.com:mullikine/lingo           |
+| vc get-hash    | 88ea7cd829c5368c565e143a1395946fc83f0d2d |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
+
+*** recent commits
+#+BEGIN_SRC text
+  commit 88ea7cd829c5368c565e143a1395946fc83f0d2d
+  Author: Emerson Wood <13581922+emersonwood@users.noreply.github.com>
+  
+      Update version v0.7.2 (#433)
+  
+  commit 9322dc849176903ad1e543f16edff82c0cccd0ea
+  Merge: 5660a4b 35e69f7
+  Author: BlakeMScurr <blake@codelingo.io>
+  
+      Merge pull request #399 from BlakeMScurr/update-default
+#+END_SRC
