@@ -23,4 +23,4 @@ https://mullikine.github.io/codelingo/troubleshooting/tenets/error-handled-in-te
 https://mullikine.github.io/codelingo/troubleshooting/tenets/error-handled-in-test-working/combined.clql
 
 ***** This is a better reference for completed tenet than combined.clql
-https://github.com/mullikine/tenets/tree/master/blog/error-handled-in-test
+https://github.com/mullikine/codelingo/blob/lightning-network-daemon/tenets/codelingo/lightning-network-daemon/error-handled-in-test/codelingo.yaml
