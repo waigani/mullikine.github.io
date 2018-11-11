@@ -50,7 +50,7 @@ Typically, the generated query comprises the bulk of the code you end up with.  
 -----
 
 **** Before: Generated CLQL
-This generated query contains more facts than we really need, so we can remove some of them.
+This generated query contains a greater number of facts than we really need, so we can remove some of them.
 
 #+BEGIN_SRC yaml
   import codelingo/ast/go

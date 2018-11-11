@@ -1,0 +1,11 @@
+tenets:
+  - name: code-is-spaced-correctly
+    flows:
+      codelingo/docs:
+        title: Code is spaced correctly
+        body: |
+      codelingo/review:
+        comment: This code block should be segmented by whitespace to make the code easier to follow at a skim.
+    query: |
+      import codelingo/ast/go
+      
