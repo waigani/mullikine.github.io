@@ -1,0 +1,69 @@
+import codelingo/ast/go
+
+# look for test files -- copy from other test tenet
+
+# It's handled if err is tested in a binary_expr and err is an 'error'
+# that is
+# returned by a function
+
+@playground highlight
+go.file(depth = any):
+  go.decls:
+    go.func_decl:
+      go.block_stmt:
+        go.list:
+          go.assign_stmt:
+            go.lhs:
+              go.ident:
+                child_count == 0
+                name == "err"
+                private == "true"
+                type == "invalid type"
+            go.rhs:
+              go.call_expr:
+                go.ident:
+                  child_count == 0
+                  name == "SayA"
+                  private == "false"
+    go.func_decl:
+      go.func_type:
+        go.field_list:
+          child_count == 0
+      go.block_stmt:
+        go.list:
+          go.assign_stmt:
+            go.lhs:
+              go.ident:
+                # ensure that the types match
+                name == "err"
+                # I should capture this anyway and print it
+                type as identTypeName
+            go.rhs:
+              go.call_expr:
+                go.ident:
+                  name == "SayB" // varies
+          go.if_stmt:
+            go.binary_expr:
+              go.ident:
+                name == "err" // important
+            go.block_stmt:
+              go.list:
+                go.expr_stmt:
+                  go.call_expr:
+                    go.selector_expr:
+                      go.ident:
+                        child_count == 0
+                        name == "t"
+                        private == "true"
+                      go.ident:
+                        child_count == 0
+                        name == "Fatalf"
+                    go.args:
+                      go.basic_lit:
+                        child_count == 0
+                        kind == "string"
+                        value == "failed: %v"
+                      go.ident:
+                        child_count == 0
+                        name == "err"
+                        private == "true"

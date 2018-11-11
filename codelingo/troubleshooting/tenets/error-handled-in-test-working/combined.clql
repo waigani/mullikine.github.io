@@ -1,0 +1,77 @@
+import codelingo/ast/go
+
+# look for test files -- copy from other test tenet
+
+# It's handled if err is tested in a binary_expr and err is an 'error'
+# that is
+# returned by a function
+
+# first query
+# Need to find all err that are returned by functions
+# All function definitions that define error as one of the return parameters
+
+# second query
+# ensure that variable 'err' is tested in a binary_expr within a _test
+# file and is connected somehow with the above
+
+# tie the two queries together by being under the same directory
+
+# How can I test that types match when I can't use the playground?
+# I need to get the error parameter. Not be using the variable's name
+# but its type.
+
+# Need to be generating tenets that are used for querying data fields,
+# rather than doing real reviews.
+
+# Question 1: If I call a function and capture the result, does CLQL
+# know the type of the result? Most likely, yes.
+
+go.dir:
+  go.file(depth = any):
+    go.decls:
+      go.func_decl:
+        go.ident:
+          name as funcName
+        go.func_type:
+          go.field_list
+          go.field_list:
+            go.field:
+              go.ident:
+                name == "error"
+  
+  go.file(depth = any): // test that this is a _test.go file
+    go.block_stmt(depth = any):
+      go.list:
+        go.assign_stmt:
+          go.lhs:
+            go.ident:
+              name == "err" // ensure that the types match
+          go.rhs:
+            go.call_expr:
+              go.ident:
+                name == funcName
+        go.if_stmt:
+          go.binary_expr:
+            go.ident:
+              name == "err" // important
+          go.block_stmt:
+            go.list:
+              go.expr_stmt:
+                go.call_expr:
+                  go.selector_expr:
+                    go.ident:
+                      child_count == 0
+                      name == "t"
+                      private == "true"
+                    go.ident:
+                      child_count == 0
+                      name == "Fatalf"
+                  go.args:
+                    go.basic_lit:
+                      child_count == 0
+                      kind == "string"
+                      value == "failed: %v"
+                    go.ident:
+                      child_count == 0
+                      name == "err"
+                      private == "true"

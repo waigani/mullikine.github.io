@@ -1,0 +1,26 @@
+* Create a tenet that finds error codes which are not handled in ~_test.go~ files
+
+** Completed tenet that is blocked
+https://github.com/mullikine/tenets/tree/master/blog/error-handled-in-test
+
+*** Review comment
+This error code is not handled within any "_test.go" that can be seen. Consider writing a test which handles this code.
+
+*** tenet-building process
+**** DONE write first query
+Need to find all err that are returned by functions
+All function definitions that define error as one of the return parameters
+
+https://mullikine.github.io/codelingo/troubleshooting/tenets/error-handled-in-test-working/refined-def.clql
+
+**** DONE write second query
+ensure that variable 'err' is tested in a binary_expr within a _test
+file and is connected somehow with the above
+
+https://mullikine.github.io/codelingo/troubleshooting/tenets/error-handled-in-test-working/refined-test.clql
+
+**** DONE tie the two queries together by being under the same directory
+https://mullikine.github.io/codelingo/troubleshooting/tenets/error-handled-in-test-working/combined.clql
+
+***** This is a better reference for completed tenet than combined.clql
+https://github.com/mullikine/tenets/tree/master/blog/error-handled-in-test
