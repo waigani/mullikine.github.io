@@ -1,0 +1,28 @@
+* <2018-11-12 Mon> Testing this as it is claimed that it is unblocked
+https://github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/error-handled-in-test.org
+| resolution |
+|------------|
+| unblocked  |
+
+* <2018-11-12 Mon> Testing packages to see if affected by root-level .go non-existence 'bug' (possible bug, unconfirmed)
+** exported-package-is-tested
+https://github.com/mullikine/tenets/tree/master/blog/exported-package-is-tested/working
+This runs on the example.go files and find issues.
+
+*** Confirmation test run
+https://github.com/mullikine/tenets/tree/master/blog/exported-package-is-tested/finds-issues-without-root-go-files
+
+| resolution                                |
+|-------------------------------------------|
+| no issue with not having go files at root |
+
+** new-package-requires-test
+https://github.com/mullikine/tenets/tree/master/blog/new-package-requires-test
+
+*** Confirmation test run
+| resolution                                |
+|-------------------------------------------|
+| multiple definitions problem exists       |
+| no issue with not having go files at root |
+
+https://github.com/mullikine/tenets/blob/master/blog/new-package-requires-test/multi-definitions-problem-still-exists/new-package-requires-test.org
