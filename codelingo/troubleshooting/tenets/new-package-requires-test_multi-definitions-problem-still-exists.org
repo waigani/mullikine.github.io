@@ -5,6 +5,8 @@
 * Problem
 The multi-definitions problem still exists.
 
+It does not suffer from the non-existent root-level '.go' file problem.
+
 ** ~example.go~
 #+BEGIN_SRC go
   // ./test/testing-good.go
