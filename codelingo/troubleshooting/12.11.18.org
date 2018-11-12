@@ -32,6 +32,6 @@ Confirm that the following tenet finds issues where there are no root-level .go 
  | multiple definitions problem exists                                  |
  | unable to test if there is no issue with not having go files at root |
 
-| test-run source |
-|-----------------|
-| [[https://github.com/mullikine/tenets/blob/master/blog/new-package-requires-test/multi-definitions-problem-still-exists/new-package-requires-test.org][github.com/mullikine/tenets/blob/master/blog/new-package-requires-test/multi-definitions-problem-still-exists/new-package-requires-test.org]]                |
+| test-run source                                                                                                                                            |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [[https://github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/tenets/new-package-requires-test_blocked-on-mutiple-definitions.org][github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/tenets/new-package-requires-test_blocked-on-mutiple-definitions.org]] |
