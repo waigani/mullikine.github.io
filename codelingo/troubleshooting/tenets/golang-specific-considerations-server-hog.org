@@ -1,0 +1,292 @@
+#+TITLE: troubleshooting new tenet ~golang-specific-considerations~
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
+
+* Problem
+It's possible that multiple definitions of a variable hogs the server.
+
+i.e. "name as implementedMethodType".
+
+Otherwise, it could be something else in this tenet that causes lag.
+
+Either way, multiple definitions should be detected before the query is run.
+
+** ~example.go~
+#+BEGIN_SRC go
+  // ./example/constructor-returns-interface.go
+  package mypack
+  
+  type Person interface {
+    Greet()
+  }
+  
+  type person struct {
+    name string
+    age int
+  }
+  
+  func (p person) Greet() {
+    fmt.Printf("Hi! My name is %s", p.name)
+  }
+  
+  // Here, NewPerson returns an interface, and not the person struct itself
+  func NewPerson(name string, age int) Person {
+    return person{
+      name: name,
+      age: age,
+    };
+  }
+  
+  func NewConcretePerson(name string, age int) person {
+    return person{
+      name: name,
+      age: age,
+    };
+  }
+  // ./example/interface-next-to-implementation-nomatch.go
+  package mypack
+  
+  type projective_geometry interface {
+      area() float64
+      perim() float64
+  }
+  
+  func (c triangle) area() float64 {
+      return math.Pi * c.radius * c.radius
+  }
+  
+  func (c square) perim() float64 {
+      return 2 * math.Pi * c.radius
+  }
+  // ./example/interface-next-to-implementation-match.go
+  package mypack
+  
+  type geometry interface {
+      area() float64
+      perim() float64
+  }
+  
+  func (c circle) area() float64 {
+      return math.Pi * c.radius * c.radius
+  }
+  
+  func (c circle) perim() float64 {
+      return 2 * math.Pi * c.radius
+  }
+  // ./example/interface-too-many-methods.go
+  package mypack
+  
+  type smallInterface interface {
+  	surfaceArea() float64
+  	volume() float64
+  }
+  
+  type excessiveInterface interface {
+  	perimeter() float64
+  	surfaceArea() float64
+  	volume() float64
+  	diameter() float64
+  	radius() float64
+  	circumference() float64
+  }
+  
+  // ./example/use-pointer-arg-for-worker.go
+  package mypack
+  
+  // good
+  func NewGoodWorkerGood() (*GoodWorker) {
+  }
+  
+  // bad
+  func NewBadWorkerBad() (worker.Worker) {
+  }
+  
+#+END_SRC
+
+** This ~codelingo.yaml~ hogs the server
+#+BEGIN_SRC yaml
+  tenets:
+    - name: interface-next-to-implementation
+      flows:
+        codelingo/docs:
+          title: Interface Defined Next To Where It Is Implemented
+          body: |
+            hi
+        codelingo/review:
+          comment: hi
+      query: |
+        import codelingo/ast/go
+   
+        # a variable needs cardinality
+        # - does the variable try to match
+        
+        # TODO this query may give false positives because classNameConstraint does not constrain the query in any way whatsoever
+        # TODO Need constraint fact. classNameConstraint
+        # i.e. a var that can only be set once and every other time it's referenced, the query conforms to it, rather than it to the query
+        
+        # I do not want all combinations of all variables. They can only
+        # be combined in certain ways.
+        # This must NOT match "example/interface-next-to-implementation-nomatch.go"
+        # Given A, B, B', C and C'
+        # B must equal B'
+        # C must equal C'
+        
+        # Multiple ASTs fit this query because there is no notion of
+        
+        # Need variable precedence system.
+        # implementedMethodType has highest precedence
+        
+        # This will find all struct methods which have implementation in
+        # the current file.
+        
+        # There is a lot of ambiguity in the language.
+        # The AST model, though, I take it, represents itself in only one
+        # way.
+        # This means, however, that not all information is available.
+        
+        # I assume that CLQL is greedy. It will match as many as possible.
+        
+        # I assume that implementedMethodName and implementedMethodType
+        # must match here.
+  
+        # The way this tenet is written, it is a resource hog
+        
+        go.file(depth = any):
+          # This looks for an interface method which is defined in the same file as the interface
+          go.decls:
+            go.gen_decl:
+              go.type_spec:
+                @review comment
+                go.ident
+                go.interface_type:
+                  # TODO need this
+                  # id as interfaceID # Is there such thing as a unique ID for any fact? To allow you to constrain query by asserting equivalence on two facts in different parts of the file
+                  go.field_list:
+                    go.field:
+                      go.names:
+                        go.ident:
+                          name as implementedMethodName
+                      go.func_type:
+                        go.field_list
+                        go.field_list:
+                          go.field:
+                            go.ident:
+                              name as implementedMethodType
+            go.func_decl:
+              go.field_list:
+                go.field:
+                  go.names:
+                    go.ident
+                  go.ident:
+                    name as classNameConstraint # precedence 1; This variable exists only to constrain the query. But that doesn't work. I need top-level placeholder facts.
+              go.ident:
+                name as implementedMethodName
+              go.func_type:
+                go.field_list
+                go.field_list:
+                  go.field:
+                    go.ident:
+                      name as implementedMethodType
+          # This looks for methods of the same interface
+          exclude:
+            go.decls:
+              go.gen_decl:
+                go.type_spec:
+                  go.interface_type:
+                    # id == interfaceID
+                    go.field_list:
+                      go.field:
+                        go.names:
+                          go.ident:
+                            name as unimplementedMethodName
+                        go.func_type:
+                          go.field_list
+                          go.field_list:
+                            go.field:
+                              go.ident:
+                                name as unimplementedMethodType
+              exclude:
+                go.func_decl:
+                  go.field_list:
+                    go.field:
+                      go.names:
+                        go.ident
+                      go.ident:
+                        name as classNameConstraint
+                  go.ident:
+                    name as unimplementedMethodName
+                  go.func_type:
+                    go.field_list
+                    go.field_list:
+                      go.field:
+                        go.ident:
+                          name as unimplementedMethodType
+#+END_SRC
+
+** annotated ~tty-output.log~
+#+BEGIN_SRC text
+
+#+END_SRC
+
+** repository info
+| tenet source
+|-
+| [[https://github.com/mullikine/tenets/tree/master/blog/golang-specific-considerations][tenets/blog/golang-specific-considerations at master  mullikine/tenets  GitHub]]
+
+| org
+|-
+| [[https://github.com/mullikine/mullikine.github.io/tree/master/codelingo/troubleshooting/tenets/golang-specific-considerations.org][github.com/mullikine/mullikine.github.io/tree/master/codelingo/troubleshooting/tenets/golang-specific-considerations.org]]
+
+** repo state
++ url :: https://github.com/codelingo/codelingo/blob/master
+
+|command|value|
+|-
+|cat /etc/issue|Ubuntu 16.04.4 LTS \n \l
+|vc url|https://github.com/codelingo/codelingo
+|vc get-hash|1e408167efc4edd5b2bffbb675459cd0b6a08ff4
+|vc branch|master
+|go version|go version go1.11.1 linux/amd64
+
+*** recent commits
+#+BEGIN_SRC text
+  commit 1e408167efc4edd5b2bffbb675459cd0b6a08ff4
+  Merge: 0a78b4e 1a6cbff
+  Author: Shane Mulligan <mullikine@gmail.com>
+  
+      Merge pull request #197 from Daanikus/comment-first-word-as-subject
+  
+  commit 1a6cbff22710927084ed465da16c77367650fd34
+  Author: daanikus <daanikus@gmail.com>
+  
+      Updated expected.json file
+#+END_SRC
+*** ~.codelingoignore~
+#+BEGIN_SRC text
+  vendor/
+#+END_SRC
+
+** repo state
++ url :: git@github.com:mullikine/lingo/blob/master
+
+|command|value|
+|-
+|cat /etc/issue|Ubuntu 16.04.4 LTS \n \l
+|vc url|git@github.com:mullikine/lingo
+|vc get-hash|88ea7cd829c5368c565e143a1395946fc83f0d2d
+|vc branch|master
+|go version|go version go1.11.1 linux/amd64
+
+*** recent commits
+#+BEGIN_SRC text
+  commit 88ea7cd829c5368c565e143a1395946fc83f0d2d
+  Author: Emerson Wood <13581922+emersonwood@users.noreply.github.com>
+  
+      Update version v0.7.2 (#433)
+  
+  commit 9322dc849176903ad1e543f16edff82c0cccd0ea
+  Merge: 5660a4b 35e69f7
+  Author: BlakeMScurr <blake@codelingo.io>
+  
+      Merge pull request #399 from BlakeMScurr/update-default
+#+END_SRC
