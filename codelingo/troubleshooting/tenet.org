@@ -1,0 +1,36 @@
+* This yields results for interfaces with fewer methods than 4
+
+#+BEGIN_SRC yaml
+  - name: interface-too-many-methods
+    flows:
+      codelingo/docs:
+        title: Interface Has Too Many Methods
+        body: |
+          Awesome interfaces are small. >4 methods is a code smell. Split out large interfaces into semantically grouped methods.
+      codelingo/review:
+        comment: This interface has more than 4 methods. Consider splitting this interface up according to semantically grouped methods.
+    query: |
+      import codelingo/ast/go
+
+      go.file(depth = any):
+        go.decls:
+          go.gen_decl:
+            go.type_spec:
+              @review comment
+              go.ident
+              # Unfortunately, this does not match > 4 methods. It
+              # matches any interface. Probably need to use properties
+              # to differentiate
+              go.interface_type:
+                go.field_list:
+                  go.field:
+                    go.func_type
+                  go.field:
+                    go.func_type
+                  go.field:
+                    go.func_type
+                  go.field:
+                    go.func_type
+                  go.field:
+                    go.func_type
+#+END_SRC
