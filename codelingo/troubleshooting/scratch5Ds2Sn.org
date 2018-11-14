@@ -1,0 +1,21 @@
+* nitpicking -- feel free to ignore
+** Writing tenets
+*** Could you explain what a tenets 'key' is
+** Testing tenets
+*** Put your codelingo.yaml in a new folder named after the Tenet e.g sprintf
+Can I suggest something more literal here. e.g. "The folder and tenet name should be the same."
+* Publishing tenets
+*** maybe add this 
+Bundles using a single language are in that language's directory, cross main bundles have their own directories.
+*** readme
+**** Bundles have a README to explain their purpose with an ideas section for tenets yet to be implemented.
+**** Suggest "Ensure there is a link back to playground"
+https://codelingo.io/playground/?repo=github.com/codelingo/hub&dir=tenets/$contributor/$domain/$tenet_set_name&tenet=$contributor/$domain/$bundle_name
+*** testing
+**** Ensure test files
+from (https://github.com/mullikine/codelingo/blob/juju-mock-tenets/tenets/README.md)
+Each tenet should have an associated src file (or other example of queried domain) and an expected output at `./testdata/<tenet_name>.<language_extension>` and `./testdata/<tenet_name>.json` respectively.
+* IDE integration
+** No time for (but would like to add)
+- vim plugin
+- emacs plugin
