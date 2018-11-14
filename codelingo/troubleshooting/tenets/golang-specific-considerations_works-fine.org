@@ -1,0 +1,168 @@
+#+TITLE: troubleshooting new tenet ~golang-specific-considerations~
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
+
+* Problem
+Works-fine on the ~example.go~ file but not on Juju.
+
+** ~example.go~
+#+BEGIN_SRC go
+  // ./example/use-pointer-arg-for-worker.go
+  package mypack
+  
+  // good
+  func NewGoodWorkerGood() (*GoodWorker) {
+  }
+  
+  // bad
+  func NewBadWorkerBad() (worker.Worker) {
+  }
+  
+#+END_SRC
+
+** ~codelingo.yaml~
+#+BEGIN_SRC yaml
+  funcs:
+    - name: namedLikeAWorkerConstructor
+      type: asserter
+      body: |
+        function(text) {
+          var re = new RegExp("New[A-Za-z]\+Worker")
+          return re.test(text)
+        }
+  tenets:
+    - name: use-pointer-arg-for-worker
+      flows:
+        codelingo/docs:
+          title: Use Pointers For Workers Passed As Arguments
+          body: |
+            Using a `worker.Worker` as the parameter to a constructor of a worker type is a bad practice.
+            You should use a typed pointer instead.
+            `func NewGoodWorkerGood() (*GoodWorker) {}`
+            `func NewBadWorkerBad() (worker.Worker) {}`
+        codelingo/review:
+          comment: worker.Worker should be rewritten here to use a typed pointer (i.e. *GoodWorker)
+      query: |
+        import codelingo/ast/go
+        
+        go.file(depth = any):
+          go.func_decl(depth = any):
+            go.ident:
+              child_count == 0
+              name as funcName
+              namedLikeAWorkerConstructor(funcName)
+              type == "*ast.FuncType"
+            go.func_type:
+              go.field_list
+              go.field_list:
+                go.field:
+                  go.selector_expr:
+                    @review comment
+                    go.ident:
+                      name == "worker"
+                    go.ident:
+                      name == "Worker"
+#+END_SRC
+
+** annotated ~tty-output.log~
+#+BEGIN_SRC text
+  Constructing new git repo in temp folder... :: Wed Nov 14 16:46:54 NZDT 2018
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  Running: $HOME/scripts/rs -nc
+          -nogit
+          -noswap
+          $HOME/source/git/mullikine/codelingo/tenets/codelingo/juju/golang-specific-considerations/
+          /tmp/td_8vBu9i
+  /usr/bin/rsync  -a -rtlhx -pug -s  --inplace --append   --exclude .cache  --exclude .git/ --exclude .gitignore --exclude TODO  --exclude '*~' --exclude '.#*'  $HOME/source/git/mullikine/codelingo/tenets/codelingo/juju/golang-specific-considerations/ /tmp/td_8vBu9i
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  /tmp/td_8vBu9i
+  Syncing your repo...
+  Running review flow...
+  example/use-pointer-arg-for-worker.go:8:31
+      worker.Worker should be rewritten here to use a typed pointer (i.e. *GoodWorker)
+      ...
+      // bad
+    + func NewBadWorkerBad() (worker.Worker) {
+      }
+      ...
+  [o]pen [k]eep [d]iscard : k
+  Done! 1 issues found.
+  Done! 1 issues written to expected.json
+  review finished
+  Reformulate?
+  working_dir (loop): /tmp/td_8vBu9i
+  : k
+  : B
+  working_dir: /tmp/td_8vBu9i
+  Continue?
+   [Yn]: y
+  Differentiate tenet with a problem name?
+   [Yn]: w
+   [Yn]: o
+   [Yn]: r
+   [Yn]: k
+   [Yn]: y
+#+END_SRC
+
+** repository info
+| tenet source
+|-
+| [[https://github.com/mullikine/tenets/tree/master/blog/golang-specific-considerations/works-fine][tenets/blog/golang-specific-considerations/works-fine at master  mullikine/tenets  GitHub]]
+
+| org
+|-
+| [[https://github.com/mullikine/mullikine.github.io/tree/master/codelingo/troubleshooting/tenets/golang-specific-considerations_works-fine.org][github.com/mullikine/mullikine.github.io/tree/master/codelingo/troubleshooting/tenets/golang-specific-considerations_works-fine.org]]
+
+** repo state
++ url :: https://github.com/codelingo/codelingo/blob/master
+
+|command|value|
+|-
+|cat /etc/issue|Ubuntu 16.04.4 LTS \n \l
+|vc url|https://github.com/codelingo/codelingo
+|vc get-hash|1e408167efc4edd5b2bffbb675459cd0b6a08ff4
+|vc branch|master
+|go version|go version go1.11.1 linux/amd64
+
+*** recent commits
+#+BEGIN_SRC text
+  commit 1e408167efc4edd5b2bffbb675459cd0b6a08ff4
+  Merge: 0a78b4e 1a6cbff
+  Author: Shane Mulligan <mullikine@gmail.com>
+  
+      Merge pull request #197 from Daanikus/comment-first-word-as-subject
+  
+  commit 1a6cbff22710927084ed465da16c77367650fd34
+  Author: daanikus <daanikus@gmail.com>
+  
+      Updated expected.json file
+#+END_SRC
+*** ~.codelingoignore~
+#+BEGIN_SRC text
+  vendor/
+#+END_SRC
+
+** repo state
++ url :: git@github.com:mullikine/lingo/blob/master
+
+|command|value|
+|-
+|cat /etc/issue|Ubuntu 16.04.4 LTS \n \l
+|vc url|git@github.com:mullikine/lingo
+|vc get-hash|88ea7cd829c5368c565e143a1395946fc83f0d2d
+|vc branch|master
+|go version|go version go1.11.1 linux/amd64
+
+*** recent commits
+#+BEGIN_SRC text
+  commit 88ea7cd829c5368c565e143a1395946fc83f0d2d
+  Author: Emerson Wood <13581922+emersonwood@users.noreply.github.com>
+  
+      Update version v0.7.2 (#433)
+  
+  commit 9322dc849176903ad1e543f16edff82c0cccd0ea
+  Merge: 5660a4b 35e69f7
+  Author: BlakeMScurr <blake@codelingo.io>
+  
+      Merge pull request #399 from BlakeMScurr/update-default
+#+END_SRC
