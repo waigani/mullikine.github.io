@@ -1,0 +1,239 @@
+#+TITLE: ~lingo run review~ hanging with Dan's new tenet ~use-crypto-rand~
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
+
+* Problem
+review flow hangs after accepting the last review comment.
+
+- Hangs even if you do a --keep-all.
+- Hangs even if you use:
+  #+BEGIN_SRC sh
+    go run ~/go/src/github.com/codelingo/codelingo/flows/codelingo/review/main.goh
+  #+END_SRC
+- Hangs when you use binary directly ~$HOME/.codelingo/flows/codelingo/review/cmd~
+
+** ~example.go~
+#+BEGIN_SRC go
+  // ./example-bad.go
+  package main
+  
+  import (
+  	"math/rand"
+  	// "encoding/base64"
+  	// "encoding/hex"
+  	"fmt"
+  )
+  
+  func Key() string {
+  	buf := make([]byte, 16)
+  	_, err := rand.Read(buf)
+  	if err != nil {
+  		panic(err) // out of randomness, should never happen
+  	}
+  	return fmt.Sprintf("%x", buf)
+  	// or hex.EncodeToString(buf)
+  	// or base64.StdEncoding.EncodeToString(buf)
+  }
+  
+  // ./example.go
+  package main
+  
+  import (
+  	"math/rand"
+  	// "encoding/base64"
+  	// "encoding/hex"
+  	"fmt"
+  )
+  
+  func Key() string {
+  	buf := make([]byte, 16)
+  	_, err := rand.Read(buf)
+  	if err != nil {
+  		panic(err) // out of randomness, should never happen
+  	}
+  	return fmt.Sprintf("%x", buf)
+  	// or hex.EncodeToString(buf)
+  	// or base64.StdEncoding.EncodeToString(buf)
+  }
+  
+  func main() {
+  	var key = rand.Float64()
+  }
+  
+#+END_SRC
+
+** This ~codelingo.yaml~ fails
+#+BEGIN_SRC yaml
+  funcs:
+    - name: isKeyName
+      type: asserter
+      body: |
+        function(name) {
+          return name.toLowerCase().indexOf("key") !== -1
+        }
+  tenets:
+    - name: use-crypto-rand
+      flows:
+        codelingo/review:
+          comment: |
+            Do not use package math/rand to generate keys, even 
+            throwaway ones. Unseeded, the generator is completely predictable. 
+            Seeded with time.Nanoseconds(), there are just a few bits of entropy. 
+            Instead, use crypto/rand's Reader, and if you need text, print to 
+            hexadecimal or base64
+      query: |
+        import codelingo/ast/go
+  
+        go.import_spec(depth = any):     
+          go.basic_lit:
+            value == "math/rand"
+        any_of:
+          @review comment
+          go.func_decl(depth = any):
+            go.ident:
+              name as funcName
+              isKeyName(funcName)
+          @review comment
+          go.assign_stmt(depth = any):
+            go.lhs:
+              go.ident:
+                name as lhsName
+                isKeyName(lhsName)
+            go.rhs:
+              go.ident:
+                name == "rand"
+          
+#+END_SRC
+
+** annotated ~tty-output.log~
+#+BEGIN_SRC text
+  Constructing new git repo in temp folder... :: Fri Nov 16 11:15:26 NZDT 2018
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  Running: $HOME/scripts/rs -nc
+          -nogit
+          -noswap
+          $HOME/source/git/codelingo/codelingo/tenets/codelingo/code-review-comments/use-crypto-rand/
+          /tmp/td_ZNwmCa
+  /usr/bin/rsync  -a -rtlhx -pug -s  --inplace --append   --exclude .cache  --exclude .git/ --exclude .gitignore --exclude TODO  --exclude '*~' --exclude '.#*'  $HOME/source/git/codelingo/codelingo/tenets/codelingo/code-review-comments/use-crypto-rand/ /tmp/td_ZNwmCa
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  /tmp/td_ZNwmCa
+  Syncing your repo...
+  Running review flow...
+  example.go:19:2
+      Do not use package math/rand to generate keys, even
+      throwaway ones. Unseeded, the generator is completely predictable.
+      Seeded with time.Nanoseconds(), there are just a few bits of entropy.
+      Instead, use crypto/rand's Reader, and if you need text, print to
+      hexadecimal or base64
+      ...
+      )
+    + func Key() string {
+    +     buf := make([]byte, 16)
+    +     _, err := rand.Read(buf)
+    +     if err != nil {
+    +             panic(err) // out of randomness, should never happen
+    +     }
+    +     return fmt.Sprintf("%x", buf)
+    +     // or hex.EncodeToString(buf)
+    +     // or base64.StdEncoding.EncodeToString(buf)
+    + }
+      func main() {
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example-bad.go:19:2
+      Do not use package math/rand to generate keys, even
+      throwaway ones. Unseeded, the generator is completely predictable.
+      Seeded with time.Nanoseconds(), there are just a few bits of entropy.
+      Instead, use crypto/rand's Reader, and if you need text, print to
+      hexadecimal or base64
+      ...
+      )
+    + func Key() string {
+    +     buf := make([]byte, 16)
+    +     _, err := rand.Read(buf)
+    +     if err != nil {
+    +             panic(err) // out of randomness, should never happen
+    +     }
+    +     return fmt.Sprintf("%x", buf)
+    +     // or hex.EncodeToString(buf)
+    +     // or base64.StdEncoding.EncodeToString(buf)
+    + }
+      ...
+  [o]pen [k]eep [d]iscard : k
+  ^C
+  review finished
+  Reformulate?
+  working_dir (loop): /tmp/td_ZNwmCa
+  : S
+  : B
+  working_dir: /tmp/td_ZNwmCa
+  Continue?
+   [Yn]: y
+  Differentiate tenet with a problem name?
+   [Yn]: l
+   [Yn]: i
+   [Yn]: n
+#+END_SRC
+
+** repository info
+| tenet source                                                             |
+|--------------------------------------------------------------------------|
+| [[https://github.com/mullikine/tenets/tree/master/blog/use-crypto-rand/review-hang][github.com/mullikine/tenets/tree/master/blog/use-crypto-rand/review-hang]] |
+
+| org                                                                                                                             |
+|---------------------------------------------------------------------------------------------------------------------------------|
+| [[https://github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/tenets/use-crypto-rand-lingo-run-review-hang.org][github.com/mullikine/mullikine.github.io/blob/master/codelingo/troubleshooting/tenets/use-crypto-rand-lingo-run-review-hang.org]] |
+
+** repo state
++ url :: https://github.com/codelingo/codelingo/blob/master
+
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | https://github.com/codelingo/codelingo   |
+| vc get-hash    | 763d3ea5844db5bddb3292e8623fa71d84ddddcc |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
+
+*** recent commits
+#+BEGIN_SRC text
+  commit 763d3ea5844db5bddb3292e8623fa71d84ddddcc
+  Merge: 4125d28 9d809f6
+  Author: Daanikus <daanikus@gmail.com>
+  
+      Merge pull request #207 from Daanikus/single-method-interface-name
+  
+  commit 9d809f6044f0c2892a50b2f68de13e32d82d0a19
+  Author: daanikus <daanikus@gmail.com>
+  
+      Updated expected.json file
+#+END_SRC
+*** ~.codelingoignore~
+#+BEGIN_SRC text
+  vendor/
+#+END_SRC
+
+** repo state
++ url :: git@github.com:mullikine/lingo/blob/master
+
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | git@github.com:mullikine/lingo           |
+| vc get-hash    | 88ea7cd829c5368c565e143a1395946fc83f0d2d |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
+
+*** recent commits
+#+BEGIN_SRC text
+  commit 88ea7cd829c5368c565e143a1395946fc83f0d2d
+  Author: Emerson Wood <13581922+emersonwood@users.noreply.github.com>
+  
+      Update version v0.7.2 (#433)
+  
+  commit 9322dc849176903ad1e543f16edff82c0cccd0ea
+  Merge: 5660a4b 35e69f7
+  Author: BlakeMScurr <blake@codelingo.io>
+  
+      Merge pull request #399 from BlakeMScurr/update-default
+#+END_SRC
