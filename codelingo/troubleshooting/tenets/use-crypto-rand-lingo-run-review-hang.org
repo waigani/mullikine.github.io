@@ -175,6 +175,11 @@ review flow hangs after accepting the last review comment.
    [Yn]: n
 #+END_SRC
 
+** strace output
+[[https://mullikine.github.io/codelingo/troubleshooting/tenets/use-crypto-rand-strace.txt][mullikine.github.io/codelingo/troubleshooting/tenets/use-crypto-rand-strace.txt]]
+
+After the hang I don't get any output.
+
 ** repository info
 | tenet source                                                             |
 |--------------------------------------------------------------------------|
