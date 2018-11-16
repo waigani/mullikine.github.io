@@ -1,0 +1,210 @@
+#+TITLE: troubleshooting new tenet ~avoid-renaming-imports~
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
+
+* Problem
+Hitting the same issue multiple times.
+Only one ~@review comment~ specified.
+
+** ~example.go~
+#+BEGIN_SRC go
+  // ./example.go
+  package main
+  
+  import (
+  	badfmt "fmt"
+  	otherrand "math/rand"
+      "path/to/different/rand"
+  	_ "os"
+  )
+  
+  func main() {
+  	fmt.Println("Hello, playground")
+  }
+  
+#+END_SRC
+
+** This ~codelingo.yaml~ fails
+#+BEGIN_SRC yaml
+  funcs:
+    - name: diffNameImport
+      type: asserter
+      body: |
+        function(a, b) {
+          var aSplit = a.toLowerCase().split("/")
+          var bSplit = b.toLowerCase().split("/")
+          return a[a.length - 1] !== b[b.length - 1]
+        }
+  tenets:
+    - name: avoid-renaming-imports
+      flows:
+        codelingo/docs:
+          title: Avoid Renaming Imports
+          body: |
+            Avoid renaming imports except to avoid a name collision; good package names
+            should not require renaming. In the event of collision, prefer to rename the
+            most local or project-specific import.
+        codelingo/review:
+          comment: |
+            Avoid renaming imports except to avoid a name collision; good package names
+            should not require renaming. In the event of collision, prefer to rename the
+            most local or project-specific import.
+      query: |
+        import codelingo/ast/go
+  
+        go.gen_decl(depth = any):
+          @review comment
+          go.import_spec(depth = 0:2):
+            go.ident: # Ident is the rename and absent if not named
+              name != "_"
+            go.basic_lit: # Basic_lit is the "import/path"
+              value as importOne
+          go.import_spec:
+            go.basic_lit:
+              value as importTwo
+          diffNameImport(importOne, importTwo)
+  
+  
+        
+#+END_SRC
+
+** annotated ~tty-output.log~
+#+BEGIN_SRC text
+  Constructing new git repo in temp folder... :: Fri Nov 16 13:48:08 NZDT 2018
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  Running: $HOME/scripts/rs -nc
+          -nogit
+          -noswap
+          $HOME/source/git/codelingo/codelingo/tenets/codelingo/code-review-comments/avoid-renaming-imports/
+          /tmp/td_AKJ8Nu
+  /usr/bin/rsync  -a -rtlhx -pug -s  --inplace --append   --exclude .cache  --exclude .git/ --exclude .gitignore --exclude TODO  --exclude '*~' --exclude '.#*'  $HOME/source/git/codelingo/codelingo/tenets/codelingo/code-review-comments/avoid-renaming-imports/ /tmp/td_AKJ8Nu
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  /tmp/td_AKJ8Nu
+  Syncing your repo...
+  Running review flow...
+  example.go:4:14
+      Avoid renaming imports except to avoid a name collision; good package names
+      should not require renaming. In the event of collision, prefer to rename the
+      most local or project-specific import.
+      ...
+      import (
+    +     badfmt "fmt"
+          otherrand "math/rand"
+          "path/to/different/rand"
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:4:14
+      Avoid renaming imports except to avoid a name collision; good package names
+      should not require renaming. In the event of collision, prefer to rename the
+      most local or project-specific import.
+      ...
+      import (
+    +     badfmt "fmt"
+          otherrand "math/rand"
+          "path/to/different/rand"
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:5:23
+      Avoid renaming imports except to avoid a name collision; good package names
+      should not require renaming. In the event of collision, prefer to rename the
+      most local or project-specific import.
+      ...
+      import (
+          badfmt "fmt"
+    +     otherrand "math/rand"
+          "path/to/different/rand"
+          _ "os"
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:4:14
+      Avoid renaming imports except to avoid a name collision; good package names
+      should not require renaming. In the event of collision, prefer to rename the
+      most local or project-specific import.
+      ...
+      import (
+    +     badfmt "fmt"
+          otherrand "math/rand"
+          "path/to/different/rand"
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:5:23
+      Avoid renaming imports except to avoid a name collision; good package names
+      should not require renaming. In the event of collision, prefer to rename the
+      most local or project-specific import.
+      ...
+      import (
+          badfmt "fmt"
+    +     otherrand "math/rand"
+          "path/to/different/rand"
+          _ "os"
+      ...
+  [o]pen [k]eep [d]iscard : k
+  Done! 5 issues found.
+  Done! 5 issues written to expected.json
+  review finished
+  Reformulate?
+  working_dir (loop): /tmp/td_AKJ8Nu
+  : B
+  working_dir: /tmp/td_AKJ8Nu
+  Continue?
+   [Yn]: y
+  Differentiate tenet with a problem name?
+   [Yn]: m
+   [Yn]: u
+   [Yn]: l
+   [Yn]: y
+#+END_SRC
+
+** repo state
++ url :: https://github.com/codelingo/codelingo/blob/master
+
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | https://github.com/codelingo/codelingo   |
+| vc get-hash    | 763d3ea5844db5bddb3292e8623fa71d84ddddcc |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
+
+*** recent commits
+#+BEGIN_SRC text
+  commit 763d3ea5844db5bddb3292e8623fa71d84ddddcc
+  Merge: 4125d28 9d809f6
+  Author: Daanikus <daanikus@gmail.com>
+  
+      Merge pull request #207 from Daanikus/single-method-interface-name
+  
+  commit 9d809f6044f0c2892a50b2f68de13e32d82d0a19
+  Author: daanikus <daanikus@gmail.com>
+  
+      Updated expected.json file
+#+END_SRC
+*** ~.codelingoignore~
+#+BEGIN_SRC text
+  vendor/
+#+END_SRC
+
+** repo state
++ url :: git@github.com:mullikine/lingo/blob/master
+
+| command        | value                                    |
+|----------------+------------------------------------------|
+| cat /etc/issue | Ubuntu 16.04.4 LTS \n \l                 |
+| vc url         | git@github.com:mullikine/lingo           |
+| vc get-hash    | 88ea7cd829c5368c565e143a1395946fc83f0d2d |
+| vc branch      | master                                   |
+| go version     | go version go1.11.1 linux/amd64          |
+
+*** recent commits
+#+BEGIN_SRC text
+  commit 88ea7cd829c5368c565e143a1395946fc83f0d2d
+  Author: Emerson Wood <13581922+emersonwood@users.noreply.github.com>
+  
+      Update version v0.7.2 (#433)
+  
+  commit 9322dc849176903ad1e543f16edff82c0cccd0ea
+  Merge: 5660a4b 35e69f7
+  Author: BlakeMScurr <blake@codelingo.io>
+  
+      Merge pull request #399 from BlakeMScurr/update-default
+#+END_SRC
