@@ -1,0 +1,38 @@
+* Debugging emacs haskell environment
+
+I think this is what is causing emacs to be slow with haskell
+#+BEGIN_SRC text
+  Suspicious state from syntax checker haskell-stack-ghc: Flycheck checker haskell-stack-ghc returned non-zero exit code 1, but its output contained no errors: Run from outside a project, using implicit global project config
+  Downloading lts-10.9 build plan ...
+  Downloaded lts-10.9 build plan.
+  AesonException "Invalid flag name: \"bytestring--lt-0_10_4\""
+#+END_SRC
+
+#+BEGIN_SRC sh
+  cat /etc/issue
+#+END_SRC
+
+#+RESULTS:
+: Ubuntu 16.04.4 LTS \n \l
+
+#+BEGIN_SRC sh
+  ghc --version
+#+END_SRC
+
+#+RESULTS:
+| The Glorious Glasgow Haskell Compilation System | version 7.10.3 |
+
+#+BEGIN_SRC sh
+  stack --version
+#+END_SRC
+
+#+RESULTS:
+: Version 0.1.10.0 x86_64
+
+#+BEGIN_SRC sh :results verbatim
+  cabal --version
+#+END_SRC
+
+#+RESULTS:
+: cabal-install version 1.22.6.0
+: using version 1.22.5.0 of the Cabal library 
