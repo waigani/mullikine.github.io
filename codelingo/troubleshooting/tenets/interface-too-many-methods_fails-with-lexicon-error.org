@@ -1,0 +1,291 @@
+#+TITLE: troubleshooting new tenet ~interface-too-many-methods~ -lexicon error
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
+
+* Problem
+Fails with lexicon error on platform.
+
+** ~example.go~
+#+BEGIN_SRC go
+  // ./example.go
+  // Package mypack This package serves as example code for the tenet `interface-too-many-methods`
+  package mypack
+  
+  type smallInterface interface {
+  	surfaceArea() float64
+  	volume() float64
+  }
+  
+  type excessiveInterface interface {
+  	perimeter() float64
+  	surfaceArea() float64
+  	volume() float64
+  	diameter() float64
+  	radius() float64
+  	circumference() float64
+  }
+  
+#+END_SRC
+
+** platform error
+#+BEGIN_SRC text
+  1 errors occurred in the last 30s
+  mullikine hit a lexicon error: request failed after 12 attempts: request dump POST /register HTTP/1.1 Host: router.lexicon-engine.svc.cluster.local:80 Content-Type: application/json  {"lexicon":"codelingo-vcs-git-latest","setup":{"Steps":[]}}: Post http://router.lexicon-engine.svc.cluster.local:80/r…
+  Post http://router.lexicon-engine.svc.cluster.local:80/register: context canceled
+  /home/vagrant/go/src/github.com/codelingo/platform/vendor/github.com/codelingo/lexicon/lib/lexicon/response.go:58: request failed after 12 attempts: request dump POST /register HTTP/1.1
+  Host: router.lexicon-engine.svc.cluster.local:80
+  Content-Type: application/json
+
+  {"lexicon":"codelingo-vcs-git-latest","setup":{"Steps":[]}}
+  /home/vagrant/go/src/github.com/codelingo/platform/vendor/github.com/codelingo/lexicon/lib/lexicon/service.go:86: request failed after 12 attempts: request dump POST /register HTTP/1.1
+  Host: router.lexicon-engine.svc.cluster.local:80
+  Content-Type: application/json
+
+  {"lexicon":"codelingo-vcs-git-latest","setup":{"Steps":[]}}: Post http://router.lexicon-engine.svc.cluster.local:80/register: context canceled
+  /home/vagrant/go/src/github.com/codelingo/platform/backend/lexicon/vcs/generic/generic.go:22:
+  /home/vagrant/go/src/github.com/codelingo/platform/backend/lexicon/factory/factory.go:30:
+  /home/vagrant/go/src/github.com/codelingo/platform/controller/ingestengine/querysubtrees/querysubtrees.go:236:
+  /home/vagrant/go/src/github.com/codelingo/platform/controller/ingestengine/worker/lexicons/vcs/manifold.go:83:
+  /home/vagrant/go/src/github.com/codelingo/platform/controller/ingestengine/ingestengine.go:215:
+  /home/vagrant/go/src/github.com/codelingo/platform/controller/querysession/querysession.go:75:
+  /home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a lexicon error
+  1 errors occurred in the last 30s
+  mullikine hit a uncaught error: Sorry, an error occurred while processing your request. Please try again.
+  /home/vagrant/go/src/github.com/codelingo/platform/flow/bots/processor/streamed.go:54: Sorry, an error occurred while processing your request. Please try again.
+  /home/vagrant/go/src/github.com/codelingo/platform/flow/util/util.go:11:
+  /home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+  /home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+  2 errors occurred in the last 30s
+  mullikine hit a uncaught error: rpc error: code = Canceled desc = context canceled
+  /home/vagrant/go/src/github.com/codelingo/platform/flow/bots/processor/streamed.go:54: rpc error: code = Canceled desc = context canceled
+  /home/vagrant/go/src/github.com/codelingo/platform/flow/util/util.go:11:
+  /home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+  /home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+  mullikine hit a userfacing error: failed to send result from flow server to client: Sorry, an error occurred while processing your request. Please try again.
+  Sorry, an error occurred while processing your request. Please try again.
+  /home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:175: failed to send result from flow server to client
+  /home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a userfacing error
+  2 errors occurred in the last 30s
+  mullikine hit a uncaught error: Error while running query: {root as root(func: uid(1))  {  uid }  c(func: uid(root))  {   d as ___child {    uid   }  uid }  b(func: eq(___kind,"git.repo"))  @filter(eq(___s_owner,"mullikine") and eq(___s_host,"https://git.codelingo.io") and eq(___s_name,"td_z07hbK") …
+  rpc error: code = Canceled desc = context canceled
+  /home/vagrant/go/src/github.com/codelingo/platform/controller/graphdb/query/dgraph.go:1733: Error while running query: {root as root(func: uid(1))  {
+
+  uid
+  }
+
+  c(func: uid(root))  {
+   d as ___child {
+
+   uid
+   }
+
+  uid
+  }
+
+  b(func: eq(___kind,"git.repo"))  @filter(eq(___s_owner,"mullikine") and eq(___s_host,"https://git.codelingo.io") and eq(___s_name,"td_z07hbK") and uid(d))
+  {
+
+  ___f_uid
+   ___b_uid
+   uid
+   ___s_owner
+   ___s_host
+   ___s_name
+   ___s_uid
+   ___i_uid
+  }
+
+  }
+
+  /home/vagrant/go/src/github.com/codelingo/platform/controller/graphdb/query/dgraph.go:1595:
+  /home/vagrant/go/src/github.com/codelingo/platform/flow/bots/processor/internal.go:97:
+  /home/vagrant/go/src/github.com/codelingo/platform/flow/bots/processor/internal.go:57:
+  /home/vagrant/go/src/github.com/codelingo/platform/controller/graphdb/query/dgraph.go:1763:
+  /home/vagrant/go/src/github.com/codelingo/platform/controller/ingestengine/ingestengine.go:254:
+  /home/vagrant/go/src/github.com/codelingo/platform/controller/ingestengine/ingestengine.go:146:
+  /home/vagrant/go/src/github.com/codelingo/platform/controller/querysession/querysession.go:75:
+  /home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+  mullikine hit a uncaught error: rpc error: code = Internal desc = transport: transport: the stream is done or WriteHeader was already called
+  rpc error: code = Internal desc = transport: transport: the stream is done or WriteHeader was already called
+  /home/vagrant/go/src/github.com/codelingo/platform/frontend/service/internal.go:87:
+  /home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+#+END_SRC
+
+** This ~codelingo.yaml~ fails
+#+BEGIN_SRC yaml
+  tenets:
+    - name: interface-too-many-methods
+      flows:
+        codelingo/rewrite:
+        codelingo/docs:
+          title: Interface Too Many Methods
+          body: |
+            One method is a great size for an interface; 3 or 4 is probably
+            perfectly decent; more than that and you're probably creating an
+            interface to cover up for some bloated concrete type that you're
+            replacing so you can test the recipient.
+            
+            And that's tolerable -- it's certainly progress -- but it's also quite
+            possibly a missed opportunity. Imagine a config struct that currently
+            references some horrible gnarly type:
+            
+                type Config struct {
+                    State *state.State
+                    Magic string
+                }
+            
+            ...and an implementation that uses a bunch of methods, such that you
+            extract the following interface to give (note: not real State methods,
+            methods returning concrete types with unexported fields are a goddamn
+            nightmare for testing and refactoring, this is heavily idealized for
+            convenience):
+            
+                type Backend interface {
+                    ListUnits() ([]string, error)
+                    GetUnits([]string) ([]Unit, error)
+                    DestroyUnits([]string) error
+                    ListMachines() ([]string, error)
+                    GetMachines([]string) ([]Machine, error)
+                    DestroyMachines([]string) error
+                }
+            
+                type Config struct {
+                    Backend Backend
+                    Magic   string
+                }
+            
+            This is great, because you can now test your implementation thoroughly
+            by means of a mock implementing the Backend interface, but it's actually
+            still pretty unwieldy.
+            
+            If we go a step further, though, according to the capabilities that are
+            most intimately connected:
+            
+                type UnitBackend interface {
+                    ListUnits() ([]string, error)
+                    GetUnits([]string) ([]Unit, error)
+                    DestroyUnits([]string) error
+                }
+            
+                type MachineBackend interface {
+                    ListMachines() ([]string, error)
+                    GetMachines([]string) ([]Machine, error)
+                    DestroyMachines([]string) error
+                }
+            
+                type Config struct {
+                    Units    UnitBackend
+                    Machines MachineBackend
+                    Magic    string
+                }
+            
+            ...the scope of the type's responsibilities is immediately clearer: the
+            capabilities exposed to it are immediately clearer; and it's also easier
+            to build more modular test scaffolding around particular areas.
+        codelingo/review:
+          comment: This interface contains more than 4 methods, which makes its responsibilities unclear. Reduce the number of methods or divide it up into several smaller interfaces.
+      query: |
+        import codelingo/ast/go
+        
+        go.file(depth = any):
+          go.decls:
+            go.gen_decl:
+              go.type_spec:
+                @review comment
+                go.ident
+                go.interface_type:
+                  go.field_list:
+                    go.field:
+                      sibling_order == 4
+                      go.func_type
+#+END_SRC
+
+** annotated ~tty-output.log~
+#+BEGIN_SRC text
+  Constructing new git repo in temp folder... :: Wed Nov 21 17:28:05 NZDT 2018
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  Running: $HOME/scripts/rs -nc
+          -nogit
+          -noswap
+          $HOME/source/git/mullikine/codelingo/tenets/codelingo/juju/interface-too-many-methods/
+          /tmp/td_z07hbK
+  /usr/bin/rsync  -a -rtlhx -pug -s  --inplace --append   --exclude .cache  --exclude .git/ --exclude .gitignore --exclude TODO  --exclude '*~' --exclude '.#*'  $HOME/source/git/mullikine/codelingo/tenets/codelingo/juju/interface-too-many-methods/ /tmp/td_z07hbK
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  /tmp/td_z07hbK
+  Syncing your repo...
+  Running review flow...
+  Sorry, a server error occurred and the connection was broken. Please try again.
+  exit status 1
+  review finished
+  Reformulate?
+  working_dir (loop): /tmp/td_z07hbK
+  : B
+  working_dir: /tmp/td_z07hbK
+   Continue?
+   ^[YyNn]$: y
+   Differentiate tenet with a problem name?
+   ^[YN]$: Y
+#+END_SRC
+
+** repository info
+| tenet source
+|-
+| [[https://github.com/mullikine/tenets/tree/master/blog/interface-too-many-methods/fails-with-lexicon-error][tenets/blog/interface-too-many-methods/fails-with-lexicon-error at master  mullikine/tenets  GitHub]]
+
+| org
+|-
+| [[https://github.com/mullikine/mullikine.github.io/tree/master/codelingo/troubleshooting/tenets/interface-too-many-methods_fails-with-lexicon-error.org][github.com/mullikine/mullikine.github.io/tree/master/codelingo/troubleshooting/tenets/interface-too-many-methods_fails-with-lexicon-error.org]]
+
+** repo state
++ url :: https://github.com/codelingo/codelingo/blob/master
+
+|command|value|
+|-
+|cat /etc/issue|Ubuntu 16.04.4 LTS \n \l
+|vc url|https://github.com/codelingo/codelingo
+|vc get-hash|fbf2f093e7399db50ba491982c4b6120b97053e2
+|vc branch|master
+|go version|go version go1.11.1 linux/amd64
+
+*** recent commits
+#+BEGIN_SRC text
+  commit fbf2f093e7399db50ba491982c4b6120b97053e2
+  Merge: 004f478 f3525e3
+  Author: Daanikus <daanikus@gmail.com>
+  
+      Merge pull request #219 from Daanikus/underscores-in-name
+  
+  commit f3525e367f50146c09990a71e16f786e4e57ef74
+  Author: daanikus <daanikus@gmail.com>
+  
+      Included example .pb.go file
+#+END_SRC
+*** ~.codelingoignore~
+#+BEGIN_SRC text
+  vendor/
+#+END_SRC
+
+** repo state
++ url :: git@github.com:mullikine/lingo/blob/master
+
+|command|value|
+|-
+|cat /etc/issue|Ubuntu 16.04.4 LTS \n \l
+|vc url|git@github.com:mullikine/lingo
+|vc get-hash|88ea7cd829c5368c565e143a1395946fc83f0d2d
+|vc branch|master
+|go version|go version go1.11.1 linux/amd64
+
+*** recent commits
+#+BEGIN_SRC text
+  commit 88ea7cd829c5368c565e143a1395946fc83f0d2d
+  Author: Emerson Wood <13581922+emersonwood@users.noreply.github.com>
+  
+      Update version v0.7.2 (#433)
+  
+  commit 9322dc849176903ad1e543f16edff82c0cccd0ea
+  Merge: 5660a4b 35e69f7
+  Author: BlakeMScurr <blake@codelingo.io>
+  
+      Merge pull request #399 from BlakeMScurr/update-default
+#+END_SRC
