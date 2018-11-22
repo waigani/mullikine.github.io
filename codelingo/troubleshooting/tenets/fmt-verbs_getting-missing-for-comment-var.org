@@ -1,0 +1,270 @@
+#+TITLE: troubleshooting new tenet ~fmt-verbs~ -- comment var missing
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/org-main.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://mullikine.github.io/magit.css"/>
+
+* Problem
+getting missing for comment var
+
+** ~example.go~
+#+BEGIN_SRC go
+  // ./example.go
+  //Package main is an example package
+  package main
+  
+  import (
+  	"fmt"
+  )
+  
+  func main() {
+  	var s = "Hello, world!"
+  	var i = 42
+  	var f float32 = 42.24
+  	fmt.Println("%v", s)
+  	fmt.Println("%s", s)
+  	fmt.Println("%v%v", s, i)
+  	fmt.Println("%v", i)
+  	fmt.Println("%v is a string", s)
+  	fmt.Println("%g", f)
+  	fmt.Println("%v", f)
+  
+  	fmt.Println("%s%v", s, i)
+  
+  	fmt.Println("%s%v%d", s, s, i)
+  }
+  
+#+END_SRC
+
+** This ~codelingo.yaml~ fails
+#+BEGIN_SRC yaml
+  funcs:
+    - name: hasGeneralVerb
+      type: asserter
+      body: |
+        function (str, order) {
+          order--
+          var matches = str.match(/%[A-Za-z]/g)
+          if (matches.length <= order) return false
+          var result = matches[order]
+          return result === "%v"
+        }
+    - name: verbForType
+      type: resolver
+      body: |
+        function (type) {
+          var types = {
+          "string":     "%s", 
+          "bool":       "%t",
+          "int":        "%d",
+          "int8":       "%d",
+          "int16":      "%d",
+          "int32":      "%d",
+          "int64":      "%d",
+          "uint":       "%d",
+          "uint8":      "%d",
+          "uint16":     "%d",
+          "uint32":     "%d",
+          "uint64":     "%d",
+          "uintptr":    "%p",
+          "byte":       "%d",
+          "rune":       "%q",
+          "float32":    "%g", 
+          "float64":    "%g",
+          "complex32":  "%g",
+          "complex64":  "%g",
+          }
+  
+          var result = types[type]
+  
+          return typeof result == 'undefined' ? "" : result
+        }
+  tenets:
+    - name: fmt-verbs
+      vars:
+        result: "{{verbForType(argType)}}"
+      flows:
+        codelingo/docs:
+          title: Use Appropriate Verbs in Format
+          body: |
+            Prefer the most specific verb for your use. In other words, 
+            prefer to avoid %v when possible. However, %v is to be used 
+            when formatting bindings which might be nil and which do not 
+            already handle nil formatting. Notably, nil errors formatted 
+            as %s will render as "%!s()" while nil errors formatted as %v 
+            will render as "". Therefore, prefer %v when formatting errors 
+            which are not known to be non-nil.
+        codelingo/review:
+          comment:  type should use an appropriate verb such as `{{result}}` for `{{argType}}`
+      query: |
+  
+        import codelingo/ast/go
+  
+        # Currently only works for the first arg to fmt
+        # The JS function is ready when we have a good
+        # solution to handling star expression arg types.
+        # eg. we want:
+        #
+        # any_of:
+        #   go.ident:
+        #     name as typeName
+        #   go.star_expr:
+        #     go.ident:
+        #       name as typeName
+  
+        go.call_expr(depth = any):
+          go.selector_expr:
+            @review comment
+            go.ident:
+              name == "fmt"
+          go.args:   
+            go.basic_lit:
+              sibling_order == 0
+              value as formatString
+              kind == "string"
+            go.ident:
+              type as argType
+              sibling_order as so
+              hasGeneralVerb(formatString, so)
+              result != ""
+#+END_SRC
+
+** annotated ~tty-output.log~
+#+BEGIN_SRC text
+  Constructing new git repo in temp folder... :: Fri Nov 23 11:56:28 NZDT 2018
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  Running: $HOME/scripts/rs -nc
+          -nogit
+          -noswap
+          $HOME/source/git/codelingo/codelingo/tenets/codelingo/cockroachdb/fmt-verbs/
+          /tmp/td_zFu1J8
+  /usr/bin/rsync  -a -rtlhx -pug -s  --inplace --append   --exclude .cache  --exclude .git/ --exclude .gitignore --exclude TODO  --exclude '*~' --exclude '.#*'  $HOME/source/git/codelingo/codelingo/tenets/codelingo/cockroachdb/fmt-verbs/ /tmp/td_zFu1J8
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  /tmp/td_zFu1J8
+  /tmp/td_zFu1J8
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  Syncing your repo...
+  Running review flow...
+  example.go:14:5
+      type should use an appropriate verb such as `%!s(MISSING)` for `string`
+      ...
+          fmt.Println("%v", s)
+          fmt.Println("%s", s)
+    +     fmt.Println("%v%v", s, i)
+          fmt.Println("%v", i)
+          fmt.Println("%v is a string", s)
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:16:5
+      type should use an appropriate verb such as `%!s(MISSING)` for `string`
+      ...
+          fmt.Println("%v%v", s, i)
+          fmt.Println("%v", i)
+    +     fmt.Println("%v is a string", s)
+          fmt.Println("%g", f)
+          fmt.Println("%v", f)
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:12:5
+      type should use an appropriate verb such as `%!s(MISSING)` for `string`
+      ...
+          var i = 42
+          var f float32 = 42.24
+    +     fmt.Println("%v", s)
+          fmt.Println("%s", s)
+          fmt.Println("%v%v", s, i)
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:15:5
+      type should use an appropriate verb such as `%!d(MISSING)` for `int`
+      ...
+          fmt.Println("%s", s)
+          fmt.Println("%v%v", s, i)
+    +     fmt.Println("%v", i)
+          fmt.Println("%v is a string", s)
+          fmt.Println("%g", f)
+      ...
+  [o]pen [k]eep [d]iscard : k
+  example.go:18:5
+      type should use an appropriate verb such as `%!g(MISSING)` for `float32`
+      ...
+          fmt.Println("%v is a string", s)
+          fmt.Println("%g", f)
+    +     fmt.Println("%v", f)
+          fmt.Println("%s%v", s, i)
+      ...
+  [o]pen [k]eep [d]iscard : k
+  Done! 5 issues found.
+  Done! 5 issues written to expected.json
+  review finished
+  Reformulate?
+  working_dir (loop): /tmp/td_zFu1J8
+  : B
+  working_dir: /tmp/td_zFu1J8
+   Continue?
+   ^[YyNn]$: y
+   Differentiate tenet with a problem name?
+   ^[YN]$: y
+   ^[YN]$: Y
+#+END_SRC
+
+** repository info
+| tenet source
+|-
+| [[https://github.com/mullikine/tenets/tree/master/blog/fmt-verbs/getting-missing-for-comment-var][tenets/blog/fmt-verbs/getting-missing-for-comment-var at master  mullikine/tenets  GitHub]]
+
+| org
+|-
+| [[https://github.com/mullikine/mullikine.github.io/tree/master/codelingo/troubleshooting/tenets/fmt-verbs_getting-missing-for-comment-var.org][github.com/mullikine/mullikine.github.io/tree/master/codelingo/troubleshooting/tenets/fmt-verbs_getting-missing-for-comment-var.org]]
+
+** repo state
++ url :: https://github.com/codelingo/codelingo/blob/master
+
+|command|value|
+|-
+|cat /etc/issue|Ubuntu 16.04.4 LTS \n \l
+|vc url|https://github.com/codelingo/codelingo
+|vc get-hash|9a57819fc7ba24186d76b9b2456fa5d275dee2ac
+|vc branch|master
+|go version|go version go1.11.1 linux/amd64
+
+*** recent commits
+#+BEGIN_SRC text
+  commit 9a57819fc7ba24186d76b9b2456fa5d275dee2ac
+  Merge: c91ab8f 0dff8b7
+  Author: Daanikus <daanikus@gmail.com>
+  
+      Merge pull request #235 from Daanikus/cockroach-lll
+  
+  commit 0dff8b7e1ba9df8932b55e4781dccf71a112a256
+  Merge: d37d5ff c91ab8f
+  Author: Daanikus <daanikus@gmail.com>
+  
+#+END_SRC
+*** ~.codelingoignore~
+#+BEGIN_SRC text
+  vendor/
+#+END_SRC
+
+** repo state
++ url :: git@github.com:mullikine/lingo/blob/master
+
+|command|value|
+|-
+|cat /etc/issue|Ubuntu 16.04.4 LTS \n \l
+|vc url|git@github.com:mullikine/lingo
+|vc get-hash|88ea7cd829c5368c565e143a1395946fc83f0d2d
+|vc branch|master
+|go version|go version go1.11.1 linux/amd64
+
+*** recent commits
+#+BEGIN_SRC text
+  commit 88ea7cd829c5368c565e143a1395946fc83f0d2d
+  Author: Emerson Wood <13581922+emersonwood@users.noreply.github.com>
+  
+      Update version v0.7.2 (#433)
+  
+  commit 9322dc849176903ad1e543f16edff82c0cccd0ea
+  Merge: 5660a4b 35e69f7
+  Author: BlakeMScurr <blake@codelingo.io>
+  
+      Merge pull request #399 from BlakeMScurr/update-default
+#+END_SRC
