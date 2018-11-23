@@ -1,0 +1,342 @@
+platform-errors APP [5:08 PM]
+83 errors occurred in the last 30s
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/go/global-var/codelingo.yaml': tenet 'global-variable' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/go/global-var/codelingo.yaml': tenet 'global-variable' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'codelingo.yaml': tenet 'nil-only-functions' must have a rewrite config section
+codelingo.yaml file 'codelingo.yaml': tenet 'nil-only-functions' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'codelingo.yaml': tenet 'unconvert' must have a rewrite config section
+codelingo.yaml file 'codelingo.yaml': tenet 'unconvert' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'codelingo.yaml': tenet 'sprintf-error' must have a rewrite config section
+codelingo.yaml file 'codelingo.yaml': tenet 'sprintf-error' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'codelingo.yaml': tenet 'empty-slice' must have a rewrite config section
+codelingo.yaml file 'codelingo.yaml': tenet 'empty-slice' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/php/offsite-redirection/codelingo.yaml': tenet 'use-offsite-check' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/php/offsite-redirection/codelingo.yaml': tenet 'use-offsite-check' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/kubernetes/well-named-interface/codelingo.yaml': tenet 'well-named-interface' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/kubernetes/well-named-interface/codelingo.yaml': tenet 'well-named-interface' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/php/empty-catch-block/codelingo.yaml': tenet 'empty-catch-block' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/php/empty-catch-block/codelingo.yaml': tenet 'empty-catch-block' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'codelingo.yaml': tenet 'find-funcs' must have a rewrite config section
+codelingo.yaml file 'codelingo.yaml': tenet 'find-funcs' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/lightning-network-daemon/exported-package-is-tested/codelingo.yaml': tenet 'exported-package-is-not-tested' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/lightning-network-daemon/exported-package-is-tested/codelingo.yaml': tenet 'exported-package-is-not-tested' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/kubernetes/misused-nil-interface/codelingo.yaml': tenet 'misused-nil-interface' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/kubernetes/misused-nil-interface/codelingo.yaml': tenet 'misused-nil-interface' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/cockroachdb/wrapping-func-signatures/codelingo.yaml': tenet 'wrapping-func-signatures' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/cockroachdb/wrapping-func-signatures/codelingo.yaml': tenet 'wrapping-func-signatures' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/cacophony/no-fmt-print/codelingo.yaml': tenet 'no-fmt-printx' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/cacophony/no-fmt-print/codelingo.yaml': tenet 'no-fmt-printx' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/west/shadowing/codelingo.yaml': tenet 'shadowed-parameter' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/west/shadowing/codelingo.yaml': tenet 'shadowed-parameter' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/go/nil-only-functions/codelingo.yaml': tenet 'nil-only-functions' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/go/nil-only-functions/codelingo.yaml': tenet 'nil-only-functions' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/cacophony/raise-generic-exceptions/codelingo.yaml': tenet 'raised-generic-exceptions' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/cacophony/raise-generic-exceptions/codelingo.yaml': tenet 'raised-generic-exceptions' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/west/shadowing/codelingo.yaml': tenet 'shadowed-declaration' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/west/shadowing/codelingo.yaml': tenet 'shadowed-declaration' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/jenkinsx/orginterfaces/codelingo.yaml': tenet 'orginterfaces' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/jenkinsx/orginterfaces/codelingo.yaml': tenet 'orginterfaces' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/effective-go/avoid-annotations-in-comments/codelingo.yaml': tenet 'avoid-annotations-in-comments' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/effective-go/avoid-annotations-in-comments/codelingo.yaml': tenet 'avoid-annotations-in-comments' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'codelingo.yaml': tenet 'global-variable' must have a rewrite config section
+codelingo.yaml file 'codelingo.yaml': tenet 'global-variable' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'codelingo.yaml': tenet 'bool-arg' must have a rewrite config section
+codelingo.yaml file 'codelingo.yaml': tenet 'bool-arg' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'codelingo.yaml': tenet 'reallocated-slice' must have a rewrite config section
+codelingo.yaml file 'codelingo.yaml': tenet 'reallocated-slice' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/kubernetes/well-named-lists/codelingo.yaml': tenet 'well-named-lists' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/kubernetes/well-named-lists/codelingo.yaml': tenet 'well-named-lists' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'codelingo.yaml': tenet 'go-lint-rules' must have a rewrite config section
+codelingo.yaml file 'codelingo.yaml': tenet 'go-lint-rules' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/go/todo/codelingo.yaml': tenet 'todo-comments' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/go/todo/codelingo.yaml': tenet 'todo-comments' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'codelingo.yaml': tenet 'goto-statement' must have a rewrite config section
+codelingo.yaml file 'codelingo.yaml': tenet 'goto-statement' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/go/tested/codelingo.yaml': tenet 'find-funcs' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/go/tested/codelingo.yaml': tenet 'find-funcs' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/cockroachdb/avoid-bool-params/codelingo.yaml': tenet 'bool-arg' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/cockroachdb/avoid-bool-params/codelingo.yaml': tenet 'bool-arg' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'codelingo.yaml': tenet 'mixed-marshalling' must have a rewrite config section
+codelingo.yaml file 'codelingo.yaml': tenet 'mixed-marshalling' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'codelingo.yaml': tenet 'println-format-strings' must have a rewrite config section
+codelingo.yaml file 'codelingo.yaml': tenet 'println-format-strings' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/php/sql-concats/codelingo.yaml': tenet 'sql-concats' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/php/sql-concats/codelingo.yaml': tenet 'sql-concats' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/php/if-assignment/codelingo.yaml': tenet 'if-assignment' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/php/if-assignment/codelingo.yaml': tenet 'if-assignment' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'codelingo.yaml': tenet 'todo-comments' must have a rewrite config section
+codelingo.yaml file 'codelingo.yaml': tenet 'todo-comments' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/go/goto/codelingo.yaml': tenet 'goto-statement' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/go/goto/codelingo.yaml': tenet 'goto-statement' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/west/allocation/codelingo.yaml': tenet 'freed-new-object' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/west/allocation/codelingo.yaml': tenet 'freed-new-object' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/modica/null-check/codelingo.yaml': tenet 'null-check' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/modica/null-check/codelingo.yaml': tenet 'null-check' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/west/allocation/codelingo.yaml': tenet 'used-after-deletion' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/west/allocation/codelingo.yaml': tenet 'used-after-deletion' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/west/allocation/codelingo.yaml': tenet 'deleted-malloced-objects' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/west/allocation/codelingo.yaml': tenet 'deleted-malloced-objects' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/west/allocation/codelingo.yaml': tenet 'undeleted-returned-object' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/west/allocation/codelingo.yaml': tenet 'undeleted-returned-object' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/go/marshalling/codelingo.yaml': tenet 'mixed-marshalling' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/go/marshalling/codelingo.yaml': tenet 'mixed-marshalling' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/php/phplint/codelingo.yaml': tenet 'php-lint-rules' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/php/phplint/codelingo.yaml': tenet 'php-lint-rules' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/go/init/codelingo.yaml': tenet 'init' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/go/init/codelingo.yaml': tenet 'init' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/cockroachdb/line-length-limit/codelingo.yaml': tenet 'line-length-limit' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/cockroachdb/line-length-limit/codelingo.yaml': tenet 'line-length-limit' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/go/unconvert/codelingo.yaml': tenet 'unconvert' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/go/unconvert/codelingo.yaml': tenet 'unconvert' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/go/println-format-strings/codelingo.yaml': tenet 'println-format-strings' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/go/println-format-strings/codelingo.yaml': tenet 'println-format-strings' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/cockroachdb/func-args-inline-comments/codelingo.yaml': tenet 'func-args-inline-comments' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/cockroachdb/func-args-inline-comments/codelingo.yaml': tenet 'func-args-inline-comments' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/effective-go/comment-first-word-as-subject/codelingo.yaml': tenet 'comment-first-word-as-subject' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/effective-go/comment-first-word-as-subject/codelingo.yaml': tenet 'comment-first-word-as-subject' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/go/bool-param/codelingo.yaml': tenet 'bool-arg' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/go/bool-param/codelingo.yaml': tenet 'bool-arg' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/go/sprintf/codelingo.yaml': tenet 'sprintf-error' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/go/sprintf/codelingo.yaml': tenet 'sprintf-error' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/cacophony/redundant-defer-wraps/codelingo.yaml': tenet 'redundant-defer-wraps' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/cacophony/redundant-defer-wraps/codelingo.yaml': tenet 'redundant-defer-wraps' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/modica/transport/codelingo.yaml': tenet 'transport-template' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/modica/transport/codelingo.yaml': tenet 'transport-template' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/cockroachdb/fmt-verbs/codelingo.yaml': tenet 'fmt-verbs' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/cockroachdb/fmt-verbs/codelingo.yaml': tenet 'fmt-verbs' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/west/switch/codelingo.yaml': tenet 'fall-through-case' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/west/switch/codelingo.yaml': tenet 'fall-through-case' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/kubernetes/flags-have-underscores/codelingo.yaml': tenet 'flags-have-underscores' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/kubernetes/flags-have-underscores/codelingo.yaml': tenet 'flags-have-underscores' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/effective-go/underscores-in-name/codelingo.yaml': tenet 'underscores-in-name' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/effective-go/underscores-in-name/codelingo.yaml': tenet 'underscores-in-name' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/effective-go/single-method-interface-name/codelingo.yaml': tenet 'single-method-interface-name' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/effective-go/single-method-interface-name/codelingo.yaml': tenet 'single-method-interface-name' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/cacophony/defer-in-loop/codelingo.yaml': tenet 'defer-in-loop' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/cacophony/defer-in-loop/codelingo.yaml': tenet 'defer-in-loop' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/kubernetes/jsonapi-kind-compulsory-metadata/codelingo.yaml': tenet 'jsonapi-kind-compulsory-metadata' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/kubernetes/jsonapi-kind-compulsory-metadata/codelingo.yaml': tenet 'jsonapi-kind-compulsory-metadata' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/cacophony/debug-prints/codelingo.yaml': tenet 'debug-prints' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/cacophony/debug-prints/codelingo.yaml': tenet 'debug-prints' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/effective-go/good-package-name/codelingo.yaml': tenet 'good-package-name' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/effective-go/good-package-name/codelingo.yaml': tenet 'good-package-name' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/kubernetes/well-named-locks/codelingo.yaml': tenet 'well-named-locks' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/kubernetes/well-named-locks/codelingo.yaml': tenet 'well-named-locks' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/code-review-comments/go-error-fmt/codelingo.yaml': tenet 'go-error-fmt' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/code-review-comments/go-error-fmt/codelingo.yaml': tenet 'go-error-fmt' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/go/empty-slice/codelingo.yaml': tenet 'empty-slice' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/go/empty-slice/codelingo.yaml': tenet 'empty-slice' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/php/boolean-argument/codelingo.yaml': tenet 'boolean-argument' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/php/boolean-argument/codelingo.yaml': tenet 'boolean-argument' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/kubernetes/well-named-lock/codelingo.yaml': tenet 'well-named-lock' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/kubernetes/well-named-lock/codelingo.yaml': tenet 'well-named-lock' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/kubernetes/new-package-requires-test/codelingo.yaml': tenet 'new-package-requires-test' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/kubernetes/new-package-requires-test/codelingo.yaml': tenet 'new-package-requires-test' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/kubernetes/well-named-package/codelingo.yaml': tenet 'well-named-package' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/kubernetes/well-named-package/codelingo.yaml': tenet 'well-named-package' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/cacophony/caught-generic-exceptions/codelingo.yaml': tenet 'caught-generic-exceptions' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/cacophony/caught-generic-exceptions/codelingo.yaml': tenet 'caught-generic-exceptions' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/go/unsafe-go-routine-variables/codelingo.yaml': tenet 'unsafe-go-routine-variables' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/go/unsafe-go-routine-variables/codelingo.yaml': tenet 'unsafe-go-routine-variables' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/kubernetes/looped-vars-outside-loop/codelingo.yaml': tenet 'looped-vars-outside-loop' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/kubernetes/looped-vars-outside-loop/codelingo.yaml': tenet 'looped-vars-outside-loop' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/code-review-comments/context-first-arg/codelingo.yaml': tenet 'context-first-arg' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/code-review-comments/context-first-arg/codelingo.yaml': tenet 'context-first-arg' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/php/count-in-loop/codelingo.yaml': tenet 'count-in-loop' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/php/count-in-loop/codelingo.yaml': tenet 'count-in-loop' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/go/unused-private-functions/codelingo.yaml': tenet 'find-unused-private-funcs' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/go/unused-private-functions/codelingo.yaml': tenet 'find-unused-private-funcs' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/go/golint/codelingo.yaml': tenet 'go-lint-rules' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/go/golint/codelingo.yaml': tenet 'go-lint-rules' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/kubernetes/well-formed-lists/codelingo.yaml': tenet 'well-formed-lists' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/kubernetes/well-formed-lists/codelingo.yaml': tenet 'well-formed-lists' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/effective-go/package-comment/codelingo.yaml': tenet 'package-comment' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/effective-go/package-comment/codelingo.yaml': tenet 'package-comment' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/lightning-network-daemon/rpc-responses-display-uniformly/codelingo.yaml': tenet 'rpc-responses-display-uniformly' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/lightning-network-daemon/rpc-responses-display-uniformly/codelingo.yaml': tenet 'rpc-responses-display-uniformly' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/code-review-comments/avoid-renaming-imports/codelingo.yaml': tenet 'avoid-renaming-imports' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/code-review-comments/avoid-renaming-imports/codelingo.yaml': tenet 'avoid-renaming-imports' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/go/reallocated-slice/codelingo.yaml': tenet 'reallocated-slice' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/go/reallocated-slice/codelingo.yaml': tenet 'reallocated-slice' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: codelingo.yaml file 'tenets/codelingo/php/eval-expression/codelingo.yaml': tenet 'eval-expression' must have a rewrite config section
+codelingo.yaml file 'tenets/codelingo/php/eval-expression/codelingo.yaml': tenet 'eval-expression' must have a rewrite config section
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a uncaught error: rpc error: code = Canceled desc = context canceled
+/home/vagrant/go/src/github.com/codelingo/platform/flow/bots/processor/streamed.go:54: rpc error: code = Canceled desc = context canceled
+/home/vagrant/go/src/github.com/codelingo/platform/flow/util/util.go:11:
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:170:
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
+mullikine hit a userfacing error: failed to send result from flow server to client: Sorry, an error occurred while processing your request. Please try again.
+Sorry, an error occurred while processing your request. Please try again.
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:175: failed to send result from flow server to client
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a userfacing error
+mullikine hit a uncaught error: Failed run Flow function: Failed to build queries due to the following errors: 1. failed to parse codelingo.yaml file `tenets/codelingo/go/println-format-strings/codelingo.yaml`: line 8:6 - unknown decorated element 2. failed to parse codelingo.yaml file `tenets/codel…
+/home/vagrant/go/src/github.com/codelingo/platform/flow/flows/rewrite/query/query.go:129: Failed to build queries due to the following errors:
+1. failed to parse codelingo.yaml file `tenets/codelingo/go/println-format-strings/codelingo.yaml`: line 8:6 - unknown decorated element
+2. failed to parse codelingo.yaml file `tenets/codelingo/go/nil-only-functions/codelingo.yaml`: line 14:7 - unknown element
+
+/home/vagrant/go/src/github.com/codelingo/platform/flow/flows/rewrite/query/query.go:46:
+/home/vagrant/go/src/github.com/codelingo/platform/flow/flows/rewrite/rewrite.go:198:
+/home/vagrant/go/src/github.com/codelingo/platform/flow/flows/rewrite/rewrite.go:86:
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:244:
+/home/vagrant/go/src/github.com/codelingo/platform/flow/server/server.go:157: Failed run Flow function
+/home/vagrant/go/src/github.com/codelingo/platform/frontend/middleware/errors.go:108: mullikine hit a uncaught error
