@@ -11,7 +11,7 @@
 
 
 
-[ar:] Uploaded, completed *and* registered
+[ar:] Uploaded, completed *and* _registered_
 
 
 ** number of tenets in each OSS project
