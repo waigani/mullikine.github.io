@@ -2,7 +2,7 @@
 ** Overview
 ||# registered[ar:]|# present
 |-
-|tenets|65|
+|tenets|65|70
 |tenets with issues|9|
 |tenets with rewrite|10|
 |issues|9|
