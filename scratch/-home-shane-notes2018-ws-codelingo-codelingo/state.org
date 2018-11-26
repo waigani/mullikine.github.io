@@ -3,13 +3,13 @@
 ||# registered[ar:]|# present
 |-
 |tenets|65|
-|tenets with issues|?|
+|tenets with issues|9|
 |tenets with rewrite||
 |issues||
 |mock tenets||
 |projects||
 |lexicons||
-|oss docs||
+|oss docs|1|1
 
 
 
