@@ -1,0 +1,31 @@
+* ~codelingo/codelingo~ status
+** Overview
+||# registered[ar:]|# present
+|-
+|tenets|65|
+|tenets with issues|9|
+|tenets with rewrite|65|
+|issues||
+|mock tenets||
+|projects||
+|lexicons||
+|oss docs|1|1
+
+
+
+[ar:] Uploaded, completed *and* _registered_
+
+
+** number of tenets in each OSS project
+|# tenets|OSS project
+|-
+|16|go
+|12|kubernetes
+|8|php
+|6|cacophony
+|6|effective-go
+|5|cockroachdb
+|5|jenkinsx
+|3|code-review-comments
+|3|west
+|2|lightning-network-daemon
