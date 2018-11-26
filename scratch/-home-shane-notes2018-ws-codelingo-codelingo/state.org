@@ -31,12 +31,12 @@ If the numbers don't line up, registry vs search, then changes may need to be ma
 |3|west
 |2|lightning-network-daemon
 ** registered issues
-https://github.com/codelingo/codelingo/issues/233
-https://github.com/codelingo/codelingo/issues/238
-https://github.com/codelingo/codelingo/issues/233
-https://github.com/codelingo/codelingo/issues/231
-https://github.com/codelingo/codelingo/issues/227
-https://github.com/codelingo/codelingo/issues/212
-https://github.com/codelingo/codelingo/issues/240
-https://github.com/codelingo/codelingo/issues/216
-https://github.com/codelingo/codelingo/issues/224
+|https://github.com/codelingo/codelingo/issues/233
+|https://github.com/codelingo/codelingo/issues/238
+|https://github.com/codelingo/codelingo/issues/233
+|https://github.com/codelingo/codelingo/issues/231
+|https://github.com/codelingo/codelingo/issues/227
+|https://github.com/codelingo/codelingo/issues/212
+|https://github.com/codelingo/codelingo/issues/240
+|https://github.com/codelingo/codelingo/issues/216
+|https://github.com/codelingo/codelingo/issues/224
