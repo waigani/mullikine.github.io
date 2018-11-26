@@ -4,7 +4,7 @@
 |-
 |tenets|65|
 |tenets with issues|9|
-|tenets with rewrite||
+|tenets with rewrite|9|
 |issues||
 |mock tenets||
 |projects||
