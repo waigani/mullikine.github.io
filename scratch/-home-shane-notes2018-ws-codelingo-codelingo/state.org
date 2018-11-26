@@ -31,14 +31,12 @@ If the numbers don't line up, registry vs search, then changes may need to be ma
 |3|west
 |2|lightning-network-daemon
 ** registered issues
-|https://github.com/codelingo/codelingo/issues/233 | Cannot query for line length #233
-|https://github.com/codelingo/codelingo/issues/238 | #238
-|https://github.com/codelingo/codelingo/issues/233 | Cannot query for line length #233
-|https://github.com/codelingo/codelingo/issues/231 | Tenet: cannot use start_line or end_line in queries #231
-|https://github.com/codelingo/codelingo/issues/227 | Cannot import a tenet and then override its docs flow #227
-|https://github.com/codelingo/codelingo/issues/212 | imports #212
-|https://github.com/codelingo/codelingo/issues/240 | run rewrite unbackslashing results in broken code #240
-|https://github.com/codelingo/codelingo/issues/216
-https://github.com/codelingo/codelingo/issues/224 | Tenet: package-commented. Can't check if comment is in another package #216
-https://github.com/codelingo/codelingo/issues/224
-Can't use comparison operators on byte offsets #224
+|[[https://github.com/codelingo/codelingo/issues/233][Cannot query for line length  Issue #233  codelingo/codelingo  GitHub]]
+|[[https://github.com/codelingo/codelingo/issues/238][Tenet: fmt-verbs. Waiting on ability to use variables in any_of (see example)  Issue #238  codelingo/codelingo  GitHub]]
+|[[https://github.com/codelingo/codelingo/issues/233][Cannot query for line length  Issue #233  codelingo/codelingo  GitHub]]
+|[[https://github.com/codelingo/codelingo/issues/231][Tenet: cannot use start_line or end_line in queries  Issue #231  codelingo/codelingo  GitHub]]
+|[[https://github.com/codelingo/codelingo/issues/227][Cannot import a tenet and then override its docs flow  Issue #227  codelingo/codelingo  GitHub]]
+|[[https://github.com/codelingo/codelingo/issues/212][Tenet: avoid-renaming-imports. Can't implement logic to compare only certain imports  Issue #212  codelingo/codelingo  GitHub]]
+|[[https://github.com/codelingo/codelingo/issues/240][run rewrite unbackslashing results in broken code  Issue #240  codelingo/codelingo  GitHub]]
+|[[https://github.com/codelingo/codelingo/issues/216][Tenet: package-commented. Can't check if comment is in another package  Issue #216  codelingo/codelingo  GitHub]]
+|[[https://github.com/codelingo/codelingo/issues/224][Can't use comparison operators on byte offsets  Issue #224  codelingo/codelingo  GitHub]]
