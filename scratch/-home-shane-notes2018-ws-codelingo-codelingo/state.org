@@ -5,7 +5,14 @@
 |tenets|65|
 |tenets with issues|9|
 |tenets with rewrite|10|
-|issues||
+|issues|/home/shane/source/git/codelingo/codelingo/tenets/codelingo/cockroachdb/wrapping-func-signatures/issues.yaml
+|/home/shane/source/git/codelingo/codelingo/tenets/codelingo/cockroachdb/fmt-verbs/issues.yaml
+|/home/shane/source/git/codelingo/codelingo/tenets/codelingo/cockroachdb/line-length-limit/issues.yaml
+|/home/shane/source/git/codelingo/codelingo/tenets/codelingo/cockroachdb/func-args-inline-comments/issues.yaml
+|/home/shane/source/git/codelingo/codelingo/tenets/codelingo/cockroachdb/avoid-bool-params/issues.yaml
+|/home/shane/source/git/codelingo/codelingo/tenets/codelingo/code-review-comments/avoid-renaming-imports/issues.yaml
+|/home/shane/source/git/codelingo/codelingo/tenets/codelingo/go/sprintf/issues.yaml
+|/home/shane/source/git/codelingo/codelingo/tenets/codelingo/effective-go/package-comment/issues.yaml|
 |mock tenets||
 |projects||
 |lexicons||
@@ -29,3 +36,13 @@
 |3|code-review-comments
 |3|west
 |2|lightning-network-daemon
+** registered issues
+https://github.com/codelingo/codelingo/issues/233
+https://github.com/codelingo/codelingo/issues/238
+https://github.com/codelingo/codelingo/issues/233
+https://github.com/codelingo/codelingo/issues/231
+https://github.com/codelingo/codelingo/issues/227
+https://github.com/codelingo/codelingo/issues/212
+https://github.com/codelingo/codelingo/issues/240
+https://github.com/codelingo/codelingo/issues/216
+https://github.com/codelingo/codelingo/issues/224
