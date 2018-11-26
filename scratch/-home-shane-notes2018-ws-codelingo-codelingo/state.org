@@ -5,8 +5,8 @@ If the numbers don't line up, registry vs search, then changes may need to be ma
 |-
 |tenets|65|68
 |tenets with issues|9|8
-|tenets with rewrite|10|68
-|issues|9|
+|tenets with rewrite|10|11
+|issues|9|9
 |mock tenets||
 |projects|11|
 |lexicons||
